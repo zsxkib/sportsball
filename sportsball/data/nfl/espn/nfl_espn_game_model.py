@@ -6,20 +6,20 @@ from typing import Any, Dict, Optional, Pattern, Union
 import requests_cache
 from dateutil.parser import parse
 
-from ..game_model import GameModel
-from ..odds_model import OddsModel
-from ..team_model import TeamModel
-from .nfl_bookie_model import NFLBookieModel
-from .nfl_odds_model import MONEYLINE_KEY, NFLOddsModel
-from .nfl_team_model import NFLTeamModel
-from .nfl_venue_model import NFLVenueModel
+from ...game_model import GameModel
+from ...odds_model import OddsModel
+from ...team_model import TeamModel
+from .nfl_espn_bookie_model import NFLESPNBookieModel
+from .nfl_espn_odds_model import MONEYLINE_KEY, NFLESPNOddsModel
+from .nfl_espn_team_model import NFLESPNTeamModel
+from .nfl_espn_venue_model import NFLESPNVenueModel
 
 
 def _create_nfl_team(
     competitor: Dict[str, Any],
     odds_dict: Dict[str, Any],
     session: requests_cache.CachedSession,
-) -> NFLTeamModel:
+) -> NFLESPNTeamModel:
     team_response = session.get(competitor["team"]["$ref"])
     team_response.raise_for_status()
     team_dict = team_response.json()
@@ -28,9 +28,9 @@ def _create_nfl_team(
     odds: Dict[str, OddsModel] = {}
     if odds_dict:
         odds = {
-            x["provider"]["id"]: NFLOddsModel(
+            x["provider"]["id"]: NFLESPNOddsModel(
                 x[odds_key],
-                NFLBookieModel(x["provider"]),
+                NFLESPNBookieModel(x["provider"]),
             )
             for x in odds_dict["items"]
             if odds_key in x and MONEYLINE_KEY in x[odds_key]
@@ -42,10 +42,10 @@ def _create_nfl_team(
         roster_response.raise_for_status()
         roster_dict = roster_response.json()
 
-    return NFLTeamModel(team_dict, roster_dict, odds)
+    return NFLESPNTeamModel(team_dict, roster_dict, odds)
 
 
-class NFLGameModel(GameModel):
+class NFLESPNGameModel(GameModel):
     """NFL implementation of the game model."""
 
     def __init__(
@@ -58,7 +58,7 @@ class NFLGameModel(GameModel):
         dt = parse(event["date"])
         venue = None
         if "venue" in event:
-            venue = NFLVenueModel(event["venue"])
+            venue = NFLESPNVenueModel(event["venue"])
 
         teams = []
         for competition in event["competitions"]:
@@ -90,6 +90,6 @@ class NFLGameModel(GameModel):
     ):
         """Return the URL cache rules."""
         return {
-            **NFLVenueModel.urls_expire_after(),
-            **NFLTeamModel.urls_expire_after(),
+            **NFLESPNVenueModel.urls_expire_after(),
+            **NFLESPNTeamModel.urls_expire_after(),
         }

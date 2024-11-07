@@ -3,12 +3,14 @@
 # pylint: disable=too-few-public-methods
 import datetime
 from typing import Dict
+from warnings import simplefilter
 
 import requests_cache
+import pandas as pd
 
 from .data.league import League
 from .data.league_model import LeagueModel
-from .data.nfl.nfl_league_model import NFLLeagueModel
+from .data.nfl import NFLLeagueModel
 
 
 class SportsBall:
@@ -23,6 +25,7 @@ class SportsBall:
             urls_expire_after=NFLLeagueModel.urls_expire_after(),
         )
         self._leagues = {}
+        simplefilter(action="ignore", category=pd.errors.PerformanceWarning)
 
     def league(self, league: League) -> LeagueModel:
         """Provide a league model for the given league."""

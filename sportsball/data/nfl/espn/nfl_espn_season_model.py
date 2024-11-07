@@ -6,10 +6,10 @@ from typing import Any, Dict, Iterator, Optional, Pattern, Union
 
 import requests_cache
 
-from ..game_model import GameModel
-from ..season_model import SeasonModel
-from ..season_type import SeasonType
-from .nfl_game_model import NFLGameModel
+from ...game_model import GameModel
+from ...season_model import SeasonModel
+from ...season_type import SeasonType
+from .nfl_espn_game_model import NFLESPNGameModel
 
 
 def _season_type_from_name(name: str) -> SeasonType:
@@ -24,7 +24,7 @@ def _season_type_from_name(name: str) -> SeasonType:
     raise ValueError(f"Unrecognised season name: {name}")
 
 
-class NFLSeasonModel(SeasonModel):
+class NFLESPNSeasonModel(SeasonModel):
     """The class implementing the NFL season model."""
 
     def __init__(
@@ -60,7 +60,7 @@ class NFLSeasonModel(SeasonModel):
                         event_response = self.session.get(event_item["$ref"])
                         event_response.raise_for_status()
                         event = event_response.json()
-                        yield NFLGameModel(
+                        yield NFLESPNGameModel(
                             event, week_count, events_count, self.session
                         )
                         events_count += 1
@@ -68,6 +68,10 @@ class NFLSeasonModel(SeasonModel):
                         break
                     events_page += 1
                 week_count += 1
+            if week_count == 0:
+                print(self._season)
+                print(weeks)
+                print("NO WEEKS!!!")
             if page >= weeks["pageCount"]:
                 break
             page += 1
@@ -87,5 +91,5 @@ class NFLSeasonModel(SeasonModel):
                     hours=1
                 ),
             },
-            **NFLGameModel.urls_expire_after(),
+            **NFLESPNGameModel.urls_expire_after(),
         }

@@ -1,18 +1,18 @@
-"""NFL player model."""
+"""NFL bookie model."""
 
 import datetime
 from typing import Any, Dict, Optional, Pattern, Union
 
-from ..player_model import PlayerModel
+from ...bookie_model import BookieModel
 
 
-class NFLPlayerModel(PlayerModel):
-    """NFL implementation of the player model."""
+class NFLESPNBookieModel(BookieModel):
+    """NFL implementation of the bookie model."""
 
-    def __init__(self, player: Dict[str, Any]) -> None:
-        identifier = str(player["playerId"])
-        jersey = player.get("jersey")
-        super().__init__(identifier, jersey)
+    def __init__(self, bookie: Dict[str, Any]) -> None:
+        identifier = bookie["id"]
+        name = bookie["name"]
+        super().__init__(identifier, name)
 
     @staticmethod
     def urls_expire_after() -> (

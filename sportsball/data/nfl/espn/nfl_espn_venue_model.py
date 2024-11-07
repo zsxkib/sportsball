@@ -3,11 +3,11 @@
 import datetime
 from typing import Any, Dict, Optional, Pattern, Union
 
-from ..address import Address
-from ..venue_model import VenueModel
+from ...address import Address
+from ...venue_model import VenueModel
 
 
-class NFLVenueModel(VenueModel):
+class NFLESPNVenueModel(VenueModel):
     """NFL implementation of the venue model."""
 
     def __init__(self, venue: Dict[str, Any]) -> None:

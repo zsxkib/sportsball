@@ -3,13 +3,13 @@
 import datetime
 from typing import Any, Dict, Optional, Pattern, Union
 
-from ..odds_model import OddsModel
-from ..team_model import TeamModel
-from .nfl_odds_model import NFLOddsModel
-from .nfl_player_model import NFLPlayerModel
+from ...odds_model import OddsModel
+from ...team_model import TeamModel
+from .nfl_espn_odds_model import NFLESPNOddsModel
+from .nfl_espn_player_model import NFLESPNPlayerModel
 
 
-class NFLTeamModel(TeamModel):
+class NFLESPNTeamModel(TeamModel):
     """NFL implementation of the team model."""
 
     def __init__(
@@ -27,7 +27,7 @@ class NFLTeamModel(TeamModel):
         location = team["location"]
         players = []
         for entity in roster_dict.get("entries", []):
-            player = NFLPlayerModel(entity)
+            player = NFLESPNPlayerModel(entity)
             players.append(player)
         super().__init__(identifier, name, location, players, odds)
 
@@ -40,6 +40,6 @@ class NFLTeamModel(TeamModel):
     ):
         """Return the URL cache rules."""
         return {
-            **NFLPlayerModel.urls_expire_after(),
-            **NFLOddsModel.urls_expire_after(),
+            **NFLESPNPlayerModel.urls_expire_after(),
+            **NFLESPNOddsModel.urls_expire_after(),
         }

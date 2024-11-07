@@ -3,14 +3,14 @@
 import datetime
 from typing import Any, Dict, Optional, Pattern, Union
 
-from ..bookie_model import BookieModel
-from ..team_model import OddsModel
-from .nfl_bookie_model import NFLBookieModel
+from ...bookie_model import BookieModel
+from ...team_model import OddsModel
+from .nfl_espn_bookie_model import NFLESPNBookieModel
 
 MONEYLINE_KEY = "moneyLine"
 
 
-class NFLOddsModel(OddsModel):
+class NFLESPNOddsModel(OddsModel):
     """NFL implementation of the odds model."""
 
     def __init__(self, odds: Dict[str, Any], bookie: BookieModel) -> None:
@@ -30,4 +30,4 @@ class NFLOddsModel(OddsModel):
         ]
     ):
         """Return the URL cache rules."""
-        return NFLBookieModel.urls_expire_after()
+        return NFLESPNBookieModel.urls_expire_after()

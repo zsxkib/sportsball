@@ -5,17 +5,17 @@ from typing import Any, Dict, Iterator, Optional, Pattern, Union
 
 import requests_cache
 
-from ..league import League
-from ..league_model import LeagueModel
-from ..season_model import SeasonModel
-from .nfl_season_model import NFLSeasonModel
+from ...league import League
+from ...league_model import LeagueModel
+from ...season_model import SeasonModel
+from .nfl_espn_season_model import NFLESPNSeasonModel
 
 _SEASON_URL = (
     "https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons?limit=100"
 )
 
 
-class NFLLeagueModel(LeagueModel):
+class NFLESPNLeagueModel(LeagueModel):
     """NFL implementation of the league model."""
 
     def __init__(self, session: requests_cache.CachedSession) -> None:
@@ -36,7 +36,7 @@ class NFLLeagueModel(LeagueModel):
                     season_type_response = self.session.get(season_item["$ref"])
                     season_type_response.raise_for_status()
                     season_type_json = season_type_response.json()
-                    yield NFLSeasonModel(self.session, season_type_json)
+                    yield NFLESPNSeasonModel(self.session, season_type_json)
 
             if page >= seasons["pageCount"]:
                 break
@@ -51,7 +51,7 @@ class NFLLeagueModel(LeagueModel):
     ):
         """Return any URL cache rules."""
         return {
-            **NFLSeasonModel.urls_expire_after(),
+            **NFLESPNSeasonModel.urls_expire_after(),
             **{
                 _SEASON_URL + ".*": datetime.timedelta(hours=1),
             },
