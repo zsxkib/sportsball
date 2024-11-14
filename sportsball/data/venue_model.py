@@ -3,7 +3,7 @@
 import pandas as pd
 
 from .address_model import AddressModel
-from .columns import (COLUMN_SEPARATOR, ODDS_COLUMNS_ATTR,
+from .columns import (COLUMN_SEPARATOR, ODDS_COLUMNS_ATTR, POINTS_COLUMNS_ATTR,
                       TRAINING_EXCLUDE_COLUMNS_ATTR, update_columns_list)
 from .model import Model
 
@@ -36,6 +36,8 @@ class VenueModel(Model):
         }
         training_exclude_columns = []
         odds_columns = []
+        points_columns = []
+
         address = self.address
         if address is not None:
             address_df = address.to_frame()
@@ -43,6 +45,7 @@ class VenueModel(Model):
                 address_df.attrs.get(TRAINING_EXCLUDE_COLUMNS_ATTR, [])
             )
             odds_columns.extend(address_df.attrs.get(ODDS_COLUMNS_ATTR, []))
+            points_columns.extend(address_df.attrs.get(POINTS_COLUMNS_ATTR, []))
             for column in address_df.columns.values:
                 data[column] = address_df[column].to_list()
         df = pd.DataFrame(
@@ -56,5 +59,8 @@ class VenueModel(Model):
         )
         df.attrs[ODDS_COLUMNS_ATTR] = sorted(
             list(set(update_columns_list(odds_columns, VENUE_COLUMN_SUFFIX)))
+        )
+        df.attrs[POINTS_COLUMNS_ATTR] = sorted(
+            list(set(update_columns_list(points_columns, VENUE_COLUMN_SUFFIX)))
         )
         return df

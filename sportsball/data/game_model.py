@@ -6,7 +6,7 @@ from typing import Optional, Sequence
 
 import pandas as pd
 
-from .columns import (COLUMN_SEPARATOR, ODDS_COLUMNS_ATTR,
+from .columns import (COLUMN_SEPARATOR, ODDS_COLUMNS_ATTR, POINTS_COLUMNS_ATTR,
                       TRAINING_EXCLUDE_COLUMNS_ATTR, update_columns_list)
 from .model import Model
 from .team_model import TeamModel
@@ -75,6 +75,8 @@ class GameModel(Model):
 
         training_exclude_columns = []
         odds_columns = []
+        points_columns = []
+
         venue = self.venue
         if venue is not None:
             venue_df = venue.to_frame()
@@ -82,6 +84,7 @@ class GameModel(Model):
                 venue_df.attrs.get(TRAINING_EXCLUDE_COLUMNS_ATTR, [])
             )
             odds_columns.extend(venue_df.attrs.get(ODDS_COLUMNS_ATTR, []))
+            points_columns.extend(venue_df.attrs.get(POINTS_COLUMNS_ATTR, []))
             for column in venue_df.columns.values:
                 data[column] = venue_df[column].to_list()
 
@@ -103,6 +106,11 @@ class GameModel(Model):
                     team_df.attrs.get(ODDS_COLUMNS_ATTR, []), column_prefix
                 )
             )
+            points_columns.extend(
+                update_columns_list(
+                    team_df.attrs.get(POINTS_COLUMNS_ATTR, []), column_prefix
+                )
+            )
             for column in team_df.columns.values:
                 data[COLUMN_SEPARATOR.join([column_prefix, column])] = team_df[
                     column
@@ -116,5 +124,8 @@ class GameModel(Model):
         )
         df.attrs[ODDS_COLUMNS_ATTR] = sorted(
             list(set(update_columns_list(odds_columns, GAME_COLUMN_SUFFIX)))
+        )
+        df.attrs[POINTS_COLUMNS_ATTR] = sorted(
+            list(set(update_columns_list(points_columns, GAME_COLUMN_SUFFIX)))
         )
         return df

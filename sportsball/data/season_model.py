@@ -5,7 +5,7 @@ from typing import Iterator
 import pandas as pd
 import tqdm
 
-from .columns import (COLUMN_SEPARATOR, ODDS_COLUMNS_ATTR,
+from .columns import (COLUMN_SEPARATOR, ODDS_COLUMNS_ATTR, POINTS_COLUMNS_ATTR,
                       TRAINING_EXCLUDE_COLUMNS_ATTR)
 from .game_model import GAME_COLUMN_SUFFIX, GAME_DT_COLUMN, GameModel
 from .model import Model
@@ -44,15 +44,20 @@ class SeasonModel(Model):
             df["year"] = year
         df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR] = []
         df.attrs[ODDS_COLUMNS_ATTR] = []
+        df.attrs[POINTS_COLUMNS_ATTR] = []
         for game_df in dfs:
             df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR].extend(
                 game_df.attrs.get(TRAINING_EXCLUDE_COLUMNS_ATTR, [])
             )
             df.attrs[ODDS_COLUMNS_ATTR].extend(game_df.attrs.get(ODDS_COLUMNS_ATTR, []))
+            df.attrs[POINTS_COLUMNS_ATTR].extend(
+                game_df.attrs.get(POINTS_COLUMNS_ATTR, [])
+            )
         df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR] = list(
             set(df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR])
         )
         df.attrs[ODDS_COLUMNS_ATTR] = sorted(list(set(df.attrs[ODDS_COLUMNS_ATTR])))
+        df.attrs[POINTS_COLUMNS_ATTR] = sorted(list(set(df.attrs[POINTS_COLUMNS_ATTR])))
         return df.sort_values(
             by=COLUMN_SEPARATOR.join([GAME_COLUMN_SUFFIX, GAME_DT_COLUMN]),
             ascending=False,

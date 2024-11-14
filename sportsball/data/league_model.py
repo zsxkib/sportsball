@@ -6,7 +6,8 @@ import pandas as pd
 import requests_cache
 import tqdm
 
-from .columns import ODDS_COLUMNS_ATTR, TRAINING_EXCLUDE_COLUMNS_ATTR
+from .columns import (ODDS_COLUMNS_ATTR, POINTS_COLUMNS_ATTR,
+                      TRAINING_EXCLUDE_COLUMNS_ATTR)
 from .league import League
 from .model import Model
 from .season_model import SeasonModel
@@ -43,6 +44,7 @@ class LeagueModel(Model):
             df["league"] = self.league.value
             df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR] = []
             df.attrs[ODDS_COLUMNS_ATTR] = []
+            df.attrs[POINTS_COLUMNS_ATTR] = []
             for season_df in dfs:
                 df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR].extend(
                     season_df.attrs.get(TRAINING_EXCLUDE_COLUMNS_ATTR, [])
@@ -50,9 +52,15 @@ class LeagueModel(Model):
                 df.attrs[ODDS_COLUMNS_ATTR].extend(
                     season_df.attrs.get(ODDS_COLUMNS_ATTR, [])
                 )
+                df.attrs[POINTS_COLUMNS_ATTR].extend(
+                    season_df.attrs.get(POINTS_COLUMNS_ATTR, [])
+                )
             df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR] = list(
                 set(df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR])
             )
             df.attrs[ODDS_COLUMNS_ATTR] = sorted(list(set(df.attrs[ODDS_COLUMNS_ATTR])))
+            df.attrs[POINTS_COLUMNS_ATTR] = sorted(
+                list(set(df.attrs[POINTS_COLUMNS_ATTR]))
+            )
             self._df = df
         return df

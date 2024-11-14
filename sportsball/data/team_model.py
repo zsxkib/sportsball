@@ -5,13 +5,14 @@ from typing import Sequence
 
 import pandas as pd
 
-from .columns import (COLUMN_SEPARATOR, ODDS_COLUMNS_ATTR,
+from .columns import (COLUMN_SEPARATOR, ODDS_COLUMNS_ATTR, POINTS_COLUMNS_ATTR,
                       TRAINING_EXCLUDE_COLUMNS_ATTR, update_columns_list)
 from .model import Model
 from .odds_model import OddsModel
 from .player_model import PlayerModel
 
 TEAM_COLUMN_SUFFIX = "team"
+POINTS_COLUMN = "points"
 
 
 class TeamModel(Model):
@@ -57,6 +58,8 @@ class TeamModel(Model):
 
         training_exclude_columns = []
         odds_columns = []
+        points_columns = []
+
         for count, player in enumerate(self.players):
             player_df = player.to_frame()
             column_prefix = str(count)
@@ -69,6 +72,11 @@ class TeamModel(Model):
             odds_columns.extend(
                 update_columns_list(
                     player_df.attrs.get(ODDS_COLUMNS_ATTR, []), column_prefix
+                )
+            )
+            points_columns.extend(
+                update_columns_list(
+                    player_df.attrs.get(POINTS_COLUMNS_ATTR, []), column_prefix
                 )
             )
             for column in player_df.columns.values:
@@ -91,6 +99,11 @@ class TeamModel(Model):
                     odds_df.attrs.get(ODDS_COLUMNS_ATTR, []), column_prefix
                 )
             )
+            points_columns.extend(
+                update_columns_list(
+                    odds_df.attrs.get(POINTS_COLUMNS_ATTR, []), column_prefix
+                )
+            )
             for column in odds_df.columns.values:
                 data[COLUMN_SEPARATOR.join([column_prefix, column])] = odds_df[
                     column
@@ -98,8 +111,9 @@ class TeamModel(Model):
 
         points = self.points
         if points is not None:
-            data["points"] = [points]
-            training_exclude_columns.append("points")
+            data[POINTS_COLUMN] = [points]
+            training_exclude_columns.append(POINTS_COLUMN)
+            points_columns.append(POINTS_COLUMN)
 
         df = pd.DataFrame(
             data={TEAM_COLUMN_SUFFIX + COLUMN_SEPARATOR + k: v for k, v in data.items()}
@@ -109,5 +123,8 @@ class TeamModel(Model):
         )
         df.attrs[ODDS_COLUMNS_ATTR] = sorted(
             list(set(update_columns_list(odds_columns, TEAM_COLUMN_SUFFIX)))
+        )
+        df.attrs[POINTS_COLUMNS_ATTR] = sorted(
+            list(set(update_columns_list(points_columns, TEAM_COLUMN_SUFFIX)))
         )
         return df

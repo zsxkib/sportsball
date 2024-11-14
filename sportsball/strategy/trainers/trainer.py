@@ -50,3 +50,7 @@ class Trainer:
         """Save the prediction for later."""
         filename = os.path.join(self._folder, f"{_hash_df(x)}.parquet")
         y.to_parquet(filename)
+
+    def select_features(self, x: pd.DataFrame, y: pd.DataFrame) -> list[str]:
+        """Select the features from the training data."""
+        raise NotImplementedError("select_features is not implemented in parent class.")

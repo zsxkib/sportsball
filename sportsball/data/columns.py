@@ -2,6 +2,7 @@
 
 TRAINING_EXCLUDE_COLUMNS_ATTR = "training_exclude"
 ODDS_COLUMNS_ATTR = "odds"
+POINTS_COLUMNS_ATTR = "points"
 COLUMN_SEPARATOR = "_"
 
 

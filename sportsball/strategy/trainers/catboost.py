@@ -43,13 +43,7 @@ class CatboostTrainer(Trainer):
 
     def fit(self, x: pd.DataFrame, y: pd.DataFrame):
         """Fit the data."""
-        train_pool = Pool(x, y)
-        self._model.select_features(
-            train_pool,
-            num_features_to_select=int(self._features_ratio * len(x.columns.values)),
-            steps=self._steps,
-            train_final_model=True,
-        )
+        self._model.fit(x, y)
 
     def save(self):
         """Save the trainer."""
@@ -67,3 +61,15 @@ class CatboostTrainer(Trainer):
         y = pd.DataFrame(index=x.index, data={OUTPUT_COLUMN: self._model.predict(x)})
         self.save_prediction(x, y)
         return y
+
+    def select_features(self, x: pd.DataFrame, y: pd.DataFrame) -> list[str]:
+        """Select the features from the training data."""
+        train_pool = Pool(x, y)
+        summary = self._model.select_features(
+            train_pool,
+            num_features_to_select=int(self._features_ratio * len(x.columns.values)),
+            steps=self._steps,
+            train_final_model=True,
+            features_for_select=x.columns.values,
+        )
+        return summary["selected_features_names"]

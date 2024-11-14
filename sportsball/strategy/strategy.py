@@ -11,7 +11,7 @@ import pandas as pd
 from sklearn.metrics import accuracy_score  # type: ignore
 
 from ..data.columns import (COLUMN_SEPARATOR, ODDS_COLUMNS_ATTR,
-                            TRAINING_EXCLUDE_COLUMNS_ATTR)
+                            POINTS_COLUMNS_ATTR, TRAINING_EXCLUDE_COLUMNS_ATTR)
 from ..data.game_model import (GAME_COLUMN_SUFFIX, GAME_DT_COLUMN,
                                GAME_WEEK_COLUMN)
 from .features import CombinedFeature
@@ -72,7 +72,7 @@ class Strategy:
             )
 
         cols = set(self._df.columns.values)
-        training_cols = set(self._df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR])
+        training_cols = set(self._df.attrs[POINTS_COLUMNS_ATTR])
         x = self._df[list(cols - training_cols)]
         y = self._df[list(training_cols)]
         y[OUTPUT_COLUMN] = np.argmax(y.to_numpy(), axis=1)
@@ -101,7 +101,9 @@ class Strategy:
 
             def objective(trial: optuna.Trial) -> float:
                 trainer = VennAbersTrainer(folder, CatboostTrainer(folder, trial=trial))
-                trainer.fit(x_walk, y_walk)
+                features = trainer.select_features(x_walk, y_walk)
+                trial.set_user_attr("FEATURES", features)
+                trainer.fit(x_walk[features], y_walk)
                 y_pred = trainer.predict(x_test)
                 if y_pred is None:
                     raise ValueError("y_pred is null")
@@ -110,10 +112,11 @@ class Strategy:
             self._study.optimize(objective, n_trials=3)
             with open(os.path.join(self._name, _SAMPLER_FILENAME), "wb") as handle:
                 pickle.dump(self._study.sampler, handle)
+            best_trial = self._study.best_trial
             trainer = VennAbersTrainer(
-                folder, CatboostTrainer(folder, trial=self._study.best_trial)
+                folder, CatboostTrainer(folder, trial=best_trial)
             )
-            trainer.fit(x_walk, y_walk)
+            trainer.fit(x_walk[best_trial.user_attrs["FEATURES"]], y_walk)
             trainer.save()
 
             y_pred = trainer.predict(x_test)

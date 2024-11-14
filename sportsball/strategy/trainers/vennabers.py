@@ -59,3 +59,7 @@ class VennAbersTrainer(Trainer):
         )
         self.save_prediction(x, y)
         return y
+
+    def select_features(self, x: pd.DataFrame, y: pd.DataFrame) -> list[str]:
+        """Select the features from the training data."""
+        return self._wrapped_trainer.select_features(x, y)
