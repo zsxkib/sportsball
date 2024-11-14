@@ -30,10 +30,18 @@ class NFLESPNSeasonModel(SeasonModel):
     def __init__(
         self, session: requests_cache.CachedSession, season: Dict[str, Any]
     ) -> None:
-        super().__init__(
-            season["year"], session, _season_type_from_name(season["name"])
-        )
+        super().__init__(session)
         self._season = season
+
+    @property
+    def year(self) -> int | None:
+        """Return the year."""
+        return self._season["year"]
+
+    @property
+    def season_type(self) -> SeasonType | None:
+        """Return the season type."""
+        return _season_type_from_name(self._season["name"])
 
     @property
     def games(self) -> Iterator[GameModel]:
@@ -68,10 +76,6 @@ class NFLESPNSeasonModel(SeasonModel):
                         break
                     events_page += 1
                 week_count += 1
-            if week_count == 0:
-                print(self._season)
-                print(weeks)
-                print("NO WEEKS!!!")
             if page >= weeks["pageCount"]:
                 break
             page += 1

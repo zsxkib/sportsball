@@ -1,7 +1,7 @@
 """NFL game model."""
 
 import datetime
-from typing import Any, Dict, Optional, Pattern, Union
+from typing import Any, Dict, Optional, Pattern, Sequence, Union
 
 import requests_cache
 from dateutil.parser import parse
@@ -9,6 +9,7 @@ from dateutil.parser import parse
 from ...game_model import GameModel
 from ...odds_model import OddsModel
 from ...team_model import TeamModel
+from ...venue_model import VenueModel
 from .nfl_espn_bookie_model import NFLESPNBookieModel
 from .nfl_espn_odds_model import MONEYLINE_KEY, NFLESPNOddsModel
 from .nfl_espn_team_model import NFLESPNTeamModel
@@ -25,16 +26,17 @@ def _create_nfl_team(
     team_dict = team_response.json()
 
     odds_key = competitor["homeAway"] + "TeamOdds"
-    odds: Dict[str, OddsModel] = {}
+    odds: Sequence[OddsModel] = []
     if odds_dict:
-        odds = {
-            x["provider"]["id"]: NFLESPNOddsModel(
+        odds = [
+            NFLESPNOddsModel(
+                session,
                 x[odds_key],
-                NFLESPNBookieModel(x["provider"]),
+                NFLESPNBookieModel(session, x["provider"]),
             )
             for x in odds_dict["items"]
             if odds_key in x and MONEYLINE_KEY in x[odds_key]
-        }
+        ]
 
     roster_dict = {}
     if "roster" in competitor:
@@ -42,7 +44,7 @@ def _create_nfl_team(
         roster_response.raise_for_status()
         roster_dict = roster_response.json()
 
-    return NFLESPNTeamModel(team_dict, roster_dict, odds)
+    return NFLESPNTeamModel(session, team_dict, roster_dict, odds)
 
 
 class NFLESPNGameModel(GameModel):
@@ -55,12 +57,16 @@ class NFLESPNGameModel(GameModel):
         game_number: int,
         session: requests_cache.CachedSession,
     ) -> None:
-        dt = parse(event["date"])
+        super().__init__(session)
+        self._dt = parse(event["date"])
+        self._week = week
+        self._game_number = game_number
         venue = None
         if "venue" in event:
-            venue = NFLESPNVenueModel(event["venue"])
+            venue = NFLESPNVenueModel(session, event["venue"])
+        self._venue = venue
 
-        teams = []
+        self._teams = []
         for competition in event["competitions"]:
             odds_dict = {}
             if "odds" in competition:
@@ -69,9 +75,32 @@ class NFLESPNGameModel(GameModel):
                 odds_dict = odds_response.json()
 
             for competitor in competition["competitors"]:
-                teams.append(_create_nfl_team(competitor, odds_dict, session))
+                self._teams.append(_create_nfl_team(competitor, odds_dict, session))
 
-        super().__init__(dt, week, game_number, venue, teams, session)
+    @property
+    def dt(self) -> datetime.datetime:
+        """Return the game time."""
+        return self._dt
+
+    @property
+    def week(self) -> int:
+        """Return the game week."""
+        return self._week
+
+    @property
+    def game_number(self) -> int:
+        """Return the game number."""
+        return self._game_number
+
+    @property
+    def venue(self) -> Optional[VenueModel]:
+        """Return the venue the game was played at."""
+        return self._venue
+
+    @property
+    def teams(self) -> Sequence[TeamModel]:
+        """Return the teams within the game."""
+        return self._teams
 
     @property
     def home_team(self) -> TeamModel:

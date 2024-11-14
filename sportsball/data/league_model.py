@@ -4,22 +4,23 @@ from typing import Iterator
 
 import pandas as pd
 import requests_cache
+import tqdm
 
+from .columns import ODDS_COLUMNS_ATTR, TRAINING_EXCLUDE_COLUMNS_ATTR
 from .league import League
+from .model import Model
 from .season_model import SeasonModel
 
 
-class LeagueModel:
+class LeagueModel(Model):
     """The prototype league model class."""
 
-    def __init__(self, league: League, session: requests_cache.CachedSession) -> None:
-        self._league = league
-        self._session = session
+    _df: pd.DataFrame | None
 
-    @property
-    def session(self) -> requests_cache.CachedSession:
-        """Return the cached session."""
-        return self._session
+    def __init__(self, league: League, session: requests_cache.CachedSession) -> None:
+        super().__init__(session)
+        self._league = league
+        self._df = None
 
     @property
     def seasons(self) -> Iterator[SeasonModel]:
@@ -33,9 +34,25 @@ class LeagueModel:
 
     def to_frame(self) -> pd.DataFrame:
         """Render the league as a dataframe."""
-        dfs = [x.to_frame() for x in self.seasons]
-        if not dfs:
-            return pd.DataFrame()
-        df = pd.concat(dfs)
-        df["league"] = self.league.value
+        df = self._df
+        if df is None:
+            dfs = [x.to_frame() for x in tqdm.tqdm(self.seasons, desc="Seasons")]
+            if not dfs:
+                return pd.DataFrame()
+            df = pd.concat(dfs)
+            df["league"] = self.league.value
+            df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR] = []
+            df.attrs[ODDS_COLUMNS_ATTR] = []
+            for season_df in dfs:
+                df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR].extend(
+                    season_df.attrs.get(TRAINING_EXCLUDE_COLUMNS_ATTR, [])
+                )
+                df.attrs[ODDS_COLUMNS_ATTR].extend(
+                    season_df.attrs.get(ODDS_COLUMNS_ATTR, [])
+                )
+            df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR] = list(
+                set(df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR])
+            )
+            df.attrs[ODDS_COLUMNS_ATTR] = sorted(list(set(df.attrs[ODDS_COLUMNS_ATTR])))
+            self._df = df
         return df

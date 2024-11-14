@@ -2,23 +2,24 @@
 
 import pandas as pd
 
+from .columns import COLUMN_SEPARATOR
+from .model import Model
 
-class BookieModel:
+BOOKIE_COLUMN_SUFFIX = "bookie"
+
+
+class BookieModel(Model):
     """The prototype bookie class."""
-
-    def __init__(self, identifier: str, name: str) -> None:
-        self._identifier = identifier
-        self._name = name
 
     @property
     def identifier(self) -> str:
         """Return the identifier."""
-        return self._identifier
+        raise ValueError("identifier is not implemented in parent class.")
 
     @property
     def name(self) -> str:
         """Return the name."""
-        return self._name
+        raise ValueError("name is not implemented in parent class.")
 
     def to_frame(self) -> pd.DataFrame:
         """Render the odds as a dataframe."""
@@ -26,4 +27,9 @@ class BookieModel:
             "identifier": [self.identifier],
             "name": [self.name],
         }
-        return pd.DataFrame(data={"bookie_" + k: v for k, v in data.items()})
+        return pd.DataFrame(
+            data={
+                COLUMN_SEPARATOR.join([BOOKIE_COLUMN_SUFFIX, k]): v
+                for k, v in data.items()
+            }
+        )

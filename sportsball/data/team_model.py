@@ -1,55 +1,51 @@
 """The prototype class for a team."""
 
 # pylint: disable=too-many-arguments
-from typing import Dict, Sequence
+from typing import Sequence
 
 import pandas as pd
 
+from .columns import (COLUMN_SEPARATOR, ODDS_COLUMNS_ATTR,
+                      TRAINING_EXCLUDE_COLUMNS_ATTR, update_columns_list)
+from .model import Model
 from .odds_model import OddsModel
 from .player_model import PlayerModel
 
+TEAM_COLUMN_SUFFIX = "team"
 
-class TeamModel:
+
+class TeamModel(Model):
     """The prototype team class."""
-
-    def __init__(
-        self,
-        identifier: str,
-        name: str,
-        location: str,
-        players: Sequence[PlayerModel],
-        odds: Dict[str, OddsModel],
-    ) -> None:
-        self._identifier = identifier
-        self._name = name
-        self._location = location
-        self._players = players
-        self._odds = odds
 
     @property
     def identifier(self) -> str:
         """Return the identifier."""
-        return self._identifier
+        raise NotImplementedError("identifier is not implemented in parent class.")
 
     @property
     def name(self) -> str:
         """Return the name."""
-        return self._name
+        raise NotImplementedError("name is not implemented in parent class.")
 
     @property
-    def location(self) -> str:
+    def location(self) -> str | None:
         """Return the location."""
-        return self._location
+        return None
 
     @property
     def players(self) -> Sequence[PlayerModel]:
         """Return a list of players in the team."""
-        return self._players
+        raise NotImplementedError("players is not implemented in parent class.")
 
     @property
-    def odds(self) -> Dict[str, OddsModel]:
+    def odds(self) -> Sequence[OddsModel]:
         """Return the odds."""
-        return self._odds
+        return []
+
+    @property
+    def points(self) -> float | None:
+        """Return the points scored in the game."""
+        return None
 
     def to_frame(self) -> pd.DataFrame:
         """Render the team as a dataframe."""
@@ -59,14 +55,59 @@ class TeamModel:
             "location": [self.location],
         }
 
+        training_exclude_columns = []
+        odds_columns = []
         for count, player in enumerate(self.players):
             player_df = player.to_frame()
+            column_prefix = str(count)
+            training_exclude_columns.extend(
+                update_columns_list(
+                    player_df.attrs.get(TRAINING_EXCLUDE_COLUMNS_ATTR, []),
+                    column_prefix,
+                )
+            )
+            odds_columns.extend(
+                update_columns_list(
+                    player_df.attrs.get(ODDS_COLUMNS_ATTR, []), column_prefix
+                )
+            )
             for column in player_df.columns.values:
-                data[str(count) + "_" + column] = player_df[column].to_list()
+                data[COLUMN_SEPARATOR.join([column_prefix, column])] = player_df[
+                    column
+                ].to_list()
 
-        for k, v in self.odds.items():
-            odds_df = v.to_frame()
+        for count, odds in enumerate(
+            sorted(self.odds, key=lambda x: x.bookie.identifier)
+        ):
+            odds_df = odds.to_frame()
+            column_prefix = str(count)
+            training_exclude_columns.extend(
+                update_columns_list(
+                    odds_df.attrs.get(TRAINING_EXCLUDE_COLUMNS_ATTR, []), column_prefix
+                )
+            )
+            odds_columns.extend(
+                update_columns_list(
+                    odds_df.attrs.get(ODDS_COLUMNS_ATTR, []), column_prefix
+                )
+            )
             for column in odds_df.columns.values:
-                data[k + "_" + column] = odds_df[column].to_list()
+                data[COLUMN_SEPARATOR.join([column_prefix, column])] = odds_df[
+                    column
+                ].to_list()
 
-        return pd.DataFrame(data={"team_" + k: v for k, v in data.items()})
+        points = self.points
+        if points is not None:
+            data["points"] = [points]
+            training_exclude_columns.append("points")
+
+        df = pd.DataFrame(
+            data={TEAM_COLUMN_SUFFIX + COLUMN_SEPARATOR + k: v for k, v in data.items()}
+        )
+        df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR] = list(
+            set(update_columns_list(training_exclude_columns, TEAM_COLUMN_SUFFIX))
+        )
+        df.attrs[ODDS_COLUMNS_ATTR] = sorted(
+            list(set(update_columns_list(odds_columns, TEAM_COLUMN_SUFFIX)))
+        )
+        return df

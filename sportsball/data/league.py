@@ -7,3 +7,4 @@ class League(StrEnum):
     """An enumeration over the different leagues."""
 
     NFL = "nfl"
+    AFL = "afl"

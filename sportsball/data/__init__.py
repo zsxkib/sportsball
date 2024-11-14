@@ -1,7 +1,7 @@
 """The sportsball data module."""
 # ruff: noqa: F401
 
-from .address import Address
+from .address_model import AddressModel
 from .bookie_model import BookieModel
 from .game_model import GameModel
 from .league import League

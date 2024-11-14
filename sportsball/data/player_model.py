@@ -4,23 +4,24 @@ from typing import Optional
 
 import pandas as pd
 
+from .columns import COLUMN_SEPARATOR
+from .model import Model
 
-class PlayerModel:
+PLAYER_COLUMN_SUFFIX = "player"
+
+
+class PlayerModel(Model):
     """The prototype player class."""
-
-    def __init__(self, identifier: str, jersey: Optional[str]) -> None:
-        self._identifier = identifier
-        self._jersey = jersey
 
     @property
     def identifier(self) -> str:
         """Return the identifier."""
-        return self._identifier
+        raise NotImplementedError("identifier not implemented in parent class.")
 
     @property
     def jersey(self) -> Optional[str]:
         """Return the jersey."""
-        return self._jersey
+        raise NotImplementedError("jersey not implemented in parent class.")
 
     def to_frame(self) -> pd.DataFrame:
         """Render the player as a dataframe."""
@@ -29,4 +30,9 @@ class PlayerModel:
             "jersey": [self.jersey],
         }
 
-        return pd.DataFrame(data={"player_" + k: v for k, v in data.items()})
+        return pd.DataFrame(
+            data={
+                COLUMN_SEPARATOR.join([PLAYER_COLUMN_SUFFIX, k]): v
+                for k, v in data.items()
+            }
+        )

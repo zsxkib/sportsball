@@ -17,6 +17,19 @@ Python 3.11.6:
 - [requests-cache](https://requests-cache.readthedocs.io/en/stable/)
 - [python-dateutil](https://github.com/dateutil/dateutil)
 - [tqdm](https://github.com/tqdm/tqdm)
+- [beautifulsoup](https://www.crummy.com/software/BeautifulSoup/)
+- [openpyxl](https://openpyxl.readthedocs.io/en/stable/)
+- [feature-engine](https://feature-engine.trainindata.com/en/latest/)
+- [catboost](https://catboost.ai/)
+- [venn-abers](https://github.com/ip200/venn-abers)
+- [joblib](https://joblib.readthedocs.io/en/stable/)
+- [optuna](https://optuna.readthedocs.io/en/stable/)
+- [pyarrow](https://arrow.apache.org/docs/python/index.html)
+- [scikit-learn](https://scikit-learn.org/)
+- [skfolio](https://skfolio.org/)
+- [quantstats](https://github.com/ranaroussi/quantstats)
+- [fullmonte](https://github.com/8W9aG/fullmonte)
+- [ipython](https://ipython.org/)
 
 ## Raison D'être :thought_balloon:
 
@@ -57,10 +70,8 @@ This is a python package hosted on pypi, so to install simply run the following 
 To pull a dataframe containing all the information for a particular league, the following example can be used:
 
 ```python
-import logging
 import sportsball as spb
 
-logging.basicConfig(level='DEBUG')
 ball = spb.SportsBall()
 league = ball.league(spb.League.NFL)
 df = league.to_frame()

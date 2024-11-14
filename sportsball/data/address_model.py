@@ -4,12 +4,21 @@ import datetime
 from typing import Any, Dict, Optional, Pattern, Union
 
 import pandas as pd
+import requests_cache
+
+from .columns import COLUMN_SEPARATOR
+from .model import Model
+
+ADDRESS_COLUMN_SUFFIX = "address"
 
 
-class Address:
+class AddressModel(Model):
     """The class for representing an address."""
 
-    def __init__(self, city: str, state: str, zipcode: str) -> None:
+    def __init__(
+        self, session: requests_cache.CachedSession, city: str, state: str, zipcode: str
+    ) -> None:
+        super().__init__(session)
         self._city = city
         self._state = state
         self._zipcode = zipcode
@@ -36,7 +45,11 @@ class Address:
             "state": [self.state],
             "zipcode": [self.zipcode],
         }
-        return pd.DataFrame(data={"address_" + k: v for k, v in data.items()})
+        return pd.DataFrame(
+            data={
+                ADDRESS_COLUMN_SUFFIX + COLUMN_SEPARATOR + k: v for k, v in data.items()
+            }
+        )
 
     @staticmethod
     def urls_expire_after() -> (
