@@ -19,9 +19,13 @@ class CatboostTrainer(Trainer):
     def __init__(
         self,
         folder: str,
+        categorical_features: list[str],
+        text_features: list[str],
         trial: optuna.trial.Trial | optuna.trial.FrozenTrial | None = None,
     ) -> None:
         super().__init__(folder)
+        self._categorical_features = categorical_features
+        self._text_features = text_features
         if trial is None:
             self._features_ratio = 0.0
             self._steps = 0
@@ -43,7 +47,8 @@ class CatboostTrainer(Trainer):
 
     def fit(self, x: pd.DataFrame, y: pd.DataFrame):
         """Fit the data."""
-        self._model.fit(x, y)
+        train_pool = self._create_pool(x, y)
+        self._model.fit(train_pool)
 
     def save(self):
         """Save the trainer."""
@@ -58,18 +63,39 @@ class CatboostTrainer(Trainer):
         y = super().predict(x)
         if y is None:
             return y
-        y = pd.DataFrame(index=x.index, data={OUTPUT_COLUMN: self._model.predict(x)})
+        train_pool = self._create_pool(x, None)
+        y = pd.DataFrame(
+            index=x.index, data={OUTPUT_COLUMN: self._model.predict(train_pool)}
+        )
         self.save_prediction(x, y)
         return y
 
     def select_features(self, x: pd.DataFrame, y: pd.DataFrame) -> list[str]:
         """Select the features from the training data."""
-        train_pool = Pool(x, y)
+        train_pool = self._create_pool(x, y)
         summary = self._model.select_features(
             train_pool,
             num_features_to_select=int(self._features_ratio * len(x.columns.values)),
             steps=self._steps,
-            train_final_model=True,
+            train_final_model=False,
             features_for_select=x.columns.values,
         )
         return summary["selected_features_names"]
+
+    def _create_pool(self, x: pd.DataFrame, y: pd.DataFrame | None) -> Pool:
+        text_features = list(set(x.columns.values) & set(self._text_features))
+        x[text_features] = x[text_features].fillna("").astype(str)
+        cat_features = list(set(x.columns.values) & set(self._categorical_features))
+        x[cat_features] = x[cat_features].fillna(0).astype(int)
+        if y is not None:
+            return Pool(
+                x,
+                y,
+                cat_features=cat_features,
+                text_features=text_features,
+            )
+        return Pool(
+            x,
+            cat_features=cat_features,
+            text_features=text_features,
+        )

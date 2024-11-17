@@ -6,8 +6,10 @@ from typing import Optional, Sequence
 
 import pandas as pd
 
-from .columns import (COLUMN_SEPARATOR, ODDS_COLUMNS_ATTR, POINTS_COLUMNS_ATTR,
-                      TRAINING_EXCLUDE_COLUMNS_ATTR, update_columns_list)
+from .columns import (CATEGORICAL_COLUMNS_ATTR, COLUMN_SEPARATOR,
+                      ODDS_COLUMNS_ATTR, POINTS_COLUMNS_ATTR,
+                      TEXT_COLUMNS_ATTR, TRAINING_EXCLUDE_COLUMNS_ATTR,
+                      update_columns_list)
 from .model import Model
 from .team_model import TeamModel
 from .venue_model import VenueModel
@@ -16,6 +18,7 @@ GAME_COLUMN_SUFFIX = "game"
 GAME_DT_COLUMN = "dt"
 GAME_WEEK_COLUMN = "week"
 GAME_END_DT_COLUMN = "end_dt"
+GAME_NUMBER_COLUMN = "game_number"
 
 
 class GameModel(Model):
@@ -67,15 +70,18 @@ class GameModel(Model):
 
     def to_frame(self) -> pd.DataFrame:
         """Render the game as a dataframe."""
+        # pylint: disable=too-many-locals
         data = {
             GAME_DT_COLUMN: [self.dt],
             GAME_WEEK_COLUMN: [self.week],
-            "game_number": [self.game_number],
+            GAME_NUMBER_COLUMN: [self.game_number],
         }
 
         training_exclude_columns = []
         odds_columns = []
         points_columns = []
+        text_columns = []
+        categorical_columns = []
 
         venue = self.venue
         if venue is not None:
@@ -85,6 +91,8 @@ class GameModel(Model):
             )
             odds_columns.extend(venue_df.attrs.get(ODDS_COLUMNS_ATTR, []))
             points_columns.extend(venue_df.attrs.get(POINTS_COLUMNS_ATTR, []))
+            text_columns.extend(venue_df.attrs.get(TEXT_COLUMNS_ATTR, []))
+            categorical_columns.extend(venue_df.attrs.get(CATEGORICAL_COLUMNS_ATTR, []))
             for column in venue_df.columns.values:
                 data[column] = venue_df[column].to_list()
 
@@ -111,6 +119,16 @@ class GameModel(Model):
                     team_df.attrs.get(POINTS_COLUMNS_ATTR, []), column_prefix
                 )
             )
+            text_columns.extend(
+                update_columns_list(
+                    team_df.attrs.get(TEXT_COLUMNS_ATTR, []), column_prefix
+                )
+            )
+            categorical_columns.extend(
+                update_columns_list(
+                    team_df.attrs.get(CATEGORICAL_COLUMNS_ATTR, []), column_prefix
+                )
+            )
             for column in team_df.columns.values:
                 data[COLUMN_SEPARATOR.join([column_prefix, column])] = team_df[
                     column
@@ -127,5 +145,11 @@ class GameModel(Model):
         )
         df.attrs[POINTS_COLUMNS_ATTR] = sorted(
             list(set(update_columns_list(points_columns, GAME_COLUMN_SUFFIX)))
+        )
+        df.attrs[TEXT_COLUMNS_ATTR] = sorted(
+            list(set(update_columns_list(text_columns, GAME_COLUMN_SUFFIX)))
+        )
+        df.attrs[CATEGORICAL_COLUMNS_ATTR] = sorted(
+            list(set(update_columns_list(categorical_columns, GAME_COLUMN_SUFFIX)))
         )
         return df

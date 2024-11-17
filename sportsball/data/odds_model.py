@@ -3,8 +3,10 @@
 import pandas as pd
 
 from .bookie_model import BookieModel
-from .columns import (COLUMN_SEPARATOR, ODDS_COLUMNS_ATTR, POINTS_COLUMNS_ATTR,
-                      TRAINING_EXCLUDE_COLUMNS_ATTR, update_columns_list)
+from .columns import (CATEGORICAL_COLUMNS_ATTR, COLUMN_SEPARATOR,
+                      ODDS_COLUMNS_ATTR, POINTS_COLUMNS_ATTR,
+                      TEXT_COLUMNS_ATTR, TRAINING_EXCLUDE_COLUMNS_ATTR,
+                      update_columns_list)
 from .model import Model
 
 ODDS_COLUMN_SUFFIX = "odds"
@@ -37,6 +39,8 @@ class OddsModel(Model):
         odds_columns = bookie_df.attrs.get(ODDS_COLUMNS_ATTR, [])
         odds_columns.append(ODDS_ODDS_COLUMN)
         points_columns = bookie_df.attrs.get(POINTS_COLUMNS_ATTR, [])
+        text_columns = bookie_df.attrs.get(TEXT_COLUMNS_ATTR, [])
+        categorical_columns = bookie_df.attrs.get(CATEGORICAL_COLUMNS_ATTR, [])
 
         for column in bookie_df.columns.values:
             data[column] = bookie_df[column].to_list()
@@ -55,5 +59,11 @@ class OddsModel(Model):
         )
         df.attrs[POINTS_COLUMNS_ATTR] = sorted(
             list(set(update_columns_list(points_columns, ODDS_COLUMN_SUFFIX)))
+        )
+        df.attrs[TEXT_COLUMNS_ATTR] = sorted(
+            list(set(update_columns_list(text_columns, ODDS_COLUMN_SUFFIX)))
+        )
+        df.attrs[CATEGORICAL_COLUMNS_ATTR] = sorted(
+            list(set(update_columns_list(categorical_columns, ODDS_COLUMN_SUFFIX)))
         )
         return df

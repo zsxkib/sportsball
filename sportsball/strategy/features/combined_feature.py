@@ -4,6 +4,7 @@ import pandas as pd
 
 from .datetime_feature import DatetimeFeature
 from .feature import Feature
+from .ordinal_feature import OrdinalFeature
 
 
 class CombinedFeature(Feature):
@@ -14,7 +15,7 @@ class CombinedFeature(Feature):
     def __init__(self, features: list[Feature] | None = None) -> None:
         super().__init__()
         if features is None:
-            features = [DatetimeFeature()]
+            features = [DatetimeFeature(), OrdinalFeature()]
         self._features = features
 
     def process(self, df: pd.DataFrame) -> pd.DataFrame:

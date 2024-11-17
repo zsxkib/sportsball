@@ -5,14 +5,19 @@ from typing import Sequence
 
 import pandas as pd
 
-from .columns import (COLUMN_SEPARATOR, ODDS_COLUMNS_ATTR, POINTS_COLUMNS_ATTR,
-                      TRAINING_EXCLUDE_COLUMNS_ATTR, update_columns_list)
+from .columns import (CATEGORICAL_COLUMNS_ATTR, COLUMN_SEPARATOR,
+                      ODDS_COLUMNS_ATTR, POINTS_COLUMNS_ATTR,
+                      TEXT_COLUMNS_ATTR, TRAINING_EXCLUDE_COLUMNS_ATTR,
+                      update_columns_list)
 from .model import Model
 from .odds_model import OddsModel
 from .player_model import PlayerModel
 
 TEAM_COLUMN_SUFFIX = "team"
 POINTS_COLUMN = "points"
+IDENTIFIER_COLUMN = "identifier"
+NAME_COLUMN = "name"
+LOCATION_COLUMN = "location"
 
 
 class TeamModel(Model):
@@ -50,15 +55,17 @@ class TeamModel(Model):
 
     def to_frame(self) -> pd.DataFrame:
         """Render the team as a dataframe."""
-        data = {
-            "identifier": [self.identifier],
-            "name": [self.name],
-            "location": [self.location],
+        # pylint: disable=too-many-locals
+        data: dict[str, list[str | float]] = {
+            IDENTIFIER_COLUMN: [self.identifier],
+            NAME_COLUMN: [self.name],
         }
 
-        training_exclude_columns = []
+        training_exclude_columns = [NAME_COLUMN]
         odds_columns = []
         points_columns = []
+        text_columns = [NAME_COLUMN]
+        categorical_columns = [IDENTIFIER_COLUMN]
 
         for count, player in enumerate(self.players):
             player_df = player.to_frame()
@@ -77,6 +84,16 @@ class TeamModel(Model):
             points_columns.extend(
                 update_columns_list(
                     player_df.attrs.get(POINTS_COLUMNS_ATTR, []), column_prefix
+                )
+            )
+            text_columns.extend(
+                update_columns_list(
+                    player_df.attrs.get(TEXT_COLUMNS_ATTR, []), column_prefix
+                )
+            )
+            categorical_columns.extend(
+                update_columns_list(
+                    player_df.attrs.get(CATEGORICAL_COLUMNS_ATTR, []), column_prefix
                 )
             )
             for column in player_df.columns.values:
@@ -104,6 +121,16 @@ class TeamModel(Model):
                     odds_df.attrs.get(POINTS_COLUMNS_ATTR, []), column_prefix
                 )
             )
+            text_columns.extend(
+                update_columns_list(
+                    odds_df.attrs.get(TEXT_COLUMNS_ATTR, []), column_prefix
+                )
+            )
+            categorical_columns.extend(
+                update_columns_list(
+                    odds_df.attrs.get(CATEGORICAL_COLUMNS_ATTR, []), column_prefix
+                )
+            )
             for column in odds_df.columns.values:
                 data[COLUMN_SEPARATOR.join([column_prefix, column])] = odds_df[
                     column
@@ -114,6 +141,11 @@ class TeamModel(Model):
             data[POINTS_COLUMN] = [points]
             training_exclude_columns.append(POINTS_COLUMN)
             points_columns.append(POINTS_COLUMN)
+
+        location = self.location
+        if location is not None:
+            data[LOCATION_COLUMN] = [location]
+            categorical_columns.append(LOCATION_COLUMN)
 
         df = pd.DataFrame(
             data={TEAM_COLUMN_SUFFIX + COLUMN_SEPARATOR + k: v for k, v in data.items()}
@@ -126,5 +158,11 @@ class TeamModel(Model):
         )
         df.attrs[POINTS_COLUMNS_ATTR] = sorted(
             list(set(update_columns_list(points_columns, TEAM_COLUMN_SUFFIX)))
+        )
+        df.attrs[TEXT_COLUMNS_ATTR] = sorted(
+            list(set(update_columns_list(text_columns, TEAM_COLUMN_SUFFIX)))
+        )
+        df.attrs[CATEGORICAL_COLUMNS_ATTR] = sorted(
+            list(set(update_columns_list(categorical_columns, TEAM_COLUMN_SUFFIX)))
         )
         return df

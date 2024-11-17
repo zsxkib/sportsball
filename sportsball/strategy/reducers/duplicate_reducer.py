@@ -13,7 +13,7 @@ class DuplicateReducer(Reducer):
 
     def __init__(self) -> None:
         super().__init__()
-        self._ddf = DropDuplicateFeatures()
+        self._ddf = DropDuplicateFeatures(missing_values="ignore")
 
     def process(self, df: pd.DataFrame) -> pd.DataFrame:
         """Process the dataframe and remove the necessary features."""

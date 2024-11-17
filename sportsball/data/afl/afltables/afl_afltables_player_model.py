@@ -20,7 +20,7 @@ class AFLAFLTablesPlayerModel(PlayerModel):
         o = urlparse(player_url)
         last_component = o.path.split("/")[-1]
         self._identifier, _ = os.path.splitext(last_component)
-        self._jersey = jersey
+        self._jersey = "".join(filter(str.isdigit, jersey))
 
     @property
     def identifier(self) -> str:

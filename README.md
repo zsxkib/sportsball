@@ -73,8 +73,12 @@ To pull a dataframe containing all the information for a particular league, the 
 import sportsball as spb
 
 ball = spb.SportsBall()
-league = ball.league(spb.League.NFL)
-df = league.to_frame()
+league = ball.league(spb.League.AFL)
+strategy = ball.create_strategy(league, "test")
+strategy.fit()
+portfolio = ball.create_portfolio([strategy], "test_portfolio")
+returns = portfolio.fit()
+portfolio.render(returns)
 ```
 
 This results in a dataframe where each game is represented by all its features.

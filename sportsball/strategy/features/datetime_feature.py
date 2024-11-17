@@ -13,7 +13,9 @@ class DatetimeFeature(Feature):
 
     def __init__(self) -> None:
         super().__init__()
-        self._dtf = DatetimeFeatures(features_to_extract="all", missing_values="ignore")
+        self._dtf = DatetimeFeatures(
+            features_to_extract="all", missing_values="ignore", drop_original=False
+        )
 
     def process(self, df: pd.DataFrame) -> pd.DataFrame:
         """Process the dataframe and add the necessary features."""

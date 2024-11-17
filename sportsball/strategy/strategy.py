@@ -10,8 +10,9 @@ import optuna
 import pandas as pd
 from sklearn.metrics import accuracy_score  # type: ignore
 
-from ..data.columns import (COLUMN_SEPARATOR, ODDS_COLUMNS_ATTR,
-                            POINTS_COLUMNS_ATTR, TRAINING_EXCLUDE_COLUMNS_ATTR)
+from ..data.columns import (CATEGORICAL_COLUMNS_ATTR, COLUMN_SEPARATOR,
+                            ODDS_COLUMNS_ATTR, POINTS_COLUMNS_ATTR,
+                            TEXT_COLUMNS_ATTR, TRAINING_EXCLUDE_COLUMNS_ATTR)
 from ..data.game_model import (GAME_COLUMN_SUFFIX, GAME_DT_COLUMN,
                                GAME_WEEK_COLUMN)
 from .features import CombinedFeature
@@ -33,7 +34,7 @@ def _next_week_dt(
     for _, row in df.iterrows():
         week = row[week_column]
         if current_week != week:
-            return pd.to_datetime(row[dt_column]).to_pydatetime()[0]
+            return pd.to_datetime(row[dt_column]).to_pydatetime()
     return pd.to_datetime(df[dt_column]).to_pydatetime()[-1]  # type: ignore
 
 
@@ -46,7 +47,12 @@ class Strategy:
         self._df = df
         self._name = name
         self._features = CombinedFeature()
-        self._reducers = CombinedReducer()
+        self._reducers = CombinedReducer(
+            [
+                COLUMN_SEPARATOR.join([GAME_COLUMN_SUFFIX, GAME_WEEK_COLUMN]),
+                COLUMN_SEPARATOR.join([GAME_COLUMN_SUFFIX, GAME_DT_COLUMN]),
+            ]
+        )
         os.makedirs(name, exist_ok=True)
         storage_name = f"sqlite:///{name}/study.db"
         sampler_file = os.path.join(name, _SAMPLER_FILENAME)
@@ -73,7 +79,7 @@ class Strategy:
 
         cols = set(self._df.columns.values)
         training_cols = set(self._df.attrs[POINTS_COLUMNS_ATTR])
-        x = self._df[list(cols - training_cols)]
+        x = self._df[list(cols - set(self._df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR]))]
         y = self._df[list(training_cols)]
         y[OUTPUT_COLUMN] = np.argmax(y.to_numpy(), axis=1)
         if len(training_cols) == 2:
@@ -87,7 +93,7 @@ class Strategy:
         while True:
             start_dt = _next_week_dt(start_dt, x)
             x_walk = x[x[dt_column] < start_dt]
-            y_walk = y[y[dt_column] < start_dt]
+            y_walk = y.iloc[: len(x_walk)]
             if len(x_walk) == len(x) or len(y_walk) == len(y):
                 break
             folder = os.path.join(self._name, str(start_dt.date()))
@@ -96,25 +102,40 @@ class Strategy:
             next_dt = _next_week_dt(start_dt, x)
             x_test = x[x[dt_column] >= start_dt]
             x_test = x_test[x_test[dt_column] < next_dt]
-            y_test = y[y[dt_column] >= start_dt]
-            y_test = y_test[y_test[dt_column] < next_dt]
+            y_test = y.iloc[len(x_walk) : len(x_walk) + len(x_test)]
 
             def objective(trial: optuna.Trial) -> float:
-                trainer = VennAbersTrainer(folder, CatboostTrainer(folder, trial=trial))
+                trainer = VennAbersTrainer(
+                    folder,
+                    CatboostTrainer(
+                        folder,
+                        self._df.attrs[CATEGORICAL_COLUMNS_ATTR],
+                        self._df.attrs[TEXT_COLUMNS_ATTR],
+                        trial=trial,
+                    ),
+                )
                 features = trainer.select_features(x_walk, y_walk)
                 trial.set_user_attr("FEATURES", features)
                 trainer.fit(x_walk[features], y_walk)
                 y_pred = trainer.predict(x_test)
                 if y_pred is None:
                     raise ValueError("y_pred is null")
-                return accuracy_score(y_test, y_pred[[OUTPUT_COLUMN]])
+                accuracy = accuracy_score(y_test, y_pred[[OUTPUT_COLUMN]])
+                print(f"Accuracy: {accuracy}")
+                return accuracy
 
             self._study.optimize(objective, n_trials=3)
             with open(os.path.join(self._name, _SAMPLER_FILENAME), "wb") as handle:
                 pickle.dump(self._study.sampler, handle)
             best_trial = self._study.best_trial
             trainer = VennAbersTrainer(
-                folder, CatboostTrainer(folder, trial=best_trial)
+                folder,
+                CatboostTrainer(
+                    folder,
+                    self._df.attrs[CATEGORICAL_COLUMNS_ATTR],
+                    self._df.attrs[TEXT_COLUMNS_ATTR],
+                    trial=best_trial,
+                ),
             )
             trainer.fit(x_walk[best_trial.user_attrs["FEATURES"]], y_walk)
             trainer.save()
@@ -122,8 +143,9 @@ class Strategy:
             y_pred = trainer.predict(x_test)
             if y_pred is None:
                 raise ValueError("y_pred is null")
-            print(y_pred)
-            predictions.append(accuracy_score(y_test, y_pred[[OUTPUT_COLUMN]]))
+            accuracy = accuracy_score(y_test, y_pred[[OUTPUT_COLUMN]])
+            print(f"Accuracy: {accuracy}")
+            predictions.append(accuracy)
         return statistics.mean(predictions)
 
     def predict(self, start_dt: datetime.datetime | None = None) -> pd.DataFrame:
@@ -150,7 +172,14 @@ class Strategy:
             x_test = x[x[dt_column] >= start_dt]
             x_test = x_test[x_test[dt_column] < next_dt]
             folder = os.path.join(self._name, str(start_dt.date()))
-            trainer = VennAbersTrainer(folder, CatboostTrainer(folder))
+            trainer = VennAbersTrainer(
+                folder,
+                CatboostTrainer(
+                    folder,
+                    self._df.attrs[CATEGORICAL_COLUMNS_ATTR],
+                    self._df.attrs[TEXT_COLUMNS_ATTR],
+                ),
+            )
             trainer.load()
             y_pred = trainer.predict(x_test)
             if y_pred is None:

@@ -6,11 +6,14 @@ import pandas as pd
 import requests_cache
 import tqdm
 
-from .columns import (ODDS_COLUMNS_ATTR, POINTS_COLUMNS_ATTR,
+from .columns import (CATEGORICAL_COLUMNS_ATTR, ODDS_COLUMNS_ATTR,
+                      POINTS_COLUMNS_ATTR, TEXT_COLUMNS_ATTR,
                       TRAINING_EXCLUDE_COLUMNS_ATTR)
 from .league import League
 from .model import Model
 from .season_model import SeasonModel
+
+LEAGUE_COLUMN = "league"
 
 
 class LeagueModel(Model):
@@ -41,10 +44,12 @@ class LeagueModel(Model):
             if not dfs:
                 return pd.DataFrame()
             df = pd.concat(dfs)
-            df["league"] = self.league.value
-            df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR] = []
+            df[LEAGUE_COLUMN] = self.league.value
+            df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR] = [LEAGUE_COLUMN]
             df.attrs[ODDS_COLUMNS_ATTR] = []
             df.attrs[POINTS_COLUMNS_ATTR] = []
+            df.attrs[TEXT_COLUMNS_ATTR] = []
+            df.attrs[CATEGORICAL_COLUMNS_ATTR] = [LEAGUE_COLUMN]
             for season_df in dfs:
                 df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR].extend(
                     season_df.attrs.get(TRAINING_EXCLUDE_COLUMNS_ATTR, [])
@@ -55,6 +60,12 @@ class LeagueModel(Model):
                 df.attrs[POINTS_COLUMNS_ATTR].extend(
                     season_df.attrs.get(POINTS_COLUMNS_ATTR, [])
                 )
+                df.attrs[TEXT_COLUMNS_ATTR].extend(
+                    season_df.attrs.get(TEXT_COLUMNS_ATTR, [])
+                )
+                df.attrs[CATEGORICAL_COLUMNS_ATTR].extend(
+                    season_df.attrs.get(CATEGORICAL_COLUMNS_ATTR, [])
+                )
             df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR] = list(
                 set(df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR])
             )
@@ -62,5 +73,13 @@ class LeagueModel(Model):
             df.attrs[POINTS_COLUMNS_ATTR] = sorted(
                 list(set(df.attrs[POINTS_COLUMNS_ATTR]))
             )
+            df.attrs[TEXT_COLUMNS_ATTR] = sorted(list(set(df.attrs[TEXT_COLUMNS_ATTR])))
+            df.attrs[CATEGORICAL_COLUMNS_ATTR] = sorted(
+                list(set(df.attrs[CATEGORICAL_COLUMNS_ATTR]))
+            )
+
+            for categorical_column in df.attrs[CATEGORICAL_COLUMNS_ATTR]:
+                df[categorical_column] = df[categorical_column].astype("category")
+
             self._df = df
         return df

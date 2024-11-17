@@ -13,7 +13,7 @@ class ConstantReducer(Reducer):
 
     def __init__(self) -> None:
         super().__init__()
-        self._dcf = DropConstantFeatures()
+        self._dcf = DropConstantFeatures(missing_values="ignore")
 
     def process(self, df: pd.DataFrame) -> pd.DataFrame:
         """Process the dataframe and remove the necessary features."""
