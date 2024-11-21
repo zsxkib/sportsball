@@ -16,3 +16,4 @@ skfolio>=0.5.1
 quantstats>=0.0.64
 fullmonte>=0.0.4
 ipython>=8.29.0
+scipy>=1.14.1

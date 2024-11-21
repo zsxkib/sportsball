@@ -4,11 +4,13 @@ import datetime
 import os
 import pickle
 import statistics
+import uuid
 
 import numpy as np
 import optuna
 import pandas as pd
-from sklearn.metrics import accuracy_score  # type: ignore
+from sklearn.metrics import precision_score  # type: ignore
+from sklearn.metrics import accuracy_score, recall_score
 
 from ..data.columns import (CATEGORICAL_COLUMNS_ATTR, COLUMN_SEPARATOR,
                             ODDS_COLUMNS_ATTR, POINTS_COLUMNS_ATTR,
@@ -17,8 +19,8 @@ from ..data.game_model import (GAME_COLUMN_SUFFIX, GAME_DT_COLUMN,
                                GAME_WEEK_COLUMN)
 from .features import CombinedFeature
 from .reducers import CombinedReducer
-from .trainers import CatboostTrainer, VennAbersTrainer
-from .trainers.output_column import OUTPUT_COLUMN, OUTPUT_PROB_COLUMN
+from .trainers import HASH_USR_ATTR, CatboostTrainer, VennAbersTrainer
+from .trainers.output_column import OUTPUT_COLUMN
 
 _SAMPLER_FILENAME = "sampler.pkl"
 
@@ -36,6 +38,14 @@ def _next_week_dt(
         if current_week != week:
             return pd.to_datetime(row[dt_column]).to_pydatetime()
     return pd.to_datetime(df[dt_column]).to_pydatetime()[-1]  # type: ignore
+
+
+def _print_metrics(y_test: pd.DataFrame, y_pred: pd.DataFrame) -> float:
+    accuracy = accuracy_score(y_test, y_pred)
+    print(f"Accuracy: {accuracy}")
+    print(f"Precision: {precision_score(y_test, y_pred)}")
+    print(f"Recall: {recall_score(y_test, y_pred)}")
+    return accuracy
 
 
 class Strategy:
@@ -65,10 +75,12 @@ class Strategy:
             storage=storage_name,
             load_if_exists=True,
             sampler=restored_sampler,
+            direction=optuna.study.StudyDirection.MAXIMIZE,
         )
 
     def fit(self, start_dt: datetime.datetime | None = None):
         """Fits the strategy to the dataset by walking forward."""
+        # pylint: disable=too-many-statements
         dt_column = COLUMN_SEPARATOR.join([GAME_COLUMN_SUFFIX, GAME_DT_COLUMN])
 
         if start_dt is None:
@@ -99,12 +111,12 @@ class Strategy:
             folder = os.path.join(self._name, str(start_dt.date()))
             os.makedirs(folder, exist_ok=True)
             print(f"Trainer {folder}")
-            next_dt = _next_week_dt(start_dt, x)
+            # next_dt = _next_week_dt(start_dt, x)
             x_test = x[x[dt_column] >= start_dt]
-            x_test = x_test[x_test[dt_column] < next_dt]
             y_test = y.iloc[len(x_walk) : len(x_walk) + len(x_test)]
 
             def objective(trial: optuna.Trial) -> float:
+                trial.set_user_attr(HASH_USR_ATTR, str(uuid.uuid4()))
                 trainer = VennAbersTrainer(
                     folder,
                     CatboostTrainer(
@@ -117,12 +129,20 @@ class Strategy:
                 features = trainer.select_features(x_walk, y_walk)
                 trial.set_user_attr("FEATURES", features)
                 trainer.fit(x_walk[features], y_walk)
+
+                y_pred = trainer.predict(x_walk)
+                if y_pred is None:
+                    raise ValueError("y_pred is null")
+
+                print("In Sample Metrics:")
+                _print_metrics(y_walk, y_pred)
+
                 y_pred = trainer.predict(x_test)
                 if y_pred is None:
                     raise ValueError("y_pred is null")
-                accuracy = accuracy_score(y_test, y_pred[[OUTPUT_COLUMN]])
-                print(f"Accuracy: {accuracy}")
-                return accuracy
+
+                print("Out of Sample Metrics:")
+                return _print_metrics(y_test, y_pred)
 
             self._study.optimize(objective, n_trials=3)
             with open(os.path.join(self._name, _SAMPLER_FILENAME), "wb") as handle:
@@ -140,12 +160,18 @@ class Strategy:
             trainer.fit(x_walk[best_trial.user_attrs["FEATURES"]], y_walk)
             trainer.save()
 
+            y_pred = trainer.predict(x_walk)
+            if y_pred is None:
+                raise ValueError("y_pred is null")
+            print("Final In Sample Metrics:")
+            _print_metrics(y_walk, y_pred)
+
             y_pred = trainer.predict(x_test)
             if y_pred is None:
                 raise ValueError("y_pred is null")
-            accuracy = accuracy_score(y_test, y_pred[[OUTPUT_COLUMN]])
-            print(f"Accuracy: {accuracy}")
-            predictions.append(accuracy)
+
+            print("Final Out of Sample Metrics:")
+            predictions.append(_print_metrics(y_test, y_pred))
         return statistics.mean(predictions)
 
     def predict(self, start_dt: datetime.datetime | None = None) -> pd.DataFrame:
@@ -161,8 +187,6 @@ class Strategy:
         cols = set(self._df.columns.values)
         training_cols = set(self._df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR])
         x = self._df[list(cols - training_cols)]
-        x[OUTPUT_COLUMN] = None
-        x[OUTPUT_PROB_COLUMN] = None
         while True:
             start_dt = _next_week_dt(start_dt, x)
             x_walk = x[x[dt_column] < start_dt]
@@ -181,18 +205,21 @@ class Strategy:
                 ),
             )
             trainer.load()
-            y_pred = trainer.predict(x_test)
-            if y_pred is None:
-                raise ValueError("y_pred is null")
-            x[OUTPUT_COLUMN] = y_pred[OUTPUT_COLUMN]
-            x[OUTPUT_PROB_COLUMN] = y_pred[OUTPUT_PROB_COLUMN]
+            y_prob = trainer.predict_proba(x_test)
+            if y_prob is None:
+                raise ValueError("y_prob is null")
+
+            for column in y_prob.columns.values:
+                if column not in x:
+                    x[column] = None
+                x[column] = y_prob[column]
         return x
 
     def returns(self) -> pd.Series:
         """Render the returns of the strategy."""
         df = self.predict()
         dt_column = COLUMN_SEPARATOR.join([GAME_COLUMN_SUFFIX, GAME_DT_COLUMN])
-        training_cols = sorted(list(set(self._df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR])))
+        points_cols = sorted(list(set(self._df.attrs[POINTS_COLUMNS_ATTR])))
         index = []
         data = []
         for date, group in df.groupby([df[dt_column].dt.date]):
@@ -201,9 +228,10 @@ class Strategy:
             # Find the kelly criterion for each bet
             fs = []
             for _, row in group.iterrows():
-                team_idx = int(row[OUTPUT_COLUMN])
-                prob = row[OUTPUT_PROB_COLUMN]
-                odds = self._df.attrs[ODDS_COLUMNS_ATTR][team_idx]
+                arr = row.to_numpy()
+                team_idx = np.argmax(arr)
+                prob = arr[team_idx]
+                odds = 1.0 / self._df.attrs[ODDS_COLUMNS_ATTR][team_idx]
                 f = max(prob - ((1.0 - prob) / odds), 0.0)
                 fs.append(f)
 
@@ -216,8 +244,9 @@ class Strategy:
             bet_idx = 0
             pl = 0.0
             for _, row in group.iterrows():
-                team_idx = int(row[OUTPUT_COLUMN])
-                win_team_idx = np.argmax(row[training_cols].to_numpy(), axis=1)
+                arr = row.to_numpy()
+                team_idx = np.argmax(arr)
+                win_team_idx = np.argmax(row[points_cols].to_numpy(), axis=1)
                 odds = self._df.attrs[ODDS_COLUMNS_ATTR][team_idx]
                 if team_idx == win_team_idx:
                     pl += odds * fs[bet_idx]

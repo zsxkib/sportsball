@@ -49,25 +49,37 @@ class AFLAFLTablesSeasonModel(SeasonModel):
         soup = BeautifulSoup(response.text, "html.parser")
         in_finals = False
         game_number = 0
+        last_round_number = 0
+        urls_duplicates = set()
         for table in soup.find_all("table"):
             for b in table.find_all("b"):
                 if b.get_text() == "Finals":
                     in_finals = True
+                    break
             for a in table.find_all("a", href=True):
                 if a.get_text().strip().lower() == "match stats":
+                    url = urllib.parse.urljoin(self._season_url, a.get("href"))
+                    if url in urls_duplicates:
+                        continue
                     if not in_finals and self.season_type == SeasonType.REGULAR:
-                        yield AFLAFLTablesGameModel(
-                            urllib.parse.urljoin(self._season_url, a.get("href")),
+                        model = AFLAFLTablesGameModel(
+                            url,
                             self._session,
                             game_number,
+                            last_round_number,
                         )
+                        last_round_number = model.week
+                        if self.season_type == SeasonType.REGULAR:
+                            yield model
                     elif in_finals and self.season_type == SeasonType.POSTSEASON:
                         yield AFLAFLTablesGameModel(
-                            urllib.parse.urljoin(self._season_url, a.get("href")),
+                            url,
                             self._session,
                             game_number,
+                            last_round_number,
                         )
                     game_number += 1
+                    urls_duplicates.add(url)
 
     @staticmethod
     def urls_expire_after() -> (

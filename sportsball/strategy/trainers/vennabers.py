@@ -5,9 +5,9 @@ from typing import Any
 
 import joblib  # type: ignore
 import pandas as pd
-from venn_abers import VennAbersCalibrator  # type: ignore
+from venn_abers import VennAbers  # type: ignore
 
-from .output_column import OUTPUT_COLUMN, OUTPUT_PROB_COLUMN
+from .output_column import output_prob_column
 from .trainer import Trainer
 
 _MODEL_FILENAME = "va.sav"
@@ -19,21 +19,25 @@ class VennAbersTrainer(Trainer):
     def __init__(self, folder: str, wrapped_trainer: Trainer) -> None:
         super().__init__(folder)
         self._wrapped_trainer = wrapped_trainer
-        self._model = VennAbersCalibrator(
-            estimator=wrapped_trainer.clf,
-            inductive=True,
-            cal_size=0.2,
-            random_state=101,
-        )
+        self._model = VennAbers()
 
     @property
     def clf(self) -> Any:
         """The underlying classifier"""
         return self._model
 
+    @property
+    def salt(self) -> str:
+        """The salt to use when hashing the predictions."""
+        return "vennabers-" + self._wrapped_trainer.salt
+
     def fit(self, x: pd.DataFrame, y: pd.DataFrame):
         """Fit the data."""
-        self._model.fit(x, y)
+        self._wrapped_trainer.fit(x, y)
+        y_pred = self._wrapped_trainer.predict_proba(x)
+        if y_pred is None:
+            raise ValueError("y_pred is null")
+        self._model.fit(y_pred.to_numpy(), y.to_numpy())
 
     def save(self):
         """Save the trainer."""
@@ -47,17 +51,25 @@ class VennAbersTrainer(Trainer):
 
     def predict(self, x: pd.DataFrame) -> pd.DataFrame | None:
         """Predict the Y values."""
+        return self._wrapped_trainer.predict(x)
+
+    def predict_proba(self, x: pd.DataFrame) -> pd.DataFrame | None:
+        """Predict the Y probabilities."""
         y = super().predict(x)
         if y is None:
             return y
+
+        y_prob = self._wrapped_trainer.predict_proba(x)
+        if y_prob is None:
+            raise ValueError("y_prob is null")
+
+        p_prime, _ = self._model.predict_proba(y_prob.to_numpy())
         y = pd.DataFrame(
             index=x.index,
-            data={
-                OUTPUT_COLUMN: self._model.predict(x),
-                OUTPUT_PROB_COLUMN: self._model.predict_proba(x),
-            },
+            data={output_prob_column(i): p_prime[:, i] for i in range(len(y_prob))},
         )
-        self.save_prediction(x, y)
+
+        self.save_prediction_proba(x, y)
         return y
 
     def select_features(self, x: pd.DataFrame, y: pd.DataFrame) -> list[str]:

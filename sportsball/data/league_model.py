@@ -6,9 +6,10 @@ import pandas as pd
 import requests_cache
 import tqdm
 
-from .columns import (CATEGORICAL_COLUMNS_ATTR, ODDS_COLUMNS_ATTR,
-                      POINTS_COLUMNS_ATTR, TEXT_COLUMNS_ATTR,
-                      TRAINING_EXCLUDE_COLUMNS_ATTR)
+from .columns import (CATEGORICAL_COLUMNS_ATTR, COLUMN_SEPARATOR,
+                      ODDS_COLUMNS_ATTR, POINTS_COLUMNS_ATTR,
+                      TEXT_COLUMNS_ATTR, TRAINING_EXCLUDE_COLUMNS_ATTR)
+from .game_model import GAME_COLUMN_SUFFIX, GAME_DT_COLUMN
 from .league import League
 from .model import Model
 from .season_model import SeasonModel
@@ -80,6 +81,10 @@ class LeagueModel(Model):
 
             for categorical_column in df.attrs[CATEGORICAL_COLUMNS_ATTR]:
                 df[categorical_column] = df[categorical_column].astype("category")
+            df = df.sort_values(
+                by=COLUMN_SEPARATOR.join([GAME_COLUMN_SUFFIX, GAME_DT_COLUMN]),
+                ascending=True,
+            )
 
             self._df = df
         return df

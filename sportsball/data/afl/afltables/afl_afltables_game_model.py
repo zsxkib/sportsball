@@ -15,12 +15,12 @@ from ...venue_model import VenueModel
 from .afl_afltables_team_model import AFLAFLTablesTeamModel
 from .afl_afltables_venue_model import AFLAFLTablesVenueModel
 
-_FINALS_WEEK_MAP = {
-    "Qualifying Final": 25,
-    "Elimination Final": 25,
-    "Semi Final": 26,
-    "Preliminary Final": 27,
-    "Grand Final": 28,
+_FINALS_WEEK_ADDITION_MAP = {
+    "Qualifying Final": 1,
+    "Elimination Final": 1,
+    "Semi Final": 2,
+    "Preliminary Final": 3,
+    "Grand Final": 4,
 }
 
 
@@ -65,9 +65,11 @@ def _find_team_info(tr: Tag, url: str) -> tuple[str, str, int] | None:
 def _find_season_metadata(
     soup: BeautifulSoup,
     url: str,
+    last_round_number: int,
 ) -> tuple[
     datetime.datetime, str, int, list[tuple[str, str, int]], datetime.datetime | None
 ]:
+    # pylint: disable=too-many-locals,too-many-branches
     def _parse_date_text(date_text: str) -> datetime.datetime:
         date_text = td_text[td_text.find("Date:") + 5 :]
         date_text = date_text[: date_text.find("Attendance:")]
@@ -93,9 +95,11 @@ def _find_season_metadata(
                     round_text = td_text[td_text.find("Round:") + 6 :]
                     round_text = round_text[: round_text.find("Venue:")]
                     round_text = round_text.strip()
-                    week = _FINALS_WEEK_MAP.get(round_text)
-                    if week is None:
+                    week_addition = _FINALS_WEEK_ADDITION_MAP.get(round_text)
+                    if week_addition is None:
                         week = int(round_text)
+                    else:
+                        week = last_round_number + week_addition
             team_info = _find_team_info(tr, url)
             if team_info is not None:
                 team_infos[team_info[0]] = (team_info[1], team_info[2])
@@ -126,6 +130,7 @@ class AFLAFLTablesGameModel(GameModel):
         url: str,
         session: requests_cache.CachedSession,
         game_number: int,
+        last_round_number: int,
     ) -> None:
         super().__init__(session)
         self._game_number = game_number
@@ -135,7 +140,7 @@ class AFLAFLTablesGameModel(GameModel):
         def _find_teams_metadata(
             soup: BeautifulSoup, team_infos: list[tuple[str, str, int]]
         ) -> list[tuple[str, list[tuple[str, str]], int]]:
-            def _is_correct_table(table: Tag) -> bool:
+            def _is_correct_table(table: Tag, name: str) -> bool:
                 for th in table.find_all("th"):
                     header_text = th.get_text().strip()
                     if name + " Match Statistics" in header_text:
@@ -167,14 +172,14 @@ class AFLAFLTablesGameModel(GameModel):
             team_metadata = []
             for team_url, name, points in team_infos:
                 for table in soup.find_all("table"):
-                    if _is_correct_table(table):
+                    if _is_correct_table(table, name):
                         players = _find_players(table)
                         team_metadata.append((team_url, players, points))
                         break
             return team_metadata
 
         self._dt, venue_url, self._week, team_infos, self._end_dt = (
-            _find_season_metadata(soup, url)
+            _find_season_metadata(soup, url, last_round_number)
         )
         self._venue_url = venue_url
         self._teams_info = _find_teams_metadata(soup, team_infos)

@@ -24,5 +24,7 @@ class OrdinalFeature(Feature):
         for categorical_column in df.attrs[CATEGORICAL_COLUMNS_ATTR]:
             if categorical_column not in df.columns.values:
                 continue
-            df[categorical_column] = df[categorical_column].fillna(0).astype(int)
+            df[categorical_column] = (
+                df[categorical_column].fillna(0).astype(int).astype("category")
+            )
         return df

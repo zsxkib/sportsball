@@ -16,6 +16,7 @@ _ODDS_XLSX_URL = "https://www.aussportsbetting.com/historical_data/afl.xlsx"
 _WORKBOOK: Workbook | None = None
 _TEAM_NAME_TRANSLATIONS = {
     "Greater Western Sydney": "GWS Giants",
+    "Brisbane Lions": "Brisbane",
 }
 
 
@@ -52,7 +53,7 @@ class AFLAusSportsBettingOddsModel(OddsModel):
                 odds = float(str(row[13].value))
                 break
         if odds is None:
-            raise ValueError("odds is null.")
+            raise ValueError(f"odds is null with date {date} team_name {team_name}.")
         self._odds_val = odds
 
     @property

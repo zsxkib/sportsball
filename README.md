@@ -30,6 +30,7 @@ Python 3.11.6:
 - [quantstats](https://github.com/ranaroussi/quantstats)
 - [fullmonte](https://github.com/8W9aG/fullmonte)
 - [ipython](https://ipython.org/)
+- [scipy](https://scipy.org/)
 
 ## Raison D'être :thought_balloon:
 
@@ -74,7 +75,8 @@ import sportsball as spb
 
 ball = spb.SportsBall()
 league = ball.league(spb.League.AFL)
-strategy = ball.create_strategy(league, "test")
+df = league.to_frame()
+strategy = ball.create_strategy(league, "test_strategy")
 strategy.fit()
 portfolio = ball.create_portfolio([strategy], "test_portfolio")
 returns = portfolio.fit()

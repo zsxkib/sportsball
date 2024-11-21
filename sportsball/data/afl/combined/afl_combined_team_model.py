@@ -54,7 +54,9 @@ class AFLCombinedTeamModel(TeamModel):
         """Return the odds."""
         try:
             return [AFLAusSportsBettingOddsModel(self.session, self._date, self.name)]
-        except ValueError:
+        except ValueError as e:
+            if self._date.year >= 2010:
+                raise e
             return []
 
     @property

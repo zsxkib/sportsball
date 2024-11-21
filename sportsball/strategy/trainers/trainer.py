@@ -6,6 +6,8 @@ from typing import Any
 
 import pandas as pd
 
+HASH_USR_ATTR = "HASH"
+
 
 def _hash_df(df: pd.DataFrame) -> int:
     return int(
@@ -27,6 +29,11 @@ class Trainer:
         """The underlying classifier"""
         raise NotImplementedError("clf is not implemented in parent class.")
 
+    @property
+    def salt(self) -> str:
+        """The salt to use when hashing the predictions."""
+        raise NotImplementedError("salt is not implemented in parent class.")
+
     def fit(self, x: pd.DataFrame, y: pd.DataFrame):
         """Fit the data."""
         raise NotImplementedError("fit is not implemented in parent class.")
@@ -41,14 +48,30 @@ class Trainer:
 
     def predict(self, x: pd.DataFrame) -> pd.DataFrame | None:
         """Predict the Y values."""
-        filename = os.path.join(self._folder, f"{_hash_df(x)}.parquet")
+        filename = os.path.join(self._folder, f"{self.salt}_{_hash_df(x)}.parquet")
+        if os.path.exists(filename):
+            return pd.read_parquet(filename)
+        return None
+
+    def predict_proba(self, x: pd.DataFrame) -> pd.DataFrame | None:
+        """Predict the Y probabilities."""
+        filename = os.path.join(
+            self._folder, f"{self.salt}_{_hash_df(x)}_proba.parquet"
+        )
         if os.path.exists(filename):
             return pd.read_parquet(filename)
         return None
 
     def save_prediction(self, x: pd.DataFrame, y: pd.DataFrame):
         """Save the prediction for later."""
-        filename = os.path.join(self._folder, f"{_hash_df(x)}.parquet")
+        filename = os.path.join(self._folder, f"{self.salt}_{_hash_df(x)}.parquet")
+        y.to_parquet(filename)
+
+    def save_prediction_proba(self, x: pd.DataFrame, y: pd.DataFrame):
+        """Save the prediction probabilities for later."""
+        filename = os.path.join(
+            self._folder, f"{self.salt}_{_hash_df(x)}_proba.parquet"
+        )
         y.to_parquet(filename)
 
     def select_features(self, x: pd.DataFrame, y: pd.DataFrame) -> list[str]:
