@@ -31,6 +31,8 @@ Python 3.11.6:
 - [fullmonte](https://github.com/8W9aG/fullmonte)
 - [ipython](https://ipython.org/)
 - [scipy](https://scipy.org/)
+- [openskill](https://openskill.me/en/latest/index.html)
+- [dateutil](https://github.com/dateutil/dateutil)
 
 ## Raison D'être :thought_balloon:
 

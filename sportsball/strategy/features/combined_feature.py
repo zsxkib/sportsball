@@ -5,6 +5,7 @@ import pandas as pd
 from .datetime_feature import DatetimeFeature
 from .feature import Feature
 from .ordinal_feature import OrdinalFeature
+from .skill_feature import SkillFeature
 
 
 class CombinedFeature(Feature):
@@ -15,7 +16,11 @@ class CombinedFeature(Feature):
     def __init__(self, features: list[Feature] | None = None) -> None:
         super().__init__()
         if features is None:
-            features = [DatetimeFeature(), OrdinalFeature()]
+            features = [
+                SkillFeature(year_slices=[None, 1, 2, 4, 8, 16, 32]),
+                DatetimeFeature(),
+                OrdinalFeature(),
+            ]
         self._features = features
 
     def process(self, df: pd.DataFrame) -> pd.DataFrame:

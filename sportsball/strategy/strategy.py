@@ -27,7 +27,9 @@ _SAMPLER_FILENAME = "sampler.pkl"
 
 def _next_week_dt(
     current_dt: datetime.datetime | None, df: pd.DataFrame
-) -> datetime.datetime:
+) -> datetime.datetime | None:
+    if df.empty:
+        return None
     week_column = COLUMN_SEPARATOR.join([GAME_COLUMN_SUFFIX, GAME_WEEK_COLUMN])
     dt_column = COLUMN_SEPARATOR.join([GAME_COLUMN_SUFFIX, GAME_DT_COLUMN])
     if current_dt is not None:
@@ -104,6 +106,8 @@ class Strategy:
         predictions = []
         while True:
             start_dt = _next_week_dt(start_dt, x)
+            if start_dt is None:
+                break
             x_walk = x[x[dt_column] < start_dt]
             y_walk = y.iloc[: len(x_walk)]
             if len(x_walk) == len(x) or len(y_walk) == len(y):
@@ -189,6 +193,8 @@ class Strategy:
         x = self._df[list(cols - training_cols)]
         while True:
             start_dt = _next_week_dt(start_dt, x)
+            if start_dt is None:
+                break
             x_walk = x[x[dt_column] < start_dt]
             if len(x_walk) == len(x):
                 break

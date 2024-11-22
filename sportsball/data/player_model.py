@@ -9,7 +9,7 @@ from .columns import (CATEGORICAL_COLUMNS_ATTR, COLUMN_SEPARATOR,
 from .model import Model
 
 PLAYER_COLUMN_SUFFIX = "player"
-IDENTIFIER_COLUMN = "identifier"
+PLAYER_IDENTIFIER_COLUMN = "identifier"
 JERSEY_COLUMN = "jersey"
 
 
@@ -29,7 +29,7 @@ class PlayerModel(Model):
     def to_frame(self) -> pd.DataFrame:
         """Render the player as a dataframe."""
         data = {
-            IDENTIFIER_COLUMN: [self.identifier],
+            PLAYER_IDENTIFIER_COLUMN: [self.identifier],
             JERSEY_COLUMN: [self.jersey],
         }
 
@@ -42,7 +42,7 @@ class PlayerModel(Model):
         df.attrs[CATEGORICAL_COLUMNS_ATTR] = list(
             set(
                 update_columns_list(
-                    [IDENTIFIER_COLUMN, JERSEY_COLUMN], PLAYER_COLUMN_SUFFIX
+                    [PLAYER_IDENTIFIER_COLUMN, JERSEY_COLUMN], PLAYER_COLUMN_SUFFIX
                 )
             )
         )

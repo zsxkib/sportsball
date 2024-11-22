@@ -166,3 +166,4 @@ test.parquet
 test.csv
 catboost_info
 test_strategy
+coverage_html

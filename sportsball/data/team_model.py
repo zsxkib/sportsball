@@ -15,7 +15,7 @@ from .player_model import PlayerModel
 
 TEAM_COLUMN_SUFFIX = "team"
 POINTS_COLUMN = "points"
-IDENTIFIER_COLUMN = "identifier"
+TEAM_IDENTIFIER_COLUMN = "identifier"
 NAME_COLUMN = "name"
 LOCATION_COLUMN = "location"
 
@@ -57,7 +57,7 @@ class TeamModel(Model):
         """Render the team as a dataframe."""
         # pylint: disable=too-many-locals
         data: dict[str, list[str | float]] = {
-            IDENTIFIER_COLUMN: [self.identifier],
+            TEAM_IDENTIFIER_COLUMN: [self.identifier],
             NAME_COLUMN: [self.name],
         }
 
@@ -65,7 +65,7 @@ class TeamModel(Model):
         odds_columns = []
         points_columns = []
         text_columns = [NAME_COLUMN]
-        categorical_columns = [IDENTIFIER_COLUMN]
+        categorical_columns = [TEAM_IDENTIFIER_COLUMN]
 
         for count, player in enumerate(self.players):
             player_df = player.to_frame()
