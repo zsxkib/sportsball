@@ -22,23 +22,33 @@ class Portfolio:
 
     def fit(self) -> pd.Series:
         """Fits the portfolio to the strategies."""
+        if len(self._strategies) == 1:
+            returns_series = self._strategies[0].returns()
+            returns_series.index = pd.to_datetime([i[0] for i in returns_series.index])
+            return returns_series.rename(self._name).asfreq("D").fillna(0.0)
+
         # pylint: disable=unsubscriptable-object
-        returns = pd.DataFrame([x.returns() for x in self._strategies]).fillna(0.0)
+        returns = pd.DataFrame([x.returns() for x in self._strategies]).T.fillna(0.0)
+        returns.index = pd.to_datetime([i[0] for i in returns.index])
 
         # Walkforward sharpe optimization
         ret = returns.copy()
         for index in ret.index:
-            x = returns[returns.index < index]
+            dt = index.date()
+            x = returns[returns.index.date < dt]
             if x.empty:
-                ret[index] = returns[index] * (1.0 / len(returns.columns.values))
+                ret.loc[index] = returns.loc[index] * (
+                    1.0 / len(returns.columns.values)
+                )
             else:
+                print(x.to_numpy())
                 model = MeanRisk(
                     risk_measure=RiskMeasure.VARIANCE,
                     objective_function=ObjectiveFunction.MAXIMIZE_RETURN,
                     portfolio_params={"name": "Max Sharpe"},
                 )
-                model.fit(x)
-                ret[index] *= model.weights_
+                model.fit(x.to_numpy())
+                ret.loc[index] *= model.weights_
 
         series = pd.Series(
             index=ret.index, data=np.sum(ret.to_numpy(), axis=1), name=self._name

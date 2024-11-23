@@ -56,7 +56,7 @@ class VennAbersTrainer(Trainer):
     def predict_proba(self, x: pd.DataFrame) -> pd.DataFrame | None:
         """Predict the Y probabilities."""
         y = super().predict(x)
-        if y is None:
+        if y is not None:
             return y
 
         y_prob = self._wrapped_trainer.predict_proba(x)
@@ -66,7 +66,10 @@ class VennAbersTrainer(Trainer):
         p_prime, _ = self._model.predict_proba(y_prob.to_numpy())
         y = pd.DataFrame(
             index=x.index,
-            data={output_prob_column(i): p_prime[:, i] for i in range(len(y_prob))},
+            data={
+                output_prob_column(i): p_prime[:, i]
+                for i in range(len(y_prob.columns.values))
+            },
         )
 
         self.save_prediction_proba(x, y)

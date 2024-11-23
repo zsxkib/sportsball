@@ -167,3 +167,4 @@ test.csv
 catboost_info
 test_strategy
 coverage_html
+test_portfolio

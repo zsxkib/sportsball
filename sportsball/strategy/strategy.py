@@ -20,7 +20,7 @@ from ..data.game_model import (GAME_COLUMN_SUFFIX, GAME_DT_COLUMN,
 from .features import CombinedFeature
 from .reducers import CombinedReducer
 from .trainers import HASH_USR_ATTR, CatboostTrainer, VennAbersTrainer
-from .trainers.output_column import OUTPUT_COLUMN
+from .trainers.output_column import OUTPUT_COLUMN, OUTPUT_PROB_COLUMN_PREFIX
 
 _SAMPLER_FILENAME = "sampler.pkl"
 
@@ -39,7 +39,10 @@ def _next_week_dt(
         week = row[week_column]
         if current_week != week:
             return pd.to_datetime(row[dt_column]).to_pydatetime()
-    return pd.to_datetime(df[dt_column]).to_pydatetime()[-1]  # type: ignore
+    try:
+        return pd.to_datetime(df[dt_column]).to_pydatetime()[-1]  # type: ignore
+    except AttributeError:
+        return None
 
 
 def _print_metrics(y_test: pd.DataFrame, y_pred: pd.DataFrame) -> float:
@@ -191,6 +194,9 @@ class Strategy:
         cols = set(self._df.columns.values)
         training_cols = set(self._df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR])
         x = self._df[list(cols - training_cols)]
+        x = self._features.process(x)
+        x = self._reducers.process(x)
+
         while True:
             start_dt = _next_week_dt(start_dt, x)
             if start_dt is None:
@@ -199,6 +205,8 @@ class Strategy:
             if len(x_walk) == len(x):
                 break
             next_dt = _next_week_dt(start_dt, x)
+            if next_dt is None:
+                break
             x_test = x[x[dt_column] >= start_dt]
             x_test = x_test[x_test[dt_column] < next_dt]
             folder = os.path.join(self._name, str(start_dt.date()))
@@ -218,7 +226,13 @@ class Strategy:
             for column in y_prob.columns.values:
                 if column not in x:
                     x[column] = None
-                x[column] = y_prob[column]
+                x_small = x[x[dt_column] >= start_dt]
+                i_start = len(x) - len(x_small)
+                x_small = x_small[x_small[dt_column] < next_dt]
+                i_end = i_start + len(x_small)
+                x.iloc[i_start:i_end, x.columns.get_loc(column)] = list(  # type: ignore
+                    y_prob[column].values
+                )
         return x
 
     def returns(self) -> pd.Series:
@@ -226,6 +240,8 @@ class Strategy:
         df = self.predict()
         dt_column = COLUMN_SEPARATOR.join([GAME_COLUMN_SUFFIX, GAME_DT_COLUMN])
         points_cols = sorted(list(set(self._df.attrs[POINTS_COLUMNS_ATTR])))
+        for points_col in points_cols:
+            df[points_col] = self._df[points_col]
         index = []
         data = []
         for date, group in df.groupby([df[dt_column].dt.date]):
@@ -234,11 +250,25 @@ class Strategy:
             # Find the kelly criterion for each bet
             fs = []
             for _, row in group.iterrows():
-                arr = row.to_numpy()
+                row_df = row.to_frame().T
+                odds_df = row_df[self._df.attrs[ODDS_COLUMNS_ATTR]]
+                row_df = row_df[
+                    [
+                        x
+                        for x in row_df.columns.values
+                        if x.startswith(OUTPUT_PROB_COLUMN_PREFIX)
+                    ]
+                ]
+                if row_df.isnull().values.any():
+                    continue
+                arr = row_df.to_numpy().flatten()
                 team_idx = np.argmax(arr)
                 prob = arr[team_idx]
-                odds = 1.0 / self._df.attrs[ODDS_COLUMNS_ATTR][team_idx]
-                f = max(prob - ((1.0 - prob) / odds), 0.0)
+                odds = list(
+                    odds_df[self._df.attrs[ODDS_COLUMNS_ATTR][team_idx]].values
+                )[0]
+                bet_prob = 1.0 / odds
+                f = max(prob - ((1.0 - prob) / bet_prob), 0.0)
                 fs.append(f)
 
             # Make sure we aren't overallocating our capital
@@ -250,10 +280,24 @@ class Strategy:
             bet_idx = 0
             pl = 0.0
             for _, row in group.iterrows():
-                arr = row.to_numpy()
+                row_df = row.to_frame().T
+                points_df = row_df[points_cols]
+                odds_df = row_df[self._df.attrs[ODDS_COLUMNS_ATTR]]
+                row_df = row_df[
+                    [
+                        x
+                        for x in row_df.columns.values
+                        if x.startswith(OUTPUT_PROB_COLUMN_PREFIX)
+                    ]
+                ]
+                if row_df.isnull().values.any():
+                    continue
+                arr = row_df.to_numpy().flatten()
                 team_idx = np.argmax(arr)
-                win_team_idx = np.argmax(row[points_cols].to_numpy(), axis=1)
-                odds = self._df.attrs[ODDS_COLUMNS_ATTR][team_idx]
+                win_team_idx = np.argmax(points_df.to_numpy().flatten())
+                odds = list(
+                    odds_df[self._df.attrs[ODDS_COLUMNS_ATTR][team_idx]].values
+                )[0]
                 if team_idx == win_team_idx:
                     pl += odds * fs[bet_idx]
                 else:

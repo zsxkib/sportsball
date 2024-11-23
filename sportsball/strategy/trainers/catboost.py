@@ -138,7 +138,6 @@ class CatboostTrainer(Trainer):
         weight = None
         if y is not None:
             weight = self._weight.process(y)
-        print(weight)
         return Pool(
             x,
             label=y,
