@@ -229,6 +229,9 @@ def _rank_team_predictions(
     team_model: PlackettLuce,
     year_col: str,
 ) -> pd.Series:
+    if len(team_match) < 2:
+        print(f"Warning: Bad number of teams: {len(team_match)}")
+        return row
     rank_team_predictions = team_model.predict_rank(team_match)
     for i, (rank, prob) in enumerate(rank_team_predictions):
         team_skill_col_prefix = COLUMN_SEPARATOR.join(
