@@ -156,7 +156,10 @@ def _find_player_team(
     player_team = []
     for j in range(player_count):
         player_col_prefix = player_column_prefix(team_index, j)
-        if pd.isnull(row[player_identifier_column(team_index, j)]):
+        try:
+            if pd.isnull(row[player_identifier_column(team_index, j)]):
+                continue
+        except KeyError:
             continue
         player_idx = row[player_identifier_column(team_index, j)]
         player_skill_col_prefix = COLUMN_SEPARATOR.join(
