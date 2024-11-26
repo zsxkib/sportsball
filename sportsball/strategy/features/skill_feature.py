@@ -258,6 +258,9 @@ def _rank_player_predictions(
     player_match: list[list[PlackettLuceRating]],
     year_col: str,
 ) -> pd.Series:
+    if len(player_match) < 2:
+        print(f"Warning: Bad player match length: {len(player_match)}")
+        return row
     for player_team in player_match:
         if not player_team:
             print("Warning: Player team has not players")
