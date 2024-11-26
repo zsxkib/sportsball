@@ -33,6 +33,7 @@ Python 3.11.6:
 - [scipy](https://scipy.org/)
 - [openskill](https://openskill.me/en/latest/index.html)
 - [dateutil](https://github.com/dateutil/dateutil)
+- [pytorch](https://pytorch.org/)
 
 ## Raison D'être :thought_balloon:
 
@@ -42,6 +43,7 @@ The models it uses are designed to be used for many different types of sports.
 The supported leagues are:
 
 * 🏈 [NFL](https://www.nfl.com/)
+* 🏉 [AFL](https://www.afl.com.au/)
 
 ## Architecture :triangular_ruler:
 

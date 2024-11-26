@@ -2,11 +2,11 @@
 
 import pandas as pd
 
+from ...data.columns import TRAINING_EXCLUDE_COLUMNS_ATTR
 from .datetime_feature import DatetimeFeature
 from .feature import Feature
 from .ordinal_feature import OrdinalFeature
 from .skill_feature import SkillFeature
-from ...data.columns import TRAINING_EXCLUDE_COLUMNS_ATTR
 
 
 class CombinedFeature(Feature):
@@ -14,7 +14,11 @@ class CombinedFeature(Feature):
 
     # pylint: disable=too-few-public-methods
 
-    def __init__(self, pretrain_features: list[Feature] | None = None, posttrain_features: list[Feature] | None = None) -> None:
+    def __init__(
+        self,
+        pretrain_features: list[Feature] | None = None,
+        posttrain_features: list[Feature] | None = None,
+    ) -> None:
         super().__init__()
         if pretrain_features is None:
             pretrain_features = [
@@ -29,7 +33,7 @@ class CombinedFeature(Feature):
         self._posttrain_features = posttrain_features
 
     def process(self, df: pd.DataFrame) -> pd.DataFrame:
-        cols = set(self._df.columns.values)
+        cols = set(df.columns.values)
         for feature in self._pretrain_features:
             df = feature.process(df)
         df = df[list(cols - set(df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR]))]

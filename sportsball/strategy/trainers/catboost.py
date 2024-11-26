@@ -6,6 +6,7 @@ from typing import Any
 
 import optuna
 import pandas as pd
+import torch
 from catboost import CatBoostClassifier, Pool  # type: ignore
 from sklearn.model_selection import train_test_split  # type: ignore
 
@@ -35,7 +36,10 @@ class CatboostTrainer(Trainer):
         if trial is None:
             self._features_ratio = 0.0
             self._steps = 0
-            self._model = CatBoostClassifier()
+            self._model = CatBoostClassifier(
+                task_type=None if not torch.cuda.is_available() else "GPU",
+                devices=None if not torch.cuda.is_available() else "0",
+            )
         else:
             self._features_ratio = trial.suggest_float("features_ratio", 0.1, 0.9)
             self._steps = trial.suggest_int("steps", 1, 10)
@@ -50,6 +54,8 @@ class CatboostTrainer(Trainer):
                 depth=trial.suggest_int("depth", 3, 10),
                 l2_leaf_reg=trial.suggest_float("l2_leaf_reg", 1.5, 4.5),
                 early_stopping_rounds=100,
+                task_type=None if not torch.cuda.is_available() else "GPU",
+                devices=None if not torch.cuda.is_available() else "0",
             )
 
     @property
