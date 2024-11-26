@@ -194,6 +194,9 @@ def _find_team_team(
     )
     team_mu_col = COLUMN_SEPARATOR.join([team_skill_col_prefix, SKILL_MU_COLUMN])
     team_sigma_col = COLUMN_SEPARATOR.join([team_skill_col_prefix, SKILL_SIGMA_COLUMN])
+    if team_idx not in teams:
+        print(f"Warning: {team_idx} not in teams")
+        return [], row
     team = teams[team_idx]
     row[team_mu_col] = team.mu
     row[team_sigma_col] = team.sigma
