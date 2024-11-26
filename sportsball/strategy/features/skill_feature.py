@@ -3,6 +3,7 @@
 import datetime
 
 import pandas as pd
+import tqdm
 from dateutil.relativedelta import relativedelta
 from openskill.models import PlackettLuce, PlackettLuceRating
 
@@ -98,7 +99,10 @@ def _find_matches(
         team_match.append([teams[team_idx]])
         player_team = []
         for j in range(player_count):
-            if pd.isnull(row[player_identifier_column(i, j)]):
+            try:
+                if pd.isnull(row[player_identifier_column(i, j)]):
+                    continue
+            except KeyError:
                 continue
             player_team.append(players[row[player_identifier_column(i, j)]])
         player_match.append(player_team)
@@ -336,7 +340,10 @@ class SkillFeature(Feature):
         player_count = _find_player_count(df, team_count)
         self._create_columns(df, team_count, player_count)
 
-        for date, group in df.groupby([df[FULL_GAME_DT_COLUMN].dt.date]):
+        for date, group in tqdm.tqdm(
+            df.groupby([df[FULL_GAME_DT_COLUMN].dt.date]),
+            desc="Processing Skill Features",
+        ):
             for year_slice in self._year_slices:
                 df_slice = _slice_df(df, date[0], year_slice)  # type: ignore
                 if df_slice.empty:
