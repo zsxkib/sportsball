@@ -252,6 +252,10 @@ def _rank_player_predictions(
     player_match: list[list[PlackettLuceRating]],
     year_col: str,
 ) -> pd.Series:
+    for player_team in player_match:
+        if not player_team:
+            print("Warning: Player team has not players")
+            return row
     rank_player_predictions = player_model.predict_rank(player_match)
     for i, (rank, prob) in enumerate(rank_player_predictions):
         for j in range(len(player_match[i])):

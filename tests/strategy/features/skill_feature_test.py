@@ -5,7 +5,7 @@ import unittest
 import sportsball as spb
 import pandas as pd
 from sportsball.strategy.features.columns import team_identifier_column, team_points_column, player_identifier_column
-from sportsball.strategy.features.skill_feature import _find_matches, SkillFeature, _find_player_team, _create_player_teams
+from sportsball.strategy.features.skill_feature import _find_matches, SkillFeature, _find_player_team, _create_player_teams, _rank_player_predictions
 from openskill.models import PlackettLuce
 
 
@@ -76,7 +76,7 @@ class TestSkillFeatureClass(unittest.TestCase):
         for _, row in df.iterrows():
             _find_player_team(5, players, row, "all", 0)
 
-    def test_find_player_team_create_player_teams(self):
+    def test_create_player_teams(self):
         df = pd.DataFrame(data={
             spb.data.game_model.FULL_GAME_DT_COLUMN: [datetime.datetime(2009, 12, 31, 0, 0, 0), datetime.datetime(2010, 1, 1, 0, 0, 0)],
             team_identifier_column(0): ["1", "1"],
@@ -88,3 +88,17 @@ class TestSkillFeatureClass(unittest.TestCase):
         })
         _, players = _create_player_teams(df, 2, 2)
         self.assertSetEqual(set(players.keys()), {"1", "2"})
+
+    def test_rank_player_predictions(self):
+        df = pd.DataFrame(data={
+            spb.data.game_model.FULL_GAME_DT_COLUMN: [datetime.datetime(2009, 12, 31, 0, 0, 0), datetime.datetime(2010, 1, 1, 0, 0, 0)],
+            team_identifier_column(0): ["1", "1"],
+            team_identifier_column(1): ["2", "2"],
+            team_points_column(0): [0, 1],
+            team_points_column(1): [2, 3],
+            player_identifier_column(0, 0): ["1", "1"],
+            player_identifier_column(1, 0): ["2", "2"],
+        })
+        player_model, _ = _create_player_teams(df, 2, 2)
+        for _, row in df.iterrows():
+            _rank_player_predictions(row, player_model, [[], []], "all")
