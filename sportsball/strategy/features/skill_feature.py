@@ -168,6 +168,9 @@ def _find_player_team(
         player_sigma_col = COLUMN_SEPARATOR.join(
             [player_skill_col_prefix, SKILL_SIGMA_COLUMN]
         )
+        if player_idx not in players:
+            print(f"Warning: {player_idx} not in players")
+            continue
         player = players[player_idx]
         row[player_mu_col] = player.mu
         row[player_sigma_col] = player.sigma
