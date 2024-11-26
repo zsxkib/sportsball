@@ -6,6 +6,7 @@ from .datetime_feature import DatetimeFeature
 from .feature import Feature
 from .ordinal_feature import OrdinalFeature
 from .skill_feature import SkillFeature
+from ...data.columns import TRAINING_EXCLUDE_COLUMNS_ATTR
 
 
 class CombinedFeature(Feature):
@@ -13,17 +14,25 @@ class CombinedFeature(Feature):
 
     # pylint: disable=too-few-public-methods
 
-    def __init__(self, features: list[Feature] | None = None) -> None:
+    def __init__(self, pretrain_features: list[Feature] | None = None, posttrain_features: list[Feature] | None = None) -> None:
         super().__init__()
-        if features is None:
-            features = [
+        if pretrain_features is None:
+            pretrain_features = [
                 SkillFeature(year_slices=[None, 1, 2, 4, 8, 16, 32]),
+            ]
+        if posttrain_features is None:
+            posttrain_features = [
                 DatetimeFeature(),
                 OrdinalFeature(),
             ]
-        self._features = features
+        self._pretrain_features = pretrain_features
+        self._posttrain_features = posttrain_features
 
     def process(self, df: pd.DataFrame) -> pd.DataFrame:
-        for feature in self._features:
+        cols = set(self._df.columns.values)
+        for feature in self._pretrain_features:
+            df = feature.process(df)
+        df = df[list(cols - set(df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR]))]
+        for feature in self._posttrain_features:
             df = feature.process(df)
         return df

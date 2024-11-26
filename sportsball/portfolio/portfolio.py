@@ -20,44 +20,40 @@ class Portfolio:
         self._strategies = strategies
         os.makedirs(name, exist_ok=True)
 
-    def fit(self) -> pd.Series:
+    def fit(self) -> pd.DataFrame:
         """Fits the portfolio to the strategies."""
-        if len(self._strategies) == 1:
-            returns_series = self._strategies[0].returns()
-            returns_series.index = pd.to_datetime([i[0] for i in returns_series.index])
-            return returns_series.rename(self._name).asfreq("D").fillna(0.0)
-
         # pylint: disable=unsubscriptable-object
         returns = pd.DataFrame([x.returns() for x in self._strategies]).T.fillna(0.0)
         returns.index = pd.to_datetime([i[0] for i in returns.index])
 
         # Walkforward sharpe optimization
         ret = returns.copy()
+        ret[self._name] = np.NaN
         for index in ret.index:
             dt = index.date()
             x = returns[returns.index.date < dt]
             if x.empty:
-                ret.loc[index] = returns.loc[index] * (
-                    1.0 / len(returns.columns.values)
-                )
+                ret.loc[index, self._name] = (
+                    returns.loc[index] * (1.0 / len(returns.columns.values))
+                ).sum()
             else:
-                print(x.to_numpy())
                 model = MeanRisk(
                     risk_measure=RiskMeasure.VARIANCE,
                     objective_function=ObjectiveFunction.MAXIMIZE_RETURN,
                     portfolio_params={"name": "Max Sharpe"},
                 )
                 model.fit(x.to_numpy())
-                ret.loc[index] *= model.weights_
+                ret.loc[index, self._name] = (returns.loc[index] * model.weights_).sum()
 
-        series = pd.Series(
-            index=ret.index, data=np.sum(ret.to_numpy(), axis=1), name=self._name
-        )
-        return series.asfreq("D").fillna(0.0)
+        ret = ret.asfreq("D").fillna(0.0)
+        ret.index = ret.index.tz_localize("UTC")  # type: ignore
+        return ret
 
     def render(self, returns: pd.Series):
         """Renders the statistics of the portfolio."""
+        df = returns.to_frame()
+        df["returns"] = df[[returns.name]]
         qs.extend_pandas()
-        qs.reports.html(returns, "SPY")
+        qs.reports.html(df, "SPY", output=os.path.join(self._name, "test.html"))
         df = simulate(returns)
         plot(df)

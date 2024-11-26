@@ -94,16 +94,14 @@ class Strategy:
                 for x in self._df.attrs[ODDS_COLUMNS_ATTR]
             )
 
-        cols = set(self._df.columns.values)
         training_cols = set(self._df.attrs[POINTS_COLUMNS_ATTR])
-        x = self._df[list(cols - set(self._df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR]))]
+        x = self._features.process(self._df)
+        x = self._reducers.process(x)
         y = self._df[list(training_cols)]
         y[OUTPUT_COLUMN] = np.argmax(y.to_numpy(), axis=1)
         if len(training_cols) == 2:
             y[OUTPUT_COLUMN] = y[OUTPUT_COLUMN].astype(bool)
         y = y[[OUTPUT_COLUMN]]
-        x = self._features.process(x)
-        x = self._reducers.process(x)
 
         # Walkforward by week
         predictions = []
@@ -245,6 +243,7 @@ class Strategy:
         index = []
         data = []
         for date, group in df.groupby([df[dt_column].dt.date]):
+            date = date[0]
             index.append(date)
 
             # Find the kelly criterion for each bet

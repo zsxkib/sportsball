@@ -7,10 +7,10 @@ from dateutil.relativedelta import relativedelta
 from openskill.models import PlackettLuce, PlackettLuceRating
 
 from ...data.columns import COLUMN_SEPARATOR
-from ...data.game_model import FULL_GAME_DT_COLUMN, GAME_COLUMN_SUFFIX
-from ...data.player_model import PLAYER_COLUMN_SUFFIX, PLAYER_IDENTIFIER_COLUMN
-from ...data.team_model import (POINTS_COLUMN, TEAM_COLUMN_SUFFIX,
-                                TEAM_IDENTIFIER_COLUMN)
+from ...data.game_model import FULL_GAME_DT_COLUMN
+from .columns import (player_column_prefix, player_identifier_column,
+                      team_column_prefix, team_identifier_column,
+                      team_points_column)
 from .feature import Feature
 
 SKILL_COLUMN_PREFIX = "skill"
@@ -23,15 +23,7 @@ SKILL_PROBABILITY_COLUMN = "probability"
 def _find_team_count(df: pd.DataFrame) -> int:
     team_count = 0
     while True:
-        team_col = COLUMN_SEPARATOR.join(
-            [
-                GAME_COLUMN_SUFFIX,
-                str(team_count),
-                TEAM_COLUMN_SUFFIX,
-                TEAM_IDENTIFIER_COLUMN,
-            ]
-        )
-        if team_col not in df.columns.values:
+        if team_identifier_column(team_count) not in df.columns.values:
             break
         team_count += 1
     return team_count
@@ -42,17 +34,7 @@ def _find_player_count(df: pd.DataFrame, team_count: int) -> int:
     while True:
         found_player = False
         for i in range(team_count):
-            player_col = COLUMN_SEPARATOR.join(
-                [
-                    GAME_COLUMN_SUFFIX,
-                    str(i),
-                    TEAM_COLUMN_SUFFIX,
-                    str(player_count),
-                    PLAYER_COLUMN_SUFFIX,
-                    PLAYER_IDENTIFIER_COLUMN,
-                ]
-            )
-            if player_col not in df.columns.values:
+            if player_identifier_column(i, player_count) not in df.columns.values:
                 continue
             found_player = True
         if not found_player:
@@ -64,10 +46,10 @@ def _find_player_count(df: pd.DataFrame, team_count: int) -> int:
 def _slice_df(
     df: pd.DataFrame, date: datetime.date, year_slice: int | None
 ) -> pd.DataFrame:
-    df_slice = df[df[FULL_GAME_DT_COLUMN] < date]
+    df_slice = df[df[FULL_GAME_DT_COLUMN].dt.date < date]
     if year_slice is not None:
         start_date = date - relativedelta(years=year_slice)
-        df_slice = df_slice[df_slice[FULL_GAME_DT_COLUMN] > start_date]
+        df_slice = df_slice[df_slice[FULL_GAME_DT_COLUMN].dt.date > start_date]
     return df_slice
 
 
@@ -77,15 +59,7 @@ def _create_teams(
     team_model = PlackettLuce()
     teams = {}
     for i in range(team_count):
-        team_col = COLUMN_SEPARATOR.join(
-            [
-                GAME_COLUMN_SUFFIX,
-                str(i),
-                TEAM_COLUMN_SUFFIX,
-                TEAM_IDENTIFIER_COLUMN,
-            ]
-        )
-        for team_identifier in df_slice[team_col].unique():
+        for team_identifier in df_slice[team_identifier_column(i)].unique():
             if team_identifier in teams:
                 continue
             teams[team_identifier] = team_model.rating(name=team_identifier)
@@ -98,20 +72,10 @@ def _create_player_teams(
     player_model = PlackettLuce()
     players = {}
     for i in range(player_count):
-        for i in range(team_count):
-            player_col = COLUMN_SEPARATOR.join(
-                [
-                    GAME_COLUMN_SUFFIX,
-                    str(i),
-                    TEAM_COLUMN_SUFFIX,
-                    str(player_count),
-                    PLAYER_COLUMN_SUFFIX,
-                    PLAYER_IDENTIFIER_COLUMN,
-                ]
-            )
-            if player_col not in df_slice.columns.values:
+        for j in range(team_count):
+            if player_identifier_column(j, i) not in df_slice.columns.values:
                 continue
-            for player_identifier in df_slice[player_col].unique():
+            for player_identifier in df_slice[player_identifier_column(j, i)].unique():
                 players[player_identifier] = player_model.rating(name=player_identifier)
     return player_model, players
 
@@ -127,42 +91,16 @@ def _find_matches(
     team_match = []
     player_match = []
     for i in range(team_count):
-        points_col = COLUMN_SEPARATOR.join(
-            [
-                GAME_COLUMN_SUFFIX,
-                str(i),
-                TEAM_COLUMN_SUFFIX,
-                POINTS_COLUMN,
-            ]
-        )
-        if row[points_col].isnull():
+        if pd.isnull(row[team_points_column(i)]):
             continue
-        points.append(float(row[points_col]))
-        team_col = COLUMN_SEPARATOR.join(
-            [
-                GAME_COLUMN_SUFFIX,
-                str(i),
-                TEAM_COLUMN_SUFFIX,
-                TEAM_IDENTIFIER_COLUMN,
-            ]
-        )
-        team_idx = row[team_col]
+        points.append(float(row[team_points_column(i)]))
+        team_idx = row[team_identifier_column(i)]
         team_match.append([teams[team_idx]])
         player_team = []
         for j in range(player_count):
-            player_col = COLUMN_SEPARATOR.join(
-                [
-                    GAME_COLUMN_SUFFIX,
-                    str(i),
-                    TEAM_COLUMN_SUFFIX,
-                    str(j),
-                    PLAYER_COLUMN_SUFFIX,
-                    PLAYER_IDENTIFIER_COLUMN,
-                ]
-            )
-            if row[player_col].isnull():
+            if pd.isnull(row[player_identifier_column(i, j)]):
                 continue
-            player_team.append(players[row[player_col]])
+            player_team.append(players[row[player_identifier_column(i, j)]])
         player_match.append(player_team)
     return points, team_match, player_match
 
@@ -213,21 +151,10 @@ def _find_player_team(
 ) -> list[PlackettLuceRating]:
     player_team = []
     for j in range(player_count):
-        player_col_prefix = COLUMN_SEPARATOR.join(
-            [
-                GAME_COLUMN_SUFFIX,
-                str(team_index),
-                TEAM_COLUMN_SUFFIX,
-                str(j),
-                PLAYER_COLUMN_SUFFIX,
-            ]
-        )
-        player_idx_col = COLUMN_SEPARATOR.join(
-            [player_col_prefix, PLAYER_IDENTIFIER_COLUMN]
-        )
-        if row[player_idx_col].isnull():
+        player_col_prefix = player_column_prefix(team_index, j)
+        if pd.isnull(row[player_identifier_column(team_index, j)]):
             continue
-        player_idx = row[player_idx_col]
+        player_idx = row[player_identifier_column(team_index, j)]
         player_skill_col_prefix = COLUMN_SEPARATOR.join(
             [player_col_prefix, SKILL_COLUMN_PREFIX, year_col]
         )
@@ -247,11 +174,9 @@ def _find_player_team(
 def _find_team_team(
     team_index: int, row: pd.Series, year_col: str, teams: dict[str, PlackettLuceRating]
 ) -> tuple[list[PlackettLuceRating], pd.Series]:
-    team_col_prefix = COLUMN_SEPARATOR.join(
-        [GAME_COLUMN_SUFFIX, str(team_index), TEAM_COLUMN_SUFFIX]
-    )
-    team_idx_col = COLUMN_SEPARATOR.join([team_col_prefix, TEAM_IDENTIFIER_COLUMN])
-    if row[team_idx_col].isnull():
+    team_col_prefix = team_column_prefix(team_index)
+    team_idx_col = team_identifier_column(team_index)
+    if pd.isnull(row[team_idx_col]):
         return [], row
     team_idx = row[team_idx_col]
     team_skill_col_prefix = COLUMN_SEPARATOR.join(
@@ -295,9 +220,7 @@ def _rank_team_predictions(
     for i, (rank, prob) in enumerate(rank_team_predictions):
         team_skill_col_prefix = COLUMN_SEPARATOR.join(
             [
-                GAME_COLUMN_SUFFIX,
-                str(i),
-                TEAM_COLUMN_SUFFIX,
+                team_column_prefix(i),
                 SKILL_COLUMN_PREFIX,
                 year_col,
             ]
@@ -324,11 +247,7 @@ def _rank_player_predictions(
         for j in range(len(player_match[i])):
             player_skill_col_prefix = COLUMN_SEPARATOR.join(
                 [
-                    GAME_COLUMN_SUFFIX,
-                    str(i),
-                    TEAM_COLUMN_SUFFIX,
-                    str(j),
-                    PLAYER_COLUMN_SUFFIX,
+                    player_column_prefix(i, j),
                     SKILL_COLUMN_PREFIX,
                     year_col,
                 ]
@@ -386,9 +305,7 @@ class SkillFeature(Feature):
                 ]:
                     team_col = COLUMN_SEPARATOR.join(
                         [
-                            GAME_COLUMN_SUFFIX,
-                            str(i),
-                            TEAM_COLUMN_SUFFIX,
+                            team_column_prefix(i),
                             SKILL_COLUMN_PREFIX,
                             year_col,
                             team_col_suffix,
@@ -404,11 +321,7 @@ class SkillFeature(Feature):
                     ]:
                         player_col = COLUMN_SEPARATOR.join(
                             [
-                                GAME_COLUMN_SUFFIX,
-                                str(i),
-                                TEAM_COLUMN_SUFFIX,
-                                str(j),
-                                PLAYER_COLUMN_SUFFIX,
+                                player_column_prefix(i, j),
                                 SKILL_COLUMN_PREFIX,
                                 year_col,
                                 player_col_suffix,
@@ -425,7 +338,9 @@ class SkillFeature(Feature):
 
         for date, group in df.groupby([df[FULL_GAME_DT_COLUMN].dt.date]):
             for year_slice in self._year_slices:
-                df_slice = _slice_df(df, date, year_slice)  # type: ignore
+                df_slice = _slice_df(df, date[0], year_slice)  # type: ignore
+                if df_slice.empty:
+                    continue
                 team_model, teams = _create_teams(df_slice, team_count)
                 player_model, players = _create_player_teams(
                     df_slice, team_count, player_count

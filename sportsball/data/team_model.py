@@ -14,7 +14,7 @@ from .odds_model import OddsModel
 from .player_model import PlayerModel
 
 TEAM_COLUMN_SUFFIX = "team"
-POINTS_COLUMN = "points"
+TEAM_POINTS_COLUMN = "points"
 TEAM_IDENTIFIER_COLUMN = "identifier"
 NAME_COLUMN = "name"
 LOCATION_COLUMN = "location"
@@ -138,9 +138,9 @@ class TeamModel(Model):
 
         points = self.points
         if points is not None:
-            data[POINTS_COLUMN] = [points]
-            training_exclude_columns.append(POINTS_COLUMN)
-            points_columns.append(POINTS_COLUMN)
+            data[TEAM_POINTS_COLUMN] = [points]
+            training_exclude_columns.append(TEAM_POINTS_COLUMN)
+            points_columns.append(TEAM_POINTS_COLUMN)
 
         location = self.location
         if location is not None:
