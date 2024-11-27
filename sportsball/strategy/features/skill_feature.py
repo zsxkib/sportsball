@@ -304,12 +304,13 @@ def _create_feature_cols(
     year_col = str(year_slice) if year_slice is not None else "all"
     team_model, teams = model_team
     player_model, players = model_players
-    for _, row in group.iterrows():
+    for index, row in group.iterrows():
         row, team_match, player_match = _find_row_matches(
             row, counts, year_col, teams, players
         )
         row = _rank_team_predictions(team_match, row, team_model, year_col)
         row = _rank_player_predictions(row, player_model, player_match, year_col)
+        group.loc[index] = row
     return group
 
 
@@ -393,5 +394,7 @@ class SkillFeature(Feature):
                     (team_model, teams),
                     (player_model, players),
                 )
+                for index, row in group.iterrows():
+                    df.loc[index] = row
 
         return df
