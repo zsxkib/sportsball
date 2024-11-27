@@ -310,7 +310,8 @@ def _create_feature_cols(
         )
         row = _rank_team_predictions(team_match, row, team_model, year_col)
         row = _rank_player_predictions(row, player_model, player_match, year_col)
-        group.loc[index] = row
+        row = row.reindex(group.columns)
+        group.loc[index] = row.values
     return group
 
 
@@ -395,6 +396,6 @@ class SkillFeature(Feature):
                     (player_model, players),
                 )
                 for index, row in group.iterrows():
-                    df.loc[index] = row
+                    df.loc[index] = row.values
 
         return df

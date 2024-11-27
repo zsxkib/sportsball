@@ -25,6 +25,7 @@ class TestSkillFeatureClass(unittest.TestCase):
             player_identifier_column(1, 0): ["2", "2"],
         })
         df = self._skill_feature.process(df)
+        # df.to_csv("test_tmp.csv")
         self.assertIsNotNone(df)
 
     def test_find_matches(self):
