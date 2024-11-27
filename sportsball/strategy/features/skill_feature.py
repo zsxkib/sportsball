@@ -55,12 +55,20 @@ def _slice_df(
 
 
 def _create_teams(
-    df_slice: pd.DataFrame, team_count: int
+    df_slice: pd.DataFrame, team_count: int, group: pd.DataFrame
 ) -> tuple[PlackettLuce, dict[str, PlackettLuceRating]]:
     team_model = PlackettLuce()
     teams = {}
     for i in range(team_count):
         for team_identifier in df_slice[team_identifier_column(i)].unique():
+            if not isinstance(team_identifier, str):
+                continue
+            if team_identifier in teams:
+                continue
+            teams[team_identifier] = team_model.rating(name=team_identifier)
+        for team_identifier in group[team_identifier_column(i)].unique():
+            if not isinstance(team_identifier, str):
+                continue
             if team_identifier in teams:
                 continue
             teams[team_identifier] = team_model.rating(name=team_identifier)
@@ -68,16 +76,32 @@ def _create_teams(
 
 
 def _create_player_teams(
-    df_slice: pd.DataFrame, team_count: int, player_count: int
+    df_slice: pd.DataFrame, team_count: int, player_count: int, group: pd.DataFrame
 ) -> tuple[PlackettLuce, dict[str, PlackettLuceRating]]:
     player_model = PlackettLuce()
     players = {}
     for i in range(player_count):
         for j in range(team_count):
-            if player_identifier_column(j, i) not in df_slice.columns.values:
-                continue
-            for player_identifier in df_slice[player_identifier_column(j, i)].unique():
-                players[player_identifier] = player_model.rating(name=player_identifier)
+            if player_identifier_column(j, i) in df_slice.columns.values:
+                for player_identifier in df_slice[
+                    player_identifier_column(j, i)
+                ].unique():
+                    if not isinstance(player_identifier, str):
+                        continue
+                    if player_identifier in players:
+                        continue
+                    players[player_identifier] = player_model.rating(
+                        name=player_identifier
+                    )
+            if player_identifier_column(j, i) in group.columns.values:
+                for player_identifier in group[player_identifier_column(j, i)].unique():
+                    if not isinstance(player_identifier, str):
+                        continue
+                    if player_identifier in players:
+                        continue
+                    players[player_identifier] = player_model.rating(
+                        name=player_identifier
+                    )
     return player_model, players
 
 
@@ -171,9 +195,6 @@ def _find_player_team(
         player_sigma_col = COLUMN_SEPARATOR.join(
             [player_skill_col_prefix, SKILL_SIGMA_COLUMN]
         )
-        if player_idx not in players:
-            print(f"Warning: {player_idx} not in players")
-            continue
         player = players[player_idx]
         row[player_mu_col] = player.mu
         row[player_sigma_col] = player.sigma
@@ -194,9 +215,6 @@ def _find_team_team(
     )
     team_mu_col = COLUMN_SEPARATOR.join([team_skill_col_prefix, SKILL_MU_COLUMN])
     team_sigma_col = COLUMN_SEPARATOR.join([team_skill_col_prefix, SKILL_SIGMA_COLUMN])
-    if team_idx not in teams:
-        print(f"Warning: {team_idx} not in teams")
-        return [], row
     team = teams[team_idx]
     row[team_mu_col] = team.mu
     row[team_sigma_col] = team.sigma
@@ -229,9 +247,6 @@ def _rank_team_predictions(
     team_model: PlackettLuce,
     year_col: str,
 ) -> pd.Series:
-    if len(team_match) < 2:
-        print(f"Warning: Bad number of teams: {len(team_match)}")
-        return row
     rank_team_predictions = team_model.predict_rank(team_match)
     for i, (rank, prob) in enumerate(rank_team_predictions):
         team_skill_col_prefix = COLUMN_SEPARATOR.join(
@@ -258,13 +273,6 @@ def _rank_player_predictions(
     player_match: list[list[PlackettLuceRating]],
     year_col: str,
 ) -> pd.Series:
-    if len(player_match) < 2:
-        print(f"Warning: Bad player match length: {len(player_match)}")
-        return row
-    for player_team in player_match:
-        if not player_team:
-            print("Warning: Player team has not players")
-            return row
     rank_player_predictions = player_model.predict_rank(player_match)
     for i, (rank, prob) in enumerate(rank_player_predictions):
         for j in range(len(player_match[i])):
@@ -367,9 +375,9 @@ class SkillFeature(Feature):
                 df_slice = _slice_df(df, date[0], year_slice)  # type: ignore
                 if df_slice.empty:
                     continue
-                team_model, teams = _create_teams(df_slice, team_count)
+                team_model, teams = _create_teams(df_slice, team_count, group)
                 player_model, players = _create_player_teams(
-                    df_slice, team_count, player_count
+                    df_slice, team_count, player_count, group
                 )
                 (team_model, teams), (player_model, players) = _simulate_games(
                     df_slice,
