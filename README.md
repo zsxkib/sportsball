@@ -34,6 +34,7 @@ Python 3.11.6:
 - [openskill](https://openskill.me/en/latest/index.html)
 - [dateutil](https://github.com/dateutil/dateutil)
 - [pytorch](https://pytorch.org/)
+- [pandarallel](https://nalepae.github.io/pandarallel/)
 
 ## Raison D'être :thought_balloon:
 

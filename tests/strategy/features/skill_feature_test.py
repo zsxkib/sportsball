@@ -4,8 +4,9 @@ import unittest
 
 import sportsball as spb
 import pandas as pd
-from sportsball.strategy.features.columns import team_identifier_column, team_points_column, player_identifier_column
-from sportsball.strategy.features.skill_feature import _find_matches, SkillFeature
+from sportsball.strategy.features.columns import team_identifier_column, team_points_column, player_identifier_column, player_column_prefix
+from sportsball.strategy.features.skill_feature import _find_matches, SkillFeature, SKILL_COLUMN_PREFIX, SKILL_PROBABILITY_COLUMN
+from sportsball.data.columns import COLUMN_SEPARATOR
 from openskill.models import PlackettLuce
 
 
@@ -27,6 +28,10 @@ class TestSkillFeatureClass(unittest.TestCase):
         df = self._skill_feature.process(df)
         # df.to_csv("test_tmp.csv")
         self.assertIsNotNone(df)
+        print(df.columns.values)
+        probability = df[COLUMN_SEPARATOR.join([player_column_prefix(0, None), SKILL_COLUMN_PREFIX, "1", SKILL_PROBABILITY_COLUMN])].values.tolist()
+        self.assertListEqual(probability, [0.0, 0.34070897206214457])
+
 
     def test_find_matches(self):
         df = pd.DataFrame(data={

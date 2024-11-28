@@ -22,7 +22,7 @@ class CombinedFeature(Feature):
         super().__init__()
         if pretrain_features is None:
             pretrain_features = [
-                SkillFeature(year_slices=[8]),
+                SkillFeature(year_slices=[1, 2, 4, 8]),
             ]
         if posttrain_features is None:
             posttrain_features = [
@@ -33,10 +33,11 @@ class CombinedFeature(Feature):
         self._posttrain_features = posttrain_features
 
     def process(self, df: pd.DataFrame) -> pd.DataFrame:
-        cols = set(df.columns.values)
         for feature in self._pretrain_features:
             df = feature.process(df)
-        df = df[list(cols - set(df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR]))]
+        df = df[
+            list(set(df.columns.values) - set(df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR]))
+        ]
         for feature in self._posttrain_features:
             df = feature.process(df)
         return df

@@ -76,6 +76,8 @@ class CatboostTrainer(Trainer):
         train_pool = self._create_pool(x_train, y_train)  # type: ignore
         eval_pool = self._create_pool(x_test, y_test)  # type: ignore
         self._model.fit(train_pool, eval_set=eval_pool, early_stopping_rounds=100)
+        feature_importances = self._model.get_feature_importance(prettified=True)
+        print(feature_importances)
 
     def save(self):
         """Save the trainer."""

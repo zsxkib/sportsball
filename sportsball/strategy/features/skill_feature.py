@@ -1,11 +1,13 @@
 """The skill feature extractor."""
 
 import datetime
+from warnings import simplefilter
 
 import pandas as pd
 import tqdm
 from dateutil.relativedelta import relativedelta
 from openskill.models import PlackettLuce, PlackettLuceRating
+from pandarallel import pandarallel  # type: ignore
 
 from ...data.columns import COLUMN_SEPARATOR
 from ...data.game_model import FULL_GAME_DT_COLUMN
@@ -174,30 +176,17 @@ def _find_player_team(
     player_count: int,
     players: dict[str, PlackettLuceRating],
     row: pd.Series,
-    year_col: str,
     team_index: int,
 ) -> list[PlackettLuceRating]:
     player_team = []
     for j in range(player_count):
-        player_col_prefix = player_column_prefix(team_index, j)
         try:
             if pd.isnull(row[player_identifier_column(team_index, j)]):
                 continue
         except KeyError:
             continue
         player_idx = row[player_identifier_column(team_index, j)]
-        player_skill_col_prefix = COLUMN_SEPARATOR.join(
-            [player_col_prefix, SKILL_COLUMN_PREFIX, year_col]
-        )
-        player_mu_col = COLUMN_SEPARATOR.join(
-            [player_skill_col_prefix, SKILL_MU_COLUMN]
-        )
-        player_sigma_col = COLUMN_SEPARATOR.join(
-            [player_skill_col_prefix, SKILL_SIGMA_COLUMN]
-        )
         player = players[player_idx]
-        row[player_mu_col] = player.mu
-        row[player_sigma_col] = player.sigma
         player_team.append(player)
     return player_team
 
@@ -236,7 +225,7 @@ def _find_row_matches(
         if not team:
             continue
         team_match.append(team)
-        player_team = _find_player_team(player_count, players, row, year_col, i)
+        player_team = _find_player_team(player_count, players, row, i)
         player_match.append(player_team)
     return row, team_match, player_match
 
@@ -275,22 +264,21 @@ def _rank_player_predictions(
 ) -> pd.Series:
     rank_player_predictions = player_model.predict_rank(player_match)
     for i, (rank, prob) in enumerate(rank_player_predictions):
-        for j in range(len(player_match[i])):
-            player_skill_col_prefix = COLUMN_SEPARATOR.join(
-                [
-                    player_column_prefix(i, j),
-                    SKILL_COLUMN_PREFIX,
-                    year_col,
-                ]
-            )
-            player_ranking_col = COLUMN_SEPARATOR.join(
-                [player_skill_col_prefix, SKILL_RANKING_COLUMN]
-            )
-            player_prob_col = COLUMN_SEPARATOR.join(
-                [player_skill_col_prefix, SKILL_PROBABILITY_COLUMN]
-            )
-            row[player_ranking_col] = rank
-            row[player_prob_col] = prob
+        player_skill_col_prefix = COLUMN_SEPARATOR.join(
+            [
+                player_column_prefix(i, None),
+                SKILL_COLUMN_PREFIX,
+                year_col,
+            ]
+        )
+        player_ranking_col = COLUMN_SEPARATOR.join(
+            [player_skill_col_prefix, SKILL_RANKING_COLUMN]
+        )
+        player_prob_col = COLUMN_SEPARATOR.join(
+            [player_skill_col_prefix, SKILL_PROBABILITY_COLUMN]
+        )
+        row[player_ranking_col] = rank
+        row[player_prob_col] = prob
     return row
 
 
@@ -311,7 +299,7 @@ def _create_feature_cols(
         row = _rank_team_predictions(team_match, row, team_model, year_col)
         row = _rank_player_predictions(row, player_model, player_match, year_col)
         row = row.reindex(group.columns)
-        group.loc[index] = row.values
+        group.loc[index] = row.values  # type: ignore
     return group
 
 
@@ -323,10 +311,11 @@ class SkillFeature(Feature):
     def __init__(self, year_slices: list[int | None]) -> None:
         super().__init__()
         self._year_slices = year_slices
+        tqdm.tqdm.pandas()
+        simplefilter(action="ignore", category=pd.errors.PerformanceWarning)
+        pandarallel.initialize(progress_bar=True)
 
-    def _create_columns(
-        self, df: pd.DataFrame, team_count: int, player_count: int
-    ) -> pd.DataFrame:
+    def _create_columns(self, df: pd.DataFrame, team_count: int) -> pd.DataFrame:
         for year_slice in self._year_slices:
             year_col = str(year_slice) if year_slice is not None else "all"
             for i in range(team_count):
@@ -345,36 +334,34 @@ class SkillFeature(Feature):
                         ]
                     )
                     df[team_col] = 0.0
-                for j in range(player_count):
-                    for player_col_suffix in [
-                        SKILL_MU_COLUMN,
-                        SKILL_SIGMA_COLUMN,
-                        SKILL_RANKING_COLUMN,
-                        SKILL_PROBABILITY_COLUMN,
-                    ]:
-                        player_col = COLUMN_SEPARATOR.join(
-                            [
-                                player_column_prefix(i, j),
-                                SKILL_COLUMN_PREFIX,
-                                year_col,
-                                player_col_suffix,
-                            ]
-                        )
-                        df[player_col] = 0.0
-        return df
+                for empty_player_col_suffix in [
+                    SKILL_RANKING_COLUMN,
+                    SKILL_PROBABILITY_COLUMN,
+                ]:
+                    player_col = COLUMN_SEPARATOR.join(
+                        [
+                            player_column_prefix(i, None),
+                            SKILL_COLUMN_PREFIX,
+                            year_col,
+                            empty_player_col_suffix,
+                        ]
+                    )
+                    df[player_col] = 0.0
+        return df.copy()
 
     def process(self, df: pd.DataFrame) -> pd.DataFrame:
         """Process the dataframe and add the necessary features."""
         team_count = _find_team_count(df)
         player_count = _find_player_count(df, team_count)
-        self._create_columns(df, team_count, player_count)
+        df = self._create_columns(df, team_count)
 
-        for date, group in tqdm.tqdm(
-            df.groupby([df[FULL_GAME_DT_COLUMN].dt.date]),
-            desc="Processing Skill Features",
-        ):
+        def calculate_skills(group: pd.DataFrame) -> pd.DataFrame:
+            dates = group[FULL_GAME_DT_COLUMN].dt.date.values.tolist()
+            if not dates:
+                return group
+            date = dates[0]
             for year_slice in self._year_slices:
-                df_slice = _slice_df(df, date[0], year_slice)  # type: ignore
+                df_slice = _slice_df(df, date, year_slice)  # type: ignore
                 if df_slice.empty:
                     continue
                 team_model, teams = _create_teams(df_slice, team_count, group)
@@ -395,7 +382,8 @@ class SkillFeature(Feature):
                     (team_model, teams),
                     (player_model, players),
                 )
-                for index, row in group.iterrows():
-                    df.loc[index] = row.values
+            return group
 
-        return df
+        return df.groupby(  # type: ignore
+            [df[FULL_GAME_DT_COLUMN].dt.date]
+        ).parallel_apply(calculate_skills)

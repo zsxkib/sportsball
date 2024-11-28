@@ -28,8 +28,15 @@ def team_points_column(team_idx: int) -> str:
     return COLUMN_SEPARATOR.join([team_column_prefix(team_idx), TEAM_POINTS_COLUMN])
 
 
-def player_column_prefix(team_idx: int, player_idx: int) -> str:
+def player_column_prefix(team_idx: int, player_idx: int | None) -> str:
     """Generate a prefix for a player column at a given index."""
+    if player_idx is None:
+        return COLUMN_SEPARATOR.join(
+            [
+                team_column_prefix(team_idx),
+                PLAYER_COLUMN_SUFFIX,
+            ]
+        )
     return COLUMN_SEPARATOR.join(
         [
             team_column_prefix(team_idx),
