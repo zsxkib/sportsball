@@ -9,8 +9,8 @@ from .columns import (CATEGORICAL_COLUMNS_ATTR, COLUMN_SEPARATOR,
                       update_columns_list)
 from .model import Model
 
-VENUE_COLUMN_SUFFIX = "venue"
-IDENTIFIER_COLUMN = "identifier"
+VENUE_COLUMN_PREFIX = "venue"
+VENUE_IDENTIFIER_COLUMN = "identifier"
 NAME_COLUMN = "name"
 
 
@@ -36,7 +36,7 @@ class VenueModel(Model):
         """Render the address's dataframe."""
         # pylint: disable=duplicate-code
         data = {
-            IDENTIFIER_COLUMN: [self.identifier],
+            VENUE_IDENTIFIER_COLUMN: [self.identifier],
             NAME_COLUMN: [self.name],
         }
 
@@ -44,7 +44,7 @@ class VenueModel(Model):
         odds_columns = []
         points_columns = []
         text_columns = [NAME_COLUMN]
-        categorical_columns = [IDENTIFIER_COLUMN]
+        categorical_columns = [VENUE_IDENTIFIER_COLUMN]
 
         address = self.address
         if address is not None:
@@ -62,23 +62,23 @@ class VenueModel(Model):
                 data[column] = address_df[column].to_list()
         df = pd.DataFrame(
             data={
-                COLUMN_SEPARATOR.join([VENUE_COLUMN_SUFFIX, k]): v
+                COLUMN_SEPARATOR.join([VENUE_COLUMN_PREFIX, k]): v
                 for k, v in data.items()
             }
         )
         df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR] = list(
-            set(update_columns_list(training_exclude_columns, VENUE_COLUMN_SUFFIX))
+            set(update_columns_list(training_exclude_columns, VENUE_COLUMN_PREFIX))
         )
         df.attrs[ODDS_COLUMNS_ATTR] = sorted(
-            list(set(update_columns_list(odds_columns, VENUE_COLUMN_SUFFIX)))
+            list(set(update_columns_list(odds_columns, VENUE_COLUMN_PREFIX)))
         )
         df.attrs[POINTS_COLUMNS_ATTR] = sorted(
-            list(set(update_columns_list(points_columns, VENUE_COLUMN_SUFFIX)))
+            list(set(update_columns_list(points_columns, VENUE_COLUMN_PREFIX)))
         )
         df.attrs[TEXT_COLUMNS_ATTR] = sorted(
-            list(set(update_columns_list(points_columns, VENUE_COLUMN_SUFFIX)))
+            list(set(update_columns_list(points_columns, VENUE_COLUMN_PREFIX)))
         )
         df.attrs[CATEGORICAL_COLUMNS_ATTR] = sorted(
-            list(set(update_columns_list(points_columns, VENUE_COLUMN_SUFFIX)))
+            list(set(update_columns_list(points_columns, VENUE_COLUMN_PREFIX)))
         )
         return df

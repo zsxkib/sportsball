@@ -67,7 +67,12 @@ def _find_season_metadata(
     url: str,
     last_round_number: int,
 ) -> tuple[
-    datetime.datetime, str, int, list[tuple[str, str, int]], datetime.datetime | None
+    datetime.datetime,
+    str,
+    int,
+    list[tuple[str, str, int]],
+    datetime.datetime | None,
+    int,
 ]:
     # pylint: disable=too-many-locals,too-many-branches
     def _parse_date_text(date_text: str) -> datetime.datetime:
@@ -82,6 +87,7 @@ def _find_season_metadata(
     venue_url = None
     week = None
     team_infos: dict[str, tuple[str, int]] = {}
+    attendance = None
     for table in soup.find_all("table"):
         for tr in table.find_all("tr"):
             for td in tr.find_all("td"):
@@ -100,6 +106,11 @@ def _find_season_metadata(
                         week = int(round_text)
                     else:
                         week = last_round_number + week_addition
+                if "Attendance:" in td_text:
+                    attendance_text = td_text[
+                        td_text.find("Attendance:") + 11 :
+                    ].strip()
+                    attendance = int(attendance_text)
             team_info = _find_team_info(tr, url)
             if team_info is not None:
                 team_infos[team_info[0]] = (team_info[1], team_info[2])
@@ -110,6 +121,8 @@ def _find_season_metadata(
         raise ValueError("venue_url is null.")
     if week is None:
         raise ValueError("week is null.")
+    if attendance is None:
+        raise ValueError("attendance is null.")
 
     return (
         dt,
@@ -117,6 +130,7 @@ def _find_season_metadata(
         week,
         [(k, v[0], v[1]) for k, v in team_infos.items()],
         _find_end_dt(soup, dt),
+        attendance,
     )
 
 
@@ -178,7 +192,7 @@ class AFLAFLTablesGameModel(GameModel):
                         break
             return team_metadata
 
-        self._dt, venue_url, self._week, team_infos, self._end_dt = (
+        self._dt, venue_url, self._week, team_infos, self._end_dt, self._attendance = (
             _find_season_metadata(soup, url, last_round_number)
         )
         self._venue_url = venue_url
@@ -228,6 +242,11 @@ class AFLAFLTablesGameModel(GameModel):
     def end_dt(self) -> datetime.datetime | None:
         """Return the end time of the game."""
         return self._end_dt
+
+    @property
+    def attendance(self) -> int | None:
+        """Return the attendance at the game."""
+        return self._attendance
 
     @staticmethod
     def urls_expire_after() -> (

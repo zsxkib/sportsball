@@ -53,7 +53,7 @@ class CatboostTrainer(Trainer):
                 learning_rate=trial.suggest_float("learning_rate", 0.01, 0.3),
                 depth=trial.suggest_int("depth", 3, 10),
                 l2_leaf_reg=trial.suggest_float("l2_leaf_reg", 1.5, 4.5),
-                early_stopping_rounds=1000,
+                early_stopping_rounds=100,
                 task_type=None if not torch.cuda.is_available() else "GPU",
                 devices=None if not torch.cuda.is_available() else "0",
             )

@@ -14,12 +14,13 @@ from .model import Model
 from .team_model import TeamModel
 from .venue_model import VenueModel
 
-GAME_COLUMN_SUFFIX = "game"
+GAME_COLUMN_PREFIX = "game"
 GAME_DT_COLUMN = "dt"
 GAME_WEEK_COLUMN = "week"
 GAME_END_DT_COLUMN = "end_dt"
 GAME_NUMBER_COLUMN = "game_number"
-FULL_GAME_DT_COLUMN = COLUMN_SEPARATOR.join([GAME_COLUMN_SUFFIX, GAME_DT_COLUMN])
+GAME_ATTENDANCE_COLUMN = "attendance"
+FULL_GAME_DT_COLUMN = COLUMN_SEPARATOR.join([GAME_COLUMN_PREFIX, GAME_DT_COLUMN])
 
 
 class GameModel(Model):
@@ -69,6 +70,11 @@ class GameModel(Model):
         """Return the end time of the game."""
         return None
 
+    @property
+    def attendance(self) -> int | None:
+        """Return the attendance at the game."""
+        return None
+
     def to_frame(self) -> pd.DataFrame:
         """Render the game as a dataframe."""
         # pylint: disable=too-many-locals
@@ -101,6 +107,11 @@ class GameModel(Model):
         if end_dt is not None:
             data[GAME_END_DT_COLUMN] = [end_dt]
             training_exclude_columns.append(GAME_END_DT_COLUMN)
+
+        attendance = self.attendance
+        if attendance is not None:
+            data[GAME_ATTENDANCE_COLUMN] = [attendance]
+            training_exclude_columns.append(GAME_ATTENDANCE_COLUMN)
 
         for count, team in enumerate(self.teams):
             team_df = team.to_frame()
@@ -136,21 +147,21 @@ class GameModel(Model):
                 ].to_list()
 
         df = pd.DataFrame(
-            data={GAME_COLUMN_SUFFIX + COLUMN_SEPARATOR + k: v for k, v in data.items()}
+            data={GAME_COLUMN_PREFIX + COLUMN_SEPARATOR + k: v for k, v in data.items()}
         )
         df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR] = list(
-            set(update_columns_list(training_exclude_columns, GAME_COLUMN_SUFFIX))
+            set(update_columns_list(training_exclude_columns, GAME_COLUMN_PREFIX))
         )
         df.attrs[ODDS_COLUMNS_ATTR] = sorted(
-            list(set(update_columns_list(odds_columns, GAME_COLUMN_SUFFIX)))
+            list(set(update_columns_list(odds_columns, GAME_COLUMN_PREFIX)))
         )
         df.attrs[POINTS_COLUMNS_ATTR] = sorted(
-            list(set(update_columns_list(points_columns, GAME_COLUMN_SUFFIX)))
+            list(set(update_columns_list(points_columns, GAME_COLUMN_PREFIX)))
         )
         df.attrs[TEXT_COLUMNS_ATTR] = sorted(
-            list(set(update_columns_list(text_columns, GAME_COLUMN_SUFFIX)))
+            list(set(update_columns_list(text_columns, GAME_COLUMN_PREFIX)))
         )
         df.attrs[CATEGORICAL_COLUMNS_ATTR] = sorted(
-            list(set(update_columns_list(categorical_columns, GAME_COLUMN_SUFFIX)))
+            list(set(update_columns_list(categorical_columns, GAME_COLUMN_PREFIX)))
         )
         return df

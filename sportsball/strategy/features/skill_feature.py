@@ -11,9 +11,9 @@ from pandarallel import pandarallel  # type: ignore
 
 from ...data.columns import COLUMN_SEPARATOR
 from ...data.game_model import FULL_GAME_DT_COLUMN
-from .columns import (player_column_prefix, player_identifier_column,
-                      team_column_prefix, team_identifier_column,
-                      team_points_column)
+from .columns import (find_team_count, player_column_prefix,
+                      player_identifier_column, team_column_prefix,
+                      team_identifier_column, team_points_column)
 from .feature import Feature
 
 SKILL_COLUMN_PREFIX = "skill"
@@ -21,15 +21,6 @@ SKILL_MU_COLUMN = "mu"
 SKILL_SIGMA_COLUMN = "sigma"
 SKILL_RANKING_COLUMN = "ranking"
 SKILL_PROBABILITY_COLUMN = "probability"
-
-
-def _find_team_count(df: pd.DataFrame) -> int:
-    team_count = 0
-    while True:
-        if team_identifier_column(team_count) not in df.columns.values:
-            break
-        team_count += 1
-    return team_count
 
 
 def _find_player_count(df: pd.DataFrame, team_count: int) -> int:
@@ -351,7 +342,7 @@ class SkillFeature(Feature):
 
     def process(self, df: pd.DataFrame) -> pd.DataFrame:
         """Process the dataframe and add the necessary features."""
-        team_count = _find_team_count(df)
+        team_count = find_team_count(df)
         player_count = _find_player_count(df, team_count)
         df = self._create_columns(df, team_count)
 

@@ -15,7 +15,7 @@ from sklearn.metrics import accuracy_score, recall_score
 from ..data.columns import (CATEGORICAL_COLUMNS_ATTR, COLUMN_SEPARATOR,
                             ODDS_COLUMNS_ATTR, POINTS_COLUMNS_ATTR,
                             TEXT_COLUMNS_ATTR, TRAINING_EXCLUDE_COLUMNS_ATTR)
-from ..data.game_model import (GAME_COLUMN_SUFFIX, GAME_DT_COLUMN,
+from ..data.game_model import (GAME_COLUMN_PREFIX, GAME_DT_COLUMN,
                                GAME_WEEK_COLUMN)
 from .features import CombinedFeature
 from .reducers import CombinedReducer
@@ -30,8 +30,8 @@ def _next_week_dt(
 ) -> datetime.datetime | None:
     if df.empty:
         return None
-    week_column = COLUMN_SEPARATOR.join([GAME_COLUMN_SUFFIX, GAME_WEEK_COLUMN])
-    dt_column = COLUMN_SEPARATOR.join([GAME_COLUMN_SUFFIX, GAME_DT_COLUMN])
+    week_column = COLUMN_SEPARATOR.join([GAME_COLUMN_PREFIX, GAME_WEEK_COLUMN])
+    dt_column = COLUMN_SEPARATOR.join([GAME_COLUMN_PREFIX, GAME_DT_COLUMN])
     if current_dt is not None:
         df = df[df[dt_column] >= current_dt]
     current_week = df.iloc[0][week_column]
@@ -64,8 +64,8 @@ class Strategy:
         self._features = CombinedFeature()
         self._reducers = CombinedReducer(
             [
-                COLUMN_SEPARATOR.join([GAME_COLUMN_SUFFIX, GAME_WEEK_COLUMN]),
-                COLUMN_SEPARATOR.join([GAME_COLUMN_SUFFIX, GAME_DT_COLUMN]),
+                COLUMN_SEPARATOR.join([GAME_COLUMN_PREFIX, GAME_WEEK_COLUMN]),
+                COLUMN_SEPARATOR.join([GAME_COLUMN_PREFIX, GAME_DT_COLUMN]),
             ]
         )
         os.makedirs(name, exist_ok=True)
@@ -86,7 +86,7 @@ class Strategy:
     def fit(self, start_dt: datetime.datetime | None = None):
         """Fits the strategy to the dataset by walking forward."""
         # pylint: disable=too-many-statements
-        dt_column = COLUMN_SEPARATOR.join([GAME_COLUMN_SUFFIX, GAME_DT_COLUMN])
+        dt_column = COLUMN_SEPARATOR.join([GAME_COLUMN_PREFIX, GAME_DT_COLUMN])
 
         if start_dt is None:
             start_dt = max(
@@ -182,7 +182,7 @@ class Strategy:
 
     def predict(self, start_dt: datetime.datetime | None = None) -> pd.DataFrame:
         """Predict the results from walk-forward."""
-        dt_column = COLUMN_SEPARATOR.join([GAME_COLUMN_SUFFIX, GAME_DT_COLUMN])
+        dt_column = COLUMN_SEPARATOR.join([GAME_COLUMN_PREFIX, GAME_DT_COLUMN])
 
         if start_dt is None:
             start_dt = max(
@@ -237,7 +237,7 @@ class Strategy:
     def returns(self) -> pd.Series:
         """Render the returns of the strategy."""
         df = self.predict()
-        dt_column = COLUMN_SEPARATOR.join([GAME_COLUMN_SUFFIX, GAME_DT_COLUMN])
+        dt_column = COLUMN_SEPARATOR.join([GAME_COLUMN_PREFIX, GAME_DT_COLUMN])
         points_cols = sorted(list(set(self._df.attrs[POINTS_COLUMNS_ATTR])))
         for points_col in points_cols:
             df[points_col] = self._df[points_col]
