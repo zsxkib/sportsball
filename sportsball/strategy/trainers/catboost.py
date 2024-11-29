@@ -8,6 +8,7 @@ import optuna
 import pandas as pd
 import torch
 from catboost import CatBoostClassifier, Pool  # type: ignore
+from optuna.integration import CatBoostPruningCallback  # type: ignore
 
 from ..weights import WEIGHTS, CombinedWeight
 from .output_column import OUTPUT_COLUMN, output_prob_column
@@ -17,6 +18,7 @@ _MODEL_FILENAME = "model.cbm"
 _USR_ATTR_FILENAME = "usr_attr.json"
 _BOOTSTRAP_TYPE_BAYESIAN = "Bayesian"
 _BOOTSTRAP_TYPE_BERNOULLI = "Bernoulli"
+_OBJECTIVE_LOGLOSS = "Logloss"
 
 
 class CatboostTrainer(Trainer):
@@ -55,20 +57,26 @@ class CatboostTrainer(Trainer):
             bagging_temperature = None
             subsample = None
             if bootstrap_type == _BOOTSTRAP_TYPE_BAYESIAN:
-                bagging_temperature = trial.suggest_float("bagging_temperature", 0, 10)
+                bagging_temperature = trial.suggest_float(
+                    "bagging_temperature", 0.0, 10.0
+                )
             elif bootstrap_type == _BOOTSTRAP_TYPE_BERNOULLI:
-                subsample = trial.suggest_float("subsample", 0.1, 1)
+                subsample = trial.suggest_float("subsample", 0.1, 1.0)
+            objective = trial.suggest_categorical(
+                "objective", [_OBJECTIVE_LOGLOSS, "CrossEntropy"]
+            )
+            random_strength = None
+            if objective == _OBJECTIVE_LOGLOSS:
+                random_strength = trial.suggest_uniform("random_strength", 0.5, 5.0)
             self._model = CatBoostClassifier(
                 iterations=trial.suggest_int("iterations", 100, 10000),
-                learning_rate=trial.suggest_float("learning_rate", 0.01, 0.3),
+                learning_rate=trial.suggest_float("learning_rate", 0.001, 0.3),
                 depth=trial.suggest_int("depth", 1, 12),
-                l2_leaf_reg=trial.suggest_float("l2_leaf_reg", 1.5, 4.5),
+                l2_leaf_reg=trial.suggest_float("l2_leaf_reg", 3.0, 50.0),
                 early_stopping_rounds=100,
                 task_type=None if not torch.cuda.is_available() else "GPU",
                 devices=None if not torch.cuda.is_available() else "0",
-                objective=trial.suggest_categorical(
-                    "objective", ["Logloss", "CrossEntropy"]
-                ),
+                objective=objective,
                 colsample_bylevel=trial.suggest_float("colsample_bylevel", 0.01, 0.1),
                 boosting_type=trial.suggest_categorical(
                     "boosting_type", ["Ordered", "Plain"]
@@ -76,6 +84,7 @@ class CatboostTrainer(Trainer):
                 bootstrap_type=bootstrap_type,
                 bagging_temperature=bagging_temperature,
                 subsample=subsample,
+                random_strength=random_strength,
             )
 
     @property
@@ -98,7 +107,17 @@ class CatboostTrainer(Trainer):
         y_train, y_test = y
         train_pool = self._create_pool(x_train, y_train)  # type: ignore
         eval_pool = self._create_pool(x_test, y_test)  # type: ignore
-        self._model.fit(train_pool, eval_set=eval_pool, early_stopping_rounds=100)
+        callbacks = []
+        if self._trial is not None:
+            callbacks.append(CatBoostPruningCallback(self._trial, "Accuracy"))  # type: ignore
+        self._model.fit(
+            train_pool,
+            eval_set=eval_pool,
+            early_stopping_rounds=100,
+            callbacks=callbacks,
+        )
+        if callbacks:
+            callbacks[0].check_pruned()
         feature_importances = self._model.get_feature_importance(prettified=True)
         print(feature_importances)
 

@@ -30,6 +30,7 @@ class Trainer:
     ) -> None:
         self._folder = folder
         self._test_size = 0.2
+        self._trial = trial
         if trial is not None:
             self._test_size = trial.suggest_float("test_size", 0.0, 0.5)
 
