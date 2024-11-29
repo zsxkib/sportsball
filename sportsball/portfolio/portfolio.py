@@ -2,9 +2,10 @@
 
 import os
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import quantstats as qs  # type: ignore
+import pyfolio as pf  # type: ignore
 from fullmonte import plot, simulate  # type: ignore
 from skfolio import RiskMeasure  # type: ignore
 from skfolio.optimization import MeanRisk, ObjectiveFunction  # type: ignore
@@ -49,11 +50,17 @@ class Portfolio:
         ret.index = ret.index.tz_localize("UTC")  # type: ignore
         return ret
 
-    def render(self, returns: pd.Series):
+    def render(self, returns: pd.DataFrame, start_money: float = 100000.0):
         """Renders the statistics of the portfolio."""
-        df = returns.to_frame()
-        df["returns"] = df[[returns.name]]
-        qs.extend_pandas()
-        qs.reports.html(df, "SPY", output=os.path.join(self._name, "test.html"))
-        df = simulate(returns)
-        plot(df)
+        for col in returns.columns.values:
+            series = returns[col]
+            series = series[
+                series.index >= series.where(series != 0.0).first_valid_index()
+            ]
+            pf.create_full_tear_sheet(series)
+            plt.savefig(os.path.join(self._name, f"{col}_tear_sheet.png"), dpi=300)
+            ret = np.concatenate(
+                (np.array([start_money]), series.to_numpy().flatten() + 1.0)
+            ).cumprod()
+            plot(simulate(pd.Series(ret)))
+            plt.savefig(os.path.join(self._name, f"{col}_monte_carlo.png"), dpi=300)

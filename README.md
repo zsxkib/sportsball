@@ -27,7 +27,6 @@ Python 3.11.6:
 - [pyarrow](https://arrow.apache.org/docs/python/index.html)
 - [scikit-learn](https://scikit-learn.org/)
 - [skfolio](https://skfolio.org/)
-- [quantstats](https://github.com/ranaroussi/quantstats)
 - [fullmonte](https://github.com/8W9aG/fullmonte)
 - [ipython](https://ipython.org/)
 - [scipy](https://scipy.org/)
@@ -35,6 +34,8 @@ Python 3.11.6:
 - [dateutil](https://github.com/dateutil/dateutil)
 - [pytorch](https://pytorch.org/)
 - [pandarallel](https://nalepae.github.io/pandarallel/)
+- [pyfolio-reloaded](https://github.com/stefan-jansen/pyfolio-reloaded)
+- [matplotlib](https://matplotlib.org/)
 
 ## Raison D'être :thought_balloon:
 
