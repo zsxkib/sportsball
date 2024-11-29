@@ -153,7 +153,7 @@ class AFLAFLTablesGameModel(GameModel):
 
         def _find_teams_metadata(
             soup: BeautifulSoup, team_infos: list[tuple[str, str, int]]
-        ) -> list[tuple[str, list[tuple[str, str]], int]]:
+        ) -> list[tuple[str, list[tuple[str, str, int | None]], int]]:
             def _is_correct_table(table: Tag, name: str) -> bool:
                 for th in table.find_all("th"):
                     header_text = th.get_text().strip()
@@ -161,8 +161,8 @@ class AFLAFLTablesGameModel(GameModel):
                         return True
                 return False
 
-            def _find_players(table: Tag) -> list[tuple[str, str]]:
-                players: list[tuple[str, str]] = []
+            def _find_players(table: Tag) -> list[tuple[str, str, int | None]]:
+                players: list[tuple[str, str, int | None]] = []
                 for tr in table.find_all("tr"):
                     player_row = False
                     player_url = None
@@ -173,14 +173,19 @@ class AFLAFLTablesGameModel(GameModel):
                             player_row = True
                     if player_row and player_url is not None:
                         jersey = None
-                        for td in tr.find_all("td"):
-                            jersey = td.get_text().strip()
-                            break
+                        kicks = None
+                        for count, td in enumerate(tr.find_all("td")):
+                            if count == 0:
+                                jersey = td.get_text().strip()
+                            elif count == 2:
+                                kicks_text = td.get_text().strip()
+                                if kicks_text:
+                                    kicks = int(kicks_text)
 
                         if jersey is None:
                             raise ValueError("jersey is null.")
 
-                        players.append((player_url, jersey))
+                        players.append((player_url, jersey, kicks))
                 return players
 
             team_metadata = []

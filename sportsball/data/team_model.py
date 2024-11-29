@@ -13,7 +13,7 @@ from .model import Model
 from .odds_model import OddsModel
 from .player_model import PlayerModel
 
-TEAM_COLUMN_SUFFIX = "team"
+TEAM_COLUMN_PREFIX = "team"
 TEAM_POINTS_COLUMN = "points"
 TEAM_IDENTIFIER_COLUMN = "identifier"
 NAME_COLUMN = "name"
@@ -148,21 +148,21 @@ class TeamModel(Model):
             categorical_columns.append(LOCATION_COLUMN)
 
         df = pd.DataFrame(
-            data={TEAM_COLUMN_SUFFIX + COLUMN_SEPARATOR + k: v for k, v in data.items()}
+            data={TEAM_COLUMN_PREFIX + COLUMN_SEPARATOR + k: v for k, v in data.items()}
         )
         df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR] = list(
-            set(update_columns_list(training_exclude_columns, TEAM_COLUMN_SUFFIX))
+            set(update_columns_list(training_exclude_columns, TEAM_COLUMN_PREFIX))
         )
         df.attrs[ODDS_COLUMNS_ATTR] = sorted(
-            list(set(update_columns_list(odds_columns, TEAM_COLUMN_SUFFIX)))
+            list(set(update_columns_list(odds_columns, TEAM_COLUMN_PREFIX)))
         )
         df.attrs[POINTS_COLUMNS_ATTR] = sorted(
-            list(set(update_columns_list(points_columns, TEAM_COLUMN_SUFFIX)))
+            list(set(update_columns_list(points_columns, TEAM_COLUMN_PREFIX)))
         )
         df.attrs[TEXT_COLUMNS_ATTR] = sorted(
-            list(set(update_columns_list(text_columns, TEAM_COLUMN_SUFFIX)))
+            list(set(update_columns_list(text_columns, TEAM_COLUMN_PREFIX)))
         )
         df.attrs[CATEGORICAL_COLUMNS_ATTR] = sorted(
-            list(set(update_columns_list(categorical_columns, TEAM_COLUMN_SUFFIX)))
+            list(set(update_columns_list(categorical_columns, TEAM_COLUMN_PREFIX)))
         )
         return df

@@ -19,7 +19,7 @@ class AFLAFLTablesTeamModel(TeamModel):
     def __init__(
         self,
         team_url: str,
-        players: list[tuple[str, str]],
+        players: list[tuple[str, str, int | None]],
         points: float,
         session: requests_cache.CachedSession,
     ) -> None:
@@ -41,8 +41,8 @@ class AFLAFLTablesTeamModel(TeamModel):
     def players(self) -> Sequence[PlayerModel]:
         if len(self._players) < len(self._players_info):
             self._players = [
-                AFLAFLTablesPlayerModel(self.session, player_url, jersey)
-                for player_url, jersey in self._players_info
+                AFLAFLTablesPlayerModel(self.session, player_url, jersey, kicks)
+                for player_url, jersey, kicks in self._players_info
             ]
         return self._players
 

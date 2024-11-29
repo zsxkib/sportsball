@@ -4,8 +4,10 @@ import pandas as pd
 
 from ...data.columns import COLUMN_SEPARATOR
 from ...data.game_model import GAME_ATTENDANCE_COLUMN, GAME_COLUMN_PREFIX
-from ...data.player_model import PLAYER_COLUMN_SUFFIX, PLAYER_IDENTIFIER_COLUMN
-from ...data.team_model import (TEAM_COLUMN_SUFFIX, TEAM_IDENTIFIER_COLUMN,
+from ...data.player_model import (PLAYER_COLUMN_PREFIX,
+                                  PLAYER_IDENTIFIER_COLUMN,
+                                  PLAYER_KICKS_COLUMN)
+from ...data.team_model import (TEAM_COLUMN_PREFIX, TEAM_IDENTIFIER_COLUMN,
                                 TEAM_POINTS_COLUMN)
 from ...data.venue_model import VENUE_COLUMN_PREFIX, VENUE_IDENTIFIER_COLUMN
 
@@ -16,7 +18,7 @@ def team_column_prefix(team_idx: int) -> str:
         [
             GAME_COLUMN_PREFIX,
             str(team_idx),
-            TEAM_COLUMN_SUFFIX,
+            TEAM_COLUMN_PREFIX,
         ]
     )
 
@@ -37,14 +39,14 @@ def player_column_prefix(team_idx: int, player_idx: int | None) -> str:
         return COLUMN_SEPARATOR.join(
             [
                 team_column_prefix(team_idx),
-                PLAYER_COLUMN_SUFFIX,
+                PLAYER_COLUMN_PREFIX,
             ]
         )
     return COLUMN_SEPARATOR.join(
         [
             team_column_prefix(team_idx),
             str(player_idx),
-            PLAYER_COLUMN_SUFFIX,
+            PLAYER_COLUMN_PREFIX,
         ]
     )
 
@@ -71,8 +73,30 @@ def find_team_count(df: pd.DataFrame) -> int:
     return team_count
 
 
+def find_player_count(df: pd.DataFrame, team_count: int) -> int:
+    """Find the number of players in a team in the dataframe."""
+    player_count = 0
+    while True:
+        found_player = False
+        for i in range(team_count):
+            if player_identifier_column(i, player_count) not in df.columns.values:
+                continue
+            found_player = True
+        if not found_player:
+            break
+        player_count += 1
+    return player_count
+
+
 def venue_identifier_column() -> str:
     """Generate a venue identifier column."""
     return COLUMN_SEPARATOR.join(
         [GAME_COLUMN_PREFIX, VENUE_COLUMN_PREFIX, VENUE_IDENTIFIER_COLUMN]
+    )
+
+
+def kick_column(team_idx: int, player_idx: int) -> str:
+    """Generate a kick column."""
+    return COLUMN_SEPARATOR.join(
+        [player_column_prefix(team_idx, player_idx), PLAYER_KICKS_COLUMN]
     )
