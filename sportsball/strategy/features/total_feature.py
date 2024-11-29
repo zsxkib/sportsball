@@ -2,6 +2,7 @@
 
 # pylint: disable=comparison-with-itself
 import pandas as pd
+import tqdm
 
 from ...data.columns import COLUMN_SEPARATOR
 from ...data.venue_model import VENUE_COLUMN_PREFIX
@@ -24,14 +25,17 @@ def _process_player_team_games(df: pd.DataFrame, cols: list[str]) -> pd.DataFram
                 [TOTAL_COLUMN_PREFIX, player_column_prefix(i, j), TOTAL_GAMES_COLUMN]
             )
             df[total_attendance_col] = None
-    for row in df[cols].itertuples():
+    for row in tqdm.tqdm(df.itertuples(), desc="Processing player team games total"):
         for i in range(team_count):
             team_idx = row[cols.index(team_identifier_column(i)) + 1]
             # Check for NaNs
             if team_idx != team_idx:
                 continue
             for j in range(player_count):
-                player_idx = row[cols.index(player_identifier_column(i, j)) + 1]
+                player_col = player_identifier_column(i, j)
+                if player_col not in cols:
+                    continue
+                player_idx = row[cols.index(player_col) + 1]
                 # Check for NaNs
                 if player_idx != player_idx:
                     continue
@@ -65,7 +69,7 @@ def _process_team_venue_games(df: pd.DataFrame, cols: list[str]) -> pd.DataFrame
         )
         df[total_venue_col] = None
     venue_team_games: dict[str, int] = {}
-    for row in df[cols].itertuples():
+    for row in tqdm.tqdm(df.itertuples(), desc="Processing team venue games total"):
         for i in range(team_count):
             team_idx = row[cols.index(team_identifier_column(i)) + 1]
             # Check for NaNs
