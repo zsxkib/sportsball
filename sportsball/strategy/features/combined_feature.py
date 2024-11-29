@@ -25,7 +25,7 @@ class CombinedFeature(Feature):
         super().__init__()
         if pretrain_features is None:
             pretrain_features = [
-                SkillFeature(year_slices=[1, 2, 4, 8]),
+                SkillFeature(year_slices=[None, 1, 2, 4, 8]),
                 LagFeature(),
                 TotalFeature(),
             ]

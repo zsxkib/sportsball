@@ -11,7 +11,7 @@ from catboost import CatBoostClassifier  # type: ignore
 from catboost import EFeaturesSelectionAlgorithm, EShapCalcType, Pool
 from optuna.integration import CatBoostPruningCallback  # type: ignore
 
-from ...data.columns import GOLDEN_FEATURES_COLUMNS_ATTR
+# from ...data.columns import GOLDEN_FEATURES_COLUMNS_ATTR
 from ..weights import WEIGHTS, CombinedWeight
 from .output_column import OUTPUT_COLUMN, output_prob_column
 from .trainer import HASH_USR_ATTR, Trainer
@@ -227,6 +227,7 @@ class CatboostTrainer(Trainer):
         return summary["selected_features_names"]
 
     def _create_pool(self, x: pd.DataFrame, y: pd.DataFrame | None) -> Pool:
+        # pylint: disable=pointless-string-statement
         text_features = list(set(x.columns.values) & set(self._text_features))
         x[text_features] = x[text_features].fillna("").astype(str)
         cat_features = list(set(x.columns.values) & set(self._categorical_features))
@@ -241,6 +242,7 @@ class CatboostTrainer(Trainer):
             text_features=text_features,
             weight=weight,
         )
+        """
         if self._golden_feature_border_count is not None:
             # pylint: disable=line-too-long
             pool.quantize(
@@ -259,4 +261,5 @@ class CatboostTrainer(Trainer):
                 input_borders=os.path.join(self._folder, _BORDERS_TSV_FILENAME),
                 task_type=None if not torch.cuda.is_available() else "GPU",
             )
+        """
         return pool

@@ -21,6 +21,7 @@ SKILL_MU_COLUMN = "mu"
 SKILL_SIGMA_COLUMN = "sigma"
 SKILL_RANKING_COLUMN = "ranking"
 SKILL_PROBABILITY_COLUMN = "probability"
+YEAR_SLICE_ALL = "all"
 
 
 def _slice_df(
@@ -280,6 +281,22 @@ def _create_feature_cols(
     return group
 
 
+def _create_all_features(
+    df: pd.DataFrame, team_count: int, player_count: int
+) -> pd.DataFrame:
+    team_model, teams = _create_teams(df, team_count, df)
+    player_model, players = _create_player_teams(df, team_count, player_count, df)
+    for index, row in tqdm.tqdm(df.iterrows(), desc="Create all skills features."):
+        row, team_match, player_match = _find_row_matches(
+            row, (team_count, player_count), YEAR_SLICE_ALL, teams, players
+        )
+        row = _rank_team_predictions(team_match, row, team_model, YEAR_SLICE_ALL)
+        row = _rank_player_predictions(row, player_model, player_match, YEAR_SLICE_ALL)
+        row = row.reindex(df.columns)
+        df.loc[index] = row.values  # type: ignore
+    return df
+
+
 class SkillFeature(Feature):
     """The skill feature extractor class."""
 
@@ -295,7 +312,7 @@ class SkillFeature(Feature):
     def _create_columns(self, df: pd.DataFrame, team_count: int) -> pd.DataFrame:
         golden_features = df.attrs.get(GOLDEN_FEATURES_COLUMNS_ATTR, [])
         for year_slice in self._year_slices:
-            year_col = str(year_slice) if year_slice is not None else "all"
+            year_col = str(year_slice) if year_slice is not None else YEAR_SLICE_ALL
             for i in range(team_count):
                 for team_col_suffix in [
                     SKILL_MU_COLUMN,
@@ -336,6 +353,7 @@ class SkillFeature(Feature):
         team_count = find_team_count(df)
         player_count = find_player_count(df, team_count)
         df = self._create_columns(df, team_count)
+        df = _create_all_features(df, team_count, player_count)
 
         def calculate_skills(group: pd.DataFrame) -> pd.DataFrame:
             dates = group[FULL_GAME_DT_COLUMN].dt.date.values.tolist()
