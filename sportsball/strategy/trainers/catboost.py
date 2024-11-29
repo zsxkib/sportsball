@@ -86,7 +86,7 @@ class CatboostTrainer(Trainer):
                 task_type=None if not torch.cuda.is_available() else "GPU",
                 devices=None if not torch.cuda.is_available() else "0",
                 objective=objective,
-                colsample_bylevel=trial.suggest_float("colsample_bylevel", 0.01, 0.1),
+                # colsample_bylevel=trial.suggest_float("colsample_bylevel", 0.01, 0.1),
                 boosting_type=trial.suggest_categorical(
                     "boosting_type", ["Ordered", "Plain"]
                 ),
