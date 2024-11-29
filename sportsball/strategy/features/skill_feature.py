@@ -353,7 +353,8 @@ class SkillFeature(Feature):
         team_count = find_team_count(df)
         player_count = find_player_count(df, team_count)
         df = self._create_columns(df, team_count)
-        df = _create_all_features(df, team_count, player_count)
+        if None in self._year_slices:
+            df = _create_all_features(df, team_count, player_count)
 
         def calculate_skills(group: pd.DataFrame) -> pd.DataFrame:
             dates = group[FULL_GAME_DT_COLUMN].dt.date.values.tolist()
@@ -361,6 +362,8 @@ class SkillFeature(Feature):
                 return group
             date = dates[0]
             for year_slice in self._year_slices:
+                if year_slice == YEAR_SLICE_ALL:
+                    continue
                 df_slice = _slice_df(df, date, year_slice)  # type: ignore
                 if df_slice.empty:
                     continue
