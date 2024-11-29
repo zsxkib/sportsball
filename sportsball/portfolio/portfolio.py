@@ -1,5 +1,6 @@
 """The portfolio class."""
 
+import datetime
 import os
 
 import matplotlib.pyplot as plt
@@ -50,8 +51,15 @@ class Portfolio:
         ret.index = ret.index.tz_localize("UTC")  # type: ignore
         return ret
 
-    def render(self, returns: pd.DataFrame, start_money: float = 100000.0):
+    def render(
+        self,
+        returns: pd.DataFrame,
+        start_money: float = 100000.0,
+        from_date: datetime.datetime | None = None,
+    ):
         """Renders the statistics of the portfolio."""
+        if from_date is not None:
+            returns = returns[returns.index >= from_date]
         for col in returns.columns.values:
             series = returns[col]
             series = series[
