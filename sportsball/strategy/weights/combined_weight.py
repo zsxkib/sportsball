@@ -22,6 +22,7 @@ class CombinedWeight(Weight):
     """Combined weight class."""
 
     def __init__(self, weight_name: str) -> None:
+        self.weight_name = weight_name
         self._class_weight = ClassWeight()
         self._weight = WEIGHTS[weight_name]()
 

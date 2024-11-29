@@ -1,5 +1,6 @@
 """A feature extractor combining many sub feature extractors."""
 
+import numpy as np
 import pandas as pd
 
 from ...data.columns import TRAINING_EXCLUDE_COLUMNS_ATTR
@@ -44,4 +45,4 @@ class CombinedFeature(Feature):
         ]
         for feature in self._posttrain_features:
             df = feature.process(df)
-        return df
+        return df.replace([np.inf, -np.inf], np.nan)

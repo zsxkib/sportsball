@@ -7,7 +7,8 @@ from typing import Any
 import optuna
 import pandas as pd
 import torch
-from catboost import CatBoostClassifier, Pool  # type: ignore
+from catboost import CatBoostClassifier  # type: ignore
+from catboost import EFeaturesSelectionAlgorithm, EShapCalcType, Pool
 from optuna.integration import CatBoostPruningCallback  # type: ignore
 
 from ...data.columns import GOLDEN_FEATURES_COLUMNS_ATTR
@@ -35,6 +36,7 @@ class CatboostTrainer(Trainer):
         text_features: list[str],
         trial: optuna.trial.Trial | optuna.trial.FrozenTrial | None = None,
     ) -> None:
+        # pylint: disable=too-many-locals
         super().__init__(folder, trial=trial)
         self._categorical_features = categorical_features
         self._text_features = text_features
@@ -53,16 +55,22 @@ class CatboostTrainer(Trainer):
                 devices=None if not torch.cuda.is_available() else "0",
             )
         else:
+            print("Catboost Trial:")
+            print(f"Golden Features Border Count: {self._golden_feature_border_count}")
             self._features_ratio = trial.suggest_float("features_ratio", 0.1, 0.9)
+            print(f"Features Ratio: {self._features_ratio}")
             self._steps = trial.suggest_int("steps", 1, 10)
+            print(f"Steps: {self._steps}")
             self._weight = CombinedWeight(
                 trial.suggest_categorical("weight", list(WEIGHTS.keys()))
             )
+            print(f"Weight: {self._weight.weight_name}")
             self._usr_attrs = trial.user_attrs
             bootstrap_type = trial.suggest_categorical(
                 "bootstrap_type",
                 [_BOOTSTRAP_TYPE_BAYESIAN, _BOOTSTRAP_TYPE_BERNOULLI, "MVS"],
             )
+            print(f"Bootstrap Type: {bootstrap_type}")
             bagging_temperature = None
             subsample = None
             if bootstrap_type == _BOOTSTRAP_TYPE_BAYESIAN:
@@ -71,25 +79,43 @@ class CatboostTrainer(Trainer):
                 )
             elif bootstrap_type == _BOOTSTRAP_TYPE_BERNOULLI:
                 subsample = trial.suggest_float("subsample", 0.1, 1.0)
+            print(f"Bagging Temperature: {bagging_temperature}")
+            print(f"Subsample: {subsample}")
             objective = trial.suggest_categorical(
                 "objective", [_OBJECTIVE_LOGLOSS, "CrossEntropy"]
             )
+            print(f"Objective: {objective}")
             random_strength = None
             if objective == _OBJECTIVE_LOGLOSS:
                 random_strength = trial.suggest_uniform("random_strength", 0.5, 5.0)
+            print(f"Random Strength: {random_strength}")
+            iterations = trial.suggest_int("iterations", 100, 10000)
+            print(f"Iterations: {iterations}")
+            learning_rate = trial.suggest_float("learning_rate", 0.001, 0.3)
+            print(f"Learning Rate: {learning_rate}")
+            depth = trial.suggest_int("depth", 1, 12)
+            print(f"Depth: {depth}")
+            l2_leaf_reg = trial.suggest_float("l2_leaf_reg", 3.0, 50.0)
+            print(f"L2 Leaf Reg: {l2_leaf_reg}")
+            task_type = None if not torch.cuda.is_available() else "GPU"
+            print(f"Task Type: {task_type}")
+            devices = None if not torch.cuda.is_available() else "0"
+            print(f"Devices: {devices}")
+            boosting_type = trial.suggest_categorical(
+                "boosting_type", ["Ordered", "Plain"]
+            )
+            print(f"Boosting Type: {boosting_type}")
             self._model = CatBoostClassifier(
-                iterations=trial.suggest_int("iterations", 100, 10000),
-                learning_rate=trial.suggest_float("learning_rate", 0.001, 0.3),
-                depth=trial.suggest_int("depth", 1, 12),
-                l2_leaf_reg=trial.suggest_float("l2_leaf_reg", 3.0, 50.0),
+                iterations=iterations,
+                learning_rate=learning_rate,
+                depth=depth,
+                l2_leaf_reg=l2_leaf_reg,
                 early_stopping_rounds=100,
-                task_type=None if not torch.cuda.is_available() else "GPU",
-                devices=None if not torch.cuda.is_available() else "0",
+                task_type=task_type,
+                devices=devices,
                 objective=objective,
                 # colsample_bylevel=trial.suggest_float("colsample_bylevel", 0.01, 0.1),
-                boosting_type=trial.suggest_categorical(
-                    "boosting_type", ["Ordered", "Plain"]
-                ),
+                boosting_type=boosting_type,
                 bootstrap_type=bootstrap_type,
                 bagging_temperature=bagging_temperature,
                 subsample=subsample,
@@ -195,6 +221,8 @@ class CatboostTrainer(Trainer):
             train_final_model=True,
             features_for_select=x_train.columns.values,
             eval_set=eval_pool,
+            algorithm=EFeaturesSelectionAlgorithm.RecursiveByShapValues,
+            shap_calc_type=EShapCalcType.Regular,
         )
         return summary["selected_features_names"]
 
@@ -223,10 +251,12 @@ class CatboostTrainer(Trainer):
                 ],
                 task_type=None if not torch.cuda.is_available() else "GPU",
             )
-            pool.save_quantization_borders(_BORDERS_TSV_FILENAME)
+            pool.save_quantization_borders(
+                os.path.join(self._folder, _BORDERS_TSV_FILENAME)
+            )
         else:
             pool.quantize(
-                input_borders=_BORDERS_TSV_FILENAME,
+                input_borders=os.path.join(self._folder, _BORDERS_TSV_FILENAME),
                 task_type=None if not torch.cuda.is_available() else "GPU",
             )
         return pool
