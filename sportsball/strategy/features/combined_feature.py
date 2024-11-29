@@ -5,8 +5,10 @@ import pandas as pd
 from ...data.columns import TRAINING_EXCLUDE_COLUMNS_ATTR
 from .datetime_feature import DatetimeFeature
 from .feature import Feature
+from .lag_feature import LagFeature
 from .ordinal_feature import OrdinalFeature
 from .skill_feature import SkillFeature
+from .total_feature import TotalFeature
 
 
 class CombinedFeature(Feature):
@@ -23,6 +25,8 @@ class CombinedFeature(Feature):
         if pretrain_features is None:
             pretrain_features = [
                 SkillFeature(year_slices=[1, 2, 4, 8]),
+                LagFeature(),
+                TotalFeature(),
             ]
         if posttrain_features is None:
             posttrain_features = [
