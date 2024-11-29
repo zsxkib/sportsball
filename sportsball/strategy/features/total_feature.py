@@ -1,5 +1,6 @@
 """The total feature extractor."""
 
+# pylint: disable=comparison-with-itself
 import pandas as pd
 
 from ...data.columns import COLUMN_SEPARATOR
@@ -26,9 +27,14 @@ def _process_player_team_games(df: pd.DataFrame, cols: list[str]) -> pd.DataFram
     for row in df[cols].itertuples():
         for i in range(team_count):
             team_idx = row[cols.index(team_identifier_column(i)) + 1]
+            # Check for NaNs
+            if team_idx != team_idx:
+                continue
             for j in range(player_count):
                 player_idx = row[cols.index(player_identifier_column(i, j)) + 1]
-                print(f"team_idx: {team_idx} player_idx: {player_idx} row: {row}")
+                # Check for NaNs
+                if player_idx != player_idx:
+                    continue
                 key = "-".join([team_idx, player_idx])
                 count = player_team_games.get(key, 0)
                 total_attendance_col = COLUMN_SEPARATOR.join(
@@ -62,7 +68,13 @@ def _process_team_venue_games(df: pd.DataFrame, cols: list[str]) -> pd.DataFrame
     for row in df[cols].itertuples():
         for i in range(team_count):
             team_idx = row[cols.index(team_identifier_column(i)) + 1]
+            # Check for NaNs
+            if team_idx != team_idx:
+                continue
             venue_idx = row[cols.index(venue_identifier_column()) + 1]
+            # Check for NaNs
+            if venue_idx != venue_idx:
+                continue
             key = "-".join([team_idx, venue_idx])
             count = venue_team_games.get(key, 0)
             total_venue_col = COLUMN_SEPARATOR.join(

@@ -10,12 +10,14 @@ import torch
 from catboost import CatBoostClassifier, Pool  # type: ignore
 from optuna.integration import CatBoostPruningCallback  # type: ignore
 
+from ...data.columns import GOLDEN_FEATURES_COLUMNS_ATTR
 from ..weights import WEIGHTS, CombinedWeight
 from .output_column import OUTPUT_COLUMN, output_prob_column
 from .trainer import HASH_USR_ATTR, Trainer
 
 _MODEL_FILENAME = "model.cbm"
 _USR_ATTR_FILENAME = "usr_attr.json"
+_BORDERS_TSV_FILENAME = "borders.tsv"
 _BOOTSTRAP_TYPE_BAYESIAN = "Bayesian"
 _BOOTSTRAP_TYPE_BERNOULLI = "Bernoulli"
 _OBJECTIVE_LOGLOSS = "Logloss"
@@ -36,6 +38,13 @@ class CatboostTrainer(Trainer):
         super().__init__(folder, trial=trial)
         self._categorical_features = categorical_features
         self._text_features = text_features
+        self._golden_feature_border_count = (
+            None
+            if trial is None
+            else trial.suggest_categorical(
+                "golden_feature_border_count", [16, 32, 64, 1028]
+            )
+        )
         if trial is None:
             self._features_ratio = 0.0
             self._steps = 0
@@ -197,10 +206,27 @@ class CatboostTrainer(Trainer):
         weight = None
         if y is not None:
             weight = self._weight.process(y)
-        return Pool(
+        pool = Pool(
             x,
             label=y,
             cat_features=cat_features,
             text_features=text_features,
             weight=weight,
         )
+        if self._golden_feature_border_count is not None:
+            # pylint: disable=line-too-long
+            pool.quantize(
+                per_float_feature_quantization=[
+                    f"{x.columns.values.tolist().index(feature)}:border_count={self._golden_feature_border_count}"
+                    for feature in x.attrs.get(GOLDEN_FEATURES_COLUMNS_ATTR, [])
+                    if feature in x.columns.values
+                ],
+                task_type=None if not torch.cuda.is_available() else "GPU",
+            )
+            pool.save_quantization_borders(_BORDERS_TSV_FILENAME)
+        else:
+            pool.quantize(
+                input_borders=_BORDERS_TSV_FILENAME,
+                task_type=None if not torch.cuda.is_available() else "GPU",
+            )
+        return pool
