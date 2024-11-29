@@ -332,6 +332,7 @@ class SkillFeature(Feature):
 
     def process(self, df: pd.DataFrame) -> pd.DataFrame:
         """Process the dataframe and add the necessary features."""
+        print(f"Calculating Skills Features over the year slices: {self._year_slices}")
         team_count = find_team_count(df)
         player_count = find_player_count(df, team_count)
         df = self._create_columns(df, team_count)

@@ -28,6 +28,7 @@ def _process_player_team_games(df: pd.DataFrame, cols: list[str]) -> pd.DataFram
             team_idx = row[cols.index(team_identifier_column(i)) + 1]
             for j in range(player_count):
                 player_idx = row[cols.index(player_identifier_column(i, j)) + 1]
+                print(f"team_idx: {team_idx} player_idx: {player_idx} row: {row}")
                 key = "-".join([team_idx, player_idx])
                 count = player_team_games.get(key, 0)
                 total_attendance_col = COLUMN_SEPARATOR.join(
