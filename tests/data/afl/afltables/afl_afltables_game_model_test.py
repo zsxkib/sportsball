@@ -51,3 +51,23 @@ class TestAFLAFLTablesGameModel(unittest.TestCase):
             df = self._model.to_frame()
             kicks = df[COLUMN_SEPARATOR.join([GAME_COLUMN_PREFIX, str(0), TEAM_COLUMN_PREFIX, str(0), PLAYER_COLUMN_PREFIX, PLAYER_KICKS_COLUMN])].values.tolist()[0]
             self.assertEqual(kicks, 3)
+
+    def test_no_attendance(self):
+        url = "https://afltables.com/afl/stats/games/1897/041518970508.html"
+        model = AFLAFLTablesGameModel(
+            url,
+            self._session,
+            1,
+            0,
+        )
+        with requests_mock.Mocker() as m:
+            with open(os.path.join(os.path.dirname(__file__), "game_model_no_attendance_test.html")) as handle:
+                m.get(url, text=handle.read())
+            with open(os.path.join(os.path.dirname(__file__), "victoria_park.html")) as handle:
+                m.get("https://afltables.com/afl/venues/victoria_park.html", text=handle.read())
+            with open(os.path.join(os.path.dirname(__file__), "collingwood_team.html")) as handle:
+                m.get("https://afltables.com/afl/teams/collingwood_idx.html", text=handle.read())
+            with open(os.path.join(os.path.dirname(__file__), "stkilda_team.html")) as handle:
+                m.get("https://afltables.com/afl/teams/stkilda_idx.html", text=handle.read())
+            df = model.to_frame()
+            self.assertNotIn(COLUMN_SEPARATOR.join([GAME_COLUMN_PREFIX, GAME_ATTENDANCE_COLUMN]), df.columns.values)

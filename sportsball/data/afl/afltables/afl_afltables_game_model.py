@@ -72,7 +72,7 @@ def _find_season_metadata(
     int,
     list[tuple[str, str, int]],
     datetime.datetime | None,
-    int,
+    int | None,
 ]:
     # pylint: disable=too-many-locals,too-many-branches
     def _parse_date_text(date_text: str) -> datetime.datetime:
@@ -121,8 +121,6 @@ def _find_season_metadata(
         raise ValueError("venue_url is null.")
     if week is None:
         raise ValueError("week is null.")
-    if attendance is None:
-        raise ValueError("attendance is null.")
 
     return (
         dt,

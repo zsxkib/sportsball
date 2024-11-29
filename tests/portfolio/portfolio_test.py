@@ -14,7 +14,6 @@ class TestPortfolio(unittest.TestCase):
         self._portfolio = Portfolio([], self._folder)
 
     def tearDown(self):
-        return
         shutil.rmtree(self._folder)
 
     def test_render(self):
