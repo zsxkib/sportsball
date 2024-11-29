@@ -15,6 +15,8 @@ from .trainer import HASH_USR_ATTR, Trainer
 
 _MODEL_FILENAME = "model.cbm"
 _USR_ATTR_FILENAME = "usr_attr.json"
+_BOOTSTRAP_TYPE_BAYESIAN = "Bayesian"
+_BOOTSTRAP_TYPE_BERNOULLI = "Bernoulli"
 
 
 class CatboostTrainer(Trainer):
@@ -46,14 +48,34 @@ class CatboostTrainer(Trainer):
                 trial.suggest_categorical("weight", list(WEIGHTS.keys()))
             )
             self._usr_attrs = trial.user_attrs
+            bootstrap_type = trial.suggest_categorical(
+                "bootstrap_type",
+                [_BOOTSTRAP_TYPE_BAYESIAN, _BOOTSTRAP_TYPE_BERNOULLI, "MVS"],
+            )
+            bagging_temperature = None
+            subsample = None
+            if bootstrap_type == _BOOTSTRAP_TYPE_BAYESIAN:
+                bagging_temperature = trial.suggest_float("bagging_temperature", 0, 10)
+            elif bootstrap_type == _BOOTSTRAP_TYPE_BERNOULLI:
+                subsample = trial.suggest_float("subsample", 0.1, 1)
             self._model = CatBoostClassifier(
                 iterations=trial.suggest_int("iterations", 100, 10000),
                 learning_rate=trial.suggest_float("learning_rate", 0.01, 0.3),
-                depth=trial.suggest_int("depth", 3, 10),
+                depth=trial.suggest_int("depth", 1, 12),
                 l2_leaf_reg=trial.suggest_float("l2_leaf_reg", 1.5, 4.5),
                 early_stopping_rounds=100,
                 task_type=None if not torch.cuda.is_available() else "GPU",
                 devices=None if not torch.cuda.is_available() else "0",
+                objective=trial.suggest_categorical(
+                    "objective", ["Logloss", "CrossEntropy"]
+                ),
+                colsample_bylevel=trial.suggest_float("colsample_bylevel", 0.01, 0.1),
+                boosting_type=trial.suggest_categorical(
+                    "boosting_type", ["Ordered", "Plain"]
+                ),
+                bootstrap_type=bootstrap_type,
+                bagging_temperature=bagging_temperature,
+                subsample=subsample,
             )
 
     @property
