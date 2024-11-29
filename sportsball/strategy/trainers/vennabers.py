@@ -31,13 +31,17 @@ class VennAbersTrainer(Trainer):
         """The salt to use when hashing the predictions."""
         return "vennabers-" + self._wrapped_trainer.salt
 
-    def fit(self, x: pd.DataFrame, y: pd.DataFrame):
+    def fit(
+        self,
+        x: tuple[pd.DataFrame, pd.DataFrame | None],
+        y: tuple[pd.DataFrame, pd.DataFrame | None],
+    ):
         """Fit the data."""
         self._wrapped_trainer.fit(x, y)
-        y_pred = self._wrapped_trainer.predict_proba(x)
+        y_pred = self._wrapped_trainer.predict_proba(x[0])
         if y_pred is None:
             raise ValueError("y_pred is null")
-        self._model.fit(y_pred.to_numpy(), y.to_numpy())
+        self._model.fit(y_pred.to_numpy(), y[0].to_numpy())
 
     def save(self):
         """Save the trainer."""
@@ -75,6 +79,10 @@ class VennAbersTrainer(Trainer):
         self.save_prediction_proba(x, y)
         return y
 
-    def select_features(self, x: pd.DataFrame, y: pd.DataFrame) -> list[str]:
+    def select_features(
+        self,
+        x: tuple[pd.DataFrame, pd.DataFrame | None],
+        y: tuple[pd.DataFrame, pd.DataFrame | None],
+    ) -> list[str]:
         """Select the features from the training data."""
         return self._wrapped_trainer.select_features(x, y)

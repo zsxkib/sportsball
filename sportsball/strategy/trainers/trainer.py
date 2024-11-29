@@ -4,7 +4,9 @@ import hashlib
 import os
 from typing import Any
 
+import optuna
 import pandas as pd
+from sklearn.model_selection import train_test_split  # type: ignore
 
 HASH_USR_ATTR = "HASH"
 
@@ -21,8 +23,15 @@ def _hash_df(df: pd.DataFrame) -> int:
 class Trainer:
     """The prototype trainer class."""
 
-    def __init__(self, folder: str) -> None:
+    def __init__(
+        self,
+        folder: str,
+        trial: optuna.trial.Trial | optuna.trial.FrozenTrial | None = None,
+    ) -> None:
         self._folder = folder
+        self._test_size = 0.2
+        if trial is not None:
+            self._test_size = trial.suggest_float("test_size", 0.0, 0.5)
 
     @property
     def clf(self) -> Any:
@@ -34,7 +43,11 @@ class Trainer:
         """The salt to use when hashing the predictions."""
         raise NotImplementedError("salt is not implemented in parent class.")
 
-    def fit(self, x: pd.DataFrame, y: pd.DataFrame):
+    def fit(
+        self,
+        x: tuple[pd.DataFrame, pd.DataFrame | None],
+        y: tuple[pd.DataFrame, pd.DataFrame | None],
+    ):
         """Fit the data."""
         raise NotImplementedError("fit is not implemented in parent class.")
 
@@ -74,6 +87,19 @@ class Trainer:
         )
         y.to_parquet(filename)
 
-    def select_features(self, x: pd.DataFrame, y: pd.DataFrame) -> list[str]:
+    def select_features(
+        self,
+        x: tuple[pd.DataFrame, pd.DataFrame | None],
+        y: tuple[pd.DataFrame, pd.DataFrame | None],
+    ) -> list[str]:
         """Select the features from the training data."""
         raise NotImplementedError("select_features is not implemented in parent class.")
+
+    def split_train_test(
+        self, x: pd.DataFrame, y: pd.DataFrame
+    ) -> tuple[tuple[pd.DataFrame, pd.DataFrame], tuple[pd.DataFrame, pd.DataFrame]]:
+        """Splits the x/y data into train and test sets."""
+        x_train, x_test, y_train, y_test = train_test_split(
+            x, y, test_size=self._test_size, shuffle=False
+        )
+        return (x_train, x_test), (y_train, y_test)  # type: ignore

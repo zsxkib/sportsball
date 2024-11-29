@@ -36,6 +36,7 @@ Python 3.11.6:
 - [pandarallel](https://nalepae.github.io/pandarallel/)
 - [pyfolio-reloaded](https://github.com/stefan-jansen/pyfolio-reloaded)
 - [matplotlib](https://matplotlib.org/)
+- [empyrical](https://github.com/quantopian/empyrical)
 
 ## Raison D'être :thought_balloon:
 

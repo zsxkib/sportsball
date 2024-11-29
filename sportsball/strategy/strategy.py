@@ -6,9 +6,11 @@ import pickle
 import statistics
 import uuid
 
+import empyrical  # type: ignore
 import numpy as np
 import optuna
 import pandas as pd
+from dateutil.relativedelta import relativedelta
 from sklearn.metrics import precision_score  # type: ignore
 from sklearn.metrics import accuracy_score, recall_score
 
@@ -93,6 +95,10 @@ class Strategy:
                 self._df[[dt_column, x]].dropna()[dt_column].iloc[0].to_pydatetime()
                 for x in self._df.attrs[ODDS_COLUMNS_ATTR]
             )
+            start_dt = max(
+                start_dt,  # type: ignore
+                datetime.datetime.now() - relativedelta(years=5),
+            )
 
         training_cols = set(self._df.attrs[POINTS_COLUMNS_ATTR])
         x = self._features.process(self._df)
@@ -106,6 +112,7 @@ class Strategy:
 
         # Walkforward by week
         predictions = []
+        current_n_trials = 64
         while True:
             start_dt = _next_week_dt(start_dt, x)
             if start_dt is None:
@@ -132,25 +139,30 @@ class Strategy:
                         trial=trial,
                     ),
                 )
-                features = trainer.select_features(x_walk, y_walk)
+                x, y = trainer.split_train_test(x_walk, y_walk)
+                features = trainer.select_features(x, y)
                 trial.set_user_attr("FEATURES", features)
-                trainer.fit(x_walk[features], y_walk)
-
-                y_pred = trainer.predict(x_walk)
-                if y_pred is None:
-                    raise ValueError("y_pred is null")
 
                 print("In Sample Metrics:")
-                _print_metrics(y_walk, y_pred)
+                y_pred = trainer.predict(x[0])
+                if y_pred is None:
+                    raise ValueError("y_pred is null")
+                _print_metrics(y[0], y_pred)
 
+                print("Out of Sample Metrics:")
                 y_pred = trainer.predict(x_test)
                 if y_pred is None:
                     raise ValueError("y_pred is null")
+                _print_metrics(y_test, y_pred)
 
-                print("Out of Sample Metrics:")
-                return _print_metrics(y_test, y_pred)
+                print("Test Metrics:")
+                y_pred = trainer.predict(x[1])
+                if y_pred is None:
+                    raise ValueError("y_pred is null")
+                return _print_metrics(y[1], y_pred)
 
-            self._study.optimize(objective, n_trials=3)
+            self._study.optimize(objective, n_trials=current_n_trials)
+            current_n_trials = 1
             with open(os.path.join(self._name, _SAMPLER_FILENAME), "wb") as handle:
                 pickle.dump(self._study.sampler, handle)
             best_trial = self._study.best_trial
@@ -163,7 +175,9 @@ class Strategy:
                     trial=best_trial,
                 ),
             )
-            trainer.fit(x_walk[best_trial.user_attrs["FEATURES"]], y_walk)
+            trainer.fit(
+                (x_walk[best_trial.user_attrs["FEATURES"]], None), (y_walk, None)
+            )
             trainer.save()
 
             y_pred = trainer.predict(x_walk)
@@ -241,69 +255,88 @@ class Strategy:
         points_cols = sorted(list(set(self._df.attrs[POINTS_COLUMNS_ATTR])))
         for points_col in points_cols:
             df[points_col] = self._df[points_col]
-        index = []
-        data = []
-        for date, group in df.groupby([df[dt_column].dt.date]):
-            date = date[0]
-            index.append(date)
 
-            # Find the kelly criterion for each bet
-            fs = []
-            for _, row in group.iterrows():
-                row_df = row.to_frame().T
-                odds_df = row_df[self._df.attrs[ODDS_COLUMNS_ATTR]]
-                row_df = row_df[
-                    [
-                        x
-                        for x in row_df.columns.values
-                        if x.startswith(OUTPUT_PROB_COLUMN_PREFIX)
+        def calculate_returns(kelly_ratio: float) -> pd.Series:
+            index = []
+            data = []
+            for date, group in df.groupby([df[dt_column].dt.date]):
+                date = date[0]
+                index.append(date)
+
+                # Find the kelly criterion for each bet
+                fs = []
+                for _, row in group.iterrows():
+                    row_df = row.to_frame().T
+                    odds_df = row_df[self._df.attrs[ODDS_COLUMNS_ATTR]]
+                    row_df = row_df[
+                        [
+                            x
+                            for x in row_df.columns.values
+                            if x.startswith(OUTPUT_PROB_COLUMN_PREFIX)
+                        ]
                     ]
-                ]
-                if row_df.isnull().values.any():
-                    continue
-                arr = row_df.to_numpy().flatten()
-                team_idx = np.argmax(arr)
-                prob = arr[team_idx]
-                odds = list(
-                    odds_df[self._df.attrs[ODDS_COLUMNS_ATTR][team_idx]].values
-                )[0]
-                bet_prob = 1.0 / odds
-                f = max(prob - ((1.0 - prob) / bet_prob), 0.0)
-                fs.append(f)
+                    if row_df.isnull().values.any():
+                        continue
+                    arr = row_df.to_numpy().flatten()
+                    team_idx = np.argmax(arr)
+                    prob = arr[team_idx]
+                    odds = list(
+                        odds_df[self._df.attrs[ODDS_COLUMNS_ATTR][team_idx]].values
+                    )[0]
+                    bet_prob = 1.0 / odds
+                    f = max(prob - ((1.0 - prob) / bet_prob), 0.0) * kelly_ratio
+                    fs.append(f)
 
-            # Make sure we aren't overallocating our capital
-            fs_sum = sum(fs)
-            if fs_sum > 1.0:
-                fs = [x / fs_sum for x in fs]
+                # Make sure we aren't overallocating our capital
+                fs_sum = sum(fs)
+                if fs_sum > 1.0:
+                    fs = [x / fs_sum for x in fs]
 
-            # Simulate the bets
-            bet_idx = 0
-            pl = 0.0
-            for _, row in group.iterrows():
-                row_df = row.to_frame().T
-                points_df = row_df[points_cols]
-                odds_df = row_df[self._df.attrs[ODDS_COLUMNS_ATTR]]
-                row_df = row_df[
-                    [
-                        x
-                        for x in row_df.columns.values
-                        if x.startswith(OUTPUT_PROB_COLUMN_PREFIX)
+                # Simulate the bets
+                bet_idx = 0
+                pl = 0.0
+                for _, row in group.iterrows():
+                    row_df = row.to_frame().T
+                    points_df = row_df[points_cols]
+                    odds_df = row_df[self._df.attrs[ODDS_COLUMNS_ATTR]]
+                    row_df = row_df[
+                        [
+                            x
+                            for x in row_df.columns.values
+                            if x.startswith(OUTPUT_PROB_COLUMN_PREFIX)
+                        ]
                     ]
-                ]
-                if row_df.isnull().values.any():
-                    continue
-                arr = row_df.to_numpy().flatten()
-                team_idx = np.argmax(arr)
-                win_team_idx = np.argmax(points_df.to_numpy().flatten())
-                odds = list(
-                    odds_df[self._df.attrs[ODDS_COLUMNS_ATTR][team_idx]].values
-                )[0]
-                if team_idx == win_team_idx:
-                    pl += odds * fs[bet_idx]
-                else:
-                    pl -= fs[bet_idx]
-                bet_idx += 1
+                    if row_df.isnull().values.any():
+                        continue
+                    arr = row_df.to_numpy().flatten()
+                    team_idx = np.argmax(arr)
+                    win_team_idx = np.argmax(points_df.to_numpy().flatten())
+                    odds = list(
+                        odds_df[self._df.attrs[ODDS_COLUMNS_ATTR][team_idx]].values
+                    )[0]
+                    if team_idx == win_team_idx:
+                        pl += odds * fs[bet_idx]
+                    else:
+                        pl -= fs[bet_idx]
+                    bet_idx += 1
 
-            data.append(pl)
+                data.append(pl)
 
-        return pd.Series(index=index, data=data, name=self._name)
+            return pd.Series(index=index, data=data, name=self._name)
+
+        study = optuna.create_study(
+            study_name="kelly",
+            direction=optuna.study.StudyDirection.MAXIMIZE,
+        )
+
+        def objective(trial: optuna.Trial) -> float:
+            ret = calculate_returns(trial.suggest_float("kelly_ratio", 0.0, 2.0))
+            if abs(empyrical.max_drawdown(ret)) >= 1.0:
+                return 0.0
+            return empyrical.calmar_ratio(ret)  # type: ignore
+
+        study.optimize(objective, n_trials=100, show_progress_bar=True)
+
+        return calculate_returns(
+            study.best_trial.suggest_float("kelly_ratio", 0.0, 2.0)
+        )

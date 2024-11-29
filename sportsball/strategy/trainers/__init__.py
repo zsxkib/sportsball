@@ -2,5 +2,5 @@
 
 # ruff: noqa: F401
 from .catboost import CatboostTrainer
-from .trainer import HASH_USR_ATTR
+from .trainer import HASH_USR_ATTR, Trainer
 from .vennabers import VennAbersTrainer

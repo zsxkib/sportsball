@@ -8,7 +8,6 @@ import optuna
 import pandas as pd
 import torch
 from catboost import CatBoostClassifier, Pool  # type: ignore
-from sklearn.model_selection import train_test_split  # type: ignore
 
 from ..weights import WEIGHTS, CombinedWeight
 from .output_column import OUTPUT_COLUMN, output_prob_column
@@ -30,7 +29,7 @@ class CatboostTrainer(Trainer):
         text_features: list[str],
         trial: optuna.trial.Trial | optuna.trial.FrozenTrial | None = None,
     ) -> None:
-        super().__init__(folder)
+        super().__init__(folder, trial=trial)
         self._categorical_features = categorical_features
         self._text_features = text_features
         if trial is None:
@@ -43,7 +42,6 @@ class CatboostTrainer(Trainer):
         else:
             self._features_ratio = trial.suggest_float("features_ratio", 0.1, 0.9)
             self._steps = trial.suggest_int("steps", 1, 10)
-            self._test_size = trial.suggest_float("test_size", 0.0, 0.5)
             self._weight = CombinedWeight(
                 trial.suggest_categorical("weight", list(WEIGHTS.keys()))
             )
@@ -68,11 +66,14 @@ class CatboostTrainer(Trainer):
         """The salt to use when hashing the predictions."""
         return "catboost-" + self._usr_attrs[HASH_USR_ATTR]
 
-    def fit(self, x: pd.DataFrame, y: pd.DataFrame):
+    def fit(
+        self,
+        x: tuple[pd.DataFrame, pd.DataFrame | None],
+        y: tuple[pd.DataFrame, pd.DataFrame | None],
+    ):
         """Fit the data."""
-        x_train, x_test, y_train, y_test = train_test_split(
-            x, y, test_size=self._test_size, random_state=42
-        )
+        x_train, x_test = x
+        y_train, y_test = y
         train_pool = self._create_pool(x_train, y_train)  # type: ignore
         eval_pool = self._create_pool(x_test, y_test)  # type: ignore
         self._model.fit(train_pool, eval_set=eval_pool, early_stopping_rounds=100)
@@ -121,19 +122,28 @@ class CatboostTrainer(Trainer):
         self.save_prediction_proba(x, y)
         return y
 
-    def select_features(self, x: pd.DataFrame, y: pd.DataFrame) -> list[str]:
+    def select_features(
+        self,
+        x: tuple[pd.DataFrame, pd.DataFrame | None],
+        y: tuple[pd.DataFrame, pd.DataFrame | None],
+    ) -> list[str]:
         """Select the features from the training data."""
-        x_train, x_test, y_train, y_test = train_test_split(
-            x, y, test_size=self._test_size, random_state=42
-        )
+        x_train, x_test = x
+        y_train, y_test = y
         train_pool = self._create_pool(x_train, y_train)  # type: ignore
-        eval_pool = self._create_pool(x_test, y_test)  # type: ignore
+        eval_pool = (
+            None
+            if x_test is None or y_test is None
+            else self._create_pool(x_test, y_test)
+        )  # type: ignore
         summary = self._model.select_features(
             train_pool,
-            num_features_to_select=int(self._features_ratio * len(x.columns.values)),
+            num_features_to_select=int(
+                self._features_ratio * len(x_train.columns.values)
+            ),
             steps=self._steps,
             train_final_model=True,
-            features_for_select=x.columns.values,
+            features_for_select=x_train.columns.values,
             eval_set=eval_pool,
         )
         return summary["selected_features_names"]
