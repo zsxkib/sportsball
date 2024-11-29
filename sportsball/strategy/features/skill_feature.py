@@ -9,7 +9,7 @@ from dateutil.relativedelta import relativedelta
 from openskill.models import PlackettLuce, PlackettLuceRating
 from pandarallel import pandarallel  # type: ignore
 
-from ...data.columns import COLUMN_SEPARATOR
+from ...data.columns import COLUMN_SEPARATOR, GOLDEN_FEATURES_COLUMNS_ATTR
 from ...data.game_model import FULL_GAME_DT_COLUMN
 from .columns import (find_player_count, find_team_count, player_column_prefix,
                       player_identifier_column, team_column_prefix,
@@ -293,6 +293,7 @@ class SkillFeature(Feature):
         pandarallel.initialize(progress_bar=True)
 
     def _create_columns(self, df: pd.DataFrame, team_count: int) -> pd.DataFrame:
+        golden_features = df.attrs.get(GOLDEN_FEATURES_COLUMNS_ATTR, [])
         for year_slice in self._year_slices:
             year_col = str(year_slice) if year_slice is not None else "all"
             for i in range(team_count):
@@ -311,6 +312,7 @@ class SkillFeature(Feature):
                         ]
                     )
                     df[team_col] = 0.0
+                    golden_features.append(team_col)
                 for empty_player_col_suffix in [
                     SKILL_RANKING_COLUMN,
                     SKILL_PROBABILITY_COLUMN,
@@ -324,6 +326,8 @@ class SkillFeature(Feature):
                         ]
                     )
                     df[player_col] = 0.0
+                    golden_features.append(player_col)
+        df.attrs[GOLDEN_FEATURES_COLUMNS_ATTR] = golden_features
         return df.copy()
 
     def process(self, df: pd.DataFrame) -> pd.DataFrame:

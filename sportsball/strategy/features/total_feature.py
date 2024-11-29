@@ -23,7 +23,7 @@ def _process_player_team_games(df: pd.DataFrame, cols: list[str]) -> pd.DataFram
                 [TOTAL_COLUMN_PREFIX, player_column_prefix(i, j), TOTAL_GAMES_COLUMN]
             )
             df[total_attendance_col] = None
-    for row in df.itertuples():
+    for row in df[cols].itertuples():
         for i in range(team_count):
             team_idx = row[cols.index(team_identifier_column(i)) + 1]
             for j in range(player_count):
@@ -58,7 +58,7 @@ def _process_team_venue_games(df: pd.DataFrame, cols: list[str]) -> pd.DataFrame
         )
         df[total_venue_col] = None
     venue_team_games: dict[str, int] = {}
-    for row in df.itertuples():
+    for row in df[cols].itertuples():
         for i in range(team_count):
             team_idx = row[cols.index(team_identifier_column(i)) + 1]
             venue_idx = row[cols.index(venue_identifier_column()) + 1]
