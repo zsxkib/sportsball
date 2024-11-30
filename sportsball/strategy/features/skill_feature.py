@@ -96,9 +96,10 @@ def _find_matches(
     team_match = []
     player_match = []
     for i in range(team_count):
-        if pd.isnull(row[team_points_column(i)]):
+        points_col = team_points_column(i)
+        if pd.isnull(row[points_col]):
             continue
-        points.append(float(row[team_points_column(i)]))
+        points.append(float(row[points_col]))
         team_idx = row[team_identifier_column(i)]
         team_match.append([teams[team_idx]])
         player_team = []
@@ -290,14 +291,25 @@ def _create_all_features(
     player_model, players = _create_player_teams(df, team_count, player_count, df)
 
     def _apply_skills_features(row: pd.Series) -> pd.Series:
+        nonlocal team_model
+        nonlocal teams
+        nonlocal player_model
+        nonlocal players
         row, team_match, player_match = _find_row_matches(
             row, (team_count, player_count), YEAR_SLICE_ALL, teams, players
+        )
+        (team_model, teams), (player_model, players) = _simulate_games(
+            row.to_frame().T,
+            team_count,
+            player_count,
+            (team_model, teams),
+            (player_model, players),
         )
         row = _rank_team_predictions(team_match, row, team_model, YEAR_SLICE_ALL)
         row = _rank_player_predictions(row, player_model, player_match, YEAR_SLICE_ALL)
         return row
 
-    df = df.progress_apply(_apply_skills_features, axis=1)  # type: ignore
+    df = df.apply(_apply_skills_features, axis=1)
     return df
 
 
