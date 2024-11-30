@@ -267,18 +267,20 @@ def _create_feature_cols(
     model_team: tuple[PlackettLuce, dict[str, PlackettLuceRating]],
     model_players: tuple[PlackettLuce, dict[str, PlackettLuceRating]],
 ) -> pd.DataFrame:
-    year_col = str(year_slice) if year_slice is not None else "all"
+    year_col = str(year_slice)
     team_model, teams = model_team
     player_model, players = model_players
-    for index, row in group.copy().iterrows():
+    team_count, player_count = counts
+
+    def _apply_group_skills_features(row: pd.Series) -> pd.Series:
         row, team_match, player_match = _find_row_matches(
-            row, counts, year_col, teams, players
+            row, (team_count, player_count), year_col, teams, players
         )
         row = _rank_team_predictions(team_match, row, team_model, year_col)
         row = _rank_player_predictions(row, player_model, player_match, year_col)
-        row = row.reindex(group.columns)
-        group.loc[index] = row.values  # type: ignore
-    return group
+        return row
+
+    return group.apply(_apply_group_skills_features, axis=1)
 
 
 def _create_all_features(
@@ -295,7 +297,7 @@ def _create_all_features(
         row = _rank_player_predictions(row, player_model, player_match, YEAR_SLICE_ALL)
         return row
 
-    df = df.progress_apply(_apply_skills_features, axis=1)
+    df = df.progress_apply(_apply_skills_features, axis=1)  # type: ignore
     return df
 
 
