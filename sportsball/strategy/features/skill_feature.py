@@ -286,14 +286,16 @@ def _create_all_features(
 ) -> pd.DataFrame:
     team_model, teams = _create_teams(df, team_count, df)
     player_model, players = _create_player_teams(df, team_count, player_count, df)
-    for index, row in tqdm.tqdm(df.copy().iterrows(), desc="Create all skills features."):
+
+    def _apply_skills_features(row: pd.Series) -> pd.Series:
         row, team_match, player_match = _find_row_matches(
             row, (team_count, player_count), YEAR_SLICE_ALL, teams, players
         )
         row = _rank_team_predictions(team_match, row, team_model, YEAR_SLICE_ALL)
         row = _rank_player_predictions(row, player_model, player_match, YEAR_SLICE_ALL)
-        row = row.reindex(df.columns)
-        df.loc[index] = row.values  # type: ignore
+        return row
+
+    df = df.progress_apply(_apply_skills_features, axis=1)
     return df
 
 

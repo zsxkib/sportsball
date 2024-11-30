@@ -13,7 +13,7 @@ from openskill.models import PlackettLuce
 class TestSkillFeatureClass(unittest.TestCase):
 
     def setUp(self):
-        self._skill_feature = SkillFeature(year_slices=[1])
+        self._skill_feature = SkillFeature(year_slices=[None, 1])
 
     def test_process(self):
         df = pd.DataFrame(data={
