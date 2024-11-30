@@ -7,6 +7,7 @@ from warnings import simplefilter
 
 import pandas as pd
 import requests_cache
+from dotenv import load_dotenv
 
 from .data.afl import AFLLeagueModel
 from .data.league import League
@@ -34,6 +35,7 @@ class SportsBall:
         )
         self._leagues = {}
         simplefilter(action="ignore", category=pd.errors.PerformanceWarning)
+        load_dotenv()
 
     def league(self, league: League) -> LeagueModel:
         """Provide a league model for the given league."""

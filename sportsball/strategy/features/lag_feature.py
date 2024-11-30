@@ -55,7 +55,10 @@ def _process_kicks(df: pd.DataFrame) -> pd.DataFrame:
                 lag_kick_col = COLUMN_SEPARATOR.join([LAG_COLUMN_PREFIX, kick_col])
                 player_idx = row[player_identifier_column(i, j)]
                 row[lag_kick_col] = last_kicks.get(player_idx)
-                last_kicks[player_idx] = row[kick_col]
+                try:
+                    last_kicks[player_idx] = row[kick_col]
+                except KeyError:
+                    last_kicks[player_idx] = None
         return row
 
     return df.apply(record_team_player_kicks, axis=1)

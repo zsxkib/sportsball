@@ -37,6 +37,8 @@ Python 3.11.6:
 - [matplotlib](https://matplotlib.org/)
 - [empyrical](https://github.com/quantopian/empyrical)
 - [pytz](https://pythonhosted.org/pytz/)
+- [python-dotenv](https://github.com/theskumar/python-dotenv)
+- [geocoder](https://geocoder.readthedocs.io/)
 
 ## Raison D'être :thought_balloon:
 
