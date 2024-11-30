@@ -29,6 +29,7 @@ class TestSkillFeatureClass(unittest.TestCase):
         # df.to_csv("test_tmp.csv")
         self.assertIsNotNone(df)
         print(df.columns.values)
+        print(df)
         probability = df[COLUMN_SEPARATOR.join([player_column_prefix(0, None), SKILL_COLUMN_PREFIX, "1", SKILL_PROBABILITY_COLUMN])].values.tolist()
         self.assertListEqual(probability, [0.0, 0.34070897206214457])
 

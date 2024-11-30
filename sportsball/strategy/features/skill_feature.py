@@ -270,7 +270,7 @@ def _create_feature_cols(
     year_col = str(year_slice) if year_slice is not None else "all"
     team_model, teams = model_team
     player_model, players = model_players
-    for index, row in group.iterrows():
+    for index, row in group.copy().iterrows():
         row, team_match, player_match = _find_row_matches(
             row, counts, year_col, teams, players
         )
@@ -286,7 +286,7 @@ def _create_all_features(
 ) -> pd.DataFrame:
     team_model, teams = _create_teams(df, team_count, df)
     player_model, players = _create_player_teams(df, team_count, player_count, df)
-    for index, row in tqdm.tqdm(df.iterrows(), desc="Create all skills features."):
+    for index, row in tqdm.tqdm(df.copy().iterrows(), desc="Create all skills features."):
         row, team_match, player_match = _find_row_matches(
             row, (team_count, player_count), YEAR_SLICE_ALL, teams, players
         )
@@ -362,7 +362,7 @@ class SkillFeature(Feature):
                 return group
             date = dates[0]
             for year_slice in self._year_slices:
-                if year_slice == YEAR_SLICE_ALL:
+                if year_slice is None:
                     continue
                 df_slice = _slice_df(df, date, year_slice)  # type: ignore
                 if df_slice.empty:
