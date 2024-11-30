@@ -257,6 +257,9 @@ def _rank_player_predictions(
     player_match: list[list[PlackettLuceRating]],
     year_col: str,
 ) -> pd.Series:
+    for match in player_match:
+        if not match:
+            return row
     rank_player_predictions = player_model.predict_rank(player_match)
     for i, (rank, prob) in enumerate(rank_player_predictions):
         player_skill_col_prefix = COLUMN_SEPARATOR.join(
