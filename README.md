@@ -45,8 +45,9 @@ The models it uses are designed to be used for many different types of sports.
 
 The supported leagues are:
 
-* 🏈 [NFL](https://www.nfl.com/)
 * 🏉 [AFL](https://www.afl.com.au/)
+* 🏀 [NBA](https://www.nba.com/)
+* 🏈 [NFL](https://www.nfl.com/)
 
 ## Architecture :triangular_ruler:
 
