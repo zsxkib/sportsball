@@ -373,6 +373,9 @@ class SkillFeature(Feature):
             df = _create_all_features(df, team_count, player_count)
 
         def calculate_skills(group: pd.DataFrame) -> pd.DataFrame:
+            nonlocal df
+            nonlocal team_count
+            nonlocal player_count
             dates = group[FULL_GAME_DT_COLUMN].dt.date.values.tolist()
             if not dates:
                 return group

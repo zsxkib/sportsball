@@ -15,7 +15,7 @@ from openskill.models import PlackettLuce
 class TestSkillFeatureClass(unittest.TestCase):
 
     def setUp(self):
-        self._skill_feature = SkillFeature(year_slices=[None, 1])
+        self._skill_feature = SkillFeature(year_slices=[None, 1, 2])
 
     def test_process(self):
         df = pd.DataFrame(data={
@@ -38,6 +38,10 @@ class TestSkillFeatureClass(unittest.TestCase):
         print(df)
         probability = df[
             COLUMN_SEPARATOR.join([player_column_prefix(0, None), SKILL_COLUMN_PREFIX, "1", SKILL_PROBABILITY_COLUMN])
+        ].values.tolist()
+        self.assertListEqual(probability, [0.0, 0.34070897206214457, 0.2287564657243515])
+        probability = df[
+            COLUMN_SEPARATOR.join([player_column_prefix(0, None), SKILL_COLUMN_PREFIX, "2", SKILL_PROBABILITY_COLUMN])
         ].values.tolist()
         self.assertListEqual(probability, [0.0, 0.34070897206214457, 0.2287564657243515])
         probability = df[
