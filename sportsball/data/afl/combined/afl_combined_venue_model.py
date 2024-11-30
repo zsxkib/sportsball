@@ -16,32 +16,33 @@ class AFLCombinedVenueModel(VenueModel):
     _address: AddressModel | None
 
     def __init__(
-        self, session: requests_cache.CachedSession, venue_model: VenueModel
+        self, session: requests_cache.CachedSession, venue_models: list[VenueModel]
     ) -> None:
         super().__init__(session)
-        self._venue_model = venue_model
+        self._venue_models = venue_models
         self._address = None
 
     @property
     def identifier(self) -> str:
         """Return the venue ID."""
-        return self._venue_model.identifier
+        return self._venue_models[0].identifier
 
     @property
     def name(self) -> str:
         """Return the venue name."""
-        return self._venue_model.name
+        return self._venue_models[0].name
 
     @property
     def address(self) -> AddressModel | None:
         """Return the venue address."""
         address = self._address
         if address is None:
-            address = self._venue_model.address
+            for venue_model in self._venue_models:
+                address = venue_model.address
+                if address is not None:
+                    break
             if address is None:
-                address = GoogleAddressModel(
-                    f"{self._venue_model.name} - Australia", self._session
-                )
+                address = GoogleAddressModel(f"{self.name} - Australia", self._session)
             self._address = address
         return address
 

@@ -96,7 +96,6 @@ class Strategy:
                 self._df[[dt_column, x]].dropna()[dt_column].iloc[0].to_pydatetime()
                 for x in self._df.attrs[ODDS_COLUMNS_ATTR]
             )
-            print(start_dt)
             start_dt = max(
                 start_dt,  # type: ignore
                 pytz.utc.localize(datetime.datetime.now() - relativedelta(years=5)),
