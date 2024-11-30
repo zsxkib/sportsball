@@ -44,6 +44,11 @@ def _process_kicks(df: pd.DataFrame) -> pd.DataFrame:
     team_count = find_team_count(df)
     player_count = find_player_count(df, team_count)
     last_kicks: dict[str, int | None] = {}
+    for i in range(team_count):
+        for j in range(player_count):
+            kick_col = kick_column(i, j)
+            lag_kick_col = COLUMN_SEPARATOR.join([LAG_COLUMN_PREFIX, kick_col])
+            df[lag_kick_col] = None
 
     def record_team_player_kicks(row: pd.Series) -> pd.Series:
         nonlocal team_count
@@ -53,7 +58,11 @@ def _process_kicks(df: pd.DataFrame) -> pd.DataFrame:
             for j in range(player_count):
                 kick_col = kick_column(i, j)
                 lag_kick_col = COLUMN_SEPARATOR.join([LAG_COLUMN_PREFIX, kick_col])
-                player_idx = row[player_identifier_column(i, j)]
+                player_idx = None
+                try:
+                    player_idx = row[player_identifier_column(i, j)]
+                except KeyError:
+                    continue
                 row[lag_kick_col] = last_kicks.get(player_idx)
                 try:
                     last_kicks[player_idx] = row[kick_col]

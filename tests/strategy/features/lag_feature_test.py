@@ -40,7 +40,7 @@ class TestLagFeature(unittest.TestCase):
             kick_column(1, 1): [40, 50],
         })
         df = self._lag_feature.process(df)
-        lag_attendances = df[COLUMN_SEPARATOR.join([LAG_COLUMN_PREFIX, kick_column(0, 0)])].values.tolist()[1:]
-        self.assertListEqual(lag_attendances, [10.0])
-        lag_attendances = df[COLUMN_SEPARATOR.join([LAG_COLUMN_PREFIX, kick_column(0, 1)])].values.tolist()[1:]
-        self.assertListEqual(lag_attendances, [20.0])
+        lag_kicks = df[COLUMN_SEPARATOR.join([LAG_COLUMN_PREFIX, kick_column(0, 0)])].values.tolist()[1:]
+        self.assertListEqual(lag_kicks, [10.0])
+        lag_kicks = df[COLUMN_SEPARATOR.join([LAG_COLUMN_PREFIX, kick_column(0, 1)])].values.tolist()[1:]
+        self.assertListEqual(lag_kicks, [20.0])
