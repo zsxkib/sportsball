@@ -104,7 +104,6 @@ class Strategy:
 
         training_cols = set(self._df.attrs[POINTS_COLUMNS_ATTR])
         x = self._features.process(self._df)
-        # x.to_parquet("test_x.parquet")
         x = self._reducers.process(x)
         y = self._df[list(training_cols)]
         y[OUTPUT_COLUMN] = np.argmax(y.to_numpy(), axis=1)

@@ -18,7 +18,7 @@ from .trainer import HASH_USR_ATTR, Trainer
 
 _MODEL_FILENAME = "model.cbm"
 _USR_ATTR_FILENAME = "usr_attr.json"
-_BORDERS_TSV_FILENAME = "borders.tsv"
+# _BORDERS_TSV_FILENAME = "borders.tsv"
 _BOOTSTRAP_TYPE_BAYESIAN = "Bayesian"
 _BOOTSTRAP_TYPE_BERNOULLI = "Bernoulli"
 _OBJECTIVE_LOGLOSS = "Logloss"
@@ -234,6 +234,14 @@ class CatboostTrainer(Trainer):
         x[text_features] = x[text_features].fillna("").astype(str)
         cat_features = list(set(x.columns.values) & set(self._categorical_features))
         x[cat_features] = x[cat_features].fillna(0).astype(int)
+        # Remove all datetime columns
+        x = x[
+            [
+                column
+                for column in x.columns
+                if not pd.api.types.is_datetime64_any_dtype(x[column])
+            ]
+        ]
         weight = None
         if y is not None:
             weight = self._weight.process(y)
