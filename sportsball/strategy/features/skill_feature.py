@@ -120,6 +120,8 @@ def _rate_match(
     points: list[float],
     ratings: dict[str, PlackettLuceRating],
 ) -> dict[str, PlackettLuceRating]:
+    if not match:
+        return ratings
     output = model.rate(match, scores=points)
     for team in output:
         for player in team:
