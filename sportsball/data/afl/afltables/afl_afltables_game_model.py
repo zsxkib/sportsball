@@ -5,6 +5,7 @@ import urllib.parse
 from typing import Any, Dict, Optional, Pattern, Sequence, Union
 from urllib.parse import urlparse
 
+import pytz
 import requests_cache
 from bs4 import BeautifulSoup, Tag
 from dateutil.parser import parse
@@ -123,7 +124,7 @@ def _find_season_metadata(
         raise ValueError("week is null.")
 
     return (
-        dt,
+        pytz.timezone("Australia/Melbourne").localize(dt),
         venue_url,
         week,
         [(k, v[0], v[1]) for k, v in team_infos.items()],
