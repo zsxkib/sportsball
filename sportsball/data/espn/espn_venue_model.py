@@ -6,6 +6,7 @@ from typing import Any, Dict, Optional, Pattern, Union
 import requests_cache
 
 from ..address_model import AddressModel
+from ..google.google_address_model import GoogleAddressModel
 from ..venue_model import VenueModel
 
 
@@ -22,7 +23,9 @@ class ESPNVenueModel(VenueModel):
         city = venue_address["city"]
         state = venue_address["state"]
         zipcode = venue_address["zipCode"]
-        self._address = AddressModel(session, city, state, zipcode)
+        self._address = GoogleAddressModel(
+            f"{self._name} - {city} - {state} - {zipcode}", session
+        )
 
     @property
     def identifier(self) -> str:

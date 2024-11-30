@@ -6,17 +6,21 @@ from typing import Any, Dict, Optional, Pattern, Union
 import requests_cache
 
 from ...address_model import AddressModel
+from ...google.google_address_model import GoogleAddressModel
 from ...venue_model import VenueModel
 
 
 class AFLCombinedVenueModel(VenueModel):
     """AFL combined implementation of the venue model."""
 
+    _address: AddressModel | None
+
     def __init__(
         self, session: requests_cache.CachedSession, venue_model: VenueModel
     ) -> None:
         super().__init__(session)
         self._venue_model = venue_model
+        self._address = None
 
     @property
     def identifier(self) -> str:
@@ -31,7 +35,15 @@ class AFLCombinedVenueModel(VenueModel):
     @property
     def address(self) -> AddressModel | None:
         """Return the venue address."""
-        return self._venue_model.address
+        address = self._address
+        if address is None:
+            address = self._venue_model.address
+            if address is None:
+                address = GoogleAddressModel(
+                    f"{self._venue_model.name} - Australia", self._session
+                )
+            self._address = address
+        return address
 
     @staticmethod
     def urls_expire_after() -> (

@@ -14,6 +14,8 @@ ADDRESS_COLUMN_SUFFIX = "address"
 CITY_COLUMN = "city"
 STATE_COLUMN = "state"
 ZIPCODE_COLUMN = "zipcode"
+ADDRESS_LATITUDE_COLUMN = "latitude"
+ADDRESS_LONGITUDE_COLUMN = "longitude"
 
 
 class AddressModel(Model):
@@ -42,13 +44,31 @@ class AddressModel(Model):
         """Return the zipcode."""
         return self._zipcode
 
+    @property
+    def latitude(self) -> float | None:
+        """Return the latitude."""
+        return None
+
+    @property
+    def longitude(self) -> float | None:
+        """Return the longitude."""
+        return None
+
     def to_frame(self) -> pd.DataFrame:
         """Render the address as a dataframe."""
-        data = {
+        data: dict[str, list[str | float]] = {
             CITY_COLUMN: [self.city],
             STATE_COLUMN: [self.state],
             ZIPCODE_COLUMN: [self.zipcode],
         }
+
+        latitude = self.latitude
+        if latitude is not None:
+            data[ADDRESS_LATITUDE_COLUMN] = [latitude]
+        longitude = self.longitude
+        if longitude is not None:
+            data[ADDRESS_LONGITUDE_COLUMN] = [longitude]
+
         df = pd.DataFrame(
             data={
                 ADDRESS_COLUMN_SUFFIX + COLUMN_SEPARATOR + k: v for k, v in data.items()
