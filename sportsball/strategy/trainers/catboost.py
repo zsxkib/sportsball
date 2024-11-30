@@ -141,7 +141,9 @@ class CatboostTrainer(Trainer):
         x_train, x_test = x
         y_train, y_test = y
         train_pool = self._create_pool(x_train, y_train)  # type: ignore
-        eval_pool = self._create_pool(x_test, y_test)  # type: ignore
+        eval_pool = None
+        if x_test is not None and y_test is not None:
+            eval_pool = self._create_pool(x_test, y_test)  # type: ignore
         callbacks = []
         if self._trial is not None:
             callbacks.append(CatBoostPruningCallback(self._trial, "Accuracy"))  # type: ignore
