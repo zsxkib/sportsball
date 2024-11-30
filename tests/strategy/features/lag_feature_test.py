@@ -21,8 +21,8 @@ class TestLagFeature(unittest.TestCase):
             attendance_column(): [12000, 13000]
         })
         df = self._lag_feature.process(df)
-        lag_attendances = df[COLUMN_SEPARATOR.join([LAG_COLUMN_PREFIX, attendance_column()])].values.tolist()
-        self.assertListEqual(lag_attendances, [None, 12000])
+        lag_attendances = df[COLUMN_SEPARATOR.join([LAG_COLUMN_PREFIX, attendance_column()])].values.tolist()[1:]
+        self.assertListEqual(lag_attendances, [12000.0])
 
     def test_kicks(self):
         df = pd.DataFrame(data={

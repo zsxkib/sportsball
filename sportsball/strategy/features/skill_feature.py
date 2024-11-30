@@ -142,12 +142,23 @@ def _simulate_games(
 ]:
     team_model, teams = model_team
     player_model, players = model_players
-    for _, row in df_slice.iterrows():
+
+    def _simulate_match(row: pd.Series) -> pd.Series:
+        nonlocal team_count
+        nonlocal player_count
+        nonlocal teams
+        nonlocal players
+        nonlocal team_model
+        nonlocal player_model
         points, team_match, player_match = _find_matches(
             row, team_count, player_count, teams, players
         )
         teams = _rate_match(team_model, team_match, points, teams)
         players = _rate_match(player_model, player_match, points, players)
+        return row
+
+    df_slice.apply(_simulate_match, axis=1)
+
     return (team_model, teams), (player_model, players)
 
 
