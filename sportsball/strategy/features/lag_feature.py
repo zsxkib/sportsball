@@ -21,7 +21,13 @@ def _process_attendance(df: pd.DataFrame) -> pd.DataFrame:
 
         def record_lagged_attendence(row: pd.Series) -> pd.Series:
             nonlocal team_count
-            attendance_key_components = [row[venue_identifier_column()]]
+            nonlocal last_attendances
+            venue_idx_col = venue_identifier_column()
+            try:
+                venue_idx = row[venue_idx_col]
+            except KeyError:
+                return row
+            attendance_key_components = [venue_idx]
             for i in range(team_count):
                 attendance_key_components.append(row[team_identifier_column(i)])
             attendance_key = "-".join(attendance_key_components)
@@ -34,21 +40,25 @@ def _process_attendance(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def _process_kicks(df: pd.DataFrame, cols: list[str]) -> pd.DataFrame:
+def _process_kicks(df: pd.DataFrame) -> pd.DataFrame:
     team_count = find_team_count(df)
     player_count = find_player_count(df, team_count)
     last_kicks: dict[str, int | None] = {}
-    for row in df.itertuples():
+
+    def record_team_player_kicks(row: pd.Series) -> pd.Series:
+        nonlocal team_count
+        nonlocal player_count
+        nonlocal last_kicks
         for i in range(team_count):
             for j in range(player_count):
                 kick_col = kick_column(i, j)
-                if kick_col not in cols:
-                    continue
                 lag_kick_col = COLUMN_SEPARATOR.join([LAG_COLUMN_PREFIX, kick_col])
-                player_idx = row[cols.index(player_identifier_column(i, j)) + 1]
-                df.loc[row.Index, lag_kick_col] = last_kicks.get(player_idx)
-                last_kicks[player_idx] = row[cols.index(kick_col) + 1]
-    return df
+                player_idx = row[player_identifier_column(i, j)]
+                row[lag_kick_col] = last_kicks.get(player_idx)
+                last_kicks[player_idx] = row[kick_col]
+        return row
+
+    return df.apply(record_team_player_kicks, axis=1)
 
 
 class LagFeature(Feature):
@@ -58,7 +68,6 @@ class LagFeature(Feature):
 
     def process(self, df: pd.DataFrame) -> pd.DataFrame:
         """Process the dataframe and add the necessary features."""
-        cols = df.columns.values.tolist()
         df = _process_attendance(df)
-        df = _process_kicks(df, cols)
+        df = _process_kicks(df)
         return df.copy()
