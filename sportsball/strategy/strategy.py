@@ -10,6 +10,7 @@ import empyrical  # type: ignore
 import numpy as np
 import optuna
 import pandas as pd
+import pytz
 from dateutil.relativedelta import relativedelta
 from sklearn.metrics import precision_score  # type: ignore
 from sklearn.metrics import accuracy_score, recall_score
@@ -95,9 +96,10 @@ class Strategy:
                 self._df[[dt_column, x]].dropna()[dt_column].iloc[0].to_pydatetime()
                 for x in self._df.attrs[ODDS_COLUMNS_ATTR]
             )
+            print(start_dt)
             start_dt = max(
                 start_dt,  # type: ignore
-                datetime.datetime.now() - relativedelta(years=5),
+                pytz.utc.localize(datetime.datetime.now() - relativedelta(years=5)),
             )
 
         training_cols = set(self._df.attrs[POINTS_COLUMNS_ATTR])

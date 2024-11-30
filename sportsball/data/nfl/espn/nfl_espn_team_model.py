@@ -1,5 +1,6 @@
 """NFL team model."""
 
+# pylint: disable=too-many-arguments
 import datetime
 from typing import Any, Dict, Optional, Pattern, Sequence, Union
 
@@ -21,6 +22,7 @@ class NFLESPNTeamModel(TeamModel):
         team: Dict[str, Any],
         roster_dict: Dict[str, Any],
         odds: Sequence[OddsModel],
+        score_dict: dict[str, Any],
     ) -> None:
         super().__init__(session)
         self._identifier = team["id"]
@@ -36,6 +38,7 @@ class NFLESPNTeamModel(TeamModel):
             player = NFLESPNPlayerModel(session, entity)
             self._players.append(player)
         self._odds = odds
+        self._points = score_dict["value"]
 
     @property
     def identifier(self) -> str:
@@ -61,6 +64,11 @@ class NFLESPNTeamModel(TeamModel):
     def odds(self) -> Sequence[OddsModel]:
         """Return the odds."""
         return self._odds
+
+    @property
+    def points(self) -> float | None:
+        """Return the points scored in the game."""
+        return self._points
 
     @staticmethod
     def urls_expire_after() -> (

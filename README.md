@@ -31,12 +31,12 @@ Python 3.11.6:
 - [ipython](https://ipython.org/)
 - [scipy](https://scipy.org/)
 - [openskill](https://openskill.me/en/latest/index.html)
-- [dateutil](https://github.com/dateutil/dateutil)
 - [pytorch](https://pytorch.org/)
 - [pandarallel](https://nalepae.github.io/pandarallel/)
 - [pyfolio-reloaded](https://github.com/stefan-jansen/pyfolio-reloaded)
 - [matplotlib](https://matplotlib.org/)
 - [empyrical](https://github.com/quantopian/empyrical)
+- [pytz](https://pythonhosted.org/pytz/)
 
 ## Raison D'être :thought_balloon:
 

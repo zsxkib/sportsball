@@ -44,7 +44,11 @@ def _create_nfl_team(
         roster_response.raise_for_status()
         roster_dict = roster_response.json()
 
-    return NFLESPNTeamModel(session, team_dict, roster_dict, odds)
+    score_response = session.get(competitor["score"]["$ref"])
+    score_response.raise_for_status()
+    score_dict = score_response.json()
+
+    return NFLESPNTeamModel(session, team_dict, roster_dict, odds, score_dict)
 
 
 class NFLESPNGameModel(GameModel):
@@ -67,6 +71,7 @@ class NFLESPNGameModel(GameModel):
         self._venue = venue
 
         self._teams = []
+        self._attendance = None
         for competition in event["competitions"]:
             odds_dict = {}
             if "odds" in competition:
@@ -76,6 +81,7 @@ class NFLESPNGameModel(GameModel):
 
             for competitor in competition["competitors"]:
                 self._teams.append(_create_nfl_team(competitor, odds_dict, session))
+            self._attendance = competition["attendance"]
 
     @property
     def dt(self) -> datetime.datetime:
@@ -109,6 +115,11 @@ class NFLESPNGameModel(GameModel):
     @property
     def away_team(self) -> TeamModel:
         return self._teams[1]
+
+    @property
+    def attendance(self) -> int | None:
+        """Return the attendance at the game."""
+        return self._attendance
 
     @staticmethod
     def urls_expire_after() -> (
