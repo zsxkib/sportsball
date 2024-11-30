@@ -24,6 +24,17 @@ _BOOTSTRAP_TYPE_BERNOULLI = "Bernoulli"
 _OBJECTIVE_LOGLOSS = "Logloss"
 
 
+def _sanitise_features(x: pd.DataFrame) -> pd.DataFrame:
+    # Remove all datetime columns
+    return x[
+        [
+            column
+            for column in x.columns
+            if not pd.api.types.is_datetime64_any_dtype(x[column])
+        ]
+    ]
+
+
 class CatboostTrainer(Trainer):
     """The catboost trainer class."""
 
@@ -208,6 +219,8 @@ class CatboostTrainer(Trainer):
         """Select the features from the training data."""
         x_train, x_test = x
         y_train, y_test = y
+        x_train = _sanitise_features(x_train)
+        y_train = _sanitise_features(y_train)
         train_pool = self._create_pool(x_train, y_train)  # type: ignore
         eval_pool = (
             None
@@ -234,14 +247,7 @@ class CatboostTrainer(Trainer):
         x[text_features] = x[text_features].fillna("").astype(str)
         cat_features = list(set(x.columns.values) & set(self._categorical_features))
         x[cat_features] = x[cat_features].fillna(0).astype(int)
-        # Remove all datetime columns
-        x = x[
-            [
-                column
-                for column in x.columns
-                if not pd.api.types.is_datetime64_any_dtype(x[column])
-            ]
-        ]
+        x = _sanitise_features(x)
         weight = None
         if y is not None:
             weight = self._weight.process(y)
