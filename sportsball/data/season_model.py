@@ -13,6 +13,7 @@ from .model import Model
 from .season_type import SeasonType
 
 SEASON_TYPE_COLUMN = "season_type"
+SEASON_YEAR_COLUMN = "year"
 
 
 class SeasonModel(Model):
@@ -53,7 +54,7 @@ class SeasonModel(Model):
 
         year = self.year
         if year is not None:
-            df["year"] = year
+            df[SEASON_YEAR_COLUMN] = year
 
         for game_df in dfs:
             df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR].extend(

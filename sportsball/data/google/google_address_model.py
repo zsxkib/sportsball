@@ -8,15 +8,21 @@ import requests_cache
 
 from ..address_model import AddressModel
 
+_CACHED_GEOCODES: dict[str, Any] = {}
+
 
 class GoogleAddressModel(AddressModel):
     """Google implementation of the address model."""
 
     def __init__(self, query: str, session: requests_cache.CachedSession) -> None:
-        g = geocoder.google(query, session=session)
+        g = _CACHED_GEOCODES.get(query)
+        if g is None:
+            g = geocoder.google(query, session=session)
+            _CACHED_GEOCODES[query] = g
         super().__init__(session, g.city, g.state, g.postal)
         self._latitude = g.lat
         self._longitude = g.lng
+        self._housenumber = g.housenumber
 
     @property
     def latitude(self) -> float | None:
@@ -27,6 +33,11 @@ class GoogleAddressModel(AddressModel):
     def longitude(self) -> float | None:
         """Return the longitude."""
         return self._longitude
+
+    @property
+    def housenumber(self) -> str | None:
+        """Return the housenumber."""
+        return self._housenumber
 
     @staticmethod
     def urls_expire_after() -> (

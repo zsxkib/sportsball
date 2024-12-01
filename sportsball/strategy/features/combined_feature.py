@@ -7,6 +7,7 @@ from ...data.columns import TRAINING_EXCLUDE_COLUMNS_ATTR
 from .datetime_feature import DatetimeFeature
 from .feature import Feature
 from .lag_feature import LagFeature
+from .min_feature import MinFeature
 from .ordinal_feature import OrdinalFeature
 from .skill_feature import SkillFeature
 from .total_feature import TotalFeature
@@ -28,6 +29,7 @@ class CombinedFeature(Feature):
                 SkillFeature(year_slices=[None, 1, 2, 4, 8]),
                 LagFeature(),
                 TotalFeature(),
+                MinFeature(),
             ]
         if posttrain_features is None:
             posttrain_features = [

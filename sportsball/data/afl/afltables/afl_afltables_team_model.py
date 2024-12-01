@@ -13,7 +13,6 @@ from ...player_model import PlayerModel
 from ...team_model import TeamModel
 from .afl_afltables_player_model import AFLAFLTablesPlayerModel
 
-
 _TEAM_NAME_MAP = {
     "Melbourne": "ME",
     "Geelong": "GE",
@@ -23,6 +22,12 @@ _TEAM_NAME_MAP = {
     "South Melbourne": "SM",
     "St Kilda": "SK",
     "Carlton": "CA",
+    "Sydney": "SM",
+    "University": "UN",
+    "Richmond": "RI",
+    "North Melbourne": "NM",
+    "Western Bulldogs": "WB",
+    "Hawthorn": "HW",
 }
 
 
@@ -51,9 +56,11 @@ class AFLAFLTablesTeamModel(TeamModel):
         self._points = points
         self._players: Sequence[PlayerModel] = []
         self._last_ladder_rank = None
-        if last_ladder_ranks is not None:
+        if last_ladder_ranks is not None and last_ladder_ranks:
             print(last_ladder_ranks)
-            self._last_ladder_rank = last_ladder_ranks[_TEAM_NAME_MAP[self._name]]
+            short_name = _TEAM_NAME_MAP[self._name]
+            if short_name in last_ladder_ranks:
+                self._last_ladder_rank = last_ladder_ranks[short_name]
 
     @property
     def players(self) -> Sequence[PlayerModel]:

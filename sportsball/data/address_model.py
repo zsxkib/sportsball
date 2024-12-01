@@ -16,6 +16,7 @@ STATE_COLUMN = "state"
 ZIPCODE_COLUMN = "zipcode"
 ADDRESS_LATITUDE_COLUMN = "latitude"
 ADDRESS_LONGITUDE_COLUMN = "longitude"
+ADDRESS_HOUSENUMBER_COLUMN = "housenumber"
 
 
 class AddressModel(Model):
@@ -54,6 +55,11 @@ class AddressModel(Model):
         """Return the longitude."""
         return None
 
+    @property
+    def housenumber(self) -> str | None:
+        """Return the housenumber."""
+        return None
+
     def to_frame(self) -> pd.DataFrame:
         """Render the address as a dataframe."""
         data: dict[str, list[str | float]] = {
@@ -68,6 +74,9 @@ class AddressModel(Model):
         longitude = self.longitude
         if longitude is not None:
             data[ADDRESS_LONGITUDE_COLUMN] = [longitude]
+        housenumber = self.housenumber
+        if housenumber is not None:
+            data[ADDRESS_HOUSENUMBER_COLUMN] = [housenumber]
 
         df = pd.DataFrame(
             data={
