@@ -1,5 +1,6 @@
 """AFL AFLTables team model."""
 
+# pylint: disable=too-many-arguments
 import datetime
 import os
 from typing import Any, Dict, Optional, Pattern, Sequence, Union
@@ -13,6 +14,12 @@ from ...team_model import TeamModel
 from .afl_afltables_player_model import AFLAFLTablesPlayerModel
 
 
+_TEAM_NAME_MAP = {
+    "Melbourne": "ME",
+    "Geelong": "GE",
+}
+
+
 class AFLAFLTablesTeamModel(TeamModel):
     """AFL AFLTables implementation of the team model."""
 
@@ -22,6 +29,7 @@ class AFLAFLTablesTeamModel(TeamModel):
         players: list[tuple[str, str, int | None]],
         points: float,
         session: requests_cache.CachedSession,
+        last_ladder_ranks: dict[str, int] | None,
     ) -> None:
         super().__init__(session)
         response = session.get(team_url)
@@ -36,6 +44,10 @@ class AFLAFLTablesTeamModel(TeamModel):
         self._name = h1.get_text()
         self._points = points
         self._players: Sequence[PlayerModel] = []
+        self._last_ladder_rank = None
+        if last_ladder_ranks is not None:
+            print(last_ladder_ranks)
+            self._last_ladder_rank = last_ladder_ranks[_TEAM_NAME_MAP[self._name]]
 
     @property
     def players(self) -> Sequence[PlayerModel]:
@@ -60,6 +72,11 @@ class AFLAFLTablesTeamModel(TeamModel):
     def points(self) -> float | None:
         """Return the points scored in the game."""
         return self._points
+
+    @property
+    def ladder_rank(self) -> int | None:
+        """Return the ladder rank for this team."""
+        return self._last_ladder_rank
 
     @staticmethod
     def urls_expire_after() -> (

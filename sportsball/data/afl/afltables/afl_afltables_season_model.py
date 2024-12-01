@@ -45,12 +45,14 @@ class AFLAFLTablesSeasonModel(SeasonModel):
 
     @property
     def games(self) -> Iterator[GameModel]:
+        # pylint: disable=too-many-locals,too-many-branches
         response = self._session.get(self._season_url)
         soup = BeautifulSoup(response.text, "html.parser")
         in_finals = False
         game_number = 0
         last_round_number = 0
         urls_duplicates = set()
+        last_ladder_ranks: dict[str, int] = {}
         for table in soup.find_all("table"):
             for b in table.find_all("b"):
                 if b.get_text() == "Finals":
@@ -67,6 +69,7 @@ class AFLAFLTablesSeasonModel(SeasonModel):
                             self._session,
                             game_number,
                             last_round_number,
+                            last_ladder_ranks,
                         )
                         last_round_number = model.week
                         if self.season_type == SeasonType.REGULAR:
@@ -77,9 +80,29 @@ class AFLAFLTablesSeasonModel(SeasonModel):
                             self._session,
                             game_number,
                             last_round_number,
+                            None,
                         )
                     game_number += 1
                     urls_duplicates.add(url)
+            ladder_count = None
+            for tr in table.find_all("tr"):
+                if ladder_count is None:
+                    for td in tr.find_all("td"):
+                        if (
+                            td.get_text().strip().lower()
+                            == f"rd {last_round_number} ladder"
+                        ):
+                            ladder_count = 0
+                            last_ladder_ranks = {}
+                            break
+                else:
+                    for td in tr.find_all("td"):
+                        team_short_name = td.get_text().strip().upper()
+                        if len(team_short_name) > 2 and team_short_name.isalpha():
+                            continue
+                        ladder_count += 1
+                        last_ladder_ranks[team_short_name] = ladder_count
+                        break
 
     @staticmethod
     def urls_expire_after() -> (

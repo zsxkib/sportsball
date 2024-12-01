@@ -22,6 +22,7 @@ class TestAFLAFLTablesGameModel(unittest.TestCase):
             self._session,
             1,
             0,
+            None,
         )
 
     def test_attendance(self):
@@ -59,6 +60,7 @@ class TestAFLAFLTablesGameModel(unittest.TestCase):
             self._session,
             1,
             0,
+            None,
         )
         with requests_mock.Mocker() as m:
             with open(os.path.join(os.path.dirname(__file__), "game_model_no_attendance_test.html")) as handle:

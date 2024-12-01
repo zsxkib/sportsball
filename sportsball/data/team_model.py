@@ -18,6 +18,7 @@ TEAM_POINTS_COLUMN = "points"
 TEAM_IDENTIFIER_COLUMN = "identifier"
 NAME_COLUMN = "name"
 LOCATION_COLUMN = "location"
+TEAM_LADDER_RANK_COLUMN = "ladder_rank"
 
 
 class TeamModel(Model):
@@ -51,6 +52,11 @@ class TeamModel(Model):
     @property
     def points(self) -> float | None:
         """Return the points scored in the game."""
+        return None
+
+    @property
+    def ladder_rank(self) -> int | None:
+        """Return the ladder rank for this team."""
         return None
 
     def to_frame(self) -> pd.DataFrame:
@@ -146,6 +152,10 @@ class TeamModel(Model):
         if location is not None:
             data[LOCATION_COLUMN] = [location]
             categorical_columns.append(LOCATION_COLUMN)
+
+        ladder_rank = self.ladder_rank
+        if ladder_rank is not None:
+            data[TEAM_LADDER_RANK_COLUMN] = [ladder_rank]
 
         df = pd.DataFrame(
             data={TEAM_COLUMN_PREFIX + COLUMN_SEPARATOR + k: v for k, v in data.items()}

@@ -1,5 +1,6 @@
 """AFL AFLTables game model."""
 
+# pylint: disable=too-many-arguments
 import datetime
 import urllib.parse
 from typing import Any, Dict, Optional, Pattern, Sequence, Union
@@ -144,6 +145,7 @@ class AFLAFLTablesGameModel(GameModel):
         session: requests_cache.CachedSession,
         game_number: int,
         last_round_number: int,
+        last_ladder_ranks: dict[str, int] | None,
     ) -> None:
         super().__init__(session)
         self._game_number = game_number
@@ -203,6 +205,7 @@ class AFLAFLTablesGameModel(GameModel):
         self._teams_info = _find_teams_metadata(soup, team_infos)
         self._venue_model: VenueModel | None = None
         self._teams: Sequence[TeamModel] = []
+        self._last_ladder_ranks = last_ladder_ranks
 
     @property
     def dt(self) -> datetime.datetime:
@@ -237,7 +240,13 @@ class AFLAFLTablesGameModel(GameModel):
     def teams(self) -> Sequence[TeamModel]:
         if len(self._teams) < len(self._teams_info):
             self._teams = [
-                AFLAFLTablesTeamModel(team_url, players, float(points), self._session)
+                AFLAFLTablesTeamModel(
+                    team_url,
+                    players,
+                    float(points),
+                    self._session,
+                    self._last_ladder_ranks,
+                )
                 for team_url, players, points in self._teams_info
             ]
         return self._teams
