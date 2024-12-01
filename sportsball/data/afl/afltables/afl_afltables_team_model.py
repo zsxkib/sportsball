@@ -17,6 +17,12 @@ from .afl_afltables_player_model import AFLAFLTablesPlayerModel
 _TEAM_NAME_MAP = {
     "Melbourne": "ME",
     "Geelong": "GE",
+    "Fitzroy": "FI",
+    "Collingwood": "CW",
+    "Essendon": "ES",
+    "South Melbourne": "SM",
+    "St Kilda": "SK",
+    "Carlton": "CA",
 }
 
 
