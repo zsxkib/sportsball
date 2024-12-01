@@ -122,6 +122,8 @@ class Strategy:
             if len(x_walk) == len(x) or len(y_walk) == len(y):
                 break
             folder = os.path.join(self._name, str(start_dt.date()))
+            if os.path.exists(folder):
+                continue
             os.makedirs(folder, exist_ok=True)
             print(f"Trainer {folder}")
             # next_dt = _next_week_dt(start_dt, x)
