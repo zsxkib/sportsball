@@ -68,6 +68,8 @@ class AddressModel(Model):
             ZIPCODE_COLUMN: [self.zipcode],
         }
 
+        categorical_columns = [CITY_COLUMN, STATE_COLUMN, ZIPCODE_COLUMN]
+
         latitude = self.latitude
         if latitude is not None:
             data[ADDRESS_LATITUDE_COLUMN] = [latitude]
@@ -77,6 +79,7 @@ class AddressModel(Model):
         housenumber = self.housenumber
         if housenumber is not None:
             data[ADDRESS_HOUSENUMBER_COLUMN] = [housenumber]
+            categorical_columns.append(ADDRESS_HOUSENUMBER_COLUMN)
 
         df = pd.DataFrame(
             data={
@@ -84,11 +87,7 @@ class AddressModel(Model):
             }
         )
         df.attrs[CATEGORICAL_COLUMNS_ATTR] = list(
-            set(
-                update_columns_list(
-                    [CITY_COLUMN, STATE_COLUMN, ZIPCODE_COLUMN], ADDRESS_COLUMN_SUFFIX
-                )
-            )
+            set(update_columns_list(categorical_columns, ADDRESS_COLUMN_SUFFIX))
         )
         return df
 

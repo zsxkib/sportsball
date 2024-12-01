@@ -26,6 +26,8 @@ class ESPNVenueModel(VenueModel):
         self._address = GoogleAddressModel(
             f"{self._name} - {city} - {state} - {zipcode}", session
         )
+        self._grass = venue["grass"]
+        self._indoor = venue["indoor"]
 
     @property
     def identifier(self) -> str:
@@ -41,6 +43,16 @@ class ESPNVenueModel(VenueModel):
     def address(self) -> AddressModel | None:
         """Return the venue address."""
         return self._address
+
+    @property
+    def is_grass(self) -> bool | None:
+        """Whether the venue has grass."""
+        return self._grass
+
+    @property
+    def is_indoor(self) -> bool | None:
+        """Whether the venue is indoor."""
+        return self._indoor
 
     @staticmethod
     def urls_expire_after() -> (

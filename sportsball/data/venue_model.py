@@ -12,6 +12,8 @@ from .model import Model
 VENUE_COLUMN_PREFIX = "venue"
 VENUE_IDENTIFIER_COLUMN = "identifier"
 NAME_COLUMN = "name"
+VENUE_GRASS_COLUMN = "grass"
+VENUE_INDOOR_COLUMN = "indoor"
 
 
 class VenueModel(Model):
@@ -32,10 +34,20 @@ class VenueModel(Model):
         """Return the venue address."""
         return None
 
+    @property
+    def is_grass(self) -> bool | None:
+        """Whether the venue has grass."""
+        return None
+
+    @property
+    def is_indoor(self) -> bool | None:
+        """Whether the venue is indoor."""
+        return None
+
     def to_frame(self) -> pd.DataFrame:
         """Render the address's dataframe."""
         # pylint: disable=duplicate-code
-        data = {
+        data: dict[str, list[str | bool]] = {
             VENUE_IDENTIFIER_COLUMN: [self.identifier],
             NAME_COLUMN: [self.name],
         }
@@ -60,6 +72,14 @@ class VenueModel(Model):
             )
             for column in address_df.columns.values:
                 data[column] = address_df[column].to_list()
+
+        grass = self.is_grass
+        if grass is not None:
+            data[VENUE_GRASS_COLUMN] = [grass]
+        indoor = self.is_indoor
+        if indoor is not None:
+            data[VENUE_INDOOR_COLUMN] = [indoor]
+
         df = pd.DataFrame(
             data={
                 COLUMN_SEPARATOR.join([VENUE_COLUMN_PREFIX, k]): v

@@ -14,20 +14,21 @@ from ...team_model import TeamModel
 from .afl_afltables_player_model import AFLAFLTablesPlayerModel
 
 _TEAM_NAME_MAP = {
-    "Melbourne": "ME",
-    "Geelong": "GE",
-    "Fitzroy": "FI",
-    "Collingwood": "CW",
-    "Essendon": "ES",
-    "South Melbourne": "SM",
-    "St Kilda": "SK",
-    "Carlton": "CA",
-    "Sydney": "SM",
-    "University": "UN",
-    "Richmond": "RI",
-    "North Melbourne": "NM",
-    "Western Bulldogs": "WB",
-    "Hawthorn": "HW",
+    "Melbourne": ["ME"],
+    "Geelong": ["GE"],
+    "Fitzroy": ["FI"],
+    "Collingwood": ["CW"],
+    "Essendon": ["ES"],
+    "South Melbourne": ["SM"],
+    "St Kilda": ["SK"],
+    "Carlton": ["CA"],
+    "Sydney": ["SM"],
+    "University": ["UN"],
+    "Richmond": ["RI"],
+    "North Melbourne": ["NM"],
+    "Western Bulldogs": ["WB", "FO"],
+    "Hawthorn": ["HW"],
+    "Brisbane Bears": ["BB"],
 }
 
 
@@ -58,9 +59,11 @@ class AFLAFLTablesTeamModel(TeamModel):
         self._last_ladder_rank = None
         if last_ladder_ranks is not None and last_ladder_ranks:
             print(last_ladder_ranks)
-            short_name = _TEAM_NAME_MAP[self._name]
-            if short_name in last_ladder_ranks:
-                self._last_ladder_rank = last_ladder_ranks[short_name]
+            short_names = _TEAM_NAME_MAP[self._name]
+            for short_name in short_names:
+                if short_name in last_ladder_ranks:
+                    self._last_ladder_rank = last_ladder_ranks[short_name]
+                    break
 
     @property
     def players(self) -> Sequence[PlayerModel]:
