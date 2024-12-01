@@ -7,7 +7,7 @@ import urllib.parse
 from typing import Any, Dict, Iterator, Optional, Pattern, Union
 from urllib.parse import urlparse
 
-import requests_cache
+import requests
 from bs4 import BeautifulSoup
 
 from ...game_model import GameModel
@@ -21,7 +21,7 @@ class AFLAFLTablesSeasonModel(SeasonModel):
 
     def __init__(
         self,
-        session: requests_cache.CachedSession,
+        session: requests.Session,
         season_url: str,
         season_type: SeasonType,
     ) -> None:

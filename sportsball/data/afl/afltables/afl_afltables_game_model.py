@@ -7,7 +7,7 @@ from typing import Any, Dict, Optional, Pattern, Sequence, Union
 from urllib.parse import urlparse
 
 import pytz
-import requests_cache
+import requests
 from bs4 import BeautifulSoup, Tag
 from dateutil.parser import parse
 
@@ -142,7 +142,7 @@ class AFLAFLTablesGameModel(GameModel):
     def __init__(
         self,
         url: str,
-        session: requests_cache.CachedSession,
+        session: requests.Session,
         game_number: int,
         last_round_number: int,
         last_ladder_ranks: dict[str, int] | None,

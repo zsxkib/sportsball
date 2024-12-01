@@ -4,7 +4,7 @@
 import datetime
 from typing import Any, Dict, Iterator, Optional, Pattern, Union
 
-import requests_cache
+import requests
 
 from ..game_model import GameModel
 from ..season_model import SeasonModel
@@ -27,9 +27,7 @@ def _season_type_from_name(name: str) -> SeasonType:
 class ESPNSeasonModel(SeasonModel):
     """The class implementing the ESPN season model."""
 
-    def __init__(
-        self, session: requests_cache.CachedSession, season: Dict[str, Any]
-    ) -> None:
+    def __init__(self, session: requests.Session, season: Dict[str, Any]) -> None:
         super().__init__(session)
         self._season = season
 

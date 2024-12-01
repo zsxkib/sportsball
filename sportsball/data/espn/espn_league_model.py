@@ -3,7 +3,7 @@
 import datetime
 from typing import Any, Dict, Iterator, Optional, Pattern, Union
 
-import requests_cache
+import requests
 
 from ..league import League
 from ..league_model import LeagueModel
@@ -15,7 +15,7 @@ class ESPNLeagueModel(LeagueModel):
     """ESPN implementation of the league model."""
 
     def __init__(
-        self, start_url: str, league: League, session: requests_cache.CachedSession
+        self, start_url: str, league: League, session: requests.Session
     ) -> None:
         super().__init__(league, session)
         self._start_url = start_url

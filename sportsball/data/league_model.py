@@ -3,7 +3,7 @@
 from typing import Iterator
 
 import pandas as pd
-import requests_cache
+import requests
 import tqdm
 
 from .columns import (CATEGORICAL_COLUMNS_ATTR, COLUMN_SEPARATOR,
@@ -22,7 +22,7 @@ class LeagueModel(Model):
 
     _df: pd.DataFrame | None
 
-    def __init__(self, league: League, session: requests_cache.CachedSession) -> None:
+    def __init__(self, league: League, session: requests.Session) -> None:
         super().__init__(session)
         self._league = league
         self._df = None

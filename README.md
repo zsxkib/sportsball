@@ -39,6 +39,7 @@ Python 3.11.6:
 - [pytz](https://pythonhosted.org/pytz/)
 - [python-dotenv](https://github.com/theskumar/python-dotenv)
 - [geocoder](https://geocoder.readthedocs.io/)
+- [retry-requests](https://github.com/bustawin/retry-requests)
 
 ## Raison D'être :thought_balloon:
 

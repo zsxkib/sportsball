@@ -3,7 +3,7 @@
 import datetime
 from typing import Any, Dict, Optional, Pattern, Union
 
-import requests_cache
+import requests
 
 from ..player_model import PlayerModel
 
@@ -11,9 +11,7 @@ from ..player_model import PlayerModel
 class ESPNPlayerModel(PlayerModel):
     """ESPN implementation of the player model."""
 
-    def __init__(
-        self, session: requests_cache.CachedSession, player: Dict[str, Any]
-    ) -> None:
+    def __init__(self, session: requests.Session, player: Dict[str, Any]) -> None:
         super().__init__(session)
         self._identifier = str(player["playerId"])
         self._jersey = player.get("jersey")

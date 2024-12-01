@@ -3,7 +3,7 @@
 import datetime
 from typing import Any, Dict, Optional, Pattern, Union
 
-import requests_cache
+import requests
 
 from ..address_model import AddressModel
 from ..google.google_address_model import GoogleAddressModel
@@ -13,9 +13,7 @@ from ..venue_model import VenueModel
 class ESPNVenueModel(VenueModel):
     """ESPN implementation of the venue model."""
 
-    def __init__(
-        self, session: requests_cache.CachedSession, venue: Dict[str, Any]
-    ) -> None:
+    def __init__(self, session: requests.Session, venue: Dict[str, Any]) -> None:
         super().__init__(session)
         self._identifier = venue["id"]
         self._name = venue["fullName"]

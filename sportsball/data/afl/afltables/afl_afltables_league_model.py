@@ -4,7 +4,7 @@ import datetime
 import urllib.parse
 from typing import Any, Dict, Iterator, Optional, Pattern, Union
 
-import requests_cache
+import requests
 from bs4 import BeautifulSoup
 
 from ...league import League
@@ -19,7 +19,7 @@ _SEASON_URL = "https://afltables.com/afl/seas/season_idx.html"
 class AFLAFLTablesLeagueModel(LeagueModel):
     """AFL AFLTables implementation of the league model."""
 
-    def __init__(self, session: requests_cache.CachedSession) -> None:
+    def __init__(self, session: requests.Session) -> None:
         super().__init__(League.AFL, session)
 
     @property

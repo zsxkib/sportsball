@@ -4,7 +4,7 @@ import datetime
 from io import BytesIO
 from typing import Any, Dict, Optional, Pattern, Union
 
-import requests_cache
+import requests
 from dateutil.parser import parse
 from openpyxl import Workbook, load_workbook
 
@@ -24,7 +24,7 @@ class AFLAusSportsBettingOddsModel(OddsModel):
     """AFL aus sports betting implementation of the odds model."""
 
     def __init__(
-        self, session: requests_cache.CachedSession, date: datetime.date, team_name: str
+        self, session: requests.Session, date: datetime.date, team_name: str
     ) -> None:
         # pylint: disable=global-statement
         global _WORKBOOK

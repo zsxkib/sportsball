@@ -3,7 +3,7 @@
 import datetime
 from typing import Any, Dict, Optional, Pattern, Sequence, Union
 
-import requests_cache
+import requests
 
 from ...odds_model import OddsModel
 from ...player_model import PlayerModel
@@ -19,7 +19,7 @@ class AFLCombinedTeamModel(TeamModel):
 
     def __init__(
         self,
-        session: requests_cache.CachedSession,
+        session: requests.Session,
         team_models: list[TeamModel],
         date: datetime.date,
     ) -> None:

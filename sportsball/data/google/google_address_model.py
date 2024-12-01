@@ -4,7 +4,7 @@ import datetime
 from typing import Any, Dict, Optional, Pattern, Union
 
 import geocoder  # type: ignore
-import requests_cache
+import requests
 
 from ..address_model import AddressModel
 
@@ -14,7 +14,7 @@ _CACHED_GEOCODES: dict[str, Any] = {}
 class GoogleAddressModel(AddressModel):
     """Google implementation of the address model."""
 
-    def __init__(self, query: str, session: requests_cache.CachedSession) -> None:
+    def __init__(self, query: str, session: requests.Session) -> None:
         g = _CACHED_GEOCODES.get(query)
         if g is None:
             g = geocoder.google(query, session=session)

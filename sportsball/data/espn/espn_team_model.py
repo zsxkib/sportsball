@@ -4,7 +4,7 @@
 import datetime
 from typing import Any, Dict, Optional, Pattern, Sequence, Union
 
-import requests_cache
+import requests
 
 from ..odds_model import OddsModel
 from ..player_model import PlayerModel
@@ -18,7 +18,7 @@ class ESPNTeamModel(TeamModel):
 
     def __init__(
         self,
-        session: requests_cache.CachedSession,
+        session: requests.Session,
         team: Dict[str, Any],
         roster_dict: Dict[str, Any],
         odds: Sequence[OddsModel],

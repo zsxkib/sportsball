@@ -3,7 +3,7 @@
 import datetime
 from typing import Any, Dict, Optional, Pattern, Union
 
-import requests_cache
+import requests
 
 from ...player_model import PlayerModel
 from ..afltables.afl_afltables_player_model import AFLAFLTablesPlayerModel
@@ -13,7 +13,7 @@ class AFLCombinedPlayerModel(PlayerModel):
     """AFL combined implementation of the player model."""
 
     def __init__(
-        self, session: requests_cache.CachedSession, player_models: list[PlayerModel]
+        self, session: requests.Session, player_models: list[PlayerModel]
     ) -> None:
         super().__init__(session)
         self._player_models = player_models

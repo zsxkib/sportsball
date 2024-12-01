@@ -3,7 +3,7 @@
 import datetime
 from typing import Any, Dict, Optional, Pattern, Union
 
-import requests_cache
+import requests
 
 from ..bookie_model import BookieModel
 
@@ -11,9 +11,7 @@ from ..bookie_model import BookieModel
 class ESPNBookieModel(BookieModel):
     """ESPN implementation of the bookie model."""
 
-    def __init__(
-        self, session: requests_cache.CachedSession, bookie: Dict[str, Any]
-    ) -> None:
+    def __init__(self, session: requests.Session, bookie: Dict[str, Any]) -> None:
         super().__init__(session)
         self._identifier = bookie["id"]
         self._name = bookie["name"]

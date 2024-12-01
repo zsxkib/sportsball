@@ -5,7 +5,7 @@ import os
 from typing import Any, Dict, Optional, Pattern, Union
 from urllib.parse import urlparse
 
-import requests_cache
+import requests
 
 from ...player_model import PlayerModel
 
@@ -15,7 +15,7 @@ class AFLAFLTablesPlayerModel(PlayerModel):
 
     def __init__(
         self,
-        session: requests_cache.CachedSession,
+        session: requests.Session,
         player_url: str,
         jersey: str,
         kicks: int | None,

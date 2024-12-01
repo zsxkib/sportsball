@@ -6,7 +6,7 @@ import os
 from typing import Any, Dict, Optional, Pattern, Sequence, Union
 from urllib.parse import urlparse
 
-import requests_cache
+import requests
 from bs4 import BeautifulSoup
 
 from ...player_model import PlayerModel
@@ -30,6 +30,7 @@ _TEAM_NAME_MAP = {
     "Hawthorn": ["HW"],
     "Brisbane Bears": ["BB"],
     "West Coast": ["WC"],
+    "Adelaide": ["AD"],
 }
 
 
@@ -41,7 +42,7 @@ class AFLAFLTablesTeamModel(TeamModel):
         team_url: str,
         players: list[tuple[str, str, int | None]],
         points: float,
-        session: requests_cache.CachedSession,
+        session: requests.Session,
         last_ladder_ranks: dict[str, int] | None,
     ) -> None:
         super().__init__(session)

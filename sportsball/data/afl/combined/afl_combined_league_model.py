@@ -3,7 +3,7 @@
 import datetime
 from typing import Any, Dict, Iterator, Optional, Pattern, Union
 
-import requests_cache
+import requests
 
 from ...league import League
 from ...league_model import LeagueModel
@@ -16,7 +16,7 @@ from .afl_combined_season_model import AFLCombinedSeasonModel
 class AFLCombinedLeagueModel(LeagueModel):
     """AFL combined implementation of the league model."""
 
-    def __init__(self, session: requests_cache.CachedSession) -> None:
+    def __init__(self, session: requests.Session) -> None:
         super().__init__(League.AFL, session)
         self._afltables_league_model = AFLAFLTablesLeagueModel(session)
         self._espn_league_model = AFLESPNLeagueModel(session)

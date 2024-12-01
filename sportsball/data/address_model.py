@@ -4,7 +4,7 @@ import datetime
 from typing import Any, Dict, Optional, Pattern, Union
 
 import pandas as pd
-import requests_cache
+import requests
 
 from .columns import (CATEGORICAL_COLUMNS_ATTR, COLUMN_SEPARATOR,
                       update_columns_list)
@@ -23,7 +23,7 @@ class AddressModel(Model):
     """The class for representing an address."""
 
     def __init__(
-        self, session: requests_cache.CachedSession, city: str, state: str, zipcode: str
+        self, session: requests.Session, city: str, state: str, zipcode: str
     ) -> None:
         super().__init__(session)
         self._city = city

@@ -5,7 +5,7 @@ import os
 from typing import Any, Dict, Optional, Pattern, Union
 from urllib.parse import urlparse
 
-import requests_cache
+import requests
 from bs4 import BeautifulSoup
 
 from ...address_model import AddressModel
@@ -15,7 +15,7 @@ from ...venue_model import VenueModel
 class AFLAFLTablesVenueModel(VenueModel):
     """AFL AFLTables implementation of the venue model."""
 
-    def __init__(self, url: str, session: requests_cache.CachedSession) -> None:
+    def __init__(self, url: str, session: requests.Session) -> None:
         super().__init__(session)
         o = urlparse(url)
         last_component = o.path.split("/")[-1]

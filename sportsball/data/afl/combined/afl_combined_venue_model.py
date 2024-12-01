@@ -3,7 +3,7 @@
 import datetime
 from typing import Any, Dict, Optional, Pattern, Union
 
-import requests_cache
+import requests
 
 from ...address_model import AddressModel
 from ...google.google_address_model import GoogleAddressModel
@@ -16,7 +16,7 @@ class AFLCombinedVenueModel(VenueModel):
     _address: AddressModel | None
 
     def __init__(
-        self, session: requests_cache.CachedSession, venue_models: list[VenueModel]
+        self, session: requests.Session, venue_models: list[VenueModel]
     ) -> None:
         super().__init__(session)
         self._venue_models = venue_models

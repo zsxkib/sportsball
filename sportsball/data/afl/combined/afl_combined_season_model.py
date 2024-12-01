@@ -4,7 +4,7 @@
 import datetime
 from typing import Any, Dict, Iterator, Optional, Pattern, Union
 
-import requests_cache
+import requests
 
 from ...game_model import GameModel
 from ...season_model import SeasonModel
@@ -17,7 +17,7 @@ class AFLCombinedSeasonModel(SeasonModel):
     """The class implementing the AFL combined season model."""
 
     def __init__(
-        self, session: requests_cache.CachedSession, season_models: list[SeasonModel]
+        self, session: requests.Session, season_models: list[SeasonModel]
     ) -> None:
         super().__init__(session)
         self._season_models = season_models

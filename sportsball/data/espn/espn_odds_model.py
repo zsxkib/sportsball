@@ -3,7 +3,7 @@
 import datetime
 from typing import Any, Dict, Optional, Pattern, Union
 
-import requests_cache
+import requests
 
 from ..bookie_model import BookieModel
 from ..team_model import OddsModel
@@ -17,7 +17,7 @@ class ESPNOddsModel(OddsModel):
 
     def __init__(
         self,
-        session: requests_cache.CachedSession,
+        session: requests.Session,
         odds: Dict[str, Any],
         bookie: BookieModel,
     ) -> None:

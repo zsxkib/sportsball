@@ -3,7 +3,7 @@
 import datetime
 from typing import Any, Dict, Optional, Pattern, Sequence, Union
 
-import requests_cache
+import requests
 from dateutil.parser import parse
 
 from ..game_model import GameModel
@@ -19,7 +19,7 @@ from .espn_venue_model import ESPNVenueModel
 def _create_espn_team(
     competitor: Dict[str, Any],
     odds_dict: Dict[str, Any],
-    session: requests_cache.CachedSession,
+    session: requests.Session,
 ) -> ESPNTeamModel:
     team_response = session.get(competitor["team"]["$ref"])
     team_response.raise_for_status()
@@ -59,7 +59,7 @@ class ESPNGameModel(GameModel):
         event: Dict[str, Any],
         week: int,
         game_number: int,
-        session: requests_cache.CachedSession,
+        session: requests.Session,
     ) -> None:
         super().__init__(session)
         self._dt = parse(event["date"])

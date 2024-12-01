@@ -6,8 +6,10 @@ from typing import Dict
 from warnings import simplefilter
 
 import pandas as pd
+import requests
 import requests_cache
 from dotenv import load_dotenv
+from retry_requests import retry  # type: ignore
 
 from .data.afl import AFLLeagueModel
 from .data.league import League
@@ -23,9 +25,10 @@ class SportsBall:
     """The main sportsball class."""
 
     _leagues: Dict[str, LeagueModel]
+    _session: requests.Session
 
     def __init__(self) -> None:
-        self._session = requests_cache.CachedSession(
+        cache_session = requests_cache.CachedSession(
             "sportsball",
             expire_after=datetime.timedelta(days=365),
             urls_expire_after={
@@ -35,6 +38,7 @@ class SportsBall:
                 **NCAAFLeagueModel.urls_expire_after(),
             },
         )
+        self._session = retry(cache_session, retries=5, backoff_factor=0.2)
         self._leagues = {}
         simplefilter(action="ignore", category=pd.errors.PerformanceWarning)
         load_dotenv()
