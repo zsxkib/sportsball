@@ -49,6 +49,7 @@ The supported leagues are:
 
 * 🏉 [AFL](https://www.afl.com.au/)
 * 🏀 [NBA](https://www.nba.com/)
+* 🏈 [NCAAF](https://www.ncaa.com/sports/football/fbs)
 * 🏈 [NFL](https://www.nfl.com/)
 
 ## Architecture :triangular_ruler:

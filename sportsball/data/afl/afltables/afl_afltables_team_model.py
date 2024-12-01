@@ -29,6 +29,7 @@ _TEAM_NAME_MAP = {
     "Western Bulldogs": ["WB", "FO"],
     "Hawthorn": ["HW"],
     "Brisbane Bears": ["BB"],
+    "West Coast": ["WC"],
 }
 
 

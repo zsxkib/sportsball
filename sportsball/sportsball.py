@@ -13,6 +13,7 @@ from .data.afl import AFLLeagueModel
 from .data.league import League
 from .data.league_model import LeagueModel
 from .data.nba import NBALeagueModel
+from .data.ncaaf import NCAAFLeagueModel
 from .data.nfl import NFLLeagueModel
 from .portfolio import Portfolio
 from .strategy import Strategy
@@ -31,6 +32,7 @@ class SportsBall:
                 **AFLLeagueModel.urls_expire_after(),
                 **NFLLeagueModel.urls_expire_after(),
                 **NBALeagueModel.urls_expire_after(),
+                **NCAAFLeagueModel.urls_expire_after(),
             },
         )
         self._leagues = {}
@@ -46,6 +48,8 @@ class SportsBall:
                 self._leagues[league] = AFLLeagueModel(self._session)
             elif league == League.NBA:
                 self._leagues[league] = NBALeagueModel(self._session)
+            elif league == League.NCAAF:
+                self._leagues[league] = NCAAFLeagueModel(self._session)
             else:
                 raise ValueError(f"Unrecognised league: {league}")
         return self._leagues[league]
