@@ -40,6 +40,7 @@ Python 3.11.6:
 - [python-dotenv](https://github.com/theskumar/python-dotenv)
 - [geocoder](https://geocoder.readthedocs.io/)
 - [retry-requests](https://github.com/bustawin/retry-requests)
+- [tzwhere](https://github.com/pegler/pytzwhere)
 
 ## Raison D'être :thought_balloon:
 
@@ -66,6 +67,7 @@ The supported leagues are:
                     * **Bookie**: The bookie publishing the odds.
             * **Venue**: The venue the game was played in.
                 * **Address**: The address information of a venue.
+                    * **Weather**: The weather at the address.
 
 ## Caching
 

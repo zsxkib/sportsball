@@ -9,6 +9,7 @@ import requests
 from .columns import (CATEGORICAL_COLUMNS_ATTR, COLUMN_SEPARATOR,
                       update_columns_list)
 from .model import Model
+from .weather_model import WeatherModel
 
 ADDRESS_COLUMN_SUFFIX = "address"
 CITY_COLUMN = "city"
@@ -60,6 +61,11 @@ class AddressModel(Model):
         """Return the housenumber."""
         return None
 
+    @property
+    def weather(self) -> WeatherModel | None:
+        """Return the weather."""
+        return None
+
     def to_frame(self) -> pd.DataFrame:
         """Render the address as a dataframe."""
         data: dict[str, list[str | float]] = {
@@ -80,6 +86,12 @@ class AddressModel(Model):
         if housenumber is not None:
             data[ADDRESS_HOUSENUMBER_COLUMN] = [housenumber]
             categorical_columns.append(ADDRESS_HOUSENUMBER_COLUMN)
+
+        weather = self.weather
+        if weather is not None:
+            weather_df = weather.to_frame()
+            for column in weather_df.columns.values:
+                data[column] = weather_df[column].to_list()
 
         df = pd.DataFrame(
             data={

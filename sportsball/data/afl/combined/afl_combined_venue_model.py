@@ -16,11 +16,15 @@ class AFLCombinedVenueModel(VenueModel):
     _address: AddressModel | None
 
     def __init__(
-        self, session: requests.Session, venue_models: list[VenueModel]
+        self,
+        session: requests.Session,
+        venue_models: list[VenueModel],
+        dt: datetime.datetime,
     ) -> None:
         super().__init__(session)
         self._venue_models = venue_models
         self._address = None
+        self._dt = dt
 
     @property
     def identifier(self) -> str:
@@ -42,7 +46,9 @@ class AFLCombinedVenueModel(VenueModel):
                 if address is not None:
                     break
             if address is None:
-                address = GoogleAddressModel(f"{self.name} - Australia", self._session)
+                address = GoogleAddressModel(
+                    f"{self.name} - Australia", self._session, self._dt
+                )
             self._address = address
         return address
 

@@ -67,7 +67,7 @@ class ESPNGameModel(GameModel):
         self._game_number = game_number
         venue = None
         if "venue" in event:
-            venue = ESPNVenueModel(session, event["venue"])
+            venue = ESPNVenueModel(session, event["venue"], self._dt)
         self._venue = venue
 
         self._teams = []

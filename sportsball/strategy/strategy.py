@@ -101,10 +101,12 @@ class Strategy:
                 pytz.utc.localize(datetime.datetime.now() - relativedelta(years=5)),
             )
 
-        training_cols = set(self._df.attrs[POINTS_COLUMNS_ATTR])
-        x = self._features.process(self._df)
+        df = self._df.copy()
+        df = df[df[dt_column] < pytz.utc.localize(datetime.datetime.now() - datetime.timedelta(days=1.0))]
+        training_cols = set(df.attrs[POINTS_COLUMNS_ATTR])
+        x = self._features.process(df)
         x = self._reducers.process(x)
-        y = self._df[list(training_cols)]
+        y = df[list(training_cols)]
         y[OUTPUT_COLUMN] = np.argmax(y.to_numpy(), axis=1)
         if len(training_cols) == 2:
             y[OUTPUT_COLUMN] = y[OUTPUT_COLUMN].astype(bool)
@@ -112,7 +114,7 @@ class Strategy:
 
         # Walkforward by week
         predictions = []
-        current_n_trials = 64
+        current_n_trials = max(64 - len(self._study.trials), 1)
         while True:
             start_dt = _next_week_dt(start_dt, x)
             if start_dt is None:
@@ -136,8 +138,8 @@ class Strategy:
                     folder,
                     CatboostTrainer(
                         folder,
-                        self._df.attrs[CATEGORICAL_COLUMNS_ATTR],
-                        self._df.attrs[TEXT_COLUMNS_ATTR],
+                        df.attrs[CATEGORICAL_COLUMNS_ATTR],
+                        df.attrs[TEXT_COLUMNS_ATTR],
                         trial=trial,
                     ),
                 )
@@ -172,8 +174,8 @@ class Strategy:
                 folder,
                 CatboostTrainer(
                     folder,
-                    self._df.attrs[CATEGORICAL_COLUMNS_ATTR],
-                    self._df.attrs[TEXT_COLUMNS_ATTR],
+                    df.attrs[CATEGORICAL_COLUMNS_ATTR],
+                    df.attrs[TEXT_COLUMNS_ATTR],
                     trial=best_trial,
                 ),
             )

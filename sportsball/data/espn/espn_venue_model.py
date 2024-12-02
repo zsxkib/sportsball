@@ -13,7 +13,9 @@ from ..venue_model import VenueModel
 class ESPNVenueModel(VenueModel):
     """ESPN implementation of the venue model."""
 
-    def __init__(self, session: requests.Session, venue: Dict[str, Any]) -> None:
+    def __init__(
+        self, session: requests.Session, venue: Dict[str, Any], dt: datetime.datetime
+    ) -> None:
         super().__init__(session)
         self._identifier = venue["id"]
         self._name = venue["fullName"]
@@ -22,7 +24,7 @@ class ESPNVenueModel(VenueModel):
         state = venue_address["state"]
         zipcode = venue_address["zipCode"]
         self._address = GoogleAddressModel(
-            f"{self._name} - {city} - {state} - {zipcode}", session
+            f"{self._name} - {city} - {state} - {zipcode}", session, dt
         )
         self._grass = venue["grass"]
         self._indoor = venue["indoor"]

@@ -17,7 +17,7 @@ class WeatherModel(Model):
 
     @property
     def temperature(self) -> float:
-        """Return the city."""
+        """Return the temperature."""
         raise NotImplementedError("temperature is not implemented in parent class.")
 
     def to_frame(self) -> pd.DataFrame:

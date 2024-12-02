@@ -22,7 +22,7 @@ _TEAM_NAME_MAP = {
     "South Melbourne": ["SM"],
     "St Kilda": ["SK"],
     "Carlton": ["CA"],
-    "Sydney": ["SM"],
+    "Sydney": ["SM", "SY"],
     "University": ["UN"],
     "Richmond": ["RI"],
     "North Melbourne": ["NM"],
@@ -31,6 +31,11 @@ _TEAM_NAME_MAP = {
     "Brisbane Bears": ["BB"],
     "West Coast": ["WC"],
     "Adelaide": ["AD"],
+    "Fremantle": ["FR"],
+    "Brisbane Lions": ["BL"],
+    "Port Adelaide": ["PA"],
+    "Gold Coast": ["GC"],
+    "Greater Western Sydney": ["GW"],
 }
 
 

@@ -58,6 +58,8 @@ class ESPNSeasonModel(SeasonModel):
                 events_page = 1
                 events_count = 0
                 while True:
+                    if "events" not in week:
+                        break
                     events_response = self.session.get(
                         week["events"]["$ref"] + f"&page={events_page}"
                     )

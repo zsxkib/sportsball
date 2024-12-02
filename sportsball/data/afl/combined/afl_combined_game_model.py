@@ -48,7 +48,7 @@ class AFLCombinedGameModel(GameModel):
         venue_models = [x.venue for x in self._game_models if x.venue is not None]
         if not venue_models:
             return None
-        return AFLCombinedVenueModel(self.session, venue_models)
+        return AFLCombinedVenueModel(self.session, venue_models, self.dt)
 
     @property
     def teams(self) -> Sequence[TeamModel]:
