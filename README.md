@@ -41,6 +41,7 @@ Python 3.11.6:
 - [geocoder](https://geocoder.readthedocs.io/)
 - [retry-requests](https://github.com/bustawin/retry-requests)
 - [tzwhere](https://github.com/pegler/pytzwhere)
+* [nba_api](https://github.com/swar/nba_api)
 
 ## Raison D'être :thought_balloon:
 

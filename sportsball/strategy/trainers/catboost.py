@@ -9,12 +9,14 @@ import pandas as pd
 import torch
 from catboost import CatBoostClassifier  # type: ignore
 from catboost import EFeaturesSelectionAlgorithm, EShapCalcType, Pool
-from optuna.integration import CatBoostPruningCallback  # type: ignore
 
 # from ...data.columns import GOLDEN_FEATURES_COLUMNS_ATTR
 from ..weights import WEIGHTS, CombinedWeight
 from .output_column import OUTPUT_COLUMN, output_prob_column
 from .trainer import HASH_USR_ATTR, Trainer
+
+# from optuna.integration import CatBoostPruningCallback  # type: ignore
+
 
 _MODEL_FILENAME = "model.cbm"
 _USR_ATTR_FILENAME = "usr_attr.json"
@@ -155,17 +157,17 @@ class CatboostTrainer(Trainer):
         eval_pool = None
         if x_test is not None and y_test is not None:
             eval_pool = self._create_pool(x_test, y_test)  # type: ignore
-        callbacks = []
-        if self._trial is not None:
-            callbacks.append(CatBoostPruningCallback(self._trial, "Accuracy"))  # type: ignore
+        # callbacks = []
+        # if self._trial is not None:
+        #    callbacks.append(CatBoostPruningCallback(self._trial, "Accuracy"))  # type: ignore
         self._model.fit(
             train_pool,
             eval_set=eval_pool,
             early_stopping_rounds=100,
-            callbacks=callbacks,
+            # callbacks=callbacks,
         )
-        if callbacks:
-            callbacks[0].check_pruned()
+        # if callbacks:
+        #    callbacks[0].check_pruned()
         feature_importances = self._model.get_feature_importance(prettified=True)
         print(feature_importances)
 
