@@ -143,15 +143,15 @@ class Strategy:
                         trial=trial,
                     ),
                 )
-                x, y = trainer.split_train_test(x_walk, y_walk)
-                features = trainer.select_features(x, y)
+                x_split, y_split = trainer.split_train_test(x_walk, y_walk)
+                features = trainer.select_features(x_split, y_split)
                 trial.set_user_attr("FEATURES", features)
 
                 print("In Sample Metrics:")
-                y_pred = trainer.predict(x[0])
+                y_pred = trainer.predict(x_split[0])
                 if y_pred is None:
                     raise ValueError("y_pred is null")
-                _print_metrics(y[0], y_pred)
+                _print_metrics(y_split[0], y_pred)
 
                 print("Out of Sample Metrics:")
                 y_pred = trainer.predict(x_test)
@@ -160,10 +160,10 @@ class Strategy:
                 _print_metrics(y_test, y_pred)
 
                 print("Test Metrics:")
-                y_pred = trainer.predict(x[1])
+                y_pred = trainer.predict(x_split[1])
                 if y_pred is None:
                     raise ValueError("y_pred is null")
-                return _print_metrics(y[1], y_pred)
+                return _print_metrics(y_split[1], y_pred)
 
             self._study.optimize(objective, n_trials=current_n_trials)
             current_n_trials = 1
