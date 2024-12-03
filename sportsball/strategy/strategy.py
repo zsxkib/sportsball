@@ -102,7 +102,10 @@ class Strategy:
             )
 
         df = self._df.copy()
-        df = df[df[dt_column] < pytz.utc.localize(datetime.datetime.now() - datetime.timedelta(days=1.0))]
+        df = df[
+            df[dt_column]
+            < pytz.utc.localize(datetime.datetime.now() - datetime.timedelta(days=1.0))
+        ]
         training_cols = set(df.attrs[POINTS_COLUMNS_ATTR])
         x = self._features.process(df)
         x = self._reducers.process(x)
@@ -180,7 +183,17 @@ class Strategy:
                 ),
             )
             trainer.fit(
-                (x_walk[best_trial.user_attrs["FEATURES"]], None), (y_walk, None)
+                (
+                    x_walk[
+                        [
+                            x
+                            for x in best_trial.user_attrs["FEATURES"]
+                            if x in x_walk.colums.values
+                        ]
+                    ],
+                    None,
+                ),
+                (y_walk, None),
             )
             trainer.save()
 
