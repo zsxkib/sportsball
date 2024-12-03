@@ -188,7 +188,7 @@ class Strategy:
                         [
                             x
                             for x in best_trial.user_attrs["FEATURES"]
-                            if x in x_walk.colums.values
+                            if x in x_walk.columns.values
                         ]
                     ],
                     None,
