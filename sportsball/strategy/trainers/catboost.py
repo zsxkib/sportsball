@@ -102,7 +102,9 @@ class CatboostTrainer(Trainer):
             if objective == _OBJECTIVE_LOGLOSS:
                 random_strength = trial.suggest_uniform("random_strength", 0.5, 5.0)
             print(f"Random Strength: {random_strength}")
-            iterations = trial.suggest_int("iterations", 100, 10000)
+            iterations = trial.user_attrs.get(
+                "ITERATIONS", trial.suggest_int("iterations", 100, 10000)
+            )
             print(f"Iterations: {iterations}")
             learning_rate = trial.suggest_float("learning_rate", 0.001, 0.3)
             print(f"Learning Rate: {learning_rate}")
@@ -217,7 +219,7 @@ class CatboostTrainer(Trainer):
         self,
         x: tuple[pd.DataFrame, pd.DataFrame | None],
         y: tuple[pd.DataFrame, pd.DataFrame | None],
-    ) -> list[str]:
+    ) -> tuple[list[str], int]:
         """Select the features from the training data."""
         x_train, x_test = x
         y_train, y_test = y
@@ -241,7 +243,7 @@ class CatboostTrainer(Trainer):
             algorithm=EFeaturesSelectionAlgorithm.RecursiveByShapValues,
             shap_calc_type=EShapCalcType.Regular,
         )
-        return summary["selected_features_names"]
+        return summary["selected_features_names"], self._model.get_best_iteration()
 
     def _create_pool(self, x: pd.DataFrame, y: pd.DataFrame | None) -> Pool:
         # pylint: disable=pointless-string-statement

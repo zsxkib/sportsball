@@ -92,7 +92,7 @@ class Trainer:
         self,
         x: tuple[pd.DataFrame, pd.DataFrame | None],
         y: tuple[pd.DataFrame, pd.DataFrame | None],
-    ) -> list[str]:
+    ) -> tuple[list[str], int]:
         """Select the features from the training data."""
         raise NotImplementedError("select_features is not implemented in parent class.")
 

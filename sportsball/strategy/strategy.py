@@ -147,8 +147,9 @@ class Strategy:
                     ),
                 )
                 x_split, y_split = trainer.split_train_test(x_walk, y_walk)
-                features = trainer.select_features(x_split, y_split)
+                features, iterations = trainer.select_features(x_split, y_split)
                 trial.set_user_attr("FEATURES", features)
+                trial.set_user_attr("ITERATIONS", iterations)
 
                 print("In Sample Metrics:")
                 y_pred = trainer.predict(x_split[0])

@@ -83,6 +83,6 @@ class VennAbersTrainer(Trainer):
         self,
         x: tuple[pd.DataFrame, pd.DataFrame | None],
         y: tuple[pd.DataFrame, pd.DataFrame | None],
-    ) -> list[str]:
+    ) -> tuple[list[str], int]:
         """Select the features from the training data."""
         return self._wrapped_trainer.select_features(x, y)
