@@ -65,7 +65,6 @@ class AFLAFLTablesTeamModel(TeamModel):
         self._players: Sequence[PlayerModel] = []
         self._last_ladder_rank = None
         if last_ladder_ranks is not None and last_ladder_ranks:
-            print(last_ladder_ranks)
             short_names = _TEAM_NAME_MAP[self._name]
             for short_name in short_names:
                 if short_name in last_ladder_ranks:
