@@ -169,3 +169,4 @@ test_strategy
 coverage_html
 test_*
 ret.parquet
+.DS_Store

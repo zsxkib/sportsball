@@ -31,7 +31,7 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3',
     ],
-    keywords='monte carlo',
+    keywords='sports data betting',
     url='https://github.com/8W9aG/sportsball',
     author='Will Sackfield',
     author_email='will.sackfield@gmail.com',
