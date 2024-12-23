@@ -13,7 +13,7 @@ from catboost import EFeaturesSelectionAlgorithm, EShapCalcType, Pool
 # from ...data.columns import GOLDEN_FEATURES_COLUMNS_ATTR
 from ..weights import WEIGHTS, CombinedWeight
 from .output_column import OUTPUT_COLUMN, output_prob_column
-from .trainer import HASH_USR_ATTR, Trainer
+from .trainer import FEATURES_USR_ATTR, HASH_USR_ATTR, Trainer
 
 # from optuna.integration import CatBoostPruningCallback  # type: ignore
 
@@ -67,6 +67,7 @@ class CatboostTrainer(Trainer):
                 task_type=None if not torch.cuda.is_available() else "GPU",
                 devices=None if not torch.cuda.is_available() else "0",
             )
+
         else:
             print("Catboost Trial:")
             print(f"Golden Features Border Count: {self._golden_feature_border_count}")
@@ -155,10 +156,10 @@ class CatboostTrainer(Trainer):
         """Fit the data."""
         x_train, x_test = x
         y_train, y_test = y
-        train_pool = self._create_pool(x_train, y_train)  # type: ignore
+        train_pool = self._create_pool(x_train, y_train, True)  # type: ignore
         eval_pool = None
         if x_test is not None and y_test is not None:
-            eval_pool = self._create_pool(x_test, y_test)  # type: ignore
+            eval_pool = self._create_pool(x_test, y_test, True)  # type: ignore
         # callbacks = []
         # if self._trial is not None:
         #    callbacks.append(CatBoostPruningCallback(self._trial, "Accuracy"))  # type: ignore
@@ -194,7 +195,7 @@ class CatboostTrainer(Trainer):
         y = super().predict(x)
         if y is not None:
             return y
-        train_pool = self._create_pool(x, None)
+        train_pool = self._create_pool(x, None, True)
         y = pd.DataFrame(
             index=x.index, data={OUTPUT_COLUMN: self._model.predict(train_pool)}
         )
@@ -206,7 +207,7 @@ class CatboostTrainer(Trainer):
         y = super().predict_proba(x)
         if y is not None:
             return y
-        pool = self._create_pool(x, None)
+        pool = self._create_pool(x, None, True)
         proba = self._model.predict_proba(pool)
         y = pd.DataFrame(
             index=x.index,
@@ -225,11 +226,11 @@ class CatboostTrainer(Trainer):
         y_train, y_test = y
         x_train = _sanitise_features(x_train)
         y_train = _sanitise_features(y_train)
-        train_pool = self._create_pool(x_train, y_train)  # type: ignore
+        train_pool = self._create_pool(x_train, y_train, False)  # type: ignore
         eval_pool = (
             None
             if x_test is None or y_test is None
-            else self._create_pool(x_test, y_test)
+            else self._create_pool(x_test, y_test, False)
         )  # type: ignore
         summary = self._model.select_features(
             train_pool,
@@ -245,12 +246,22 @@ class CatboostTrainer(Trainer):
         )
         return summary["selected_features_names"], self._model.get_best_iteration()
 
-    def _create_pool(self, x: pd.DataFrame, y: pd.DataFrame | None) -> Pool:
+    def _create_pool(
+        self,
+        x: pd.DataFrame,
+        y: pd.DataFrame | None,
+        enforce_model_features: bool = False,
+    ) -> Pool:
         # pylint: disable=pointless-string-statement
         text_features = list(set(x.columns.values) & set(self._text_features))
         x[text_features] = x[text_features].fillna("").astype(str)
         cat_features = list(set(x.columns.values) & set(self._categorical_features))
         x[cat_features] = x[cat_features].fillna(0).astype(int)
+        if enforce_model_features:
+            valid_cols = [col for col in self._feature_names if col in x.columns.values]
+            x = x[valid_cols]
+            text_features = list(set(text_features) & set(valid_cols))
+            cat_features = list(set(cat_features) & set(valid_cols))
         x = _sanitise_features(x)
         weight = None
         if y is not None:
@@ -283,3 +294,10 @@ class CatboostTrainer(Trainer):
             )
         """
         return pool
+
+    @property
+    def _feature_names(self) -> list[str]:
+        feature_names = self._model.feature_names_
+        if feature_names is None:
+            feature_names = self._usr_attrs[FEATURES_USR_ATTR]
+        return feature_names

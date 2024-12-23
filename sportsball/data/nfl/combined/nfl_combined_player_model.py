@@ -1,14 +1,14 @@
-"""AFL combined player model."""
+"""NFL combined player model."""
 
 import datetime
 from typing import Any, Dict, Optional, Pattern, Union
 
 from ...combined.combined_player_model import CombinedPlayerModel
-from ..afltables.afl_afltables_player_model import AFLAFLTablesPlayerModel
+from ..espn.nfl_espn_player_model import NFLESPNPlayerModel
 
 
-class AFLCombinedPlayerModel(CombinedPlayerModel):
-    """AFL combined implementation of the player model."""
+class NFLCombinedPlayerModel(CombinedPlayerModel):
+    """NFL combined implementation of the player model."""
 
     @staticmethod
     def urls_expire_after() -> (
@@ -19,5 +19,5 @@ class AFLCombinedPlayerModel(CombinedPlayerModel):
     ):
         """Return the URL cache rules."""
         return {
-            **AFLAFLTablesPlayerModel.urls_expire_after(),
+            **NFLESPNPlayerModel.urls_expire_after(),
         }

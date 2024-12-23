@@ -18,6 +18,7 @@ ZIPCODE_COLUMN = "zipcode"
 ADDRESS_LATITUDE_COLUMN = "latitude"
 ADDRESS_LONGITUDE_COLUMN = "longitude"
 ADDRESS_HOUSENUMBER_COLUMN = "housenumber"
+ADDRESS_TIMEZONE_COLUMN = "timezone"
 
 
 class AddressModel(Model):
@@ -66,6 +67,11 @@ class AddressModel(Model):
         """Return the weather."""
         return None
 
+    @property
+    def timezone(self) -> str:
+        """Return the timezone."""
+        return "UTC"
+
     def to_frame(self) -> pd.DataFrame:
         """Render the address as a dataframe."""
         data: dict[str, list[str | float]] = {
@@ -86,6 +92,10 @@ class AddressModel(Model):
         if housenumber is not None:
             data[ADDRESS_HOUSENUMBER_COLUMN] = [housenumber]
             categorical_columns.append(ADDRESS_HOUSENUMBER_COLUMN)
+        timezone = self.timezone
+        if timezone is not None:
+            data[ADDRESS_TIMEZONE_COLUMN] = [timezone]
+            categorical_columns.append(ADDRESS_TIMEZONE_COLUMN)
 
         weather = self.weather
         if weather is not None:

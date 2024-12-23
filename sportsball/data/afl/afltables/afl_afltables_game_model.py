@@ -233,7 +233,9 @@ class AFLAFLTablesGameModel(GameModel):
     @property
     def venue(self) -> Optional[VenueModel]:
         if self._venue_model is None:
-            self._venue_model = AFLAFLTablesVenueModel(self._venue_url, self._session)
+            self._venue_model = AFLAFLTablesVenueModel(
+                self._venue_url, self._session, self._dt
+            )
         return self._venue_model
 
     @property

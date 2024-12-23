@@ -20,11 +20,13 @@ class ESPNVenueModel(VenueModel):
         self._identifier = venue["id"]
         self._name = venue["fullName"]
         venue_address = venue["address"]
-        city = venue_address["city"]
-        state = venue_address["state"]
-        zipcode = venue_address["zipCode"]
+        city = venue_address.get("city", "")
+        state = venue_address.get("state", "")
+        zipcode = venue_address.get("zipCode", "")
         self._address = GoogleAddressModel(
-            f"{self._name} - {city} - {state} - {zipcode}", session, dt
+            " - ".join([x for x in [self._name, city, state, zipcode] if x]),
+            session,
+            dt,
         )
         self._grass = venue["grass"]
         self._indoor = venue["indoor"]

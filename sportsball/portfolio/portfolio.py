@@ -31,10 +31,10 @@ class Portfolio:
         # Walkforward sharpe optimization
         ret = returns.copy()
         ret[self._name] = np.NaN
-        for index in ret.index:
-            dt = index.date()
-            x = returns[returns.index.date < dt]
-            if x.empty:
+        for index in returns.index:
+            dt = index
+            x = returns[returns.index < dt]
+            if x.empty or len(np.unique(x)) < 10:
                 ret.loc[index, self._name] = (
                     returns.loc[index] * (1.0 / len(returns.columns.values))
                 ).sum()
@@ -59,7 +59,7 @@ class Portfolio:
     ):
         """Renders the statistics of the portfolio."""
         if from_date is not None:
-            returns = returns[returns.index >= from_date]
+            returns = returns.loc[returns.index.date >= from_date]  # type: ignore
         for col in returns.columns.values:
             series = returns[col]
             series = series[

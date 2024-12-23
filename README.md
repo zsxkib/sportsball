@@ -40,8 +40,8 @@ Python 3.11.6:
 - [python-dotenv](https://github.com/theskumar/python-dotenv)
 - [geocoder](https://geocoder.readthedocs.io/)
 - [retry-requests](https://github.com/bustawin/retry-requests)
-- [tzwhere](https://github.com/pegler/pytzwhere)
-* [nba_api](https://github.com/swar/nba_api)
+- [timezonefinder](https://timezonefinder.michelfe.it/gui)
+- [nba_api](https://github.com/swar/nba_api)
 
 ## Raison D'être :thought_balloon:
 
@@ -69,6 +69,95 @@ The supported leagues are:
             * **Venue**: The venue the game was played in.
                 * **Address**: The address information of a venue.
                     * **Weather**: The weather at the address.
+
+### Objects
+
+A list of the attributes on each object.
+
+#### League
+
+A representation of a sports league containing many seasons.
+
+* **seasons**: An iterator for all the seasons in the league.
+* **league**: The league enum this league model represents.
+
+#### Season
+
+A representation of the season within a league.
+
+* **year**: The year the season represents.
+* **season_type**: The type of season this season represents (e.g. regular, preseason, postseason, offseason).
+* **games**: An iterator for all the games in the season.
+
+#### Game
+
+A representation of the game within a season.
+
+* **dt**: The timezone aware date/time of the game start.
+* **week**: The round of the game within the season.
+* **game_number**: The index of the game within the round.
+* **venue**: The venue the game took place at.
+* **teams**: A list of teams within the game.
+* **home_team**: The team representing the home team.
+* **away_team**: The ream representing the away team.
+* **end_dt**: The timzone aware date/time of the game end.
+* **attendance**: How many people attended the game.
+
+#### Team
+
+A representation of a team within a game.
+
+* **identifier**: The unique identifier for the team.
+* **name**: The name of the team.
+* **location**: The home location of the team.
+* **players**: A list of players with the team for the game.
+* **odds**: A list of odds for the team on the game to win.
+* **points**: The amount of points scored by this team on the game.
+* **ladder_rank**: The ladder rank of the team at the beginning of the round of the game.
+
+#### Player
+
+A representation of a player within a team within a game.
+
+* **identifier**: The unique identifier for the player.
+* **jersey**: The jersey identifying the player.
+* **kicks**: The number of kicks the player made in the game.
+
+#### Odds
+
+A representation of the odds for a team to win within a game.
+
+* **odds**: The decimal odds offered by a bookie for the team to win in the game.
+* **bookie**: The bookie offering these odds.
+
+#### Venue
+
+The venue the game is played at.
+
+* **identifier**: The unique identifier for the venue.
+* **names**: The name of the venue.
+* **address**: The address of the venue.
+* **is_grass**: Whether the venue has a grass field.
+* **is_indoor**: Whether the venue is indoors.
+
+#### Address
+
+The address of the venue.
+
+* **city**: The city of the address.
+* **state**: The state of the address.
+* **zipcode**: The postal/zip code of the address.
+* **latitude**: The latitude of the address.
+* **longitude**: The longitude of the address.
+* **housenumber**: The house/street number of the address.
+* **weather**: The weather at the address at the game start time.
+* **timezone**: The time zone at the address.
+
+#### Weather
+
+The weather at the address of the game start time.
+
+* **temperature**: The temperature at the address at the game start time.
 
 ## Caching
 

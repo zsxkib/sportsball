@@ -9,13 +9,18 @@ import requests
 from bs4 import BeautifulSoup
 
 from ...address_model import AddressModel
+from ...google.google_address_model import GoogleAddressModel
 from ...venue_model import VenueModel
 
 
 class AFLAFLTablesVenueModel(VenueModel):
     """AFL AFLTables implementation of the venue model."""
 
-    def __init__(self, url: str, session: requests.Session) -> None:
+    _address: AddressModel | None
+
+    def __init__(
+        self, url: str, session: requests.Session, dt: datetime.datetime
+    ) -> None:
         super().__init__(session)
         o = urlparse(url)
         last_component = o.path.split("/")[-1]
@@ -28,6 +33,8 @@ class AFLAFLTablesVenueModel(VenueModel):
         if name is None:
             raise ValueError("name is null.")
         self._name = name
+        self._address = None
+        self._dt = dt
 
     @property
     def identifier(self) -> str:
@@ -38,6 +45,17 @@ class AFLAFLTablesVenueModel(VenueModel):
     def name(self) -> str:
         """Return the venue name."""
         return self._name
+
+    @property
+    def address(self) -> AddressModel | None:
+        """Return the venue address."""
+        address = self._address
+        if address is None:
+            address = GoogleAddressModel(
+                f"{self.name} - Australia", self.session, self._dt
+            )
+            self._address = address
+        return address
 
     @staticmethod
     def urls_expire_after() -> (

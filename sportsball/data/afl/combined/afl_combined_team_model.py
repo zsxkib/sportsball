@@ -1,63 +1,70 @@
 """AFL combined team model."""
 
 import datetime
-from typing import Any, Dict, Optional, Pattern, Sequence, Union
+from typing import Any, Dict, Optional, Pattern, Sequence, Type, Union
 
-import requests
-
+from ...combined.combined_team_model import CombinedTeamModel
 from ...odds_model import OddsModel
-from ...player_model import PlayerModel
-from ...team_model import TeamModel
 from ..afltables.afl_afltables_team_model import AFLAFLTablesTeamModel
 from ..aussportsbetting.afl_aussportsbetting_odds_model import \
     AFLAusSportsBettingOddsModel
 from .afl_combined_player_model import AFLCombinedPlayerModel
 
 
-class AFLCombinedTeamModel(TeamModel):
-    """AFL AFLTables implementation of the team model."""
+class AFLCombinedTeamModel(CombinedTeamModel):
+    """AFL combined implementation of the team model."""
 
-    def __init__(
-        self,
-        session: requests.Session,
-        team_models: list[TeamModel],
-        date: datetime.date,
-    ) -> None:
-        super().__init__(session)
-        self._team_models = team_models
-        self._date = date
+    @classmethod
+    def _combined_player_model_class(cls) -> Type[AFLCombinedPlayerModel]:
+        return AFLCombinedPlayerModel
 
-    @property
-    def identifier(self) -> str:
-        """Return the identifier."""
-        return self._team_models[0].identifier
-
-    @property
-    def name(self) -> str:
-        """Return the name."""
-        return self._team_models[0].name
-
-    @property
-    def location(self) -> str | None:
-        """Return the location."""
-        location = None
-        for team_model in self._team_models:
-            location = team_model.location
-            if location is not None:
-                break
-        return location
-
-    @property
-    def players(self) -> Sequence[PlayerModel]:
-        players: dict[str, list[PlayerModel]] = {}
-        for team_model in self._team_models:
-            for player_model in team_model.players:
-                key = player_model.jersey
-                if key is None:
-                    key = player_model.identifier
-                players[key] = players.get(key, []) + [player_model]
-
-        return [AFLCombinedPlayerModel(self.session, v) for v in players.values()]
+    @classmethod
+    def team_identity_map(cls) -> dict[str, str]:
+        # pylint: disable=too-many-locals
+        fitzroy = "fitzroy_idx"
+        carlton = "carlton_idx"
+        collingwood = "collingwood_idx"
+        stkilda = "stkilda_idx"
+        geelong = "geelong_idx"
+        essendon = "essendon_idx"
+        swans = "swans_idx"
+        melbourne = "melbourne_idx"
+        university = "university_idx"
+        richmond = "richmond_idx"
+        bulldogs = "bullldogs_idx"
+        kangaroos = "kangaroos_idx"
+        hawthorn = "hawthorn_idx"
+        brisbane = "brisbaneb_idx"
+        westcoast = "westcoast_idx"
+        adelaide = "adelaide_idx"
+        fremantle = "fremantle_idx"
+        brisbane_lions = "brisbanel_idx"
+        port_adelaide = "padelaide_idx"
+        gws = "gws_idx"
+        goldcoast = "goldcoast_idx"
+        return {
+            "fitzroy_idx": fitzroy,
+            "carlton_idx": carlton,
+            "collingwood_idx": collingwood,
+            "stkilda_idx": stkilda,
+            "geelong_idx": geelong,
+            "essendon_idx": essendon,
+            "swans_idx": swans,
+            "melbourne_idx": melbourne,
+            "university_idx": university,
+            "richmond_idx": richmond,
+            "bullldogs_idx": bulldogs,
+            "kangaroos_idx": kangaroos,
+            "hawthorn_idx": hawthorn,
+            "brisbaneb_idx": brisbane,
+            "westcoast_idx": westcoast,
+            "adelaide_idx": adelaide,
+            "fremantle_idx": fremantle,
+            "brisbanel_idx": brisbane_lions,
+            "padelaide_idx": port_adelaide,
+            "gws_idx": gws,
+            "goldcoast_idx": goldcoast,
+        }
 
     @property
     def odds(self) -> Sequence[OddsModel]:
@@ -73,16 +80,6 @@ class AFLCombinedTeamModel(TeamModel):
         for team_model in self._team_models:
             odds.extend(team_model.odds)
         return odds
-
-    @property
-    def points(self) -> float | None:
-        """Return the points scored in the game."""
-        points = None
-        for team_model in self._team_models:
-            points = team_model.points
-            if points is not None:
-                break
-        return points
 
     @staticmethod
     def urls_expire_after() -> (

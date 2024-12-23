@@ -26,6 +26,20 @@ FULL_GAME_DT_COLUMN = COLUMN_SEPARATOR.join([GAME_COLUMN_PREFIX, GAME_DT_COLUMN]
 class GameModel(Model):
     """The prototype game class."""
 
+    def __str__(self) -> str:
+        season_text = "GameModel("
+        args = [
+            f"dt={self.dt}",
+            f"week={self.week}",
+            f"game_number={self.game_number}",
+            f"teams={len(self.teams)}",
+            f"end_dt={self.end_dt}",
+            f"attendance={self.attendance}",
+        ]
+        season_text += ",".join(args)
+        season_text += ")"
+        return season_text
+
     @property
     def dt(self) -> datetime.datetime:
         """Return the game time."""

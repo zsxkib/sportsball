@@ -3,6 +3,7 @@
 import datetime
 from typing import Any, Dict, Optional, Pattern, Sequence, Union
 
+import pytz
 import requests
 from dateutil.parser import parse
 
@@ -68,6 +69,13 @@ class ESPNGameModel(GameModel):
         venue = None
         if "venue" in event:
             venue = ESPNVenueModel(session, event["venue"], self._dt)
+        if venue is None and "venues" in event:
+            venues = event["venues"]
+            if venues:
+                venue_url = event["venues"][0]["$ref"]
+                venue_response = session.get(venue_url)
+                venue_response.raise_for_status()
+                venue = ESPNVenueModel(session, venue_response.json(), self._dt)
         self._venue = venue
 
         self._teams = []
@@ -86,7 +94,20 @@ class ESPNGameModel(GameModel):
     @property
     def dt(self) -> datetime.datetime:
         """Return the game time."""
-        return self._dt
+        dt = self._dt
+        if dt.tzinfo is not None and dt.tzinfo.utcoffset(dt) is not None:
+            return dt
+        tz = None
+        venue_model = self.venue
+        if venue_model is not None:
+            address = venue_model.address
+            if address is not None:
+                timezone = address.timezone
+                if timezone is not None:
+                    tz = pytz.timezone(timezone)
+        if tz is None:
+            tz = pytz.utc
+        return tz.localize(dt)
 
     @property
     def week(self) -> int:

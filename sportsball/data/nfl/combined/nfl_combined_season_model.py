@@ -1,20 +1,21 @@
-"""AFL combined season model."""
+"""NFL combined season model."""
 
 import datetime
 from typing import Any, Dict, Optional, Pattern, Type, Union
 
 from ...combined.combined_game_model import CombinedGameModel
 from ...combined.combined_season_model import CombinedSeasonModel
-from ..afltables.afl_afltables_season_model import AFLAFLTablesSeasonModel
-from .afl_combined_game_model import AFLCombinedGameModel
+from ..espn.nfl_espn_season_model import NFLESPNSeasonModel
+from ..sportsdb.nfl_sportsdb_season_model import NFLSportsDBSeasonModel
+from .nfl_combined_game_model import NFLCombinedGameModel
 
 
-class AFLCombinedSeasonModel(CombinedSeasonModel):
-    """The class implementing the AFL combined season model."""
+class NFLCombinedSeasonModel(CombinedSeasonModel):
+    """The class implementing the NFL combined season model."""
 
     @classmethod
     def _combined_game_model_class(cls) -> Type[CombinedGameModel]:
-        return AFLCombinedGameModel
+        return NFLCombinedGameModel
 
     @staticmethod
     def urls_expire_after() -> (
@@ -25,6 +26,7 @@ class AFLCombinedSeasonModel(CombinedSeasonModel):
     ):
         """Return any URL cache rules."""
         return {
-            **AFLAFLTablesSeasonModel.urls_expire_after(),
-            **AFLCombinedGameModel.urls_expire_after(),
+            **NFLSportsDBSeasonModel.urls_expire_after(),
+            **NFLESPNSeasonModel.urls_expire_after(),
+            **NFLCombinedGameModel.urls_expire_after(),
         }

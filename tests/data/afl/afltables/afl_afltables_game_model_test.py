@@ -1,9 +1,11 @@
 """Tests for the afltables game model class."""
 import os
 import unittest
+from unittest.mock import patch
 
 import requests_cache
 import requests_mock
+import openmeteo_requests
 
 from sportsball.data.afl.afltables.afl_afltables_game_model import AFLAFLTablesGameModel
 from sportsball.data.game_model import GAME_ATTENDANCE_COLUMN, GAME_COLUMN_PREFIX
@@ -25,7 +27,9 @@ class TestAFLAFLTablesGameModel(unittest.TestCase):
             None,
         )
 
-    def test_attendance(self):
+    @patch.object(openmeteo_requests.Client, "weather_api")
+    def test_attendance(self, mock_weather_api):
+        mock_weather_api.return_value = []
         with requests_mock.Mocker() as m:
             with open(os.path.join(os.path.dirname(__file__), "game_model_test.html")) as handle:
                 m.get(self._url, text=handle.read())
@@ -39,7 +43,9 @@ class TestAFLAFLTablesGameModel(unittest.TestCase):
             attendance = df[COLUMN_SEPARATOR.join([GAME_COLUMN_PREFIX, GAME_ATTENDANCE_COLUMN])].values.tolist()[0]
             self.assertEqual(attendance, 40012)
 
-    def test_kicks(self):
+    @patch.object(openmeteo_requests.Client, "weather_api")
+    def test_kicks(self, mock_weather_api):
+        mock_weather_api.return_value = []
         with requests_mock.Mocker() as m:
             with open(os.path.join(os.path.dirname(__file__), "game_model_test.html")) as handle:
                 m.get(self._url, text=handle.read())
@@ -53,7 +59,9 @@ class TestAFLAFLTablesGameModel(unittest.TestCase):
             kicks = df[COLUMN_SEPARATOR.join([GAME_COLUMN_PREFIX, str(0), TEAM_COLUMN_PREFIX, str(0), PLAYER_COLUMN_PREFIX, PLAYER_KICKS_COLUMN])].values.tolist()[0]
             self.assertEqual(kicks, 3)
 
-    def test_no_attendance(self):
+    @patch.object(openmeteo_requests.Client, "weather_api")
+    def test_no_attendance(self, mock_weather_api):
+        mock_weather_api.return_value = []
         url = "https://afltables.com/afl/stats/games/1897/041518970508.html"
         model = AFLAFLTablesGameModel(
             url,

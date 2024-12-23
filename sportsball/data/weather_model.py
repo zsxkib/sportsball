@@ -16,15 +16,17 @@ class WeatherModel(Model):
     """The class for representing weather."""
 
     @property
-    def temperature(self) -> float:
+    def temperature(self) -> float | None:
         """Return the temperature."""
         raise NotImplementedError("temperature is not implemented in parent class.")
 
     def to_frame(self) -> pd.DataFrame:
         """Render the address as a dataframe."""
-        data: dict[str, list[float]] = {
-            WEATHER_COLUMN_TEMPERATURE: [self.temperature],
-        }
+        data: dict[str, list[float]] = {}
+
+        temperature = self.temperature
+        if temperature is not None:
+            data[WEATHER_COLUMN_TEMPERATURE] = [temperature]
 
         df = pd.DataFrame(
             data={

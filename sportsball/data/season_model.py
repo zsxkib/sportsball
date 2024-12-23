@@ -19,6 +19,20 @@ SEASON_YEAR_COLUMN = "year"
 class SeasonModel(Model):
     """The prototype class for a season."""
 
+    def __str__(self) -> str:
+        season_text = "SeasonModel("
+        args = []
+        year = self.year
+        if year is not None:
+            args.append(f"year={year}")
+        season_type = self.season_type
+        if season_type is not None:
+            args.append(f"season_type={season_type}")
+        args.append(f"games={len(list(self.games))}")
+        season_text += ",".join(args)
+        season_text += ")"
+        return season_text
+
     @property
     def year(self) -> int | None:
         """Return the year."""

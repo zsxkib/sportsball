@@ -9,6 +9,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split  # type: ignore
 
 HASH_USR_ATTR = "HASH"
+FEATURES_USR_ATTR = "FEATURES"
 
 
 def _hash_df(df: pd.DataFrame) -> int:
