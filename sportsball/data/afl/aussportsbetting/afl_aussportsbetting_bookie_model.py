@@ -1,30 +1,8 @@
 """AFL aussportsbetting bookie model."""
 
-import datetime
-from typing import Any, Dict, Optional, Pattern, Union
-
 from ...bookie_model import BookieModel
 
 
-class AFLAusSportsBettingBookieModel(BookieModel):
-    """AFL AusSportsBetting implementation of the bookie model."""
-
-    @property
-    def identifier(self) -> str:
-        """Return the identifier."""
-        return "bet365"
-
-    @property
-    def name(self) -> str:
-        """Return the name."""
-        return "Bet365"
-
-    @staticmethod
-    def urls_expire_after() -> (
-        Dict[
-            Union[str, Pattern[Any]],
-            Optional[Union[int, float, str, datetime.datetime, datetime.timedelta]],
-        ]
-    ):
-        """Return the URL cache rules."""
-        return {}
+def create_afl_aussportsbetting_bookie_model() -> BookieModel:
+    """Create bookie model from aus sports betting."""
+    return BookieModel(identifier="bet365", name="Bet365")

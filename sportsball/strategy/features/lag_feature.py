@@ -2,7 +2,7 @@
 
 import pandas as pd
 
-from ...data.columns import COLUMN_SEPARATOR
+from ...data.league_model import DELIMITER
 from .columns import (attendance_column, find_player_count, find_team_count,
                       kick_column, player_identifier_column,
                       team_identifier_column, venue_identifier_column)
@@ -15,7 +15,7 @@ def _process_attendance(df: pd.DataFrame) -> pd.DataFrame:
     attendance_col = attendance_column()
     if attendance_col in df.columns.values:
         team_count = find_team_count(df)
-        lag_attendance_col = COLUMN_SEPARATOR.join([LAG_COLUMN_PREFIX, attendance_col])
+        lag_attendance_col = DELIMITER.join([LAG_COLUMN_PREFIX, attendance_col])
         df[lag_attendance_col] = None
         last_attendances: dict[str, int | None] = {}
 
@@ -47,7 +47,7 @@ def _process_kicks(df: pd.DataFrame) -> pd.DataFrame:
     for i in range(team_count):
         for j in range(player_count):
             kick_col = kick_column(i, j)
-            lag_kick_col = COLUMN_SEPARATOR.join([LAG_COLUMN_PREFIX, kick_col])
+            lag_kick_col = DELIMITER.join([LAG_COLUMN_PREFIX, kick_col])
             df[lag_kick_col] = None
 
     def record_team_player_kicks(row: pd.Series) -> pd.Series:
@@ -57,7 +57,7 @@ def _process_kicks(df: pd.DataFrame) -> pd.DataFrame:
         for i in range(team_count):
             for j in range(player_count):
                 kick_col = kick_column(i, j)
-                lag_kick_col = COLUMN_SEPARATOR.join([LAG_COLUMN_PREFIX, kick_col])
+                lag_kick_col = DELIMITER.join([LAG_COLUMN_PREFIX, kick_col])
                 player_idx = None
                 try:
                     player_idx = row[player_identifier_column(i, j)]

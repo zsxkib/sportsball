@@ -1,32 +1,19 @@
 """Combined player model."""
 
-from typing import Optional
-
-import requests
-
 from ..player_model import PlayerModel
 
 
-class CombinedPlayerModel(PlayerModel):
-    """Combined implementation of the player model."""
-
-    def __init__(
-        self, session: requests.Session, player_models: list[PlayerModel]
-    ) -> None:
-        super().__init__(session)
-        self._player_models = player_models
-
-    @property
-    def identifier(self) -> str:
-        """Return the identifier."""
-        return self._player_models[0].identifier
-
-    @property
-    def jersey(self) -> Optional[str]:
-        """Return the jersey."""
-        jersey = None
-        for player_model in self._player_models:
-            jersey = player_model.jersey
-            if jersey is not None:
-                break
-        return jersey
+def create_combined_player_model(
+    player_models: list[PlayerModel], identifier: str
+) -> PlayerModel:
+    """Create a player model by combining many player models."""
+    jersey = None
+    kicks = None
+    for player_model in player_models:
+        player_model_jersey = player_model.jersey
+        if player_model_jersey is not None:
+            jersey = player_model_jersey
+        player_model_kicks = player_model.kicks
+        if player_model_kicks is not None:
+            kicks = player_model_kicks
+    return PlayerModel(identifier=identifier, jersey=jersey, kicks=kicks)

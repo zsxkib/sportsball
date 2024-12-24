@@ -3,7 +3,7 @@
 import pandas as pd
 from feature_engine.encoding import OrdinalEncoder
 
-from ...data.columns import CATEGORICAL_COLUMNS_ATTR
+from ...data.field_type import FieldType
 from .feature import Feature
 
 
@@ -21,7 +21,7 @@ class OrdinalFeature(Feature):
     def process(self, df: pd.DataFrame) -> pd.DataFrame:
         """Process the dataframe and add the necessary features."""
         df = self._od.fit_transform(df)
-        for categorical_column in df.attrs[CATEGORICAL_COLUMNS_ATTR]:
+        for categorical_column in df.attrs[FieldType.CATEGORICAL]:
             if categorical_column not in df.columns.values:
                 continue
             df[categorical_column] = (

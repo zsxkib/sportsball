@@ -3,16 +3,14 @@
 # pylint: disable=too-many-lines,line-too-long
 import datetime
 from collections import namedtuple
-from typing import Any, Dict, Optional, Pattern, Union
+from typing import Any
 
 import geocoder  # type: ignore
-import pytz
 import requests
 from timezonefinder import TimezoneFinder  # type: ignore
 
 from ..address_model import AddressModel
-from ..openmeteo.openmeteo_weather_model import OpenmeteoWeatherModel
-from ..weather_model import WeatherModel
+from ..openmeteo.openmeteo_weather_model import create_openmeteo_weather_model
 
 SportsballGeocodeTuple = namedtuple(
     "SportsballGeocodeTuple", ["city", "state", "postal", "lat", "lng", "housenumber"]
@@ -1195,78 +1193,33 @@ _CACHED_GEOCODES: dict[str, Any] = {
 }
 
 
-class GoogleAddressModel(AddressModel):
-    """Google implementation of the address model."""
-
-    def __init__(
-        self, query: str, session: requests.Session, dt: datetime.datetime
-    ) -> None:
-        g = _CACHED_GEOCODES.get(query)
-        if g is None:
-            g = geocoder.google(query, session=session)
-            _CACHED_GEOCODES[query] = g
-        super().__init__(session, g.city, g.state, g.postal)
-        if g.lat is None or g.lng is None:
-            print(f"Failed to reverse geocode {query}")
-        self._latitude = g.lat
-        self._longitude = g.lng
-        self._housenumber = g.housenumber
-        self._dt = dt
-        self._tz = None
-        if self._latitude is not None and self._longitude is not None:
-            tf = TimezoneFinder()
-            self._tz = tf.timezone_at(lng=self._longitude, lat=self._latitude)
-
-    @property
-    def latitude(self) -> float | None:
-        """Return the latitude."""
-        return self._latitude
-
-    @property
-    def longitude(self) -> float | None:
-        """Return the longitude."""
-        return self._longitude
-
-    @property
-    def housenumber(self) -> str | None:
-        """Return the housenumber."""
-        return self._housenumber
-
-    @property
-    def weather(self) -> WeatherModel | None:
-        """Return the weather."""
-        latitude = self._latitude
-        longitude = self._longitude
-        if latitude is None or longitude is None:
-            return None
-        dt = self._dt
-        timezone = self.timezone
-        if (
-            dt.tzinfo is None or dt.tzinfo.utcoffset(dt) is None
-        ) and timezone is not None:
-            dt = pytz.timezone(timezone).localize(dt)
-        if dt >= datetime.datetime.now(datetime.timezone.utc):
-            return None
-        if dt <= pytz.utc.localize(datetime.datetime(year=1940, month=1, day=1)):
-            return None
-        return OpenmeteoWeatherModel(
-            self.session, self._latitude, self._longitude, dt, timezone
+def create_google_address_model(
+    query: str, session: requests.Session, dt: datetime.datetime
+) -> AddressModel:
+    """Create address model from google."""
+    g = _CACHED_GEOCODES.get(query)
+    if g is None:
+        g = geocoder.google(query, session=session)
+        _CACHED_GEOCODES[query] = g
+    latitude = g.lat
+    longitude = g.lng
+    weather_model = None
+    tz = "UTC"
+    if latitude is not None and longitude is not None:
+        tf = TimezoneFinder()
+        timezone = tf.timezone_at(lng=longitude, lat=latitude)
+        if timezone is not None:
+            tz = timezone
+        weather_model = create_openmeteo_weather_model(
+            session, latitude, longitude, dt, tz
         )
-
-    @property
-    def timezone(self) -> str:
-        """Return the timezone."""
-        tz = self._tz
-        if tz is None:
-            tz = "UTC"
-        return tz
-
-    @staticmethod
-    def urls_expire_after() -> (
-        Dict[
-            Union[str, Pattern[Any]],
-            Optional[Union[int, float, str, datetime.datetime, datetime.timedelta]],
-        ]
-    ):
-        """Return the URL cache rules."""
-        return {}
+    return AddressModel(
+        city=g.city,
+        state=g.state,
+        zipcode=g.postal,
+        latitude=latitude,
+        longitude=longitude,
+        housenumber=g.housenumber,
+        weather=weather_model,
+        timezone=tz,
+    )

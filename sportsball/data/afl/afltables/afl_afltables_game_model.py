@@ -3,7 +3,6 @@
 # pylint: disable=too-many-arguments
 import datetime
 import urllib.parse
-from typing import Any, Dict, Optional, Pattern, Sequence, Union
 from urllib.parse import urlparse
 
 import pytz
@@ -12,10 +11,10 @@ from bs4 import BeautifulSoup, Tag
 from dateutil.parser import parse
 
 from ...game_model import GameModel
-from ...team_model import TeamModel
-from ...venue_model import VenueModel
-from .afl_afltables_team_model import AFLAFLTablesTeamModel
-from .afl_afltables_venue_model import AFLAFLTablesVenueModel
+from ...league import League
+from ...season_type import SeasonType
+from .afl_afltables_team_model import create_afl_afltables_team_model
+from .afl_afltables_venue_model import create_afl_afltables_venue_model
 
 _FINALS_WEEK_ADDITION_MAP = {
     "Qualifying Final": 1,
@@ -134,144 +133,89 @@ def _find_season_metadata(
     )
 
 
-class AFLAFLTablesGameModel(GameModel):
-    """AFL AFLTables implementation of the game model."""
+def create_afl_afltables_game_model(
+    game_number: int,
+    session: requests.Session,
+    url: str,
+    last_round_number: int,
+    last_ladder_ranks: dict[str, int] | None,
+    league: League,
+    season_year: int | None,
+    season_type: SeasonType | None,
+) -> GameModel:
+    """Create a game model from AFL Tables."""
+    # pylint: disable=too-many-locals
+    response = session.get(url)
+    response.raise_for_status()
+    soup = BeautifulSoup(response.text, "html.parser")
 
-    # pylint: disable=too-many-instance-attributes
+    def _find_teams_metadata(
+        soup: BeautifulSoup, team_infos: list[tuple[str, str, int]]
+    ) -> list[tuple[str, list[tuple[str, str, int | None]], int]]:
+        def _is_correct_table(table: Tag, name: str) -> bool:
+            for th in table.find_all("th"):
+                header_text = th.get_text().strip()
+                if name + " Match Statistics" in header_text:
+                    return True
+            return False
 
-    def __init__(
-        self,
-        url: str,
-        session: requests.Session,
-        game_number: int,
-        last_round_number: int,
-        last_ladder_ranks: dict[str, int] | None,
-    ) -> None:
-        super().__init__(session)
-        self._game_number = game_number
-        response = session.get(url)
-        soup = BeautifulSoup(response.text, "html.parser")
+        def _find_players(table: Tag) -> list[tuple[str, str, int | None]]:
+            players: list[tuple[str, str, int | None]] = []
+            for tr in table.find_all("tr"):
+                player_row = False
+                player_url = None
+                for a in tr.find_all("a", href=True):
+                    player_url = urllib.parse.urljoin(url, a.get("href"))
+                    o = urlparse(player_url)
+                    if "players" in o.path.split("/"):
+                        player_row = True
+                if player_row and player_url is not None:
+                    jersey = None
+                    kicks = None
+                    for count, td in enumerate(tr.find_all("td")):
+                        if count == 0:
+                            jersey = td.get_text().strip()
+                        elif count == 2:
+                            kicks_text = td.get_text().strip()
+                            if kicks_text:
+                                kicks = int(kicks_text)
 
-        def _find_teams_metadata(
-            soup: BeautifulSoup, team_infos: list[tuple[str, str, int]]
-        ) -> list[tuple[str, list[tuple[str, str, int | None]], int]]:
-            def _is_correct_table(table: Tag, name: str) -> bool:
-                for th in table.find_all("th"):
-                    header_text = th.get_text().strip()
-                    if name + " Match Statistics" in header_text:
-                        return True
-                return False
+                    if jersey is None:
+                        raise ValueError("jersey is null.")
 
-            def _find_players(table: Tag) -> list[tuple[str, str, int | None]]:
-                players: list[tuple[str, str, int | None]] = []
-                for tr in table.find_all("tr"):
-                    player_row = False
-                    player_url = None
-                    for a in tr.find_all("a", href=True):
-                        player_url = urllib.parse.urljoin(url, a.get("href"))
-                        o = urlparse(player_url)
-                        if "players" in o.path.split("/"):
-                            player_row = True
-                    if player_row and player_url is not None:
-                        jersey = None
-                        kicks = None
-                        for count, td in enumerate(tr.find_all("td")):
-                            if count == 0:
-                                jersey = td.get_text().strip()
-                            elif count == 2:
-                                kicks_text = td.get_text().strip()
-                                if kicks_text:
-                                    kicks = int(kicks_text)
+                    players.append((player_url, jersey, kicks))
+            return players
 
-                        if jersey is None:
-                            raise ValueError("jersey is null.")
+        team_metadata = []
+        for team_url, name, points in team_infos:
+            for table in soup.find_all("table"):
+                if _is_correct_table(table, name):
+                    players = _find_players(table)
+                    team_metadata.append((team_url, players, points))
+                    break
+        return team_metadata
 
-                        players.append((player_url, jersey, kicks))
-                return players
-
-            team_metadata = []
-            for team_url, name, points in team_infos:
-                for table in soup.find_all("table"):
-                    if _is_correct_table(table, name):
-                        players = _find_players(table)
-                        team_metadata.append((team_url, players, points))
-                        break
-            return team_metadata
-
-        self._dt, venue_url, self._week, team_infos, self._end_dt, self._attendance = (
-            _find_season_metadata(soup, url, last_round_number)
-        )
-        self._venue_url = venue_url
-        self._teams_info = _find_teams_metadata(soup, team_infos)
-        self._venue_model: VenueModel | None = None
-        self._teams: Sequence[TeamModel] = []
-        self._last_ladder_ranks = last_ladder_ranks
-
-    @property
-    def dt(self) -> datetime.datetime:
-        """Return the game time."""
-        return self._dt
-
-    @property
-    def week(self) -> int:
-        """Return the game week."""
-        return self._week
-
-    @property
-    def game_number(self) -> int:
-        """Return the game number."""
-        return self._game_number
-
-    @property
-    def home_team(self) -> TeamModel:
-        return self.teams[0]
-
-    @property
-    def away_team(self) -> TeamModel:
-        return self.teams[1]
-
-    @property
-    def venue(self) -> Optional[VenueModel]:
-        if self._venue_model is None:
-            self._venue_model = AFLAFLTablesVenueModel(
-                self._venue_url, self._session, self._dt
+    dt, venue_url, week, team_infos, end_dt, attendance = _find_season_metadata(
+        soup, url, last_round_number
+    )
+    return GameModel(
+        dt=dt,
+        week=week,
+        game_number=game_number,
+        venue=create_afl_afltables_venue_model(venue_url, session, dt),
+        teams=[
+            create_afl_afltables_team_model(
+                team_url,
+                players,
+                float(points),
+                session,
+                last_ladder_ranks,
             )
-        return self._venue_model
-
-    @property
-    def teams(self) -> Sequence[TeamModel]:
-        if len(self._teams) < len(self._teams_info):
-            self._teams = [
-                AFLAFLTablesTeamModel(
-                    team_url,
-                    players,
-                    float(points),
-                    self._session,
-                    self._last_ladder_ranks,
-                )
-                for team_url, players, points in self._teams_info
-            ]
-        return self._teams
-
-    @property
-    def end_dt(self) -> datetime.datetime | None:
-        """Return the end time of the game."""
-        return self._end_dt
-
-    @property
-    def attendance(self) -> int | None:
-        """Return the attendance at the game."""
-        return self._attendance
-
-    @staticmethod
-    def urls_expire_after() -> (
-        Dict[
-            Union[str, Pattern[Any]],
-            Optional[Union[int, float, str, datetime.datetime, datetime.timedelta]],
-        ]
-    ):
-        """Return the URL cache rules."""
-        return {
-            **AFLAFLTablesVenueModel.urls_expire_after(),
-            **AFLAFLTablesTeamModel.urls_expire_after(),
-        }
+            for team_url, players, points in _find_teams_metadata(soup, team_infos)
+        ],
+        end_dt=end_dt,
+        attendance=attendance,
+        league=league,
+        year=season_year,
+        season_type=season_type,
+    )

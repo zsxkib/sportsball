@@ -7,7 +7,6 @@ from .game_model import GameModel
 from .league import League
 from .league_model import LeagueModel
 from .player_model import PlayerModel
-from .season_model import SeasonModel
 from .season_type import SeasonType
 from .team_model import TeamModel
 from .venue_model import VenueModel

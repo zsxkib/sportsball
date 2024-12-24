@@ -7,8 +7,8 @@ import pandas as pd
 from sportsball.strategy.features.columns import team_identifier_column, team_points_column, player_identifier_column, player_column_prefix
 from sportsball.strategy.features.skill_feature import \
     _find_matches, SkillFeature, SKILL_COLUMN_PREFIX, SKILL_PROBABILITY_COLUMN, YEAR_SLICE_ALL
-from sportsball.data.columns import COLUMN_SEPARATOR
-from sportsball.data.game_model import FULL_GAME_DT_COLUMN
+from sportsball.data.game_model import GAME_DT_COLUMN
+from sportsball.data.league_model import DELIMITER
 from openskill.models import PlackettLuce
 
 
@@ -19,7 +19,7 @@ class TestSkillFeatureClass(unittest.TestCase):
 
     def test_process(self):
         df = pd.DataFrame(data={
-            FULL_GAME_DT_COLUMN: [
+            GAME_DT_COLUMN: [
                 datetime.datetime(2009, 12, 31, 0, 0, 0),
                 datetime.datetime(2010, 1, 1, 0, 0, 0),
                 datetime.datetime(2010, 1, 2, 0, 0, 0),
@@ -37,22 +37,22 @@ class TestSkillFeatureClass(unittest.TestCase):
         print(df.columns.values)
         print(df)
         probability = df[
-            COLUMN_SEPARATOR.join([player_column_prefix(0, None), SKILL_COLUMN_PREFIX, "1", SKILL_PROBABILITY_COLUMN])
+            DELIMITER.join([player_column_prefix(0, None), SKILL_COLUMN_PREFIX, "1", SKILL_PROBABILITY_COLUMN])
         ].values.tolist()
         self.assertListEqual(probability, [0.0, 0.34070897206214457, 0.2287564657243515])
         probability = df[
-            COLUMN_SEPARATOR.join([player_column_prefix(0, None), SKILL_COLUMN_PREFIX, "2", SKILL_PROBABILITY_COLUMN])
+            DELIMITER.join([player_column_prefix(0, None), SKILL_COLUMN_PREFIX, "2", SKILL_PROBABILITY_COLUMN])
         ].values.tolist()
         self.assertListEqual(probability, [0.0, 0.34070897206214457, 0.2287564657243515])
         probability = df[
-            COLUMN_SEPARATOR.join([player_column_prefix(0, None), SKILL_COLUMN_PREFIX, YEAR_SLICE_ALL, SKILL_PROBABILITY_COLUMN])
+            DELIMITER.join([player_column_prefix(0, None), SKILL_COLUMN_PREFIX, YEAR_SLICE_ALL, SKILL_PROBABILITY_COLUMN])
         ].values.tolist()
         self.assertListEqual(probability, [0.5, 0.34070897206214457, 0.2287564657243515])
 
 
     def test_find_matches(self):
         df = pd.DataFrame(data={
-            FULL_GAME_DT_COLUMN: [datetime.datetime(2009, 12, 31, 0, 0, 0), datetime.datetime(2010, 1, 1, 0, 0, 0)],
+            DELIMITER: [datetime.datetime(2009, 12, 31, 0, 0, 0), datetime.datetime(2010, 1, 1, 0, 0, 0)],
             team_identifier_column(0): ["1", "1"],
             team_identifier_column(1): ["2", "2"],
             team_points_column(0): [0, 1],

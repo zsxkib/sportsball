@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 from sportsball.strategy.features.columns import team_identifier_column, venue_identifier_column, attendance_column, kick_column, player_identifier_column
 from sportsball.strategy.features.lag_feature import LagFeature, LAG_COLUMN_PREFIX
-from sportsball.data.columns import COLUMN_SEPARATOR
+from sportsball.data.league_model import DELIMITER
 
 
 class TestLagFeature(unittest.TestCase):
@@ -21,7 +21,7 @@ class TestLagFeature(unittest.TestCase):
             attendance_column(): [12000, 13000]
         })
         df = self._lag_feature.process(df)
-        lag_attendances = df[COLUMN_SEPARATOR.join([LAG_COLUMN_PREFIX, attendance_column()])].values.tolist()[1:]
+        lag_attendances = df[DELIMITER.join([LAG_COLUMN_PREFIX, attendance_column()])].values.tolist()[1:]
         self.assertListEqual(lag_attendances, [12000.0])
 
     def test_kicks(self):
@@ -40,7 +40,7 @@ class TestLagFeature(unittest.TestCase):
             kick_column(1, 1): [40, 50],
         })
         df = self._lag_feature.process(df)
-        lag_kicks = df[COLUMN_SEPARATOR.join([LAG_COLUMN_PREFIX, kick_column(0, 0)])].values.tolist()[1:]
+        lag_kicks = df[DELIMITER.join([LAG_COLUMN_PREFIX, kick_column(0, 0)])].values.tolist()[1:]
         self.assertListEqual(lag_kicks, [10.0])
-        lag_kicks = df[COLUMN_SEPARATOR.join([LAG_COLUMN_PREFIX, kick_column(0, 1)])].values.tolist()[1:]
+        lag_kicks = df[DELIMITER.join([LAG_COLUMN_PREFIX, kick_column(0, 1)])].values.tolist()[1:]
         self.assertListEqual(lag_kicks, [20.0])

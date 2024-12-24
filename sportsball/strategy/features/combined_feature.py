@@ -3,7 +3,7 @@
 import numpy as np
 import pandas as pd
 
-from ...data.columns import TRAINING_EXCLUDE_COLUMNS_ATTR
+from ...data.field_type import FieldType
 from .datetime_feature import DatetimeFeature
 from .feature import Feature
 from .lag_feature import LagFeature
@@ -42,9 +42,7 @@ class CombinedFeature(Feature):
     def process(self, df: pd.DataFrame) -> pd.DataFrame:
         for feature in self._pretrain_features:
             df = feature.process(df)
-        df = df[
-            list(set(df.columns.values) - set(df.attrs[TRAINING_EXCLUDE_COLUMNS_ATTR]))
-        ]
+        df = df[list(set(df.columns.values) - set(df.attrs[FieldType.LOOKAHEAD]))]
         for feature in self._posttrain_features:
             df = feature.process(df)
         return df.replace([np.inf, -np.inf], np.nan)

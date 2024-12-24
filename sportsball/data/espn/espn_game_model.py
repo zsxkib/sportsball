@@ -1,38 +1,40 @@
 """ESPN game model."""
 
+# pylint: disable=too-many-arguments
 import datetime
-from typing import Any, Dict, Optional, Pattern, Sequence, Union
+from typing import Any, Dict
 
 import requests
 from dateutil.parser import parse
 
-from ..game_model import GameModel
+from ..game_model import GameModel, localize
+from ..league import League
 from ..odds_model import OddsModel
+from ..season_type import SeasonType
 from ..team_model import TeamModel
 from ..venue_model import VenueModel
-from .espn_bookie_model import ESPNBookieModel
-from .espn_odds_model import MONEYLINE_KEY, ESPNOddsModel
-from .espn_team_model import ESPNTeamModel
-from .espn_venue_model import ESPNVenueModel
+from .espn_bookie_model import create_espn_bookie_model
+from .espn_odds_model import MONEYLINE_KEY, create_espn_odds_model
+from .espn_team_model import create_espn_team_model
+from .espn_venue_model import create_espn_venue_model
 
 
 def _create_espn_team(
     competitor: Dict[str, Any],
     odds_dict: Dict[str, Any],
     session: requests.Session,
-) -> ESPNTeamModel:
+) -> TeamModel:
     team_response = session.get(competitor["team"]["$ref"])
     team_response.raise_for_status()
     team_dict = team_response.json()
 
     odds_key = competitor["homeAway"] + "TeamOdds"
-    odds: Sequence[OddsModel] = []
+    odds: list[OddsModel] = []
     if odds_dict:
         odds = [
-            ESPNOddsModel(
-                session,
+            create_espn_odds_model(
                 x[odds_key],
-                ESPNBookieModel(session, x["provider"]),
+                create_espn_bookie_model(x["provider"]),
             )
             for x in odds_dict["items"]
             if odds_key in x and MONEYLINE_KEY in x[odds_key]
@@ -48,110 +50,78 @@ def _create_espn_team(
     score_response.raise_for_status()
     score_dict = score_response.json()
 
-    return ESPNTeamModel(session, team_dict, roster_dict, odds, score_dict)
+    return create_espn_team_model(team_dict, roster_dict, odds, score_dict)
 
 
-class ESPNGameModel(GameModel):
-    """ESPN implementation of the game model."""
+def _create_venue(
+    event: dict[str, Any], session: requests.Session, dt: datetime.datetime
+) -> VenueModel | None:
+    venue = None
+    if "venue" in event:
+        venue = create_espn_venue_model(event["venue"], session, dt)
+    if venue is None and "venues" in event:
+        venues = event["venues"]
+        if venues:
+            venue_url = event["venues"][0]["$ref"]
+            venue_response = session.get(venue_url)
+            venue_response.raise_for_status()
+            venue = create_espn_venue_model(venue_response.json(), session, dt)
+    return venue
 
-    def __init__(
-        self,
-        event: Dict[str, Any],
-        week: int,
-        game_number: int,
-        session: requests.Session,
-    ) -> None:
-        # pylint: disable=too-many-locals
-        super().__init__(session)
-        self._dt = parse(event["date"])
-        self._week = week
-        self._game_number = game_number
-        venue = None
-        if "venue" in event:
-            venue = ESPNVenueModel(session, event["venue"], self._dt)
-        if venue is None and "venues" in event:
-            venues = event["venues"]
-            if venues:
-                venue_url = event["venues"][0]["$ref"]
-                venue_response = session.get(venue_url)
-                venue_response.raise_for_status()
-                venue = ESPNVenueModel(session, venue_response.json(), self._dt)
-        self._venue = venue
 
-        self._teams = []
-        self._attendance = None
-        for competition in event["competitions"]:
-            odds_dict = {}
-            if "odds" in competition:
-                odds_response = session.get(competition["odds"]["$ref"])
-                odds_response.raise_for_status()
-                odds_dict = odds_response.json()
+def _create_teams(
+    event: dict[str, Any], session: requests.Session, venue: VenueModel | None
+) -> tuple[list[TeamModel], int | None, datetime.datetime | None]:
+    teams = []
+    attendance = None
+    end_dt = None
+    for competition in event["competitions"]:
+        odds_dict = {}
+        if "odds" in competition:
+            odds_response = session.get(competition["odds"]["$ref"])
+            odds_response.raise_for_status()
+            odds_dict = odds_response.json()
 
-            for competitor in competition["competitors"]:
-                self._teams.append(_create_espn_team(competitor, odds_dict, session))
-            self._attendance = competition["attendance"]
-            situation_url = competition["situation"]["$ref"]
-            situation_response = session.get(situation_url)
-            situation_response.raise_for_status()
-            situation = situation_response.json()
-            last_play_url = situation["lastPlay"]["$ref"]
-            last_play_response = session.get(last_play_url)
-            last_play_response.raise_for_status()
-            last_play = last_play_response.json()
-            self._end_dt = parse(last_play["wallclock"])
+        for competitor in competition["competitors"]:
+            teams.append(_create_espn_team(competitor, odds_dict, session))
+        attendance = competition["attendance"]
+        situation_url = competition["situation"]["$ref"]
+        situation_response = session.get(situation_url)
+        situation_response.raise_for_status()
+        situation = situation_response.json()
+        last_play_response = session.get(situation["lastPlay"]["$ref"])
+        last_play_response.raise_for_status()
+        last_play = last_play_response.json()
+        end_dt = parse(last_play["wallclock"])
+        if venue is not None:
+            end_dt = localize(venue, end_dt)
+    return teams, attendance, end_dt
 
-    @property
-    def dt(self) -> datetime.datetime:
-        """Return the game time."""
-        return self._localize(self._dt)
 
-    @property
-    def week(self) -> int:
-        """Return the game week."""
-        return self._week
-
-    @property
-    def game_number(self) -> int:
-        """Return the game number."""
-        return self._game_number
-
-    @property
-    def venue(self) -> Optional[VenueModel]:
-        """Return the venue the game was played at."""
-        return self._venue
-
-    @property
-    def teams(self) -> Sequence[TeamModel]:
-        """Return the teams within the game."""
-        return self._teams
-
-    @property
-    def home_team(self) -> TeamModel:
-        return self._teams[0]
-
-    @property
-    def away_team(self) -> TeamModel:
-        return self._teams[1]
-
-    @property
-    def attendance(self) -> int | None:
-        """Return the attendance at the game."""
-        return self._attendance
-
-    @property
-    def end_dt(self) -> datetime.datetime | None:
-        """Return the end time of the game."""
-        return self._localize(self._end_dt)
-
-    @staticmethod
-    def urls_expire_after() -> (
-        Dict[
-            Union[str, Pattern[Any]],
-            Optional[Union[int, float, str, datetime.datetime, datetime.timedelta]],
-        ]
-    ):
-        """Return the URL cache rules."""
-        return {
-            **ESPNVenueModel.urls_expire_after(),
-            **ESPNTeamModel.urls_expire_after(),
-        }
+def create_espn_game_model(
+    event: dict[str, Any],
+    week: int,
+    game_number: int,
+    session: requests.Session,
+    league: League,
+    year: int | None,
+    season_type: SeasonType | None,
+) -> GameModel:
+    """Creates an ESPN game model."""
+    dt = parse(event["date"])
+    venue = _create_venue(event, session, dt)
+    if venue is not None:
+        dt = localize(venue, dt)
+    teams, attendance, end_dt = _create_teams(event, session, venue)
+    return GameModel(
+        dt=dt,
+        week=week,
+        game_number=game_number,
+        venue=venue,
+        teams=teams,
+        end_dt=end_dt,
+        attendance=attendance,
+        league=league,
+        year=year,
+        season_type=season_type,
+    )

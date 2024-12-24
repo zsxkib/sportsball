@@ -31,12 +31,6 @@ class SportsBall:
         cache_session = requests_cache.CachedSession(
             "sportsball",
             expire_after=datetime.timedelta(days=365),
-            urls_expire_after={
-                **AFLLeagueModel.urls_expire_after(),
-                **NFLLeagueModel.urls_expire_after(),
-                **NBALeagueModel.urls_expire_after(),
-                **NCAAFLeagueModel.urls_expire_after(),
-            },
         )
         self._session = retry(cache_session, retries=5, backoff_factor=0.2)
         self._leagues = {}

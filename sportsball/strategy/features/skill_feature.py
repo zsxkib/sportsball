@@ -9,8 +9,9 @@ from dateutil.relativedelta import relativedelta
 from openskill.models import PlackettLuce, PlackettLuceRating
 from pandarallel import pandarallel  # type: ignore
 
-from ...data.columns import COLUMN_SEPARATOR, GOLDEN_FEATURES_COLUMNS_ATTR
-from ...data.game_model import FULL_GAME_DT_COLUMN
+from ...data.field_type import FieldType
+from ...data.game_model import GAME_DT_COLUMN
+from ...data.league_model import DELIMITER
 from .columns import (find_player_count, find_team_count, player_column_prefix,
                       player_identifier_column, team_column_prefix,
                       team_identifier_column, team_points_column)
@@ -27,10 +28,10 @@ YEAR_SLICE_ALL = "all"
 def _slice_df(
     df: pd.DataFrame, date: datetime.date, year_slice: int | None
 ) -> pd.DataFrame:
-    df_slice = df[df[FULL_GAME_DT_COLUMN].dt.date < date]
+    df_slice = df[df[GAME_DT_COLUMN].dt.date < date]
     if year_slice is not None:
         start_date = date - relativedelta(years=year_slice)
-        df_slice = df_slice[df_slice[FULL_GAME_DT_COLUMN].dt.date > start_date]
+        df_slice = df_slice[df_slice[GAME_DT_COLUMN].dt.date > start_date]
     return df_slice
 
 
@@ -194,11 +195,11 @@ def _find_team_team(
     if pd.isnull(row[team_idx_col]):
         return [], row
     team_idx = row[team_idx_col]
-    team_skill_col_prefix = COLUMN_SEPARATOR.join(
+    team_skill_col_prefix = DELIMITER.join(
         [team_col_prefix, SKILL_COLUMN_PREFIX, year_col]
     )
-    team_mu_col = COLUMN_SEPARATOR.join([team_skill_col_prefix, SKILL_MU_COLUMN])
-    team_sigma_col = COLUMN_SEPARATOR.join([team_skill_col_prefix, SKILL_SIGMA_COLUMN])
+    team_mu_col = DELIMITER.join([team_skill_col_prefix, SKILL_MU_COLUMN])
+    team_sigma_col = DELIMITER.join([team_skill_col_prefix, SKILL_SIGMA_COLUMN])
     team = teams[team_idx]
     row[team_mu_col] = team.mu
     row[team_sigma_col] = team.sigma
@@ -233,17 +234,15 @@ def _rank_team_predictions(
 ) -> pd.Series:
     rank_team_predictions = team_model.predict_rank(team_match)
     for i, (rank, prob) in enumerate(rank_team_predictions):
-        team_skill_col_prefix = COLUMN_SEPARATOR.join(
+        team_skill_col_prefix = DELIMITER.join(
             [
                 team_column_prefix(i),
                 SKILL_COLUMN_PREFIX,
                 year_col,
             ]
         )
-        team_ranking_col = COLUMN_SEPARATOR.join(
-            [team_skill_col_prefix, SKILL_RANKING_COLUMN]
-        )
-        team_prob_col = COLUMN_SEPARATOR.join(
+        team_ranking_col = DELIMITER.join([team_skill_col_prefix, SKILL_RANKING_COLUMN])
+        team_prob_col = DELIMITER.join(
             [team_skill_col_prefix, SKILL_PROBABILITY_COLUMN]
         )
         row[team_ranking_col] = rank
@@ -262,17 +261,17 @@ def _rank_player_predictions(
             return row
     rank_player_predictions = player_model.predict_rank(player_match)
     for i, (rank, prob) in enumerate(rank_player_predictions):
-        player_skill_col_prefix = COLUMN_SEPARATOR.join(
+        player_skill_col_prefix = DELIMITER.join(
             [
                 player_column_prefix(i, None),
                 SKILL_COLUMN_PREFIX,
                 year_col,
             ]
         )
-        player_ranking_col = COLUMN_SEPARATOR.join(
+        player_ranking_col = DELIMITER.join(
             [player_skill_col_prefix, SKILL_RANKING_COLUMN]
         )
-        player_prob_col = COLUMN_SEPARATOR.join(
+        player_prob_col = DELIMITER.join(
             [player_skill_col_prefix, SKILL_PROBABILITY_COLUMN]
         )
         row[player_ranking_col] = rank
@@ -345,7 +344,7 @@ class SkillFeature(Feature):
         pandarallel.initialize(progress_bar=True)
 
     def _create_columns(self, df: pd.DataFrame, team_count: int) -> pd.DataFrame:
-        golden_features = df.attrs.get(GOLDEN_FEATURES_COLUMNS_ATTR, [])
+        golden_features = df.attrs.get(FieldType.GOLDEN, [])
         for year_slice in self._year_slices:
             year_col = str(year_slice) if year_slice is not None else YEAR_SLICE_ALL
             for i in range(team_count):
@@ -355,7 +354,7 @@ class SkillFeature(Feature):
                     SKILL_RANKING_COLUMN,
                     SKILL_PROBABILITY_COLUMN,
                 ]:
-                    team_col = COLUMN_SEPARATOR.join(
+                    team_col = DELIMITER.join(
                         [
                             team_column_prefix(i),
                             SKILL_COLUMN_PREFIX,
@@ -369,7 +368,7 @@ class SkillFeature(Feature):
                     SKILL_RANKING_COLUMN,
                     SKILL_PROBABILITY_COLUMN,
                 ]:
-                    player_col = COLUMN_SEPARATOR.join(
+                    player_col = DELIMITER.join(
                         [
                             player_column_prefix(i, None),
                             SKILL_COLUMN_PREFIX,
@@ -379,7 +378,7 @@ class SkillFeature(Feature):
                     )
                     df[player_col] = 0.0
                     golden_features.append(player_col)
-        df.attrs[GOLDEN_FEATURES_COLUMNS_ATTR] = golden_features
+        df.attrs[FieldType.GOLDEN] = golden_features
         return df.copy()
 
     def process(self, df: pd.DataFrame) -> pd.DataFrame:
@@ -395,7 +394,7 @@ class SkillFeature(Feature):
             nonlocal df
             nonlocal team_count
             nonlocal player_count
-            dates = group[FULL_GAME_DT_COLUMN].dt.date.values.tolist()
+            dates = group[GAME_DT_COLUMN].dt.date.values.tolist()
             if not dates:
                 return group
             date = dates[0]
@@ -426,5 +425,5 @@ class SkillFeature(Feature):
             return group
 
         return df.groupby(  # type: ignore
-            [df[FULL_GAME_DT_COLUMN].dt.date]
+            [df[GAME_DT_COLUMN].dt.date]
         ).parallel_apply(calculate_skills)

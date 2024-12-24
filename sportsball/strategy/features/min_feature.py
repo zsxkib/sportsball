@@ -2,9 +2,9 @@
 
 import pandas as pd
 
-from ...data.columns import COLUMN_SEPARATOR
-from ...data.game_model import FULL_GAME_DT_COLUMN
-from ...data.season_model import SEASON_TYPE_COLUMN, SEASON_YEAR_COLUMN
+from ...data.game_model import (GAME_DT_COLUMN, SEASON_TYPE_COLUMN,
+                                SEASON_YEAR_COLUMN)
+from ...data.league_model import DELIMITER
 from .feature import Feature
 
 MIN_COLUMN_PREFIX = "min"
@@ -12,7 +12,7 @@ MIN_COLUMN_PREFIX = "min"
 
 def _process_season_start_dt(df: pd.DataFrame) -> pd.DataFrame:
     season_start_dt = {}
-    season_start_dt_col = COLUMN_SEPARATOR.join(["season", "startdt"])
+    season_start_dt_col = DELIMITER.join(["season", "startdt"])
     df[season_start_dt_col] = None
 
     def record_season_start_dt(row: pd.Series) -> pd.Series:
@@ -20,7 +20,7 @@ def _process_season_start_dt(df: pd.DataFrame) -> pd.DataFrame:
         nonlocal season_start_dt_col
         season_key = "-".join([str(row[SEASON_YEAR_COLUMN]), row[SEASON_TYPE_COLUMN]])
         if season_key not in season_start_dt:
-            season_start_dt[season_key] = row[FULL_GAME_DT_COLUMN]
+            season_start_dt[season_key] = row[GAME_DT_COLUMN]
         row[season_start_dt_col] = season_start_dt[season_key]
         return row
 

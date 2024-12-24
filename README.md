@@ -42,6 +42,8 @@ Python 3.11.6:
 - [retry-requests](https://github.com/bustawin/retry-requests)
 - [timezonefinder](https://timezonefinder.michelfe.it/gui)
 - [nba_api](https://github.com/swar/nba_api)
+- [pydantic](https://docs.pydantic.dev/latest/)
+- [flatten_json](https://github.com/amirziai/flatten)
 
 ## Raison D'être :thought_balloon:
 

@@ -1,16 +1,13 @@
 """NBA NBA league model."""
 
-import datetime
-from typing import Any, Dict, Iterator, Optional, Pattern, Union
+from typing import Iterator
 
 import pandas as pd
 import requests
-from nba_api.stats.endpoints import leaguegamefinder  # type: ignore
 
+from ...game_model import GameModel
 from ...league import League
 from ...league_model import LeagueModel
-from ...season_model import SeasonModel
-from .nba_nba_season_model import NBANBASeasonModel
 
 
 def _combine_team_games(df: pd.DataFrame, keep_method="home") -> pd.DataFrame:
@@ -63,27 +60,5 @@ class NBANBALeagueModel(LeagueModel):
         super().__init__(League.NBA, session)
 
     @property
-    def seasons(self) -> Iterator[SeasonModel]:
-        """Find the seasons represented by the league."""
-        df = None
-        while df is None or df.empty:
-            date_to = ""
-            if df is not None:
-                date_to = df["GAME_DATE"].min().strftime("%m/%d/%Y")
-            gamefinder = leaguegamefinder.LeagueGameFinder(date_to_nullable=date_to)
-            dfs = gamefinder.get_data_frames()
-            df = dfs[0]
-            for _, group_df in df.groupby(by="SEASON_ID"):
-                yield NBANBASeasonModel(self.session, _combine_team_games(group_df))
-
-    @staticmethod
-    def urls_expire_after() -> (
-        Dict[
-            Union[str, Pattern[Any]],
-            Optional[Union[int, float, str, datetime.datetime, datetime.timedelta]],
-        ]
-    ):
-        """Return any URL cache rules."""
-        return {
-            **NBANBASeasonModel.urls_expire_after(),
-        }
+    def games(self) -> Iterator[GameModel]:
+        return  # type: ignore

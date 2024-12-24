@@ -2,21 +2,19 @@
 
 import pandas as pd
 
-from ...data.columns import COLUMN_SEPARATOR
-from ...data.game_model import GAME_ATTENDANCE_COLUMN, GAME_COLUMN_PREFIX
-from ...data.player_model import (PLAYER_COLUMN_PREFIX,
-                                  PLAYER_IDENTIFIER_COLUMN,
-                                  PLAYER_KICKS_COLUMN)
-from ...data.team_model import (TEAM_COLUMN_PREFIX, TEAM_IDENTIFIER_COLUMN,
+from ...data.game_model import (GAME_ATTENDANCE_COLUMN, TEAM_COLUMN_PREFIX,
+                                VENUE_COLUMN_PREFIX)
+from ...data.league_model import DELIMITER
+from ...data.player_model import PLAYER_IDENTIFIER_COLUMN, PLAYER_KICKS_COLUMN
+from ...data.team_model import (PLAYER_COLUMN_PREFIX, TEAM_IDENTIFIER_COLUMN,
                                 TEAM_POINTS_COLUMN)
-from ...data.venue_model import VENUE_COLUMN_PREFIX, VENUE_IDENTIFIER_COLUMN
+from ...data.venue_model import VENUE_IDENTIFIER_COLUMN
 
 
 def team_column_prefix(team_idx: int) -> str:
     """Generate a prefix for a team column at a given index."""
-    return COLUMN_SEPARATOR.join(
+    return DELIMITER.join(
         [
-            GAME_COLUMN_PREFIX,
             str(team_idx),
             TEAM_COLUMN_PREFIX,
         ]
@@ -25,24 +23,24 @@ def team_column_prefix(team_idx: int) -> str:
 
 def team_identifier_column(team_idx: int) -> str:
     """Generate a team identifier column at a given index."""
-    return COLUMN_SEPARATOR.join([team_column_prefix(team_idx), TEAM_IDENTIFIER_COLUMN])
+    return DELIMITER.join([team_column_prefix(team_idx), TEAM_IDENTIFIER_COLUMN])
 
 
 def team_points_column(team_idx: int) -> str:
     """Generate a team points column at a given index."""
-    return COLUMN_SEPARATOR.join([team_column_prefix(team_idx), TEAM_POINTS_COLUMN])
+    return DELIMITER.join([team_column_prefix(team_idx), TEAM_POINTS_COLUMN])
 
 
 def player_column_prefix(team_idx: int, player_idx: int | None) -> str:
     """Generate a prefix for a player column at a given index."""
     if player_idx is None:
-        return COLUMN_SEPARATOR.join(
+        return DELIMITER.join(
             [
                 team_column_prefix(team_idx),
                 PLAYER_COLUMN_PREFIX,
             ]
         )
-    return COLUMN_SEPARATOR.join(
+    return DELIMITER.join(
         [
             team_column_prefix(team_idx),
             str(player_idx),
@@ -53,14 +51,14 @@ def player_column_prefix(team_idx: int, player_idx: int | None) -> str:
 
 def player_identifier_column(team_idx: int, player_idx: int) -> str:
     """Generate a team points column at a given index."""
-    return COLUMN_SEPARATOR.join(
+    return DELIMITER.join(
         [player_column_prefix(team_idx, player_idx), PLAYER_IDENTIFIER_COLUMN]
     )
 
 
 def attendance_column() -> str:
     """Generate an attendance column."""
-    return COLUMN_SEPARATOR.join([GAME_COLUMN_PREFIX, GAME_ATTENDANCE_COLUMN])
+    return DELIMITER.join([GAME_ATTENDANCE_COLUMN])
 
 
 def find_team_count(df: pd.DataFrame) -> int:
@@ -90,13 +88,11 @@ def find_player_count(df: pd.DataFrame, team_count: int) -> int:
 
 def venue_identifier_column() -> str:
     """Generate a venue identifier column."""
-    return COLUMN_SEPARATOR.join(
-        [GAME_COLUMN_PREFIX, VENUE_COLUMN_PREFIX, VENUE_IDENTIFIER_COLUMN]
-    )
+    return DELIMITER.join([VENUE_COLUMN_PREFIX, VENUE_IDENTIFIER_COLUMN])
 
 
 def kick_column(team_idx: int, player_idx: int) -> str:
     """Generate a kick column."""
-    return COLUMN_SEPARATOR.join(
+    return DELIMITER.join(
         [player_column_prefix(team_idx, player_idx), PLAYER_KICKS_COLUMN]
     )
