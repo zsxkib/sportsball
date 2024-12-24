@@ -3,7 +3,6 @@
 import datetime
 from typing import Any, Dict, Optional, Pattern, Sequence, Union
 
-import pytz
 import requests
 from dateutil.parser import parse
 
@@ -62,6 +61,7 @@ class ESPNGameModel(GameModel):
         game_number: int,
         session: requests.Session,
     ) -> None:
+        # pylint: disable=too-many-locals
         super().__init__(session)
         self._dt = parse(event["date"])
         self._week = week
@@ -90,24 +90,20 @@ class ESPNGameModel(GameModel):
             for competitor in competition["competitors"]:
                 self._teams.append(_create_espn_team(competitor, odds_dict, session))
             self._attendance = competition["attendance"]
+            situation_url = competition["situation"]["$ref"]
+            situation_response = session.get(situation_url)
+            situation_response.raise_for_status()
+            situation = situation_response.json()
+            last_play_url = situation["lastPlay"]["$ref"]
+            last_play_response = session.get(last_play_url)
+            last_play_response.raise_for_status()
+            last_play = last_play_response.json()
+            self._end_dt = parse(last_play["wallclock"])
 
     @property
     def dt(self) -> datetime.datetime:
         """Return the game time."""
-        dt = self._dt
-        if dt.tzinfo is not None and dt.tzinfo.utcoffset(dt) is not None:
-            return dt
-        tz = None
-        venue_model = self.venue
-        if venue_model is not None:
-            address = venue_model.address
-            if address is not None:
-                timezone = address.timezone
-                if timezone is not None:
-                    tz = pytz.timezone(timezone)
-        if tz is None:
-            tz = pytz.utc
-        return tz.localize(dt)
+        return self._localize(self._dt)
 
     @property
     def week(self) -> int:
@@ -141,6 +137,11 @@ class ESPNGameModel(GameModel):
     def attendance(self) -> int | None:
         """Return the attendance at the game."""
         return self._attendance
+
+    @property
+    def end_dt(self) -> datetime.datetime | None:
+        """Return the end time of the game."""
+        return self._localize(self._end_dt)
 
     @staticmethod
     def urls_expire_after() -> (

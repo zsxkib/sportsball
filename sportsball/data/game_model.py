@@ -5,6 +5,7 @@ import datetime
 from typing import Optional, Sequence
 
 import pandas as pd
+import pytz
 
 from .columns import (CATEGORICAL_COLUMNS_ATTR, COLUMN_SEPARATOR,
                       ODDS_COLUMNS_ATTR, POINTS_COLUMNS_ATTR,
@@ -179,3 +180,18 @@ class GameModel(Model):
             list(set(update_columns_list(categorical_columns, GAME_COLUMN_PREFIX)))
         )
         return df
+
+    def _localize(self, dt: datetime.datetime) -> datetime.datetime:
+        if dt.tzinfo is not None and dt.tzinfo.utcoffset(dt) is not None:
+            return dt
+        tz = None
+        venue_model = self.venue
+        if venue_model is not None:
+            address = venue_model.address
+            if address is not None:
+                timezone = address.timezone
+                if timezone is not None:
+                    tz = pytz.timezone(timezone)
+        if tz is None:
+            tz = pytz.utc
+        return tz.localize(dt)
