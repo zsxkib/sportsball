@@ -5,10 +5,12 @@ from typing import Any
 
 import requests
 
+from ...cache import MEMORY
 from ..google.google_address_model import create_google_address_model
 from ..venue_model import VenueModel
 
 
+@MEMORY.cache(ignore=["session"])
 def create_espn_venue_model(
     venue: dict[str, Any], session: requests.Session, dt: datetime.datetime
 ) -> VenueModel:
@@ -29,7 +31,7 @@ def create_espn_venue_model(
     return VenueModel(
         identifier=identifier,
         name=name,
-        address=address,
+        address=address,  # pyright: ignore
         is_grass=grass,
         is_indoor=indoor,
     )

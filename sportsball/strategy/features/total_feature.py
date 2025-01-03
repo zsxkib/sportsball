@@ -6,10 +6,9 @@ import tqdm
 
 from ...data.game_model import VENUE_COLUMN_PREFIX
 from ...data.league_model import DELIMITER
-from .columns import (find_player_count, find_team_count, kick_column,
-                      player_column_prefix, player_identifier_column,
-                      team_column_prefix, team_identifier_column,
-                      venue_identifier_column)
+from .columns import (find_player_count, find_team_count, player_column_prefix,
+                      player_identifier_column, team_column_prefix,
+                      team_identifier_column, venue_identifier_column)
 from .feature import Feature
 
 TOTAL_COLUMN_PREFIX = "total"
@@ -96,48 +95,6 @@ def _process_team_venue_games(df: pd.DataFrame, cols: list[str]) -> pd.DataFrame
     return df
 
 
-def _process_team_kicks(df: pd.DataFrame) -> pd.DataFrame:
-    team_count = find_team_count(df)
-    total_player_count = 0
-
-    for i in range(team_count):
-        total_team_kicks_col = DELIMITER.join(
-            [
-                TOTAL_COLUMN_PREFIX,
-                team_column_prefix(i),
-                TOTAL_KICKS_COLUMN,
-            ]
-        )
-        df[total_team_kicks_col] = None
-        total_player_count = max(find_player_count(df, i), total_player_count)
-
-    def apply_team_kicks(row: pd.Series) -> pd.Series:
-        nonlocal team_count
-        nonlocal total_player_count
-        for i in range(team_count):
-            total_team_kicks_col = DELIMITER.join(
-                [
-                    TOTAL_COLUMN_PREFIX,
-                    team_column_prefix(i),
-                    TOTAL_KICKS_COLUMN,
-                ]
-            )
-            total_team_kicks = 0
-            for j in range(total_player_count):
-                kick_col = kick_column(i, j)
-                try:
-                    if pd.isnull(row[kick_col]):
-                        continue
-                except KeyError:
-                    continue
-                total_team_kicks += row[kick_col]
-
-            row[total_team_kicks_col] = total_team_kicks
-        return row
-
-    return df.apply(apply_team_kicks, axis=1)
-
-
 class TotalFeature(Feature):
     """The total feature extractor class."""
 
@@ -148,5 +105,4 @@ class TotalFeature(Feature):
         cols = df.columns.values.tolist()
         df = _process_player_team_games(df, cols)
         df = _process_team_venue_games(df, cols)
-        df = _process_team_kicks(df)
         return df.copy()

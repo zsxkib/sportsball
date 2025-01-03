@@ -42,7 +42,7 @@ class CombinedFeature(Feature):
     def process(self, df: pd.DataFrame) -> pd.DataFrame:
         for feature in self._pretrain_features:
             df = feature.process(df)
-        df = df[list(set(df.columns.values) - set(df.attrs[FieldType.LOOKAHEAD]))]
+        df = df[list(set(df.columns.values) - set(df.attrs[str(FieldType.LOOKAHEAD)]))]
         for feature in self._posttrain_features:
             df = feature.process(df)
         return df.replace([np.inf, -np.inf], np.nan)

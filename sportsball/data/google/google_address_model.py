@@ -2,6 +2,7 @@
 
 # pylint: disable=too-many-lines,line-too-long
 import datetime
+import logging
 from collections import namedtuple
 from typing import Any
 
@@ -9,6 +10,7 @@ import geocoder  # type: ignore
 import requests
 from timezonefinder import TimezoneFinder  # type: ignore
 
+from ...cache import MEMORY
 from ..address_model import AddressModel
 from ..openmeteo.openmeteo_weather_model import create_openmeteo_weather_model
 
@@ -495,15 +497,200 @@ NEO_QUIMICA_ARENA = SportsballGeocodeTuple(
     lng=-46.4768041,
     housenumber="111",
 )
+MCG = SportsballGeocodeTuple(
+    city="Richmond",
+    state="VIC",
+    postal="3002",
+    lat=-37.8199668,
+    lng=144.9785784,
+    housenumber="",
+)
+SCG = SportsballGeocodeTuple(
+    city="Moore Park",
+    state="NSW",
+    postal="2021",
+    lat=-33.8915316,
+    lng=151.2248515,
+    housenumber="",
+)
+ENGIE_STADIUM = SportsballGeocodeTuple(
+    city="Sydney Olympic Park",
+    state="NSW",
+    postal="2127",
+    lat=-33.8471156,
+    lng=151.0608386,
+    housenumber="",
+)
+ADELAIDE_OVAL = SportsballGeocodeTuple(
+    city="North Adelaide",
+    state="SA",
+    postal="5006",
+    lat=-34.9156273,
+    lng=138.5914356,
+    housenumber="70",
+)
+GABBA = SportsballGeocodeTuple(
+    city="Woolloongabba",
+    state="QLD",
+    postal="4102",
+    lat=-27.4858375,
+    lng=153.0332144,
+    housenumber="",
+)
+OPTUS_STADIUM = SportsballGeocodeTuple(
+    city="Burswood",
+    state="WA",
+    postal="6100",
+    lat=-31.9511597,
+    lng=115.884175,
+    housenumber="333",
+)
+MARVEL_STADIUM = SportsballGeocodeTuple(
+    city="Docklands",
+    state="VIC",
+    postal="3008",
+    lat=-37.8165647,
+    lng=144.9449306,
+    housenumber="740",
+)
+MARS_STADIUM = SportsballGeocodeTuple(
+    city="Wendouree",
+    state="VIC",
+    postal="3355",
+    lat=-37.5386166,
+    lng=143.8273839,
+    housenumber="725",
+)
+GMHBA_STADIUM = SportsballGeocodeTuple(
+    city="South Geelong",
+    state="VIC",
+    postal="3220",
+    lat=-38.1579979,
+    lng=144.3520981,
+    housenumber="370",
+)
+UTAS_STADIUM = SportsballGeocodeTuple(
+    city="Invermay",
+    state="TAS",
+    postal="7248",
+    lat=-41.4259371,
+    lng=147.137879,
+    housenumber="2",
+)
+PEOPLE_FIRST_STADIUM = SportsballGeocodeTuple(
+    city="Carrara",
+    state="QLD",
+    postal="4211",
+    lat=-28.0063039,
+    lng=153.3645259,
+    housenumber="",
+)
+BLUNDSTONE_ARENA = SportsballGeocodeTuple(
+    city="Bellerive",
+    state="TAS",
+    postal="7018",
+    lat=-42.8772962,
+    lng=147.3691419,
+    housenumber="15",
+)
+MANUKA_OVAL = SportsballGeocodeTuple(
+    city="Griffith",
+    state="ACT",
+    postal="2603",
+    lat=-35.3181329,
+    lng=149.1297911,
+    housenumber="",
+)
+TIO_STADIUM = SportsballGeocodeTuple(
+    city="Marrara",
+    state="NT",
+    postal="0812",
+    lat=-12.3991939,
+    lng=130.8847367,
+    housenumber="70",
+)
+NORWOOD_OVAL = SportsballGeocodeTuple(
+    city="Norwood",
+    state="SA",
+    postal="5067",
+    lat=-34.9198089,
+    lng=138.6278735,
+    housenumber="",
+)
+ADELAIDE_HILLS = SportsballGeocodeTuple(
+    city="Mount Barker Summit",
+    state="SA",
+    postal="5251",
+    lat=-35.0779754,
+    lng=138.8908443,
+    housenumber="304",
+)
+TRAEGER_PARK = SportsballGeocodeTuple(
+    city="The Gap",
+    state="NT",
+    postal="0870",
+    lat=-23.7090566,
+    lng=133.8701488,
+    housenumber="",
+)
+CAZALYS_STADIUM = SportsballGeocodeTuple(
+    city="Westcourt",
+    state="QLD",
+    postal="4870",
+    lat=-16.9357343,
+    lng=145.7464957,
+    housenumber="",
+)
+RIVERWAY_STADIUM = SportsballGeocodeTuple(
+    city="Thuringowa Central",
+    state="QLD",
+    postal="4817",
+    lat=-19.3176321,
+    lng=146.7270047,
+    housenumber="",
+)
+JIANGWAN_STADIUM = SportsballGeocodeTuple(
+    city="Shanghai",
+    state="",
+    postal="200433",
+    lat=31.3076026,
+    lng=121.5160351,
+    housenumber="",
+)
+DOMAIN_STADIUM = SportsballGeocodeTuple(
+    city="Subiaco",
+    state="WA",
+    postal="6008",
+    lat=-31.9444594,
+    lng=115.8285952,
+    housenumber="304",
+)
+WESTPAC_STADIUM = SportsballGeocodeTuple(
+    city="Pipitea",
+    state="",
+    postal="6140",
+    lat=-41.2729198,
+    lng=174.7846279,
+    housenumber="105",
+)
+AAMI_STADIUM = SportsballGeocodeTuple(
+    city="West Lakes",
+    state="SA",
+    postal="5021",
+    lat=-34.8797138,
+    lng=138.4910204,
+    housenumber="",
+)
+BLACKTOWN_PARK = SportsballGeocodeTuple(
+    city="Rooty Hill",
+    state="NSW",
+    postal="2766",
+    lat=-33.7695492,
+    lng=150.8558658,
+    housenumber="",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
-    "S.C.G. - Australia": SportsballGeocodeTuple(
-        city="Moore Park",
-        state="NSW",
-        postal="2021",
-        lat=-33.8915316,
-        lng=151.2248515,
-        housenumber="",
-    ),
+    "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
         city="Abbotsford",
         state="VIC",
@@ -627,14 +814,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lng=144.9779958,
         housenumber="",
     ),
-    "M.C.G. - Australia": SportsballGeocodeTuple(
-        city="Richmond",
-        state="VIC",
-        postal="3002",
-        lat=-37.8199668,
-        lng=144.9785784,
-        housenumber="",
-    ),
+    "M.C.G. - Australia": MCG,
     "Princes Park - Australia": SportsballGeocodeTuple(
         city="Carlton North",
         state="VIC",
@@ -738,14 +918,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Georgia Dome - Atlanta - GA": GEORGIA_DOME,
     "SDCCU Stadium - San Diego - CA": SDCCU_STADIUM,
-    "Kardinia Park - Australia": SportsballGeocodeTuple(
-        city="South Geelong",
-        state="VIC",
-        postal="3220",
-        lat=-38.1579979,
-        lng=144.3520981,
-        housenumber="370",
-    ),
+    "Kardinia Park - Australia": GMHBA_STADIUM,
     "The Dome at America's Center - St. Louis - MO - 63101": TRANS_WORLD_DOME,
     "Huntington Bank Stadium - Minneapolis - MN - 55455": US_BANK_STADIUM,
     "Yarraville Oval - Australia": SportsballGeocodeTuple(
@@ -918,23 +1091,9 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lng=-97.1456866,
         housenumber="315",
     ),
-    "Subiaco - Australia": SportsballGeocodeTuple(
-        city="Subiaco",
-        state="WA",
-        postal="6008",
-        lat=-31.9444594,
-        lng=115.8285952,
-        housenumber="304",
-    ),
+    "Subiaco - Australia": DOMAIN_STADIUM,
     "Rice Stadium": RICE_STADIUM,
-    "Gabba - Australia": SportsballGeocodeTuple(
-        city="Woolloongabba",
-        state="QLD",
-        postal="4102",
-        lat=-27.4858375,
-        lng=153.0332144,
-        housenumber="",
-    ),
+    "Gabba - Australia": GABBA,
     "Independence Stadium - 71109": SportsballGeocodeTuple(
         city="Shreveport",
         state="LA",
@@ -943,14 +1102,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lng=-93.7944423,
         housenumber="3301",
     ),
-    "Carrara - Australia": SportsballGeocodeTuple(
-        city="Carrara",
-        state="QLD",
-        postal="4211",
-        lat=-28.0063039,
-        lng=153.3645259,
-        housenumber="",
-    ),
+    "Carrara - Australia": PEOPLE_FIRST_STADIUM,
     "W.A.C.A. - Australia": SportsballGeocodeTuple(
         city="East Perth",
         state="WA",
@@ -979,126 +1131,21 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Three Rivers Stadium - Pittsburgh, PA - United States": ACRISURE_STADIUM,
     "Astrodome - Houston, TX - United States": NRG_STADIUM,
     "Mile High Stadium -  - ": EMPOWER_FIELD,
-    "Football Park - Australia": SportsballGeocodeTuple(
-        city="West Lakes",
-        state="SA",
-        postal="5021",
-        lat=-34.8797138,
-        lng=138.4910204,
-        housenumber="",
-    ),
-    "Docklands - Australia": SportsballGeocodeTuple(
-        city="Docklands",
-        state="VIC",
-        postal="3008",
-        lat=-37.8165647,
-        lng=144.9449306,
-        housenumber="740",
-    ),
-    "Manuka Oval - Australia": SportsballGeocodeTuple(
-        city="Griffith",
-        state="ACT",
-        postal="2603",
-        lat=-35.3181329,
-        lng=149.1297911,
-        housenumber="",
-    ),
-    "Stadium Australia - Australia": SportsballGeocodeTuple(
-        city="Sydney Olympic Park",
-        state="NSW",
-        postal="2127",
-        lat=-33.8471156,
-        lng=151.0608386,
-        housenumber="",
-    ),
-    "York Park - Australia": SportsballGeocodeTuple(
-        city="Invermay",
-        state="TAS",
-        postal="7248",
-        lat=-41.4259371,
-        lng=147.137879,
-        housenumber="2",
-    ),
-    "Marrara Oval - Australia": SportsballGeocodeTuple(
-        city="Marrara",
-        state="NT",
-        postal="0812",
-        lat=-12.3991939,
-        lng=130.8847367,
-        housenumber="70",
-    ),
-    "Adelaide Oval - Australia": SportsballGeocodeTuple(
-        city="North Adelaide",
-        state="SA",
-        postal="5006",
-        lat=-34.9156273,
-        lng=138.5914356,
-        housenumber="70",
-    ),
-    "Sydney Showground - Australia": SportsballGeocodeTuple(
-        city="Sydney Olympic Park",
-        state="NSW",
-        postal="2127",
-        lat=-33.8430698,
-        lng=151.0651214,
-        housenumber="",
-    ),
-    "Bellerive Oval - Australia": SportsballGeocodeTuple(
-        city="Bellerive",
-        state="TAS",
-        postal="7018",
-        lat=-42.8772962,
-        lng=147.3691419,
-        housenumber="15",
-    ),
-    "Cazaly's Stadium - Australia": SportsballGeocodeTuple(
-        city="Westcourt",
-        state="QLD",
-        postal="4870",
-        lat=-16.9357343,
-        lng=145.7464957,
-        housenumber="",
-    ),
-    "Wellington - Australia": SportsballGeocodeTuple(
-        city="Pipitea",
-        state="",
-        postal="6140",
-        lat=-41.2729198,
-        lng=174.7846279,
-        housenumber="105",
-    ),
-    "Traeger Park - Australia": SportsballGeocodeTuple(
-        city="The Gap",
-        state="NT",
-        postal="0870",
-        lat=-23.7090566,
-        lng=133.8701488,
-        housenumber="",
-    ),
-    "Eureka Stadium - Australia": SportsballGeocodeTuple(
-        city="Wendouree",
-        state="VIC",
-        postal="3355",
-        lat=-37.5386166,
-        lng=143.8273839,
-        housenumber="725",
-    ),
-    "Perth Stadium - Australia": SportsballGeocodeTuple(
-        city="Burswood",
-        state="WA",
-        postal="6100",
-        lat=-31.9511597,
-        lng=115.884175,
-        housenumber="333",
-    ),
-    "Jiangwan Stadium - Australia": SportsballGeocodeTuple(
-        city="Shanghai",
-        state="",
-        postal="200433",
-        lat=31.3076026,
-        lng=121.5160351,
-        housenumber="",
-    ),
+    "Football Park - Australia": AAMI_STADIUM,
+    "Docklands - Australia": MARVEL_STADIUM,
+    "Manuka Oval - Australia": MANUKA_OVAL,
+    "Stadium Australia - Australia": ENGIE_STADIUM,
+    "York Park - Australia": UTAS_STADIUM,
+    "Marrara Oval - Australia": TIO_STADIUM,
+    "Adelaide Oval - Australia": ADELAIDE_OVAL,
+    "Sydney Showground - Australia": ENGIE_STADIUM,
+    "Bellerive Oval - Australia": BLUNDSTONE_ARENA,
+    "Cazaly's Stadium - Australia": CAZALYS_STADIUM,
+    "Wellington - Australia": WESTPAC_STADIUM,
+    "Traeger Park - Australia": TRAEGER_PARK,
+    "Eureka Stadium - Australia": MARS_STADIUM,
+    "Perth Stadium - Australia": OPTUS_STADIUM,
+    "Jiangwan Stadium - Australia": JIANGWAN_STADIUM,
     "Soldier Field - Chicago, Illinois - United States": SOLDIER_FIELD,
     "Arrowhead Stadium - Kansas City, Missouri - United States": ARROWHEAD_STADIUM,
     "Yale Bowl - New Haven, Connecticut, USA - United States": YALE_BOWL,
@@ -1125,39 +1172,11 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lng=149.1001351,
         housenumber="",
     ),
-    "Blacktown - Australia": SportsballGeocodeTuple(
-        city="Rooty Hill",
-        state="NSW",
-        postal="2766",
-        lat=-33.7695492,
-        lng=150.8558658,
-        housenumber="",
-    ),
+    "Blacktown - Australia": BLACKTOWN_PARK,
     "Gillette Stadium - Foxborough, Massachusetts - United States": GILETTE_STADIUM,
-    "Riverway Stadium - Australia": SportsballGeocodeTuple(
-        city="Thuringowa Central",
-        state="QLD",
-        postal="4817",
-        lat=-19.3176321,
-        lng=146.7270047,
-        housenumber="",
-    ),
-    "Norwood Oval - Australia": SportsballGeocodeTuple(
-        city="Norwood",
-        state="SA",
-        postal="5067",
-        lat=-34.9198089,
-        lng=138.6278735,
-        housenumber="",
-    ),
-    "Summit Sports Park - Australia": SportsballGeocodeTuple(
-        city="Mount Barker Summit",
-        state="SA",
-        postal="5251",
-        lat=-35.0779754,
-        lng=138.8908443,
-        housenumber="304",
-    ),
+    "Riverway Stadium - Australia": RIVERWAY_STADIUM,
+    "Norwood Oval - Australia": NORWOOD_OVAL,
+    "Summit Sports Park - Australia": ADELAIDE_HILLS,
     "Mile High": EMPOWER_FIELD,
     "Nissan Stadium - Nashville, Tennessee, USA - United States": NISSAN_STADIUM,
     "SoFi Stadium - Inglewood, CA - United States": SOFI_STADIUM,
@@ -1190,15 +1209,43 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Neo Química Arena - São Paulo, Brazil - Brazil": NEO_QUIMICA_ARENA,
     "Allianz Arena - Munich, Germany - Germany": ALLIANZ_ARENA,
     "Levi's Stadium - Santa Clara, California, USA - United States": LEVI_STADIUM,
+    "MCG": MCG,
+    "SCG": SCG,
+    "ENGIE Stadium": ENGIE_STADIUM,
+    "Adelaide Oval": ADELAIDE_OVAL,
+    "Gabba": GABBA,
+    "Optus Stadium": OPTUS_STADIUM,
+    "Marvel Stadium": MARVEL_STADIUM,
+    "Mars Stadium": MARS_STADIUM,
+    "GMHBA Stadium": GMHBA_STADIUM,
+    "UTAS Stadium": UTAS_STADIUM,
+    "People First Stadium": PEOPLE_FIRST_STADIUM,
+    "Blundstone Arena": BLUNDSTONE_ARENA,
+    "Manuka Oval": MANUKA_OVAL,
+    "TIO Stadium": TIO_STADIUM,
+    "Norwood Oval": NORWOOD_OVAL,
+    "Adelaide Hills": ADELAIDE_HILLS,
+    "Traeger Park": TRAEGER_PARK,
+    "Cazaly’s Stadium": CAZALYS_STADIUM,
+    "Marvl": MARVEL_STADIUM,
+    "Accor Stadium": ENGIE_STADIUM,
+    "Riverway Stadium": RIVERWAY_STADIUM,
+    "Jiangwan Sports Centre": JIANGWAN_STADIUM,
+    "Domain Stadium": DOMAIN_STADIUM,
+    "Westpac Stadium": WESTPAC_STADIUM,
+    "AAMI Stadium": AAMI_STADIUM,
+    "Blacktown Park": BLACKTOWN_PARK,
 }
 
 
+@MEMORY.cache(ignore=["session"])
 def create_google_address_model(
     query: str, session: requests.Session, dt: datetime.datetime
 ) -> AddressModel:
     """Create address model from google."""
     g = _CACHED_GEOCODES.get(query)
     if g is None:
+        logging.warning("Failed to find query: %s", query)
         g = geocoder.google(query, session=session)
         _CACHED_GEOCODES[query] = g
     latitude = g.lat
@@ -1211,7 +1258,11 @@ def create_google_address_model(
         if timezone is not None:
             tz = timezone
         weather_model = create_openmeteo_weather_model(
-            session, latitude, longitude, dt, tz
+            session,
+            latitude,
+            longitude,
+            dt,  # pyright: ignore
+            tz,
         )
     return AddressModel(
         city=g.city,
@@ -1220,6 +1271,6 @@ def create_google_address_model(
         latitude=latitude,
         longitude=longitude,
         housenumber=g.housenumber,
-        weather=weather_model,
+        weather=weather_model,  # pyright: ignore
         timezone=tz,
     )

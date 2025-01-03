@@ -2,12 +2,14 @@
 
 from typing import Any
 
+from ...cache import MEMORY
 from ..bookie_model import BookieModel
 from ..team_model import OddsModel
 
 MONEYLINE_KEY = "moneyLine"
 
 
+@MEMORY.cache
 def create_espn_odds_model(odds: dict[str, Any], bookie: BookieModel) -> OddsModel:
     """Create an odds model with ESPN."""
     odds_val = 0.0

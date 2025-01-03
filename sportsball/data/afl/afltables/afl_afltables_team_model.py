@@ -6,6 +6,7 @@ from urllib.parse import urlparse
 import requests
 from bs4 import BeautifulSoup
 
+from ....cache import MEMORY
 from ...team_model import TeamModel
 from .afl_afltables_player_model import create_afl_afltables_player_model
 
@@ -35,6 +36,7 @@ _TEAM_NAME_MAP = {
 }
 
 
+@MEMORY.cache(ignore=["session"])
 def create_afl_afltables_team_model(
     team_url: str,
     players: list[tuple[str, str, int | None]],
@@ -62,7 +64,7 @@ def create_afl_afltables_team_model(
     return TeamModel(
         identifier=identifier,
         name=name,
-        players=[
+        players=[  # pyright: ignore
             create_afl_afltables_player_model(player_url, jersey, kicks)
             for player_url, jersey, kicks in players
         ],

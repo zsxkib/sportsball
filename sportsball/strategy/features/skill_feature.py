@@ -344,7 +344,7 @@ class SkillFeature(Feature):
         pandarallel.initialize(progress_bar=True)
 
     def _create_columns(self, df: pd.DataFrame, team_count: int) -> pd.DataFrame:
-        golden_features = df.attrs.get(FieldType.GOLDEN, [])
+        golden_features = df.attrs.get(str(FieldType.GOLDEN), [])
         for year_slice in self._year_slices:
             year_col = str(year_slice) if year_slice is not None else YEAR_SLICE_ALL
             for i in range(team_count):
@@ -378,7 +378,7 @@ class SkillFeature(Feature):
                     )
                     df[player_col] = 0.0
                     golden_features.append(player_col)
-        df.attrs[FieldType.GOLDEN] = golden_features
+        df.attrs[str(FieldType.GOLDEN)] = golden_features
         return df.copy()
 
     def process(self, df: pd.DataFrame) -> pd.DataFrame:
@@ -424,6 +424,10 @@ class SkillFeature(Feature):
                 )
             return group
 
-        return df.groupby(  # type: ignore
-            [df[GAME_DT_COLUMN].dt.date]
-        ).parallel_apply(calculate_skills)
+        return (
+            df.groupby(  # type: ignore
+                [df[GAME_DT_COLUMN].dt.date]
+            )
+            .parallel_apply(calculate_skills)
+            .reset_index(drop=True)
+        )

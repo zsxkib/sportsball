@@ -3,9 +3,11 @@
 import os
 from urllib.parse import urlparse
 
+from ....cache import MEMORY
 from ...player_model import PlayerModel
 
 
+@MEMORY.cache
 def create_afl_afltables_player_model(
     player_url: str, jersey: str, kicks: int | None
 ) -> PlayerModel:

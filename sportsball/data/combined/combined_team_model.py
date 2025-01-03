@@ -1,24 +1,17 @@
 """Combined team model."""
 
 # pylint: disable=too-many-locals
-import datetime
-from typing import Callable
-
-import requests
-
+from ...cache import MEMORY
 from ..odds_model import OddsModel
 from ..player_model import PlayerModel
 from ..team_model import TeamModel
 from .combined_player_model import create_combined_player_model
 
 
+@MEMORY.cache
 def create_combined_team_model(
     team_models: list[TeamModel],
     identifier: str,
-    odds_factory: Callable[[requests.Session, datetime.datetime, str], OddsModel]
-    | None,
-    session: requests.Session,
-    dt: datetime.datetime,
 ) -> TeamModel:
     """Create a team model by combining many team models."""
     location = None
@@ -44,19 +37,12 @@ def create_combined_team_model(
         team_model_ladder_rank = team_model.ladder_rank
         if team_model_ladder_rank is not None:
             ladder_rank = team_model_ladder_rank
-    if odds_factory is not None:
-        try:
-            odds_model = odds_factory(session, dt, team_models[0].name)
-            key = f"{odds_model.bookie.identifier}-{odds_model.odds}"
-            odds[key] = odds.get(key, []) + [odds_model]
-        except ValueError:
-            pass
 
     return TeamModel(
         identifier=identifier,
         name=team_models[0].name,
         location=location,
-        players=[
+        players=[  # pyright: ignore
             create_combined_player_model(x, x[0].identifier) for x in players.values()
         ],
         odds=[x[0] for x in odds.values()],

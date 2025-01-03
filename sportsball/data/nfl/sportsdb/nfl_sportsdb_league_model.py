@@ -38,7 +38,13 @@ class NFLSportsDBLeagueModel(LeagueModel):
             raise ValueError("events is null.")
         for count, game in enumerate(events):
             yield create_nfl_sportsdb_game_model(
-                self.session, game, week, count, self.league, season_year, season_type
+                self.session,
+                game,
+                week,
+                count,
+                self.league,
+                season_year,  # pyright: ignore
+                season_type,
             )
 
     @property

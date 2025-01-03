@@ -7,6 +7,7 @@ from typing import Any
 import requests
 from dateutil import parser
 
+from ....cache import MEMORY
 from ...game_model import GameModel
 from ...league import League
 from ...season_type import SeasonType
@@ -14,6 +15,7 @@ from .nfl_sportsdb_team_model import create_nfl_sportsdb_team_model
 from .nfl_sportsdb_venue_model import create_nfl_sportsdb_venue_model
 
 
+@MEMORY.cache(ignore=["session"])
 def create_nfl_sportsdb_game_model(
     session: requests.Session,
     game: dict[str, Any],
@@ -43,8 +45,8 @@ def create_nfl_sportsdb_game_model(
         dt=dt,
         week=week_number,
         game_number=game_number,
-        venue=venue,
-        teams=teams,
+        venue=venue,  # pyright: ignore
+        teams=teams,  # pyright: ignore
         league=league,
         year=year,
         season_type=season_type,

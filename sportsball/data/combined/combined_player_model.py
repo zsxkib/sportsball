@@ -1,8 +1,10 @@
 """Combined player model."""
 
+from ...cache import MEMORY
 from ..player_model import PlayerModel
 
 
+@MEMORY.cache
 def create_combined_player_model(
     player_models: list[PlayerModel], identifier: str
 ) -> PlayerModel:

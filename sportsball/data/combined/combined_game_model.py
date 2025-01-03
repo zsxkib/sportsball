@@ -1,14 +1,10 @@
 """Combined game model."""
 
-# pylint: disable=too-many-locals
-import datetime
+# pylint: disable=too-many-locals,line-too-long
 import logging
-from typing import Callable
 
-import requests
-
+from ...cache import MEMORY
 from ..game_model import GameModel
-from ..odds_model import OddsModel
 from ..team_model import TeamModel
 from ..venue_model import VenueModel
 from .combined_team_model import create_combined_team_model
@@ -25,7 +21,9 @@ def _venue_models(
         if game_model_venue is not None:
             venue_identity = venue_identity_map.get(game_model_venue.identifier)
             if venue_identity is None:
-                logging.warning("Failed to find %s venue identifier.", venue_identity)
+                logging.warning(
+                    "Failed to find %s venue identifier.", game_model_venue.identifier
+                )
             else:
                 full_venue_identity = venue_identity
             venue_models.append(game_model_venue)
@@ -35,9 +33,6 @@ def _venue_models(
 def _team_models(
     game_models: list[GameModel],
     team_identity_map: dict[str, str],
-    odds_factory: Callable[[requests.Session, datetime.datetime, str], OddsModel]
-    | None,
-    session: requests.Session,
 ) -> list[TeamModel]:
     team_models: dict[str, list[TeamModel]] = {}
     for game_model in game_models:
@@ -52,28 +47,26 @@ def _team_models(
                     team_model
                 ]
     return [
-        create_combined_team_model(v, k, odds_factory, session, game_models[0].dt)
+        create_combined_team_model(v, k)  # pyright: ignore
         for k, v in team_models.items()
     ]
 
 
+@MEMORY.cache
 def create_combined_game_model(
     game_models: list[GameModel],
     venue_identity_map: dict[str, str],
     team_identity_map: dict[str, str],
-    odds_factory: Callable[[requests.Session, datetime.datetime, str], OddsModel]
-    | None,
-    session: requests.Session,
 ) -> GameModel:
     """Create a game model by combining many game models."""
     venue_models, full_venue_identity = _venue_models(game_models, venue_identity_map)
-    full_team_models = _team_models(
-        game_models, team_identity_map, odds_factory, session
-    )
+    full_team_models = _team_models(game_models, team_identity_map)
     attendance = None
     end_dt = None
     year = None
     season_type = None
+    week = None
+    game_number = None
     for game_model in game_models:
         game_model_attendance = game_model.attendance
         if game_model_attendance is not None:
@@ -87,6 +80,12 @@ def create_combined_game_model(
         game_model_season_type = game_model.season_type
         if game_model_season_type is not None:
             season_type = game_model_season_type
+        game_model_week = game_model.week
+        if game_model_week is not None:
+            week = game_model_week
+        game_model_game_number = game_model.game_number
+        if game_model_game_number is not None:
+            game_number = game_model_game_number
 
     if full_venue_identity is None and venue_models:
         full_venue_identity = venue_models[0].identifier
@@ -95,9 +94,9 @@ def create_combined_game_model(
 
     return GameModel(
         dt=game_models[0].dt,
-        week=game_models[0].week,
-        game_number=game_models[0].game_number,
-        venue=create_combined_venue_model(venue_models, full_venue_identity),
+        week=week,
+        game_number=game_number,
+        venue=create_combined_venue_model(venue_models, full_venue_identity),  # pyright: ignore
         teams=full_team_models,
         end_dt=end_dt,
         attendance=attendance,

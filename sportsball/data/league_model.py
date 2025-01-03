@@ -18,6 +18,15 @@ LEAGUE_COLUMN = "league"
 DELIMITER = "/"
 
 
+def _clear_column_list(df: pd.DataFrame) -> pd.DataFrame:
+    def has_list(x):
+        return any(isinstance(i, list) for i in x)
+
+    mask = df.apply(has_list)
+    cols = df.columns[mask].tolist()
+    return df.drop(columns=cols)
+
+
 class LeagueModel(Model):
     """The prototype league model class."""
 
@@ -42,74 +51,98 @@ class LeagueModel(Model):
         """Render the league as a dataframe."""
         df = self._df
         if df is None:
-            dfs = [
-                pd.DataFrame(flatten(x.model_dump(by_alias=True), DELIMITER))
-                for x in tqdm.tqdm(self.games, desc="Games")
-            ]
-            if not dfs:
-                return pd.DataFrame()
-            df = pd.concat(dfs)
+            df = pd.DataFrame(
+                [
+                    flatten(x.model_dump(by_alias=True), DELIMITER)
+                    for x in tqdm.tqdm(self.games, desc="Games")
+                ]
+            )
+
+            def any_column_contains(substr: str) -> bool:
+                if df is None:
+                    raise ValueError("df is null.")
+                for col in df.columns.values:
+                    if substr in col:
+                        return True
+                return False
 
             def find_nested_paths(
                 field_type: str, model_class: type[BaseModel]
             ) -> list[str]:
                 nested_paths = []
                 for field_name, field in model_class.model_fields.items():
-                    nested_field_type = field.field_info.extra.get("type")  # type: ignore
-                    if nested_field_type != field_type:
-                        continue
-                    if issubclass(
-                        get_origin(field.annotation) or field.annotation,  # type: ignore
-                        BaseModel,  # type: ignore
-                    ):
-                        nested_paths.extend(
-                            [
-                                DELIMITER.join([field_name, x])
-                                for x in find_nested_paths(field_type, field.annotation)  # type: ignore
-                            ]
-                        )
-                    elif get_origin(field.annotation) == list and issubclass(
-                        get_args(field.annotation)[0], BaseModel
-                    ):
-                        for i in range(1000):
+                    nested_field_type = (
+                        field.json_schema_extra.get("type")  # type: ignore
+                        if field.json_schema_extra
+                        else None
+                    )
+                    if nested_field_type == field_type:
+                        nested_paths.append(field_name)
+                    else:
+                        if issubclass(
+                            get_origin(field.annotation) or field.annotation,  # type: ignore
+                            BaseModel,  # type: ignore
+                        ):
                             nested_paths.extend(
                                 [
-                                    DELIMITER.join([field_name, str(i), x])
+                                    DELIMITER.join([field_name, x])
                                     for x in find_nested_paths(
-                                        field_type, get_args(field.annotation)[0]
-                                    )
+                                        field_type,
+                                        field.annotation,  # type: ignore
+                                    )  # type: ignore
                                 ]
                             )
+                        elif get_origin(field.annotation) == list and issubclass(
+                            get_args(field.annotation)[0], BaseModel
+                        ):
+                            i = 0
+                            while any_column_contains(
+                                DELIMITER.join([field_name, str(i)])
+                            ):
+                                nested_paths.extend(
+                                    [
+                                        DELIMITER.join([field_name, str(i), x])
+                                        for x in find_nested_paths(
+                                            field_type, get_args(field.annotation)[0]
+                                        )
+                                    ]
+                                )
+                                i += 1
                 return nested_paths
 
-            df.attrs[FieldType.LOOKAHEAD] = list(
+            df.attrs[str(FieldType.LOOKAHEAD)] = list(
                 set(df.columns.values)
                 & set(find_nested_paths(FieldType.LOOKAHEAD, GameModel))
             )
-            df.attrs[FieldType.ODDS] = list(
+            df.attrs[str(FieldType.ODDS)] = list(
                 set(df.columns.values)
                 & set(find_nested_paths(FieldType.ODDS, GameModel))
             )
-            df.attrs[FieldType.POINTS] = list(
+            df.attrs[str(FieldType.POINTS)] = list(
                 set(df.columns.values)
                 & set(find_nested_paths(FieldType.POINTS, GameModel))
             )
-            df.attrs[FieldType.TEXT] = list(
+            df.attrs[str(FieldType.TEXT)] = list(
                 set(df.columns.values)
                 & set(find_nested_paths(FieldType.TEXT, GameModel))
             )
-            df.attrs[FieldType.CATEGORICAL] = list(
+            df.attrs[str(FieldType.CATEGORICAL)] = list(
                 set(df.columns.values)
                 & set(find_nested_paths(FieldType.CATEGORICAL, GameModel))
             )
+            df.attrs[str(FieldType.LOOKAHEAD)] = list(
+                set(df.attrs[str(FieldType.LOOKAHEAD)])
+                | set(df.attrs[str(FieldType.POINTS)])
+            )
 
-            for categorical_column in df.attrs[FieldType.CATEGORICAL]:
+            for categorical_column in df.attrs[str(FieldType.CATEGORICAL)]:
                 df[categorical_column] = df[categorical_column].astype("category")
             df[GAME_DT_COLUMN] = pd.to_datetime(df[GAME_DT_COLUMN], utc=True)
             df = df.sort_values(
                 by=GAME_DT_COLUMN,
                 ascending=True,
             )
+            df = _clear_column_list(df)
 
             self._df = df
         return df

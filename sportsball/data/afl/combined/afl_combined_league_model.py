@@ -5,8 +5,8 @@ import requests
 from ...combined.combined_league_model import CombinedLeagueModel
 from ...league import League
 from ..afltables.afl_afltables_league_model import AFLAFLTablesLeagueModel
-from ..aussportsbetting.afl_aussportsbetting_odds_model import \
-    create_afl_aussportsbetting_odds_model
+from ..aussportsbetting.afl_aussportsbetting_league_model import \
+    AFLAusSportsBettingLeagueModel
 from ..espn.afl_espn_league_model import AFLESPNLeagueModel
 
 FITZROY = "fitzroy_idx"
@@ -52,6 +52,24 @@ AFL_TEAM_IDENTITY_MAP = {
     "padelaide_idx": PORT_ADELAIDE,
     "gws_idx": GWS,
     "goldcoast_idx": GOLDCOAST,
+    "Sydney": SWANS,
+    "Brisbane": BRISBANE_LIONS,
+    "Geelong": GEELONG,
+    "Port Adelaide": PORT_ADELAIDE,
+    "GWS Giants": GWS,
+    "Hawthorn": HAWTHORN,
+    "Carlton": CARLTON,
+    "Western Bulldogs": BULLDOGS,
+    "Fremantle": FREMANTLE,
+    "St Kilda": STKILDA,
+    "Adelaide": ADELAIDE,
+    "Essendon": ESSENDON,
+    "Richmond": RICHMOND,
+    "Gold Coast": GOLDCOAST,
+    "West Coast": WESTCOAST,
+    "North Melbourne": KANGAROOS,
+    "Melbourne": MELBOURNE,
+    "Collingwood": COLLINGWOOD,
 }
 BRUNSWICK_ST = "brunswick_st"
 VICTORIA_PARK = "victoria_park"
@@ -154,6 +172,32 @@ AFL_VENUE_IDENTITY_MAP = {
     "riverway": RIVERWAY,
     "norwood": NORWOOD,
     "summit": SUMMIT,
+    "MCG": MCG,
+    "SCG": SCG,
+    "ENGIE Stadium": STADIUM_AUSTRALIA,
+    "Adelaide Oval": ADELAIDE_OVAL,
+    "Gabba": GABBA,
+    "Optus Stadium": PERTH,
+    "Marvel Stadium": DOCKLANDS,
+    "Mars Stadium": EUREKA,
+    "GMHBA Stadium": KARDINIA_PARK,
+    "UTAS Stadium": YORK_PARK,
+    "People First Stadium": CARRARA,
+    "Blundstone Arena": BELLERIVE_OVAL,
+    "Manuka Oval": MANUKA_OVAL,
+    "Norwood Oval": NORWOOD,
+    "Adelaide Hills": SUMMIT,
+    "TIO Stadium": MARRARA_OVAL,
+    "Traeger Park": TRAEGER,
+    "Cazaly’s Stadium": CAZALYS_STADIUM,
+    "Marvl": DOCKLANDS,
+    "Accor Stadium": STADIUM_AUSTRALIA,
+    "Riverway Stadium": RIVERWAY,
+    "Jiangwan Sports Centre": JIANGWAN,
+    "Domain Stadium": SUBIACO,
+    "Westpac Stadium": WELLINGTON,
+    "AAMI Stadium": FOOTBALL_PARK,
+    "Blacktown Park": BLACKTOWN,
 }
 
 
@@ -167,8 +211,8 @@ class AFLCombinedLeagueModel(CombinedLeagueModel):
             [
                 AFLAFLTablesLeagueModel(session),
                 AFLESPNLeagueModel(session),
+                AFLAusSportsBettingLeagueModel(session),
             ],
-            create_afl_aussportsbetting_odds_model,
         )
 
     @classmethod

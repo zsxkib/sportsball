@@ -42,8 +42,8 @@ class GameModel(BaseModel):
     """The serialisable representation of a game."""
 
     dt: datetime.datetime
-    week: int = Field(..., alias=GAME_WEEK_COLUMN)
-    game_number: int
+    week: int | None = Field(..., alias=GAME_WEEK_COLUMN)
+    game_number: int | None
     venue: VenueModel | None = Field(..., alias=VENUE_COLUMN_PREFIX)
     teams: list[TeamModel] = Field(..., alias=TEAM_COLUMN_PREFIX)
     end_dt: datetime.datetime | None = Field(

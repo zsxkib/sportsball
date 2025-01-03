@@ -4,12 +4,15 @@ import datetime
 
 import openmeteo_requests  # type: ignore
 import pandas as pd
+import pytz
 import requests
-from openmeteo_requests.Client import OpenMeteoRequestsError
+from openmeteo_requests.Client import OpenMeteoRequestsError  # type: ignore
 
+from ...cache import MEMORY
 from ..weather_model import WeatherModel
 
 
+@MEMORY.cache(ignore=["session"])
 def create_openmeteo_weather_model(
     session: requests.Session,
     latitude: float,
@@ -119,6 +122,9 @@ def create_openmeteo_weather_model(
             "temperature_2m": hourly.Variables(0).ValuesAsNumpy(),  # type: ignore
         },
     )
+    dt = dt.replace(tzinfo=None)
+    timezone = pytz.timezone(tz)
+    dt = timezone.localize(dt)
     hourly_idx = hourly_df.index.get_indexer([dt], method="nearest")[0]
     temperature = hourly_df.iloc[hourly_idx]["temperature_2m"]  # type: ignore
     return WeatherModel(temperature=temperature)

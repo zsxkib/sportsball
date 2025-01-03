@@ -1,14 +1,12 @@
 """Combined season model."""
 
-import datetime
-from typing import Callable, Iterator
+from typing import Iterator
 
 import requests
 
 from ..game_model import GameModel
 from ..league import League
 from ..league_model import LeagueModel
-from ..odds_model import OddsModel
 from .combined_game_model import create_combined_game_model
 
 
@@ -20,12 +18,9 @@ class CombinedLeagueModel(LeagueModel):
         session: requests.Session,
         league: League,
         league_models: list[LeagueModel],
-        odds_factory: Callable[[requests.Session, datetime.datetime, str], OddsModel]
-        | None,
     ) -> None:
         super().__init__(league, session)
         self._league_models = league_models
-        self._odds_factory = odds_factory
 
     @classmethod
     def team_identity_map(cls) -> dict[str, str]:
@@ -55,10 +50,8 @@ class CombinedLeagueModel(LeagueModel):
                 key = "-".join(game_components)
                 games[key] = games.get(key, []) + [game_model]
         for game_models in games.values():
-            yield create_combined_game_model(
+            yield create_combined_game_model(  # type: ignore
                 game_models,
                 self.venue_identity_map(),
                 team_identity_map,
-                self._odds_factory,
-                self._session,
             )

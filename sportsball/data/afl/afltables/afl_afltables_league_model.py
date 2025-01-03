@@ -6,8 +6,8 @@ from typing import Iterator
 from urllib.parse import urlparse
 
 import requests
-from bs4 import BeautifulSoup
 import tqdm
+from bs4 import BeautifulSoup
 
 from ...game_model import GameModel
 from ...league import League
@@ -57,13 +57,16 @@ class AFLAFLTablesLeagueModel(LeagueModel):
                             url,
                             last_round_number,
                             last_ladder_ranks,
-                            self.league,
+                            self.league,  # pyright: ignore
                             year,
                             season_type,
                         )
-                        last_round_number = model.week
+                        model_week = model.week
+                        if model_week is None:
+                            raise ValueError("model_week is null")
+                        last_round_number = model_week  # pyright: ignore
                         if season_type == SeasonType.REGULAR:
-                            yield model
+                            yield model  # pyright: ignore
                     elif in_finals and season_type == SeasonType.POSTSEASON:
                         yield create_afl_afltables_game_model(
                             game_number,
@@ -71,7 +74,7 @@ class AFLAFLTablesLeagueModel(LeagueModel):
                             url,
                             last_round_number,
                             None,
-                            self.league,
+                            self.league,  # pyright: ignore
                             year,
                             season_type,
                         )
@@ -101,10 +104,12 @@ class AFLAFLTablesLeagueModel(LeagueModel):
     def games(self) -> Iterator[GameModel]:
         response = self.session.get(_SEASON_URL)
         soup = BeautifulSoup(response.text, "html.parser")
-        for table in soup.find_all("table"):
-            for tr in table.find_all("tr"):
-                for td in tr.find_all("td"):
-                    for a in tqdm.tqdm(td.find_all("a"), desc="AFL Table Seasons"):
-                        url = urllib.parse.urljoin(_SEASON_URL, a.get("href"))
-                        yield from self._produce_games(url, SeasonType.REGULAR)
-                        yield from self._produce_games(url, SeasonType.POSTSEASON)
+        with tqdm.tqdm(desc="AFLTables seasons") as pbar:
+            for table in soup.find_all("table"):
+                for tr in table.find_all("tr"):
+                    for td in tr.find_all("td"):
+                        for a in td.find_all("a"):
+                            url = urllib.parse.urljoin(_SEASON_URL, a.get("href"))
+                            yield from self._produce_games(url, SeasonType.REGULAR)
+                            yield from self._produce_games(url, SeasonType.POSTSEASON)
+                            pbar.update(2)

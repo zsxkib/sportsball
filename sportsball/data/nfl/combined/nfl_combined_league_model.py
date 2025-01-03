@@ -343,7 +343,6 @@ class NFLCombinedLeagueModel(CombinedLeagueModel):
                 NFLESPNLeagueModel(session),
                 NFLSportsDBLeagueModel(session),
             ],
-            None,
         )
 
     @classmethod

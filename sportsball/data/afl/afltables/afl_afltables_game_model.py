@@ -5,11 +5,11 @@ import datetime
 import urllib.parse
 from urllib.parse import urlparse
 
-import pytz
 import requests
 from bs4 import BeautifulSoup, Tag
 from dateutil.parser import parse
 
+from ....cache import MEMORY
 from ...game_model import GameModel
 from ...league import League
 from ...season_type import SeasonType
@@ -122,9 +122,10 @@ def _find_season_metadata(
         raise ValueError("venue_url is null.")
     if week is None:
         raise ValueError("week is null.")
+    dt = dt.replace(tzinfo=None)
 
     return (
-        pytz.timezone("Australia/Melbourne").localize(dt),
+        dt,
         venue_url,
         week,
         [(k, v[0], v[1]) for k, v in team_infos.items()],
@@ -133,6 +134,7 @@ def _find_season_metadata(
     )
 
 
+@MEMORY.cache(ignore=["session"])
 def create_afl_afltables_game_model(
     game_number: int,
     session: requests.Session,
@@ -208,7 +210,7 @@ def create_afl_afltables_game_model(
                 team_url,
                 players,
                 float(points),
-                session,
+                session,  # pyright: ignore
                 last_ladder_ranks,
             )
             for team_url, players, points in _find_teams_metadata(soup, team_infos)

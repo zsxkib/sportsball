@@ -7,6 +7,7 @@ from typing import Any, Dict
 import requests
 from dateutil.parser import parse
 
+from ...cache import MEMORY
 from ..game_model import GameModel, localize
 from ..league import League
 from ..odds_model import OddsModel
@@ -31,7 +32,7 @@ def _create_espn_team(
     odds_key = competitor["homeAway"] + "TeamOdds"
     odds: list[OddsModel] = []
     if odds_dict:
-        odds = [
+        odds = [  # pyright: ignore
             create_espn_odds_model(
                 x[odds_key],
                 create_espn_bookie_model(x["provider"]),
@@ -50,7 +51,7 @@ def _create_espn_team(
     score_response.raise_for_status()
     score_dict = score_response.json()
 
-    return create_espn_team_model(team_dict, roster_dict, odds, score_dict)
+    return create_espn_team_model(team_dict, roster_dict, odds, score_dict)  # pyright: ignore
 
 
 def _create_venue(
@@ -66,7 +67,7 @@ def _create_venue(
             venue_response = session.get(venue_url)
             venue_response.raise_for_status()
             venue = create_espn_venue_model(venue_response.json(), session, dt)
-    return venue
+    return venue  # pyright: ignore
 
 
 def _create_teams(
@@ -98,6 +99,7 @@ def _create_teams(
     return teams, attendance, end_dt
 
 
+@MEMORY.cache(ignore=["session"])
 def create_espn_game_model(
     event: dict[str, Any],
     week: int,

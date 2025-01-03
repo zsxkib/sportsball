@@ -7,10 +7,12 @@ from urllib.parse import urlparse
 import requests
 from bs4 import BeautifulSoup
 
+from ....cache import MEMORY
 from ...google.google_address_model import create_google_address_model
 from ...venue_model import VenueModel
 
 
+@MEMORY.cache(ignore=["session"])
 def create_afl_afltables_venue_model(
     url: str, session: requests.Session, dt: datetime.datetime
 ) -> VenueModel:
@@ -27,5 +29,9 @@ def create_afl_afltables_venue_model(
         raise ValueError("name is null.")
     address = create_google_address_model(f"{name} - Australia", session, dt)
     return VenueModel(
-        identifier=identifier, name=name, address=address, is_grass=None, is_indoor=None
+        identifier=identifier,
+        name=name,
+        address=address,  # pyright: ignore
+        is_grass=None,
+        is_indoor=None,
     )

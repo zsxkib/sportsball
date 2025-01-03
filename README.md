@@ -6,7 +6,7 @@
 
 A library for pulling in and normalising sports stats.
 
-![sportsball](sportsball.png "sportsball")
+<img src="sportsball.jpg" alt="sportsball" width="200"/>
 
 ## Dependencies :globe_with_meridians:
 

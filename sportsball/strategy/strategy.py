@@ -91,12 +91,14 @@ class Strategy:
     def fit(self, start_dt: datetime.datetime | None = None):
         """Fits the strategy to the dataset by walking forward."""
         # pylint: disable=too-many-statements
-        dt_column = DELIMITER.join([GAME_DT_COLUMN])
 
         if start_dt is None:
             start_dt = max(
-                self._df[[dt_column, x]].dropna()[dt_column].iloc[0].to_pydatetime()
-                for x in self._df.attrs[FieldType.ODDS]
+                self._df[[GAME_DT_COLUMN, x]]
+                .dropna()[GAME_DT_COLUMN]
+                .iloc[0]
+                .to_pydatetime()
+                for x in self._df.attrs[str(FieldType.ODDS)]
             )
             start_dt = max(
                 start_dt,  # type: ignore
@@ -105,10 +107,10 @@ class Strategy:
 
         df = self._df.copy()
         df = df[
-            df[dt_column]
+            df[GAME_DT_COLUMN]
             < pytz.utc.localize(datetime.datetime.now() - datetime.timedelta(days=1.0))
         ]
-        training_cols = set(df.attrs[FieldType.POINTS])
+        training_cols = set(df.attrs[str(FieldType.POINTS)])
         x = self._features.process(df)
         x = self._reducers.process(x)
         y = df[list(training_cols)]
@@ -124,7 +126,7 @@ class Strategy:
             start_dt = _next_week_dt(start_dt, x)
             if start_dt is None:
                 break
-            x_walk = x[x[dt_column] < start_dt]
+            x_walk = x[x[GAME_DT_COLUMN] < start_dt]
             y_walk = y.iloc[: len(x_walk)]
             if len(x_walk) == len(x) or len(y_walk) == len(y):
                 break
@@ -134,7 +136,7 @@ class Strategy:
             os.makedirs(folder, exist_ok=True)
             print(f"Trainer {folder}")
             # next_dt = _next_week_dt(start_dt, x)
-            x_test = x[x[dt_column] >= start_dt]
+            x_test = x[x[GAME_DT_COLUMN] >= start_dt]
             y_test = y.iloc[len(x_walk) : len(x_walk) + len(x_test)]
 
             def objective(trial: optuna.Trial) -> float:
@@ -143,8 +145,8 @@ class Strategy:
                     folder,
                     CatboostTrainer(
                         folder,
-                        df.attrs[FieldType.CATEGORICAL],
-                        df.attrs[FieldType.TEXT],
+                        df.attrs[str(FieldType.CATEGORICAL)],
+                        df.attrs[str(FieldType.TEXT)],
                         trial=trial,
                     ),
                 )
@@ -180,8 +182,8 @@ class Strategy:
                 folder,
                 CatboostTrainer(
                     folder,
-                    df.attrs[FieldType.CATEGORICAL],
-                    df.attrs[FieldType.TEXT],
+                    df.attrs[str(FieldType.CATEGORICAL)],
+                    df.attrs[str(FieldType.TEXT)],
                     trial=best_trial,
                 ),
             )
@@ -221,7 +223,7 @@ class Strategy:
         if start_dt is None:
             start_dt = max(
                 self._df[[dt_column, x]].dropna()[dt_column].iloc[0].to_pydatetime()
-                for x in self._df.attrs[FieldType.ODDS]
+                for x in self._df.attrs[str(FieldType.ODDS)]
             )
             start_dt = max(
                 start_dt,  # type: ignore
@@ -233,7 +235,7 @@ class Strategy:
             df[dt_column]
             < pytz.utc.localize(datetime.datetime.now() - datetime.timedelta(days=1.0))
         ]
-        training_cols = set(df.attrs[FieldType.POINTS])
+        training_cols = set(df.attrs[str(FieldType.POINTS)])
         x = self._features.process(df)
         y = df[list(training_cols)]
         y[OUTPUT_COLUMN] = np.argmax(y.to_numpy(), axis=1)
@@ -258,8 +260,8 @@ class Strategy:
                 folder,
                 CatboostTrainer(
                     folder,
-                    self._df.attrs[FieldType.CATEGORICAL],
-                    self._df.attrs[FieldType.TEXT],
+                    self._df.attrs[str(FieldType.CATEGORICAL)],
+                    self._df.attrs[str(FieldType.TEXT)],
                 ),
             )
             trainer.load()
@@ -279,7 +281,7 @@ class Strategy:
                 )
 
         df = df.reset_index().drop(columns=["index"])
-        for points_col in df.attrs[FieldType.POINTS]:
+        for points_col in df.attrs[str(FieldType.POINTS)]:
             x[points_col] = df[points_col].values
 
         return x
@@ -290,7 +292,7 @@ class Strategy:
         if returns is None:
             df = self.predict()
             dt_column = DELIMITER.join([GAME_DT_COLUMN])
-            points_cols = self._df.attrs[FieldType.POINTS]
+            points_cols = self._df.attrs[str(FieldType.POINTS)]
 
             def calculate_returns(kelly_ratio: float) -> pd.Series:
                 index = []
@@ -303,7 +305,7 @@ class Strategy:
                     fs = []
                     for _, row in group.iterrows():
                         row_df = row.to_frame().T
-                        odds_df = row_df[self._df.attrs[FieldType.ODDS]]
+                        odds_df = row_df[self._df.attrs[str(FieldType.ODDS)]]
                         row_df = row_df[
                             [
                                 x
@@ -317,7 +319,9 @@ class Strategy:
                         team_idx = np.argmax(arr)
                         prob = arr[team_idx]
                         odds = list(
-                            odds_df[self._df.attrs[FieldType.ODDS][team_idx]].values
+                            odds_df[
+                                self._df.attrs[str(FieldType.ODDS)][team_idx]
+                            ].values
                         )[0]
                         bet_prob = 1.0 / odds
                         f = max(prob - ((1.0 - prob) / bet_prob), 0.0) * kelly_ratio
@@ -334,7 +338,7 @@ class Strategy:
                     for _, row in group.iterrows():
                         row_df = row.to_frame().T
                         points_df = row_df[points_cols]
-                        odds_df = row_df[self._df.attrs[FieldType.ODDS]]
+                        odds_df = row_df[self._df.attrs[str(FieldType.ODDS)]]
                         row_df = row_df[
                             [
                                 x
@@ -348,7 +352,9 @@ class Strategy:
                         team_idx = np.argmax(arr)
                         win_team_idx = np.argmax(points_df.to_numpy().flatten())
                         odds = list(
-                            odds_df[self._df.attrs[FieldType.ODDS][team_idx]].values
+                            odds_df[
+                                self._df.attrs[str(FieldType.ODDS)][team_idx]
+                            ].values
                         )[0]
                         if team_idx == win_team_idx:
                             pl += odds * fs[bet_idx]

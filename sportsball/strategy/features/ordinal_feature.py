@@ -21,7 +21,7 @@ class OrdinalFeature(Feature):
     def process(self, df: pd.DataFrame) -> pd.DataFrame:
         """Process the dataframe and add the necessary features."""
         df = self._od.fit_transform(df)
-        for categorical_column in df.attrs[FieldType.CATEGORICAL]:
+        for categorical_column in df.attrs[str(FieldType.CATEGORICAL)]:
             if categorical_column not in df.columns.values:
                 continue
             df[categorical_column] = (

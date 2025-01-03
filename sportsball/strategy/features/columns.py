@@ -15,8 +15,8 @@ def team_column_prefix(team_idx: int) -> str:
     """Generate a prefix for a team column at a given index."""
     return DELIMITER.join(
         [
-            str(team_idx),
             TEAM_COLUMN_PREFIX,
+            str(team_idx),
         ]
     )
 
@@ -43,8 +43,8 @@ def player_column_prefix(team_idx: int, player_idx: int | None) -> str:
     return DELIMITER.join(
         [
             team_column_prefix(team_idx),
-            str(player_idx),
             PLAYER_COLUMN_PREFIX,
+            str(player_idx),
         ]
     )
 

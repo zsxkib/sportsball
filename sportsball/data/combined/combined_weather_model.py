@@ -1,8 +1,10 @@
 """Combined weather model."""
 
+from ...cache import MEMORY
 from ..weather_model import WeatherModel
 
 
+@MEMORY.cache
 def create_combined_weather_model(
     weather_models: list[WeatherModel],
 ) -> WeatherModel | None:

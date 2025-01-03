@@ -1,9 +1,11 @@
 """Combined venue model."""
 
+from ...cache import MEMORY
 from ..venue_model import VenueModel
 from .combined_address_model import create_combined_address_model
 
 
+@MEMORY.cache
 def create_combined_venue_model(
     venue_models: list[VenueModel], identifier: str
 ) -> VenueModel | None:
@@ -26,7 +28,7 @@ def create_combined_venue_model(
     return VenueModel(
         identifier=identifier,
         name=venue_models[0].name,
-        address=create_combined_address_model(address_models),
+        address=create_combined_address_model(address_models),  # pyright: ignore
         is_grass=is_grass,
         is_indoor=is_indoor,
     )

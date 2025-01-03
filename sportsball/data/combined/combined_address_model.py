@@ -1,9 +1,11 @@
 """Combined address model."""
 
+from ...cache import MEMORY
 from ..address_model import AddressModel
 from .combined_weather_model import create_combined_weather_model
 
 
+@MEMORY.cache
 def create_combined_address_model(
     address_models: list[AddressModel],
 ) -> AddressModel | None:
@@ -34,6 +36,6 @@ def create_combined_address_model(
         latitude=latitude,
         longitude=longitude,
         housenumber=housenumber,
-        weather=create_combined_weather_model(weather_models),
+        weather=create_combined_weather_model(weather_models),  # pyright: ignore
         timezone=address_models[0].timezone,
     )
