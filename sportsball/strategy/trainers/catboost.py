@@ -174,7 +174,8 @@ class CatboostTrainer(Trainer):
         # if callbacks:
         #    callbacks[0].check_pruned()
         feature_importances = self._model.get_feature_importance(prettified=True)
-        print(feature_importances)
+        with pd.option_context("display.max_rows", None, "display.max_columns", None):
+            print(feature_importances)
 
     def save(self):
         """Save the trainer."""

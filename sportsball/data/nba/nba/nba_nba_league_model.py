@@ -1,13 +1,20 @@
 """NBA NBA league model."""
 
-from typing import Iterator
+import datetime
+from typing import Iterator, TypedDict
 
 import pandas as pd
 import requests
+import tqdm
+from dateutil.parser import parse
+from dateutil.relativedelta import relativedelta
+from nba_api.library.http import NBAHTTP  # type: ignore
+from nba_api.stats.endpoints import leaguegamefinder  # type: ignore
 
 from ...game_model import GameModel
 from ...league import League
 from ...league_model import LeagueModel
+from .nba_nba_game_model import create_nba_nba_game_model
 
 
 def _combine_team_games(df: pd.DataFrame, keep_method="home") -> pd.DataFrame:
@@ -56,9 +63,57 @@ def _combine_team_games(df: pd.DataFrame, keep_method="home") -> pd.DataFrame:
 class NBANBALeagueModel(LeagueModel):
     """NBA NBA implementation of the league model."""
 
+    class _SeasonInfo(TypedDict):
+        start: datetime.datetime
+        games: int
+
     def __init__(self, session: requests.Session) -> None:
         super().__init__(League.NBA, session)
+        self._league_id = "00"
+        NBAHTTP.set_session(session)
+
+    def _produce_games(
+        self,
+        all_games: pd.DataFrame,
+        seasons: dict[str, _SeasonInfo],
+        from_date: datetime.date,
+    ) -> Iterator[GameModel]:
+        for _, row in tqdm.tqdm(
+            all_games.iterrows(), desc=f"NBA API Games from {from_date}"
+        ):
+            season_id = row["SEASON_ID"]
+            dt = parse(row["GAME_DATE"])
+            season_info = seasons.get(
+                season_id,
+                {
+                    "start": dt,
+                    "games": 0,
+                },
+            )
+            week = int((dt - season_info["start"]).days / 7)
+            yield create_nba_nba_game_model(  # type: ignore
+                row,
+                self.league,
+                week,
+                season_info["games"],  # type: ignore
+            )
+            season_info["games"] += 1
+            seasons[season_id] = season_info
 
     @property
     def games(self) -> Iterator[GameModel]:
-        return  # type: ignore
+        to_date = datetime.datetime.today().date()
+        seasons: dict[str, NBANBALeagueModel._SeasonInfo] = {}
+        while True:
+            next_date = to_date - relativedelta(years=1)
+            result = leaguegamefinder.LeagueGameFinder(
+                league_id_nullable=self._league_id,
+                date_from_nullable=next_date.strftime("%m/%d/%Y"),
+                date_to_nullable=to_date.strftime("%m/%d/%Y"),
+            )
+            all_games = _combine_team_games(result.get_data_frames()[0])
+            all_games = all_games.sort_values(by="GAME_DATE", ascending=True)
+            if all_games.empty:
+                break
+            yield from self._produce_games(all_games, seasons, next_date)
+            to_date = next_date

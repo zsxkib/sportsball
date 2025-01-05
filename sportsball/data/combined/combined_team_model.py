@@ -1,14 +1,12 @@
 """Combined team model."""
 
 # pylint: disable=too-many-locals
-from ...cache import MEMORY
 from ..odds_model import OddsModel
 from ..player_model import PlayerModel
 from ..team_model import TeamModel
 from .combined_player_model import create_combined_player_model
 
 
-@MEMORY.cache
 def create_combined_team_model(
     team_models: list[TeamModel],
     identifier: str,

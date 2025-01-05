@@ -1,16 +1,14 @@
 """Combined venue model."""
 
-from ...cache import MEMORY
 from ..venue_model import VenueModel
 from .combined_address_model import create_combined_address_model
 
 
-@MEMORY.cache
 def create_combined_venue_model(
-    venue_models: list[VenueModel], identifier: str
+    venue_models: list[VenueModel], identifier: str | None
 ) -> VenueModel | None:
     """Create a venue model by combining many venue models."""
-    if not venue_models:
+    if not venue_models or identifier is None:
         return None
     address_models = []
     is_grass = None

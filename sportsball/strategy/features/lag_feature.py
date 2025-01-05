@@ -24,7 +24,7 @@ def _process_attendance(df: pd.DataFrame) -> pd.DataFrame:
             nonlocal last_attendances
             venue_idx_col = venue_identifier_column()
             try:
-                venue_idx = row[venue_idx_col]
+                venue_idx = str(row[venue_idx_col])
             except KeyError:
                 return row
             attendance_key_components = [venue_idx]

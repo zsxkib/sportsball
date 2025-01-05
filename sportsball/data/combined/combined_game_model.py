@@ -3,7 +3,6 @@
 # pylint: disable=too-many-locals,line-too-long
 import logging
 
-from ...cache import MEMORY
 from ..game_model import GameModel
 from ..team_model import TeamModel
 from ..venue_model import VenueModel
@@ -52,7 +51,6 @@ def _team_models(
     ]
 
 
-@MEMORY.cache
 def create_combined_game_model(
     game_models: list[GameModel],
     venue_identity_map: dict[str, str],
@@ -88,9 +86,10 @@ def create_combined_game_model(
             game_number = game_model_game_number
 
     if full_venue_identity is None and venue_models:
-        full_venue_identity = venue_models[0].identifier
-    if full_venue_identity is None:
-        raise ValueError("full_venue_identity is null.")
+        for venue_model in venue_models:
+            venue_model_identifier = venue_model.identifier
+            if venue_model_identifier is not None:
+                full_venue_identity = venue_model_identifier
 
     return GameModel(
         dt=game_models[0].dt,

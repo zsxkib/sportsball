@@ -1,6 +1,7 @@
 """The portfolio class."""
 
 import datetime
+import logging
 import os
 
 import matplotlib.pyplot as plt
@@ -44,8 +45,18 @@ class Portfolio:
                     objective_function=ObjectiveFunction.MAXIMIZE_RETURN,
                     portfolio_params={"name": "Max Sharpe"},
                 )
-                model.fit(x.to_numpy())
-                ret.loc[index, self._name] = (returns.loc[index] * model.weights_).sum()
+                try:
+                    model.fit(x.to_numpy())
+                    ret.loc[index, self._name] = (
+                        returns.loc[index] * model.weights_
+                    ).sum()
+                except ValueError as e:
+                    logging.warning(
+                        "Encountered %s when fitting meanrisk model.", str(e)
+                    )
+                    ret.loc[index, self._name] = (
+                        returns.loc[index] * (1.0 / len(returns.columns.values))
+                    ).sum()
 
         ret = ret.asfreq("D").fillna(0.0)
         ret.index = ret.index.tz_localize("UTC")  # type: ignore
@@ -58,13 +69,8 @@ class Portfolio:
         from_date: datetime.datetime | None = None,
     ):
         """Renders the statistics of the portfolio."""
-        if from_date is not None:
-            returns = returns.loc[returns.index.date >= from_date]  # type: ignore
-        for col in returns.columns.values:
-            series = returns[col]
-            series = series[
-                series.index >= series.where(series != 0.0).first_valid_index()
-            ]
+
+        def render_series(series: pd.Series) -> None:
             pf.create_full_tear_sheet(series)
             plt.savefig(os.path.join(self._name, f"{col}_tear_sheet.png"), dpi=300)
             ret = np.concatenate(
@@ -72,3 +78,15 @@ class Portfolio:
             ).cumprod()
             plot(simulate(pd.Series(ret)))
             plt.savefig(os.path.join(self._name, f"{col}_monte_carlo.png"), dpi=300)
+            log_series = pd.Series(data=np.log(ret), index=series.index)
+            log_series.plot()
+            plt.savefig(os.path.join(self._name, f"{col}_log_returns.png"), dpi=300)
+
+        if from_date is not None:
+            returns = returns.loc[returns.index.date >= from_date]  # type: ignore
+        for col in returns.columns.values:
+            series = returns[col]
+            series = series[
+                series.index >= series.where(series != 0.0).first_valid_index()
+            ]
+            render_series(series)

@@ -1,11 +1,9 @@
 """Combined address model."""
 
-from ...cache import MEMORY
 from ..address_model import AddressModel
 from .combined_weather_model import create_combined_weather_model
 
 
-@MEMORY.cache
 def create_combined_address_model(
     address_models: list[AddressModel],
 ) -> AddressModel | None:

@@ -1,8 +1,10 @@
-"""Combined season model."""
+"""Combined league model."""
 
+import logging
 from typing import Iterator
 
 import requests
+import tqdm
 
 from ..game_model import GameModel
 from ..league import League
@@ -41,10 +43,18 @@ class CombinedLeagueModel(LeagueModel):
         games: dict[str, list[GameModel]] = {}
         team_identity_map = self.team_identity_map()
         for league_model in self._league_models:
-            for game_model in league_model.games:
+            for game_model in tqdm.tqdm(league_model.games, desc="Games from league"):
                 game_components = [str(game_model.dt.date())]
                 for team in game_model.teams:
-                    team_identifier = team_identity_map[team.identifier]
+                    if team.identifier not in team_identity_map:
+                        logging.warning(
+                            "%s for team %s not found in team identity map.",
+                            team.identifier,
+                            team.name,
+                        )
+                    team_identifier = team_identity_map.get(
+                        team.identifier, team.identifier
+                    )
                     game_components.append(team_identifier)
                 game_components = sorted(game_components)
                 key = "-".join(game_components)

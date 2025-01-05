@@ -12,7 +12,7 @@ from ...venue_model import VenueModel
 @MEMORY.cache(ignore=["session"])
 def create_nfl_sportsdb_venue_model(
     session: requests.Session, venue_id: str, dt: datetime.datetime
-) -> VenueModel:
+) -> VenueModel | None:
     """Create NFL sports DB venue model."""
     if venue_id == "19533":
         venue_id = "17146"
@@ -34,7 +34,10 @@ def create_nfl_sportsdb_venue_model(
         f"https://www.thesportsdb.com/api/v1/json/3/lookupvenue.php?id={venue_id}"
     )
     response.raise_for_status()
-    venue = response.json()["venues"][0]
+    venues = response.json()["venues"]
+    if venues is None:
+        return None
+    venue = venues[0]
     name = venue["strVenue"]
 
     address = create_google_address_model(

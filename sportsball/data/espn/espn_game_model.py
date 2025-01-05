@@ -86,15 +86,18 @@ def _create_teams(
         for competitor in competition["competitors"]:
             teams.append(_create_espn_team(competitor, odds_dict, session))
         attendance = competition["attendance"]
-        situation_url = competition["situation"]["$ref"]
-        situation_response = session.get(situation_url)
-        situation_response.raise_for_status()
-        situation = situation_response.json()
-        last_play_response = session.get(situation["lastPlay"]["$ref"])
-        last_play_response.raise_for_status()
-        last_play = last_play_response.json()
-        end_dt = parse(last_play["wallclock"])
-        if venue is not None:
+        if "situation" in competition:
+            situation_url = competition["situation"]["$ref"]
+            situation_response = session.get(situation_url)
+            situation_response.raise_for_status()
+            situation = situation_response.json()
+            if "lastPlay" in situation:
+                last_play_response = session.get(situation["lastPlay"]["$ref"])
+                last_play_response.raise_for_status()
+                last_play = last_play_response.json()
+                if "wallclock" in last_play:
+                    end_dt = parse(last_play["wallclock"])
+        if venue is not None and end_dt is not None:
             end_dt = localize(venue, end_dt)
     return teams, attendance, end_dt
 
