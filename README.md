@@ -126,6 +126,7 @@ A representation of a player within a team within a game.
 * **identifier**: The unique identifier for the player.
 * **jersey**: The jersey identifying the player.
 * **kicks**: The number of kicks the player made in the game.
+* **fumbles**: The number of times the player fumbled the ball in the game.
 
 #### Odds
 

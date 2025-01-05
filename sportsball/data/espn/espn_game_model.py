@@ -51,7 +51,13 @@ def _create_espn_team(
     score_response.raise_for_status()
     score_dict = score_response.json()
 
-    return create_espn_team_model(team_dict, roster_dict, odds, score_dict)  # pyright: ignore
+    return create_espn_team_model(
+        session,
+        team_dict,
+        roster_dict,
+        odds,
+        score_dict,
+    )
 
 
 def _create_venue(

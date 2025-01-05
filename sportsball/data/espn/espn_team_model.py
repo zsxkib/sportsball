@@ -2,14 +2,17 @@
 
 from typing import Any
 
+import requests
+
 from ...cache import MEMORY
 from ..odds_model import OddsModel
 from ..team_model import TeamModel
 from .espn_player_model import create_espn_player_model
 
 
-@MEMORY.cache
+@MEMORY.cache(ignore=["session"])
 def create_espn_team_model(
+    session: requests.Session,
     team: dict[str, Any],
     roster_dict: dict[str, Any],
     odds: list[OddsModel],
@@ -23,7 +26,7 @@ def create_espn_team_model(
     location = team["location"]
     players = []
     for entity in roster_dict.get("entries", []):
-        player = create_espn_player_model(entity)
+        player = create_espn_player_model(session, entity)
         players.append(player)
     points = score_dict["value"]
     return TeamModel(

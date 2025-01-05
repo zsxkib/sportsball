@@ -8,6 +8,7 @@ from .field_type import TYPE_KEY, FieldType
 
 PLAYER_KICKS_COLUMN: Literal["kicks"] = "kicks"
 PLAYER_IDENTIFIER_COLUMN: Literal["identifier"] = "identifier"
+PLAYER_FUMBLES_COLUMN: Literal["fumbles"] = "fumbles"
 
 
 class PlayerModel(BaseModel):
@@ -23,4 +24,9 @@ class PlayerModel(BaseModel):
         ...,
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=PLAYER_KICKS_COLUMN,
+    )
+    fumbles: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_FUMBLES_COLUMN,
     )
