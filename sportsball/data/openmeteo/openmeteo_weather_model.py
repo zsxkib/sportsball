@@ -7,9 +7,47 @@ import pandas as pd
 import pytz
 import requests
 from openmeteo_requests.Client import OpenMeteoRequestsError  # type: ignore
+from openmeteo_requests.Client import WeatherApiResponse
 
 from ...cache import MEMORY
 from ..weather_model import WeatherModel
+
+
+def _parse_openmeteo(
+    responses: list[WeatherApiResponse], tz: str, dt: datetime.datetime
+) -> WeatherModel:
+    # pylint: disable=broad-exception-caught
+    if not responses:
+        return WeatherModel(temperature=None, relative_humidity=None)
+    response = responses[0]
+    try:
+        hourly = response.Hourly()
+    except Exception:
+        # print(f"Encountered problem unpacking weather: {e}, skipping")
+        temperature = None
+        return WeatherModel(temperature=None, relative_humidity=None)
+    if hourly is None:
+        raise ValueError("hourly is null.")
+    hourly_df = pd.DataFrame(
+        index=pd.date_range(
+            start=pd.to_datetime(hourly.Time(), unit="s"),
+            end=pd.to_datetime(hourly.TimeEnd(), unit="s"),
+            freq=pd.Timedelta(seconds=hourly.Interval()),
+            inclusive="left",
+            tz=tz,
+        )[: len(hourly.Variables(0).ValuesAsNumpy())],  # type: ignore
+        data={
+            "temperature_2m": hourly.Variables(0).ValuesAsNumpy(),  # type: ignore
+            "relative_humidity_2m": hourly.Variables(1).ValuesAsNumpy(),  # type: ignore
+        },
+    )
+    dt = dt.replace(tzinfo=None)
+    timezone = pytz.timezone(tz)
+    dt = timezone.localize(dt)
+    hourly_idx = hourly_df.index.get_indexer([dt], method="nearest")[0]
+    temperature = hourly_df.iloc[hourly_idx]["temperature_2m"]  # type: ignore
+    relative_humidity = hourly_df.iloc[hourly_idx]["relative_humidity_2m"]  # type: ignore
+    return WeatherModel(temperature=temperature, relative_humidity=relative_humidity)
 
 
 @MEMORY.cache(ignore=["session"])
@@ -23,7 +61,6 @@ def create_openmeteo_weather_model(
     """Create a weather model from openmeteo."""
     # pylint: disable=broad-exception-caught
     client = openmeteo_requests.Client(session=session)
-    temperature = None
     try:
         responses = client.weather_api(
             "https://historical-forecast-api.open-meteo.com/v1/forecast",
@@ -89,42 +126,11 @@ def create_openmeteo_weather_model(
                 "timezone": tz,
             },
         )
+        return _parse_openmeteo(responses, tz, dt)
     except (requests.exceptions.RetryError, OpenMeteoRequestsError):
-        temperature = None
-        return WeatherModel(temperature=temperature)
+        return WeatherModel(temperature=None, relative_humidity=None)
     except Exception as e:
         e_text = str(e)
         if "Parameter 'start_date' is out of allowed range from" in e_text:
-            temperature = None
-            return WeatherModel(temperature=temperature)
+            return WeatherModel(temperature=None, relative_humidity=None)
         raise e
-    if not responses:
-        temperature = None
-        return WeatherModel(temperature=temperature)
-    response = responses[0]
-    try:
-        hourly = response.Hourly()
-    except Exception:
-        # print(f"Encountered problem unpacking weather: {e}, skipping")
-        temperature = None
-        return WeatherModel(temperature=temperature)
-    if hourly is None:
-        raise ValueError("hourly is null.")
-    hourly_df = pd.DataFrame(
-        index=pd.date_range(
-            start=pd.to_datetime(hourly.Time(), unit="s"),
-            end=pd.to_datetime(hourly.TimeEnd(), unit="s"),
-            freq=pd.Timedelta(seconds=hourly.Interval()),
-            inclusive="left",
-            tz=tz,
-        )[: len(hourly.Variables(0).ValuesAsNumpy())],  # type: ignore
-        data={
-            "temperature_2m": hourly.Variables(0).ValuesAsNumpy(),  # type: ignore
-        },
-    )
-    dt = dt.replace(tzinfo=None)
-    timezone = pytz.timezone(tz)
-    dt = timezone.localize(dt)
-    hourly_idx = hourly_df.index.get_indexer([dt], method="nearest")[0]
-    temperature = hourly_df.iloc[hourly_idx]["temperature_2m"]  # type: ignore
-    return WeatherModel(temperature=temperature)

@@ -59,6 +59,8 @@ class AusSportsBettingLeagueModel(LeagueModel):
         current_cell_idx += 1
         if self.league == League.NFL:
             current_cell_idx += 3
+        else:
+            current_cell_idx += 5
         home_odds = float(row[current_cell_idx].value)  # type: ignore
         current_cell_idx += 1
         if self.league == League.NFL:

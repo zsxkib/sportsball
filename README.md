@@ -160,9 +160,10 @@ The address of the venue.
 
 #### Weather
 
-The weather at the address of the game start time.
+The forecasted weather one day out at the address of the game start time.
 
 * **temperature**: The temperature at the address at the game start time.
+* **relative_humidity**: The relative humidity at the address at the game start time.
 
 ## Caching
 
