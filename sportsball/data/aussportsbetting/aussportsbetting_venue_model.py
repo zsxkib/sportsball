@@ -1,16 +1,16 @@
-"""AFL aussportsbetting venue model."""
+"""Aussportsbetting venue model."""
 
 import datetime
 
 import requests
 
-from ....cache import MEMORY
-from ...google.google_address_model import create_google_address_model
-from ...venue_model import VenueModel
+from ...cache import MEMORY
+from ..google.google_address_model import create_google_address_model
+from ..venue_model import VenueModel
 
 
 @MEMORY.cache(ignore=["session"])
-def create_afl_aussportsbetting_venue_model(
+def create_aussportsbetting_venue_model(
     venue: str, session: requests.Session, dt: datetime.datetime
 ) -> VenueModel:
     """Create a venue model based off aus sports betting."""

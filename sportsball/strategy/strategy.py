@@ -11,6 +11,7 @@ import numpy as np
 import optuna
 import pandas as pd
 import pytz
+from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta
 from sklearn.metrics import precision_score  # type: ignore
 from sklearn.metrics import accuracy_score, recall_score
@@ -235,27 +236,14 @@ class Strategy:
             df[dt_column]
             < pytz.utc.localize(datetime.datetime.now() - datetime.timedelta(days=1.0))
         ]
-        training_cols = set(df.attrs[str(FieldType.POINTS)])
         x = self._features.process(df)
-        y = df[list(training_cols)]
-        y[OUTPUT_COLUMN] = np.argmax(y.to_numpy(), axis=1)
-        if len(training_cols) == 2:
-            y[OUTPUT_COLUMN] = y[OUTPUT_COLUMN].astype(bool)
-        y = y[[OUTPUT_COLUMN]]
 
-        while True:
-            start_dt = _next_week_dt(start_dt, x)
-            if start_dt is None:
-                break
-            x_walk = x[x[dt_column] < start_dt]
-            if len(x_walk) == len(x):
-                break
-            next_dt = _next_week_dt(start_dt, x)
-            if next_dt is None:
-                break
+        for folder_name in sorted(os.listdir(self._name)):
+            folder = os.path.join(self._name, folder_name)
+            if not os.path.isdir(folder):
+                continue
+            start_dt = parse(folder_name)
             x_test = x[x[dt_column] >= start_dt]
-            x_test = x_test[x_test[dt_column] < next_dt]
-            folder = os.path.join(self._name, str(start_dt.date()))
             trainer = VennAbersTrainer(
                 folder,
                 CatboostTrainer(
@@ -274,7 +262,6 @@ class Strategy:
                     x[column] = None
                 x_small = x[x[dt_column] >= start_dt]
                 i_start = len(x) - len(x_small)
-                x_small = x_small[x_small[dt_column] < next_dt]
                 i_end = i_start + len(x_small)
                 x.iloc[i_start:i_end, x.columns.get_loc(column)] = list(  # type: ignore
                     y_prob[column].values

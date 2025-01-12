@@ -78,7 +78,7 @@ class Portfolio:
             ).cumprod()
             plot(simulate(pd.Series(ret)))
             plt.savefig(os.path.join(self._name, f"{col}_monte_carlo.png"), dpi=300)
-            log_series = pd.Series(data=np.log(ret), index=series.index)
+            log_series = pd.Series(data=np.log(ret), index=series.index[1:])
             log_series.plot()
             plt.savefig(os.path.join(self._name, f"{col}_log_returns.png"), dpi=300)
 

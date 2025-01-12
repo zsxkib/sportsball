@@ -180,7 +180,7 @@ This is a python package hosted on pypi, so to install simply run the following 
 To pull a dataframe containing all the information for a particular league, the following example can be used:
 
 ```python
-import sportsball as spb
+from sportsball import sportsball as spb
 
 ball = spb.SportsBall()
 league = ball.league(spb.League.AFL)

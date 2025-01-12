@@ -2,4 +2,6 @@
 
 from joblib import Memory  # type: ignore
 
-MEMORY = Memory(".sportsball_cache", verbose=0)
+from . import __VERSION__
+
+MEMORY = Memory(".sportsball_cache_" + __VERSION__, verbose=0)

@@ -4,6 +4,8 @@ import requests
 
 from ...combined.combined_league_model import CombinedLeagueModel
 from ...league import League
+from ..aussportsbetting.nfl_aussportsbetting_league_model import \
+    NFLAusSportsBettingLeagueModel
 from ..espn.nfl_espn_league_model import NFLESPNLeagueModel
 from ..sportsdb.nfl_sportsdb_league_model import NFLSportsDBLeagueModel
 
@@ -111,6 +113,43 @@ NFL_TEAM_IDENTITY_MAP = {
     "134933": LOS_ANGELES_CHARGERS,
     "134947": LOS_ANGELES_RAMS,
     "135834": LOS_ANGELES_RAMS,
+    "Miami Dolphins": MIAMI_DOLPHINS,
+    "Pittsburgh Steelers": PITTSBURGH_STEALERS,
+    "San Francisco 49ers": SAN_FRANCISCO_49ERS,
+    "Arizona Cardinals": ARIZONA_CARDINALS,
+    "Atlanta Falcons": ATLANTA_FALCONS,
+    "Carolina Panthers": CAROLINA_PANTHERS,
+    "New Orleans Saints": NEW_ORLEANS_SAINTS,
+    "Cleveland Browns": CLEVELAND_BROWNS,
+    "Seattle Seahawks": SEATTLE_SEAHAWKS,
+    "Detroit Lions": DETROIT_LIONS,
+    "Chicago Bears": CHICAGO_BEARS,
+    "Green Bay Packers": GREEN_BAY_PACKERS,
+    "Philadelphia Eagles": PHILADELPHIA_EAGLES,
+    "Houston Texans": HOUSTAN_TEXANS,
+    "Dallas Cowboys": DALLAS_COWBOYS,
+    "Jacksonville Jaguars": JACKSONVILLE_JAGUARS,
+    "Cincinnati Bengals": CINCINATTI_BENGALS,
+    "Kansas City Chiefs": KANSAS_CITY_CHIEFS,
+    "Buffalo Bills": BUFFALO_BILLS,
+    "New England Patriots": NEW_ENGLAND_PATRIOTS,
+    "Indianapolis Colts": INDIANAPOLIS_COLTS,
+    "New York Giants": NEW_YORK_GIANTS,
+    "Denver Broncos": DENVER_BRONCOS,
+    "St. Louis Rams": LOS_ANGELES_RAMS,
+    "Baltimore Ravens": BALTIMORE_RAVENS,
+    "Tampa Bay Buccaneers": TAMPA_BAY_BUCCANEERS,
+    "New York Jets": NEW_YORK_JETS,
+    "Tennessee Titans": TENNESSEE_TITANS,
+    "San Diego Chargers": LOS_ANGELES_CHARGERS,
+    "Oakland Raiders": LAS_VEGAS_RAIDERS,
+    "Minnesota Vikings": MINNESOTA_VIKINGS,
+    "Washington Redskins": WASHINGTON_COMMANDERS,
+    "Los Angeles Rams": LOS_ANGELES_RAMS,
+    "Los Angeles Chargers": LOS_ANGELES_CHARGERS,
+    "Washington Football Team": WASHINGTON_COMMANDERS,
+    "Las Vegas Raiders": LAS_VEGAS_RAIDERS,
+    "Washington Commanders": WASHINGTON_COMMANDERS,
 }
 EMPOWER_FIELD = "18784"
 TOM_BENSOM_HALL_OF_FAME_STADIUM = "28739"
@@ -342,6 +381,7 @@ class NFLCombinedLeagueModel(CombinedLeagueModel):
             [
                 NFLESPNLeagueModel(session),
                 NFLSportsDBLeagueModel(session),
+                NFLAusSportsBettingLeagueModel(session),
             ],
         )
 
