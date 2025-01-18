@@ -35,10 +35,20 @@ def create_nfl_sportsdb_game_model(
     away_score = float(game["intAwayScore"] if game["intAwayScore"] is not None else 0)
     teams = [
         create_nfl_sportsdb_team_model(
-            game["idHomeTeam"], game["strHomeTeam"], home_score
+            game["idHomeTeam"],
+            game["strHomeTeam"],
+            home_score,
+            session,
+            dt,
+            league,
         ),
         create_nfl_sportsdb_team_model(
-            game["idAwayTeam"], game["strAwayTeam"], away_score
+            game["idAwayTeam"],
+            game["strAwayTeam"],
+            away_score,
+            session,
+            dt,
+            league,
         ),
     ]
     return GameModel(

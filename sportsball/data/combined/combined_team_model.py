@@ -1,6 +1,7 @@
 """Combined team model."""
 
 # pylint: disable=too-many-locals
+from ..news_model import NewsModel
 from ..odds_model import OddsModel
 from ..player_model import PlayerModel
 from ..team_model import TeamModel
@@ -15,6 +16,7 @@ def create_combined_team_model(
     location = None
     players: dict[str, list[PlayerModel]] = {}
     odds: dict[str, list[OddsModel]] = {}
+    news: dict[str, NewsModel] = {}
     points = None
     ladder_rank = None
     for team_model in team_models:
@@ -35,6 +37,16 @@ def create_combined_team_model(
         team_model_ladder_rank = team_model.ladder_rank
         if team_model_ladder_rank is not None:
             ladder_rank = team_model_ladder_rank
+        for news_model in team_model.news:
+            news_key = "-".join(
+                [
+                    news_model.title,
+                    str(news_model.published),
+                    news_model.summary,
+                    news_model.source,
+                ]
+            )
+            news[news_key] = news_model
 
     return TeamModel(
         identifier=identifier,
@@ -46,4 +58,5 @@ def create_combined_team_model(
         odds=[x[0] for x in odds.values()],
         points=points,
         ladder_rank=ladder_rank,
+        news=sorted(news.values(), key=lambda x: x.published),
     )

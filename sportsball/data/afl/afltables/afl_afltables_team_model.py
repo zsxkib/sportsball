@@ -1,5 +1,7 @@
 """AFL AFLTables team model."""
 
+# pylint: disable=too-many-arguments,too-many-locals
+import datetime
 import os
 from urllib.parse import urlparse
 
@@ -7,6 +9,8 @@ import requests
 from bs4 import BeautifulSoup
 
 from ....cache import MEMORY
+from ...google.google_news_model import create_google_news_models
+from ...league import League
 from ...team_model import TeamModel
 from .afl_afltables_player_model import create_afl_afltables_player_model
 
@@ -43,6 +47,8 @@ def create_afl_afltables_team_model(
     points: float,
     session: requests.Session,
     last_ladder_ranks: dict[str, int] | None,
+    dt: datetime.datetime,
+    league: League,
 ) -> TeamModel:
     """Create a team model from AFL Tables."""
     response = session.get(team_url)
@@ -72,4 +78,5 @@ def create_afl_afltables_team_model(
         points=points,
         ladder_rank=last_ladder_rank,
         location=None,
+        news=create_google_news_models(name, session, dt, league),
     )

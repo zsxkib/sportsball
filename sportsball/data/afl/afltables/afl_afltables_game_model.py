@@ -212,6 +212,8 @@ def create_afl_afltables_game_model(
                 float(points),
                 session,  # pyright: ignore
                 last_ladder_ranks,
+                dt,
+                league,
             )
             for team_url, players, points in _find_teams_metadata(soup, team_infos)
         ],

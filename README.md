@@ -46,6 +46,7 @@ Python 3.11.6:
 - [nba_api](https://github.com/swar/nba_api)
 - [pydantic](https://docs.pydantic.dev/latest/)
 - [flatten_json](https://github.com/amirziai/flatten)
+- [pygooglenews](https://github.com/kotartemiy/pygooglenews)
 
 ## Raison D'être :thought_balloon:
 
@@ -70,6 +71,7 @@ The supported leagues are:
                 * **Player**: A player within the team.
                 * **Odds**: The odds for the team to win the game.
                     * **Bookie**: The bookie publishing the odds.
+                * **News**: News about the team the day before the game.
             * **Venue**: The venue the game was played in.
                 * **Address**: The address information of a venue.
                     * **Weather**: The weather at the address.
@@ -164,6 +166,15 @@ The forecasted weather one day out at the address of the game start time.
 
 * **temperature**: The temperature at the address at the game start time.
 * **relative_humidity**: The relative humidity at the address at the game start time.
+
+#### News
+
+The news one day out from the game.
+
+* **title**: The title of the article
+* **published**: When the article was published.
+* **summary**: The summary of the article.
+* **source**: The source of the article.
 
 ## Caching
 

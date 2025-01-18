@@ -15,14 +15,16 @@ def create_espn_player_model(
     """Create a player model based off ESPN."""
     identifier = str(player["playerId"])
     jersey = player.get("jersey")
-    statistics_response = session.get(player["statistics"]["$ref"])
-    statistics_response.raise_for_status()
-    statistics_dict = statistics_response.json()
     fumbles = None
-    for category in statistics_dict["splits"]["categories"]:
-        for stat in category["stats"]:
-            if stat["name"] == "fumbles":
-                fumbles = stat["value"]
+    if "statistics" in player:
+        statistics_response = session.get(player["statistics"]["$ref"])
+        if statistics_response.ok:
+            statistics_dict = statistics_response.json()
+            fumbles = None
+            for category in statistics_dict["splits"]["categories"]:
+                for stat in category["stats"]:
+                    if stat["name"] == "fumbles":
+                        fumbles = stat["value"]
     return PlayerModel(
         identifier=identifier, jersey=jersey, kicks=None, fumbles=fumbles
     )

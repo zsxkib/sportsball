@@ -35,6 +35,20 @@ class ESPNLeagueModel(LeagueModel):
     def _produce_games(
         self, week: dict[str, Any], week_count: int, season_type_json: dict[str, Any]
     ) -> Iterator[GameModel]:
+        def produce_game(event_item: dict[str, Any], game_number: int) -> GameModel:
+            event_response = self.session.get(event_item["$ref"])
+            event_response.raise_for_status()
+            event = event_response.json()
+            return create_espn_game_model(
+                event,
+                week_count,
+                game_number,
+                self.session,
+                self.league,
+                season_type_json["year"],
+                _season_type_from_name(season_type_json["name"]),
+            )
+
         events_page = 1
         events_count = 0
         while True:
@@ -43,24 +57,27 @@ class ESPNLeagueModel(LeagueModel):
             events_response = self.session.get(
                 week["events"]["$ref"] + f"&page={events_page}"
             )
+            events_response.raise_for_status()
             events = events_response.json()
             for event_item in events["items"]:
-                event_response = self.session.get(event_item["$ref"])
-                event_response.raise_for_status()
-                event = event_response.json()
-                yield create_espn_game_model(
-                    event,
-                    week_count,
-                    events_count,
-                    self.session,
-                    self.league,
-                    season_type_json["year"],
-                    _season_type_from_name(season_type_json["name"]),
-                )
+                yield produce_game(event_item, events_count)
                 events_count += 1
             if events_page >= events["pageCount"]:
                 break
             events_page += 1
+        qbr_page = 1
+        qbr_count = 0
+        while True:
+            if "qbr" not in week:
+                break
+            qbr_response = self.session.get(week["qbr"]["$ref"] + f"&page={qbr_page}")
+            qbr = qbr_response.json()
+            for qbr_item in qbr["items"]:
+                yield produce_game(qbr_item["event"], qbr_count)
+                qbr_count += 1
+            if qbr_page >= qbr["pageCount"]:
+                break
+            qbr_page += 1
 
     def _produce_week_games(
         self, season_type_json: dict[str, Any], page: int

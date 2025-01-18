@@ -30,10 +30,10 @@ def create_aussportsbetting_game_model(
     if venue is not None:
         venue_model = create_aussportsbetting_venue_model(venue, session, dt)
     home_team_model = create_aussportsbetting_team_model(
-        home_team, home_points, home_odds
+        home_team, home_points, home_odds, session, dt, league
     )
     away_team_model = create_aussportsbetting_team_model(
-        away_team, away_points, away_odds
+        away_team, away_points, away_odds, session, dt, league
     )
     return GameModel(
         dt=dt,

@@ -1,10 +1,15 @@
 """ESPN team model."""
 
+# pylint: disable=too-many-arguments
+
+import datetime
 from typing import Any
 
 import requests
 
 from ...cache import MEMORY
+from ..google.google_news_model import create_google_news_models
+from ..league import League
 from ..odds_model import OddsModel
 from ..team_model import TeamModel
 from .espn_player_model import create_espn_player_model
@@ -17,6 +22,8 @@ def create_espn_team_model(
     roster_dict: dict[str, Any],
     odds: list[OddsModel],
     score_dict: dict[str, Any],
+    dt: datetime.datetime,
+    league: League,
 ) -> TeamModel:
     """Create team model from ESPN."""
     identifier = team["id"]
@@ -37,4 +44,5 @@ def create_espn_team_model(
         odds=odds,
         points=points,
         ladder_rank=None,
+        news=create_google_news_models(name, session, dt, league),
     )

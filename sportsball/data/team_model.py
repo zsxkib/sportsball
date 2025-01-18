@@ -5,6 +5,7 @@ from typing import Any, Literal
 from pydantic import BaseModel, Field
 
 from .field_type import TYPE_KEY, FieldType
+from .news_model import NewsModel
 from .odds_model import OddsModel
 from .player_model import PlayerModel
 
@@ -49,3 +50,4 @@ class TeamModel(BaseModel):
         default_factory=_calculate_kicks,
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
     )
+    news: list[NewsModel]

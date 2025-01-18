@@ -10,3 +10,16 @@ class League(StrEnum):
     NBA = "nba"
     NCAAF = "ncaaf"
     NFL = "nfl"
+
+
+def long_name(league: League) -> str:
+    """Find the leagues long name."""
+    match league:
+        case League.AFL:
+            return "Australia Football League"
+        case League.NBA:
+            return "National Basketball League"
+        case League.NCAAF:
+            return "NCAA Division I Football"
+        case League.NFL:
+            return "National Football League"

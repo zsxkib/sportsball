@@ -24,6 +24,8 @@ def _create_espn_team(
     competitor: Dict[str, Any],
     odds_dict: Dict[str, Any],
     session: requests.Session,
+    dt: datetime.datetime,
+    league: League,
 ) -> TeamModel:
     team_response = session.get(competitor["team"]["$ref"])
     team_response.raise_for_status()
@@ -57,6 +59,8 @@ def _create_espn_team(
         roster_dict,
         odds,
         score_dict,
+        dt,
+        league,
     )
 
 
@@ -77,8 +81,13 @@ def _create_venue(
 
 
 def _create_teams(
-    event: dict[str, Any], session: requests.Session, venue: VenueModel | None
+    event: dict[str, Any],
+    session: requests.Session,
+    venue: VenueModel | None,
+    dt: datetime.datetime,
+    league: League,
 ) -> tuple[list[TeamModel], int | None, datetime.datetime | None]:
+    # pylint: disable=too-many-locals
     teams = []
     attendance = None
     end_dt = None
@@ -90,7 +99,7 @@ def _create_teams(
             odds_dict = odds_response.json()
 
         for competitor in competition["competitors"]:
-            teams.append(_create_espn_team(competitor, odds_dict, session))
+            teams.append(_create_espn_team(competitor, odds_dict, session, dt, league))
         attendance = competition["attendance"]
         if "situation" in competition:
             situation_url = competition["situation"]["$ref"]
@@ -123,7 +132,7 @@ def create_espn_game_model(
     venue = _create_venue(event, session, dt)
     if venue is not None:
         dt = localize(venue, dt)
-    teams, attendance, end_dt = _create_teams(event, session, venue)
+    teams, attendance, end_dt = _create_teams(event, session, venue, dt, league)
     return GameModel(
         dt=dt,
         week=week,
