@@ -1,6 +1,5 @@
 """The main sportsball class for accessing data."""
 
-# pylint: disable=too-few-public-methods
 import datetime
 from typing import Dict
 from warnings import simplefilter
@@ -15,6 +14,7 @@ from .data.afl import AFLLeagueModel
 from .data.league import League
 from .data.league_model import LeagueModel
 from .data.nba import NBALeagueModel
+from .data.ncaab import NCAABLeagueModel
 from .data.ncaaf import NCAAFLeagueModel
 from .data.nfl import NFLLeagueModel
 from .portfolio import Portfolio
@@ -48,6 +48,8 @@ class SportsBall:
                 self._leagues[league] = NBALeagueModel(self._session)
             elif league == League.NCAAF:
                 self._leagues[league] = NCAAFLeagueModel(self._session)
+            elif league == League.NCAAB:
+                self._leagues[league] = NCAABLeagueModel(self._session)
             else:
                 raise ValueError(f"Unrecognised league: {league}")
         return self._leagues[league]

@@ -8,6 +8,7 @@ class League(StrEnum):
 
     AFL = "afl"
     NBA = "nba"
+    NCAAB = "ncaab"
     NCAAF = "ncaaf"
     NFL = "nfl"
 
@@ -19,6 +20,8 @@ def long_name(league: League) -> str:
             return "Australia Football League"
         case League.NBA:
             return "National Basketball League"
+        case League.NCAAB:
+            return "NCAA Division I Basketball"
         case League.NCAAF:
             return "NCAA Division I Football"
         case League.NFL:

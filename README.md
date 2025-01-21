@@ -47,6 +47,7 @@ Python 3.11.6:
 - [pydantic](https://docs.pydantic.dev/latest/)
 - [flatten_json](https://github.com/amirziai/flatten)
 - [pygooglenews](https://github.com/kotartemiy/pygooglenews)
+- [extruct](https://github.com/scrapinghub/extruct)
 
 ## Raison D'être :thought_balloon:
 
@@ -57,6 +58,7 @@ The supported leagues are:
 
 * 🏉 [AFL](https://www.afl.com.au/)
 * 🏀 [NBA](https://www.nba.com/)
+* 🏀 [NCAAB](https://www.ncaa.com/sports/basketball-men/d1)
 * 🏈 [NCAAF](https://www.ncaa.com/sports/football/fbs)
 * 🏈 [NFL](https://www.nfl.com/)
 
