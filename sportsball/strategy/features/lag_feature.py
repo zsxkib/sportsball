@@ -2,10 +2,12 @@
 
 import pandas as pd
 
+from ...data.game_model import GAME_ATTENDANCE_COLUMN, GAME_WEEK_COLUMN
 from ...data.league_model import DELIMITER
 from .columns import (attendance_column, find_player_count, find_team_count,
                       kick_column, player_identifier_column,
-                      team_identifier_column, venue_identifier_column)
+                      team_identifier_column, venue_identifier_column,
+                      week_column)
 from .feature import Feature
 
 LAG_COLUMN_PREFIX = "lag"
@@ -73,6 +75,40 @@ def _process_kicks(df: pd.DataFrame) -> pd.DataFrame:
     return df.apply(record_team_player_kicks, axis=1)
 
 
+def _process_round_attendance(df: pd.DataFrame) -> pd.DataFrame:
+    attendance_col = attendance_column()
+    week_col = week_column()
+    if attendance_col in df.columns.values and week_col in df.columns.values:
+        round_attendance_col = DELIMITER.join(
+            [LAG_COLUMN_PREFIX, GAME_WEEK_COLUMN, GAME_ATTENDANCE_COLUMN]
+        )
+        round_idx = ""
+        last_round_count = 0
+        current_round_count = 0
+
+        def record_lagged_round_attendence(row: pd.Series) -> pd.Series:
+            nonlocal round_idx
+            nonlocal last_round_count
+            nonlocal current_round_count
+            nonlocal week_col
+            nonlocal attendance_col
+            nonlocal round_attendance_col
+
+            current_round_idx = str(row[week_col])
+            if round_idx != current_round_idx:
+                round_idx = current_round_idx
+                last_round_count = current_round_count
+                current_round_count = 0
+
+            current_round_count += int(row[attendance_col])
+            row[round_attendance_col] = last_round_count
+            return row
+
+        df = df.apply(record_lagged_round_attendence, axis=1)
+
+    return df
+
+
 class LagFeature(Feature):
     """The lag feature extractor class."""
 
@@ -82,4 +118,5 @@ class LagFeature(Feature):
         """Process the dataframe and add the necessary features."""
         df = _process_attendance(df)
         df = _process_kicks(df)
+        df = _process_round_attendance(df)
         return df.copy()

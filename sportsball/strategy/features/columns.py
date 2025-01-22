@@ -2,8 +2,8 @@
 
 import pandas as pd
 
-from ...data.game_model import (GAME_ATTENDANCE_COLUMN, TEAM_COLUMN_PREFIX,
-                                VENUE_COLUMN_PREFIX)
+from ...data.game_model import (GAME_ATTENDANCE_COLUMN, GAME_WEEK_COLUMN,
+                                TEAM_COLUMN_PREFIX, VENUE_COLUMN_PREFIX)
 from ...data.league_model import DELIMITER
 from ...data.player_model import PLAYER_IDENTIFIER_COLUMN, PLAYER_KICKS_COLUMN
 from ...data.team_model import (PLAYER_COLUMN_PREFIX, TEAM_IDENTIFIER_COLUMN,
@@ -96,3 +96,8 @@ def kick_column(team_idx: int, player_idx: int) -> str:
     return DELIMITER.join(
         [player_column_prefix(team_idx, player_idx), PLAYER_KICKS_COLUMN]
     )
+
+
+def week_column() -> str:
+    """Generate a week column."""
+    return DELIMITER.join([GAME_WEEK_COLUMN])
