@@ -5,9 +5,9 @@ import pandas as pd
 from ...data.game_model import GAME_ATTENDANCE_COLUMN, GAME_WEEK_COLUMN
 from ...data.league_model import DELIMITER
 from .columns import (attendance_column, find_player_count, find_team_count,
-                      kick_column, player_identifier_column,
-                      team_identifier_column, venue_identifier_column,
-                      week_column)
+                      fumbles_lost_column, kick_column,
+                      player_identifier_column, team_identifier_column,
+                      venue_identifier_column, week_column)
 from .feature import Feature
 
 LAG_COLUMN_PREFIX = "lag"
@@ -75,6 +75,41 @@ def _process_kicks(df: pd.DataFrame) -> pd.DataFrame:
     return df.apply(record_team_player_kicks, axis=1)
 
 
+def _process_fumbles_lost(df: pd.DataFrame) -> pd.DataFrame:
+    team_count = find_team_count(df)
+    player_count = find_player_count(df, team_count)
+    last_fumbles_lost: dict[str, int | None] = {}
+    for i in range(team_count):
+        for j in range(player_count):
+            fumbles_lost_col = fumbles_lost_column(i, j)
+            lag_fumbles_lost_col = DELIMITER.join([LAG_COLUMN_PREFIX, fumbles_lost_col])
+            df[lag_fumbles_lost_col] = None
+
+    def record_team_player_fumbles_lost(row: pd.Series) -> pd.Series:
+        nonlocal team_count
+        nonlocal player_count
+        nonlocal last_fumbles_lost
+        for i in range(team_count):
+            for j in range(player_count):
+                fumbles_lost_col = fumbles_lost_column(i, j)
+                lag_fumbles_lost_col = DELIMITER.join(
+                    [LAG_COLUMN_PREFIX, fumbles_lost_col]
+                )
+                player_idx = None
+                try:
+                    player_idx = row[player_identifier_column(i, j)]
+                except KeyError:
+                    continue
+                row[lag_fumbles_lost_col] = last_fumbles_lost.get(player_idx)
+                try:
+                    last_fumbles_lost[player_idx] = row[fumbles_lost_col]
+                except KeyError:
+                    last_fumbles_lost[player_idx] = None
+        return row
+
+    return df.apply(record_team_player_fumbles_lost, axis=1)
+
+
 def _process_round_attendance(df: pd.DataFrame) -> pd.DataFrame:
     attendance_col = attendance_column()
     week_col = week_column()
@@ -119,4 +154,5 @@ class LagFeature(Feature):
         df = _process_attendance(df)
         df = _process_kicks(df)
         df = _process_round_attendance(df)
+        df = _process_fumbles_lost(df)
         return df.copy()

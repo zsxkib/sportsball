@@ -16,6 +16,7 @@ def create_espn_player_model(
     identifier = str(player["playerId"])
     jersey = player.get("jersey")
     fumbles = None
+    fumbles_lost = None
     if "statistics" in player:
         statistics_response = session.get(player["statistics"]["$ref"])
         if statistics_response.ok:
@@ -25,6 +26,12 @@ def create_espn_player_model(
                 for stat in category["stats"]:
                     if stat["name"] == "fumbles":
                         fumbles = stat["value"]
+                    if stat["name"] == "fumblesLost":
+                        fumbles_lost = stat["value"]
     return PlayerModel(
-        identifier=identifier, jersey=jersey, kicks=None, fumbles=fumbles
+        identifier=identifier,
+        jersey=jersey,
+        kicks=None,
+        fumbles=fumbles,
+        fumbles_lost=fumbles_lost,
     )

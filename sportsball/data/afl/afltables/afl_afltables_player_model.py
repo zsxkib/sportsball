@@ -16,4 +16,10 @@ def create_afl_afltables_player_model(
     last_component = o.path.split("/")[-1]
     identifier, _ = os.path.splitext(last_component)
     jersey = "".join(filter(str.isdigit, jersey))
-    return PlayerModel(identifier=identifier, jersey=jersey, kicks=kicks, fumbles=None)
+    return PlayerModel(
+        identifier=identifier,
+        jersey=jersey,
+        kicks=kicks,
+        fumbles=None,
+        fumbles_lost=None,
+    )

@@ -26,4 +26,6 @@ def create_nba_nba_player_model(
             jersey = cpi_row["JERSEY"]
         except json.decoder.JSONDecodeError:
             pass
-    return PlayerModel(identifier=player_id, jersey=jersey, kicks=None, fumbles=None)
+    return PlayerModel(
+        identifier=player_id, jersey=jersey, kicks=None, fumbles=None, fumbles_lost=None
+    )

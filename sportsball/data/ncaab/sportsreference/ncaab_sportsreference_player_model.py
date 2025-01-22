@@ -34,4 +34,6 @@ def create_ncaab_sportsreference_player_model(
     if h1 is None:
         raise ValueError("h1 is null.")
     name = h1.get_text().strip()
-    return PlayerModel(identifier=name, jersey=None, kicks=None, fumbles=None)
+    return PlayerModel(
+        identifier=name, jersey=None, kicks=None, fumbles=None, fumbles_lost=None
+    )

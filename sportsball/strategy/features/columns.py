@@ -5,7 +5,9 @@ import pandas as pd
 from ...data.game_model import (GAME_ATTENDANCE_COLUMN, GAME_WEEK_COLUMN,
                                 TEAM_COLUMN_PREFIX, VENUE_COLUMN_PREFIX)
 from ...data.league_model import DELIMITER
-from ...data.player_model import PLAYER_IDENTIFIER_COLUMN, PLAYER_KICKS_COLUMN
+from ...data.player_model import (PLAYER_FUMBLES_LOST_COLUMN,
+                                  PLAYER_IDENTIFIER_COLUMN,
+                                  PLAYER_KICKS_COLUMN)
 from ...data.team_model import (PLAYER_COLUMN_PREFIX, TEAM_IDENTIFIER_COLUMN,
                                 TEAM_POINTS_COLUMN)
 from ...data.venue_model import VENUE_IDENTIFIER_COLUMN
@@ -95,6 +97,13 @@ def kick_column(team_idx: int, player_idx: int) -> str:
     """Generate a kick column."""
     return DELIMITER.join(
         [player_column_prefix(team_idx, player_idx), PLAYER_KICKS_COLUMN]
+    )
+
+
+def fumbles_lost_column(team_idx: int, player_idx: int) -> str:
+    """Generate a fumbles lost column."""
+    return DELIMITER.join(
+        [player_column_prefix(team_idx, player_idx), PLAYER_FUMBLES_LOST_COLUMN]
     )
 
 
