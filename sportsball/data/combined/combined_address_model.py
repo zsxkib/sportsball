@@ -36,4 +36,5 @@ def create_combined_address_model(
         housenumber=housenumber,
         weather=create_combined_weather_model(weather_models),  # pyright: ignore
         timezone=address_models[0].timezone,
+        country=address_models[0].country,
     )

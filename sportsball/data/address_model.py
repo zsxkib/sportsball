@@ -19,3 +19,4 @@ class AddressModel(BaseModel):
     )
     weather: WeatherModel | None
     timezone: str = Field(..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL})
+    country: str = Field(..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL})
