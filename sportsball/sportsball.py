@@ -17,12 +17,12 @@ from .data.nba import NBALeagueModel
 from .data.ncaab import NCAABLeagueModel
 from .data.ncaaf import NCAAFLeagueModel
 from .data.nfl import NFLLeagueModel
-from .portfolio import Portfolio
-from .strategy import Strategy
 
 
 class SportsBall:
     """The main sportsball class."""
+
+    # pylint: disable=too-few-public-methods
 
     _leagues: Dict[str, LeagueModel]
     _session: requests.Session
@@ -53,11 +53,3 @@ class SportsBall:
             else:
                 raise ValueError(f"Unrecognised league: {league}")
         return self._leagues[league]
-
-    def create_strategy(self, league: LeagueModel, name: str) -> Strategy:
-        """Creates a strategy."""
-        return Strategy(league.to_frame(), name)
-
-    def create_portfolio(self, strategies: list[Strategy], name: str) -> Portfolio:
-        """Creates a portfolio."""
-        return Portfolio(strategies, name)
