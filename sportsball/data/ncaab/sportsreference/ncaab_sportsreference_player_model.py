@@ -1,5 +1,6 @@
 """NCAAB sports reference player model."""
 
+import http
 from urllib.parse import unquote
 
 import requests
@@ -20,10 +21,13 @@ def _fix_url(url: str) -> str:
 def create_ncaab_sportsreference_player_model(
     session: requests.Session,
     player_url: str,
-) -> PlayerModel:
+) -> PlayerModel | None:
     """Create a player model from NCAAB sports reference."""
     player_url = _fix_url(player_url)
     response = session.get(player_url, timeout=DEFAULT_TIMEOUT)
+    # Some players can't be accessed on sports reference
+    if response.status_code == http.HTTPStatus.FORBIDDEN:
+        return None
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "html.parser")
     h1 = soup.find("h1")

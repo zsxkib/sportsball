@@ -52,9 +52,13 @@ def create_ncaab_sportsreference_team_model(
     return TeamModel(
         identifier=name,
         name=name,
-        players=[  # pyright: ignore
-            create_ncaab_sportsreference_player_model(session, x)
-            for x in valid_player_urls
+        players=[
+            y
+            for y in [  # pyright: ignore
+                create_ncaab_sportsreference_player_model(session, x)
+                for x in valid_player_urls
+            ]
+            if y is not None
         ],
         odds=[],
         points=points,

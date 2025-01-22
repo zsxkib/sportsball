@@ -10,6 +10,7 @@ from .lag_feature import LagFeature
 from .min_feature import MinFeature
 from .ordinal_feature import OrdinalFeature
 from .skill_feature import SkillFeature
+from .sma_feature import SMAFeature
 from .total_feature import TotalFeature
 
 
@@ -30,6 +31,7 @@ class CombinedFeature(Feature):
                 LagFeature(),
                 TotalFeature(),
                 MinFeature(),
+                SMAFeature(),
             ]
         if posttrain_features is None:
             posttrain_features = [
