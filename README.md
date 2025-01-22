@@ -117,6 +117,7 @@ A representation of a player within a team within a game.
 * **jersey**: The jersey identifying the player.
 * **kicks**: The number of kicks the player made in the game.
 * **fumbles**: The number of times the player fumbled the ball in the game.
+* **fumbles_lost**: The number of times the player loses possession of the ball due to a fumble and the opposing team recovers the ball.
 
 #### Odds
 
@@ -147,6 +148,7 @@ The address of the venue.
 * **housenumber**: The house/street number of the address.
 * **weather**: The weather at the address at the game start time.
 * **timezone**: The time zone at the address.
+* **country**: The country of the address.
 
 #### Weather
 
@@ -188,6 +190,15 @@ df = league.to_frame()
 ```
 
 This results in a dataframe where each game is represented by all its features.
+
+### Environment
+
+If you wish to use the providers that require API keys, you can create a `.env` file with the following variables inside it:
+
+```
+GOOGLE_API_KEY=APIKEY
+GRIBSTREAM_API_KEY=APIKEY
+```
 
 ## License :memo:
 

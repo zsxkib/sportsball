@@ -12,7 +12,7 @@ from timezonefinder import TimezoneFinder  # type: ignore
 
 from ...cache import MEMORY
 from ..address_model import AddressModel
-from ..openmeteo.openmeteo_weather_model import create_openmeteo_weather_model
+from ..weather.multi_weather_model import create_mutli_weather_model
 
 SportsballGeocodeTuple = namedtuple(
     "SportsballGeocodeTuple",
@@ -6259,6 +6259,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Baha Mar Convention Center, Nassau": SportsballGeocodeTuple(
+        city="Nassau",
+        state="",
+        postal="",
+        lat=25.0703613,
+        lng=-77.4001874,
+        housenumber="",
+        country="Bahamas",
+    ),
 }
 
 
@@ -6281,7 +6290,7 @@ def create_google_address_model(
         timezone = tf.timezone_at(lng=longitude, lat=latitude)
         if timezone is not None:
             tz = timezone
-        weather_model = create_openmeteo_weather_model(
+        weather_model = create_mutli_weather_model(
             session,
             latitude,
             longitude,

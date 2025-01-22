@@ -9,23 +9,21 @@ import requests
 from openmeteo_requests.Client import OpenMeteoRequestsError  # type: ignore
 from openmeteo_requests.Client import WeatherApiResponse
 
-from ...cache import MEMORY
-from ..weather_model import WeatherModel
+from ....cache import MEMORY
+from ...weather_model import WeatherModel
 
 
 def _parse_openmeteo(
     responses: list[WeatherApiResponse], tz: str, dt: datetime.datetime
-) -> WeatherModel:
+) -> WeatherModel | None:
     # pylint: disable=broad-exception-caught
     if not responses:
-        return WeatherModel(temperature=None, relative_humidity=None)
+        return None
     response = responses[0]
     try:
         hourly = response.Hourly()
     except Exception:
-        # print(f"Encountered problem unpacking weather: {e}, skipping")
-        temperature = None
-        return WeatherModel(temperature=None, relative_humidity=None)
+        return None
     if hourly is None:
         raise ValueError("hourly is null.")
     hourly_df = pd.DataFrame(
@@ -57,7 +55,7 @@ def create_openmeteo_weather_model(
     longitude: float,
     dt: datetime.datetime,
     tz: str,
-) -> WeatherModel:
+) -> WeatherModel | None:
     """Create a weather model from openmeteo."""
     # pylint: disable=broad-exception-caught
     client = openmeteo_requests.Client(session=session)
@@ -128,9 +126,9 @@ def create_openmeteo_weather_model(
         )
         return _parse_openmeteo(responses, tz, dt)
     except (requests.exceptions.RetryError, OpenMeteoRequestsError):
-        return WeatherModel(temperature=None, relative_humidity=None)
+        return None
     except Exception as e:
         e_text = str(e)
         if "Parameter 'start_date' is out of allowed range from" in e_text:
-            return WeatherModel(temperature=None, relative_humidity=None)
+            return None
         raise e
