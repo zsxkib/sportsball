@@ -371,3 +371,13 @@ class Strategy:
             )
             self._returns = returns
         return returns
+
+    def next(self) -> pd.DataFrame:
+        """Find the next predictions for betting."""
+        dt_column = DELIMITER.join([GAME_DT_COLUMN])
+        df = self.predict()
+        start_dt = datetime.datetime.now()
+        end_dt = start_dt + datetime.timedelta(days=1.0)
+        df = df[df[dt_column] > start_dt]
+        df = df[df[dt_column] <= end_dt]
+        return df
