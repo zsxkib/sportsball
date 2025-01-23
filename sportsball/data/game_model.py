@@ -20,6 +20,7 @@ TEAM_COLUMN_PREFIX: Literal["teams"] = "teams"
 GAME_ATTENDANCE_COLUMN: Literal["attendance"] = "attendance"
 GAME_WEEK_COLUMN: Literal["week"] = "week"
 LEAGUE_COLUMN: Literal["league"] = "league"
+END_DT_COLUMN: Literal["end_dt"] = "end_dt"
 
 
 def localize(venue: VenueModel | None, dt: datetime.datetime) -> datetime.datetime:
@@ -48,7 +49,7 @@ class GameModel(BaseModel):
     venue: VenueModel | None = Field(..., alias=VENUE_COLUMN_PREFIX)
     teams: list[TeamModel] = Field(..., alias=TEAM_COLUMN_PREFIX)
     end_dt: datetime.datetime | None = Field(
-        ..., json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD}
+        ..., json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD}, alias=END_DT_COLUMN
     )
     attendance: int | None = Field(..., alias=GAME_ATTENDANCE_COLUMN)
     league: League = Field(..., alias=LEAGUE_COLUMN)
