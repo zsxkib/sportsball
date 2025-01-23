@@ -6268,6 +6268,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Bahamas",
     ),
+    "DeGol Arena, Loretto, Pennsylvania": SportsballGeocodeTuple(
+        city="Loretto",
+        state="PA",
+        postal="15940",
+        lat=40.504612,
+        lng=-78.640901,
+        housenumber="140",
+        country="USA",
+    ),
 }
 
 

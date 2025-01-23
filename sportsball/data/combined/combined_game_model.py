@@ -3,6 +3,8 @@
 # pylint: disable=too-many-locals,line-too-long
 import logging
 
+import requests
+
 from ..game_model import GameModel
 from ..team_model import TeamModel
 from ..venue_model import VenueModel
@@ -57,6 +59,7 @@ def create_combined_game_model(
     game_models: list[GameModel],
     venue_identity_map: dict[str, str],
     team_identity_map: dict[str, str],
+    session: requests.Session,
 ) -> GameModel:
     """Create a game model by combining many game models."""
     venue_models, full_venue_identity = _venue_models(game_models, venue_identity_map)
@@ -97,7 +100,7 @@ def create_combined_game_model(
         dt=game_models[0].dt,
         week=week,
         game_number=game_number,
-        venue=create_combined_venue_model(venue_models, full_venue_identity),  # pyright: ignore
+        venue=create_combined_venue_model(venue_models, full_venue_identity, session),  # pyright: ignore
         teams=full_team_models,
         end_dt=end_dt,
         attendance=attendance,

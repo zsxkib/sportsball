@@ -34,6 +34,7 @@ Python 3.11.6:
 - [flatten_json](https://github.com/amirziai/flatten)
 - [pygooglenews](https://github.com/kotartemiy/pygooglenews)
 - [extruct](https://github.com/scrapinghub/extruct)
+- [wikipedia-api](https://github.com/martin-majlis/Wikipedia-API)
 
 ## Raison D'être :thought_balloon:
 

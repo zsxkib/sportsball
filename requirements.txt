@@ -20,3 +20,4 @@ pydantic>=2.10.4
 flatten_json>=0.1.14
 -e git+https://github.com/8W9aG/pygooglenews@549a70c9cf6e3d6d658be6095c39e90049b3ee2b#egg=pygooglenews
 extruct>=0.18.0
+wikipedia-api>=0.8.1

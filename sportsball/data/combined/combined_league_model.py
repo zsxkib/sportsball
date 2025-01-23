@@ -64,4 +64,5 @@ class CombinedLeagueModel(LeagueModel):
                 game_models,
                 self.venue_identity_map(),
                 team_identity_map,
+                self.session,
             )
