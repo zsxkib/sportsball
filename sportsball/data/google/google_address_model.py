@@ -6277,6 +6277,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="140",
         country="USA",
     ),
+    "MGM Grand Garden Arena, Paradise, Nevada": SportsballGeocodeTuple(
+        city="Paradise",
+        state="NV",
+        postal="",
+        lat=36.104808,
+        lng=-115.168614,
+        housenumber="3799",
+        country="USA",
+    ),
 }
 
 

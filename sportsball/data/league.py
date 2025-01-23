@@ -26,3 +26,21 @@ def long_name(league: League) -> str:
             return "NCAA Division I Football"
         case League.NFL:
             return "National Football League"
+
+
+def league_from_str(league_str: str) -> League:
+    """Find the league matching the string."""
+    league_str = league_str.lower()
+    match league_str:
+        case str(League.AFL):
+            return League.AFL
+        case str(League.NBA):
+            return League.NBA
+        case str(League.NCAAB):
+            return League.NCAAB
+        case str(League.NCAAF):
+            return League.NCAAF
+        case str(League.NFL):
+            return League.NFL
+        case _:
+            raise ValueError(f"Unrecognised League: {league_str}")
