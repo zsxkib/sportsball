@@ -8,11 +8,7 @@ import sys
 from . import __VERSION__
 from .data.league import League, league_from_str
 from .sportsball import SportsBall
-
-DEBUG_LOGLEVEL = "debug"
-INFO_LOGLEVEL = "info"
-WARN_LOGLEVEL = "warn"
-ERROR_LOGLEVEL = "error"
+from .loglevel import LogLevel
 
 _STDOUT_FILE = "-"
 
@@ -29,9 +25,9 @@ def main() -> None:
     )
     parser.add_argument(
         "--loglevel",
-        default=INFO_LOGLEVEL,
-        choices=list([DEBUG_LOGLEVEL, INFO_LOGLEVEL, WARN_LOGLEVEL, ERROR_LOGLEVEL]),
-        help="The league to fetch data for.",
+        default=LogLevel.INFO,
+        choices=list(LogLevel),
+        help="The loglevel to display logs at..",
         required=False,
     )
     parser.add_argument(
@@ -42,13 +38,13 @@ def main() -> None:
     args = parser.parse_args()
 
     match args.loglevel:
-        case "debug":
+        case LogLevel.DEBUG:
             logger.setLevel(logging.DEBUG)
-        case "info":
+        case LogLevel.INFO:
             logger.setLevel(logging.INFO)
-        case "warn":
+        case LogLevel.WARN:
             logger.setLevel(logging.WARN)
-        case "error":
+        case LogLevel.ERROR:
             logger.setLevel(logging.ERROR)
         case _:
             raise ValueError(f"Unrecognised loglevel: {args.loglevel}")
