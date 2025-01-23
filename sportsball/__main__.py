@@ -7,8 +7,8 @@ import sys
 
 from . import __VERSION__
 from .data.league import League, league_from_str
-from .sportsball import SportsBall
 from .loglevel import LogLevel
+from .sportsball import SportsBall
 
 _STDOUT_FILE = "-"
 

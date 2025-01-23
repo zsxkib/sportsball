@@ -12,6 +12,7 @@ from .player_model import PlayerModel
 TEAM_POINTS_COLUMN: Literal["points"] = "points"
 TEAM_IDENTIFIER_COLUMN: Literal["identifier"] = "identifier"
 PLAYER_COLUMN_PREFIX: Literal["players"] = "players"
+NAME_COLUMN: Literal["name"] = "name"
 
 
 def _calculate_kicks(data: dict[str, Any]) -> int | None:
@@ -36,7 +37,9 @@ class TeamModel(BaseModel):
         json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL},
         alias=TEAM_IDENTIFIER_COLUMN,
     )
-    name: str = Field(..., json_schema_extra={TYPE_KEY: FieldType.TEXT})
+    name: str = Field(
+        ..., json_schema_extra={TYPE_KEY: FieldType.TEXT}, alias=NAME_COLUMN
+    )
     location: str | None = Field(
         ..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL}
     )
