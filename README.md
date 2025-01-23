@@ -180,6 +180,20 @@ This is a python package hosted on pypi, so to install simply run the following 
 
 ## Usage example :eyes:
 
+There are many different ways of using sportsball, but we generally recommend the CLI.
+
+### CLI
+
+To fetch a dataframe containing information about a league, you can use the following CLI:
+
+```
+sportsball --league=nfl -
+```
+
+The final argument denotes the file to write to, in this case `-` is stdout.
+
+### Python
+
 To pull a dataframe containing all the information for a particular league, the following example can be used:
 
 ```python
