@@ -6,6 +6,7 @@ import json
 import urllib.parse
 
 import extruct  # type: ignore
+import pytest_is_running
 import requests_cache
 from bs4 import BeautifulSoup, Tag
 from w3lib.html import get_base_url
@@ -19,8 +20,7 @@ from .ncaab_sportsreference_player_model import \
     create_ncaab_sportsreference_player_model
 
 
-@MEMORY.cache(ignore=["session"])
-def create_ncaab_sportsreference_team_model(
+def _create_ncaab_sportsreference_team_model(
     session: requests_cache.CachedSession,
     url: str,
     dt: datetime.datetime,
@@ -28,7 +28,6 @@ def create_ncaab_sportsreference_team_model(
     player_urls: set[str],
     points: float,
 ) -> TeamModel:
-    """Create a team model from NCAAB Sports Reference."""
     response = session.get(url)
     response.raise_for_status()
     base_url = get_base_url(response.text, url)
@@ -66,4 +65,41 @@ def create_ncaab_sportsreference_team_model(
         location=None,
         news=create_google_news_models(name, session, dt, league),
         social=create_x_social_model(name, session, dt),
+        field_goals=None,
     )
+
+
+@MEMORY.cache(ignore=["session"])
+def _cached_create_ncaab_sportsreference_team_model(
+    session: requests_cache.CachedSession,
+    url: str,
+    dt: datetime.datetime,
+    league: League,
+    player_urls: set[str],
+    points: float,
+) -> TeamModel:
+    return _create_ncaab_sportsreference_team_model(
+        session, url, dt, league, player_urls, points
+    )
+
+
+def create_ncaab_sportsreference_team_model(
+    session: requests_cache.CachedSession,
+    url: str,
+    dt: datetime.datetime,
+    league: League,
+    player_urls: set[str],
+    points: float,
+) -> TeamModel:
+    """Create a team model from NCAAB Sports Reference."""
+    if (
+        not pytest_is_running.is_running()
+        and dt < datetime.datetime.now() - datetime.timedelta(days=7)
+    ):
+        return _cached_create_ncaab_sportsreference_team_model(
+            session, url, dt, league, player_urls, points
+        )
+    with session.cache_disabled():
+        return _create_ncaab_sportsreference_team_model(
+            session, url, dt, league, player_urls, points
+        )

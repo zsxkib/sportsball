@@ -4,7 +4,6 @@
 import datetime
 from typing import Any, Dict
 
-import requests
 import requests_cache
 from dateutil.parser import parse
 
@@ -66,7 +65,7 @@ def _create_espn_team(
 
 
 def _create_venue(
-    event: dict[str, Any], session: requests.Session, dt: datetime.datetime
+    event: dict[str, Any], session: requests_cache.CachedSession, dt: datetime.datetime
 ) -> VenueModel | None:
     venue = None
     if "venue" in event:

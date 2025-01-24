@@ -2,7 +2,7 @@
 
 import datetime
 
-import requests
+import requests_cache
 
 from ....cache import MEMORY
 from ...google.google_address_model import create_google_address_model
@@ -11,7 +11,7 @@ from ...venue_model import VenueModel
 
 @MEMORY.cache(ignore=["session"])
 def create_nfl_sportsdb_venue_model(
-    session: requests.Session, venue_id: str, dt: datetime.datetime
+    session: requests_cache.CachedSession, venue_id: str, dt: datetime.datetime
 ) -> VenueModel | None:
     """Create NFL sports DB venue model."""
     if venue_id == "19533":

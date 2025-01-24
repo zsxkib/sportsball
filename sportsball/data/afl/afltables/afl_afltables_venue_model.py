@@ -4,7 +4,7 @@ import datetime
 import os
 from urllib.parse import urlparse
 
-import requests
+import requests_cache
 from bs4 import BeautifulSoup
 
 from ....cache import MEMORY
@@ -14,7 +14,7 @@ from ...venue_model import VenueModel
 
 @MEMORY.cache(ignore=["session"])
 def create_afl_afltables_venue_model(
-    url: str, session: requests.Session, dt: datetime.datetime
+    url: str, session: requests_cache.CachedSession, dt: datetime.datetime
 ) -> VenueModel:
     """Create a venue model from AFL tables."""
     o = urlparse(url)

@@ -3,7 +3,7 @@
 import datetime
 from typing import Any
 
-import requests
+import requests_cache
 
 from ...cache import MEMORY
 from ..google.google_address_model import create_google_address_model
@@ -12,7 +12,7 @@ from ..venue_model import VenueModel
 
 @MEMORY.cache(ignore=["session"])
 def create_espn_venue_model(
-    venue: dict[str, Any], session: requests.Session, dt: datetime.datetime
+    venue: dict[str, Any], session: requests_cache.CachedSession, dt: datetime.datetime
 ) -> VenueModel:
     """Create a venue model from an ESPN result."""
     identifier = venue["id"]

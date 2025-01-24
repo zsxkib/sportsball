@@ -96,6 +96,8 @@ class NBANBALeagueModel(LeagueModel):
                 self.league,
                 week,
                 season_info["games"],  # type: ignore
+                self.session,
+                dt,
             )
             season_info["games"] += 1
             seasons[season_id] = season_info

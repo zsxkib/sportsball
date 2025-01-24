@@ -7,7 +7,8 @@ from collections import namedtuple
 from typing import Any
 
 import geocoder  # type: ignore
-import requests
+import pytest_is_running
+import requests_cache
 from timezonefinder import TimezoneFinder  # type: ignore
 
 from ...cache import MEMORY
@@ -6286,14 +6287,21 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="3799",
         country="USA",
     ),
+    "Imperial Arena at Atlantis Resort, Nassau": SportsballGeocodeTuple(
+        city="Nassau",
+        state="",
+        postal="",
+        lat=25.0836,
+        lng=-77.318,
+        housenumber="1",
+        country="Bahamas",
+    ),
 }
 
 
-@MEMORY.cache(ignore=["session"])
-def create_google_address_model(
-    query: str, session: requests.Session, dt: datetime.datetime
+def _create_google_address_model(
+    query: str, session: requests_cache.CachedSession, dt: datetime.datetime
 ) -> AddressModel:
-    """Create address model from google."""
     g = _CACHED_GEOCODES.get(query)
     if g is None:
         logging.warning("Failed to find query: %s", query)
@@ -6326,3 +6334,23 @@ def create_google_address_model(
         timezone=tz,
         country=g.country,
     )
+
+
+@MEMORY.cache(ignore=["session"])
+def _cached_create_google_address_model(
+    query: str, session: requests_cache.CachedSession, dt: datetime.datetime
+) -> AddressModel:
+    return _create_google_address_model(query, session, dt)
+
+
+def create_google_address_model(
+    query: str, session: requests_cache.CachedSession, dt: datetime.datetime
+) -> AddressModel:
+    """Create address model from google."""
+    if (
+        not pytest_is_running.is_running()
+        and dt < datetime.datetime.now() - datetime.timedelta(days=7)
+    ):
+        return _cached_create_google_address_model(query, session, dt)
+    with session.cache_disabled():
+        return _create_google_address_model(query, session, dt)

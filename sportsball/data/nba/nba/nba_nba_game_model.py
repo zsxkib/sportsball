@@ -1,7 +1,12 @@
 """NBA NBA API game model."""
 
+# pylint: disable=too-many-arguments
+import datetime
+
 import pandas as pd
+import pytest_is_running
 import pytz
+import requests_cache
 from dateutil.parser import parse
 
 from ....cache import MEMORY
@@ -20,14 +25,13 @@ _SEASON_TYPE_MAP = {
 }
 
 
-@MEMORY.cache
-def create_nba_nba_game_model(
+def _create_nba_nba_game_model(
     row: pd.Series,
     league: League,
     week: int,
     game_number: int,
+    session: requests_cache.CachedSession,
 ) -> GameModel:
-    """Create a game model from NBA API."""
     season_id = row["SEASON_ID"]
     dt = pytz.timezone("EST").localize(parse(row["GAME_DATE"]))
     return GameModel(
@@ -38,8 +42,8 @@ def create_nba_nba_game_model(
         teams=[
             x
             for x in [
-                create_nba_nba_team_model(row, True),  # type: ignore
-                create_nba_nba_team_model(row, False),  # type: ignore
+                create_nba_nba_team_model(row, True, session, dt, league),  # type: ignore
+                create_nba_nba_team_model(row, False, session, dt, league),  # type: ignore
             ]
             if x is not None
         ],
@@ -49,3 +53,35 @@ def create_nba_nba_game_model(
         year=int(season_id[1:]),
         season_type=_SEASON_TYPE_MAP[season_id[0]],
     )
+
+
+@MEMORY.cache(ignore=["session"])
+def _cached_create_nba_nba_game_model(
+    row: pd.Series,
+    league: League,
+    week: int,
+    game_number: int,
+    session: requests_cache.CachedSession,
+) -> GameModel:
+    """Create a game model from NBA API."""
+    return _create_nba_nba_game_model(row, league, week, game_number, session)
+
+
+def create_nba_nba_game_model(
+    row: pd.Series,
+    league: League,
+    week: int,
+    game_number: int,
+    session: requests_cache.CachedSession,
+    dt: datetime.datetime,
+) -> GameModel:
+    """Create a game model from NBA API."""
+    if (
+        not pytest_is_running.is_running()
+        and dt < datetime.datetime.now() - datetime.timedelta(days=7)
+    ):
+        return _cached_create_nba_nba_game_model(
+            row, league, week, game_number, session
+        )
+    with session.cache_disabled():
+        return _create_nba_nba_game_model(row, league, week, game_number, session)

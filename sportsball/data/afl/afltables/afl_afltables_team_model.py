@@ -81,4 +81,5 @@ def create_afl_afltables_team_model(
         location=None,
         news=create_google_news_models(name, session, dt, league),
         social=create_x_social_model(identifier, session, dt),
+        field_goals=None,
     )

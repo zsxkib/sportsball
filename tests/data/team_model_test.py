@@ -18,6 +18,7 @@ class TestTeamModel(unittest.TestCase):
             kicks=None,
             news=[],
             social=[],
+            field_goals=None,
         )
 
     def test_notnull(self):

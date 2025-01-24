@@ -21,6 +21,7 @@ def create_combined_team_model(
     social: dict[str, SocialModel] = {}
     points = None
     ladder_rank = None
+    field_goals = None
     for team_model in team_models:
         team_model_location = team_model.location
         if team_model_location is not None:
@@ -54,6 +55,9 @@ def create_combined_team_model(
                 [social_model.network, social_model.post, str(social_model.published)]
             )
             social[social_key] = social_model
+        team_model_field_goals = team_model.field_goals
+        if team_model_field_goals is not None:
+            field_goals = team_model_field_goals
 
     return TeamModel(
         identifier=identifier,
@@ -67,4 +71,5 @@ def create_combined_team_model(
         ladder_rank=ladder_rank,
         news=sorted(news.values(), key=lambda x: x.published),
         social=sorted(social.values(), key=lambda x: x.published),
+        field_goals=field_goals,
     )

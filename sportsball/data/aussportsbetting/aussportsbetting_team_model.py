@@ -34,4 +34,5 @@ def create_aussportsbetting_team_model(
         ladder_rank=None,
         news=create_google_news_models(name, session, dt, league),
         social=create_x_social_model(name, session, dt),
+        field_goals=None,
     )
