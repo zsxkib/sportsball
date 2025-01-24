@@ -1,17 +1,17 @@
 """The base class for a data model."""
 
 import pandas as pd
-import requests
+import requests_cache
 
 
 class Model:
     """The base model class."""
 
-    def __init__(self, session: requests.Session) -> None:
+    def __init__(self, session: requests_cache.CachedSession) -> None:
         self._session = session
 
     @property
-    def session(self) -> requests.Session:
+    def session(self) -> requests_cache.CachedSession:
         """Return the session."""
         return self._session
 

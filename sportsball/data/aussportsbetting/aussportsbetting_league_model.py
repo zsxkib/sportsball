@@ -3,7 +3,7 @@
 from io import BytesIO
 from typing import Any, Iterator
 
-import requests
+import requests_cache
 import tqdm
 from dateutil.parser import parse
 from openpyxl import load_workbook
@@ -17,7 +17,7 @@ from .aussportsbetting_game_model import create_aussportsbetting_game_model
 class AusSportsBettingLeagueModel(LeagueModel):
     """AusSportsBetting implementation of the league model."""
 
-    def __init__(self, league: League, session: requests.Session) -> None:
+    def __init__(self, league: League, session: requests_cache.CachedSession) -> None:
         super().__init__(league, session)
         match league:
             case League.AFL:

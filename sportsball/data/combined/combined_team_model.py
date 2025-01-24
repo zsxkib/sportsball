@@ -4,6 +4,7 @@
 from ..news_model import NewsModel
 from ..odds_model import OddsModel
 from ..player_model import PlayerModel
+from ..social_model import SocialModel
 from ..team_model import TeamModel
 from .combined_player_model import create_combined_player_model
 
@@ -17,6 +18,7 @@ def create_combined_team_model(
     players: dict[str, list[PlayerModel]] = {}
     odds: dict[str, list[OddsModel]] = {}
     news: dict[str, NewsModel] = {}
+    social: dict[str, SocialModel] = {}
     points = None
     ladder_rank = None
     for team_model in team_models:
@@ -47,6 +49,11 @@ def create_combined_team_model(
                 ]
             )
             news[news_key] = news_model
+        for social_model in team_model.social:
+            social_key = "-".join(
+                [social_model.network, social_model.post, str(social_model.published)]
+            )
+            social[social_key] = social_model
 
     return TeamModel(
         identifier=identifier,
@@ -59,4 +66,5 @@ def create_combined_team_model(
         points=points,
         ladder_rank=ladder_rank,
         news=sorted(news.values(), key=lambda x: x.published),
+        social=sorted(social.values(), key=lambda x: x.published),
     )

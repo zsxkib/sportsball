@@ -5,19 +5,20 @@
 import datetime
 from typing import Any
 
-import requests
+import requests_cache
 
 from ...cache import MEMORY
 from ..google.google_news_model import create_google_news_models
 from ..league import League
 from ..odds_model import OddsModel
 from ..team_model import TeamModel
+from ..x.x_social_model import create_x_social_model
 from .espn_player_model import create_espn_player_model
 
 
 @MEMORY.cache(ignore=["session"])
 def create_espn_team_model(
-    session: requests.Session,
+    session: requests_cache.CachedSession,
     team: dict[str, Any],
     roster_dict: dict[str, Any],
     odds: list[OddsModel],
@@ -45,4 +46,5 @@ def create_espn_team_model(
         points=points,
         ladder_rank=None,
         news=create_google_news_models(name, session, dt, league),
+        social=create_x_social_model(identifier, session, dt),
     )

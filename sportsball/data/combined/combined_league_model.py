@@ -3,7 +3,7 @@
 import logging
 from typing import Iterator
 
-import requests
+import requests_cache
 import tqdm
 
 from ..game_model import GameModel
@@ -17,7 +17,7 @@ class CombinedLeagueModel(LeagueModel):
 
     def __init__(
         self,
-        session: requests.Session,
+        session: requests_cache.CachedSession,
         league: League,
         league_models: list[LeagueModel],
     ) -> None:

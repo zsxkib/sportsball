@@ -4,7 +4,7 @@ import datetime
 from typing import Iterator, TypedDict
 
 import pandas as pd
-import requests
+import requests_cache
 import tqdm
 from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta
@@ -67,7 +67,7 @@ class NBANBALeagueModel(LeagueModel):
         start: datetime.datetime
         games: int
 
-    def __init__(self, session: requests.Session) -> None:
+    def __init__(self, session: requests_cache.CachedSession) -> None:
         super().__init__(League.NBA, session)
         self._league_id = "00"
         NBAHTTP.set_session(session)

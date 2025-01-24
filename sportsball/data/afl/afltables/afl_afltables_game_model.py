@@ -5,7 +5,7 @@ import datetime
 import urllib.parse
 from urllib.parse import urlparse
 
-import requests
+import requests_cache
 from bs4 import BeautifulSoup, Tag
 from dateutil.parser import parse
 
@@ -137,7 +137,7 @@ def _find_season_metadata(
 @MEMORY.cache(ignore=["session"])
 def create_afl_afltables_game_model(
     game_number: int,
-    session: requests.Session,
+    session: requests_cache.CachedSession,
     url: str,
     last_round_number: int,
     last_ladder_ranks: dict[str, int] | None,

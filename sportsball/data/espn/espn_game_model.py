@@ -5,6 +5,7 @@ import datetime
 from typing import Any, Dict
 
 import requests
+import requests_cache
 from dateutil.parser import parse
 
 from ...cache import MEMORY
@@ -23,7 +24,7 @@ from .espn_venue_model import create_espn_venue_model
 def _create_espn_team(
     competitor: Dict[str, Any],
     odds_dict: Dict[str, Any],
-    session: requests.Session,
+    session: requests_cache.CachedSession,
     dt: datetime.datetime,
     league: League,
 ) -> TeamModel:
@@ -82,7 +83,7 @@ def _create_venue(
 
 def _create_teams(
     event: dict[str, Any],
-    session: requests.Session,
+    session: requests_cache.CachedSession,
     venue: VenueModel | None,
     dt: datetime.datetime,
     league: League,
@@ -122,7 +123,7 @@ def create_espn_game_model(
     event: dict[str, Any],
     week: int,
     game_number: int,
-    session: requests.Session,
+    session: requests_cache.CachedSession,
     league: League,
     year: int | None,
     season_type: SeasonType | None,

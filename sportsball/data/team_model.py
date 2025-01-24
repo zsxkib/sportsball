@@ -8,6 +8,7 @@ from .field_type import TYPE_KEY, FieldType
 from .news_model import NewsModel
 from .odds_model import OddsModel
 from .player_model import PlayerModel
+from .social_model import SocialModel
 
 TEAM_POINTS_COLUMN: Literal["points"] = "points"
 TEAM_IDENTIFIER_COLUMN: Literal["identifier"] = "identifier"
@@ -54,3 +55,4 @@ class TeamModel(BaseModel):
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
     )
     news: list[NewsModel]
+    social: list[SocialModel]

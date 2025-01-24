@@ -1,8 +1,9 @@
 """NFL Sports DB league model."""
 
+import datetime
 from typing import Iterator
 
-import requests
+import requests_cache
 
 from ...game_model import GameModel
 from ...league import League
@@ -16,7 +17,7 @@ class NFLSportsDBLeagueModel(LeagueModel):
 
     # pylint: disable=too-many-arguments
 
-    def __init__(self, session: requests.Session) -> None:
+    def __init__(self, session: requests_cache.CachedSession) -> None:
         super().__init__(League.NFL, session)
 
     def _produce_games(
@@ -28,33 +29,41 @@ class NFLSportsDBLeagueModel(LeagueModel):
         season_type: SeasonType,
     ) -> Iterator[GameModel]:
         # pylint: disable=line-too-long
-        response = self.session.get(
-            f"https://www.thesportsdb.com/api/v1/json/3/eventsround.php?id={league_id}&r={round_str}&s={season_year}"
-        )
-        response.raise_for_status()
-        games = response.json()
-        events = games["events"]
-        if events is None:
-            raise ValueError("events is null.")
-        for count, game in enumerate(events):
-            yield create_nfl_sportsdb_game_model(
-                self.session,
-                game,
-                week,
-                count,
-                self.league,
-                season_year,  # pyright: ignore
-                season_type,
+        def internal_produce_games() -> Iterator[GameModel]:
+            response = self.session.get(
+                f"https://www.thesportsdb.com/api/v1/json/3/eventsround.php?id={league_id}&r={round_str}&s={season_year}"
             )
+            response.raise_for_status()
+            games = response.json()
+            events = games["events"]
+            if events is None:
+                raise ValueError("events is null.")
+            for count, game in enumerate(events):
+                yield create_nfl_sportsdb_game_model(
+                    self.session,
+                    game,
+                    week,
+                    count,
+                    self.league,
+                    season_year,  # pyright: ignore
+                    season_type,
+                )
+
+        if season_year < datetime.datetime.now().year - 1:
+            yield from internal_produce_games()
+        else:
+            with self.session.cache_disabled():
+                yield from internal_produce_games()
 
     @property
     def games(self) -> Iterator[GameModel]:
         league_id = "4391"
-        response = self.session.get(
-            f"https://www.thesportsdb.com/api/v1/json/3/search_all_seasons.php?id={league_id}"
-        )
-        response.raise_for_status()
-        seasons = response.json()
+        with self.session.cache_disabled():
+            response = self.session.get(
+                f"https://www.thesportsdb.com/api/v1/json/3/search_all_seasons.php?id={league_id}"
+            )
+            response.raise_for_status()
+            seasons = response.json()
         for season in seasons["seasons"]:
             season_year = season["strSeason"]
             for season_type in SeasonType:

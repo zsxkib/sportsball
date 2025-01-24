@@ -1,6 +1,6 @@
 """AFL combined league model."""
 
-import requests
+import requests_cache
 
 from ...combined.combined_league_model import CombinedLeagueModel
 from ...league import League
@@ -204,7 +204,7 @@ AFL_VENUE_IDENTITY_MAP = {
 class AFLCombinedLeagueModel(CombinedLeagueModel):
     """AFL combined implementation of the league model."""
 
-    def __init__(self, session: requests.Session) -> None:
+    def __init__(self, session: requests_cache.CachedSession) -> None:
         super().__init__(
             session,
             League.AFL,

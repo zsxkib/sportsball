@@ -1,6 +1,6 @@
 """NFL aussportsbetting league model."""
 
-import requests
+import requests_cache
 
 from ...aussportsbetting.aussportsbetting_league_model import \
     AusSportsBettingLeagueModel
@@ -10,5 +10,5 @@ from ...league import League
 class NFLAusSportsBettingLeagueModel(AusSportsBettingLeagueModel):
     """NFL AusSportsBetting implementation of the league model."""
 
-    def __init__(self, session: requests.Session) -> None:
+    def __init__(self, session: requests_cache.CachedSession) -> None:
         super().__init__(League.NFL, session)

@@ -3,7 +3,7 @@
 # pylint: disable=too-many-arguments
 import datetime
 
-import requests
+import requests_cache
 
 from ...cache import MEMORY
 from ..game_model import GameModel
@@ -18,7 +18,7 @@ def create_aussportsbetting_game_model(
     home_team: str,
     away_team: str,
     venue: str | None,
-    session: requests.Session,
+    session: requests_cache.CachedSession,
     home_points: float,
     away_points: float,
     home_odds: float,

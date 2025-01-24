@@ -5,7 +5,7 @@ import urllib.parse
 from typing import Iterator
 from urllib.parse import urlparse
 
-import requests
+import requests_cache
 import tqdm
 from bs4 import BeautifulSoup
 
@@ -21,7 +21,7 @@ _SEASON_URL = "https://afltables.com/afl/seas/season_idx.html"
 class AFLAFLTablesLeagueModel(LeagueModel):
     """AFL AFLTables implementation of the league model."""
 
-    def __init__(self, session: requests.Session) -> None:
+    def __init__(self, session: requests_cache.CachedSession) -> None:
         super().__init__(League.AFL, session)
 
     def _produce_games(

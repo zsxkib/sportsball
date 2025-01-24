@@ -4,7 +4,7 @@
 import logging
 import urllib.parse
 
-import requests
+import requests_cache
 from bs4 import BeautifulSoup, Tag
 from dateutil.parser import parse
 
@@ -21,12 +21,11 @@ from .ncaab_sportsreference_venue_model import \
 
 @MEMORY.cache(ignore=["session"])
 def create_ncaab_sportsreference_game_model(
-    session: requests.Session,
+    session: requests_cache.CachedSession,
     url: str,
     league: League,
 ) -> GameModel:
     """Create an NCAAB sports reference game model."""
-    # print(f"Game URL: {url}")
     response = session.get(url)
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "html.parser")

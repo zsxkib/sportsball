@@ -5,7 +5,6 @@ from typing import Dict
 from warnings import simplefilter
 
 import pandas as pd
-import requests
 import requests_cache
 from dotenv import load_dotenv
 from retry_requests import retry  # type: ignore
@@ -25,14 +24,14 @@ class SportsBall:
     # pylint: disable=too-few-public-methods
 
     _leagues: Dict[str, LeagueModel]
-    _session: requests.Session
+    _session: requests_cache.CachedSession
 
     def __init__(self) -> None:
         cache_session = requests_cache.CachedSession(
             "sportsball",
             expire_after=datetime.timedelta(days=365),
         )
-        self._session = retry(cache_session, retries=5, backoff_factor=0.2)
+        self._session = retry(cache_session, retries=5, backoff_factor=0.2)  # pyright: ignore
         self._leagues = {}
         simplefilter(action="ignore", category=pd.errors.PerformanceWarning)
         load_dotenv()

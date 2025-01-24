@@ -3,12 +3,13 @@
 # pylint: disable=too-many-arguments
 import datetime
 
-import requests
+import requests_cache
 
 from ...cache import MEMORY
 from ..google.google_news_model import create_google_news_models
 from ..league import League
 from ..team_model import TeamModel
+from ..x.x_social_model import create_x_social_model
 from .aussportsbetting_odds_model import create_aussportsbetting_odds_model
 
 
@@ -17,7 +18,7 @@ def create_aussportsbetting_team_model(
     name: str,
     points: float,
     odds: float,
-    session: requests.Session,
+    session: requests_cache.CachedSession,
     dt: datetime.datetime,
     league: League,
 ) -> TeamModel:
@@ -32,4 +33,5 @@ def create_aussportsbetting_team_model(
         points=points,
         ladder_rank=None,
         news=create_google_news_models(name, session, dt, league),
+        social=create_x_social_model(name, session, dt),
     )

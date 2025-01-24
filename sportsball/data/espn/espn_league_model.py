@@ -2,7 +2,7 @@
 
 from typing import Any, Iterator
 
-import requests
+import requests_cache
 
 from ..game_model import GameModel
 from ..league import League
@@ -27,7 +27,7 @@ class ESPNLeagueModel(LeagueModel):
     """ESPN implementation of the league model."""
 
     def __init__(
-        self, start_url: str, league: League, session: requests.Session
+        self, start_url: str, league: League, session: requests_cache.CachedSession
     ) -> None:
         super().__init__(league, session)
         self._start_url = start_url

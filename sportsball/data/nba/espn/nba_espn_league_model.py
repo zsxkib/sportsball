@@ -1,6 +1,6 @@
 """NBA ESPN league model."""
 
-import requests
+import requests_cache
 
 from ...espn.espn_league_model import ESPNLeagueModel
 from ...league import League
@@ -13,5 +13,5 @@ _SEASON_URL = (
 class NBAESPNLeagueModel(ESPNLeagueModel):
     """NBA ESPN implementation of the league model."""
 
-    def __init__(self, session: requests.Session) -> None:
+    def __init__(self, session: requests_cache.CachedSession) -> None:
         super().__init__(_SEASON_URL, League.NBA, session)

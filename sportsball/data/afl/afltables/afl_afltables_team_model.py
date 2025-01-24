@@ -5,13 +5,14 @@ import datetime
 import os
 from urllib.parse import urlparse
 
-import requests
+import requests_cache
 from bs4 import BeautifulSoup
 
 from ....cache import MEMORY
 from ...google.google_news_model import create_google_news_models
 from ...league import League
 from ...team_model import TeamModel
+from ...x.x_social_model import create_x_social_model
 from .afl_afltables_player_model import create_afl_afltables_player_model
 
 _TEAM_NAME_MAP = {
@@ -45,7 +46,7 @@ def create_afl_afltables_team_model(
     team_url: str,
     players: list[tuple[str, str, int | None]],
     points: float,
-    session: requests.Session,
+    session: requests_cache.CachedSession,
     last_ladder_ranks: dict[str, int] | None,
     dt: datetime.datetime,
     league: League,
@@ -79,4 +80,5 @@ def create_afl_afltables_team_model(
         ladder_rank=last_ladder_rank,
         location=None,
         news=create_google_news_models(name, session, dt, league),
+        social=create_x_social_model(identifier, session, dt),
     )

@@ -4,7 +4,7 @@
 from typing import Iterator, get_args, get_origin
 
 import pandas as pd
-import requests
+import requests_cache
 import tqdm
 from flatten_json import flatten  # type: ignore
 from pydantic import BaseModel
@@ -32,7 +32,7 @@ class LeagueModel(Model):
 
     _df: pd.DataFrame | None
 
-    def __init__(self, league: League, session: requests.Session) -> None:
+    def __init__(self, league: League, session: requests_cache.CachedSession) -> None:
         super().__init__(session)
         self._league = league
         self._df = None

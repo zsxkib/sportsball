@@ -35,6 +35,8 @@ Python 3.11.6:
 - [pygooglenews](https://github.com/kotartemiy/pygooglenews)
 - [extruct](https://github.com/scrapinghub/extruct)
 - [wikipedia-api](https://github.com/martin-majlis/Wikipedia-API)
+- [tweepy](https://www.tweepy.org/)
+- [pytest-is-running](https://github.com/adamchainz/pytest-is-running)
 
 ## Raison D'être :thought_balloon:
 
@@ -53,36 +55,20 @@ The supported leagues are:
 
 `sportsball` is an object orientated library. The entities are organised like so:
 
-* **League**: The entry point to accessing data about a league.
-    * **Season**: A season within a league.
-        * **Game**: A game within a season.
-            * **Team**: The team within the game. Note that in games with individual players a team exists as a wrapper.
-                * **Player**: A player within the team.
-                * **Odds**: The odds for the team to win the game.
-                    * **Bookie**: The bookie publishing the odds.
-                * **News**: News about the team the day before the game.
-            * **Venue**: The venue the game was played in.
-                * **Address**: The address information of a venue.
-                    * **Weather**: The weather at the address.
+* **Game**: A game within a season.
+    * **Team**: The team within the game. Note that in games with individual players a team exists as a wrapper.
+        * **Player**: A player within the team.
+        * **Odds**: The odds for the team to win the game.
+            * **Bookie**: The bookie publishing the odds.
+        * **News**: News about the team the day before the game.
+        * **Social**: Social posts from the team the day before the game.
+    * **Venue**: The venue the game was played in.
+        * **Address**: The address information of a venue.
+            * **Weather**: The weather at the address.
 
 ### Objects
 
 A list of the attributes on each object.
-
-#### League
-
-A representation of a sports league containing many seasons.
-
-* **seasons**: An iterator for all the seasons in the league.
-* **league**: The league enum this league model represents.
-
-#### Season
-
-A representation of the season within a league.
-
-* **year**: The year the season represents.
-* **season_type**: The type of season this season represents (e.g. regular, preseason, postseason, offseason).
-* **games**: An iterator for all the games in the season.
 
 #### Game
 
@@ -97,6 +83,9 @@ A representation of the game within a season.
 * **away_team**: The ream representing the away team.
 * **end_dt**: The timzone aware date/time of the game end.
 * **attendance**: How many people attended the game.
+* **league**: The league the game belongs to.
+* **year** The year the game was in.
+* **season_type**: The type of the season the game was played in.
 
 #### Team
 
@@ -109,6 +98,9 @@ A representation of a team within a game.
 * **odds**: A list of odds for the team on the game to win.
 * **points**: The amount of points scored by this team on the game.
 * **ladder_rank**: The ladder rank of the team at the beginning of the round of the game.
+* **kicks**: The number of kicks a team produced.
+* **news**: News articles about the team a day from the game.
+* **social**: Social media posts from the team a day from the game.
 
 #### Player
 
@@ -167,6 +159,18 @@ The news one day out from the game.
 * **summary**: The summary of the article.
 * **source**: The source of the article.
 
+#### Social
+
+Social media posts one day out from the game.
+
+* **network**: The social network this post was made from.
+* **post**: The text of the post.
+* **comments**: The number of comments on the post.
+* **reposts**: The number of reposts.
+* **likes**: The number of likes the post received.
+* **views**: The number of views the post has.
+* **published**: When the post was published.
+
 ## Caching
 
 This library uses very aggressive caching due to the large data requirements.
@@ -213,6 +217,10 @@ If you wish to use the providers that require API keys, you can create a `.env` 
 ```
 GOOGLE_API_KEY=APIKEY
 GRIBSTREAM_API_KEY=APIKEY
+X_API_KEY=APIKEY
+X_API_SECRET_KEY=APISECRETKEY
+X_ACCESS_TOKEN=ACCESSTOKEN
+X_ACCESS_TOKEN_SECRET=ACCESSTOKENSECRET
 ```
 
 ## License :memo:

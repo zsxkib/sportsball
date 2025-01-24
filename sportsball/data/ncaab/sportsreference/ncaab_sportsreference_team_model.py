@@ -6,7 +6,7 @@ import json
 import urllib.parse
 
 import extruct  # type: ignore
-import requests
+import requests_cache
 from bs4 import BeautifulSoup, Tag
 from w3lib.html import get_base_url
 
@@ -14,13 +14,14 @@ from ....cache import MEMORY
 from ...google.google_news_model import create_google_news_models
 from ...league import League
 from ...team_model import TeamModel
+from ...x.x_social_model import create_x_social_model
 from .ncaab_sportsreference_player_model import \
     create_ncaab_sportsreference_player_model
 
 
 @MEMORY.cache(ignore=["session"])
 def create_ncaab_sportsreference_team_model(
-    session: requests.Session,
+    session: requests_cache.CachedSession,
     url: str,
     dt: datetime.datetime,
     league: League,
@@ -28,7 +29,6 @@ def create_ncaab_sportsreference_team_model(
     points: float,
 ) -> TeamModel:
     """Create a team model from NCAAB Sports Reference."""
-    # print(f"URL: {url}")
     response = session.get(url)
     response.raise_for_status()
     base_url = get_base_url(response.text, url)
@@ -65,4 +65,5 @@ def create_ncaab_sportsreference_team_model(
         ladder_rank=None,
         location=None,
         news=create_google_news_models(name, session, dt, league),
+        social=create_x_social_model(name, session, dt),
     )

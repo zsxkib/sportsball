@@ -3,7 +3,7 @@
 import urllib.parse
 from typing import Iterator
 
-import requests
+import requests_cache
 from bs4 import BeautifulSoup, Tag
 
 from ...game_model import GameModel
@@ -16,7 +16,7 @@ from .ncaab_sportsreference_game_model import \
 class NCAABSportsReferenceLeagueModel(LeagueModel):
     """NCAAB Sports Reference implementation of the league model."""
 
-    def __init__(self, session: requests.Session) -> None:
+    def __init__(self, session: requests_cache.CachedSession) -> None:
         super().__init__(League.NCAAB, session)
 
     @property
