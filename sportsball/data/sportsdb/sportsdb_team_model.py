@@ -6,14 +6,14 @@ import datetime
 import pytest_is_running
 import requests_cache
 
-from ....cache import MEMORY
-from ...google.google_news_model import create_google_news_models
-from ...league import League
-from ...team_model import TeamModel
-from ...x.x_social_model import create_x_social_model
+from ...cache import MEMORY
+from ..google.google_news_model import create_google_news_models
+from ..league import League
+from ..team_model import TeamModel
+from ..x.x_social_model import create_x_social_model
 
 
-def _create_nfl_sportsdb_team_model(
+def _create_sportsdb_team_model(
     team_id: str,
     name: str,
     points: float,
@@ -36,7 +36,7 @@ def _create_nfl_sportsdb_team_model(
 
 
 @MEMORY.cache(ignore=["session"])
-def _cached_create_nfl_sportsdb_team_model(
+def _cached_create_sportsdb_team_model(
     team_id: str,
     name: str,
     points: float,
@@ -44,10 +44,10 @@ def _cached_create_nfl_sportsdb_team_model(
     dt: datetime.datetime,
     league: League,
 ) -> TeamModel:
-    return _create_nfl_sportsdb_team_model(team_id, name, points, session, dt, league)
+    return _create_sportsdb_team_model(team_id, name, points, session, dt, league)
 
 
-def create_nfl_sportsdb_team_model(
+def create_sportsdb_team_model(
     team_id: str,
     name: str,
     points: float,
@@ -56,14 +56,11 @@ def create_nfl_sportsdb_team_model(
     league: League,
 ) -> TeamModel:
     """Create a team model based off the sportsdb NFL response."""
-    if (
-        not pytest_is_running.is_running()
-        and dt < datetime.datetime.now() - datetime.timedelta(days=7)
-    ):
-        return _cached_create_nfl_sportsdb_team_model(
+    if not pytest_is_running.is_running() and dt < datetime.datetime.now().replace(
+        tzinfo=dt.tzinfo
+    ) - datetime.timedelta(days=7):
+        return _cached_create_sportsdb_team_model(
             team_id, name, points, session, dt, league
         )
     with session.cache_disabled():
-        return _create_nfl_sportsdb_team_model(
-            team_id, name, points, session, dt, league
-        )
+        return _create_sportsdb_team_model(team_id, name, points, session, dt, league)

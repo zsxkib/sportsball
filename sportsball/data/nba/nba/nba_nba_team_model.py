@@ -1,5 +1,6 @@
 """NBA API team model."""
 
+# pylint: disable=too-many-arguments,unused-argument
 import datetime
 
 import pandas as pd
@@ -19,6 +20,7 @@ def _create_nba_nba_team_model(
     session: requests_cache.CachedSession,
     dt: datetime.datetime,
     league: League,
+    league_id: str,
 ) -> TeamModel | None:
     """Create a team model from NBA API."""
     suffix = "_A" if home else "_B"
@@ -30,6 +32,7 @@ def _create_nba_nba_team_model(
     if identifier is None:
         return None
     name = row["TEAM_NAME" + suffix]
+
     return TeamModel(
         identifier=str(identifier),
         name=name,
@@ -42,7 +45,7 @@ def _create_nba_nba_team_model(
         location=None,
         news=create_google_news_models(name, session, dt, league),
         social=create_x_social_model(str(identifier), session, dt),
-        field_goals=row["FG" + suffix],
+        field_goals=None,
     )
 
 
@@ -53,8 +56,9 @@ def _cached_create_nba_nba_team_model(
     session: requests_cache.CachedSession,
     dt: datetime.datetime,
     league: League,
+    league_id: str,
 ) -> TeamModel | None:
-    return _create_nba_nba_team_model(row, home, session, dt, league)
+    return _create_nba_nba_team_model(row, home, session, dt, league, league_id)
 
 
 def create_nba_nba_team_model(
@@ -63,12 +67,14 @@ def create_nba_nba_team_model(
     session: requests_cache.CachedSession,
     dt: datetime.datetime,
     league: League,
+    league_id: str,
 ) -> TeamModel | None:
     """Create a team model from NBA API."""
-    if (
-        not pytest_is_running.is_running()
-        and dt < datetime.datetime.now() - datetime.timedelta(days=7)
-    ):
-        return _cached_create_nba_nba_team_model(row, home, session, dt, league)
+    if not pytest_is_running.is_running() and dt < datetime.datetime.now().replace(
+        tzinfo=dt.tzinfo
+    ) - datetime.timedelta(days=7):
+        return _cached_create_nba_nba_team_model(
+            row, home, session, dt, league, league_id
+        )
     with session.cache_disabled():
-        return _create_nba_nba_team_model(row, home, session, dt, league)
+        return _create_nba_nba_team_model(row, home, session, dt, league, league_id)

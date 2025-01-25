@@ -1,3 +1,3 @@
 """Parameters for the requests session."""
 
-DEFAULT_TIMEOUT = 30.0
+DEFAULT_TIMEOUT = 8.0

@@ -1,14 +1,14 @@
-"""Tests for the NFL sportsdb team model class."""
+"""Tests for the sportsdb team model class."""
 import datetime
 import unittest
 
 import requests_mock
 import requests_cache
-from sportsball.data.nfl.sportsdb.nfl_sportsdb_team_model import create_nfl_sportsdb_team_model
+from sportsball.data.sportsdb.sportsdb_team_model import create_sportsdb_team_model
 from sportsball.data.league import League
 
 
-class TestNFLSportsDBTeamModel(unittest.TestCase):
+class TestSportsDBTeamModel(unittest.TestCase):
 
     def setUp(self):
         self._session = requests_cache.CachedSession(backend="memory")
@@ -17,7 +17,7 @@ class TestNFLSportsDBTeamModel(unittest.TestCase):
         identifier = "a"
         with requests_mock.Mocker() as m:
             m.get("https://news.google.com/rss/search?q=%22dolphins%22+%2B+%28sport+OR+nfl+OR+%22National+Football+League%22%29+after%3A2010-10-08+before%3A2010-10-09&ceid=US:en&hl=en&gl=US")
-            team_model = create_nfl_sportsdb_team_model(
+            team_model = create_sportsdb_team_model(
                 identifier,
                 "dolphins",
                 2.0,

@@ -137,11 +137,12 @@ class LeagueModel(Model):
 
             for categorical_column in df.attrs[str(FieldType.CATEGORICAL)]:
                 df[categorical_column] = df[categorical_column].astype("category")
-            df[GAME_DT_COLUMN] = pd.to_datetime(df[GAME_DT_COLUMN], utc=True)
-            df = df.sort_values(
-                by=GAME_DT_COLUMN,
-                ascending=True,
-            )
+            if GAME_DT_COLUMN in df.columns.values:
+                df[GAME_DT_COLUMN] = pd.to_datetime(df[GAME_DT_COLUMN], utc=True)
+                df = df.sort_values(
+                    by=GAME_DT_COLUMN,
+                    ascending=True,
+                )
             df = _clear_column_list(df)
 
             self._df = df

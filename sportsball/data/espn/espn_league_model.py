@@ -107,7 +107,7 @@ class ESPNLeagueModel(LeagueModel):
             response = self.session.get(self._start_url + f"&page={page}")
             response.raise_for_status()
             seasons = response.json()
-            for item in seasons["items"]:
+            for item in seasons.get("items", []):
                 season_response = self.session.get(item["$ref"])
                 season_response.raise_for_status()
                 season_json = season_response.json()
@@ -119,6 +119,6 @@ class ESPNLeagueModel(LeagueModel):
 
                     yield from self._produce_week_games(season_type_json, page)
 
-            if page >= seasons["pageCount"]:
+            if page >= seasons.get("pageCount", 0):
                 break
             page += 1

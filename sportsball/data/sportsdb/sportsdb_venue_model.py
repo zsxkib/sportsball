@@ -1,19 +1,18 @@
-"""NFL SportsDB venue model."""
+"""SportsDB venue model."""
 
 import datetime
 
+import pytest_is_running
 import requests_cache
 
-from ....cache import MEMORY
-from ...google.google_address_model import create_google_address_model
-from ...venue_model import VenueModel
+from ...cache import MEMORY
+from ..google.google_address_model import create_google_address_model
+from ..venue_model import VenueModel
 
 
-@MEMORY.cache(ignore=["session"])
-def create_nfl_sportsdb_venue_model(
+def _create_sportsdb_venue_model(
     session: requests_cache.CachedSession, venue_id: str, dt: datetime.datetime
 ) -> VenueModel | None:
-    """Create NFL sports DB venue model."""
     if venue_id == "19533":
         venue_id = "17146"
     if venue_id == "21813":
@@ -63,3 +62,22 @@ def create_nfl_sportsdb_venue_model(
         is_grass=None,
         is_indoor=None,
     )
+
+
+@MEMORY.cache(ignore=["session"])
+def _cached_create_sportsdb_venue_model(
+    session: requests_cache.CachedSession, venue_id: str, dt: datetime.datetime
+) -> VenueModel | None:
+    return _create_sportsdb_venue_model(session, venue_id, dt)
+
+
+def create_sportsdb_venue_model(
+    session: requests_cache.CachedSession, venue_id: str, dt: datetime.datetime
+) -> VenueModel | None:
+    """Create sports DB venue model."""
+    if not pytest_is_running.is_running() and dt < datetime.datetime.now().replace(
+        tzinfo=dt.tzinfo
+    ) - datetime.timedelta(days=7):
+        return _cached_create_sportsdb_venue_model(session, venue_id, dt)
+    with session.cache_disabled():
+        return _create_sportsdb_venue_model(session, venue_id, dt)

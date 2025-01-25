@@ -1,5 +1,6 @@
 """Tests for the NBA NBA game model class."""
 import datetime
+import json
 import unittest
 
 import requests_mock
@@ -30,7 +31,7 @@ class TestNBANBAGameModel(unittest.TestCase):
                     "b",
                     "The B's",
                     60.0,
-                    4.0,
+                    "1",
                 ], index=[
                     "SEASON_ID",
                     "GAME_DATE",
@@ -41,12 +42,13 @@ class TestNBANBAGameModel(unittest.TestCase):
                     "TEAM_ID_B",
                     "TEAM_NAME_B",
                     "PTS_B",
-                    "FG_B",
+                    "GAME_ID",
                 ]),
                 League.NBA,
                 0,
                 1,
                 self.session,
                 dt,
+                "00",
             )
             self.assertEqual(game_model.dt.date(), dt.date())

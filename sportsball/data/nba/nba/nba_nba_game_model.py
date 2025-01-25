@@ -1,6 +1,6 @@
 """NBA NBA API game model."""
 
-# pylint: disable=too-many-arguments
+# pylint: disable=too-many-arguments,line-too-long
 import datetime
 
 import pandas as pd
@@ -31,6 +31,7 @@ def _create_nba_nba_game_model(
     week: int,
     game_number: int,
     session: requests_cache.CachedSession,
+    league_id: str,
 ) -> GameModel:
     season_id = row["SEASON_ID"]
     dt = pytz.timezone("EST").localize(parse(row["GAME_DATE"]))
@@ -42,8 +43,8 @@ def _create_nba_nba_game_model(
         teams=[
             x
             for x in [
-                create_nba_nba_team_model(row, True, session, dt, league),  # type: ignore
-                create_nba_nba_team_model(row, False, session, dt, league),  # type: ignore
+                create_nba_nba_team_model(row, True, session, dt, league, league_id),  # type: ignore
+                create_nba_nba_team_model(row, False, session, dt, league, league_id),  # type: ignore
             ]
             if x is not None
         ],
@@ -62,9 +63,12 @@ def _cached_create_nba_nba_game_model(
     week: int,
     game_number: int,
     session: requests_cache.CachedSession,
+    league_id: str,
 ) -> GameModel:
     """Create a game model from NBA API."""
-    return _create_nba_nba_game_model(row, league, week, game_number, session)
+    return _create_nba_nba_game_model(
+        row, league, week, game_number, session, league_id
+    )
 
 
 def create_nba_nba_game_model(
@@ -74,6 +78,7 @@ def create_nba_nba_game_model(
     game_number: int,
     session: requests_cache.CachedSession,
     dt: datetime.datetime,
+    league_id: str,
 ) -> GameModel:
     """Create a game model from NBA API."""
     if (
@@ -81,7 +86,9 @@ def create_nba_nba_game_model(
         and dt < datetime.datetime.now() - datetime.timedelta(days=7)
     ):
         return _cached_create_nba_nba_game_model(
-            row, league, week, game_number, session
+            row, league, week, game_number, session, league_id
         )
     with session.cache_disabled():
-        return _create_nba_nba_game_model(row, league, week, game_number, session)
+        return _create_nba_nba_game_model(
+            row, league, week, game_number, session, league_id
+        )

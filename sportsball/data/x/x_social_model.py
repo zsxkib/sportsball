@@ -178,10 +178,9 @@ def create_x_social_model(
     dt: datetime.datetime,
 ) -> list[SocialModel]:
     """Create social models from X."""
-    if (
-        not pytest_is_running.is_running()
-        and dt < datetime.datetime.now() - datetime.timedelta(days=7)
-    ):
+    if not pytest_is_running.is_running() and dt < datetime.datetime.now().replace(
+        tzinfo=dt.tzinfo
+    ) - datetime.timedelta(days=7):
         return _cached_create_x_social_model(identifier, session, dt)
     with session.cache_disabled():
         return _create_x_social_model(identifier, session, dt)

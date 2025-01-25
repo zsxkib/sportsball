@@ -37,6 +37,10 @@ Python 3.11.6:
 - [wikipedia-api](https://github.com/martin-majlis/Wikipedia-API)
 - [tweepy](https://www.tweepy.org/)
 - [pytest-is-running](https://github.com/adamchainz/pytest-is-running)
+- [PySocks](https://github.com/Anorov/PySocks)
+- [func-timeout](https://github.com/kata198/func_timeout)
+- [tenacity](https://github.com/jd/tenacity)
+- [random_user_agent](https://github.com/Luqman-Ud-Din/random_user_agent)
 
 ## Raison D'être :thought_balloon:
 

@@ -38,16 +38,19 @@ def create_gribstream_weather_model(
             {"name": "RH", "level": "2 m above ground", "info": ""},
         ],
     }
-    resp = session.post(
-        url,
-        data=gzip.compress(json.dumps(payload).encode("utf-8")),
-        headers={
-            "Accept-Encoding": "gzip",
-            "Content-Encoding": "gzip",
-            "Content-Type": "application/json",
-            "Authorization": "Bearer ",
-        },
-    )
+    try:
+        resp = session.post(
+            url,
+            data=gzip.compress(json.dumps(payload).encode("utf-8")),
+            headers={
+                "Accept-Encoding": "gzip",
+                "Content-Encoding": "gzip",
+                "Content-Type": "application/json",
+                "Authorization": "Bearer ",
+            },
+        )
+    except requests.exceptions.ConnectionError:
+        return None
     if not resp.ok:
         return None
     df = pd.read_csv(io.BytesIO(resp.content), parse_dates=[0, 1])

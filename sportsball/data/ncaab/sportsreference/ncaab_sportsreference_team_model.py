@@ -35,7 +35,7 @@ def _create_ncaab_sportsreference_team_model(
     try:
         data = extruct.extract(response.text, base_url=base_url)
         name = data["json-ld"][0]["name"]
-    except json.decoder.JSONDecodeError as exc:
+    except (json.decoder.JSONDecodeError, IndexError) as exc:
         h1 = soup.find("h1")
         if not isinstance(h1, Tag):
             raise ValueError("h1 is null.") from exc
