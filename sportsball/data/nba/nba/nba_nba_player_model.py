@@ -1,19 +1,20 @@
 """NBA API player model."""
 
+import datetime
 import json
 
 import pandas as pd
+import pytest_is_running
+import requests_cache
 from nba_api.stats.endpoints import commonplayerinfo  # type: ignore
 
 from ....cache import MEMORY
 from ...player_model import PlayerModel
 
 
-@MEMORY.cache
-def create_nba_nba_player_model(
+def _create_nba_nba_player_model(
     row: pd.Series, player_index: pd.DataFrame
 ) -> PlayerModel:
-    """Create a player model from NBA API."""
     jersey = None
     player_id = str(row["PERSON_ID"])
     player_index_df = player_index[player_index["PERSON_ID"].astype(str) == player_id]
@@ -27,5 +28,32 @@ def create_nba_nba_player_model(
         except json.decoder.JSONDecodeError:
             pass
     return PlayerModel(
-        identifier=player_id, jersey=jersey, kicks=None, fumbles=None, fumbles_lost=None
+        identifier=player_id,
+        jersey=jersey,
+        kicks=None,
+        fumbles=None,
+        fumbles_lost=None,
+        field_goals=None,
     )
+
+
+@MEMORY.cache
+def _cached_create_nba_nba_player_model(
+    row: pd.Series, player_index: pd.DataFrame
+) -> PlayerModel:
+    return _create_nba_nba_player_model(row, player_index)
+
+
+def create_nba_nba_player_model(
+    row: pd.Series,
+    player_index: pd.DataFrame,
+    dt: datetime.datetime,
+    session: requests_cache.CachedSession,
+) -> PlayerModel:
+    """Create a player model from NBA API."""
+    if not pytest_is_running.is_running() and dt < datetime.datetime.now().replace(
+        tzinfo=dt.tzinfo
+    ) - datetime.timedelta(days=7):
+        return _cached_create_nba_nba_player_model(row, player_index)  # pyright: ignore
+    with session.cache_disabled():
+        return _create_nba_nba_player_model(row, player_index)

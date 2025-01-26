@@ -31,6 +31,20 @@ def _calculate_kicks(data: dict[str, Any]) -> int | None:
     return kicks
 
 
+def _calculate_field_goals(data: dict[str, Any]) -> int | None:
+    field_goals = 0
+    found_field_goals = False
+    for player in data[PLAYER_COLUMN_PREFIX]:
+        player_field_goals = player.field_goals
+        if player_field_goals is None:
+            continue
+        found_field_goals = True
+        field_goals += player_field_goals
+    if not found_field_goals:
+        return None
+    return field_goals
+
+
 class TeamModel(BaseModel):
     """The serialisable team class."""
 
@@ -58,5 +72,7 @@ class TeamModel(BaseModel):
     news: list[NewsModel]
     social: list[SocialModel]
     field_goals: int | None = Field(
-        ..., json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD}, alias=FIELD_GOALS_COLUMN
+        default_factory=_calculate_field_goals,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=FIELD_GOALS_COLUMN,
     )

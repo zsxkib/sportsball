@@ -48,6 +48,7 @@ class ProxySession(requests_cache.CachedSession):
             proxies_txt = os.environ.get("PROXIES")
             if proxies_txt is not None:
                 proxies.extend(proxies_txt.split(","))
+            random.shuffle(proxies)
             self._proxies = proxies
             self._last_fetched = datetime.datetime.now()
 
@@ -71,7 +72,8 @@ class ProxySession(requests_cache.CachedSession):
         | retry_if_exception_type(requests.exceptions.ConnectionError)
         | retry_if_exception_type(requests.exceptions.ChunkedEncodingError)
         | retry_if_exception_type(ValueError)
-        | retry_if_exception_type(requests.exceptions.HTTPError),
+        | retry_if_exception_type(requests.exceptions.HTTPError)
+        | retry_if_exception_type(requests.exceptions.ReadTimeout),
     )
     def _perform_proxy_request(self, *args, **kwargs) -> requests.Response:
         proxy = self._suggest_proxy()

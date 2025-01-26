@@ -7,6 +7,8 @@ from ...league import League
 from ..espn.nba_espn_league_model import NBAESPNLeagueModel
 from ..nba.nba_nba_league_model import NBANBALeagueModel
 from ..sportsdb.nba_sportsdb_league_model import NBASportsDBLeagueModel
+from ..sportsreference.nba_sportsreference_league_model import \
+    NBASportsReferenceLeagueModel
 
 ORLANDO_MAGIC = "1610612753"
 ATLANTA_HAWKS = "1610612737"
@@ -233,6 +235,7 @@ class NBACombinedLeagueModel(CombinedLeagueModel):
                 NBANBALeagueModel(session),
                 NBAESPNLeagueModel(session),
                 NBASportsDBLeagueModel(session),
+                NBASportsReferenceLeagueModel(session),
             ],
         )
 

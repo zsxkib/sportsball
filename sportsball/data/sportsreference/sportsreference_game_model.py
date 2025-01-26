@@ -1,31 +1,32 @@
-"""NCAAB Sports Reference game model."""
+"""Sports Reference game model."""
 
 # pylint: disable=too-many-locals,too-many-statements
+import datetime
+import io
 import logging
 import urllib.parse
 
+import pandas as pd
+import pytest_is_running
 import requests_cache
 from bs4 import BeautifulSoup, Tag
 from dateutil.parser import parse
 
-from ....cache import MEMORY
-from ...game_model import GameModel
-from ...league import League
-from ...season_type import SeasonType
-from ...team_model import TeamModel
-from .ncaab_sportsreference_team_model import \
-    create_ncaab_sportsreference_team_model
-from .ncaab_sportsreference_venue_model import \
-    create_ncaab_sportsreference_venue_model
+from ...cache import MEMORY
+from ..game_model import GameModel
+from ..league import League
+from ..season_type import SeasonType
+from ..team_model import TeamModel
+from .sportsreference_team_model import create_sportsreference_team_model
+from .sportsreference_venue_model import create_sportsreference_venue_model
 
 
-@MEMORY.cache(ignore=["session"])
-def create_ncaab_sportsreference_game_model(
+def _create_sportsreference_game_model(
     session: requests_cache.CachedSession,
     url: str,
     league: League,
 ) -> GameModel:
-    """Create an NCAAB sports reference game model."""
+    # pylint: disable=too-many-branches
     response = session.get(url)
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "html.parser")
@@ -53,13 +54,28 @@ def create_ncaab_sportsreference_game_model(
     for score_div in soup.find_all("div", class_="score"):
         scores.append(float(score_div.get_text().strip()))
 
+    handle = io.StringIO()
+    handle.write(response.text)
+    handle.seek(0)
+    dfs = pd.read_html(handle)
+    fg = {}
+    for df in dfs:
+        if df.index.nlevels > 1:
+            df.columns = df.columns.get_level_values(1)
+        if "Starters" in df.columns.values:
+            players = df["Starters"].tolist()
+            if "FG" in df.columns.values:
+                fgs = df["FG"].tolist()
+                for idx, player in enumerate(players):
+                    fg[player] = fgs[idx]
+
     teams: list[TeamModel] = []
     for a in scorebox_div.find_all("a"):
         team_url = urllib.parse.urljoin(url, a.get("href"))
         if "/schools/" in team_url:
             teams.append(
-                create_ncaab_sportsreference_team_model(
-                    session, team_url, dt, league, player_urls, scores[len(teams)]
+                create_sportsreference_team_model(
+                    session, team_url, dt, league, player_urls, scores[len(teams)], fg
                 )
             )
 
@@ -140,7 +156,7 @@ def create_ncaab_sportsreference_game_model(
         dt=dt,
         week=None,
         game_number=None,
-        venue=create_ncaab_sportsreference_venue_model(venue_name, session, dt),  # pyright: ignore
+        venue=create_sportsreference_venue_model(venue_name, session, dt),  # pyright: ignore
         teams=teams,
         league=league,
         year=dt.year,
@@ -148,3 +164,28 @@ def create_ncaab_sportsreference_game_model(
         end_dt=None,
         attendance=None,
     )
+
+
+@MEMORY.cache(ignore=["session"])
+def _cached_create_sportsreference_game_model(
+    session: requests_cache.CachedSession,
+    url: str,
+    league: League,
+) -> GameModel:
+    return _create_sportsreference_game_model(session, url, league)
+
+
+def create_sportsreference_game_model(
+    session: requests_cache.CachedSession,
+    url: str,
+    league: League,
+    dt: datetime.datetime,
+) -> GameModel:
+    """Create a sports reference game model."""
+    if (
+        not pytest_is_running.is_running()
+        and dt < datetime.datetime.now() - datetime.timedelta(days=2)
+    ):
+        return _cached_create_sportsreference_game_model(session, url, league)
+    with session.cache_disabled():
+        return _create_sportsreference_game_model(session, url, league)

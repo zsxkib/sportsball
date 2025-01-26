@@ -5,6 +5,7 @@ import datetime
 import os
 from urllib.parse import urlparse
 
+import pytest_is_running
 import requests_cache
 from bs4 import BeautifulSoup
 
@@ -41,8 +42,7 @@ _TEAM_NAME_MAP = {
 }
 
 
-@MEMORY.cache(ignore=["session"])
-def create_afl_afltables_team_model(
+def _create_afl_afltables_team_model(
     team_url: str,
     players: list[tuple[str, str, int | None]],
     points: float,
@@ -51,7 +51,6 @@ def create_afl_afltables_team_model(
     dt: datetime.datetime,
     league: League,
 ) -> TeamModel:
-    """Create a team model from AFL Tables."""
     response = session.get(team_url)
     soup = BeautifulSoup(response.text, "html.parser")
     o = urlparse(team_url)
@@ -72,7 +71,7 @@ def create_afl_afltables_team_model(
         identifier=identifier,
         name=name,
         players=[  # pyright: ignore
-            create_afl_afltables_player_model(player_url, jersey, kicks)
+            create_afl_afltables_player_model(player_url, jersey, kicks, dt, session)
             for player_url, jersey, kicks in players
         ],
         odds=[],
@@ -83,3 +82,41 @@ def create_afl_afltables_team_model(
         social=create_x_social_model(identifier, session, dt),
         field_goals=None,
     )
+
+
+@MEMORY.cache(ignore=["session"])
+def _cached_create_afl_afltables_team_model(
+    team_url: str,
+    players: list[tuple[str, str, int | None]],
+    points: float,
+    session: requests_cache.CachedSession,
+    last_ladder_ranks: dict[str, int] | None,
+    dt: datetime.datetime,
+    league: League,
+) -> TeamModel:
+    return _create_afl_afltables_team_model(
+        team_url, players, points, session, last_ladder_ranks, dt, league
+    )
+
+
+def create_afl_afltables_team_model(
+    team_url: str,
+    players: list[tuple[str, str, int | None]],
+    points: float,
+    session: requests_cache.CachedSession,
+    last_ladder_ranks: dict[str, int] | None,
+    dt: datetime.datetime,
+    league: League,
+) -> TeamModel:
+    """Create a team model from AFL Tables."""
+    if (
+        not pytest_is_running.is_running()
+        and dt < datetime.datetime.now() - datetime.timedelta(days=7)
+    ):
+        return _cached_create_afl_afltables_team_model(
+            team_url, players, points, session, last_ladder_ranks, dt, league
+        )
+    with session.cache_disabled():
+        return _create_afl_afltables_team_model(
+            team_url, players, points, session, last_ladder_ranks, dt, league
+        )

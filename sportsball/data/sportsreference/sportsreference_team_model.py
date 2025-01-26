@@ -1,4 +1,4 @@
-"""NCAAB Sports Reference team model."""
+"""Sports Reference team model."""
 
 # pylint: disable=too-many-arguments,too-many-locals
 import datetime
@@ -11,22 +11,22 @@ import requests_cache
 from bs4 import BeautifulSoup, Tag
 from w3lib.html import get_base_url
 
-from ....cache import MEMORY
-from ...google.google_news_model import create_google_news_models
-from ...league import League
-from ...team_model import TeamModel
-from ...x.x_social_model import create_x_social_model
-from .ncaab_sportsreference_player_model import \
-    create_ncaab_sportsreference_player_model
+from ...cache import MEMORY
+from ..google.google_news_model import create_google_news_models
+from ..league import League
+from ..team_model import TeamModel
+from ..x.x_social_model import create_x_social_model
+from .sportsreference_player_model import create_sportsreference_player_model
 
 
-def _create_ncaab_sportsreference_team_model(
+def _create_sportsreference_team_model(
     session: requests_cache.CachedSession,
     url: str,
     dt: datetime.datetime,
     league: League,
     player_urls: set[str],
     points: float,
+    fg: dict[str, int],
 ) -> TeamModel:
     response = session.get(url)
     response.raise_for_status()
@@ -54,7 +54,7 @@ def _create_ncaab_sportsreference_team_model(
         players=[
             y
             for y in [  # pyright: ignore
-                create_ncaab_sportsreference_player_model(session, x)
+                create_sportsreference_player_model(session, x, dt, fg)
                 for x in valid_player_urls
             ]
             if y is not None
@@ -65,41 +65,42 @@ def _create_ncaab_sportsreference_team_model(
         location=None,
         news=create_google_news_models(name, session, dt, league),
         social=create_x_social_model(name, session, dt),
-        field_goals=None,
     )
 
 
 @MEMORY.cache(ignore=["session"])
-def _cached_create_ncaab_sportsreference_team_model(
+def _cached_create_sportsreference_team_model(
     session: requests_cache.CachedSession,
     url: str,
     dt: datetime.datetime,
     league: League,
     player_urls: set[str],
     points: float,
+    fg: dict[str, int],
 ) -> TeamModel:
-    return _create_ncaab_sportsreference_team_model(
-        session, url, dt, league, player_urls, points
+    return _create_sportsreference_team_model(
+        session, url, dt, league, player_urls, points, fg
     )
 
 
-def create_ncaab_sportsreference_team_model(
+def create_sportsreference_team_model(
     session: requests_cache.CachedSession,
     url: str,
     dt: datetime.datetime,
     league: League,
     player_urls: set[str],
     points: float,
+    fg: dict[str, int],
 ) -> TeamModel:
-    """Create a team model from NCAAB Sports Reference."""
+    """Create a team model from Sports Reference."""
     if (
         not pytest_is_running.is_running()
-        and dt < datetime.datetime.now() - datetime.timedelta(days=7)
+        and dt < datetime.datetime.now() - datetime.timedelta(days=2)
     ):
-        return _cached_create_ncaab_sportsreference_team_model(
-            session, url, dt, league, player_urls, points
+        return _cached_create_sportsreference_team_model(
+            session, url, dt, league, player_urls, points, fg
         )
     with session.cache_disabled():
-        return _create_ncaab_sportsreference_team_model(
-            session, url, dt, league, player_urls, points
+        return _create_sportsreference_team_model(
+            session, url, dt, league, player_urls, points, fg
         )

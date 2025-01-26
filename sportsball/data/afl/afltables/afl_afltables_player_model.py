@@ -1,17 +1,20 @@
 """AFL AFLTables player model."""
 
+# pylint: disable=line-too-long
+import datetime
 import os
 from urllib.parse import urlparse
+
+import pytest_is_running
+import requests_cache
 
 from ....cache import MEMORY
 from ...player_model import PlayerModel
 
 
-@MEMORY.cache
-def create_afl_afltables_player_model(
+def _create_afl_afltables_player_model(
     player_url: str, jersey: str, kicks: int | None
 ) -> PlayerModel:
-    """Create a player model from AFL Tables."""
     o = urlparse(player_url)
     last_component = o.path.split("/")[-1]
     identifier, _ = os.path.splitext(last_component)
@@ -22,4 +25,29 @@ def create_afl_afltables_player_model(
         kicks=kicks,
         fumbles=None,
         fumbles_lost=None,
+        field_goals=None,
     )
+
+
+@MEMORY.cache
+def _cached_create_afl_afltables_player_model(
+    player_url: str, jersey: str, kicks: int | None
+) -> PlayerModel:
+    return _create_afl_afltables_player_model(player_url, jersey, kicks)
+
+
+def create_afl_afltables_player_model(
+    player_url: str,
+    jersey: str,
+    kicks: int | None,
+    dt: datetime.datetime,
+    session: requests_cache.CachedSession,
+) -> PlayerModel:
+    """Create a player model from AFL Tables."""
+    if (
+        not pytest_is_running.is_running()
+        and dt < datetime.datetime.now() - datetime.timedelta(days=7)
+    ):
+        return _cached_create_afl_afltables_player_model(player_url, jersey, kicks)  # pyright: ignore
+    with session.cache_disabled():
+        return _create_afl_afltables_player_model(player_url, jersey, kicks)

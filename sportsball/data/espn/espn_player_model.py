@@ -1,18 +1,18 @@
 """ESPN player model."""
 
+import datetime
 from typing import Any
 
-import requests
+import pytest_is_running
+import requests_cache
 
 from ...cache import MEMORY
 from ..player_model import PlayerModel
 
 
-@MEMORY.cache(ignore=["session"])
-def create_espn_player_model(
-    session: requests.Session, player: dict[str, Any]
+def _create_espn_player_model(
+    session: requests_cache.CachedSession, player: dict[str, Any]
 ) -> PlayerModel:
-    """Create a player model based off ESPN."""
     identifier = str(player["playerId"])
     jersey = player.get("jersey")
     fumbles = None
@@ -34,4 +34,25 @@ def create_espn_player_model(
         kicks=None,
         fumbles=fumbles,
         fumbles_lost=fumbles_lost,
+        field_goals=None,
     )
+
+
+@MEMORY.cache(ignore=["session"])
+def _cached_create_espn_player_model(
+    session: requests_cache.CachedSession, player: dict[str, Any]
+) -> PlayerModel:
+    return _create_espn_player_model(session, player)
+
+
+def create_espn_player_model(
+    session: requests_cache.CachedSession, player: dict[str, Any], dt: datetime.datetime
+) -> PlayerModel:
+    """Create a player model based off ESPN."""
+    if (
+        not pytest_is_running.is_running()
+        and dt < datetime.datetime.now() - datetime.timedelta(days=7)
+    ):
+        return _cached_create_espn_player_model(session, player)
+    with session.cache_disabled():
+        return _create_espn_player_model(session, player)

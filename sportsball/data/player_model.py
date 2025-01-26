@@ -10,6 +10,7 @@ PLAYER_KICKS_COLUMN: Literal["kicks"] = "kicks"
 PLAYER_IDENTIFIER_COLUMN: Literal["identifier"] = "identifier"
 PLAYER_FUMBLES_COLUMN: Literal["fumbles"] = "fumbles"
 PLAYER_FUMBLES_LOST_COLUMN: Literal["fumbles_lost"] = "fumbles_lost"
+FIELD_GOALS_COLUMN: Literal["field_goals"] = "field_goals"
 
 
 class PlayerModel(BaseModel):
@@ -35,4 +36,9 @@ class PlayerModel(BaseModel):
         ...,
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=PLAYER_FUMBLES_LOST_COLUMN,
+    )
+    field_goals: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=FIELD_GOALS_COLUMN,
     )

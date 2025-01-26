@@ -105,6 +105,7 @@ A representation of a team within a game.
 * **kicks**: The number of kicks a team produced.
 * **news**: News articles about the team a day from the game.
 * **social**: Social media posts from the team a day from the game.
+* **field_goals**: The sum of the field goals made by the team in the game.
 
 #### Player
 
@@ -115,6 +116,7 @@ A representation of a player within a team within a game.
 * **kicks**: The number of kicks the player made in the game.
 * **fumbles**: The number of times the player fumbled the ball in the game.
 * **fumbles_lost**: The number of times the player loses possession of the ball due to a fumble and the opposing team recovers the ball.
+* **field_goals**: The number of field goals the player made in the game.
 
 #### Odds
 

@@ -1,4 +1,4 @@
-"""NCAAB sports reference league model."""
+"""NBA sports reference league model."""
 
 # pylint: disable=line-too-long
 
@@ -9,10 +9,10 @@ from ...sportsreference.sportsreference_league_model import \
     SportsReferenceLeagueModel
 
 
-class NCAABSportsReferenceLeagueModel(SportsReferenceLeagueModel):
-    """NCAAB Sports Reference implementation of the league model."""
+class NBASportsReferenceLeagueModel(SportsReferenceLeagueModel):
+    """NBA Sports Reference implementation of the league model."""
 
     def __init__(self, session: requests_cache.CachedSession) -> None:
         super().__init__(
-            session, League.NCAAB, "https://www.sports-reference.com/cbb/boxscores/"
+            session, League.NBA, "https://www.basketball-reference.com/boxscores/"
         )

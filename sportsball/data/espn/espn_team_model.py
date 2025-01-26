@@ -5,6 +5,7 @@
 import datetime
 from typing import Any
 
+import pytest_is_running
 import requests_cache
 
 from ...cache import MEMORY
@@ -16,8 +17,7 @@ from ..x.x_social_model import create_x_social_model
 from .espn_player_model import create_espn_player_model
 
 
-@MEMORY.cache(ignore=["session"])
-def create_espn_team_model(
+def _create_espn_team_model(
     session: requests_cache.CachedSession,
     team: dict[str, Any],
     roster_dict: dict[str, Any],
@@ -26,7 +26,6 @@ def create_espn_team_model(
     dt: datetime.datetime,
     league: League,
 ) -> TeamModel:
-    """Create team model from ESPN."""
     identifier = team["id"]
     name = team.get("name", team.get("fullName", team.get("displayName")))
     if name is None:
@@ -34,7 +33,7 @@ def create_espn_team_model(
     location = team["location"]
     players = []
     for entity in roster_dict.get("entries", []):
-        player = create_espn_player_model(session, entity)
+        player = create_espn_player_model(session, entity, dt)
         players.append(player)
     points = score_dict["value"]
     return TeamModel(
@@ -49,3 +48,41 @@ def create_espn_team_model(
         social=create_x_social_model(identifier, session, dt),
         field_goals=None,
     )
+
+
+@MEMORY.cache(ignore=["session"])
+def _cached_create_espn_team_model(
+    session: requests_cache.CachedSession,
+    team: dict[str, Any],
+    roster_dict: dict[str, Any],
+    odds: list[OddsModel],
+    score_dict: dict[str, Any],
+    dt: datetime.datetime,
+    league: League,
+) -> TeamModel:
+    return _create_espn_team_model(
+        session, team, roster_dict, odds, score_dict, dt, league
+    )
+
+
+def create_espn_team_model(
+    session: requests_cache.CachedSession,
+    team: dict[str, Any],
+    roster_dict: dict[str, Any],
+    odds: list[OddsModel],
+    score_dict: dict[str, Any],
+    dt: datetime.datetime,
+    league: League,
+) -> TeamModel:
+    """Create team model from ESPN."""
+    if (
+        not pytest_is_running.is_running()
+        and dt < datetime.datetime.now() - datetime.timedelta(days=7)
+    ):
+        return _cached_create_espn_team_model(
+            session, team, roster_dict, odds, score_dict, dt, league
+        )
+    with session.cache_disabled():
+        return _create_espn_team_model(
+            session, team, roster_dict, odds, score_dict, dt, league
+        )
