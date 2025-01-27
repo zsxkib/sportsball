@@ -163,6 +163,7 @@ def _create_sportsreference_game_model(
         season_type=season_type,
         end_dt=None,
         attendance=None,
+        postponed=None,
     )
 
 

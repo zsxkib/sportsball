@@ -5,6 +5,7 @@ import datetime
 import urllib.parse
 from urllib.parse import urlparse
 
+import pytest_is_running
 import requests_cache
 from bs4 import BeautifulSoup, Tag
 from dateutil.parser import parse
@@ -134,8 +135,7 @@ def _find_season_metadata(
     )
 
 
-@MEMORY.cache(ignore=["session"])
-def create_afl_afltables_game_model(
+def _create_afl_afltables_game_model(
     game_number: int,
     session: requests_cache.CachedSession,
     url: str,
@@ -145,7 +145,6 @@ def create_afl_afltables_game_model(
     season_year: int | None,
     season_type: SeasonType | None,
 ) -> GameModel:
-    """Create a game model from AFL Tables."""
     # pylint: disable=too-many-locals
     response = session.get(url)
     response.raise_for_status()
@@ -222,4 +221,67 @@ def create_afl_afltables_game_model(
         league=league,
         year=season_year,
         season_type=season_type,
+        postponed=None,
     )
+
+
+@MEMORY.cache(ignore=["session"])
+def _cached_create_afl_afltables_game_model(
+    game_number: int,
+    session: requests_cache.CachedSession,
+    url: str,
+    last_round_number: int,
+    last_ladder_ranks: dict[str, int] | None,
+    league: League,
+    season_year: int | None,
+    season_type: SeasonType | None,
+) -> GameModel:
+    return _create_afl_afltables_game_model(
+        game_number,
+        session,
+        url,
+        last_round_number,
+        last_ladder_ranks,
+        league,
+        season_year,
+        season_type,
+    )
+
+
+def create_afl_afltables_game_model(
+    game_number: int,
+    session: requests_cache.CachedSession,
+    url: str,
+    last_round_number: int,
+    last_ladder_ranks: dict[str, int] | None,
+    league: League,
+    season_year: int | None,
+    season_type: SeasonType | None,
+    dt: datetime.datetime,
+) -> GameModel:
+    """Create a game model from AFL Tables."""
+    if (
+        not pytest_is_running.is_running()
+        and dt < datetime.datetime.now() - datetime.timedelta(days=7)
+    ):
+        return _cached_create_afl_afltables_game_model(
+            game_number,
+            session,
+            url,
+            last_round_number,
+            last_ladder_ranks,
+            league,
+            season_year,
+            season_type,
+        )
+    with session.cache_disabled():
+        return _create_afl_afltables_game_model(
+            game_number,
+            session,
+            url,
+            last_round_number,
+            last_ladder_ranks,
+            league,
+            season_year,
+            season_type,
+        )

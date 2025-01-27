@@ -8,6 +8,7 @@ from urllib.parse import urlparse
 import requests_cache
 import tqdm
 from bs4 import BeautifulSoup
+from dateutil import parser
 
 from ...game_model import GameModel
 from ...league import League
@@ -45,11 +46,18 @@ class AFLAFLTablesLeagueModel(LeagueModel):
                 if b.get_text() == "Finals":
                     in_finals = True
                     break
+            current_dt = None
+            for td in table.find_all("td"):
+                td_text = td.get_text().strip()
+                if "(" in td_text:
+                    current_dt = parser.parse(td_text.split("(")[0].strip())
             for a in table.find_all("a", href=True):
                 if a.get_text().strip().lower() == "match stats":
                     url = urllib.parse.urljoin(season_url, a.get("href"))
                     if url in urls_duplicates:
                         continue
+                    if current_dt is None:
+                        raise ValueError("current_dt is null.")
                     if not in_finals and season_type == SeasonType.REGULAR:
                         model = create_afl_afltables_game_model(
                             game_number,
@@ -60,6 +68,7 @@ class AFLAFLTablesLeagueModel(LeagueModel):
                             self.league,  # pyright: ignore
                             year,
                             season_type,
+                            current_dt,
                         )
                         model_week = model.week
                         if model_week is None:
@@ -77,6 +86,7 @@ class AFLAFLTablesLeagueModel(LeagueModel):
                             self.league,  # pyright: ignore
                             year,
                             season_type,
+                            current_dt,
                         )
                     game_number += 1
                     urls_duplicates.add(url)

@@ -41,6 +41,7 @@ Python 3.11.6:
 - [func-timeout](https://github.com/kata198/func_timeout)
 - [tenacity](https://github.com/jd/tenacity)
 - [random_user_agent](https://github.com/Luqman-Ud-Din/random_user_agent)
+- [wayback](https://github.com/edgi-govdata-archiving/wayback)
 
 ## Raison D'être :thought_balloon:
 
@@ -90,6 +91,7 @@ A representation of the game within a season.
 * **league**: The league the game belongs to.
 * **year** The year the game was in.
 * **season_type**: The type of the season the game was played in.
+* **postponed**: Whether the game was postponed.
 
 #### Team
 
@@ -179,8 +181,13 @@ Social media posts one day out from the game.
 
 ## Caching
 
-This library uses very aggressive caching due to the large data requirements.
-The initial data load will take some time however after that it will cache the old data for up to 1 year.
+This library uses very aggressive caching due to the large data requirements. If the requests are about a recent game (generally in the last 7 days) the caching is bypassed. The caching is as follows:
+
+1. A joblib disk cache that caches calls to pydantic model creation functions. This changes on every version update to keep the models in sync. This is the fastest cache.
+2. A requests cache backed by sqlite that caches requests for 1 year.
+3. An attempt to find the response is made to the wayback machine, and used if found.
+
+It's very recommended that the user uses proxies defined in the `PROXIES` environment variable. The more proxies the easier it is to collect data.
 
 ## Installation :inbox_tray:
 
@@ -227,6 +234,7 @@ X_API_KEY=APIKEY
 X_API_SECRET_KEY=APISECRETKEY
 X_ACCESS_TOKEN=ACCESSTOKEN
 X_ACCESS_TOKEN_SECRET=ACCESSTOKENSECRET
+PROXIES=CSVPROXIESLIST
 ```
 
 ## License :memo:

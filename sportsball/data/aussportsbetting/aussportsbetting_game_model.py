@@ -3,6 +3,7 @@
 # pylint: disable=too-many-arguments
 import datetime
 
+import pytest_is_running
 import requests_cache
 
 from ...cache import MEMORY
@@ -12,8 +13,7 @@ from .aussportsbetting_team_model import create_aussportsbetting_team_model
 from .aussportsbetting_venue_model import create_aussportsbetting_venue_model
 
 
-@MEMORY.cache(ignore=["session"])
-def create_aussportsbetting_game_model(
+def _create_aussportsbetting_game_model(
     dt: datetime.datetime,
     home_team: str,
     away_team: str,
@@ -25,7 +25,6 @@ def create_aussportsbetting_game_model(
     away_odds: float,
     league: League,
 ) -> GameModel:
-    """Create a game model based off aus sports betting."""
     venue_model = None
     if venue is not None:
         venue_model = create_aussportsbetting_venue_model(venue, session, dt)
@@ -46,4 +45,75 @@ def create_aussportsbetting_game_model(
         league=league,
         year=None,
         season_type=None,
+        postponed=None,
     )
+
+
+@MEMORY.cache(ignore=["session"])
+def _cached_create_aussportsbetting_game_model(
+    dt: datetime.datetime,
+    home_team: str,
+    away_team: str,
+    venue: str | None,
+    session: requests_cache.CachedSession,
+    home_points: float,
+    away_points: float,
+    home_odds: float,
+    away_odds: float,
+    league: League,
+) -> GameModel:
+    return _create_aussportsbetting_game_model(
+        dt,
+        home_team,
+        away_team,
+        venue,
+        session,
+        home_points,
+        away_points,
+        home_odds,
+        away_odds,
+        league,
+    )
+
+
+def create_aussportsbetting_game_model(
+    dt: datetime.datetime,
+    home_team: str,
+    away_team: str,
+    venue: str | None,
+    session: requests_cache.CachedSession,
+    home_points: float,
+    away_points: float,
+    home_odds: float,
+    away_odds: float,
+    league: League,
+) -> GameModel:
+    """Create a game model based off aus sports betting."""
+    if not pytest_is_running.is_running() and dt < datetime.datetime.now().replace(
+        tzinfo=dt.tzinfo
+    ) - datetime.timedelta(days=7):
+        return _cached_create_aussportsbetting_game_model(
+            dt,
+            home_team,
+            away_team,
+            venue,
+            session,
+            home_points,
+            away_points,
+            home_odds,
+            away_odds,
+            league,
+        )
+    with session.cache_disabled():
+        return _create_aussportsbetting_game_model(
+            dt,
+            home_team,
+            away_team,
+            venue,
+            session,
+            home_points,
+            away_points,
+            home_odds,
+            away_odds,
+            league,
+        )

@@ -47,6 +47,12 @@ def _create_sportsdb_game_model(
             league,
         ),
     ]
+    postponed = None
+    if game.get("strPostponed") == "no":
+        postponed = False
+    elif game.get("strPostponed") == "yes":
+        postponed = True
+
     return GameModel(
         dt=dt,
         week=week_number,
@@ -58,6 +64,7 @@ def _create_sportsdb_game_model(
         season_type=season_type,
         end_dt=None,
         attendance=None,
+        postponed=postponed,
     )
 
 

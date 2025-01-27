@@ -1,21 +1,26 @@
 """A session that rotates proxies."""
 
-# pylint: disable=W0223,too-many-boolean-expressions
+# pylint: disable=W0223,too-many-boolean-expressions,protected-access,unused-argument
 import datetime
 import logging
 import os
 import random
+from io import BytesIO
 
 import numpy as np
 import requests
 import requests_cache
 import urllib3
+import wayback  # type: ignore
 from func_timeout import FunctionTimedOut, func_set_timeout  # type: ignore
 from random_user_agent.params import OperatingSystem  # type: ignore
 from random_user_agent.params import SoftwareName
 from random_user_agent.user_agent import UserAgent  # type: ignore
+from requests.cookies import RequestsCookieJar
+from requests.models import Request, Response
 from tenacity import (after_log, before_log, retry, retry_if_exception_type,
                       stop_after_attempt)
+from urllib3.response import HTTPResponse
 
 from .session import DEFAULT_TIMEOUT
 
@@ -33,6 +38,7 @@ class ProxySession(requests_cache.CachedSession):
         self._user_agent_rotator = UserAgent(
             software_names=software_names, operating_systems=operating_systems
         )
+        self._wayback_client = wayback.WaybackClient()
 
     def _suggest_proxy(self) -> str:
         proxies = self._proxies
@@ -107,5 +113,59 @@ class ProxySession(requests_cache.CachedSession):
             self._proxies.append(proxy)
             raise e
 
+    def _wayback_machine_request(
+        self, method, url, *args, **kwargs
+    ) -> requests.Response | None:
+        if method.upper() != "GET":
+            return None
+        for record in self._wayback_client.search(url, fast_latest=True):
+            with self._wayback_client.get_memento(record) as memento:
+                cookies = RequestsCookieJar()
+                response = Response()
+                response.status_code = memento.status_code
+                response._content = memento.content
+                response.url = url
+                response.headers = memento.headers
+                response.cookies = cookies
+                response.raw = HTTPResponse(
+                    body=BytesIO(memento.content),
+                    status=memento.status_code,
+                    headers=memento.headers,
+                    preload_content=False,
+                )
+
+                request = Request(
+                    method=method,
+                    url=url,
+                    headers=kwargs.get("headers"),
+                    cookies=cookies,
+                )
+                prepared_request = request.prepare()
+                prepared_request.prepare_cookies(cookies)
+                response.request = prepared_request
+
+                return response
+        return None
+
     def request(self, method, url, *args, **kwargs):  # pyright: ignore
-        return self._perform_proxy_request(method, url, *args, **kwargs)
+        if not self.settings.disabled:
+            # Check the cache
+            cached_response = self.cache.get_response(url)
+            if cached_response:
+                return cached_response
+            
+            logging.info("Request for %s not cached.", url)
+
+            # Otherwise check the wayback machine
+            response = self._wayback_machine_request(method, url, *args, **kwargs)
+            if response is not None and response.ok:
+                logging.info("Found wayback machine memento for URL: %s", url)
+                self.cache.save_response(response=response)
+                return response
+
+        response = self._perform_proxy_request(method, url, *args, **kwargs)
+
+        if response.url.startswith("https://news.google.com/"):
+            self.cache.save_response(response)
+
+        return response

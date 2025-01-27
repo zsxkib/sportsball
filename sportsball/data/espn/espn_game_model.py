@@ -4,6 +4,7 @@
 import datetime
 from typing import Any, Dict
 
+import pytest_is_running
 import requests_cache
 from dateutil.parser import parse
 
@@ -117,8 +118,7 @@ def _create_teams(
     return teams, attendance, end_dt
 
 
-@MEMORY.cache(ignore=["session"])
-def create_espn_game_model(
+def _create_espn_game_model(
     event: dict[str, Any],
     week: int,
     game_number: int,
@@ -127,7 +127,6 @@ def create_espn_game_model(
     year: int | None,
     season_type: SeasonType | None,
 ) -> GameModel:
-    """Creates an ESPN game model."""
     dt = parse(event["date"])
     venue = _create_venue(event, session, dt)
     if venue is not None:
@@ -144,4 +143,44 @@ def create_espn_game_model(
         league=league,
         year=year,
         season_type=season_type,
+        postponed=None,
     )
+
+
+@MEMORY.cache(ignore=["session"])
+def _cached_create_espn_game_model(
+    event: dict[str, Any],
+    week: int,
+    game_number: int,
+    session: requests_cache.CachedSession,
+    league: League,
+    year: int | None,
+    season_type: SeasonType | None,
+) -> GameModel:
+    return _create_espn_game_model(
+        event, week, game_number, session, league, year, season_type
+    )
+
+
+def create_espn_game_model(
+    event: dict[str, Any],
+    week: int,
+    game_number: int,
+    session: requests_cache.CachedSession,
+    league: League,
+    year: int | None,
+    season_type: SeasonType | None,
+) -> GameModel:
+    """Creates an ESPN game model."""
+    dt = parse(event["date"])
+    if (
+        not pytest_is_running.is_running()
+        and dt < datetime.datetime.now() - datetime.timedelta(days=7)
+    ):
+        return _cached_create_espn_game_model(
+            event, week, game_number, session, league, year, season_type
+        )
+    with session.cache_disabled():
+        return _create_espn_game_model(
+            event, week, game_number, session, league, year, season_type
+        )
