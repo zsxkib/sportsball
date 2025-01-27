@@ -118,33 +118,36 @@ class ProxySession(requests_cache.CachedSession):
     ) -> requests.Response | None:
         if method.upper() != "GET":
             return None
-        for record in self._wayback_client.search(url, fast_latest=True):
-            with self._wayback_client.get_memento(record) as memento:
-                cookies = RequestsCookieJar()
-                response = Response()
-                response.status_code = memento.status_code
-                response._content = memento.content
-                response.url = url
-                response.headers = memento.headers
-                response.cookies = cookies
-                response.raw = HTTPResponse(
-                    body=BytesIO(memento.content),
-                    status=memento.status_code,
-                    headers=memento.headers,
-                    preload_content=False,
-                )
+        try:
+            for record in self._wayback_client.search(url, fast_latest=True):
+                with self._wayback_client.get_memento(record) as memento:
+                    cookies = RequestsCookieJar()
+                    response = Response()
+                    response.status_code = memento.status_code
+                    response._content = memento.content
+                    response.url = url
+                    response.headers = memento.headers
+                    response.cookies = cookies
+                    response.raw = HTTPResponse(
+                        body=BytesIO(memento.content),
+                        status=memento.status_code,
+                        headers=memento.headers,
+                        preload_content=False,
+                    )
 
-                request = Request(
-                    method=method,
-                    url=url,
-                    headers=kwargs.get("headers"),
-                    cookies=cookies,
-                )
-                prepared_request = request.prepare()
-                prepared_request.prepare_cookies(cookies)
-                response.request = prepared_request
+                    request = Request(
+                        method=method,
+                        url=url,
+                        headers=kwargs.get("headers"),
+                        cookies=cookies,
+                    )
+                    prepared_request = request.prepare()
+                    prepared_request.prepare_cookies(cookies)
+                    response.request = prepared_request
 
-                return response
+                    return response
+        except wayback.exceptions.MementoPlaybackError:  # pyright: ignore
+            pass
         return None
 
     def request(self, method, url, *args, **kwargs):  # pyright: ignore
@@ -153,7 +156,7 @@ class ProxySession(requests_cache.CachedSession):
             cached_response = self.cache.get_response(url)
             if cached_response:
                 return cached_response
-            
+
             logging.info("Request for %s not cached.", url)
 
             # Otherwise check the wayback machine

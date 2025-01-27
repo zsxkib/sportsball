@@ -1,6 +1,5 @@
 """Tests for the NBA NBA game model class."""
 import datetime
-import json
 import unittest
 
 import requests_mock
@@ -32,17 +31,23 @@ class TestNBANBAGameModel(unittest.TestCase):
                     "The B's",
                     60.0,
                     "1",
+                    4.0,
+                    30.0,
+                    30.0,
                 ], index=[
                     "SEASON_ID",
                     "GAME_DATE",
                     "TEAM_ID_A",
                     "TEAM_NAME_A",
                     "PTS_A",
-                    "FG_A",
+                    "FGM_A",
                     "TEAM_ID_B",
                     "TEAM_NAME_B",
                     "PTS_B",
                     "GAME_ID",
+                    "FGM_B",
+                    "FGA_A",
+                    "FGA_B",
                 ]),
                 League.NBA,
                 0,

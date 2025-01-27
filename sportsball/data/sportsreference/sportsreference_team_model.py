@@ -27,6 +27,7 @@ def _create_sportsreference_team_model(
     player_urls: set[str],
     points: float,
     fg: dict[str, int],
+    fga: dict[str, int],
 ) -> TeamModel:
     response = session.get(url)
     response.raise_for_status()
@@ -54,7 +55,7 @@ def _create_sportsreference_team_model(
         players=[
             y
             for y in [  # pyright: ignore
-                create_sportsreference_player_model(session, x, dt, fg)
+                create_sportsreference_player_model(session, x, dt, fg, fga)
                 for x in valid_player_urls
             ]
             if y is not None
@@ -77,9 +78,10 @@ def _cached_create_sportsreference_team_model(
     player_urls: set[str],
     points: float,
     fg: dict[str, int],
+    fga: dict[str, int],
 ) -> TeamModel:
     return _create_sportsreference_team_model(
-        session, url, dt, league, player_urls, points, fg
+        session, url, dt, league, player_urls, points, fg, fga
     )
 
 
@@ -91,6 +93,7 @@ def create_sportsreference_team_model(
     player_urls: set[str],
     points: float,
     fg: dict[str, int],
+    fga: dict[str, int],
 ) -> TeamModel:
     """Create a team model from Sports Reference."""
     if (
@@ -98,9 +101,9 @@ def create_sportsreference_team_model(
         and dt < datetime.datetime.now() - datetime.timedelta(days=2)
     ):
         return _cached_create_sportsreference_team_model(
-            session, url, dt, league, player_urls, points, fg
+            session, url, dt, league, player_urls, points, fg, fga
         )
     with session.cache_disabled():
         return _create_sportsreference_team_model(
-            session, url, dt, league, player_urls, points, fg
+            session, url, dt, league, player_urls, points, fg, fga
         )

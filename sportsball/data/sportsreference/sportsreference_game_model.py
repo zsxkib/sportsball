@@ -59,6 +59,7 @@ def _create_sportsreference_game_model(
     handle.seek(0)
     dfs = pd.read_html(handle)
     fg = {}
+    fga = {}
     for df in dfs:
         if df.index.nlevels > 1:
             df.columns = df.columns.get_level_values(1)
@@ -68,6 +69,10 @@ def _create_sportsreference_game_model(
                 fgs = df["FG"].tolist()
                 for idx, player in enumerate(players):
                     fg[player] = fgs[idx]
+            if "FGA" in df.columns.values:
+                fgas = df["FGA"].tolist()
+                for idx, player in enumerate(players):
+                    fga[player] = fgas[idx]
 
     teams: list[TeamModel] = []
     for a in scorebox_div.find_all("a"):
@@ -75,7 +80,14 @@ def _create_sportsreference_game_model(
         if "/schools/" in team_url:
             teams.append(
                 create_sportsreference_team_model(
-                    session, team_url, dt, league, player_urls, scores[len(teams)], fg
+                    session,
+                    team_url,
+                    dt,
+                    league,
+                    player_urls,
+                    scores[len(teams)],
+                    fg,
+                    fga,
                 )
             )
 

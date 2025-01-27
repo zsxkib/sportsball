@@ -15,6 +15,7 @@ TEAM_IDENTIFIER_COLUMN: Literal["identifier"] = "identifier"
 PLAYER_COLUMN_PREFIX: Literal["players"] = "players"
 NAME_COLUMN: Literal["name"] = "name"
 FIELD_GOALS_COLUMN: Literal["field_goals"] = "field_goals"
+FIELD_GOALS_ATTEMPTED_COLUMN: Literal["field_goals_attempted"] = "field_goals_attempted"
 
 
 def _calculate_kicks(data: dict[str, Any]) -> int | None:
@@ -43,6 +44,20 @@ def _calculate_field_goals(data: dict[str, Any]) -> int | None:
     if not found_field_goals:
         return None
     return field_goals
+
+
+def _calculate_field_goals_attempted(data: dict[str, Any]) -> int | None:
+    field_goals_attempted = 0
+    found_field_goals_attempted = False
+    for player in data[PLAYER_COLUMN_PREFIX]:
+        player_field_goals_attempted = player.field_goals_attempted
+        if player_field_goals_attempted is None:
+            continue
+        found_field_goals_attempted = True
+        field_goals_attempted += player_field_goals_attempted
+    if not found_field_goals_attempted:
+        return None
+    return field_goals_attempted
 
 
 class TeamModel(BaseModel):
@@ -75,4 +90,9 @@ class TeamModel(BaseModel):
         default_factory=_calculate_field_goals,
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=FIELD_GOALS_COLUMN,
+    )
+    field_goals_attempted: int | None = Field(
+        default_factory=_calculate_field_goals_attempted,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=FIELD_GOALS_ATTEMPTED_COLUMN,
     )

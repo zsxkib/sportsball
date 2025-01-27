@@ -4,6 +4,8 @@ import http
 import unittest
 from unittest.mock import MagicMock
 
+import wayback.exceptions
+
 from sportsball.proxy_session import ProxySession
 import wayback
 
@@ -45,5 +47,17 @@ class TestProxySession(unittest.TestCase):
         )
         wayback_client.search = MagicMock(return_value=[record])
         wayback_client.get_memento = MagicMock(return_value=memento)
+        response = self.session.get(url)
+        self.assertTrue(response.ok)
+
+    def test_wayback_raises_exception(self):
+        url = "https://www.thing.com"
+
+        def search_exception(*args, **kwargs):
+            raise wayback.exceptions.MementoPlaybackError()
+
+        wayback_client = wayback.WaybackClient()
+        wayback_client.search = search_exception
+        self.session._wayback_client = wayback_client
         response = self.session.get(url)
         self.assertTrue(response.ok)

@@ -35,6 +35,7 @@ def _create_espn_player_model(
         fumbles=fumbles,
         fumbles_lost=fumbles_lost,
         field_goals=None,
+        field_goals_attempted=None,
     )
 
 

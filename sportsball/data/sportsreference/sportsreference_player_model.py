@@ -23,6 +23,7 @@ def _create_sportsreference_player_model(
     session: requests_cache.CachedSession,
     player_url: str,
     fg: dict[str, int],
+    fga: dict[str, int],
 ) -> PlayerModel | None:
     """Create a player model from NCAAB sports reference."""
     player_url = _fix_url(player_url)
@@ -43,6 +44,7 @@ def _create_sportsreference_player_model(
         fumbles=None,
         fumbles_lost=None,
         field_goals=fg.get(name),
+        field_goals_attempted=fga.get(name),
     )
 
 
@@ -51,8 +53,9 @@ def _cached_create_sportsreference_player_model(
     session: requests_cache.CachedSession,
     player_url: str,
     fg: dict[str, int],
+    fga: dict[str, int],
 ) -> PlayerModel | None:
-    return _create_sportsreference_player_model(session, player_url, fg)
+    return _create_sportsreference_player_model(session, player_url, fg, fga)
 
 
 def create_sportsreference_player_model(
@@ -60,12 +63,13 @@ def create_sportsreference_player_model(
     player_url: str,
     dt: datetime.datetime,
     fg: dict[str, int],
+    fga: dict[str, int],
 ) -> PlayerModel | None:
     """Create a player model from sports reference."""
     if (
         not pytest_is_running.is_running()
         and dt < datetime.datetime.now() - datetime.timedelta(days=2)
     ):
-        return _cached_create_sportsreference_player_model(session, player_url, fg)
+        return _cached_create_sportsreference_player_model(session, player_url, fg, fga)
     with session.cache_disabled():
-        return _create_sportsreference_player_model(session, player_url, fg)
+        return _create_sportsreference_player_model(session, player_url, fg, fga)

@@ -28,6 +28,7 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 set(),
                 10.0,
                 {},
+                {},
             )
             self.assertEqual(team_model.identifier, "Villanova Wildcats Men's")
 
@@ -49,6 +50,30 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 {
                     "Eric Dixon": 8,
                 },
+                {},
             )
-            print(team_model.players)
             self.assertEqual(team_model.field_goals, 8)
+
+    def test_field_goals_attempted(self):
+        url = "https://www.sports-reference.com/cbb/schools/villanova/men/2025.html"
+        player_url = "https://www.sports-reference.com/cbb/players/eric-dixon-1.html"
+        with requests_mock.Mocker() as m:
+            with open(os.path.join(self.dir, "2025.html"), "rb") as f:
+                m.get(url, content=f.read())
+            with open(os.path.join(self.dir, "eric-dixon-1.html"), "rb") as f:
+                m.get(player_url, content=f.read())
+            team_model = create_sportsreference_team_model(
+                self.session,
+                url,
+                datetime.datetime(2010, 10, 10, 10, 10, 00),
+                League.NCAAB,
+                set([player_url]),
+                10.0,
+                {
+                    "Eric Dixon": 8,
+                },
+                {
+                    "Eric Dixon": 10
+                },
+            )
+            self.assertEqual(team_model.field_goals_attempted, 10)
