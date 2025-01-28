@@ -29,5 +29,6 @@ class TestAusSportsBettingGameModel(unittest.TestCase):
                 1.0,
                 1.0,
                 League.NBA,
+                True,
             )
             self.assertEqual(game_model.dt, dt)

@@ -6,7 +6,7 @@ from sportsball.data.game_model import GameModel
 from sportsball.data.league import League
 
 
-class TestSocialModel(unittest.TestCase):
+class TestGameModel(unittest.TestCase):
 
     def setUp(self):
         self._game_model = GameModel(
@@ -21,6 +21,7 @@ class TestSocialModel(unittest.TestCase):
             year=None,
             season_type=None,
             postponed=True,
+            play_off=None,
         )
 
     def test_postponed(self):

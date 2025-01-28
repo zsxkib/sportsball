@@ -24,6 +24,7 @@ def _create_aussportsbetting_game_model(
     home_odds: float,
     away_odds: float,
     league: League,
+    play_off: bool,
 ) -> GameModel:
     venue_model = None
     if venue is not None:
@@ -46,6 +47,7 @@ def _create_aussportsbetting_game_model(
         year=None,
         season_type=None,
         postponed=None,
+        play_off=play_off,
     )
 
 
@@ -61,6 +63,7 @@ def _cached_create_aussportsbetting_game_model(
     home_odds: float,
     away_odds: float,
     league: League,
+    play_off: bool,
 ) -> GameModel:
     return _create_aussportsbetting_game_model(
         dt,
@@ -73,6 +76,7 @@ def _cached_create_aussportsbetting_game_model(
         home_odds,
         away_odds,
         league,
+        play_off,
     )
 
 
@@ -87,6 +91,7 @@ def create_aussportsbetting_game_model(
     home_odds: float,
     away_odds: float,
     league: League,
+    play_off: bool,
 ) -> GameModel:
     """Create a game model based off aus sports betting."""
     if not pytest_is_running.is_running() and dt < datetime.datetime.now().replace(
@@ -103,6 +108,7 @@ def create_aussportsbetting_game_model(
             home_odds,
             away_odds,
             league,
+            play_off,
         )
     with session.cache_disabled():
         return _create_aussportsbetting_game_model(
@@ -116,4 +122,5 @@ def create_aussportsbetting_game_model(
             home_odds,
             away_odds,
             league,
+            play_off,
         )

@@ -105,7 +105,12 @@ class ProxySession(requests_cache.CachedSession):
 
         try:
             response = self._perform_request(*args, **kwargs)
-            response.raise_for_status()
+            if not response.url.startswith(
+                "https://news.google.com/"
+            ) and not response.url.startswith(
+                "https://historical-forecast-api.open-meteo.com/"
+            ):
+                response.raise_for_status()
             if not response.from_cache:  # pyright: ignore
                 self._proxies.remove(proxy)
                 self._proxies.insert(0, proxy)

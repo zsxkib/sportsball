@@ -144,6 +144,7 @@ def _create_espn_game_model(
         year=year,
         season_type=season_type,
         postponed=None,
+        play_off=None,
     )
 
 

@@ -222,6 +222,7 @@ def _create_afl_afltables_game_model(
         year=season_year,
         season_type=season_type,
         postponed=None,
+        play_off=None,
     )
 
 

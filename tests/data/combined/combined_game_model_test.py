@@ -32,6 +32,7 @@ class TestCombinedGameModel(unittest.TestCase):
                 year=None,
                 season_type=SeasonType.REGULAR,
                 postponed=True,
+                play_off=None,
             )
             combined_game_model = create_combined_game_model(
                 [game_model],

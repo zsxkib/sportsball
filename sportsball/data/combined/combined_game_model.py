@@ -71,6 +71,7 @@ def create_combined_game_model(
     week = None
     game_number = None
     postponed = None
+    play_off = None
     for game_model in game_models:
         game_model_attendance = game_model.attendance
         if game_model_attendance is not None:
@@ -93,6 +94,9 @@ def create_combined_game_model(
         game_model_postponed = game_model.postponed
         if game_model_postponed is not None:
             postponed = game_model_postponed
+        game_model_play_off = game_model.play_off
+        if game_model_play_off is not None:
+            play_off = game_model_play_off
 
     if full_venue_identity is None and venue_models:
         for venue_model in venue_models:
@@ -112,4 +116,5 @@ def create_combined_game_model(
         year=year,
         season_type=season_type,
         postponed=postponed,
+        play_off=play_off,
     )

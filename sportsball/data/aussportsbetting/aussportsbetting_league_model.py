@@ -57,10 +57,15 @@ class AusSportsBettingLeagueModel(LeagueModel):
         current_cell_idx += 1
         away_points = float(row[current_cell_idx].value)  # type: ignore
         current_cell_idx += 1
+
         if self.league == League.NFL:
-            current_cell_idx += 3
+            current_cell_idx += 1
+        play_off = row[current_cell_idx].value == "Y"
+
+        if self.league == League.NFL:
+            current_cell_idx += 2
         else:
-            current_cell_idx += 5
+            current_cell_idx += 4
         home_odds = float(row[current_cell_idx].value)  # type: ignore
         current_cell_idx += 1
         if self.league == League.NFL:
@@ -78,6 +83,7 @@ class AusSportsBettingLeagueModel(LeagueModel):
             home_odds,
             away_odds,
             self.league,
+            play_off,
         )
 
     @property

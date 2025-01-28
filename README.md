@@ -92,6 +92,7 @@ A representation of the game within a season.
 * **year** The year the game was in.
 * **season_type**: The type of the season the game was played in.
 * **postponed**: Whether the game was postponed.
+* **playoff**: Whether the game was a playoff game.
 
 #### Team
 
