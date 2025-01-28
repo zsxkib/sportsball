@@ -34,7 +34,7 @@ class AFLAFLTablesLeagueModel(LeagueModel):
         filename, _ = os.path.splitext(last_component)
         year = int(filename)
 
-        response = self._session.get(season_url)
+        response = self.session.get(season_url)
         soup = BeautifulSoup(response.text, "html.parser")
         in_finals = False
         game_number = 0
@@ -61,7 +61,7 @@ class AFLAFLTablesLeagueModel(LeagueModel):
                     if not in_finals and season_type == SeasonType.REGULAR:
                         model = create_afl_afltables_game_model(
                             game_number,
-                            self._session,
+                            self.session,
                             url,
                             last_round_number,
                             last_ladder_ranks,
@@ -79,7 +79,7 @@ class AFLAFLTablesLeagueModel(LeagueModel):
                     elif in_finals and season_type == SeasonType.POSTSEASON:
                         yield create_afl_afltables_game_model(
                             game_number,
-                            self._session,
+                            self.session,
                             url,
                             last_round_number,
                             None,

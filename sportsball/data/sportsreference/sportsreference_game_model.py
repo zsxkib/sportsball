@@ -4,6 +4,7 @@
 import datetime
 import io
 import logging
+import time
 import urllib.parse
 
 import pandas as pd
@@ -29,6 +30,8 @@ def _create_sportsreference_game_model(
     # pylint: disable=too-many-branches
     response = session.get(url)
     response.raise_for_status()
+    if not response.from_cache:
+        time.sleep(6.0)
     soup = BeautifulSoup(response.text, "html.parser")
     scorebox_meta_div = soup.find("div", class_="scorebox_meta")
     if not isinstance(scorebox_meta_div, Tag):

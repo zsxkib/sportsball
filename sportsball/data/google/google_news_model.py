@@ -3,7 +3,8 @@
 # pylint: disable=broad-exception-caught
 import datetime
 
-import requests
+import pytest_is_running
+import requests_cache
 from bs4 import BeautifulSoup
 from dateutil import parser
 from pygooglenews import GoogleNews  # type: ignore
@@ -13,14 +14,12 @@ from ..league import League, long_name
 from ..news_model import NewsModel
 
 
-@MEMORY.cache(ignore=["session"])
-def create_google_news_models(
+def _create_google_news_models(
     query: str,
-    session: requests.Session,
+    session: requests_cache.CachedSession,
     dt: datetime.datetime,
     league: League,
 ) -> list[NewsModel]:
-    """Create news models from google."""
     gn = GoogleNews(session=session)
     to_dt = dt - datetime.timedelta(days=1)
     from_dt = to_dt - datetime.timedelta(days=1)
@@ -41,3 +40,32 @@ def create_google_news_models(
         )
     except Exception:
         return []
+
+
+@MEMORY.cache(ignore=["session"])
+def _cached_create_google_news_models(
+    query: str,
+    session: requests_cache.CachedSession,
+    dt: datetime.datetime,
+    league: League,
+) -> list[NewsModel]:
+    return _create_google_news_models(query, session, dt, league)
+
+
+def create_google_news_models(
+    query: str,
+    session: requests_cache.CachedSession,
+    dt: datetime.datetime,
+    league: League,
+) -> list[NewsModel]:
+    """Create news models from google."""
+    if dt > datetime.datetime.now().replace(tzinfo=dt.tzinfo) + datetime.timedelta(
+        days=1
+    ):
+        return []
+    if not pytest_is_running.is_running() and dt < datetime.datetime.now().replace(
+        tzinfo=dt.tzinfo
+    ) - datetime.timedelta(days=3):
+        return _cached_create_google_news_models(query, session, dt, league)
+    with session.cache_disabled():
+        return _create_google_news_models(query, session, dt, league)

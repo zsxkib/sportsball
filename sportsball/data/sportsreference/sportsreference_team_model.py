@@ -3,6 +3,7 @@
 # pylint: disable=too-many-arguments,too-many-locals
 import datetime
 import json
+import time
 import urllib.parse
 
 import extruct  # type: ignore
@@ -31,6 +32,8 @@ def _create_sportsreference_team_model(
 ) -> TeamModel:
     response = session.get(url)
     response.raise_for_status()
+    if not response.from_cache:
+        time.sleep(6.0)
     base_url = get_base_url(response.text, url)
     soup = BeautifulSoup(response.text, "html.parser")
     try:

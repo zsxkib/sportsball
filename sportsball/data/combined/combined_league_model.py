@@ -1,15 +1,22 @@
 """Combined league model."""
 
 import logging
+import multiprocessing
+from multiprocessing import Pool
 from typing import Iterator
 
 import requests_cache
-import tqdm
 
+from ...logger import setup_logger
 from ..game_model import GameModel
 from ..league import League
 from ..league_model import LeagueModel
 from .combined_game_model import create_combined_game_model
+
+
+def _produce_league_games(league_model: LeagueModel) -> list[GameModel]:
+    setup_logger()
+    return list(league_model.games)
 
 
 class CombinedLeagueModel(LeagueModel):
@@ -43,7 +50,12 @@ class CombinedLeagueModel(LeagueModel):
         games: dict[str, list[GameModel]] = {}
         team_identity_map = self.team_identity_map()
         for league_model in self._league_models:
-            for game_model in tqdm.tqdm(league_model.games, desc="Games from league"):
+            league_model.clear_session()
+        with Pool(min(multiprocessing.cpu_count(), len(self._league_models))) as p:
+            game_lists = p.map(_produce_league_games, self._league_models)
+
+        for game_list in game_lists:
+            for game_model in game_list:
                 game_components = [str(game_model.dt.date())]
                 for team in game_model.teams:
                     if team.identifier not in team_identity_map:

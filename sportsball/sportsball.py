@@ -1,6 +1,5 @@
 """The main sportsball class for accessing data."""
 
-import datetime
 from typing import Dict
 from warnings import simplefilter
 
@@ -15,7 +14,7 @@ from .data.nba import NBALeagueModel
 from .data.ncaab import NCAABLeagueModel
 from .data.ncaaf import NCAAFLeagueModel
 from .data.nfl import NFLLeagueModel
-from .proxy_session import ProxySession
+from .proxy_session import create_proxy_session
 
 
 class SportsBall:
@@ -27,10 +26,7 @@ class SportsBall:
     _session: requests_cache.CachedSession
 
     def __init__(self) -> None:
-        self._session = ProxySession(
-            "sportsball",
-            expire_after=datetime.timedelta(days=365),
-        )
+        self._session = create_proxy_session()
         """
         self._session = retry(
             self._session,

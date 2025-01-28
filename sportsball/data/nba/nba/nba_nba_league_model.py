@@ -76,11 +76,9 @@ class NBANBALeagueModel(LeagueModel):
         self,
         all_games: pd.DataFrame,
         seasons: dict[str, _SeasonInfo],
-        from_date: datetime.date,
+        pbar: tqdm.tqdm,
     ) -> Iterator[GameModel]:
-        for _, row in tqdm.tqdm(
-            all_games.iterrows(), desc=f"NBA API Games from {from_date}"
-        ):
+        for _, row in all_games.iterrows():
             season_id = row["SEASON_ID"]
             dt = parse(row["GAME_DATE"])
             season_info = seasons.get(
@@ -91,7 +89,7 @@ class NBANBALeagueModel(LeagueModel):
                 },
             )
             week = int((dt - season_info["start"]).days / 7)
-            yield create_nba_nba_game_model(  # type: ignore
+            game_model = create_nba_nba_game_model(  # type: ignore
                 row,
                 self.league,
                 week,
@@ -100,6 +98,11 @@ class NBANBALeagueModel(LeagueModel):
                 dt,
                 self._league_id,
             )
+            pbar.update(1)
+            pbar.set_description(
+                f"NBA API {game_model.year} - {game_model.season_type} - {game_model.dt}"
+            )
+            yield game_model
             season_info["games"] += 1
             seasons[season_id] = season_info
 
@@ -108,26 +111,27 @@ class NBANBALeagueModel(LeagueModel):
         to_date = datetime.datetime.today().date()
         seasons: dict[str, NBANBALeagueModel._SeasonInfo] = {}
         first_call = False
-        while True:
-            next_date = to_date - relativedelta(years=1)
-            if not first_call:
-                with self.session.cache_disabled():
+        with tqdm.tqdm() as pbar:
+            while True:
+                next_date = to_date - relativedelta(years=1)
+                if not first_call:
+                    with self.session.cache_disabled():
+                        result = leaguegamefinder.LeagueGameFinder(
+                            league_id_nullable=self._league_id,
+                            date_from_nullable=next_date.strftime("%m/%d/%Y"),
+                            date_to_nullable=to_date.strftime("%m/%d/%Y"),
+                        )
+                    first_call = True
+                else:
                     result = leaguegamefinder.LeagueGameFinder(
                         league_id_nullable=self._league_id,
                         date_from_nullable=next_date.strftime("%m/%d/%Y"),
                         date_to_nullable=to_date.strftime("%m/%d/%Y"),
                     )
-                first_call = True
-            else:
-                result = leaguegamefinder.LeagueGameFinder(
-                    league_id_nullable=self._league_id,
-                    date_from_nullable=next_date.strftime("%m/%d/%Y"),
-                    date_to_nullable=to_date.strftime("%m/%d/%Y"),
-                )
 
-            all_games = _combine_team_games(result.get_data_frames()[0])
-            all_games = all_games.sort_values(by="GAME_DATE", ascending=True)
-            if all_games.empty:
-                break
-            yield from self._produce_games(all_games, seasons, next_date)
-            to_date = next_date
+                all_games = _combine_team_games(result.get_data_frames()[0])
+                all_games = all_games.sort_values(by="GAME_DATE", ascending=True)
+                if all_games.empty:
+                    break
+                yield from self._produce_games(all_games, seasons, pbar)
+                to_date = next_date

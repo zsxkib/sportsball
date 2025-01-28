@@ -2,6 +2,7 @@
 
 import datetime
 import http
+import time
 from urllib.parse import unquote
 
 import pytest_is_running
@@ -28,6 +29,8 @@ def _create_sportsreference_player_model(
     """Create a player model from NCAAB sports reference."""
     player_url = _fix_url(player_url)
     response = session.get(player_url, timeout=DEFAULT_TIMEOUT)
+    if not response.from_cache:
+        time.sleep(6.0)
     # Some players can't be accessed on sports reference
     if response.status_code == http.HTTPStatus.FORBIDDEN:
         return None

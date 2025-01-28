@@ -1,13 +1,13 @@
 """The CLI for executing the data harvesting."""
 
-import argparse
 import io
 import logging
 import sys
 
 from . import __VERSION__
-from .data.league import League, league_from_str
-from .loglevel import LogLevel
+from .args import parse_args
+from .data.league import league_from_str
+from .logger import setup_logger
 from .sportsball import SportsBall
 
 _STDOUT_FILE = "-"
@@ -15,39 +15,8 @@ _STDOUT_FILE = "-"
 
 def main() -> None:
     """The main CLI function."""
-    logging.basicConfig()
-    logger = logging.getLogger()
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--league",
-        choices=list(League),
-        help="The league to fetch data for.",
-    )
-    parser.add_argument(
-        "--loglevel",
-        default=LogLevel.INFO,
-        choices=list(LogLevel),
-        help="The loglevel to display logs at..",
-        required=False,
-    )
-    parser.add_argument(
-        "file",
-        default=_STDOUT_FILE,
-        help="The file to write the output to (- if to stdout).",
-    )
-    args = parser.parse_args()
-
-    match args.loglevel:
-        case LogLevel.DEBUG:
-            logger.setLevel(logging.DEBUG)
-        case LogLevel.INFO:
-            logger.setLevel(logging.INFO)
-        case LogLevel.WARN:
-            logger.setLevel(logging.WARN)
-        case LogLevel.ERROR:
-            logger.setLevel(logging.ERROR)
-        case _:
-            raise ValueError(f"Unrecognised loglevel: {args.loglevel}")
+    args = parse_args()
+    setup_logger()
 
     logging.info("--- sportsball %s ---", __VERSION__)
 

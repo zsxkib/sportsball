@@ -1,11 +1,12 @@
 """A session that rotates proxies."""
 
-# pylint: disable=W0223,too-many-boolean-expressions,protected-access,unused-argument
+# pylint: disable=W0223,too-many-boolean-expressions,protected-access,unused-argument,too-many-arguments
 import datetime
 import logging
 import os
 import random
 from io import BytesIO
+from typing import Any, MutableMapping, Optional
 
 import numpy as np
 import requests
@@ -16,10 +17,12 @@ from func_timeout import FunctionTimedOut, func_set_timeout  # type: ignore
 from random_user_agent.params import OperatingSystem  # type: ignore
 from random_user_agent.params import SoftwareName
 from random_user_agent.user_agent import UserAgent  # type: ignore
+from requests import PreparedRequest
 from requests.cookies import RequestsCookieJar
 from requests.models import Request, Response
+from requests_cache import AnyResponse, ExpirationTime
 from tenacity import (after_log, before_log, retry, retry_if_exception_type,
-                      stop_after_attempt)
+                      stop_after_attempt, wait_random_exponential)
 from urllib3.response import HTTPResponse
 
 from .session import DEFAULT_TIMEOUT
@@ -114,7 +117,7 @@ class ProxySession(requests_cache.CachedSession):
             raise e
 
     def _wayback_machine_request(
-        self, method, url, *args, **kwargs
+        self, method, url, **kwargs
     ) -> requests.Response | None:
         if method.upper() != "GET":
             return None
@@ -150,25 +153,114 @@ class ProxySession(requests_cache.CachedSession):
             pass
         return None
 
-    def request(self, method, url, *args, **kwargs):  # pyright: ignore
+    @func_set_timeout(DEFAULT_TIMEOUT)
+    def _perform_timeout_send(self, request: requests.PreparedRequest, **kwargs) -> Any:
+        key = self.cache.create_key(request)
+
         if not self.settings.disabled:
             # Check the cache
-            cached_response = self.cache.get_response(url)
+            cached_response = self.cache.get_response(key)
             if cached_response:
                 return cached_response
 
-            logging.info("Request for %s not cached.", url)
+            logging.info("Request for %s not cached.", request.url)
 
             # Otherwise check the wayback machine
-            response = self._wayback_machine_request(method, url, *args, **kwargs)
+            response = self._wayback_machine_request(
+                request.method, request.url, headers=request.headers
+            )
             if response is not None and response.ok:
-                logging.info("Found wayback machine memento for URL: %s", url)
-                self.cache.save_response(response=response)
+                logging.info("Found wayback machine memento for URL: %s", request.url)
+                self.cache.save_response(response=response, cache_key=key)
                 return response
 
-        response = self._perform_proxy_request(method, url, *args, **kwargs)
-
-        if response.url.startswith("https://news.google.com/"):
-            self.cache.save_response(response)
-
+        response = super().send(request, **kwargs)
+        if response.url.startswith(
+            "https://news.google.com/"
+        ) or response.url.startswith("https://historical-forecast-api.open-meteo.com/"):
+            self.cache.save_response(response, cache_key=key)
+        else:
+            response.raise_for_status()
         return response
+
+    @retry(
+        stop=stop_after_attempt(50),
+        after=after_log(logging.getLogger(__name__), logging.DEBUG),
+        before=before_log(logging.getLogger(__name__), logging.DEBUG),
+        wait=wait_random_exponential(multiplier=1, max=60),
+        retry=retry_if_exception_type(FunctionTimedOut)
+        | retry_if_exception_type(requests.exceptions.ProxyError)
+        | retry_if_exception_type(requests.exceptions.ConnectionError)
+        | retry_if_exception_type(requests.exceptions.ChunkedEncodingError)
+        | retry_if_exception_type(ValueError)
+        | retry_if_exception_type(requests.exceptions.HTTPError)
+        | retry_if_exception_type(requests.exceptions.ReadTimeout),
+    )
+    def _perform_retry_send(self, request: requests.PreparedRequest, **kwargs) -> Any:
+        return self._perform_timeout_send(request, **kwargs)
+
+    def send(
+        self,
+        request: PreparedRequest,
+        expire_after: ExpirationTime = None,  # pyright: ignore
+        only_if_cached: bool = False,
+        refresh: bool = False,
+        force_refresh: bool = False,
+        **kwargs,
+    ) -> AnyResponse:
+        return self._perform_retry_send(
+            request,
+            expire_after=expire_after,
+            only_if_cached=only_if_cached,
+            refresh=refresh,
+            force_refresh=force_refresh,
+            **kwargs,
+        )
+
+    def request(  # type: ignore
+        self,
+        method: str,
+        url: str,
+        *args,
+        headers: Optional[MutableMapping[str, str]] = None,
+        expire_after: ExpirationTime = None,  # pyright: ignore
+        only_if_cached: bool = False,
+        refresh: bool = False,
+        force_refresh: bool = False,
+        **kwargs,
+    ) -> AnyResponse:
+        if "timeout" not in kwargs:
+            kwargs["timeout"] = DEFAULT_TIMEOUT
+        if headers is None:
+            headers = {}
+        if "User-Agent" not in headers:
+            headers["User-Agent"] = self._user_agent_rotator.get_random_user_agent()
+        proxy = self._suggest_proxy()
+        if proxy:
+            logging.debug("Using proxy: %s", proxy)
+            kwargs.setdefault(
+                "proxies",
+                {
+                    "http": proxy,
+                    "https": proxy,
+                },
+            )
+        return super().request(
+            method,
+            url,
+            *args,
+            headers=headers,
+            expire_after=expire_after,
+            only_if_cached=only_if_cached,
+            refresh=refresh,
+            force_refresh=force_refresh,
+            **kwargs,
+        )
+
+
+def create_proxy_session() -> ProxySession:
+    """Creates a standard proxy session."""
+    return ProxySession(
+        "sportsball",
+        expire_after=datetime.timedelta(days=365),
+    )

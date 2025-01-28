@@ -2,8 +2,9 @@
 
 # pylint: disable=line-too-long
 import datetime
+import time
 import urllib.parse
-from typing import Iterator
+from typing import Any, Iterator
 from urllib.parse import parse_qs, urlparse
 
 import requests_cache
@@ -28,12 +29,29 @@ class SportsReferenceLeagueModel(LeagueModel):
     @property
     def games(self) -> Iterator[GameModel]:
         # pylint: disable=too-many-locals
+        def _produce_games(
+            div: Any, pbar: tqdm.tqdm, dt: datetime.datetime
+        ) -> Iterator[GameModel]:
+            for td in div.find_all("td", class_="gamelink"):
+                for a in td.find_all("a"):
+                    pbar.update(1)
+                    game_url = urllib.parse.urljoin(url, a.get("href"))
+                    game_model = create_sportsreference_game_model(
+                        self.session, game_url, self.league, dt
+                    )
+                    pbar.set_description(
+                        f"SportsReference {game_model.year} - {game_model.season_type} - {game_model.dt}"
+                    )
+                    yield game_model
+
         final_path: str | None = ""
         with tqdm.tqdm() as pbar:
             while final_path is not None:
                 url = self._base_url + final_path
                 if final_path:
                     response = self.session.get(url)
+                    if not response.from_cache:
+                        time.sleep(6.0)
                 else:
                     with self.session.cache_disabled():
                         response = self.session.get(url)
@@ -48,18 +66,11 @@ class SportsReferenceLeagueModel(LeagueModel):
                         int(query["day"][0]),
                     )
                 soup = BeautifulSoup(response.text, "html.parser")
-                for div in soup.find_all("div", class_="gender-m"):
-                    for td in div.find_all("td", class_="gamelink"):
-                        for a in td.find_all("a"):
-                            pbar.update(1)
-                            game_url = urllib.parse.urljoin(url, a.get("href"))
-                            game_model = create_sportsreference_game_model(
-                                self.session, game_url, self.league, dt
-                            )
-                            pbar.set_description(
-                                f"SportsReference {game_model.year} - {game_model.season_type} - {game_model.dt}"
-                            )
-                            yield game_model
+                if self.league == League.NCAAB:
+                    for div in soup.find_all("div", class_="gender-m"):
+                        yield from _produce_games(div, pbar, dt)
+                else:
+                    yield from _produce_games(soup, pbar, dt)
                 prev_a = soup.find("a", class_="prev")
                 if isinstance(prev_a, Tag):
                     href = prev_a.get("href")

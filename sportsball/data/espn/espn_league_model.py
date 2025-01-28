@@ -1,8 +1,10 @@
 """ESPN league model."""
 
+# pylint: disable=too-many-locals,too-many-arguments
 from typing import Any, Iterator
 
 import requests_cache
+import tqdm
 
 from ..game_model import GameModel
 from ..league import League
@@ -33,13 +35,25 @@ class ESPNLeagueModel(LeagueModel):
         self._start_url = start_url
 
     def _produce_games(
-        self, week: dict[str, Any], week_count: int, season_type_json: dict[str, Any]
+        self,
+        week: dict[str, Any],
+        week_count: int,
+        season_type_json: dict[str, Any],
+        pbar: tqdm.tqdm,
+        cache_disabled: bool,
     ) -> Iterator[GameModel]:
-        def produce_game(event_item: dict[str, Any], game_number: int) -> GameModel:
-            event_response = self.session.get(event_item["$ref"])
+        def produce_game(
+            event_item: dict[str, Any],
+            game_number: int,
+        ) -> GameModel:
+            if cache_disabled:
+                with self.session.cache_disabled():
+                    event_response = self.session.get(event_item["$ref"])
+            else:
+                event_response = self.session.get(event_item["$ref"])
             event_response.raise_for_status()
             event = event_response.json()
-            return create_espn_game_model(
+            game_model = create_espn_game_model(
                 event,
                 week_count,
                 game_number,
@@ -48,6 +62,11 @@ class ESPNLeagueModel(LeagueModel):
                 season_type_json["year"],
                 _season_type_from_name(season_type_json["name"]),
             )
+            pbar.update(1)
+            pbar.set_description(
+                f"ESPN {game_model.year} - {game_model.season_type} - {game_model.dt}"
+            )
+            return game_model
 
         events_page = 1
         events_count = 0
@@ -80,21 +99,37 @@ class ESPNLeagueModel(LeagueModel):
             qbr_page += 1
 
     def _produce_week_games(
-        self, season_type_json: dict[str, Any], page: int
+        self,
+        season_type_json: dict[str, Any],
+        page: int,
+        pbar: tqdm.tqdm,
+        cache_disabled: bool,
     ) -> Iterator[GameModel]:
         game_page = 1
         week_count = 0
         while True:
-            weeks_response = self.session.get(
-                season_type_json["weeks"]["$ref"] + f"&page={page}"
-            )
+            if cache_disabled:
+                with self.session.cache_disabled():
+                    weeks_response = self.session.get(
+                        season_type_json["weeks"]["$ref"] + f"&page={page}"
+                    )
+            else:
+                weeks_response = self.session.get(
+                    season_type_json["weeks"]["$ref"] + f"&page={page}"
+                )
             weeks_response.raise_for_status()
             weeks = weeks_response.json()
             for item in weeks["items"]:
-                week_response = self.session.get(item["$ref"])
+                if cache_disabled:
+                    with self.session.cache_disabled():
+                        week_response = self.session.get(item["$ref"])
+                else:
+                    week_response = self.session.get(item["$ref"])
                 week_response.raise_for_status()
                 week = week_response.json()
-                yield from self._produce_games(week, week_count, season_type_json)
+                yield from self._produce_games(
+                    week, week_count, season_type_json, pbar, cache_disabled
+                )
                 week_count += 1
             if game_page >= weeks["pageCount"]:
                 break
@@ -103,22 +138,29 @@ class ESPNLeagueModel(LeagueModel):
     @property
     def games(self) -> Iterator[GameModel]:
         page = 1
-        while True:
-            response = self.session.get(self._start_url + f"&page={page}")
-            response.raise_for_status()
-            seasons = response.json()
-            for item in seasons.get("items", []):
-                season_response = self.session.get(item["$ref"])
-                season_response.raise_for_status()
-                season_json = season_response.json()
+        with tqdm.tqdm() as pbar:
+            while True:
+                if page == 1:
+                    with self.session.cache_disabled():
+                        response = self.session.get(self._start_url + f"&page={page}")
+                else:
+                    response = self.session.get(self._start_url + f"&page={page}")
+                response.raise_for_status()
+                seasons = response.json()
+                for item in seasons.get("items", []):
+                    season_response = self.session.get(item["$ref"])
+                    season_response.raise_for_status()
+                    season_json = season_response.json()
 
-                for season_item in season_json["types"]["items"]:
-                    season_type_response = self.session.get(season_item["$ref"])
-                    season_type_response.raise_for_status()
-                    season_type_json = season_type_response.json()
+                    for season_item in season_json["types"]["items"]:
+                        season_type_response = self.session.get(season_item["$ref"])
+                        season_type_response.raise_for_status()
+                        season_type_json = season_type_response.json()
 
-                    yield from self._produce_week_games(season_type_json, page)
+                        yield from self._produce_week_games(
+                            season_type_json, page, pbar, page == 1
+                        )
 
-            if page >= seasons.get("pageCount", 0):
-                break
-            page += 1
+                if page >= seasons.get("pageCount", 0):
+                    break
+                page += 1
