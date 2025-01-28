@@ -1,5 +1,6 @@
 """Combined player model."""
 
+# pylint: disable=too-many-locals
 from ..player_model import PlayerModel
 
 
@@ -13,6 +14,7 @@ def create_combined_player_model(
     fumbles_lost = None
     field_goals = None
     field_goals_attempted = None
+    offensive_rebounds = None
     for player_model in player_models:
         player_model_jersey = player_model.jersey
         if player_model_jersey is not None:
@@ -32,6 +34,9 @@ def create_combined_player_model(
         player_model_field_goals_attempted = player_model.field_goals_attempted
         if player_model_field_goals_attempted is not None:
             field_goals_attempted = player_model_field_goals_attempted
+        player_model_offensive_rebounds = player_model.offensive_rebounds
+        if player_model_offensive_rebounds is not None:
+            offensive_rebounds = player_model_offensive_rebounds
     return PlayerModel(
         identifier=identifier,
         jersey=jersey,
@@ -40,4 +45,5 @@ def create_combined_player_model(
         fumbles_lost=fumbles_lost,
         field_goals=field_goals,
         field_goals_attempted=field_goals_attempted,
+        offensive_rebounds=offensive_rebounds,
     )

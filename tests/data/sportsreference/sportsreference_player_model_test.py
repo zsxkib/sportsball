@@ -8,7 +8,7 @@ import requests_cache
 from sportsball.data.sportsreference.sportsreference_player_model import create_sportsreference_player_model
 
 
-class TestSportsReferenceTeamModel(unittest.TestCase):
+class TestSportsReferencePlayerModel(unittest.TestCase):
 
     def setUp(self):
         self.session = requests_cache.CachedSession(backend="memory")
@@ -24,6 +24,7 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 url,
                 datetime.datetime(2010, 10, 10, 10, 10, 0),
                 {"Scottie Barnes": 8},
+                {},
                 {},
             )
             self.assertEqual(player_model.field_goals, 8)

@@ -109,6 +109,7 @@ A representation of a team within a game.
 * **social**: Social media posts from the team a day from the game.
 * **field_goals**: The sum of the field goals made by the team in the game.
 * **field_goals_attempted**: The sum of the field goals attempted by the team in the game.
+* **offensive_rebounds**: The number of rebounds during offense by the team in the game.
 
 #### Player
 
@@ -121,6 +122,7 @@ A representation of a player within a team within a game.
 * **fumbles_lost**: The number of times the player loses possession of the ball due to a fumble and the opposing team recovers the ball.
 * **field_goals**: The number of field goals the player made in the game.
 * **field_goals_attempted**: The number of field goal attempts the player made in the game.
+* **offensive_rebounds**: The number of rebounds during offense by the player made in the game.
 
 #### Odds
 

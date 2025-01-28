@@ -1,6 +1,6 @@
 """Sports Reference game model."""
 
-# pylint: disable=too-many-locals,too-many-statements
+# pylint: disable=too-many-locals,too-many-statements,unused-argument
 import datetime
 import io
 import logging
@@ -63,6 +63,7 @@ def _create_sportsreference_game_model(
     dfs = pd.read_html(handle)
     fg = {}
     fga = {}
+    offensive_rebounds = {}
     for df in dfs:
         if df.index.nlevels > 1:
             df.columns = df.columns.get_level_values(1)
@@ -76,6 +77,10 @@ def _create_sportsreference_game_model(
                 fgas = df["FGA"].tolist()
                 for idx, player in enumerate(players):
                     fga[player] = fgas[idx]
+            if "OREB" in df.columns.values:
+                orebs = df["OREB"].tolist()
+                for idx, player in enumerate(players):
+                    offensive_rebounds[player] = orebs[idx]
 
     teams: list[TeamModel] = []
     for a in scorebox_div.find_all("a"):
@@ -91,6 +96,7 @@ def _create_sportsreference_game_model(
                     scores[len(teams)],
                     fg,
                     fga,
+                    offensive_rebounds,
                 )
             )
 
@@ -198,10 +204,7 @@ def create_sportsreference_game_model(
     dt: datetime.datetime,
 ) -> GameModel:
     """Create a sports reference game model."""
-    if (
-        not pytest_is_running.is_running()
-        and dt < datetime.datetime.now() - datetime.timedelta(days=2)
-    ):
+    if not pytest_is_running.is_running():
         return _cached_create_sportsreference_game_model(session, url, league)
     with session.cache_disabled():
         return _create_sportsreference_game_model(session, url, league)

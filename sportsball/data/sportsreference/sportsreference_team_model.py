@@ -3,7 +3,6 @@
 # pylint: disable=too-many-arguments,too-many-locals
 import datetime
 import json
-import time
 import urllib.parse
 
 import extruct  # type: ignore
@@ -29,11 +28,10 @@ def _create_sportsreference_team_model(
     points: float,
     fg: dict[str, int],
     fga: dict[str, int],
+    offensive_rebounds: dict[str, int],
 ) -> TeamModel:
     response = session.get(url)
     response.raise_for_status()
-    if not response.from_cache:
-        time.sleep(6.0)
     base_url = get_base_url(response.text, url)
     soup = BeautifulSoup(response.text, "html.parser")
     try:
@@ -58,7 +56,9 @@ def _create_sportsreference_team_model(
         players=[
             y
             for y in [  # pyright: ignore
-                create_sportsreference_player_model(session, x, dt, fg, fga)
+                create_sportsreference_player_model(
+                    session, x, dt, fg, fga, offensive_rebounds
+                )
                 for x in valid_player_urls
             ]
             if y is not None
@@ -82,9 +82,10 @@ def _cached_create_sportsreference_team_model(
     points: float,
     fg: dict[str, int],
     fga: dict[str, int],
+    offensive_rebounds: dict[str, int],
 ) -> TeamModel:
     return _create_sportsreference_team_model(
-        session, url, dt, league, player_urls, points, fg, fga
+        session, url, dt, league, player_urls, points, fg, fga, offensive_rebounds
     )
 
 
@@ -97,16 +98,14 @@ def create_sportsreference_team_model(
     points: float,
     fg: dict[str, int],
     fga: dict[str, int],
+    offensive_rebounds: dict[str, int],
 ) -> TeamModel:
     """Create a team model from Sports Reference."""
-    if (
-        not pytest_is_running.is_running()
-        and dt < datetime.datetime.now() - datetime.timedelta(days=2)
-    ):
+    if not pytest_is_running.is_running():
         return _cached_create_sportsreference_team_model(
-            session, url, dt, league, player_urls, points, fg, fga
+            session, url, dt, league, player_urls, points, fg, fga, offensive_rebounds
         )
     with session.cache_disabled():
         return _create_sportsreference_team_model(
-            session, url, dt, league, player_urls, points, fg, fga
+            session, url, dt, league, player_urls, points, fg, fga, offensive_rebounds
         )

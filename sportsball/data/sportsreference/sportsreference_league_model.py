@@ -2,7 +2,6 @@
 
 # pylint: disable=line-too-long
 import datetime
-import time
 import urllib.parse
 from typing import Any, Iterator
 from urllib.parse import parse_qs, urlparse
@@ -50,8 +49,6 @@ class SportsReferenceLeagueModel(LeagueModel):
                 url = self._base_url + final_path
                 if final_path:
                     response = self.session.get(url)
-                    if not response.from_cache:
-                        time.sleep(6.0)
                 else:
                     with self.session.cache_disabled():
                         response = self.session.get(url)

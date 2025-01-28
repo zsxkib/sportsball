@@ -33,6 +33,7 @@ class TestNBANBATeamModel(unittest.TestCase):
                     "22023",
                     4.0,
                     10.0,
+                    10.0,
                 ], index=[
                     "TEAM_ID_B",
                     "TEAM_NAME_B",
@@ -41,6 +42,7 @@ class TestNBANBATeamModel(unittest.TestCase):
                     "SEASON_ID",
                     "FGM_B",
                     "FGA_B",
+                    "OREB_B",
                 ]),
                 False,
                 self.session,

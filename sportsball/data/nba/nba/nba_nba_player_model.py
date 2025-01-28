@@ -1,5 +1,6 @@
 """NBA API player model."""
 
+# pylint: disable=duplicate-code
 import datetime
 import json
 
@@ -35,6 +36,7 @@ def _create_nba_nba_player_model(
         fumbles_lost=None,
         field_goals=None,
         field_goals_attempted=None,
+        offensive_rebounds=None,
     )
 
 

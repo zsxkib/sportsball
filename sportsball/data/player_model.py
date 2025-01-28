@@ -12,6 +12,7 @@ PLAYER_FUMBLES_COLUMN: Literal["fumbles"] = "fumbles"
 PLAYER_FUMBLES_LOST_COLUMN: Literal["fumbles_lost"] = "fumbles_lost"
 FIELD_GOALS_COLUMN: Literal["field_goals"] = "field_goals"
 FIELD_GOALS_ATTEMPTED_COLUMN: Literal["field_goals_attempted"] = "field_goals_attempted"
+OFFENSIVE_REBOUNDS_COLUMN: Literal["offensive_rebounds"] = "offensive_rebounds"
 
 
 class PlayerModel(BaseModel):
@@ -47,4 +48,9 @@ class PlayerModel(BaseModel):
         ...,
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=FIELD_GOALS_ATTEMPTED_COLUMN,
+    )
+    offensive_rebounds: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=OFFENSIVE_REBOUNDS_COLUMN,
     )

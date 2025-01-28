@@ -47,6 +47,7 @@ def _create_nba_nba_team_model(
         social=create_x_social_model(str(identifier), session, dt),
         field_goals=row["FGM" + suffix],
         field_goals_attempted=row["FGA" + suffix],
+        offensive_rebounds=row["OREB" + suffix],
     )
 
 

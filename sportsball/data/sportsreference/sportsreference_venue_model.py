@@ -36,10 +36,7 @@ def create_sportsreference_venue_model(
     venue_name: str, session: requests_cache.CachedSession, dt: datetime.datetime
 ) -> VenueModel | None:
     """Create a sports reference venue model."""
-    if (
-        not pytest_is_running.is_running()
-        and dt < datetime.datetime.now() - datetime.timedelta(days=2)
-    ):
+    if not pytest_is_running.is_running():
         return _cached_create_sportsreference_venue_model(venue_name, session, dt)
     with session.cache_disabled():
         return _create_sportsreference_venue_model(venue_name, session, dt)

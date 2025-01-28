@@ -1,8 +1,8 @@
 """Sports reference player model."""
 
+# pylint: disable=too-many-arguments,unused-argument
 import datetime
 import http
-import time
 from urllib.parse import unquote
 
 import pytest_is_running
@@ -25,12 +25,11 @@ def _create_sportsreference_player_model(
     player_url: str,
     fg: dict[str, int],
     fga: dict[str, int],
+    offensive_rebounds: dict[str, int],
 ) -> PlayerModel | None:
     """Create a player model from NCAAB sports reference."""
     player_url = _fix_url(player_url)
     response = session.get(player_url, timeout=DEFAULT_TIMEOUT)
-    if not response.from_cache:
-        time.sleep(6.0)
     # Some players can't be accessed on sports reference
     if response.status_code == http.HTTPStatus.FORBIDDEN:
         return None
@@ -48,6 +47,7 @@ def _create_sportsreference_player_model(
         fumbles_lost=None,
         field_goals=fg.get(name),
         field_goals_attempted=fga.get(name),
+        offensive_rebounds=offensive_rebounds.get(name),
     )
 
 
@@ -57,8 +57,11 @@ def _cached_create_sportsreference_player_model(
     player_url: str,
     fg: dict[str, int],
     fga: dict[str, int],
+    offensive_rebounds: dict[str, int],
 ) -> PlayerModel | None:
-    return _create_sportsreference_player_model(session, player_url, fg, fga)
+    return _create_sportsreference_player_model(
+        session, player_url, fg, fga, offensive_rebounds
+    )
 
 
 def create_sportsreference_player_model(
@@ -67,12 +70,14 @@ def create_sportsreference_player_model(
     dt: datetime.datetime,
     fg: dict[str, int],
     fga: dict[str, int],
+    offensive_rebounds: dict[str, int],
 ) -> PlayerModel | None:
     """Create a player model from sports reference."""
-    if (
-        not pytest_is_running.is_running()
-        and dt < datetime.datetime.now() - datetime.timedelta(days=2)
-    ):
-        return _cached_create_sportsreference_player_model(session, player_url, fg, fga)
+    if not pytest_is_running.is_running():
+        return _cached_create_sportsreference_player_model(
+            session, player_url, fg, fga, offensive_rebounds
+        )
     with session.cache_disabled():
-        return _create_sportsreference_player_model(session, player_url, fg, fga)
+        return _create_sportsreference_player_model(
+            session, player_url, fg, fga, offensive_rebounds
+        )
