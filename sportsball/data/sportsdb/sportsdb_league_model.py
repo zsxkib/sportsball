@@ -103,18 +103,19 @@ class SportsDBLeagueModel(LeagueModel):
                             except ValueError:
                                 pass
                         case SeasonType.REGULAR:
-                            try:
-                                for count, round_str in enumerate(range(1, 125)):
-                                    yield from self._produce_games(
-                                        str(round_str),
-                                        count,
-                                        self._league_id,
-                                        season_year,
-                                        season_type,
-                                        pbar,
-                                    )
-                            except ValueError:
-                                pass
+                            if self.league != League.NBA:
+                                try:
+                                    for count, round_str in enumerate(range(1, 125)):
+                                        yield from self._produce_games(
+                                            str(round_str),
+                                            count,
+                                            self._league_id,
+                                            season_year,
+                                            season_type,
+                                            pbar,
+                                        )
+                                except ValueError:
+                                    pass
                         case SeasonType.POSTSEASON:
                             for count, round_str in enumerate(
                                 [125, 150, 160, 170, 180, 200]

@@ -16,6 +16,7 @@ class TestPlayerModel(unittest.TestCase):
             field_goals=None,
             field_goals_attempted=10,
             offensive_rebounds=None,
+            assists=None,
         )
 
     def test_field_goals_attempted(self):

@@ -29,6 +29,7 @@ def _create_sportsreference_team_model(
     fg: dict[str, int],
     fga: dict[str, int],
     offensive_rebounds: dict[str, int],
+    assists: dict[str, int],
 ) -> TeamModel:
     response = session.get(url)
     response.raise_for_status()
@@ -40,7 +41,7 @@ def _create_sportsreference_team_model(
     except (json.decoder.JSONDecodeError, IndexError) as exc:
         h1 = soup.find("h1")
         if not isinstance(h1, Tag):
-            raise ValueError("h1 is null.") from exc
+            raise ValueError(f"h1 is null for {url}.") from exc
         span = h1.find_all("span")
         name = span[1].get_text().strip()
 
@@ -57,7 +58,7 @@ def _create_sportsreference_team_model(
             y
             for y in [  # pyright: ignore
                 create_sportsreference_player_model(
-                    session, x, dt, fg, fga, offensive_rebounds
+                    session, x, dt, fg, fga, offensive_rebounds, assists
                 )
                 for x in valid_player_urls
             ]
@@ -83,9 +84,19 @@ def _cached_create_sportsreference_team_model(
     fg: dict[str, int],
     fga: dict[str, int],
     offensive_rebounds: dict[str, int],
+    assists: dict[str, int],
 ) -> TeamModel:
     return _create_sportsreference_team_model(
-        session, url, dt, league, player_urls, points, fg, fga, offensive_rebounds
+        session,
+        url,
+        dt,
+        league,
+        player_urls,
+        points,
+        fg,
+        fga,
+        offensive_rebounds,
+        assists,
     )
 
 
@@ -99,13 +110,32 @@ def create_sportsreference_team_model(
     fg: dict[str, int],
     fga: dict[str, int],
     offensive_rebounds: dict[str, int],
+    assists: dict[str, int],
 ) -> TeamModel:
     """Create a team model from Sports Reference."""
     if not pytest_is_running.is_running():
         return _cached_create_sportsreference_team_model(
-            session, url, dt, league, player_urls, points, fg, fga, offensive_rebounds
+            session,
+            url,
+            dt,
+            league,
+            player_urls,
+            points,
+            fg,
+            fga,
+            offensive_rebounds,
+            assists,
         )
     with session.cache_disabled():
         return _create_sportsreference_team_model(
-            session, url, dt, league, player_urls, points, fg, fga, offensive_rebounds
+            session,
+            url,
+            dt,
+            league,
+            player_urls,
+            points,
+            fg,
+            fga,
+            offensive_rebounds,
+            assists,
         )

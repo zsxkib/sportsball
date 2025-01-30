@@ -37,6 +37,7 @@ def _create_espn_player_model(
         field_goals=None,
         field_goals_attempted=None,
         offensive_rebounds=None,
+        assists=None,
     )
 
 

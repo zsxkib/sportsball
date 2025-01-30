@@ -27,6 +27,20 @@ from urllib3.response import HTTPResponse
 
 from .session import DEFAULT_TIMEOUT
 
+FAST_FAIL_DOMAINS = [
+    "https://news.google.com/",
+    "https://historical-forecast-api.open-meteo.com/",
+]
+
+
+def _is_fast_fail_url(url: str | None) -> bool:
+    if url is None:
+        return False
+    for fast_fail_domain in FAST_FAIL_DOMAINS:
+        if url.startswith(fast_fail_domain):
+            return True
+    return False
+
 
 class ProxySession(requests_cache.CachedSession):
     """A requests session that can rotate between different proxies."""
@@ -83,6 +97,7 @@ class ProxySession(requests_cache.CachedSession):
         | retry_if_exception_type(ValueError)
         | retry_if_exception_type(requests.exceptions.HTTPError)
         | retry_if_exception_type(requests.exceptions.ReadTimeout),
+        reraise=True,
     )
     def _perform_proxy_request(self, *args, **kwargs) -> requests.Response:
         proxy = self._suggest_proxy()
@@ -97,19 +112,10 @@ class ProxySession(requests_cache.CachedSession):
             )
         kwargs.setdefault("timeout", DEFAULT_TIMEOUT)
         kwargs.setdefault("verify", False)
-        if "headers" not in kwargs:
-            kwargs["headers"] = {}
-        kwargs["headers"]["User-Agent"] = (
-            self._user_agent_rotator.get_random_user_agent()
-        )
 
         try:
             response = self._perform_request(*args, **kwargs)
-            if not response.url.startswith(
-                "https://news.google.com/"
-            ) and not response.url.startswith(
-                "https://historical-forecast-api.open-meteo.com/"
-            ):
+            if not _is_fast_fail_url(response.url):
                 response.raise_for_status()
             if not response.from_cache:  # pyright: ignore
                 self._proxies.remove(proxy)
@@ -171,20 +177,19 @@ class ProxySession(requests_cache.CachedSession):
             logging.info("Request for %s not cached.", request.url)
 
             # Otherwise check the wayback machine
-            response = self._wayback_machine_request(
-                request.method, request.url, headers=request.headers
-            )
-            if response is not None and response.ok:
-                logging.info("Found wayback machine memento for URL: %s", request.url)
-                self.cache.save_response(response=response, cache_key=key)
-                return response
+            if not _is_fast_fail_url(request.url):
+                response = self._wayback_machine_request(
+                    request.method, request.url, headers=request.headers
+                )
+                if response is not None and response.ok:
+                    logging.info(
+                        "Found wayback machine memento for URL: %s", request.url
+                    )
+                    self.cache.save_response(response=response, cache_key=key)
+                    return response
 
         response = super().send(request, **kwargs)
-        if response.url.startswith(
-            "https://news.google.com/"
-        ) or response.url.startswith("https://historical-forecast-api.open-meteo.com/"):
-            self.cache.save_response(response, cache_key=key)
-        else:
+        if not _is_fast_fail_url(response.url):
             response.raise_for_status()
         return response
 
@@ -213,6 +218,18 @@ class ProxySession(requests_cache.CachedSession):
         force_refresh: bool = False,
         **kwargs,
     ) -> AnyResponse:
+        if _is_fast_fail_url(request.url):
+            response = super().send(
+                request,
+                expire_after=expire_after,
+                only_if_cached=only_if_cached,
+                refresh=refresh,
+                force_refresh=force_refresh,
+                **kwargs,
+            )
+            self.cache.save_response(response)
+            return response
+
         return self._perform_retry_send(
             request,
             expire_after=expire_after,
@@ -235,11 +252,16 @@ class ProxySession(requests_cache.CachedSession):
         **kwargs,
     ) -> AnyResponse:
         if "timeout" not in kwargs:
-            kwargs["timeout"] = DEFAULT_TIMEOUT
+            if _is_fast_fail_url(url):
+                kwargs["timeout"] = 5.0
+            else:
+                kwargs["timeout"] = DEFAULT_TIMEOUT
         if headers is None:
             headers = {}
         if "User-Agent" not in headers:
-            headers["User-Agent"] = self._user_agent_rotator.get_random_user_agent()
+            headers["User-Agent"] = (
+                self._user_agent_rotator.get_random_user_agent().strip()
+            )
         proxy = self._suggest_proxy()
         if proxy:
             logging.debug("Using proxy: %s", proxy)

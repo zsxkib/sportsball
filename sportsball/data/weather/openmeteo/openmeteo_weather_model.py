@@ -26,17 +26,23 @@ def _parse_openmeteo(
         return None
     if hourly is None:
         raise ValueError("hourly is null.")
+    dt_index = pd.date_range(
+        start=pd.to_datetime(hourly.Time(), unit="s"),
+        end=pd.to_datetime(hourly.TimeEnd(), unit="s"),
+        freq=pd.Timedelta(seconds=hourly.Interval()),
+        inclusive="left",
+        tz=tz,
+    )
+    row_count = min(
+        len(hourly.Variables(0).ValuesAsNumpy()),  # type: ignore
+        len(hourly.Variables(1).ValuesAsNumpy()),  # type: ignore
+        len(dt_index),
+    )
     hourly_df = pd.DataFrame(
-        index=pd.date_range(
-            start=pd.to_datetime(hourly.Time(), unit="s"),
-            end=pd.to_datetime(hourly.TimeEnd(), unit="s"),
-            freq=pd.Timedelta(seconds=hourly.Interval()),
-            inclusive="left",
-            tz=tz,
-        )[: len(hourly.Variables(0).ValuesAsNumpy())],  # type: ignore
+        index=dt_index[:row_count],  # type: ignore
         data={
-            "temperature_2m": hourly.Variables(0).ValuesAsNumpy(),  # type: ignore
-            "relative_humidity_2m": hourly.Variables(1).ValuesAsNumpy(),  # type: ignore
+            "temperature_2m": hourly.Variables(0).ValuesAsNumpy()[:row_count],  # type: ignore
+            "relative_humidity_2m": hourly.Variables(1).ValuesAsNumpy()[:row_count],  # type: ignore
         },
     )
     dt = dt.replace(tzinfo=None)

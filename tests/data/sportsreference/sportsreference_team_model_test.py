@@ -30,6 +30,7 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 {},
                 {},
                 {},
+                {},
             )
             self.assertEqual(team_model.identifier, "Villanova Wildcats Men's")
 
@@ -51,6 +52,7 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 {
                     "Eric Dixon": 8,
                 },
+                {},
                 {},
                 {},
             )
@@ -77,6 +79,7 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 {
                     "Eric Dixon": 10
                 },
+                {},
                 {},
             )
             self.assertEqual(team_model.field_goals_attempted, 10)

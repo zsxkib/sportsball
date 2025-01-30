@@ -17,6 +17,7 @@ NAME_COLUMN: Literal["name"] = "name"
 FIELD_GOALS_COLUMN: Literal["field_goals"] = "field_goals"
 FIELD_GOALS_ATTEMPTED_COLUMN: Literal["field_goals_attempted"] = "field_goals_attempted"
 OFFENSIVE_REBOUNDS_COLUMN: Literal["offensive_rebounds"] = "offensive_rebounds"
+ASSISTS_COLUMN: Literal["assists"] = "assists"
 
 
 def _calculate_kicks(data: dict[str, Any]) -> int | None:
@@ -75,6 +76,20 @@ def _calculate_offensive_rebounds(data: dict[str, Any]) -> int | None:
     return offensive_rebounds
 
 
+def _calculate_assists(data: dict[str, Any]) -> int | None:
+    assists = 0
+    found_assists = False
+    for player in data[PLAYER_COLUMN_PREFIX]:
+        player_assists = player.assists
+        if player_assists is None:
+            continue
+        found_assists = True
+        assists += player_assists
+    if not found_assists:
+        return None
+    return assists
+
+
 class TeamModel(BaseModel):
     """The serialisable team class."""
 
@@ -115,4 +130,9 @@ class TeamModel(BaseModel):
         default_factory=_calculate_offensive_rebounds,
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=OFFENSIVE_REBOUNDS_COLUMN,
+    )
+    assists: int | None = Field(
+        default_factory=_calculate_assists,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=ASSISTS_COLUMN,
     )

@@ -36,6 +36,8 @@ class TestNBANBAGameModel(unittest.TestCase):
                     30.0,
                     10.0,
                     12.0,
+                    20.0,
+                    30.0,
                 ], index=[
                     "SEASON_ID",
                     "GAME_DATE",
@@ -52,6 +54,8 @@ class TestNBANBAGameModel(unittest.TestCase):
                     "FGA_B",
                     "OREB_A",
                     "OREB_B",
+                    "AST_A",
+                    "AST_B",
                 ]),
                 League.NBA,
                 0,

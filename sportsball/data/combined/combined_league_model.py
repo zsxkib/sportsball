@@ -3,7 +3,7 @@
 import logging
 import multiprocessing
 from multiprocessing import Pool
-from typing import Iterator
+from typing import Any, Iterator
 
 import requests_cache
 
@@ -14,9 +14,13 @@ from ..league_model import LeagueModel
 from .combined_game_model import create_combined_game_model
 
 
-def _produce_league_games(league_model: LeagueModel) -> list[GameModel]:
+def _produce_league_games(league_model: LeagueModel) -> list[dict[str, Any]]:
     setup_logger()
-    return list(league_model.games)
+    try:
+        return [x.model_dump() for x in league_model.games]
+    except Exception as exc:
+        logging.error("Exception: %s", str(exc))
+        raise ValueError(str(exc))
 
 
 class CombinedLeagueModel(LeagueModel):
@@ -52,7 +56,20 @@ class CombinedLeagueModel(LeagueModel):
         for league_model in self._league_models:
             league_model.clear_session()
         with Pool(min(multiprocessing.cpu_count(), len(self._league_models))) as p:
-            game_lists = p.map(_produce_league_games, self._league_models)
+            # We want to terminate immediately if any of our runners runs into trouble.
+            def _error_callback(exc: BaseException) -> None:
+                p.terminate()
+                raise ValueError(str(exc))
+
+            results = [
+                p.apply_async(
+                    _produce_league_games, args=(x,), error_callback=_error_callback
+                )
+                for x in self._league_models
+            ]
+            game_lists = [
+                [GameModel.model_validate(y) for y in x.get()] for x in results
+            ]
 
         for game_list in game_lists:
             for game_model in game_list:

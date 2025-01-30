@@ -37,6 +37,7 @@ def _create_nba_nba_player_model(
         field_goals=None,
         field_goals_attempted=None,
         offensive_rebounds=None,
+        assists=None,
     )
 
 

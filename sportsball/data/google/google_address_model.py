@@ -973,6 +973,60 @@ GOLDEN_1_CENTER = SportsballGeocodeTuple(
     housenumber="500",
     country="USA",
 )
+DELTA_CENTER = SportsballGeocodeTuple(
+    city="Salt Lake City",
+    state="UT",
+    postal="",
+    lat=40.768333,
+    lng=-111.901111,
+    housenumber="301",
+    country="USA",
+)
+ATT_CENTER = SportsballGeocodeTuple(
+    city="San Antonio",
+    state="TX",
+    postal="",
+    lat=29.426944,
+    lng=-98.4375,
+    housenumber="1",
+    country="USA",
+)
+FTX_ARENA = SportsballGeocodeTuple(
+    city="Miami",
+    state="FL",
+    postal="",
+    lat=25.781389,
+    lng=-80.188056,
+    housenumber="601",
+    country="USA",
+)
+VIVINT_ARENA = SportsballGeocodeTuple(
+    city="Salt Lake City",
+    state="UT",
+    postal="",
+    lat=40.768333,
+    lng=-111.901111,
+    housenumber="301",
+    country="USA",
+)
+CHESAPEAKE_ENERGY_ARENA = SportsballGeocodeTuple(
+    city="Oklahoma City",
+    state="OK",
+    postal="",
+    lat=35.463333,
+    lng=-97.515,
+    housenumber="100",
+    country="USA",
+)
+ESPN_WIDE_WORLD_OF_SPORTS_COMPLEX = SportsballGeocodeTuple(
+    city="Lake Buena Vista",
+    state="FL",
+    postal="32830",
+    lat=28.337083,
+    lng=-81.556,
+    housenumber="1375",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -6288,15 +6342,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="200",
         country="USA",
     ),
-    "Vivint Arena, Salt Lake City, Utah": SportsballGeocodeTuple(
-        city="Salt Lake City",
-        state="UT",
-        postal="",
-        lat=40.768333,
-        lng=-111.901111,
-        housenumber="301",
-        country="USA",
-    ),
+    "Vivint Arena, Salt Lake City, Utah": VIVINT_ARENA,
     "Rock Hill Sports & Event Center, Rock Hill, South Carolina": SportsballGeocodeTuple(
         city="Rock Hill",
         state="SC",
@@ -6487,24 +6533,8 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Pepsi Center - Denver, Colorado, U.S. - United States": PEPSI_CENTRE,
     "Staples Center": STAPLES_CENTRE,
     "American Airlines Arena": AMERICAN_AIRLINES_ARENA,
-    "Chesapeake Energy Arena - Oklahoma City, Oklahoma - United States": SportsballGeocodeTuple(
-        city="Oklahoma City",
-        state="OK",
-        postal="",
-        lat=35.463333,
-        lng=-97.515,
-        housenumber="100",
-        country="USA",
-    ),
-    "AT&T Center - San Antonio, Texas - United States": SportsballGeocodeTuple(
-        city="San Antonio",
-        state="TX",
-        postal="",
-        lat=29.426944,
-        lng=-98.4375,
-        housenumber="1",
-        country="USA",
-    ),
+    "Chesapeake Energy Arena - Oklahoma City, Oklahoma - United States": CHESAPEAKE_ENERGY_ARENA,
+    "AT&T Center - San Antonio, Texas - United States": ATT_CENTER,
     "Oakland Arena - Oakland, California - United States": SportsballGeocodeTuple(
         city="Oakland",
         state="CA",
@@ -6514,15 +6544,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="7000",
         country="USA",
     ),
-    "ESPN Wide World of Sports Complex": SportsballGeocodeTuple(
-        city="Lake Buena Vista",
-        state="FL",
-        postal="32830",
-        lat=28.337083,
-        lng=-81.556,
-        housenumber="1375",
-        country="USA",
-    ),
+    "ESPN Wide World of Sports Complex": ESPN_WIDE_WORLD_OF_SPORTS_COMPLEX,
     "International Amphitheatre": SportsballGeocodeTuple(
         city="Chicago",
         state="IL",
@@ -6798,15 +6820,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Target Center - Minneapolis, Minnesota - United States": TARGET_CENTER,
     "Thomas & Mack Center - Paradise, NV - United States": THOMAS_AND_MACK_CENTER,
-    "Delta Center - Salt Lake City, Utah - United States": SportsballGeocodeTuple(
-        city="Salt Lake City",
-        state="UT",
-        postal="",
-        lat=40.768333,
-        lng=-111.901111,
-        housenumber="301",
-        country="USA",
-    ),
+    "Delta Center - Salt Lake City, Utah - United States": DELTA_CENTER,
     "Yokohama Arena": SportsballGeocodeTuple(
         city="Kanagawa",
         state="",
@@ -6829,15 +6843,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Amway Arena": ORLANDO_ARENA,
     "TD Garden - Boston, Massachusetts - United States": TD_GARDEN,
     "American Airlines Center - Dallas, Texas, USA - United States": AMERICAN_AIRLINES_ARENA,
-    "FTX Arena": SportsballGeocodeTuple(
-        city="Miami",
-        state="FL",
-        postal="",
-        lat=25.781389,
-        lng=-80.188056,
-        housenumber="601",
-        country="USA",
-    ),
+    "FTX Arena": FTX_ARENA,
     "Rose Garden": SportsballGeocodeTuple(
         city="Portland",
         state="OR",
@@ -6981,6 +6987,13 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="3930",
         country="USA",
     ),
+    "Delta Center, Salt Lake City, Utah": DELTA_CENTER,
+    "AT&T Center, San Antonio, Texas": ATT_CENTER,
+    "FTX Arena, Miami, Florida": FTX_ARENA,
+    "Vivint Smart Home Arena, Salt Lake City, Utah": VIVINT_ARENA,
+    "Chesapeake Energy Arena, Oklahoma City, Oklahoma": CHESAPEAKE_ENERGY_ARENA,
+    "The Arena, Bay Lake, Florida": ESPN_WIDE_WORLD_OF_SPORTS_COMPLEX,
+    "HP Field House, Bay Lake, Florida": ESPN_WIDE_WORLD_OF_SPORTS_COMPLEX,
 }
 
 

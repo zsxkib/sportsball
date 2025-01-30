@@ -48,6 +48,7 @@ def _create_nba_nba_team_model(
         field_goals=row["FGM" + suffix],
         field_goals_attempted=row["FGA" + suffix],
         offensive_rebounds=row["OREB" + suffix],
+        assists=row["AST" + suffix],
     )
 
 

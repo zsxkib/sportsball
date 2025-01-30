@@ -1,12 +1,12 @@
 """Sports Reference game model."""
 
-# pylint: disable=too-many-locals,too-many-statements,unused-argument
+# pylint: disable=too-many-locals,too-many-statements,unused-argument,protected-access
 import datetime
 import io
 import logging
-import time
 import urllib.parse
 
+import dateutil
 import pandas as pd
 import pytest_is_running
 import requests_cache
@@ -36,10 +36,19 @@ def _create_sportsreference_game_model(
         raise ValueError("scorebox_meta_div is not a Tag.")
 
     in_divs = scorebox_meta_div.find_all("div")
-    in_div = in_divs[0]
+    current_in_div_idx = 0
+    in_div = in_divs[current_in_div_idx]
     in_div_text = in_div.get_text().strip()
-    dt = parse(in_div_text)
-    venue_div = in_divs[1]
+    current_in_div_idx += 1
+    if "Tournament" in in_div_text:
+        in_div_text = in_divs[1].get_text().strip()
+        current_in_div_idx += 1
+    try:
+        dt = parse(in_div_text)
+    except dateutil.parser._parser.ParserError as exc:  # type: ignore
+        logging.error("Failed to parse date for URL: %s", url)
+        raise exc
+    venue_div = in_divs[current_in_div_idx]
     venue_name = venue_div.get_text().strip()
     scorebox_div = soup.find("div", class_="scorebox")
     if not isinstance(scorebox_div, Tag):
@@ -62,6 +71,7 @@ def _create_sportsreference_game_model(
     fg = {}
     fga = {}
     offensive_rebounds = {}
+    assists = {}
     for df in dfs:
         if df.index.nlevels > 1:
             df.columns = df.columns.get_level_values(1)
@@ -79,6 +89,10 @@ def _create_sportsreference_game_model(
                 orebs = df["OREB"].tolist()
                 for idx, player in enumerate(players):
                     offensive_rebounds[player] = orebs[idx]
+            if "AST" in df.columns.values:
+                asts = df["AST"].tolist()
+                for idx, player in enumerate(players):
+                    assists[player] = asts[idx]
 
     teams: list[TeamModel] = []
     for a in scorebox_div.find_all("a"):
@@ -95,6 +109,7 @@ def _create_sportsreference_game_model(
                     fg,
                     fga,
                     offensive_rebounds,
+                    assists,
                 )
             )
 
