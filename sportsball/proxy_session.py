@@ -86,47 +86,6 @@ class ProxySession(requests_cache.CachedSession):
     def _perform_request(self, *args, **kwargs) -> requests.Response:
         return super().request(*args, **kwargs)
 
-    @retry(
-        stop=stop_after_attempt(50),
-        after=after_log(logging.getLogger(__name__), logging.DEBUG),
-        before=before_log(logging.getLogger(__name__), logging.DEBUG),
-        retry=retry_if_exception_type(FunctionTimedOut)
-        | retry_if_exception_type(requests.exceptions.ProxyError)
-        | retry_if_exception_type(requests.exceptions.ConnectionError)
-        | retry_if_exception_type(requests.exceptions.ChunkedEncodingError)
-        | retry_if_exception_type(ValueError)
-        | retry_if_exception_type(requests.exceptions.HTTPError)
-        | retry_if_exception_type(requests.exceptions.ReadTimeout),
-        reraise=True,
-    )
-    def _perform_proxy_request(self, *args, **kwargs) -> requests.Response:
-        proxy = self._suggest_proxy()
-        if proxy:
-            logging.debug("Using proxy: %s", proxy)
-            kwargs.setdefault(
-                "proxies",
-                {
-                    "http": proxy,
-                    "https": proxy,
-                },
-            )
-        kwargs.setdefault("timeout", DEFAULT_TIMEOUT)
-        kwargs.setdefault("verify", False)
-
-        try:
-            response = self._perform_request(*args, **kwargs)
-            if not _is_fast_fail_url(response.url):
-                response.raise_for_status()
-            if not response.from_cache:  # pyright: ignore
-                self._proxies.remove(proxy)
-                self._proxies.insert(0, proxy)
-            return response
-        except Exception as e:
-            logging.debug("Burning proxy: %s due to %s", proxy, str(e))
-            self._proxies.remove(proxy)
-            self._proxies.append(proxy)
-            raise e
-
     def _wayback_machine_request(
         self, method, url, **kwargs
     ) -> requests.Response | None:
@@ -205,6 +164,7 @@ class ProxySession(requests_cache.CachedSession):
         | retry_if_exception_type(ValueError)
         | retry_if_exception_type(requests.exceptions.HTTPError)
         | retry_if_exception_type(requests.exceptions.ReadTimeout),
+        reraise=True,
     )
     def _perform_retry_send(self, request: requests.PreparedRequest, **kwargs) -> Any:
         return self._perform_timeout_send(request, **kwargs)
@@ -289,5 +249,5 @@ def create_proxy_session() -> ProxySession:
     """Creates a standard proxy session."""
     return ProxySession(
         "sportsball",
-        expire_after=datetime.timedelta(days=365),
+        expire_after=requests_cache.NEVER_EXPIRE,
     )

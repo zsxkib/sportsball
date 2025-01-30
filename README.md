@@ -191,7 +191,7 @@ Social media posts one day out from the game.
 This library uses very aggressive caching due to the large data requirements. If the requests are about a recent game (generally in the last 7 days) the caching is bypassed. The caching is as follows:
 
 1. A joblib disk cache that caches calls to pydantic model creation functions. This changes on every version update to keep the models in sync. This is the fastest cache.
-2. A requests cache backed by sqlite that caches requests for 1 year.
+2. A requests cache backed by sqlite that caches requests forever.
 3. An attempt to find the response is made to the wayback machine, and used if found.
 
 It's very recommended that the user uses proxies defined in the `PROXIES` environment variable. The more proxies the easier it is to collect data.

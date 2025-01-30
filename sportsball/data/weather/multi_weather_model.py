@@ -2,7 +2,7 @@
 
 import datetime
 
-import requests
+import requests_cache
 
 from ...cache import MEMORY
 from ..weather_model import WeatherModel
@@ -13,7 +13,7 @@ from .openmeteo.openmeteo_weather_model import create_openmeteo_weather_model
 
 @MEMORY.cache(ignore=["session"])
 def create_mutli_weather_model(
-    session: requests.Session,
+    session: requests_cache.CachedSession,
     latitude: float,
     longitude: float,
     dt: datetime.datetime,

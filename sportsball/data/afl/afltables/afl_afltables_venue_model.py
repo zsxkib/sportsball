@@ -4,6 +4,7 @@ import datetime
 import os
 from urllib.parse import urlparse
 
+import pytest_is_running
 import requests_cache
 from bs4 import BeautifulSoup
 
@@ -12,11 +13,9 @@ from ...google.google_address_model import create_google_address_model
 from ...venue_model import VenueModel
 
 
-@MEMORY.cache(ignore=["session"])
-def create_afl_afltables_venue_model(
+def _create_afl_afltables_venue_model(
     url: str, session: requests_cache.CachedSession, dt: datetime.datetime
 ) -> VenueModel:
-    """Create a venue model from AFL tables."""
     o = urlparse(url)
     last_component = o.path.split("/")[-1]
     identifier, _ = os.path.splitext(last_component)
@@ -35,3 +34,23 @@ def create_afl_afltables_venue_model(
         is_grass=None,
         is_indoor=None,
     )
+
+
+@MEMORY.cache(ignore=["session"])
+def _cached_create_afl_afltables_venue_model(
+    url: str, session: requests_cache.CachedSession, dt: datetime.datetime
+) -> VenueModel:
+    return _create_afl_afltables_venue_model(url, session, dt)
+
+
+def create_afl_afltables_venue_model(
+    url: str, session: requests_cache.CachedSession, dt: datetime.datetime
+) -> VenueModel:
+    """Create a venue model from AFL tables."""
+    if (
+        not pytest_is_running.is_running()
+        and dt < datetime.datetime.now() - datetime.timedelta(days=7)
+    ):
+        return _cached_create_afl_afltables_venue_model(url, session, dt)
+    with session.cache_disabled():
+        return _create_afl_afltables_venue_model(url, session, dt)

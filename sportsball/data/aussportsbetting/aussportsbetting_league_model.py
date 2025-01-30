@@ -88,7 +88,8 @@ class AusSportsBettingLeagueModel(LeagueModel):
 
     @property
     def games(self) -> Iterator[GameModel]:
-        response = self.session.get(self._spreadsheet_url)
+        with self.session.cache_disabled():
+            response = self.session.get(self._spreadsheet_url)
         response.raise_for_status()
         workbook = load_workbook(filename=BytesIO(response.content))
         ws = workbook.active

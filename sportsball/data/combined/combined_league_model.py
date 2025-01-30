@@ -1,5 +1,6 @@
 """Combined league model."""
 
+# pylint: disable=raise-missing-from
 import logging
 import multiprocessing
 from multiprocessing import Pool

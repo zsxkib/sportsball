@@ -4,8 +4,10 @@ import datetime
 
 import openmeteo_requests  # type: ignore
 import pandas as pd
+import pytest_is_running
 import pytz
 import requests
+import requests_cache
 from openmeteo_requests.Client import OpenMeteoRequestsError  # type: ignore
 from openmeteo_requests.Client import WeatherApiResponse
 
@@ -54,15 +56,13 @@ def _parse_openmeteo(
     return WeatherModel(temperature=temperature, relative_humidity=relative_humidity)
 
 
-@MEMORY.cache(ignore=["session"])
-def create_openmeteo_weather_model(
-    session: requests.Session,
+def _create_openmeteo_weather_model(
+    session: requests_cache.CachedSession,
     latitude: float,
     longitude: float,
     dt: datetime.datetime,
     tz: str,
 ) -> WeatherModel | None:
-    """Create a weather model from openmeteo."""
     # pylint: disable=broad-exception-caught
     client = openmeteo_requests.Client(session=session)
     try:
@@ -138,3 +138,32 @@ def create_openmeteo_weather_model(
         if "Parameter 'start_date' is out of allowed range from" in e_text:
             return None
         raise e
+
+
+@MEMORY.cache(ignore=["session"])
+def _cached_create_openmeteo_weather_model(
+    session: requests_cache.CachedSession,
+    latitude: float,
+    longitude: float,
+    dt: datetime.datetime,
+    tz: str,
+) -> WeatherModel | None:
+    return _create_openmeteo_weather_model(session, latitude, longitude, dt, tz)
+
+
+def create_openmeteo_weather_model(
+    session: requests_cache.CachedSession,
+    latitude: float,
+    longitude: float,
+    dt: datetime.datetime,
+    tz: str,
+) -> WeatherModel | None:
+    """Create a weather model from openmeteo."""
+    if not pytest_is_running.is_running() and dt < datetime.datetime.now().replace(
+        tzinfo=dt.tzinfo
+    ) - datetime.timedelta(days=3):
+        return _cached_create_openmeteo_weather_model(
+            session, latitude, longitude, dt, tz
+        )
+    with session.cache_disabled():
+        return _create_openmeteo_weather_model(session, latitude, longitude, dt, tz)

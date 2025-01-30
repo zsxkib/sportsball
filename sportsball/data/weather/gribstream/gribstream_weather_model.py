@@ -7,21 +7,21 @@ import json
 import os
 
 import pandas as pd
+import pytest_is_running
 import pytz
 import requests
+import requests_cache
 
 from ....cache import MEMORY
 from ...weather_model import WeatherModel
 
 
-@MEMORY.cache(ignore=["session"])
-def create_gribstream_weather_model(
-    session: requests.Session,
+def _create_gribstream_weather_model(
+    session: requests_cache.CachedSession,
     latitude: float,
     longitude: float,
     dt: datetime.datetime,
 ) -> WeatherModel | None:
-    """Create a weather model from gribstream."""
     api_key = os.environ.get("GRIBSTREAM_API_KEY")
     if api_key is None:
         return None
@@ -58,3 +58,28 @@ def create_gribstream_weather_model(
     temperature = df.iloc[idx]["TMP|2 m above ground|"]  # type: ignore
     relative_humidity = df.iloc[idx]["RH|2 m above ground|"]  # type: ignore
     return WeatherModel(temperature=temperature, relative_humidity=relative_humidity)
+
+
+@MEMORY.cache(ignore=["session"])
+def _cached_create_gribstream_weather_model(
+    session: requests_cache.CachedSession,
+    latitude: float,
+    longitude: float,
+    dt: datetime.datetime,
+) -> WeatherModel | None:
+    return _create_gribstream_weather_model(session, latitude, longitude, dt)
+
+
+def create_gribstream_weather_model(
+    session: requests_cache.CachedSession,
+    latitude: float,
+    longitude: float,
+    dt: datetime.datetime,
+) -> WeatherModel | None:
+    """Create a weather model from gribstream."""
+    if not pytest_is_running.is_running() and dt < datetime.datetime.now().replace(
+        tzinfo=dt.tzinfo
+    ) - datetime.timedelta(days=3):
+        return _cached_create_gribstream_weather_model(session, latitude, longitude, dt)
+    with session.cache_disabled():
+        return _create_gribstream_weather_model(session, latitude, longitude, dt)

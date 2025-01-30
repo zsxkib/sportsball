@@ -1,5 +1,7 @@
 """AFL AFLTables league model."""
 
+# pylint: disable=too-many-statements
+import datetime
 import os
 import urllib.parse
 from typing import Iterator
@@ -34,7 +36,12 @@ class AFLAFLTablesLeagueModel(LeagueModel):
         filename, _ = os.path.splitext(last_component)
         year = int(filename)
 
-        response = self.session.get(season_url)
+        if year < datetime.datetime.now().year - 1:
+            with self.session.cache_disabled():
+                response = self.session.get(season_url)
+        else:
+            response = self.session.get(season_url)
+
         soup = BeautifulSoup(response.text, "html.parser")
         in_finals = False
         game_number = 0
