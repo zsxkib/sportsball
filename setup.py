@@ -13,17 +13,20 @@ def install_requires() -> typing.List[str]:
     with open(
         Path(__file__).absolute().parent.joinpath('requirements.txt'), "r"
     ) as requirments_txt_handle:
-        requires = [
-            x
-            for x in requirments_txt_handle
-            if not x.startswith(".") and not x.startswith("-e")
-        ]
+        for require in requirments_txt_handle:
+            if not require.startswith(".") and not require.startswith("-e"):
+                requires.append(require)
+            else:
+                require_file = require.split()[-1]
+                require_file = require_file.replace("git+", "")
+                package_name = require_file.split("#egg=")[-1]
+                requires.append(package_name + " @ " + require_file)
     return requires
 
 
 setup(
     name='sportsball',
-    version='0.3.19',
+    version='0.3.20',
     description='A library for pulling in and normalising sports stats.',
     long_description=long_description,
     long_description_content_type='text/markdown',
