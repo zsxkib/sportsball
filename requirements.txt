@@ -28,3 +28,4 @@ func-timeout>=4.3.5
 tenacity>=9.0.0
 random_user_agent>=1.0.1
 wayback>=0.4.5
+cryptography>=44.0.0

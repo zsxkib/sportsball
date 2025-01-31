@@ -1054,6 +1054,60 @@ DUNN_OLIVER_ACADOME = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
+OAKLAND_ARENA = SportsballGeocodeTuple(
+    city="Oakland",
+    state="CA",
+    postal="",
+    lat=37.750278,
+    lng=-122.203056,
+    housenumber="7000",
+    country="USA",
+)
+SCOTIABANK_ARENA = SportsballGeocodeTuple(
+    city="Toronto",
+    state="ON",
+    postal="",
+    lat=43.643333,
+    lng=-79.379167,
+    housenumber="40",
+    country="Canada",
+)
+BRADLEY_CENTER = SportsballGeocodeTuple(
+    city="Milwaukee",
+    state="WI",
+    postal="",
+    lat=43.043611,
+    lng=-87.916944,
+    housenumber="1001",
+    country="USA",
+)
+THE_PIT = SportsballGeocodeTuple(
+    city="Albuquerque",
+    state="NM",
+    postal="",
+    lat=35.067,
+    lng=-106.632,
+    housenumber="",
+    country="USA",
+)
+JOHN_GLASER_ARENA = SportsballGeocodeTuple(
+    city="Philadelphia",
+    state="PA",
+    postal="19141",
+    lat=40.039993,
+    lng=-75.15654,
+    housenumber="15",
+    country="USA",
+)
+TEXAS_AM_COMMERCE_FIELD_HOUSE = SportsballGeocodeTuple(
+    city="Commerce",
+    state="TX",
+    postal="75428",
+    lat=33.245337,
+    lng=-95.907619,
+    housenumber="2600",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -3077,15 +3131,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="2650",
         country="USA",
     ),
-    "The Pit, Albuquerque, New Mexico": SportsballGeocodeTuple(
-        city="Albuquerque",
-        state="NM",
-        postal="",
-        lat=35.067,
-        lng=-106.632,
-        housenumber="",
-        country="USA",
-    ),
+    "The Pit, Albuquerque, New Mexico": THE_PIT,
     "Gill Coliseum, Corvallis, Oregon": SportsballGeocodeTuple(
         city="Corvallis",
         state="OR",
@@ -3681,15 +3727,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1801",
         country="USA",
     ),
-    "John Glaser Arena, Philadelphia, Pennsylvania": SportsballGeocodeTuple(
-        city="Philadelphia",
-        state="PA",
-        postal="19141",
-        lat=40.039993,
-        lng=-75.15654,
-        housenumber="15",
-        country="USA",
-    ),
+    "John Glaser Arena, Philadelphia, Pennsylvania": JOHN_GLASER_ARENA,
     "University Center, Hammond, Louisiana": SportsballGeocodeTuple(
         city="Hammond",
         state="LA",
@@ -5908,15 +5946,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Texas A&MâCommerce Field House, Commerce, Texas": SportsballGeocodeTuple(
-        city="Commerce",
-        state="TX",
-        postal="75428",
-        lat=33.245337,
-        lng=-95.907619,
-        housenumber="2600",
-        country="USA",
-    ),
+    "Texas A&MâCommerce Field House, Commerce, Texas": TEXAS_AM_COMMERCE_FIELD_HOUSE,
     "William J. Nicks Building, Prairie View, Texas": SportsballGeocodeTuple(
         city="Prairie View",
         state="TX",
@@ -6546,15 +6576,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "American Airlines Arena": AMERICAN_AIRLINES_ARENA,
     "Chesapeake Energy Arena - Oklahoma City, Oklahoma - United States": CHESAPEAKE_ENERGY_ARENA,
     "AT&T Center - San Antonio, Texas - United States": ATT_CENTER,
-    "Oakland Arena - Oakland, California - United States": SportsballGeocodeTuple(
-        city="Oakland",
-        state="CA",
-        postal="",
-        lat=37.750278,
-        lng=-122.203056,
-        housenumber="7000",
-        country="USA",
-    ),
+    "Oakland Arena - Oakland, California - United States": OAKLAND_ARENA,
     "ESPN Wide World of Sports Complex": ESPN_WIDE_WORLD_OF_SPORTS_COMPLEX,
     "International Amphitheatre": SportsballGeocodeTuple(
         city="Chicago",
@@ -6773,15 +6795,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1255",
         country="USA",
     ),
-    "Bradley Center": SportsballGeocodeTuple(
-        city="Milwaukee",
-        state="WI",
-        postal="",
-        lat=43.043611,
-        lng=-87.916944,
-        housenumber="1001",
-        country="USA",
-    ),
+    "Bradley Center": BRADLEY_CENTER,
     "Charlotte Coliseum": SportsballGeocodeTuple(
         city="Charlotte",
         state="NC",
@@ -6961,15 +6975,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Golden 1 Center, Sacramento, California": GOLDEN_1_CENTER,
     "Kaseya Center, Miami, Florida": KASEYA_CENTER,
-    "Scotiabank Arena, Toronto, Canada": SportsballGeocodeTuple(
-        city="Toronto",
-        state="ON",
-        postal="",
-        lat=43.643333,
-        lng=-79.379167,
-        housenumber="40",
-        country="Canada",
-    ),
+    "Scotiabank Arena, Toronto, Canada": SCOTIABANK_ARENA,
     "Smoothie King Center, New Orleans, Louisiana": CAESARS_SUPERDOME,
     "TD Garden, Boston, Massachusetts": TD_GARDEN,
     "Frost Bank Center, San Antonio, Texas": SportsballGeocodeTuple(
@@ -7024,6 +7030,42 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Pepsi Center, Denver, Colorado": PEPSI_CENTRE,
     "Visa Athletic Center, Bay Lake, Florida": ESPN_WIDE_WORLD_OF_SPORTS_COMPLEX,
     "Dunn–Oliver Acadome, Montgomery, Alabama": DUNN_OLIVER_ACADOME,
+    "Talking Stick Resort Arena, Phoenix, Arizona": AMERICA_WEST_ARENA,
+    "Oracle Arena, Oakland, California": OAKLAND_ARENA,
+    "The O2 Arena, London, United Kingdom": SportsballGeocodeTuple(
+        city="London",
+        state="",
+        postal="SE10",
+        lat=51.5029,
+        lng=0.0032,
+        housenumber="",
+        country="UK",
+    ),
+    "Air Canada Centre, Toronto, Canada": SCOTIABANK_ARENA,
+    "BMO Harris Bradley Center, Milwaukee, Wisconsin": BRADLEY_CENTER,
+    "Philips Arena, Atlanta, Georgia": STATE_FARM_ARENA,
+    "UW–Milwaukee Panther Arena, Milwaukee, Wisconsin": MILWAUKEE_ARENA,
+    "Dreamstyle Arena, Albuquerque, New Mexico": THE_PIT,
+    "Tom Gola Arena, Philadelphia, Pennsylvania": JOHN_GLASER_ARENA,
+    "Texas A&M–Commerce Field House, Commerce, Texas": TEXAS_AM_COMMERCE_FIELD_HOUSE,
+    "Detroit, Michigan": SportsballGeocodeTuple(
+        city="Detroit",
+        state="MI",
+        postal="",
+        lat=42.333333,
+        lng=-83.05,
+        housenumber="",
+        country="USA",
+    ),
+    "Rec Hall, University Park, Pennsylvania": SportsballGeocodeTuple(
+        city="University Park",
+        state="PA",
+        postal="16802",
+        lat=40.79578,
+        lng=-77.869399,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 

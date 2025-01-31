@@ -8,6 +8,7 @@ from ..afltables.afl_afltables_league_model import AFLAFLTablesLeagueModel
 from ..aussportsbetting.afl_aussportsbetting_league_model import \
     AFLAusSportsBettingLeagueModel
 from ..espn.afl_espn_league_model import AFLESPNLeagueModel
+from ..oddsportal.afl_oddsportal_league_model import AFLOddsPortalLeagueModel
 
 FITZROY = "fitzroy_idx"
 CARLTON = "carlton_idx"
@@ -212,6 +213,7 @@ class AFLCombinedLeagueModel(CombinedLeagueModel):
                 AFLAFLTablesLeagueModel(session),
                 AFLESPNLeagueModel(session),
                 AFLAusSportsBettingLeagueModel(session),
+                AFLOddsPortalLeagueModel(session),
             ],
         )
 

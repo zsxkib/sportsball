@@ -188,6 +188,8 @@ def _create_sportsreference_game_model(
                 season_type = SeasonType.REGULAR
             case "Ivy League":
                 season_type = SeasonType.REGULAR
+            case "NCAA Men's Tournament":
+                season_type = SeasonType.REGULAR
             case _:
                 logging.warning("Unrecognised Season Text: %s", season_text)
         break

@@ -42,6 +42,7 @@ Python 3.11.6:
 - [tenacity](https://github.com/jd/tenacity)
 - [random_user_agent](https://github.com/Luqman-Ud-Din/random_user_agent)
 - [wayback](https://github.com/edgi-govdata-archiving/wayback)
+- [cryptography](https://cryptography.io/en/latest/)
 
 ## Raison D'être :thought_balloon:
 
@@ -112,6 +113,7 @@ A representation of a team within a game.
 * **field_goals_attempted**: The sum of the field goals attempted by the team in the game.
 * **offensive_rebounds**: The number of rebounds during offense by the team in the game.
 * **assists**: The number of times the player on the team made a pass that resulted in a field goal in the game.
+* **turnovers**: The number of times a player on the team loses possession of the ball in the game.
 
 #### Player
 
@@ -126,6 +128,7 @@ A representation of a player within a team within a game.
 * **field_goals_attempted**: The number of field goal attempts the player made in the game.
 * **offensive_rebounds**: The number of rebounds during offense by the player made in the game.
 * **assists**: The number of times the player made a pass that resulted in a field goal in the game.
+* **turnovers**: The number of times a player loses possession of the ball in the game.
 
 #### Odds
 
@@ -133,6 +136,7 @@ A representation of the odds for a team to win within a game.
 
 * **odds**: The decimal odds offered by a bookie for the team to win in the game.
 * **bookie**: The bookie offering these odds.
+* **dt**: When the odds were posted.
 
 #### Venue
 
