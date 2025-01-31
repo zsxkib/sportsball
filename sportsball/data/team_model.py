@@ -1,5 +1,6 @@
 """The prototype class for a team."""
 
+# pylint: disable=duplicate-code
 from typing import Any, Literal
 
 from pydantic import BaseModel, Field
@@ -18,6 +19,7 @@ FIELD_GOALS_COLUMN: Literal["field_goals"] = "field_goals"
 FIELD_GOALS_ATTEMPTED_COLUMN: Literal["field_goals_attempted"] = "field_goals_attempted"
 OFFENSIVE_REBOUNDS_COLUMN: Literal["offensive_rebounds"] = "offensive_rebounds"
 ASSISTS_COLUMN: Literal["assists"] = "assists"
+TURNOVERS_COLUMN: Literal["turnovers"] = "turnovers"
 
 
 def _calculate_kicks(data: dict[str, Any]) -> int | None:
@@ -90,6 +92,20 @@ def _calculate_assists(data: dict[str, Any]) -> int | None:
     return assists
 
 
+def _calculate_turnovers(data: dict[str, Any]) -> int | None:
+    turnovers = 0
+    found_turnovers = False
+    for player in data[PLAYER_COLUMN_PREFIX]:
+        player_turnovers = player.turnovers
+        if player_turnovers is None:
+            continue
+        found_turnovers = True
+        turnovers += player_turnovers
+    if not found_turnovers:
+        return None
+    return turnovers
+
+
 class TeamModel(BaseModel):
     """The serialisable team class."""
 
@@ -135,4 +151,9 @@ class TeamModel(BaseModel):
         default_factory=_calculate_assists,
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=ASSISTS_COLUMN,
+    )
+    turnovers: int | None = Field(
+        default_factory=_calculate_turnovers,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TURNOVERS_COLUMN,
     )

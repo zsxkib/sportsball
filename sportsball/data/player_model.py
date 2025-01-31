@@ -14,6 +14,7 @@ FIELD_GOALS_COLUMN: Literal["field_goals"] = "field_goals"
 FIELD_GOALS_ATTEMPTED_COLUMN: Literal["field_goals_attempted"] = "field_goals_attempted"
 OFFENSIVE_REBOUNDS_COLUMN: Literal["offensive_rebounds"] = "offensive_rebounds"
 ASSISTS_COLUMN: Literal["assists"] = "assists"
+TURNOVERS_COLUMN: Literal["turnovers"] = "turnovers"
 
 
 class PlayerModel(BaseModel):
@@ -59,4 +60,9 @@ class PlayerModel(BaseModel):
         ...,
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=ASSISTS_COLUMN,
+    )
+    turnovers: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TURNOVERS_COLUMN,
     )

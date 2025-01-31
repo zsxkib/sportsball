@@ -1027,6 +1027,33 @@ ESPN_WIDE_WORLD_OF_SPORTS_COMPLEX = SportsballGeocodeTuple(
     housenumber="1375",
     country="USA",
 )
+QUICKEN_LOANS_ARENA = SportsballGeocodeTuple(
+    city="Cleveland",
+    state="OH",
+    postal="",
+    lat=41.496389,
+    lng=-81.688056,
+    housenumber="1",
+    country="USA",
+)
+KASEYA_CENTER = SportsballGeocodeTuple(
+    city="Miami",
+    state="FL",
+    postal="",
+    lat=25.781389,
+    lng=-80.188056,
+    housenumber="601",
+    country="USA",
+)
+DUNN_OLIVER_ACADOME = SportsballGeocodeTuple(
+    city="Montgomery",
+    state="AL",
+    postal="",
+    lat=32.36185,
+    lng=-86.293158,
+    housenumber="",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5853,15 +5880,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1000",
         country="USA",
     ),
-    "DunnâOliver Acadome, Montgomery, Alabama": SportsballGeocodeTuple(
-        city="Montgomery",
-        state="AL",
-        postal="",
-        lat=32.36185,
-        lng=-86.293158,
-        housenumber="",
-        country="USA",
-    ),
+    "DunnâOliver Acadome, Montgomery, Alabama": DUNN_OLIVER_ACADOME,
     "Health & Physical Education Arena, Houston, Texas": SportsballGeocodeTuple(
         city="Houston",
         state="TX",
@@ -6521,15 +6540,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "America West Arena": AMERICA_WEST_ARENA,
-    "Quicken Loans Arena - Cleveland, Ohio - United States": SportsballGeocodeTuple(
-        city="Cleveland",
-        state="OH",
-        postal="",
-        lat=41.496389,
-        lng=-81.688056,
-        housenumber="1",
-        country="USA",
-    ),
+    "Quicken Loans Arena - Cleveland, Ohio - United States": QUICKEN_LOANS_ARENA,
     "Pepsi Center - Denver, Colorado, U.S. - United States": PEPSI_CENTRE,
     "Staples Center": STAPLES_CENTRE,
     "American Airlines Arena": AMERICAN_AIRLINES_ARENA,
@@ -6949,15 +6960,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Golden 1 Center, Sacramento, California": GOLDEN_1_CENTER,
-    "Kaseya Center, Miami, Florida": SportsballGeocodeTuple(
-        city="Miami",
-        state="FL",
-        postal="",
-        lat=25.781389,
-        lng=-80.188056,
-        housenumber="601",
-        country="USA",
-    ),
+    "Kaseya Center, Miami, Florida": KASEYA_CENTER,
     "Scotiabank Arena, Toronto, Canada": SportsballGeocodeTuple(
         city="Toronto",
         state="ON",
@@ -6994,6 +6997,33 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Chesapeake Energy Arena, Oklahoma City, Oklahoma": CHESAPEAKE_ENERGY_ARENA,
     "The Arena, Bay Lake, Florida": ESPN_WIDE_WORLD_OF_SPORTS_COMPLEX,
     "HP Field House, Bay Lake, Florida": ESPN_WIDE_WORLD_OF_SPORTS_COMPLEX,
+    "Mexico City Arena, Mexico City, Mexico": SportsballGeocodeTuple(
+        city="Mexico City",
+        state="",
+        postal="04650",
+        lat=19.496309,
+        lng=-99.175429,
+        housenumber="",
+        country="Mexico",
+    ),
+    "Amway Center, Orlando, Florida": ORLANDO_ARENA,
+    "Phoenix Suns Arena, Phoenix, Arizona": AMERICA_WEST_ARENA,
+    "Quicken Loans Arena, Cleveland, Ohio": QUICKEN_LOANS_ARENA,
+    "STAPLES Center, Los Angeles, California": STAPLES_CENTRE,
+    "Bankers Life Fieldhouse, Indianapolis, Indiana": GAINBRIDGE_FIELDHOUSE,
+    "AmericanAirlines Arena, Miami, Florida": KASEYA_CENTER,
+    "Amalie Arena, Tampa, Florida": SportsballGeocodeTuple(
+        city="Tampa",
+        state="FL",
+        postal="",
+        lat=27.942778,
+        lng=-82.451944,
+        housenumber="401",
+        country="USA",
+    ),
+    "Pepsi Center, Denver, Colorado": PEPSI_CENTRE,
+    "Visa Athletic Center, Bay Lake, Florida": ESPN_WIDE_WORLD_OF_SPORTS_COMPLEX,
+    "Dunn–Oliver Acadome, Montgomery, Alabama": DUNN_OLIVER_ACADOME,
 }
 
 

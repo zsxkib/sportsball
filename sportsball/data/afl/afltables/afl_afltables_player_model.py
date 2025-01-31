@@ -29,6 +29,7 @@ def _create_afl_afltables_player_model(
         field_goals_attempted=None,
         offensive_rebounds=None,
         assists=None,
+        turnovers=None,
     )
 
 

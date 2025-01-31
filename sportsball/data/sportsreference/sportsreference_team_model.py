@@ -1,6 +1,6 @@
 """Sports Reference team model."""
 
-# pylint: disable=too-many-arguments,too-many-locals
+# pylint: disable=too-many-arguments,too-many-locals,duplicate-code
 import datetime
 import json
 import urllib.parse
@@ -30,6 +30,7 @@ def _create_sportsreference_team_model(
     fga: dict[str, int],
     offensive_rebounds: dict[str, int],
     assists: dict[str, int],
+    turnovers: dict[str, int],
 ) -> TeamModel:
     response = session.get(url)
     response.raise_for_status()
@@ -58,7 +59,7 @@ def _create_sportsreference_team_model(
             y
             for y in [  # pyright: ignore
                 create_sportsreference_player_model(
-                    session, x, dt, fg, fga, offensive_rebounds, assists
+                    session, x, dt, fg, fga, offensive_rebounds, assists, turnovers
                 )
                 for x in valid_player_urls
             ]
@@ -85,6 +86,7 @@ def _cached_create_sportsreference_team_model(
     fga: dict[str, int],
     offensive_rebounds: dict[str, int],
     assists: dict[str, int],
+    turnovers: dict[str, int],
 ) -> TeamModel:
     return _create_sportsreference_team_model(
         session,
@@ -97,6 +99,7 @@ def _cached_create_sportsreference_team_model(
         fga,
         offensive_rebounds,
         assists,
+        turnovers,
     )
 
 
@@ -111,6 +114,7 @@ def create_sportsreference_team_model(
     fga: dict[str, int],
     offensive_rebounds: dict[str, int],
     assists: dict[str, int],
+    turnovers: dict[str, int],
 ) -> TeamModel:
     """Create a team model from Sports Reference."""
     if not pytest_is_running.is_running():
@@ -125,6 +129,7 @@ def create_sportsreference_team_model(
             fga,
             offensive_rebounds,
             assists,
+            turnovers,
         )
     with session.cache_disabled():
         return _create_sportsreference_team_model(
@@ -138,4 +143,5 @@ def create_sportsreference_team_model(
             fga,
             offensive_rebounds,
             assists,
+            turnovers,
         )

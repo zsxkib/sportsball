@@ -28,6 +28,7 @@ def _create_sportsreference_player_model(
     fga: dict[str, int],
     offensive_rebounds: dict[str, int],
     assists: dict[str, int],
+    turnovers: dict[str, int],
 ) -> PlayerModel | None:
     """Create a player model from NCAAB sports reference."""
     player_url = _fix_url(player_url)
@@ -53,6 +54,7 @@ def _create_sportsreference_player_model(
         field_goals_attempted=fga.get(name),
         offensive_rebounds=offensive_rebounds.get(name),
         assists=assists.get(name),
+        turnovers=turnovers.get(name),
     )
 
 
@@ -64,9 +66,10 @@ def _cached_create_sportsreference_player_model(
     fga: dict[str, int],
     offensive_rebounds: dict[str, int],
     assists: dict[str, int],
+    turnovers: dict[str, int],
 ) -> PlayerModel | None:
     return _create_sportsreference_player_model(
-        session, player_url, fg, fga, offensive_rebounds, assists
+        session, player_url, fg, fga, offensive_rebounds, assists, turnovers
     )
 
 
@@ -78,13 +81,14 @@ def create_sportsreference_player_model(
     fga: dict[str, int],
     offensive_rebounds: dict[str, int],
     assists: dict[str, int],
+    turnovers: dict[str, int],
 ) -> PlayerModel | None:
     """Create a player model from sports reference."""
     if not pytest_is_running.is_running():
         return _cached_create_sportsreference_player_model(
-            session, player_url, fg, fga, offensive_rebounds, assists
+            session, player_url, fg, fga, offensive_rebounds, assists, turnovers
         )
     with session.cache_disabled():
         return _create_sportsreference_player_model(
-            session, player_url, fg, fga, offensive_rebounds, assists
+            session, player_url, fg, fga, offensive_rebounds, assists, turnovers
         )

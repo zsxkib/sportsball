@@ -72,6 +72,7 @@ def _create_sportsreference_game_model(
     fga = {}
     offensive_rebounds = {}
     assists = {}
+    turnovers = {}
     for df in dfs:
         if df.index.nlevels > 1:
             df.columns = df.columns.get_level_values(1)
@@ -93,6 +94,10 @@ def _create_sportsreference_game_model(
                 asts = df["AST"].tolist()
                 for idx, player in enumerate(players):
                     assists[player] = asts[idx]
+            if "TOV" in df.columns.values:
+                tovs = df["TOV"].tolist()
+                for idx, player in enumerate(players):
+                    turnovers[player] = tovs[idx]
 
     teams: list[TeamModel] = []
     for a in scorebox_div.find_all("a"):
@@ -110,6 +115,7 @@ def _create_sportsreference_game_model(
                     fga,
                     offensive_rebounds,
                     assists,
+                    turnovers,
                 )
             )
 

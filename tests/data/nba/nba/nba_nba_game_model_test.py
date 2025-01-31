@@ -38,6 +38,8 @@ class TestNBANBAGameModel(unittest.TestCase):
                     12.0,
                     20.0,
                     30.0,
+                    12,
+                    15,
                 ], index=[
                     "SEASON_ID",
                     "GAME_DATE",
@@ -56,6 +58,8 @@ class TestNBANBAGameModel(unittest.TestCase):
                     "OREB_B",
                     "AST_A",
                     "AST_B",
+                    "TOV_A",
+                    "TOV_B",
                 ]),
                 League.NBA,
                 0,

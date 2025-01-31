@@ -16,6 +16,7 @@ def create_combined_player_model(
     field_goals_attempted = None
     offensive_rebounds = None
     assists = None
+    turnovers = None
     for player_model in player_models:
         player_model_jersey = player_model.jersey
         if player_model_jersey is not None:
@@ -41,6 +42,9 @@ def create_combined_player_model(
         player_model_assists = player_model.assists
         if player_model_assists is not None:
             assists = player_model_assists
+        player_model_turnovers = player_model.turnovers
+        if player_model_turnovers is not None:
+            turnovers = player_model_turnovers
     return PlayerModel(
         identifier=identifier,
         jersey=jersey,
@@ -51,4 +55,5 @@ def create_combined_player_model(
         field_goals_attempted=field_goals_attempted,
         offensive_rebounds=offensive_rebounds,
         assists=assists,
+        turnovers=turnovers,
     )

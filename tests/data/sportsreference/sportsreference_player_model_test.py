@@ -27,5 +27,6 @@ class TestSportsReferencePlayerModel(unittest.TestCase):
                 {},
                 {},
                 {},
+                {},
             )
             self.assertEqual(player_model.field_goals, 8)

@@ -28,6 +28,7 @@ class TestCombinedPlayerModel(unittest.TestCase):
                 field_goals_attempted=field_goals_attempted,
                 offensive_rebounds=None,
                 assists=None,
+                turnovers=None,
             )
             combined_player_model = create_combined_player_model(
                 [player_model],
