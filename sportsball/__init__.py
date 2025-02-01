@@ -1,3 +1,3 @@
 """The main module for sportsball."""
 
-__VERSION__ = "0.3.22"
+__VERSION__ = "0.3.23"

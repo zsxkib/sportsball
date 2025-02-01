@@ -56,8 +56,10 @@ class AFLAFLTablesLeagueModel(LeagueModel):
             current_dt = None
             for td in table.find_all("td"):
                 td_text = td.get_text().strip()
-                if "(" in td_text:
-                    current_dt = parser.parse(td_text.split("(")[0].strip())
+                if "Venue:" in td_text:
+                    cleaned_text = td_text.split("Venue:")[0].split("Att:")[0].strip()
+                    cleaned_text = " ".join(cleaned_text.split()[-3:])
+                    current_dt = parser.parse(cleaned_text)
             for a in table.find_all("a", href=True):
                 if a.get_text().strip().lower() == "match stats":
                     url = urllib.parse.urljoin(season_url, a.get("href"))
