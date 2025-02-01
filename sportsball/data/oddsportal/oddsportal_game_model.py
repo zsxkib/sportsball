@@ -24,17 +24,17 @@ def _create_oddsportal_game_model(
     response = session.get(url)
     response.raise_for_status()
 
-    soup = BeautifulSoup(url, "html.parser")
-    event_tag = soup.find("Event")
+    soup = BeautifulSoup(response.text, "html.parser")
+    event_tag = soup.find("div", id="react-event-header")
     if not isinstance(event_tag, Tag):
-        raise ValueError("event_tag is not a tag.")
-    event = json.loads(str(event_tag[":data"]))
+        raise ValueError(f"event_tag is not a tag for URL: {url}.")
+    event = json.loads(str(event_tag["data"]))
 
     event_body = event["eventBody"]
     event_data = event["eventData"]
     dt = datetime.datetime.fromtimestamp(event_body["startDate"])
     end_dt = None
-    if event_data["endDate"] is not False:
+    if event_body.get("endDate", False) is not False:
         end_dt = datetime.datetime.fromtimestamp(event_body["endDate"])
     version_id = str(event_data["versionId"])
     sport_id = str(event_data["sportId"])
@@ -54,11 +54,12 @@ def _create_oddsportal_game_model(
             src_response = session.get(src_url)
             src_response.raise_for_status()
             variables = src_response.text
-            variables = variables[variables.find('break}return e.next=9,g(r.data,"') :]
+            sentinel = 'break}return e.next=9,g(r.data,"'
+            variables = variables[variables.find(sentinel) + len(sentinel) :]
             variables = variables[
                 : variables.find('");case 9:return s=e.sent,l=JSON.parse(s),e.abrupt')
             ]
-            salt_str, password_str = variables.split('","')
+            password_str, salt_str = variables.split('","')
             salt = str.encode(salt_str)
             password = str.encode(password_str)
             break
@@ -68,6 +69,12 @@ def _create_oddsportal_game_model(
         raise ValueError("password is null.")
 
     bookie_names = event_body["providersNames"]
+    home_points = None
+    if event_body["homeResult"] != "":
+        home_points = float(event_body["homeResult"])
+    away_points = None
+    if event_body["awayResult"] != "":
+        away_points = float(event_body["awayResult"])
 
     return GameModel(
         dt=dt,
@@ -86,7 +93,7 @@ def _create_oddsportal_game_model(
                 dt,
                 event_data["home"],
                 league,
-                float(event_body["homeResult"]),
+                home_points,
                 version_id,
                 sport_id,
                 unique_id,
@@ -103,7 +110,7 @@ def _create_oddsportal_game_model(
                 dt,
                 event_data["away"],
                 league,
-                float(event_body["awayResult"]),
+                away_points,
                 version_id,
                 sport_id,
                 unique_id,

@@ -25,7 +25,7 @@ def _create_oddsportal_team_model(
     dt: datetime.datetime,
     team_name: str,
     league: League,
-    points: float,
+    points: float | None,
     version_id: str,
     sport_id: str,
     unique_id: str,
@@ -38,7 +38,10 @@ def _create_oddsportal_team_model(
     team_idx: int,
 ) -> TeamModel:
     response = session.get(
-        f"https://www.oddsportal.com/feed/match-event/{version_id}-{sport_id}-{unique_id}-{default_bet_id}-{default_scope_id}-{xhash}.dat"
+        f"https://www.oddsportal.com/match-event/{version_id}-{sport_id}-{unique_id}-{default_bet_id}-{default_scope_id}-{xhash}.dat",
+        headers={
+            "X-Requested-With": "XMLHttpRequest",
+        },
     )
     response.raise_for_status()
     decoded_data = base64.b64decode(response.content).decode()
@@ -70,7 +73,7 @@ def _create_oddsportal_team_model(
     history = odds_data["history"][outcome_id]
     odds_models = []
     for bookie_id, bookie_name in bookie_names.items():
-        for odds, _, timestamp in history[bookie_id]:
+        for odds, _, timestamp in history.get(bookie_id, []):
             odds_models.append(
                 create_oddsportal_odds_model(
                     odds,
@@ -100,7 +103,7 @@ def _cached_create_oddsportal_team_model(
     dt: datetime.datetime,
     team_name: str,
     league: League,
-    points: float,
+    points: float | None,
     version_id: str,
     sport_id: str,
     unique_id: str,
@@ -136,7 +139,7 @@ def create_oddsportal_team_model(
     dt: datetime.datetime,
     team_name: str,
     league: League,
-    points: float,
+    points: float | None,
     version_id: str,
     sport_id: str,
     unique_id: str,

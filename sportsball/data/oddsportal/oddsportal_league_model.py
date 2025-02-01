@@ -13,6 +13,16 @@ from ..league import League
 from ..league_model import LeagueModel
 from .oddsportal_game_model import create_oddsportal_game_model
 
+# Sports
+AMERICAN_FOOTBALL = "american-football"
+BASKETBALL = "basketball"
+
+# Countries
+USA = "usa"
+
+# Leagues
+NCAA = "ncaa"
+
 
 class OddsPortalLeagueModel(LeagueModel):
     """Odds Portal implementation of the league model."""
@@ -23,11 +33,13 @@ class OddsPortalLeagueModel(LeagueModel):
             case League.AFL:
                 return "/".join(["aussie-rules", "australia", "afl", ""])
             case League.NBA:
-                return "/".join(["basketball", "usa", "nba", ""])
+                return "/".join([BASKETBALL, USA, "nba", ""])
             case League.NCAAB:
-                return "/".join(["basketball", "usa", "ncaa", ""])
+                return "/".join([BASKETBALL, USA, NCAA, ""])
+            case League.NCAAF:
+                return "/".join([AMERICAN_FOOTBALL, USA, NCAA, ""])
             case League.NFL:
-                return "/".join(["american-football", "usa", "nfl", ""])
+                return "/".join([AMERICAN_FOOTBALL, USA, "nfl", ""])
             case _:
                 raise ValueError(f"Unsupported league: {self.league}")
 
@@ -41,7 +53,10 @@ class OddsPortalLeagueModel(LeagueModel):
             if jsonld["@type"] != "SportsEvent":
                 continue
             game_model = create_oddsportal_game_model(
-                self.session, jsonld["url"], self.league, True
+                self.session,
+                urllib.parse.urljoin(base_url, jsonld["url"]),
+                self.league,
+                True,
             )
             pbar.update(1)
             pbar.set_description(f"OddsPortal {game_model.dt}")
@@ -56,7 +71,11 @@ class OddsPortalLeagueModel(LeagueModel):
                 continue
             seen_urls.add(url)
 
-            response = self.session.get(url)
+            if url.endswith("results/"):
+                with self.session.cache_disabled():
+                    response = self.session.get(url)
+            else:
+                response = self.session.get(url)
             response.raise_for_status()
 
             soup = BeautifulSoup(response.text, "html.parser")
@@ -73,9 +92,15 @@ class OddsPortalLeagueModel(LeagueModel):
                 if not isinstance(tournament_component, Tag):
                     raise ValueError("tournament_component is not a tag.")
                 matches = json.loads(str(tournament_component[":sport-data"]))
-                for match in matches["tournamentGamesComponent"]["rows"]:
+                component = matches.get("tournamentGamesComponent", matches.get("d"))
+                if component.get("total") == 0:
+                    break
+                for match in component.get("rows", []):
                     game_model = create_oddsportal_game_model(
-                        self.session, match["url"], self.league, False
+                        self.session,
+                        urllib.parse.urljoin(url, match["url"]),
+                        self.league,
+                        False,
                     )
                     pbar.update(1)
                     pbar.set_description(f"OddsPortal {game_model.dt}")

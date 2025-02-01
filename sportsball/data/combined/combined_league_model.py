@@ -3,6 +3,7 @@
 # pylint: disable=raise-missing-from
 import logging
 import multiprocessing
+import traceback
 from multiprocessing import Pool
 from typing import Any, Iterator
 
@@ -21,6 +22,7 @@ def _produce_league_games(league_model: LeagueModel) -> list[dict[str, Any]]:
         return [x.model_dump() for x in league_model.games]
     except Exception as exc:
         logging.error("Exception: %s", str(exc))
+        logging.error(traceback.format_exc())
         raise ValueError(str(exc))
 
 

@@ -1108,6 +1108,15 @@ TEXAS_AM_COMMERCE_FIELD_HOUSE = SportsballGeocodeTuple(
     housenumber="2600",
     country="USA",
 )
+WISDOM_GYM = SportsballGeocodeTuple(
+    city="Stephenville",
+    state="TX",
+    postal="",
+    lat=32.215438,
+    lng=-98.220617,
+    housenumber="",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -3528,15 +3537,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="8600",
         country="USA",
     ),
-    "Wisdom Gym, Stephenville, Texas": SportsballGeocodeTuple(
-        city="Stephenville",
-        state="TX",
-        postal="",
-        lat=32.215438,
-        lng=-98.220617,
-        housenumber="",
-        country="USA",
-    ),
+    "Wisdom Gym, Stephenville, Texas": WISDOM_GYM,
     "Skyhawk Arena, Martin, Tennessee": SportsballGeocodeTuple(
         city="Martin",
         state="TN",
@@ -7072,6 +7073,25 @@ _CACHED_GEOCODES: dict[str, Any] = {
         postal="",
         lat=32.779167,
         lng=-96.808889,
+        housenumber="",
+        country="USA",
+    ),
+    "The Gabba, Brisbane, Australia": GABBA,
+    "Sydney Cricket Ground, Sydney, Australia": SCG,
+    "People First Stadium, Gold Coast, Australia": PEOPLE_FIRST_STADIUM,
+    "Engie Stadium, Sydney, Australia": ENGIE_STADIUM,
+    "Melbourne Cricket Ground, Melbourne, Australia": MCG,
+    "GMHBA Stadium, Geelong, Australia": GMHBA_STADIUM,
+    "Marvel Stadium, Melbourne, Australia": MARVEL_STADIUM,
+    "Adelaide Oval, Adelaide, Australia": ADELAIDE_OVAL,
+    "Optus Stadium, Perth, Australia": OPTUS_STADIUM,
+    "Wisdom Gymnasium, Stephenville, Texas": WISDOM_GYM,
+    "Charlotte, North Carolina": SportsballGeocodeTuple(
+        city="Charlotte",
+        state="NC",
+        postal="",
+        lat=35.227222,
+        lng=-80.843056,
         housenumber="",
         country="USA",
     ),
