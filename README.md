@@ -43,6 +43,8 @@ Python 3.11.6:
 - [random_user_agent](https://github.com/Luqman-Ud-Din/random_user_agent)
 - [wayback](https://github.com/edgi-govdata-archiving/wayback)
 - [cryptography](https://cryptography.io/en/latest/)
+- [feedparser](https://github.com/kurtmckee/feedparser)
+- [dateparser](https://dateparser.readthedocs.io/en/latest/)
 
 ## Raison D'être :thought_balloon:
 

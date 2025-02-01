@@ -7,9 +7,9 @@ import pytest_is_running
 import requests_cache
 from bs4 import BeautifulSoup
 from dateutil import parser
-from pygooglenews import GoogleNews  # type: ignore
 
 from ...cache import MEMORY
+from ...vendor.pygooglenews import GoogleNews  # type: ignore
 from ..league import League, long_name
 from ..news_model import NewsModel
 
