@@ -1,10 +1,13 @@
 """Odds Portal league model."""
 
+import http
 import json
+import logging
 import urllib.parse
 from typing import Iterator
 
 import extruct  # type: ignore
+import requests
 import tqdm
 from bs4 import BeautifulSoup, Tag
 
@@ -52,15 +55,23 @@ class OddsPortalLeagueModel(LeagueModel):
         for jsonld in data["json-ld"]:
             if jsonld["@type"] != "SportsEvent":
                 continue
-            game_model = create_oddsportal_game_model(
-                self.session,
-                urllib.parse.urljoin(base_url, jsonld["url"]),
-                self.league,
-                True,
-            )
-            pbar.update(1)
-            pbar.set_description(f"OddsPortal {game_model.dt}")
-            yield game_model
+            try:
+                game_model = create_oddsportal_game_model(
+                    self.session,
+                    urllib.parse.urljoin(base_url, jsonld["url"]),
+                    self.league,
+                    True,
+                )
+                pbar.update(1)
+                pbar.set_description(
+                    f"OddsPortal {game_model.year} - {game_model.season_type} - {game_model.dt}"
+                )
+                yield game_model
+            except requests.exceptions.HTTPError as exc:
+                if exc.response.status_code == http.HTTPStatus.NOT_FOUND:
+                    logging.warning("Failed to find game at: %s", jsonld["url"])
+                    continue
+                raise exc
 
     def _find_previous(self, pbar: tqdm.tqdm) -> Iterator[GameModel]:
         seen_urls = set()

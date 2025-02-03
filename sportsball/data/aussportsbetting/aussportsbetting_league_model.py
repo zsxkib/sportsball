@@ -1,5 +1,6 @@
 """Aussportsbetting league model."""
 
+# pylint: disable=line-too-long
 from io import BytesIO
 from typing import Any, Iterator
 
@@ -95,7 +96,12 @@ class AusSportsBettingLeagueModel(LeagueModel):
         ws = workbook.active
         if ws is None:
             raise ValueError("ws is null.")
-        for row in tqdm.tqdm(ws.iter_rows(), desc="AusSportsBetting Games"):
-            game = self._row_to_game(row)
-            if game is not None:
-                yield game
+        with tqdm.tqdm() as pbar:
+            for row in ws.iter_rows():
+                game_model = self._row_to_game(row)
+                if game_model is not None:
+                    pbar.update(1)
+                    pbar.set_description(
+                        f"AusSportsBetting {game_model.year} - {game_model.season_type} - {game_model.dt}"
+                    )
+                    yield game_model

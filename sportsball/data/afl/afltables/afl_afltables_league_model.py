@@ -28,7 +28,7 @@ class AFLAFLTablesLeagueModel(LeagueModel):
         super().__init__(League.AFL, session)
 
     def _produce_games(
-        self, season_url: str, season_type: SeasonType
+        self, season_url: str, season_type: SeasonType, pbar: tqdm.tqdm
     ) -> Iterator[GameModel]:
         # pylint: disable=too-many-branches,too-many-locals
         o = urlparse(season_url)
@@ -68,7 +68,7 @@ class AFLAFLTablesLeagueModel(LeagueModel):
                     if current_dt is None:
                         raise ValueError("current_dt is null.")
                     if not in_finals and season_type == SeasonType.REGULAR:
-                        model = create_afl_afltables_game_model(
+                        game_model = create_afl_afltables_game_model(
                             game_number,
                             self.session,
                             url,
@@ -79,14 +79,18 @@ class AFLAFLTablesLeagueModel(LeagueModel):
                             season_type,
                             current_dt,
                         )
-                        model_week = model.week
+                        model_week = game_model.week
                         if model_week is None:
                             raise ValueError("model_week is null")
                         last_round_number = model_week  # pyright: ignore
                         if season_type == SeasonType.REGULAR:
-                            yield model  # pyright: ignore
+                            pbar.update(1)
+                            pbar.set_description(
+                                f"AFLTables {game_model.year} - {season_type} - {game_model.dt}"
+                            )
+                            yield game_model  # pyright: ignore
                     elif in_finals and season_type == SeasonType.POSTSEASON:
-                        yield create_afl_afltables_game_model(
+                        game_model = create_afl_afltables_game_model(
                             game_number,
                             self.session,
                             url,
@@ -97,6 +101,11 @@ class AFLAFLTablesLeagueModel(LeagueModel):
                             season_type,
                             current_dt,
                         )
+                        pbar.update(1)
+                        pbar.set_description(
+                            f"AFLTables {game_model.year} - {season_type} - {game_model.dt}"
+                        )
+                        yield game_model
                     game_number += 1
                     urls_duplicates.add(url)
             ladder_count = None
@@ -123,12 +132,15 @@ class AFLAFLTablesLeagueModel(LeagueModel):
     def games(self) -> Iterator[GameModel]:
         response = self.session.get(_SEASON_URL)
         soup = BeautifulSoup(response.text, "html.parser")
-        with tqdm.tqdm(desc="AFLTables seasons") as pbar:
+        with tqdm.tqdm() as pbar:
             for table in soup.find_all("table"):
                 for tr in table.find_all("tr"):
                     for td in tr.find_all("td"):
                         for a in td.find_all("a"):
                             url = urllib.parse.urljoin(_SEASON_URL, a.get("href"))
-                            yield from self._produce_games(url, SeasonType.REGULAR)
-                            yield from self._produce_games(url, SeasonType.POSTSEASON)
-                            pbar.update(2)
+                            yield from self._produce_games(
+                                url, SeasonType.REGULAR, pbar
+                            )
+                            yield from self._produce_games(
+                                url, SeasonType.POSTSEASON, pbar
+                            )
