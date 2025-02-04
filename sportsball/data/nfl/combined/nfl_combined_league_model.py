@@ -7,6 +7,7 @@ from ...league import League
 from ..aussportsbetting.nfl_aussportsbetting_league_model import \
     NFLAusSportsBettingLeagueModel
 from ..espn.nfl_espn_league_model import NFLESPNLeagueModel
+from ..oddsportal.nfl_oddsportal_league_model import NFLOddsPortalLeagueModel
 from ..sportsdb.nfl_sportsdb_league_model import NFLSportsDBLeagueModel
 
 LOS_ANGELES_RAMS = "135907"
@@ -379,9 +380,10 @@ class NFLCombinedLeagueModel(CombinedLeagueModel):
             session,
             League.NFL,
             [
-                NFLESPNLeagueModel(session),
-                NFLSportsDBLeagueModel(session),
-                NFLAusSportsBettingLeagueModel(session),
+                NFLESPNLeagueModel(session, position=0),
+                NFLSportsDBLeagueModel(session, position=1),
+                NFLAusSportsBettingLeagueModel(session, position=2),
+                NFLOddsPortalLeagueModel(session, position=3),
             ],
         )
 

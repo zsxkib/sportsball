@@ -24,7 +24,9 @@ _SEASON_URL = "https://afltables.com/afl/seas/season_idx.html"
 class AFLAFLTablesLeagueModel(LeagueModel):
     """AFL AFLTables implementation of the league model."""
 
-    def __init__(self, session: requests_cache.CachedSession) -> None:
+    def __init__(
+        self, session: requests_cache.CachedSession, position: int | None = None
+    ) -> None:
         super().__init__(League.AFL, session)
 
     def _produce_games(
@@ -132,7 +134,7 @@ class AFLAFLTablesLeagueModel(LeagueModel):
     def games(self) -> Iterator[GameModel]:
         response = self.session.get(_SEASON_URL)
         soup = BeautifulSoup(response.text, "html.parser")
-        with tqdm.tqdm() as pbar:
+        with tqdm.tqdm(position=self.position) as pbar:
             for table in soup.find_all("table"):
                 for tr in table.find_all("tr"):
                     for td in tr.find_all("td"):

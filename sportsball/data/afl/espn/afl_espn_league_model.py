@@ -13,5 +13,7 @@ _SEASON_URL = "https://sports.core.api.espn.com/v2/sports/australian-football/le
 class AFLESPNLeagueModel(ESPNLeagueModel):
     """AFL ESPN implementation of the league model."""
 
-    def __init__(self, session: requests_cache.CachedSession) -> None:
-        super().__init__(_SEASON_URL, League.AFL, session)
+    def __init__(
+        self, session: requests_cache.CachedSession, position: int | None = None
+    ) -> None:
+        super().__init__(_SEASON_URL, League.AFL, session, position=position)

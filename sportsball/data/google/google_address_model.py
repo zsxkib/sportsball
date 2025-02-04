@@ -1378,6 +1378,15 @@ BOGOTA_SAVINGS_BANK_CENTER = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
+CORBETT_SPORTS_CENTER = SportsballGeocodeTuple(
+    city="Greensboro",
+    state="NC",
+    postal="27411",
+    lat=36.076783,
+    lng=-79.768849,
+    housenumber="1601",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -3657,15 +3666,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="111",
         country="USA",
     ),
-    "Ellis Corbett Sports Center, Greensboro, North Carolina": SportsballGeocodeTuple(
-        city="Greensboro",
-        state="NC",
-        postal="27411",
-        lat=36.076783,
-        lng=-79.768849,
-        housenumber="1601",
-        country="USA",
-    ),
+    "Ellis Corbett Sports Center, Greensboro, North Carolina": CORBETT_SPORTS_CENTER,
     "Trask Coliseum, Wilmington, North Carolina": SportsballGeocodeTuple(
         city="Wilmington",
         state="NC",
@@ -7676,6 +7677,16 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Gersten Pavilion, Los Angeles, California": GERSTEN_PAVILION,
     "Rothman Center, Teaneck, New Jersey": BOGOTA_SAVINGS_BANK_CENTER,
+    "Corbett Sports Center, Greensboro, North Carolina": CORBETT_SPORTS_CENTER,
+    "Easton, Massachusetts": SportsballGeocodeTuple(
+        city="Easton",
+        state="MA",
+        postal="",
+        lat=42.024444,
+        lng=-71.129167,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 

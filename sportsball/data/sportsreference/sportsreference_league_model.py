@@ -20,9 +20,13 @@ class SportsReferenceLeagueModel(LeagueModel):
     """Sports Reference implementation of the league model."""
 
     def __init__(
-        self, session: requests_cache.CachedSession, league: League, base_url: str
+        self,
+        session: requests_cache.CachedSession,
+        league: League,
+        base_url: str,
+        position: int | None = None,
     ) -> None:
-        super().__init__(league, session)
+        super().__init__(league, session, position=position)
         self._base_url = base_url
 
     @property
@@ -44,7 +48,7 @@ class SportsReferenceLeagueModel(LeagueModel):
                     yield game_model
 
         final_path: str | None = ""
-        with tqdm.tqdm() as pbar:
+        with tqdm.tqdm(position=self.position) as pbar:
             while final_path is not None:
                 url = self._base_url + final_path
                 if final_path:

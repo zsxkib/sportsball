@@ -32,10 +32,16 @@ class LeagueModel(Model):
 
     _df: pd.DataFrame | None
 
-    def __init__(self, league: League, session: requests_cache.CachedSession) -> None:
+    def __init__(
+        self,
+        league: League,
+        session: requests_cache.CachedSession,
+        position: int | None = None,
+    ) -> None:
         super().__init__(session)
         self._league = league
         self._df = None
+        self.position = position
 
     @property
     def games(self) -> Iterator[GameModel]:

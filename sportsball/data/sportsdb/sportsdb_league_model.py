@@ -20,9 +20,13 @@ class SportsDBLeagueModel(LeagueModel):
     # pylint: disable=too-many-arguments
 
     def __init__(
-        self, session: requests_cache.CachedSession, league_id: str, league: League
+        self,
+        session: requests_cache.CachedSession,
+        league_id: str,
+        league: League,
+        position: int | None = None,
     ) -> None:
-        super().__init__(league, session)
+        super().__init__(league, session, position=position)
         self._league_id = league_id
 
     def _produce_games(
@@ -76,7 +80,7 @@ class SportsDBLeagueModel(LeagueModel):
             )
             response.raise_for_status()
             seasons = response.json()
-        with tqdm.tqdm() as pbar:
+        with tqdm.tqdm(position=self.position) as pbar:
             for season in seasons["seasons"]:
                 season_year = season["strSeason"]
                 for season_type in SeasonType:

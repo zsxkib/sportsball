@@ -29,9 +29,13 @@ class ESPNLeagueModel(LeagueModel):
     """ESPN implementation of the league model."""
 
     def __init__(
-        self, start_url: str, league: League, session: requests_cache.CachedSession
+        self,
+        start_url: str,
+        league: League,
+        session: requests_cache.CachedSession,
+        position: int | None = None,
     ) -> None:
-        super().__init__(league, session)
+        super().__init__(league, session, position=position)
         self._start_url = start_url
 
     def _produce_games(
@@ -138,7 +142,7 @@ class ESPNLeagueModel(LeagueModel):
     @property
     def games(self) -> Iterator[GameModel]:
         page = 1
-        with tqdm.tqdm() as pbar:
+        with tqdm.tqdm(position=self.position) as pbar:
             while True:
                 if page == 1:
                     with self.session.cache_disabled():

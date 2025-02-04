@@ -10,5 +10,7 @@ from ...league import League
 class AFLAusSportsBettingLeagueModel(AusSportsBettingLeagueModel):
     """AFL AusSportsBetting implementation of the league model."""
 
-    def __init__(self, session: requests_cache.CachedSession) -> None:
-        super().__init__(League.AFL, session)
+    def __init__(
+        self, session: requests_cache.CachedSession, position: int | None = None
+    ) -> None:
+        super().__init__(League.AFL, session, position=position)

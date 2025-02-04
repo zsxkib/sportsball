@@ -12,7 +12,12 @@ from ...sportsreference.sportsreference_league_model import \
 class NCAABSportsReferenceLeagueModel(SportsReferenceLeagueModel):
     """NCAAB Sports Reference implementation of the league model."""
 
-    def __init__(self, session: requests_cache.CachedSession) -> None:
+    def __init__(
+        self, session: requests_cache.CachedSession, position: int | None = None
+    ) -> None:
         super().__init__(
-            session, League.NCAAB, "https://www.sports-reference.com/cbb/boxscores/"
+            session,
+            League.NCAAB,
+            "https://www.sports-reference.com/cbb/boxscores/",
+            position=position,
         )

@@ -67,8 +67,10 @@ class NBANBALeagueModel(LeagueModel):
         start: datetime.datetime
         games: int
 
-    def __init__(self, session: requests_cache.CachedSession) -> None:
-        super().__init__(League.NBA, session)
+    def __init__(
+        self, session: requests_cache.CachedSession, position: int | None = None
+    ) -> None:
+        super().__init__(League.NBA, session, position=position)
         self._league_id = "00"
         NBAHTTP.set_session(session)
 
@@ -111,7 +113,7 @@ class NBANBALeagueModel(LeagueModel):
         to_date = datetime.datetime.today().date()
         seasons: dict[str, NBANBALeagueModel._SeasonInfo] = {}
         first_call = False
-        with tqdm.tqdm() as pbar:
+        with tqdm.tqdm(position=self.position) as pbar:
             while True:
                 next_date = to_date - relativedelta(years=1)
                 if not first_call:

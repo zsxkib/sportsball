@@ -18,8 +18,13 @@ from .aussportsbetting_game_model import create_aussportsbetting_game_model
 class AusSportsBettingLeagueModel(LeagueModel):
     """AusSportsBetting implementation of the league model."""
 
-    def __init__(self, league: League, session: requests_cache.CachedSession) -> None:
-        super().__init__(league, session)
+    def __init__(
+        self,
+        league: League,
+        session: requests_cache.CachedSession,
+        position: int | None = None,
+    ) -> None:
+        super().__init__(league, session, position=position)
         match league:
             case League.AFL:
                 self._spreadsheet_url = (
@@ -96,7 +101,7 @@ class AusSportsBettingLeagueModel(LeagueModel):
         ws = workbook.active
         if ws is None:
             raise ValueError("ws is null.")
-        with tqdm.tqdm() as pbar:
+        with tqdm.tqdm(position=self.position) as pbar:
             for row in ws.iter_rows():
                 game_model = self._row_to_game(row)
                 if game_model is not None:

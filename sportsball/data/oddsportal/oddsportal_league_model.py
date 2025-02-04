@@ -162,6 +162,6 @@ class OddsPortalLeagueModel(LeagueModel):
 
     @property
     def games(self) -> Iterator[GameModel]:
-        with tqdm.tqdm() as pbar:
+        with tqdm.tqdm(position=self.position) as pbar:
             yield from self._find_next(pbar)
             yield from self._find_previous(pbar)

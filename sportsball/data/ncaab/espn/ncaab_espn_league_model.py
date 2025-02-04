@@ -12,5 +12,7 @@ _SEASON_URL = "http://sports.core.api.espn.com/v2/sports/basketball/leagues/mens
 class NCAABESPNLeagueModel(ESPNLeagueModel):
     """NCAAB ESPN implementation of the league model."""
 
-    def __init__(self, session: requests_cache.CachedSession) -> None:
-        super().__init__(_SEASON_URL, League.NCAAB, session)
+    def __init__(
+        self, session: requests_cache.CachedSession, position: int | None = None
+    ) -> None:
+        super().__init__(_SEASON_URL, League.NCAAB, session, position=position)

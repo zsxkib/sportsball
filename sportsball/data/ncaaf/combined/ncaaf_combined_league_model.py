@@ -20,8 +20,8 @@ class NCAAFCombinedLeagueModel(CombinedLeagueModel):
             session,
             League.NCAAF,
             [
-                NCAAFESPNLeagueModel(session),
-                NCAAFOddsPortalLeagueModel(session),
+                NCAAFESPNLeagueModel(session, position=0),
+                NCAAFOddsPortalLeagueModel(session, position=1),
             ],
         )
 

@@ -11,5 +11,7 @@ from ...oddsportal.oddsportal_league_model import OddsPortalLeagueModel
 class NBAOddsPortalLeagueModel(OddsPortalLeagueModel):
     """NBA OddsPortal implementation of the league model."""
 
-    def __init__(self, session: requests_cache.CachedSession) -> None:
-        super().__init__(League.NBA, session)
+    def __init__(
+        self, session: requests_cache.CachedSession, position: int | None = None
+    ) -> None:
+        super().__init__(League.NBA, session, position=position)
