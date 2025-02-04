@@ -1,5 +1,6 @@
 """Odds Portal league model."""
 
+# pylint: disable=too-many-locals,too-many-branches,too-many-statements
 import http
 import json
 import logging
@@ -74,15 +75,16 @@ class OddsPortalLeagueModel(LeagueModel):
                 raise exc
 
     def _find_previous(self, pbar: tqdm.tqdm) -> Iterator[GameModel]:
+        standard_suffix = self._path + "results/"
         seen_urls = set()
-        queued_urls = {"https://www.oddsportal.com/" + self._path + "results/"}
+        queued_urls = {"https://www.oddsportal.com/" + standard_suffix}
         while queued_urls:
             url = queued_urls.pop()
             if url in seen_urls:
                 continue
             seen_urls.add(url)
 
-            if url.endswith("results/"):
+            if url.endswith(standard_suffix):
                 with self.session.cache_disabled():
                     response = self.session.get(url)
             else:
@@ -92,24 +94,55 @@ class OddsPortalLeagueModel(LeagueModel):
             soup = BeautifulSoup(response.text, "html.parser")
 
             # Find next URLs
-            for a in soup.find_all("a", href=True):
-                next_url = urllib.parse.urljoin(url, a.get("href"))
-                if next_url.endswith("/results/"):
+            for option in soup.find_all("option"):
+                next_url = urllib.parse.urljoin(url, option.get("value"))
+                if next_url.endswith("/results/") and self._path[:-1] in next_url:
                     queued_urls.add(next_url)
 
             # Paginate through results
             while True:
+                game_urls = set()
+
+                # Check the react tags
                 tournament_component = soup.find("tournament-component")
-                if not isinstance(tournament_component, Tag):
-                    raise ValueError("tournament_component is not a tag.")
-                matches = json.loads(str(tournament_component[":sport-data"]))
-                component = matches.get("tournamentGamesComponent", matches.get("d"))
-                if component.get("total") == 0:
-                    break
-                for match in component.get("rows", []):
+                if isinstance(tournament_component, Tag):
+                    matches = json.loads(str(tournament_component[":sport-data"]))
+                    component = matches.get(
+                        "tournamentGamesComponent", matches.get("d")
+                    )
+                    if component.get("total") != 0:
+                        game_urls = {
+                            urllib.parse.urljoin(url, x["url"])
+                            for x in component.get("rows", [])
+                        }
+                if not game_urls:
+                    for a in soup.find_all("a", href=True):
+                        game_url = urllib.parse.urljoin(url, a.get("href"))
+                        if (
+                            game_url.endswith("results/")
+                            or game_url.endswith("standings/")
+                            or game_url.endswith(self._path)
+                            or game_url.endswith("outrights/")
+                        ):
+                            continue
+                        if self._path[:-1] in game_url:
+                            game_urls.add(game_url)
+
+                for game_url in game_urls:
+                    if "#" in game_url:
+                        continue
+                    if (
+                        game_url.replace("results/", "") == url
+                        or game_url.replace("results/", "") in queued_urls
+                    ):
+                        continue
+                    if game_url.endswith("/archive/"):
+                        continue
+                    if len(game_url.split("/")) != 8:
+                        continue
                     game_model = create_oddsportal_game_model(
                         self.session,
-                        urllib.parse.urljoin(url, match["url"]),
+                        game_url,
                         self.league,
                         False,
                     )

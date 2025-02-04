@@ -31,6 +31,7 @@ FAST_FAIL_DOMAINS = [
     "https://news.google.com/",
     "https://historical-forecast-api.open-meteo.com/",
 ]
+X_NO_WAYBACK = "x-no-wayback"
 
 
 def _is_fast_fail_url(url: str | None) -> bool:
@@ -119,13 +120,21 @@ class ProxySession(requests_cache.CachedSession):
                     response.request = prepared_request
 
                     return response
-        except wayback.exceptions.MementoPlaybackError:  # pyright: ignore
+        except (
+            wayback.exceptions.MementoPlaybackError,  # pyright: ignore
+            requests.exceptions.ChunkedEncodingError,
+        ):  # pyright: ignore
             pass
         return None
 
     @func_set_timeout(DEFAULT_TIMEOUT)
     def _perform_timeout_send(self, request: requests.PreparedRequest, **kwargs) -> Any:
         key = self.cache.create_key(request)
+
+        no_wayback = False
+        if X_NO_WAYBACK in request.headers:
+            no_wayback = request.headers.get(X_NO_WAYBACK) == "1"
+            del request.headers[X_NO_WAYBACK]
 
         if not self.settings.disabled:
             # Check the cache
@@ -136,7 +145,7 @@ class ProxySession(requests_cache.CachedSession):
             logging.info("Request for %s not cached.", request.url)
 
             # Otherwise check the wayback machine
-            if not _is_fast_fail_url(request.url):
+            if not _is_fast_fail_url(request.url) and no_wayback:
                 response = self._wayback_machine_request(
                     request.method, request.url, headers=request.headers
                 )

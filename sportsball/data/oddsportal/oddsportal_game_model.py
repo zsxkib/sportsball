@@ -1,6 +1,6 @@
 """OddsPortal game model."""
 
-# pylint: disable=too-many-locals
+# pylint: disable=too-many-locals,too-many-statements
 import datetime
 import json
 import urllib.parse
@@ -21,7 +21,7 @@ def _create_oddsportal_game_model(
     url: str,
     league: League,
 ) -> GameModel:
-    response = session.get(url)
+    response = session.get(url, headers={"X-No-Wayback": "1"})
     response.raise_for_status()
 
     soup = BeautifulSoup(response.text, "html.parser")
@@ -76,17 +76,21 @@ def _create_oddsportal_game_model(
     if event_body["awayResult"] != "":
         away_points = float(event_body["awayResult"])
 
-    return GameModel(
-        dt=dt,
-        week=None,
-        game_number=None,
-        venue=create_oddsportal_venue_model(
+    venue = None
+    if event_body["venue"] and event_body["venueTown"] and event_body["venueCountry"]:
+        venue = create_oddsportal_venue_model(
             session,
             dt,
             event_body["venue"],
             event_body["venueTown"],
             event_body["venueCountry"],
-        ),
+        )
+
+    return GameModel(
+        dt=dt,
+        week=None,
+        game_number=None,
+        venue=venue,
         teams=[
             create_oddsportal_team_model(
                 session,
