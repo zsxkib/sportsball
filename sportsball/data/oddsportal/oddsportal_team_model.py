@@ -66,10 +66,17 @@ def _create_oddsportal_team_model(
     if end_of_json != -1:
         decrypted_data = decrypted_data[: end_of_json + 1]
     parsed_data = json.loads(decrypted_data)
-    odds_data = parsed_data["d"]["oddsdata"]["back"][
-        f"E-{default_bet_id}-{default_scope_id}-0-0-0"
-    ]
-    outcome_id = odds_data["outcomeId"][team_idx]
+    try:
+        odds_data = parsed_data["d"]["oddsdata"]["back"][
+            f"E-{default_bet_id}-{default_scope_id}-0-0-0"
+        ]
+    except KeyError:
+        back = parsed_data["d"]["oddsdata"]["back"]
+        odds_data = back[sorted(list(back.keys()))[0]]
+    try:
+        outcome_id = odds_data["outcomeId"][team_idx]
+    except KeyError:
+        outcome_id = odds_data["outcomeId"][str(team_idx)]
     history = odds_data["history"][outcome_id]
     odds_models = []
     for bookie_id, bookie_name in bookie_names.items():

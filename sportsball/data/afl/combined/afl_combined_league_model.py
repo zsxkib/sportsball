@@ -213,7 +213,7 @@ class AFLCombinedLeagueModel(CombinedLeagueModel):
                 AFLAFLTablesLeagueModel(session, position=0),
                 AFLESPNLeagueModel(session, position=1),
                 AFLAusSportsBettingLeagueModel(session, position=2),
-                AFLOddsPortalLeagueModel(session),
+                AFLOddsPortalLeagueModel(session, position=3),
             ],
         )
 

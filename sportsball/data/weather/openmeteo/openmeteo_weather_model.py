@@ -131,7 +131,11 @@ def _create_openmeteo_weather_model(
             },
         )
         return _parse_openmeteo(responses, tz, dt)
-    except (requests.exceptions.RetryError, OpenMeteoRequestsError):
+    except (
+        requests.exceptions.RetryError,
+        OpenMeteoRequestsError,
+        requests.exceptions.ReadTimeout,
+    ):
         return None
     except Exception as e:
         e_text = str(e)

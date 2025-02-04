@@ -1,6 +1,6 @@
 """Odds Portal league model."""
 
-# pylint: disable=too-many-locals,too-many-branches,too-many-statements
+# pylint: disable=too-many-locals,too-many-branches,too-many-statements,protected-access
 import http
 import json
 import logging
@@ -82,6 +82,7 @@ class OddsPortalLeagueModel(LeagueModel):
             url = queued_urls.pop()
             if url in seen_urls:
                 continue
+            logging.debug("processing url: %s", url)
             seen_urls.add(url)
 
             if url.endswith(standard_suffix):
@@ -163,5 +164,5 @@ class OddsPortalLeagueModel(LeagueModel):
     @property
     def games(self) -> Iterator[GameModel]:
         with tqdm.tqdm(position=self.position) as pbar:
-            yield from self._find_next(pbar)
+            # yield from self._find_next(pbar)
             yield from self._find_previous(pbar)

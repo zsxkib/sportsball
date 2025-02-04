@@ -33,3 +33,21 @@ class TestOddsPortalGameModel(unittest.TestCase):
                 True,
             )
             self.assertEqual(game_model.dt, datetime.datetime(2025, 3, 6, 3, 50))
+
+    def test_event_dt(self):
+        url = "https://www.oddsportal.com/aussie-rules/australia/afl-2013/collingwood-magpies-north-melbourne-kangaroos-6yxbPNei/"
+        with requests_mock.Mocker() as m:
+            with open(os.path.join(self.dir, "collingwood-magpies-north-melbourne-kangaroos-6yxbPNei.html"), "rb") as f:
+                m.get(url, content=f.read())
+            with open(os.path.join(self.dir, "app.js"), "rb") as f:
+                m.get("https://www.oddsportal.com/res/public/js/build/app.js?v=240917140831", content=f.read())
+            with open(os.path.join(self.dir, "1-18-6yxbPNei-3-1-yj485.dat"), "rb") as f:
+                m.get("https://www.oddsportal.com/match-event/1-18-6yxbPNei-3-1-yj485.dat", content=f.read())
+
+            game_model = create_oddsportal_game_model(
+                self.session,
+                url,
+                League.AFL,
+                True,
+            )
+            self.assertEqual(game_model.dt, datetime.datetime(2013, 9, 1, 1, 20))

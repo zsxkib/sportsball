@@ -1,7 +1,8 @@
 """AFL AFLTables league model."""
 
-# pylint: disable=too-many-statements
+# pylint: disable=too-many-statements,protected-access
 import datetime
+import logging
 import os
 import urllib.parse
 from typing import Iterator
@@ -61,7 +62,13 @@ class AFLAFLTablesLeagueModel(LeagueModel):
                 if "Venue:" in td_text:
                     cleaned_text = td_text.split("Venue:")[0].split("Att:")[0].strip()
                     cleaned_text = " ".join(cleaned_text.split()[-3:])
-                    current_dt = parser.parse(cleaned_text)
+                    try:
+                        current_dt = parser.parse(cleaned_text)
+                    except parser._parser.ParserError as exc:  # type: ignore
+                        logging.error(
+                            "Failed to parse date in season URL: %s", season_url
+                        )
+                        raise exc
             for a in table.find_all("a", href=True):
                 if a.get_text().strip().lower() == "match stats":
                     url = urllib.parse.urljoin(season_url, a.get("href"))

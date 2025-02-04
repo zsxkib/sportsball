@@ -145,7 +145,7 @@ class ProxySession(requests_cache.CachedSession):
             logging.info("Request for %s not cached.", request.url)
 
             # Otherwise check the wayback machine
-            if not _is_fast_fail_url(request.url) and no_wayback:
+            if not _is_fast_fail_url(request.url) and not no_wayback:
                 response = self._wayback_machine_request(
                     request.method, request.url, headers=request.headers
                 )

@@ -10,6 +10,7 @@ import requests_cache
 from bs4 import BeautifulSoup, Tag
 
 from ...cache import MEMORY
+from ...proxy_session import X_NO_WAYBACK
 from ..game_model import GameModel
 from ..league import League
 from .oddsportal_team_model import create_oddsportal_team_model
@@ -21,14 +22,19 @@ def _create_oddsportal_game_model(
     url: str,
     league: League,
 ) -> GameModel:
-    response = session.get(url, headers={"X-No-Wayback": "1"})
+    response = session.get(url, headers={X_NO_WAYBACK: "1"})
     response.raise_for_status()
 
     soup = BeautifulSoup(response.text, "html.parser")
     event_tag = soup.find("div", id="react-event-header")
     if not isinstance(event_tag, Tag):
-        raise ValueError(f"event_tag is not a tag for URL: {url}.")
-    event = json.loads(str(event_tag["data"]))
+        soup_x = BeautifulSoup(response.text, "xml")
+        event_tag = soup_x.find("Event")
+        if not isinstance(event_tag, Tag):
+            raise ValueError(f"event_tag is not a tag for URL: {url}.")
+        event = json.loads(str(event_tag[":data"]))
+    else:
+        event = json.loads(str(event_tag["data"]))
 
     event_body = event["eventBody"]
     event_data = event["eventData"]
@@ -51,7 +57,7 @@ def _create_oddsportal_game_model(
             continue
         if "/app.js" in src:
             src_url = urllib.parse.urljoin(url, src)
-            src_response = session.get(src_url)
+            src_response = session.get(src_url, headers={X_NO_WAYBACK: "1"})
             src_response.raise_for_status()
             variables = src_response.text
             sentinel = 'break}return e.next=9,g(r.data,"'
@@ -77,7 +83,11 @@ def _create_oddsportal_game_model(
         away_points = float(event_body["awayResult"])
 
     venue = None
-    if event_body["venue"] and event_body["venueTown"] and event_body["venueCountry"]:
+    if (
+        event_body.get("venue", "")
+        and event_body.get("venueTown", "")
+        and event_body.get("venueCountry", "")
+    ):
         venue = create_oddsportal_venue_model(
             session,
             dt,

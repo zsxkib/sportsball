@@ -5,6 +5,8 @@ import requests_cache
 from ...combined.combined_league_model import CombinedLeagueModel
 from ...league import League
 from ..espn.ncaab_espn_league_model import NCAABESPNLeagueModel
+from ..oddsportal.ncaab_oddsportal_league_model import \
+    NCAABOddsPortalLeagueModel
 from ..sportsreference.ncaab_sportsreference_league_model import \
     NCAABSportsReferenceLeagueModel
 
@@ -749,8 +751,9 @@ class NCAABCombinedLeagueModel(CombinedLeagueModel):
             session,
             League.NCAAB,
             [
-                NCAABSportsReferenceLeagueModel(session),
-                NCAABESPNLeagueModel(session),
+                NCAABSportsReferenceLeagueModel(session, position=0),
+                NCAABESPNLeagueModel(session, position=1),
+                NCAABOddsPortalLeagueModel(session, position=2),
             ],
         )
 
