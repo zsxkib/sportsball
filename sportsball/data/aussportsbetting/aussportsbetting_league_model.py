@@ -101,7 +101,5 @@ class AusSportsBettingLeagueModel(LeagueModel):
                 game_model = self._row_to_game(row)
                 if game_model is not None:
                     pbar.update(1)
-                    pbar.set_description(
-                        f"AusSportsBetting {game_model.year} - {game_model.season_type} - {game_model.dt}"
-                    )
+                    pbar.set_description(f"AusSportsBetting - {game_model.dt}")
                     yield game_model
