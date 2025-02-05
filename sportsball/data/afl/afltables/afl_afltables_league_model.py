@@ -60,7 +60,13 @@ class AFLAFLTablesLeagueModel(LeagueModel):
             for td in table.find_all("td"):
                 td_text = td.get_text().strip()
                 if "Venue:" in td_text:
-                    cleaned_text = td_text.split("Venue:")[0].split("Att:")[0].strip()
+                    cleaned_text = (
+                        td_text.split("Venue:")[0]
+                        .split("Att:")[0]
+                        .strip()
+                        .split("(")[0]
+                        .strip()
+                    )
                     cleaned_text = " ".join(cleaned_text.split()[-3:])
                     try:
                         current_dt = parser.parse(cleaned_text)
