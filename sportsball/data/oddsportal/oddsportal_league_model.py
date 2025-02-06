@@ -31,6 +31,17 @@ USA = "usa"
 NCAA = "ncaa"
 
 
+def _find_ids(text: str) -> tuple[str, str]:
+    sentinel = "var pageOutrightsVar = '"
+    sanitised_text = text[text.find(sentinel) + len(sentinel) :]
+    sanitised_text = sanitised_text[: sanitised_text.find("'")]
+    try:
+        page_outrights = json.loads(sanitised_text)
+    except json.decoder.JSONDecodeError as exc:
+        raise exc
+    return str(page_outrights["sid"]), page_outrights["id"]
+
+
 def _process_results_pages(
     url: str,
     session: requests_cache.CachedSession,
@@ -40,11 +51,7 @@ def _process_results_pages(
     response: requests.Response,
 ) -> Iterator[GameModel]:
     # Fetch first page
-    sanitised_text = response.text[response.text.find("var pageOutrightsVar = '") :]
-    sanitised_text = sanitised_text[: sanitised_text.find("'")]
-    page_outrights = json.loads(sanitised_text)
-    sports_id = page_outrights["sid"]
-    oddsportal_id = page_outrights["id"]
+    sports_id, oddsportal_id = _find_ids(response.text)
 
     current_page = 1
     total_pages = None
@@ -54,14 +61,17 @@ def _process_results_pages(
         dat_url = f"https://www.oddsportal.com/ajax-sport-country-tournament-archive_/{sports_id}/{oddsportal_id}/X134529032X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X512X32X0X0X0X0X0X0X131072X0X2048/1/-5/page/{current_page}//"
         parsed_data = fetch_data(dat_url, session, url, soup)
         d = parsed_data["d"]
-        for row in d["rows"]:
+        if d.get("total") == 0:
+            return
+        for row in d.get("rows", []):
             game_model = create_oddsportal_game_model(
                 session, urllib.parse.urljoin(url, row["url"]), league, False
             )
             pbar.update(1)
             pbar.set_description(f"OddsPortal {game_model.dt}")
             yield game_model
-        total_pages = d["pagination"]["pages"]
+        pagination = d["pagination"]
+        total_pages = pagination["pages"]
         current_page += 1
 
 
@@ -119,13 +129,13 @@ class OddsPortalLeagueModel(LeagueModel):
             url = queued_urls.pop()
             if url in seen_urls:
                 continue
-            logging.debug("processing url: %s", url)
             seen_urls.add(url)
 
-            response = self.session.get(url, headers={X_NO_WAYBACK: "1"})
+            with self.session.cache_disabled():
+                response = self.session.get(url, headers={X_NO_WAYBACK: "1"})
             response.raise_for_status()
 
-            soup = BeautifulSoup(response.text, "xml")
+            soup = BeautifulSoup(response.text, "html.parser")
 
             # Find next URLs
             for option in soup.find_all("option"):
