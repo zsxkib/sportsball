@@ -71,6 +71,22 @@ AFL_TEAM_IDENTITY_MAP = {
     "North Melbourne": KANGAROOS,
     "Melbourne": MELBOURNE,
     "Collingwood": COLLINGWOOD,
+    # OddsPortal
+    "Collingwood Magpies": COLLINGWOOD,
+    "Port Adelaide Power": PORT_ADELAIDE,
+    "Richmond Tigers": RICHMOND,
+    "Carlton Blues": CARLTON,
+    "Hawthorn Hawks": HAWTHORN,
+    "Essendon Bombers": ESSENDON,
+    "Sydney Swans": SWANS,
+    "Adelaide Crows": ADELAIDE,
+    "St Kilda Saints": STKILDA,
+    "Brisbane Lions": BRISBANE_LIONS,
+    "Melbourne Demons": MELBOURNE,
+    "Geelong Cats": GEELONG,
+    "Fremantle Dockers": FREMANTLE,
+    "West Coast Eagles": WESTCOAST,
+    "Gold Coast Suns": GOLDCOAST,
 }
 BRUNSWICK_ST = "brunswick_st"
 VICTORIA_PARK = "victoria_park"
@@ -199,6 +215,8 @@ AFL_VENUE_IDENTITY_MAP = {
     "Westpac Stadium": WELLINGTON,
     "AAMI Stadium": FOOTBALL_PARK,
     "Blacktown Park": BLACKTOWN,
+    # OddsPortal
+    "Melbourne Cricket Ground": MCG,
 }
 
 

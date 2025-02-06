@@ -1,6 +1,6 @@
 """OddsPortal game model."""
 
-# pylint: disable=too-many-locals,too-many-statements
+# pylint: disable=too-many-locals,too-many-statements,line-too-long
 import datetime
 import json
 import urllib.parse
@@ -13,6 +13,7 @@ from ...cache import MEMORY
 from ...proxy_session import X_NO_WAYBACK
 from ..game_model import GameModel
 from ..league import League
+from .decrypt import fetch_data
 from .oddsportal_team_model import create_oddsportal_team_model
 from .oddsportal_venue_model import create_oddsportal_venue_model
 
@@ -49,31 +50,6 @@ def _create_oddsportal_game_model(
     default_scope_id = str(event_data["defaultScopeId"])
     xhash = urllib.parse.unquote(event_data["xhash"])
 
-    salt: bytes | None = None
-    password: bytes | None = None
-    for script in soup.find_all("script"):
-        src = script.get("src")
-        if src is None:
-            continue
-        if "/app.js" in src:
-            src_url = urllib.parse.urljoin(url, src)
-            src_response = session.get(src_url, headers={X_NO_WAYBACK: "1"})
-            src_response.raise_for_status()
-            variables = src_response.text
-            sentinel = 'break}return e.next=9,g(r.data,"'
-            variables = variables[variables.find(sentinel) + len(sentinel) :]
-            variables = variables[
-                : variables.find('");case 9:return s=e.sent,l=JSON.parse(s),e.abrupt')
-            ]
-            password_str, salt_str = variables.split('","')
-            salt = str.encode(salt_str)
-            password = str.encode(password_str)
-            break
-    if salt is None:
-        raise ValueError("salt is null.")
-    if password is None:
-        raise ValueError("password is null.")
-
     bookie_names = event_body["providersNames"]
     home_points = None
     if event_body["homeResult"] != "":
@@ -96,6 +72,9 @@ def _create_oddsportal_game_model(
             event_body["venueCountry"],
         )
 
+    url = f"https://www.oddsportal.com/match-event/{version_id}-{sport_id}-{unique_id}-{default_bet_id}-{default_scope_id}-{xhash}.dat"
+    parsed_data = fetch_data(url, session, url, soup)
+
     return GameModel(
         dt=dt,
         week=None,
@@ -108,16 +87,11 @@ def _create_oddsportal_game_model(
                 event_data["home"],
                 league,
                 home_points,
-                version_id,
-                sport_id,
-                unique_id,
                 default_bet_id,
                 default_scope_id,
-                xhash,
-                salt,
-                password,
                 bookie_names,
                 0,
+                parsed_data,
             ),
             create_oddsportal_team_model(
                 session,
@@ -125,16 +99,11 @@ def _create_oddsportal_game_model(
                 event_data["away"],
                 league,
                 away_points,
-                version_id,
-                sport_id,
-                unique_id,
                 default_bet_id,
                 default_scope_id,
-                xhash,
-                salt,
-                password,
                 bookie_names,
                 1,
+                parsed_data,
             ),
         ],
         end_dt=end_dt,

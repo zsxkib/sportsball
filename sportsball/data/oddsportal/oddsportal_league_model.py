@@ -1,6 +1,6 @@
 """Odds Portal league model."""
 
-# pylint: disable=too-many-locals,too-many-branches,too-many-statements,protected-access
+# pylint: disable=too-many-locals,too-many-branches,too-many-statements,protected-access,too-many-arguments,line-too-long
 import http
 import json
 import logging
@@ -9,12 +9,15 @@ from typing import Iterator
 
 import extruct  # type: ignore
 import requests
+import requests_cache
 import tqdm
-from bs4 import BeautifulSoup, Tag
+from bs4 import BeautifulSoup
 
+from ...proxy_session import X_NO_WAYBACK
 from ..game_model import GameModel
 from ..league import League
 from ..league_model import LeagueModel
+from .decrypt import fetch_data
 from .oddsportal_game_model import create_oddsportal_game_model
 
 # Sports
@@ -26,6 +29,40 @@ USA = "usa"
 
 # Leagues
 NCAA = "ncaa"
+
+
+def _process_results_pages(
+    url: str,
+    session: requests_cache.CachedSession,
+    soup: BeautifulSoup,
+    league: League,
+    pbar: tqdm.tqdm,
+    response: requests.Response,
+) -> Iterator[GameModel]:
+    # Fetch first page
+    sanitised_text = response.text[response.text.find("var pageOutrightsVar = '") :]
+    sanitised_text = sanitised_text[: sanitised_text.find("'")]
+    page_outrights = json.loads(sanitised_text)
+    sports_id = page_outrights["sid"]
+    oddsportal_id = page_outrights["id"]
+
+    current_page = 1
+    total_pages = None
+    while (current_page == 1 and total_pages is None) or (
+        current_page <= 0 if total_pages is None else total_pages
+    ):
+        dat_url = f"https://www.oddsportal.com/ajax-sport-country-tournament-archive_/{sports_id}/{oddsportal_id}/X134529032X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X512X32X0X0X0X0X0X0X131072X0X2048/1/-5/page/{current_page}//"
+        parsed_data = fetch_data(dat_url, session, url, soup)
+        d = parsed_data["d"]
+        for row in d["rows"]:
+            game_model = create_oddsportal_game_model(
+                session, urllib.parse.urljoin(url, row["url"]), league, False
+            )
+            pbar.update(1)
+            pbar.set_description(f"OddsPortal {game_model.dt}")
+            yield game_model
+        total_pages = d["pagination"]["pages"]
+        current_page += 1
 
 
 class OddsPortalLeagueModel(LeagueModel):
@@ -85,14 +122,10 @@ class OddsPortalLeagueModel(LeagueModel):
             logging.debug("processing url: %s", url)
             seen_urls.add(url)
 
-            if url.endswith(standard_suffix):
-                with self.session.cache_disabled():
-                    response = self.session.get(url)
-            else:
-                response = self.session.get(url)
+            response = self.session.get(url, headers={X_NO_WAYBACK: "1"})
             response.raise_for_status()
 
-            soup = BeautifulSoup(response.text, "html.parser")
+            soup = BeautifulSoup(response.text, "xml")
 
             # Find next URLs
             for option in soup.find_all("option"):
@@ -100,69 +133,17 @@ class OddsPortalLeagueModel(LeagueModel):
                 if next_url.endswith("/results/") and self._path[:-1] in next_url:
                     queued_urls.add(next_url)
 
-            # Paginate through results
-            while True:
-                game_urls = set()
-
-                # Check the react tags
-                tournament_component = soup.find("tournament-component")
-                if isinstance(tournament_component, Tag):
-                    matches = json.loads(str(tournament_component[":sport-data"]))
-                    component = matches.get(
-                        "tournamentGamesComponent", matches.get("d")
-                    )
-                    if component.get("total") != 0:
-                        game_urls = {
-                            urllib.parse.urljoin(url, x["url"])
-                            for x in component.get("rows", [])
-                        }
-                if not game_urls:
-                    for a in soup.find_all("a", href=True):
-                        game_url = urllib.parse.urljoin(url, a.get("href"))
-                        if (
-                            game_url.endswith("results/")
-                            or game_url.endswith("standings/")
-                            or game_url.endswith(self._path)
-                            or game_url.endswith("outrights/")
-                        ):
-                            continue
-                        if self._path[:-1] in game_url:
-                            game_urls.add(game_url)
-
-                for game_url in game_urls:
-                    if "#" in game_url:
-                        continue
-                    if (
-                        game_url.replace("results/", "") == url
-                        or game_url.replace("results/", "") in queued_urls
-                    ):
-                        continue
-                    if game_url.endswith("/archive/"):
-                        continue
-                    if len(game_url.split("/")) != 8:
-                        continue
-                    game_model = create_oddsportal_game_model(
-                        self.session,
-                        game_url,
-                        self.league,
-                        False,
-                    )
-                    pbar.update(1)
-                    pbar.set_description(f"OddsPortal {game_model.dt}")
-                    yield game_model
-
-                next_a = soup.find("a", text="Next", href=True)
-                if next_a is None:
-                    break
-                if not isinstance(next_a, Tag):
-                    raise ValueError("next_a is not a tag.")
-                next_url = urllib.parse.urljoin(url, str(next_a.get("href")))
-                response = self.session.get(next_url)
-                response.raise_for_status()
-                soup = BeautifulSoup(response.text, "html.parser")
+            yield from _process_results_pages(
+                url,
+                self.session,
+                soup,
+                self.league,
+                pbar,
+                response,
+            )
 
     @property
     def games(self) -> Iterator[GameModel]:
         with tqdm.tqdm(position=self.position) as pbar:
-            # yield from self._find_next(pbar)
+            yield from self._find_next(pbar)
             yield from self._find_previous(pbar)

@@ -145,7 +145,9 @@ class AFLAFLTablesLeagueModel(LeagueModel):
 
     @property
     def games(self) -> Iterator[GameModel]:
-        response = self.session.get(_SEASON_URL)
+        with self.session.cache_disabled():
+            response = self.session.get(_SEASON_URL)
+        response.raise_for_status()
         soup = BeautifulSoup(response.text, "html.parser")
         with tqdm.tqdm(position=self.position) as pbar:
             for table in soup.find_all("table"):

@@ -1441,6 +1441,15 @@ TED_CONSTANT_CONVOCATION_CENTER = SportsballGeocodeTuple(
     housenumber="4320",
     country="USA",
 )
+STONY_BROOK_ARENA = SportsballGeocodeTuple(
+    city="Stony Brook",
+    state="NY",
+    postal="11790",
+    lat=40.91741,
+    lng=-73.125955,
+    housenumber="100",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5554,15 +5563,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="4000",
         country="USA",
     ),
-    "Island Federal Credit Union, Stony Brook, New York": SportsballGeocodeTuple(
-        city="Stony Brook",
-        state="NY",
-        postal="11790",
-        lat=40.91741,
-        lng=-73.125955,
-        housenumber="100",
-        country="USA",
-    ),
+    "Island Federal Credit Union, Stony Brook, New York": STONY_BROOK_ARENA,
     "Cajundome, Lafayette, Louisiana": SportsballGeocodeTuple(
         city="Lafayette",
         state="LA",
@@ -7588,15 +7589,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="11200",
         country="USA",
     ),
-    "Island Federal Credit Union Arena, Stony Brook, New York": SportsballGeocodeTuple(
-        city="Stony Brook",
-        state="NY",
-        postal="11790",
-        lat=40.91741,
-        lng=-73.125955,
-        housenumber="100",
-        country="USA",
-    ),
+    "Island Federal Credit Union Arena, Stony Brook, New York": STONY_BROOK_ARENA,
     "Phoenix, Arizona": SportsballGeocodeTuple(
         city="Phoenix",
         state="AZ",
@@ -7825,6 +7818,16 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="35",
         country="USA",
     ),
+    "Corpus Christi, Texas": SportsballGeocodeTuple(
+        city="Corpus Christi",
+        state="TX",
+        postal="",
+        lat=27.742778,
+        lng=-97.401944,
+        housenumber="",
+        country="USA",
+    ),
+    "Island Federal Credit Union Arena, New York, NY, USA": STONY_BROOK_ARENA,
 }
 
 

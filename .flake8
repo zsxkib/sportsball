@@ -1,5 +1,5 @@
 [flake8]
-max-line-length = 139
+max-line-length = 220
 per-file-ignores =
     __init__.py: F401
     sportsball/vendor/pygooglenews/__init__.py: E722,E712,E501
