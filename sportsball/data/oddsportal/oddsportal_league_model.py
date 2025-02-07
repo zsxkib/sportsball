@@ -56,7 +56,7 @@ def _process_results_pages(
     current_page = 1
     total_pages = None
     while (current_page == 1 and total_pages is None) or (
-        current_page <= 0 if total_pages is None else total_pages
+        current_page <= (0 if total_pages is None else total_pages)
     ):
         dat_url = f"https://www.oddsportal.com/ajax-sport-country-tournament-archive_/{sports_id}/{oddsportal_id}/X134529032X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X512X32X0X0X0X0X0X0X131072X0X2048/1/-5/page/{current_page}//"
         parsed_data = fetch_data(dat_url, session, url, soup)
@@ -67,6 +67,8 @@ def _process_results_pages(
             game_model = create_oddsportal_game_model(
                 session, urllib.parse.urljoin(url, row["url"]), league, False
             )
+            if game_model is None:
+                continue
             pbar.update(1)
             pbar.set_description(f"OddsPortal {game_model.dt}")
             yield game_model
@@ -97,7 +99,7 @@ class OddsPortalLeagueModel(LeagueModel):
     def _find_next(self, pbar: tqdm.tqdm) -> Iterator[GameModel]:
         base_url = "https://www.oddsportal.com/" + self._path
         with self.session.cache_disabled():
-            response = self.session.get(base_url)
+            response = self.session.get(base_url, headers={X_NO_WAYBACK: "1"})
         response.raise_for_status()
         data = extruct.extract(response.text, base_url=base_url)
         for jsonld in data["json-ld"]:
@@ -110,6 +112,8 @@ class OddsPortalLeagueModel(LeagueModel):
                     self.league,
                     True,
                 )
+                if game_model is None:
+                    continue
                 pbar.update(1)
                 pbar.set_description(
                     f"OddsPortal {game_model.year} - {game_model.season_type} - {game_model.dt}"

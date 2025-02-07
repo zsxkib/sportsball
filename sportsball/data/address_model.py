@@ -11,7 +11,9 @@ class AddressModel(BaseModel):
 
     city: str = Field(..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL})
     state: str = Field(..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL})
-    zipcode: str = Field(..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL})
+    zipcode: str | None = Field(
+        ..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL}
+    )
     latitude: float | None
     longitude: float | None
     housenumber: str | None = Field(

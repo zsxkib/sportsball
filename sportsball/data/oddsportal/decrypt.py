@@ -3,9 +3,11 @@
 # pylint: disable=too-many-locals
 import base64
 import json
+import logging
 import urllib.parse
 from typing import Any
 
+import requests
 import requests_cache
 from bs4 import BeautifulSoup
 from cryptography.hazmat.backends import default_backend
@@ -73,8 +75,18 @@ def fetch_data(
         url,
         headers=headers,
     )
-    response.raise_for_status()
-    decoded_data = base64.b64decode(response.content).decode()
+
+    try:
+        response.raise_for_status()
+    except requests.exceptions.HTTPError as exc:
+        logging.error("HTTP error: %s for URL: %s", str(exc), referer_url)
+        raise exc
+
+    try:
+        decoded_data = base64.b64decode(response.content).decode()
+    except UnicodeDecodeError as exc:
+        logging.error("Error base64 decoding payload: %s", response.content)
+        raise exc
     encrypted, key = decoded_data.split(":")
     encrypted_bytes = base64.urlsafe_b64decode(encrypted)
     key_bytes = bytes.fromhex(key)

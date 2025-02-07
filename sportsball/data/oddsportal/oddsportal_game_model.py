@@ -3,6 +3,7 @@
 # pylint: disable=too-many-locals,too-many-statements,line-too-long
 import datetime
 import json
+import logging
 import urllib.parse
 
 import pytest_is_running
@@ -22,8 +23,13 @@ def _create_oddsportal_game_model(
     session: requests_cache.CachedSession,
     url: str,
     league: League,
-) -> GameModel:
-    response = session.get(url, headers={X_NO_WAYBACK: "1"})
+) -> GameModel | None:
+    response = session.get(
+        url,
+        headers={
+            X_NO_WAYBACK: "1",
+        },
+    )
     response.raise_for_status()
 
     soup = BeautifulSoup(response.text, "html.parser")
@@ -32,7 +38,8 @@ def _create_oddsportal_game_model(
         soup_x = BeautifulSoup(response.text, "xml")
         event_tag = soup_x.find("Event")
         if not isinstance(event_tag, Tag):
-            raise ValueError(f"event_tag is not a tag for URL: {url}.")
+            logging.error("event_tag is not a tag for URL: %s.", url)
+            return None
         event = json.loads(str(event_tag[":data"]))
     else:
         event = json.loads(str(event_tag["data"]))
@@ -72,8 +79,8 @@ def _create_oddsportal_game_model(
             event_body["venueCountry"],
         )
 
-    url = f"https://www.oddsportal.com/match-event/{version_id}-{sport_id}-{unique_id}-{default_bet_id}-{default_scope_id}-{xhash}.dat"
-    parsed_data = fetch_data(url, session, url, soup)
+    dat_url = f"https://www.oddsportal.com/match-event/{version_id}-{sport_id}-{unique_id}-{default_bet_id}-{default_scope_id}-{xhash}.dat"
+    parsed_data = fetch_data(dat_url, session, url, soup)
 
     return GameModel(
         dt=dt,
@@ -121,7 +128,7 @@ def _cached_create_oddsportal_game_model(
     session: requests_cache.CachedSession,
     url: str,
     league: League,
-) -> GameModel:
+) -> GameModel | None:
     return _create_oddsportal_game_model(session, url, league)
 
 
@@ -130,7 +137,7 @@ def create_oddsportal_game_model(
     url: str,
     league: League,
     is_next: bool,
-) -> GameModel:
+) -> GameModel | None:
     """Create a OddsPortal game model."""
     if not pytest_is_running.is_running() and not is_next:
         return _cached_create_oddsportal_game_model(session, url, league)
