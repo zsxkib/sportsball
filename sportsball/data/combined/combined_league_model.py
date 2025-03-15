@@ -3,6 +3,7 @@
 # pylint: disable=raise-missing-from
 import logging
 import multiprocessing
+import sys
 import traceback
 from multiprocessing import Pool
 from typing import Any, Iterator
@@ -61,8 +62,8 @@ class CombinedLeagueModel(LeagueModel):
         with Pool(min(multiprocessing.cpu_count(), len(self._league_models))) as p:
             # We want to terminate immediately if any of our runners runs into trouble.
             def _error_callback(exc: BaseException) -> None:
-                p.terminate()
-                raise ValueError(str(exc))
+                logging.error(str(exc))
+                sys.exit(1)
 
             results = [
                 p.apply_async(

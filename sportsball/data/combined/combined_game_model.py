@@ -112,7 +112,7 @@ def create_combined_game_model(
         teams=full_team_models,
         end_dt=end_dt,
         attendance=attendance,
-        league=game_models[0].league,
+        league=str(game_models[0].league),
         year=year,
         season_type=season_type,
         postponed=postponed,

@@ -50,7 +50,7 @@ def _create_nba_nba_game_model(
         ],
         end_dt=None,
         attendance=None,
-        league=league,
+        league=str(league),
         year=int(season_id[1:]),
         season_type=_SEASON_TYPE_MAP[season_id[0]],
         postponed=None,

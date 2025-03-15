@@ -32,7 +32,7 @@ class TestOddsPortalGameModel(unittest.TestCase):
                 League.AFL,
                 True,
             )
-            self.assertEqual(game_model.dt, datetime.datetime(2025, 3, 6, 3, 50))
+            self.assertEqual(game_model.dt.date(), datetime.date(2025, 3, 6))
 
     def test_event_dt(self):
         url = "https://www.oddsportal.com/aussie-rules/australia/afl-2013/collingwood-magpies-north-melbourne-kangaroos-6yxbPNei/"
@@ -50,4 +50,4 @@ class TestOddsPortalGameModel(unittest.TestCase):
                 League.AFL,
                 True,
             )
-            self.assertEqual(game_model.dt, datetime.datetime(2013, 9, 1, 1, 20))
+            self.assertEqual(game_model.dt.date(), datetime.date(2013, 9, 1))

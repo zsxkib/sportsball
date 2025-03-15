@@ -47,6 +47,8 @@ def _create_oddsportal_team_model(
         history = odds_data["history"][outcome_id]
 
         for bookie_id, bookie_name in bookie_names.items():
+            if bookie_name is None:
+                continue
             for odds, _, timestamp in history.get(bookie_id, []):
                 odds_models.append(
                     create_oddsportal_odds_model(

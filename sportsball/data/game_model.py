@@ -7,7 +7,6 @@ import pytz
 from pydantic import BaseModel, Field
 
 from .field_type import TYPE_KEY, FieldType
-from .league import League
 from .season_type import SeasonType
 from .team_model import TeamModel
 from .venue_model import VenueModel
@@ -54,7 +53,7 @@ class GameModel(BaseModel):
         ..., json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD}, alias=END_DT_COLUMN
     )
     attendance: int | None = Field(..., alias=GAME_ATTENDANCE_COLUMN)
-    league: League = Field(..., alias=LEAGUE_COLUMN)
+    league: str = Field(..., alias=LEAGUE_COLUMN)
     year: int | None
     season_type: SeasonType | None
     postponed: bool | None = Field(

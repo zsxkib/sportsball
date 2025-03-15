@@ -3,6 +3,7 @@
 # pylint: disable=too-many-arguments,unused-argument
 import datetime
 
+import numpy as np
 import pandas as pd
 import pytest_is_running
 import requests_cache
@@ -33,6 +34,10 @@ def _create_nba_nba_team_model(
         return None
     name = row["TEAM_NAME" + suffix]
 
+    offensive_rebounds = row["OREB" + suffix]
+    if not np.isfinite(offensive_rebounds):
+        offensive_rebounds = None
+
     return TeamModel(
         identifier=str(identifier),
         name=name,
@@ -47,7 +52,7 @@ def _create_nba_nba_team_model(
         social=create_x_social_model(str(identifier), session, dt),
         field_goals=row["FGM" + suffix],
         field_goals_attempted=row["FGA" + suffix],
-        offensive_rebounds=row["OREB" + suffix],
+        offensive_rebounds=offensive_rebounds,
         assists=row["AST" + suffix],
         turnovers=row["TOV" + suffix],
     )

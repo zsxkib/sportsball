@@ -11,7 +11,7 @@ from ..venue_model import VenueModel
 
 
 def _create_sportsreference_venue_model(
-    venue_name: str, session: requests_cache.CachedSession, dt: datetime.datetime
+    venue_name: str | None, session: requests_cache.CachedSession, dt: datetime.datetime
 ) -> VenueModel | None:
     if not venue_name:
         return None
@@ -27,13 +27,13 @@ def _create_sportsreference_venue_model(
 
 @MEMORY.cache(ignore=["session"])
 def _cached_create_sportsreference_venue_model(
-    venue_name: str, session: requests_cache.CachedSession, dt: datetime.datetime
+    venue_name: str | None, session: requests_cache.CachedSession, dt: datetime.datetime
 ) -> VenueModel | None:
     return _create_sportsreference_venue_model(venue_name, session, dt)
 
 
 def create_sportsreference_venue_model(
-    venue_name: str, session: requests_cache.CachedSession, dt: datetime.datetime
+    venue_name: str | None, session: requests_cache.CachedSession, dt: datetime.datetime
 ) -> VenueModel | None:
     """Create a sports reference venue model."""
     if not pytest_is_running.is_running():

@@ -1,6 +1,6 @@
 """Sports reference player model."""
 
-# pylint: disable=too-many-arguments,unused-argument
+# pylint: disable=too-many-arguments,unused-argument,line-too-long
 import datetime
 import http
 import logging
@@ -14,11 +14,33 @@ from ...cache import MEMORY
 from ...session import DEFAULT_TIMEOUT
 from ..player_model import PlayerModel
 
+_FIX_URLS = {
+    "https://www.sports-reference.com/cbb/players/leyla-öztürk-1.html": "https://www.sports-reference.com/cbb/players/leyla-ozturk-1.html",
+    "https://www.sports-reference.com/cbb/players/vianè-cumber-1.html": "https://www.sports-reference.com/cbb/players/viane-cumber-1.html",
+    "https://www.sports-reference.com/cbb/players/cia-eklof-1.html": "https://www.sports-reference.com/cbb/players/cia-eklöf-1.html",
+    "https://www.sports-reference.com/cbb/players/chae-harris-1.html": "https://www.sports-reference.com/cbb/players/cha%C3%A9-harris-1.html",
+    "https://www.sports-reference.com/cbb/players/tilda-sjokvist-1.html": "https://www.sports-reference.com/cbb/players/tilda-sjökvist-1.html",
+    "https://www.sports-reference.com/cbb/players/hana-muhl-1.html": "https://www.sports-reference.com/cbb/players/hana-mühl-1.html",
+    "https://www.sports-reference.com/cbb/players/noa-comesaña-1.html": "https://www.sports-reference.com/cbb/players/noa-comesana-1.html",
+    "https://www.sports-reference.com/cbb/players/nadège-jean-1.html": "https://www.sports-reference.com/cbb/players/nadege-jean-1.html",
+}
+
 
 def _fix_url(url: str) -> str:
     url = unquote(url)
+    url = url.replace("é", "e")
+    url = url.replace("ć", "c")
+    url = url.replace("ã", "a")
+    url = url.replace("á", "a")
+    url = url.replace("á", "a")
+    url = url.replace("ö", "o")
+    url = url.replace("ü", "u")
+
     url = url.replace("Ã©", "é")
-    return url
+    url = url.replace("Ã¶", "ö")
+    url = url.replace("Ã¼", "ü")
+
+    return _FIX_URLS.get(url, url)
 
 
 def _create_sportsreference_player_model(

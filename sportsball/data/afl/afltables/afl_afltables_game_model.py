@@ -218,7 +218,7 @@ def _create_afl_afltables_game_model(
         ],
         end_dt=end_dt,
         attendance=attendance,
-        league=league,
+        league=str(league),
         year=season_year,
         season_type=season_type,
         postponed=None,

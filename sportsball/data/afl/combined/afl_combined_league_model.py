@@ -138,6 +138,11 @@ BLACKTOWN = "blacktown"
 RIVERWAY = "riverway"
 NORWOOD = "norwood"
 SUMMIT = "summit"
+ANGEL_STADIUM = "Angel Stadium of Anaheim"
+THUNDERDOME_STADIUM = "Thunderdome Stadium"
+SPOTLAND_STADIUM = "Spotland Stadium"
+GIANTS_STADIUM = "Giants Stadium"
+TIPOS_ARENA = "Ondrej Nepela Arena"
 AFL_VENUE_IDENTITY_MAP = {
     "brunswick_st": BRUNSWICK_ST,
     "victoria_park": VICTORIA_PARK,
@@ -189,6 +194,7 @@ AFL_VENUE_IDENTITY_MAP = {
     "riverway": RIVERWAY,
     "norwood": NORWOOD,
     "summit": SUMMIT,
+    # Aus Sports Betting
     "MCG": MCG,
     "SCG": SCG,
     "ENGIE Stadium": STADIUM_AUSTRALIA,
@@ -217,6 +223,20 @@ AFL_VENUE_IDENTITY_MAP = {
     "Blacktown Park": BLACKTOWN,
     # OddsPortal
     "Melbourne Cricket Ground": MCG,
+    "Angel Stadium of Anaheim": ANGEL_STADIUM,
+    "The Gabba": GABBA,
+    "Sydney Cricket Ground": SCG,
+    "Subiaco Oval": SUBIACO,
+    "Thunderdome Stadium": THUNDERDOME_STADIUM,
+    "University of Tasmania Stadium": YORK_PARK,
+    "Spotland Stadium": SPOTLAND_STADIUM,
+    "Engie Stadium": STADIUM_AUSTRALIA,
+    "Cazaly's Stadium": CAZALYS_STADIUM,
+    "Jiangwan Stadium": JIANGWAN,
+    "TIO Traeger Park": TRAEGER,
+    "Marrara Oval": MARRARA_OVAL,
+    "Giants Stadium": GIANTS_STADIUM,
+    "Ondrej Nepela Arena": TIPOS_ARENA,
 }
 
 

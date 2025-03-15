@@ -115,7 +115,7 @@ def _create_oddsportal_game_model(
         ],
         end_dt=end_dt,
         attendance=None,
-        league=league,
+        league=str(league),
         year=dt.year,
         season_type=None,
         postponed=event_data["isPostponed"],

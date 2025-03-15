@@ -22,6 +22,23 @@ from .afl_afltables_game_model import create_afl_afltables_game_model
 _SEASON_URL = "https://afltables.com/afl/seas/season_idx.html"
 
 
+def _find_dt(td_text: str, season_url: str) -> datetime.datetime:
+    cleaned_text = (
+        td_text.split("Venue:")[0].split("Att:")[0].strip().split("(")[0].strip()
+    )
+    cleaned_text = " ".join(cleaned_text.split()[-3:])
+    try:
+        return parser.parse(cleaned_text)
+    except parser._parser.ParserError:  # type: ignore
+        # Handle text like "Richmond  Thu 13-Mar-2025 Venue: M.C.G."
+        cleaned_text = cleaned_text.split()[-1]
+        try:
+            return parser.parse(cleaned_text)
+        except parser._parser.ParserError as exc:  # type: ignore
+            logging.error("Failed to parse date in season URL: %s", season_url)
+            raise exc
+
+
 class AFLAFLTablesLeagueModel(LeagueModel):
     """AFL AFLTables implementation of the league model."""
 
@@ -60,21 +77,7 @@ class AFLAFLTablesLeagueModel(LeagueModel):
             for td in table.find_all("td"):
                 td_text = td.get_text().strip()
                 if "Venue:" in td_text:
-                    cleaned_text = (
-                        td_text.split("Venue:")[0]
-                        .split("Att:")[0]
-                        .strip()
-                        .split("(")[0]
-                        .strip()
-                    )
-                    cleaned_text = " ".join(cleaned_text.split()[-3:])
-                    try:
-                        current_dt = parser.parse(cleaned_text)
-                    except parser._parser.ParserError as exc:  # type: ignore
-                        logging.error(
-                            "Failed to parse date in season URL: %s", season_url
-                        )
-                        raise exc
+                    current_dt = _find_dt(td_text, season_url)
             for a in table.find_all("a", href=True):
                 if a.get_text().strip().lower() == "match stats":
                     url = urllib.parse.urljoin(season_url, a.get("href"))

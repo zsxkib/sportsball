@@ -83,10 +83,6 @@ class ProxySession(requests_cache.CachedSession):
         )
         return proxy[0]
 
-    @func_set_timeout(DEFAULT_TIMEOUT)
-    def _perform_request(self, *args, **kwargs) -> requests.Response:
-        return super().request(*args, **kwargs)
-
     def _wayback_machine_request(
         self, method, url, **kwargs
     ) -> requests.Response | None:
@@ -94,6 +90,12 @@ class ProxySession(requests_cache.CachedSession):
             return None
         try:
             for record in self._wayback_client.search(url, fast_latest=True):
+                if record.timestamp.replace(
+                    tzinfo=None
+                ) < datetime.datetime.now().replace(tzinfo=None) - datetime.timedelta(
+                    days=350 * 10
+                ):
+                    continue
                 with self._wayback_client.get_memento(record) as memento:
                     cookies = RequestsCookieJar()
                     response = Response()
@@ -123,6 +125,7 @@ class ProxySession(requests_cache.CachedSession):
         except (
             wayback.exceptions.MementoPlaybackError,  # pyright: ignore
             requests.exceptions.ChunkedEncodingError,
+            requests.exceptions.ContentDecodingError,
         ):  # pyright: ignore
             pass
         return None
@@ -155,6 +158,8 @@ class ProxySession(requests_cache.CachedSession):
                     )
                     self.cache.save_response(response=response, cache_key=key)
                     return response
+        else:
+            logging.info("Request for %s.", request.url)
 
         response = super().send(request, **kwargs)
         if not _is_fast_fail_url(response.url):
@@ -162,10 +167,10 @@ class ProxySession(requests_cache.CachedSession):
         return response
 
     @retry(
-        stop=stop_after_attempt(50),
+        stop=stop_after_attempt(64),
         after=after_log(logging.getLogger(__name__), logging.DEBUG),
         before=before_log(logging.getLogger(__name__), logging.DEBUG),
-        wait=wait_random_exponential(multiplier=1, max=60),
+        wait=wait_random_exponential(multiplier=1, max=240),
         retry=retry_if_exception_type(FunctionTimedOut)
         | retry_if_exception_type(requests.exceptions.ProxyError)
         | retry_if_exception_type(requests.exceptions.ConnectionError)

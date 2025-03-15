@@ -86,3 +86,63 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 {},
             )
             self.assertEqual(team_model.field_goals_attempted, 10)
+
+    def test_identifier_2(self):
+        url = "http://www.basketball-reference.com/teams/LAC/2015.html"
+        with requests_mock.Mocker() as m:
+            with open(os.path.join(self.dir, "LAC_2015.html"), "rb") as f:
+                m.get(url, content=f.read())
+            team_model = create_sportsreference_team_model(
+                self.session,
+                url,
+                datetime.datetime(2010, 10, 10, 10, 10, 00),
+                League.NCAAB,
+                set(),
+                10.0,
+                {},
+                {},
+                {},
+                {},
+                {},
+            )
+            self.assertEqual(team_model.identifier, "Los Angeles Clippers")
+
+    def test_identifier_3(self):
+        url = "http://www.basketball-reference.com/teams/BRK/2014.html"
+        with requests_mock.Mocker() as m:
+            with open(os.path.join(self.dir, "BRK_2014.html"), "rb") as f:
+                m.get(url, content=f.read())
+            team_model = create_sportsreference_team_model(
+                self.session,
+                url,
+                datetime.datetime(2010, 10, 10, 10, 10, 00),
+                League.NCAAB,
+                set(),
+                10.0,
+                {},
+                {},
+                {},
+                {},
+                {},
+            )
+            self.assertEqual(team_model.identifier, "Brooklyn Nets")
+
+    def test_name(self):
+        url = "http://www.basketball-reference.com/teams/CLE/2016.html"
+        with requests_mock.Mocker() as m:
+            with open(os.path.join(self.dir, "CLE_2016.html"), "rb") as f:
+                m.get(url, content=f.read())
+            team_model = create_sportsreference_team_model(
+                self.session,
+                url,
+                datetime.datetime(2010, 10, 10, 10, 10, 00),
+                League.NCAAB,
+                set(),
+                10.0,
+                {},
+                {},
+                {},
+                {},
+                {},
+            )
+            self.assertEqual(team_model.name, "Cleveland Cavaliers")

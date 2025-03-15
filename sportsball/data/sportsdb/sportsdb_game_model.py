@@ -59,7 +59,7 @@ def _create_sportsdb_game_model(
         game_number=game_number,
         venue=venue,  # pyright: ignore
         teams=teams,  # pyright: ignore
-        league=league,
+        league=str(league),
         year=year,
         season_type=season_type,
         end_dt=None,

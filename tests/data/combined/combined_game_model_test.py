@@ -28,7 +28,7 @@ class TestCombinedGameModel(unittest.TestCase):
                 teams=[],
                 end_dt=None,
                 attendance=None,
-                league=League.NBA,
+                league=str(League.NBA),
                 year=None,
                 season_type=SeasonType.REGULAR,
                 postponed=True,

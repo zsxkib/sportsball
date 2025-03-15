@@ -140,7 +140,7 @@ def _create_espn_game_model(
         teams=teams,
         end_dt=end_dt,
         attendance=attendance,
-        league=league,
+        league=str(league),
         year=year,
         season_type=season_type,
         postponed=None,

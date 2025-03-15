@@ -1,6 +1,6 @@
 """Sports Reference game model."""
 
-# pylint: disable=too-many-locals,too-many-statements,unused-argument,protected-access,too-many-arguments
+# pylint: disable=too-many-locals,too-many-statements,unused-argument,protected-access,too-many-arguments,use-maxsplit-arg,too-many-branches
 import datetime
 import io
 import logging
@@ -9,17 +9,21 @@ import urllib.parse
 import dateutil
 import pandas as pd
 import pytest_is_running
+import requests
 import requests_cache
 from bs4 import BeautifulSoup, Tag
 from dateutil.parser import parse
 
 from ...cache import MEMORY
+from ...proxy_session import X_NO_WAYBACK
 from ..game_model import GameModel
 from ..league import League
 from ..season_type import SeasonType
 from ..team_model import TeamModel
 from .sportsreference_team_model import create_sportsreference_team_model
 from .sportsreference_venue_model import create_sportsreference_venue_model
+
+_NON_WAYBACK_URLS: set[str] = set()
 
 
 def _find_old_dt(
@@ -34,46 +38,142 @@ def _find_old_dt(
     offensive_rebounds: dict[str, int],
     assists: dict[str, int],
     turnovers: dict[str, int],
-) -> tuple[datetime.datetime, list[TeamModel], str]:
+    response: requests.Response,
+) -> tuple[datetime.datetime, list[TeamModel], str | None]:
     teams: list[TeamModel] = []
+
+    def _process_team_row(df: pd.DataFrame):
+        team_rows = [str(df.iat[0, x]) for x in range(len(df.columns.values))]
+        team_rows = [x for x in team_rows if x != "nan"]
+        if len(team_rows) == 1:
+            team_row = team_rows[0]
+            for sentinel in ["Next Game", "Prev Game"]:
+                if sentinel in team_row:
+                    team_rows = [
+                        team_row[: team_row.find(sentinel) + len(sentinel)].strip(),
+                        team_row[team_row.find(sentinel) + len(sentinel) :]
+                        .strip()
+                        .replace("/ Next Game ⇒", ""),
+                    ]
+                    break
+            if not team_rows[1]:
+                sentinel = "Next Game"
+                team_rows = [
+                    team_row[: team_row.find(sentinel) + len(sentinel)].strip(),
+                    team_row[team_row.find(sentinel) + len(sentinel) :]
+                    .strip()
+                    .replace("⇒", "")
+                    .strip(),
+                ]
+        for team_row in team_rows:
+            if team_row.startswith("⇒"):
+                team_row = team_row[1:]
+            team_row = team_row.strip()
+            if "Prev Game" in team_row:
+                team_name_points = (
+                    team_row.split("⇐")[0]
+                    .strip()
+                    .replace("Prev Game", "")
+                    .replace("/", "")
+                    .strip()
+                )
+            else:
+                team_name_points = (
+                    team_row.split("⇒")[0].replace("Next Game", "").strip()
+                )
+            # Handle team name points like "Indiana Pacers 97 45-37 (Won 3)"
+            if "-" in team_name_points:
+                dash_splits = team_name_points.split("-")
+                # Handle team name points like "Kansas City-Omaha Kings 89"
+                # and cases like "Kansas City-Omaha Kings 95 44-38 (Won 1) ⇐ Prev Game"
+                for i in range(len(dash_splits) - 1):
+                    if (
+                        dash_splits[i].split()[-1].isdigit()
+                        and dash_splits[i + 1].split()[0].isdigit()
+                    ):
+                        team_name_points = " ".join(
+                            "-".join(dash_splits[: i + 1]).strip().split()[:-1]
+                        )
+                        break
+            for marker in ["Lost", "Won"]:
+                team_name_points = team_name_points.split(marker)[0].strip()
+            points = int(team_name_points.split()[-1].strip())
+            team_name = " ".join(team_name_points.split()[:-1]).strip()
+            if " at " in team_name:
+                team_name = team_name.split(" at ")[0].strip()
+            if " vs " in team_name:
+                team_name = team_name.split(" vs ")[0].strip()
+            team_a = soup.find("a", text=team_name, href=True)
+            if not isinstance(team_a, Tag):
+                raise ValueError("team_a is not a tag.")
+            team_url = urllib.parse.urljoin(url, str(team_a.get("href")))
+            if dt is None:
+                raise ValueError("dt is null.")
+            teams.append(
+                create_sportsreference_team_model(
+                    session,
+                    team_url,
+                    dt,
+                    league,
+                    player_urls,
+                    points,
+                    fg,
+                    fga,
+                    offensive_rebounds,
+                    assists,
+                    turnovers,
+                )
+            )
+
     dt = None
     venue_name = None
     for df in dfs:
-        test_row = df.iat[0, 0]
-        if "Prev Game" in test_row and len(df) == 2:
-            date_venue_split = df.iat[1, 0].split()
-            dt = parse(" ".join(date_venue_split[:5]))
-            venue_name = " ".join(date_venue_split[5:])
-            for col_idx in range(len(df.columns.values)):
-                team_row = df.iat[0, col_idx]
-                team_name_points = team_row.split("⇐")[0].strip()
-                points = int(team_name_points.split()[-1].strip())
-                team_name = " ".join(team_name_points.split()[:-1]).strip()
-                team_a = soup.find("a", text=team_name, href=True)
-                if not isinstance(team_a, Tag):
-                    raise ValueError("team_a is not a tag.")
-                team_url = urllib.parse.urljoin(url, str(team_a.get("href")))
-                teams.append(
-                    create_sportsreference_team_model(
-                        session,
-                        team_url,
-                        dt,
-                        league,
-                        player_urls,
-                        points,
-                        fg,
-                        fga,
-                        offensive_rebounds,
-                        assists,
-                        turnovers,
-                    )
-                )
-            break
+        if len(df) == 2:
+            test_row = df.iat[0, 0]
+            test_row_2 = df.iat[1, 0]
+
+            if (
+                "Prev Game" in test_row
+                or "Next Game" in test_row
+                or "Lost" in test_row
+                or "PM," in test_row_2
+            ):
+                date_venue_split = df.iat[1, 0].split()
+                current_idx = 5
+                try:
+                    dt = parse(" ".join(date_venue_split[:current_idx]))
+                except dateutil.parser._parser.ParserError:  # type: ignore
+                    try:
+                        current_idx = 3
+                        dt = parse(" ".join(date_venue_split[:current_idx]))
+                    except dateutil.parser._parser.ParserError:  # type: ignore
+                        dt = parse(
+                            " ".join(",".join(test_row.split(",")[1:]).split()[:3])
+                        )
+                venue_name = " ".join(date_venue_split[current_idx:])
+                _process_team_row(df)
+                break
+
+    if dt is None:
+        title_tag = soup.find("title")
+        if not isinstance(title_tag, Tag):
+            raise ValueError("title_tag is not a tag.")
+        title = title_tag.get_text().strip().split("|")[0].strip()
+        date = title[title.find(",") :].strip()
+        dt = parse(date)
+        for df in dfs:
+            test_row = df.iat[0, 0]
+            if "Prev Game" in test_row:
+                _process_team_row(df)
+                break
+
+    if venue_name is not None and not venue_name.replace(",", "").strip():
+        venue_name = None
 
     if dt is None:
         raise ValueError("dt is null.")
     if venue_name is None:
-        raise ValueError("venue_name is null.")
+        logging.warning("venue_name is null.")
 
     return (dt, teams, venue_name)
 
@@ -140,9 +240,21 @@ def _create_sportsreference_game_model(
     league: League,
 ) -> GameModel:
     # pylint: disable=too-many-branches
-    response = session.get(url)
+    headers = {}
+    if url in _NON_WAYBACK_URLS:
+        headers = {X_NO_WAYBACK: "1"}
+    response = session.get(url, headers=headers)
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "html.parser")
+    page_title = soup.find("h1", class_="page_title")
+
+    # If the page_title is bad, try fetching from a non wayback source
+    if page_title is not None:
+        if page_title.get_text().strip() == "File Not Found":
+            with session.cache_disabled():
+                response = session.get(url, headers={X_NO_WAYBACK: "1"})
+                response.raise_for_status()
+                soup = BeautifulSoup(response.text, "html.parser")
 
     player_urls = set()
     for a in soup.find_all("a"):
@@ -203,6 +315,7 @@ def _create_sportsreference_game_model(
             offensive_rebounds,
             assists,
             turnovers,
+            response,
         )
     else:
         dt, teams, venue_name = _find_new_dt(
@@ -293,6 +406,12 @@ def _create_sportsreference_game_model(
                 season_type = SeasonType.REGULAR
             case "Pac-12 Conference":
                 season_type = SeasonType.REGULAR
+            case "Colonial Athletic Association":
+                season_type = SeasonType.REGULAR
+            case "Pacific-12 Conference":
+                season_type = SeasonType.REGULAR
+            case "NCAA Women's Tournament":
+                season_type = SeasonType.REGULAR
             case _:
                 logging.warning("Unrecognised Season Text: %s", season_text)
         break
@@ -303,7 +422,7 @@ def _create_sportsreference_game_model(
         game_number=None,
         venue=create_sportsreference_venue_model(venue_name, session, dt),  # pyright: ignore
         teams=teams,
-        league=league,
+        league=str(league),
         year=dt.year,
         season_type=season_type,
         end_dt=None,

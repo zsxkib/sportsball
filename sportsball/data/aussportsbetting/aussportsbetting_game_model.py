@@ -43,7 +43,7 @@ def _create_aussportsbetting_game_model(
         teams=[home_team_model, away_team_model],  # pyright: ignore
         end_dt=None,
         attendance=None,
-        league=league,
+        league=str(league),
         year=None,
         season_type=None,
         postponed=None,

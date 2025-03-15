@@ -43,7 +43,14 @@ def _find_decryption_data(
             variables = variables[
                 : variables.find('");case 9:return s=e.sent,l=JSON.parse(s),e.abrupt')
             ]
-            password_str, salt_str = variables.split('","')
+            try:
+                password_str, salt_str = variables.split('","')
+            except ValueError:
+                sentinel = "YupiOddsPortal"
+                variables = src_response.text
+                variables = variables[: variables.find(sentinel) + len(sentinel)]
+                variables = '"'.join(variables.split('"')[-3:])
+                password_str, salt_str = variables.split('","')
             salt = str.encode(salt_str)
             password = str.encode(password_str)
             break

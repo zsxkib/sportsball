@@ -221,8 +221,136 @@ NBA_TEAM_IDENTITY_MAP = {
     "134877": MEMPHIS_GRIZZLIES,
     "134864": TORONTO_RAPTORS,
     "134878": NEW_ORLEANS_PELICANS,
+    # SportsReference
+    "Los Angeles Lakers": LOS_ANGELES_LAKERS,
+    "Milwaukee Bucks": MILWAUKEE_BUCKS,
+    "Philadelphia 76ers": PHILADELPHIA_76ERS,
+    "Houston Rockets": HOUSTON_ROCKETS,
+    "Los Angeles Clippers": LA_CLIPPERS,
+    "Dallas Mavericks": DALLAS_MAVERICKS,
+    "Indiana Pacers": INDIANA_PACERS,
+    "Washington Wizards": WASHINGTON_WIZARDS,
+    "Boston Celtics": BOSTON_CELTICS,
+    "Toronto Raptors": TORONTO_RAPTORS,
+    "Charlotte Hornets": CHARLOTTE_HORNETS,
+    "Orlando Magic": ORLANDO_MAGIC,
+    "Miami Heat": MIAMI_HEAT,
+    "Detroit Pistons": DETROIT_PISTONS,
+    "Cleveland Cavaliers": CLEVELAND_CAVALIERS,
+    "Brooklyn Nets": BROOKLYN_NETS,
+    "Sacramento Kings": SACRAMENTO_KINGS,
+    "Oklahoma City Thunder": OKLAHOMA_CITY_THUNDER,
+    "Utah Jazz": UTAH_JAZZ,
+    "New Orleans Pelicans": NEW_ORLEANS_PELICANS,
+    "Minnesota Timberwolves": MINNESOTA_TIMBERWOLVES,
+    "Portland Trail Blazers": PORTLAND_TRAIL_BLAZERS,
+    "Chicago Bulls": CHICAGO_BULLS,
+    "San Antonio Spurs": SAN_ANTONIO_SPURS,
+    "Denver Nuggets": DENVER_NUGGETS,
+    "New York Knicks": NEW_YORK_KNICKS,
+    "Phoenix Suns": PHOENIX_SUNS,
+    "Memphis Grizzlies": MEMPHIS_GRIZZLIES,
+    "Golden State Warriors": GOLDEN_STATE_WARRIORS,
+    "Atlanta Hawks": ATLANTA_HAWKS,
 }
-NBA_VENUE_IDENTITY_MAP: dict[str, str] = {}
+WELLS_FARGO_CENTER = "Wells Fargo Center"
+PAYCOM_CENTER = "Paycom Center"
+TOYOTA_CENTER = "Toyota Center"
+UNITED_CENTER = "United Center"
+AMERICAN_AIRLINES_CENTER = "American Airlines Center"
+KIA_CENTER = "Kia Center"
+MADISON_SQUARE_GARDEN = "Madison Square Garden"
+FISERV_FORUM = "Fiserv Forum"
+BALL_ARENA = "Ball Arena"
+GAINBRIDGE_FIELDHOUSE = "Gainbridge Fieldhouse"
+LITTLE_CAESARS_ARENA = "Little Caesars Arena"
+SPECTRUM_CENTER = "Spectrum Center"
+KASEYA_CENTER = "Kaseya Center"
+FEDEX_FORUM = "FedExForum"
+TD_GARDEN = "TD Garden"
+MODA_CENTER = "Moda Center"
+CRYPTO_DOT_COM_ARENA = "Crypto.com Arena"
+SCOTIABANK_ARENA = "Scotiabank Arena"
+SMOOTHIE_KING_CENTER = "Smoothie King Center"
+STATE_FARM_ARENA = "State Farm Arena"
+ROCKET_MORTGAGE_FIELDHOUSE = "Rocket Mortgage FieldHouse"
+DELTA_CENTER = "Delta Center"
+BARCLAYS_CENTER = "Barclays Center"
+GOLDEN_1_CENTER = "Golden 1 Center"
+CAPITAL_ONE_ARENA = "Capital One Arena"
+TARGET_CENTER = "Target Center"
+FOOTPRINT_CENTER = "Footprint Center"
+CHASE_CENTER = "Chase Center"
+FROST_BANK_CENTER = "Frost Bank Center"
+MOODY_CENTER = "Moody Center"
+ARCO_ARENA = "ARCO Arena"
+BMO_HARRIS_BRADLEY_CENTER = "BMO Harris Bradley Center"
+ORACLE_ARENA = "Oracle Arena"
+AMALIE_ARENA = "Amalie Arena"
+ESPN_WIDE_WORLD_OF_SPORTS = "The Arena (WWOS)"
+STATE_FARM_FIELDHOUSE = "State Farm Field House"
+VISA_ATHLETIC_CENTER = "Visa Athletic Center"
+ROBERT_F_KENNEDY_MEMORIAL_STADIUM = "Robert F. Kennedy Memorial Stadium"
+ORIOLE_PARK = "Oriole Park at Camden Yards"
+TOYOTA_STADIUM = "Toyota Stadium"
+ANGEL_STADIUM = "Angel Stadium of Anaheim"
+PANJIN_JINXIU_STADIUM = "Panjin Jinxiu Stadium"
+THE_PALACE_OF_AUBURN_HILLS = "The Palace of Auburn Hills"
+ADVENTHEALTH_ARENA = "AdventHealth Arena"
+PAYPAL_PARK = "PayPal Park"
+INTUIT_DOME = "Intuit Dome"
+ACCOR_ARENA = "Accor Arena"
+NBA_VENUE_IDENTITY_MAP: dict[str, str] = {
+    # SportsReference
+    "Wells Fargo Center": WELLS_FARGO_CENTER,
+    "Paycom Center": PAYCOM_CENTER,
+    "Toyota Center": TOYOTA_CENTER,
+    "United Center": UNITED_CENTER,
+    "American Airlines Center": AMERICAN_AIRLINES_CENTER,
+    "Kia Center": KIA_CENTER,
+    "Madison Square Garden": MADISON_SQUARE_GARDEN,
+    "Fiserv Forum": FISERV_FORUM,
+    "Ball Arena": BALL_ARENA,
+    "Gainbridge Fieldhouse": GAINBRIDGE_FIELDHOUSE,
+    "Little Caesars Arena": LITTLE_CAESARS_ARENA,
+    "Spectrum Center": SPECTRUM_CENTER,
+    "Kaseya Center": KASEYA_CENTER,
+    "FedExForum": FEDEX_FORUM,
+    "TD Garden": TD_GARDEN,
+    "Moda Center": MODA_CENTER,
+    "Crypto.com Arena": CRYPTO_DOT_COM_ARENA,
+    "Scotiabank Arena": SCOTIABANK_ARENA,
+    "Smoothie King Center": SMOOTHIE_KING_CENTER,
+    "State Farm Arena": STATE_FARM_ARENA,
+    "Rocket Mortgage FieldHouse": ROCKET_MORTGAGE_FIELDHOUSE,
+    "Delta Center": DELTA_CENTER,
+    "Barclays Center": BARCLAYS_CENTER,
+    "Golden 1 Center": GOLDEN_1_CENTER,
+    "Capital One Arena": CAPITAL_ONE_ARENA,
+    "Target Center": TARGET_CENTER,
+    "Footprint Center": FOOTPRINT_CENTER,
+    "Chase Center": CHASE_CENTER,
+    "Frost Bank Center": FROST_BANK_CENTER,
+    "Moody Center": MOODY_CENTER,
+    "ARCO Arena": ARCO_ARENA,
+    "BMO Harris Bradley Center": BMO_HARRIS_BRADLEY_CENTER,
+    "Oracle Arena": ORACLE_ARENA,
+    "Amalie Arena": AMALIE_ARENA,
+    "The Arena (WWOS)": ESPN_WIDE_WORLD_OF_SPORTS,
+    "State Farm Field House": STATE_FARM_FIELDHOUSE,
+    "Visa Athletic Center": VISA_ATHLETIC_CENTER,
+    "ESPN Wide World of Sports Complex": ESPN_WIDE_WORLD_OF_SPORTS,
+    "Robert F. Kennedy Memorial Stadium": ROBERT_F_KENNEDY_MEMORIAL_STADIUM,
+    "Oriole Park at Camden Yards": ORIOLE_PARK,
+    "Toyota Stadium": TOYOTA_STADIUM,
+    "Angel Stadium of Anaheim": ANGEL_STADIUM,
+    "Panjin Jinxiu Stadium": PANJIN_JINXIU_STADIUM,
+    "The Palace of Auburn Hills": THE_PALACE_OF_AUBURN_HILLS,
+    "AdventHealth Arena": ADVENTHEALTH_ARENA,
+    "PayPal Park": PAYPAL_PARK,
+    "Intuit Dome": INTUIT_DOME,
+    "Accor Arena": ACCOR_ARENA,
+}
 
 
 class NBACombinedLeagueModel(CombinedLeagueModel):
