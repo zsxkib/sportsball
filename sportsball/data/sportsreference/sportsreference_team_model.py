@@ -13,6 +13,7 @@ from bs4 import BeautifulSoup, Tag
 from w3lib.html import get_base_url
 
 from ...cache import MEMORY
+from ...proxy_session import X_NO_WAYBACK
 from ..google.google_news_model import create_google_news_models
 from ..league import League
 from ..team_model import TeamModel
@@ -24,6 +25,14 @@ _BAD_URLS = {
     "https://www.sports-reference.com/cbb/players/mohamed-sherif-12.html",
     "https://www.sports-reference.com/cbb/players/ana-beatriz-passos-alves-da-silva-1.html",
     "https://www.sports-reference.com/cbb/players/cia-eklof-1.html",
+    "https://www.sports-reference.com/cbb/players/aj-caldwell-2.html",
+    "https://www.sports-reference.com/cbb/players/akuwovo-ogheneyole-1.html",
+}
+_NON_WAYBACK_URLS: set[str] = {
+    "https://www.sports-reference.com/cbb/schools/stony-brook/women/2021.html",
+    "https://www.sports-reference.com/cbb/schools/minnesota/women/2019.html",
+    "https://www.sports-reference.com/cbb/schools/rice/women/2019.html",
+    "https://www.sports-reference.com/cbb/schools/north-carolina/women/2018.html",
 }
 
 
@@ -76,13 +85,16 @@ def _create_sportsreference_team_model(
     assists: dict[str, int],
     turnovers: dict[str, int],
 ) -> TeamModel:
-    response = session.get(url)
+    headers = {}
+    if url in _NON_WAYBACK_URLS:
+        headers = {X_NO_WAYBACK: "1"}
+    response = session.get(url, headers=headers)
     response.raise_for_status()
 
     soup = BeautifulSoup(response.text, "html.parser")
     title = soup.find("title")
     if not isinstance(title, Tag):
-        raise ValueError("title not a tag.")
+        raise ValueError(f"title not a tag for {url}.")
     title_str = title.get_text().strip().lower()
     if "file not found" in title_str:
         with session.cache_disabled():

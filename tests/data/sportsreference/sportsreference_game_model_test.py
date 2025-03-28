@@ -244,7 +244,7 @@ class TestSportsReferenceGameModel(unittest.TestCase):
                 m.get("http://www.basketball-reference.com/players/v/vaughra01.html", content=f.read())
             with open(os.path.join(self.dir, "monrogr01.html"), "rb") as f:
                 m.get("http://www.basketball-reference.com/players/m/monrogr01.html", content=f.read())
-            m.get("https://historical-forecast-api.open-meteo.com/v1/forecast?latitude=33.757222&longitude=-84.396389&start_date=2016-04-15&end_date=2016-04-16&hourly=temperature_2m&hourly=relative_humidity_2m&hourly=dew_point_2m&hourly=apparent_temperature&hourly=precipitation&hourly=rain&hourly=snowfall&hourly=snow_depth&hourly=weather_code&hourly=pressure_msl&hourly=surface_pressure&hourly=cloud_cover&hourly=cloud_cover_low&hourly=cloud_cover_mid&hourly=cloud_cover_high&hourly=et0_fao_evapotranspiration&hourly=vapour_pressure_deficit&hourly=wind_speed_10m&hourly=wind_speed_100m&hourly=wind_direction_10m&hourly=wind_direction_100m&hourly=wind_gusts_10m&hourly=soil_temperature_0_to_7cm&hourly=soil_temperature_7_to_28cm&hourly=soil_temperature_28_to_100cm&hourly=soil_temperature_100_to_255cm&hourly=soil_moisture_0_to_7cm&hourly=soil_moisture_7_to_28cm&hourly=soil_moisture_28_to_100cm&hourly=soil_moisture_100_to_255cm&daily=weather_code&daily=temperature_2m_max&daily=temperature_2m_min&daily=temperature_2m_mean&daily=apparent_temperature_max&daily=apparent_temperature_min&daily=apparent_temperature_mean&daily=sunrise&daily=sunset&daily=daylight_duration&daily=sunshine_duration&daily=precipitation_sum&daily=rain_sum&daily=snowfall_sum&daily=precipitation_hours&daily=wind_speed_10m_max&daily=wind_gusts_10m_max&daily=wind_direction_10m_dominant&daily=shortwave_radiation_sum&daily=et0_fao_evapotranspiration&timezone=America%2FNew_York&format=flatbuffers")
+            m.get("https://historical-forecast-api.open-meteo.com/v1/forecast?latitude=43.043611&longitude=-87.916944&start_date=2016-04-12&end_date=2016-04-13&hourly=temperature_2m&hourly=relative_humidity_2m&hourly=dew_point_2m&hourly=apparent_temperature&hourly=precipitation&hourly=rain&hourly=snowfall&hourly=snow_depth&hourly=weather_code&hourly=pressure_msl&hourly=surface_pressure&hourly=cloud_cover&hourly=cloud_cover_low&hourly=cloud_cover_mid&hourly=cloud_cover_high&hourly=et0_fao_evapotranspiration&hourly=vapour_pressure_deficit&hourly=wind_speed_10m&hourly=wind_speed_100m&hourly=wind_direction_10m&hourly=wind_direction_100m&hourly=wind_gusts_10m&hourly=soil_temperature_0_to_7cm&hourly=soil_temperature_7_to_28cm&hourly=soil_temperature_28_to_100cm&hourly=soil_temperature_100_to_255cm&hourly=soil_moisture_0_to_7cm&hourly=soil_moisture_7_to_28cm&hourly=soil_moisture_28_to_100cm&hourly=soil_moisture_100_to_255cm&daily=weather_code&daily=temperature_2m_max&daily=temperature_2m_min&daily=temperature_2m_mean&daily=apparent_temperature_max&daily=apparent_temperature_min&daily=apparent_temperature_mean&daily=sunrise&daily=sunset&daily=daylight_duration&daily=sunshine_duration&daily=precipitation_sum&daily=rain_sum&daily=snowfall_sum&daily=precipitation_hours&daily=wind_speed_10m_max&daily=wind_gusts_10m_max&daily=wind_direction_10m_dominant&daily=shortwave_radiation_sum&daily=et0_fao_evapotranspiration&timezone=America%2FChicago&format=flatbuffers")
             
             game_model = create_sportsreference_game_model(
                 self.session,
@@ -746,3 +746,140 @@ class TestSportsReferenceGameModel(unittest.TestCase):
                 datetime.datetime(2010, 10, 10, 10, 10, 0),
             )
             self.assertEqual(game_model.dt, datetime.datetime(1967, 10, 17, 0, 0))
+
+    def test_dt_old_style_15(self):
+        url = "http://www.basketball-reference.com/boxscores/201206090MIA.html"
+        with requests_mock.Mocker() as m:
+            with open(os.path.join(self.dir, "201206090MIA.html"), "rb") as f:
+                m.get(url, content=f.read())
+            with open(os.path.join(self.dir, "BOS_2012.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/teams/BOS/2012.html", content=f.read())
+            with open(os.path.join(self.dir, "pavloal01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/p/pavloal01.html", content=f.read())
+            with open(os.path.join(self.dir, "garneke01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/g/garneke01.html", content=f.read())
+            with open(os.path.join(self.dir, "doolike01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/d/doolike01.html", content=f.read())
+            with open(os.path.join(self.dir, "piercpa01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/p/piercpa01.html", content=f.read())
+            with open(os.path.join(self.dir, "stiemgr01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/s/stiemgr01.html", content=f.read())
+            with open(os.path.join(self.dir, "rondora01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/r/rondora01.html", content=f.read())
+            with open(os.path.join(self.dir, "daniema01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/d/daniema01.html", content=f.read())
+            with open(os.path.join(self.dir, "holliry01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/h/holliry01.html", content=f.read())
+            with open(os.path.join(self.dir, "bassbr01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/b/bassbr01.html", content=f.read())
+            with open(os.path.join(self.dir, "mooreet01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/m/mooreet01.html", content=f.read())
+            with open(os.path.join(self.dir, "allenra02.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/a/allenra02.html", content=f.read())
+            with open(os.path.join(self.dir, "pietrmi01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/p/pietrmi01.html", content=f.read())
+            with open(os.path.join(self.dir, "jamesle01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/j/jamesle01.html", content=f.read())
+            with open(os.path.join(self.dir, "MIA_2012.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/teams/MIA/2012.html", content=f.read())
+            with open(os.path.join(self.dir, "wadedw01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/w/wadedw01.html", content=f.read())
+            with open(os.path.join(self.dir, "jonesja02.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/j/jonesja02.html", content=f.read())
+            with open(os.path.join(self.dir, "howarju01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/h/howarju01.html", content=f.read())
+            with open(os.path.join(self.dir, "boshch01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/b/boshch01.html", content=f.read())
+            with open(os.path.join(self.dir, "millemi01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/m/millemi01.html", content=f.read())
+            with open(os.path.join(self.dir, "chalmma01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/c/chalmma01.html", content=f.read())
+            with open(os.path.join(self.dir, "battish01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/b/battish01.html", content=f.read())
+            with open(os.path.join(self.dir, "hasleud01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/h/hasleud01.html", content=f.read())
+            with open(os.path.join(self.dir, "coleno01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/c/coleno01.html", content=f.read())
+
+            game_model = create_sportsreference_game_model(
+                self.session,
+                url,
+                League.NBA,
+                datetime.datetime(2010, 10, 10, 10, 10, 0),
+            )
+            self.assertEqual(game_model.dt, datetime.datetime(2012, 6, 9, 0, 0))
+
+    def test_dt_old_style_16(self):
+        url = "http://www.basketball-reference.com/boxscores/200704180LAC.html"
+        with requests_mock.Mocker() as m:
+            with open(os.path.join(self.dir, "200704180LAC.html"), "rb") as f:
+                m.get(url, content=f.read())
+            with open(os.path.join(self.dir, "NOK_2007.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/teams/NOK/2007.html", content=f.read())
+            with open(os.path.join(self.dir, "brownde02.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/b/brownde02.html", content=f.read())
+            with open(os.path.join(self.dir, "paulch01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/p/paulch01.html", content=f.read())
+            with open(os.path.join(self.dir, "westda01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/w/westda01.html", content=f.read())
+            with open(os.path.join(self.dir, "armsthi01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/a/armsthi01.html", content=f.read())
+            with open(os.path.join(self.dir, "butlera01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/b/butlera01.html", content=f.read())
+            with open(os.path.join(self.dir, "vincima01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/v/vincima01.html", content=f.read())
+            with open(os.path.join(self.dir, "jacksma02.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/j/jacksma02.html", content=f.read())
+            with open(os.path.join(self.dir, "jacksbo01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/j/jacksbo01.html", content=f.read())
+            with open(os.path.join(self.dir, "pargoja01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/p/pargoja01.html", content=f.read())
+            with open(os.path.join(self.dir, "LAC_2007.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/teams/LAC/2007.html", content=f.read())
+            with open(os.path.join(self.dir, "brandel01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/b/brandel01.html", content=f.read())
+            with open(os.path.join(self.dir, "hartja01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/h/hartja01.html", content=f.read())
+            with open(os.path.join(self.dir, "conrowi01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/c/conrowi01.html", content=f.read())
+            with open(os.path.join(self.dir, "kamanch01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/k/kamanch01.html", content=f.read())
+            with open(os.path.join(self.dir, "rossqu01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/r/rossqu01.html", content=f.read())
+            with open(os.path.join(self.dir, "thomati01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/t/thomati01.html", content=f.read())
+            with open(os.path.join(self.dir, "cassesa01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/c/cassesa01.html", content=f.read())
+            with open(os.path.join(self.dir, "singlja01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/s/singlja01.html", content=f.read())
+            with open(os.path.join(self.dir, "maggeco01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/m/maggeco01.html", content=f.read())
+            with open(os.path.join(self.dir, "ewingda01.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/players/e/ewingda01.html", content=f.read())
+            m.get("https://historical-forecast-api.open-meteo.com/v1/forecast?latitude=34.0429909&longitude=-118.2673753&start_date=2007-04-17&end_date=2007-04-18&hourly=temperature_2m&hourly=relative_humidity_2m&hourly=dew_point_2m&hourly=apparent_temperature&hourly=precipitation&hourly=rain&hourly=snowfall&hourly=snow_depth&hourly=weather_code&hourly=pressure_msl&hourly=surface_pressure&hourly=cloud_cover&hourly=cloud_cover_low&hourly=cloud_cover_mid&hourly=cloud_cover_high&hourly=et0_fao_evapotranspiration&hourly=vapour_pressure_deficit&hourly=wind_speed_10m&hourly=wind_speed_100m&hourly=wind_direction_10m&hourly=wind_direction_100m&hourly=wind_gusts_10m&hourly=soil_temperature_0_to_7cm&hourly=soil_temperature_7_to_28cm&hourly=soil_temperature_28_to_100cm&hourly=soil_temperature_100_to_255cm&hourly=soil_moisture_0_to_7cm&hourly=soil_moisture_7_to_28cm&hourly=soil_moisture_28_to_100cm&hourly=soil_moisture_100_to_255cm&daily=weather_code&daily=temperature_2m_max&daily=temperature_2m_min&daily=temperature_2m_mean&daily=apparent_temperature_max&daily=apparent_temperature_min&daily=apparent_temperature_mean&daily=sunrise&daily=sunset&daily=daylight_duration&daily=sunshine_duration&daily=precipitation_sum&daily=rain_sum&daily=snowfall_sum&daily=precipitation_hours&daily=wind_speed_10m_max&daily=wind_gusts_10m_max&daily=wind_direction_10m_dominant&daily=shortwave_radiation_sum&daily=et0_fao_evapotranspiration&timezone=America%2FLos_Angeles&format=flatbuffers")
+
+            game_model = create_sportsreference_game_model(
+                self.session,
+                url,
+                League.NBA,
+                datetime.datetime(2010, 10, 10, 10, 10, 0),
+            )
+            self.assertEqual(game_model.dt, datetime.datetime(2007, 4, 18, 19, 30))
+
+    def test_dt_old_style_17(self):
+        url = "http://www.basketball-reference.com/boxscores/196804140PTP.html"
+        with requests_mock.Mocker() as m:
+            with open(os.path.join(self.dir, "196804140PTP.html"), "rb") as f:
+                m.get(url, content=f.read())
+            with open(os.path.join(self.dir, "MNM_1968.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/teams/MNM/1968.html", content=f.read())
+            with open(os.path.join(self.dir, "PTP_1968.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/teams/PTP/1968.html", content=f.read())
+
+            game_model = create_sportsreference_game_model(
+                self.session,
+                url,
+                League.NBA,
+                datetime.datetime(2010, 10, 10, 10, 10, 0),
+            )
+            self.assertEqual(game_model.dt, datetime.datetime(1968, 4, 14, 0, 0))

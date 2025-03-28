@@ -27,17 +27,6 @@ class SportsBall:
 
     def __init__(self) -> None:
         self._session = create_proxy_session()
-        """
-        self._session = retry(
-            self._session,
-            retries=5,
-            backoff_factor=0.2,
-            prefixes=(
-                "https://www.sports-reference.com",
-                "https://www.thesportsdb.com",
-            ),
-        )  # pyright: ignore
-        """
         self._leagues = {}
         simplefilter(action="ignore", category=pd.errors.PerformanceWarning)
         load_dotenv()

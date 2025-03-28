@@ -24,6 +24,20 @@ from .sportsreference_team_model import create_sportsreference_team_model
 from .sportsreference_venue_model import create_sportsreference_venue_model
 
 _NON_WAYBACK_URLS: set[str] = set()
+_MONTHS = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+]
 
 
 def _find_old_dt(
@@ -53,11 +67,26 @@ def _find_old_dt(
                         team_row[: team_row.find(sentinel) + len(sentinel)].strip(),
                         team_row[team_row.find(sentinel) + len(sentinel) :]
                         .strip()
-                        .replace("/ Next Game ⇒", ""),
+                        .replace("/ Next Game ⇒", "")
+                        .replace("⇒", "")
+                        .strip(),
                     ]
+                    last_splits = team_rows[1].split()
+                    if last_splits:
+                        if last_splits[0] in _MONTHS:
+                            continue
                     break
             if not team_rows[1]:
                 sentinel = "Next Game"
+                team_rows = [
+                    team_row[: team_row.find(sentinel) + len(sentinel)].strip(),
+                    team_row[team_row.find(sentinel) + len(sentinel) :]
+                    .strip()
+                    .replace("⇒", "")
+                    .strip(),
+                ]
+            if not team_rows[1]:
+                sentinel = "Prev Game"
                 team_rows = [
                     team_row[: team_row.find(sentinel) + len(sentinel)].strip(),
                     team_row[team_row.find(sentinel) + len(sentinel) :]
@@ -74,7 +103,7 @@ def _find_old_dt(
                     team_row.split("⇐")[0]
                     .strip()
                     .replace("Prev Game", "")
-                    .replace("/", "")
+                    # .replace("/", "")
                     .strip()
                 )
             else:
@@ -103,6 +132,13 @@ def _find_old_dt(
                 team_name = team_name.split(" at ")[0].strip()
             if " vs " in team_name:
                 team_name = team_name.split(" vs ")[0].strip()
+            for month in _MONTHS:
+                month_split = " " + month + " "
+                if month_split in team_name:
+                    team_name = team_name.split(month_split)[0].strip()
+                    points = int(team_name.split()[-1].strip())
+                    team_name = " ".join(team_name.split()[:-1]).strip()
+                    break
             team_a = soup.find("a", text=team_name, href=True)
             if not isinstance(team_a, Tag):
                 raise ValueError("team_a is not a tag.")

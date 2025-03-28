@@ -77,6 +77,9 @@ WIKIPEDIA_VENUE_ID_MAP: dict[str, str] = {
     "Angel Stadium of Anaheim": "Angel_Stadium",
     "Spotland Stadium": "Spotland_Stadium",
     "Giants Stadium": "Giants_Stadium",
+    "Accor Arena": "Accor_Arena",
+    # SportsReference
+    "UW–Milwaukee Panther Arena, Milwaukee, Wisconsin": "UW–Milwaukee_Panther_Arena",
 }
 
 
