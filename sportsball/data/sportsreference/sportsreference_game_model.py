@@ -141,6 +141,7 @@ def _find_old_dt(
                     break
             team_a = soup.find("a", text=team_name, href=True)
             if not isinstance(team_a, Tag):
+                logging.error(response.text)
                 raise ValueError("team_a is not a tag.")
             team_url = urllib.parse.urljoin(url, str(team_a.get("href")))
             if dt is None:
