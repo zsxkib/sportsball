@@ -11549,6 +11549,24 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Savannah Civic Center, Savannah, Georgia": SportsballGeocodeTuple(
+        city="Savannah",
+        state="GA",
+        postal="31401",
+        lat=32.0769645,
+        lng=-81.0995252,
+        housenumber="301",
+        country="USA",
+    ),
+    "Barossa Park, Lyndoch, Australia": SportsballGeocodeTuple(
+        city="Lyndoch",
+        state="SA",
+        postal="5351",
+        lat=-34.5988377,
+        lng=138.8028998,
+        housenumber="2",
+        country="Australia",
+    ),
 }
 
 

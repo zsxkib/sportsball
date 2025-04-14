@@ -143,6 +143,7 @@ THUNDERDOME_STADIUM = "Thunderdome Stadium"
 SPOTLAND_STADIUM = "Spotland Stadium"
 GIANTS_STADIUM = "Giants Stadium"
 TIPOS_ARENA = "Ondrej Nepela Arena"
+BAROSSA_PARK = "Barossa Park"
 AFL_VENUE_IDENTITY_MAP = {
     "brunswick_st": BRUNSWICK_ST,
     "victoria_park": VICTORIA_PARK,
@@ -237,6 +238,7 @@ AFL_VENUE_IDENTITY_MAP = {
     "Marrara Oval": MARRARA_OVAL,
     "Giants Stadium": GIANTS_STADIUM,
     "Ondrej Nepela Arena": TIPOS_ARENA,
+    "Barossa Park": BAROSSA_PARK,
 }
 
 

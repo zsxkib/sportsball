@@ -3,14 +3,11 @@
 # pylint: disable=raise-missing-from
 import logging
 import multiprocessing
-import sys
-import traceback
-from multiprocessing import Pool
+from concurrent.futures import ThreadPoolExecutor
 from typing import Any, Iterator
 
 import requests_cache
 
-from ...logger import setup_logger
 from ..game_model import GameModel
 from ..league import League
 from ..league_model import LeagueModel
@@ -18,13 +15,7 @@ from .combined_game_model import create_combined_game_model
 
 
 def _produce_league_games(league_model: LeagueModel) -> list[dict[str, Any]]:
-    setup_logger()
-    try:
-        return [x.model_dump() for x in league_model.games]
-    except Exception as exc:
-        logging.error("Exception: %s", str(exc))
-        logging.error(traceback.format_exc())
-        raise ValueError(str(exc))
+    return [x.model_dump() for x in league_model.games]
 
 
 class CombinedLeagueModel(LeagueModel):
@@ -59,21 +50,18 @@ class CombinedLeagueModel(LeagueModel):
         team_identity_map = self.team_identity_map()
         for league_model in self._league_models:
             league_model.clear_session()
-        with Pool(min(multiprocessing.cpu_count(), len(self._league_models))) as p:
+        with ThreadPoolExecutor(
+            min(multiprocessing.cpu_count(), len(self._league_models))
+        ) as p:
             # We want to terminate immediately if any of our runners runs into trouble.
-            def _error_callback(exc: BaseException) -> None:
-                logging.error(str(exc))
-                sys.exit(1)
 
-            results = [
-                p.apply_async(
-                    _produce_league_games, args=(x,), error_callback=_error_callback
+            results = list(
+                p.map(
+                    _produce_league_games,
+                    self._league_models,
                 )
-                for x in self._league_models
-            ]
-            game_lists = [
-                [GameModel.model_validate(y) for y in x.get()] for x in results
-            ]
+            )
+        game_lists = [[GameModel.model_validate(y) for y in x] for x in results]
 
         for game_list in game_lists:
             for game_model in game_list:

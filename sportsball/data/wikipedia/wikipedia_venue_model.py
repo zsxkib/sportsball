@@ -15,7 +15,7 @@ STADIUM_AUSTRALIA = "Stadium_Australia"
 YORK_PARK = "York_Park"
 TRAEGER_PARK = "Traeger_Park"
 
-WIKIPEDIA_VENUE_ID_MAP: dict[str, str] = {
+WIKIPEDIA_VENUE_ID_MAP: dict[str, str | None] = {
     # AFLTables
     "brunswick_st": "Brunswick_Street_Oval",
     "victoria_park": "Victoria_Park,_Melbourne",
@@ -78,6 +78,7 @@ WIKIPEDIA_VENUE_ID_MAP: dict[str, str] = {
     "Spotland Stadium": "Spotland_Stadium",
     "Giants Stadium": "Giants_Stadium",
     "Accor Arena": "Accor_Arena",
+    "Barossa Park": None,
     # SportsReference
     "UW–Milwaukee Panther Arena, Milwaukee, Wisconsin": "UW–Milwaukee_Panther_Arena",
 }

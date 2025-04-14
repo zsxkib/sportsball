@@ -1,6 +1,6 @@
 """OddsPortal game model."""
 
-# pylint: disable=too-many-locals,too-many-statements,line-too-long
+# pylint: disable=too-many-locals,too-many-statements,line-too-long,broad-exception-caught
 import datetime
 import json
 import logging
@@ -80,7 +80,10 @@ def _create_oddsportal_game_model(
         )
 
     dat_url = f"https://www.oddsportal.com/match-event/{version_id}-{sport_id}-{unique_id}-{default_bet_id}-{default_scope_id}-{xhash}.dat"
-    parsed_data = fetch_data(dat_url, session, url, soup)
+    try:
+        parsed_data = fetch_data(dat_url, session, url, soup)
+    except Exception:
+        return None
 
     return GameModel(
         dt=dt,
