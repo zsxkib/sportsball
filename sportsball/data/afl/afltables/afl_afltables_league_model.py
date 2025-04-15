@@ -56,7 +56,7 @@ class AFLAFLTablesLeagueModel(LeagueModel):
         filename, _ = os.path.splitext(last_component)
         year = int(filename)
 
-        if year < datetime.datetime.now().year - 1:
+        if year >= datetime.datetime.now().year - 1:
             with self.session.cache_disabled():
                 response = self.session.get(season_url)
         else:

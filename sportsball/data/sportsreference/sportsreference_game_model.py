@@ -23,7 +23,10 @@ from ..team_model import TeamModel
 from .sportsreference_team_model import create_sportsreference_team_model
 from .sportsreference_venue_model import create_sportsreference_venue_model
 
-_NON_WAYBACK_URLS: set[str] = set()
+_NON_WAYBACK_URLS: set[str] = {
+    "https://www.sports-reference.com/cbb/boxscores/2025-03-01-14-saint-francis-pa.html",
+    "https://www.sports-reference.com/cbb/boxscores/2025-03-01-15-bradley_w.html",
+}
 _MONTHS = [
     "January",
     "February",
@@ -301,7 +304,11 @@ def _create_sportsreference_game_model(
 
     scores = []
     for score_div in soup.find_all("div", class_="score"):
-        scores.append(float(score_div.get_text().strip()))
+        try:
+            scores.append(float(score_div.get_text().strip()))
+        except ValueError as exc:
+            logging.error(response.text)
+            raise exc
 
     handle = io.StringIO()
     handle.write(response.text)
