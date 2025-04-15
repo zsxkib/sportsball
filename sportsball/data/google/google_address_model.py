@@ -12079,6 +12079,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Barossa Oval - Australia": BAROSSA_PARK,
 }
 
 
