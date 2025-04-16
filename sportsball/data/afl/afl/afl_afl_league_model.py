@@ -72,7 +72,9 @@ class AFLAFLLeagueModel(LeagueModel):
                 for time in div.find_all(
                     "time", {"class": re.compile(".*match-list-alt__header-time.*")}
                 ):
-                    dt = datetime.datetime.fromtimestamp(float(time.get("data-date")))
+                    dt = datetime.datetime.fromtimestamp(
+                        float(time.get("data-date")) / 1000.0
+                    )
                 venue_name: str | None = None
                 for span in div.find_all(
                     "span", {"class": re.compile(".*match-list-alt__header-venue.*")}
