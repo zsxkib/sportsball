@@ -1,6 +1,6 @@
 """Aussportsbetting game model."""
 
-# pylint: disable=too-many-arguments
+# pylint: disable=too-many-arguments,duplicate-code
 import datetime
 
 import pytest_is_running

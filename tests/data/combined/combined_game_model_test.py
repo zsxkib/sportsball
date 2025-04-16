@@ -38,6 +38,7 @@ class TestCombinedGameModel(unittest.TestCase):
                 [game_model],
                 {},
                 {},
+                {},
                 self._session,
             )
             self.assertEqual(combined_game_model.dt, dt)

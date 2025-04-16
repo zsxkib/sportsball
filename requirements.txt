@@ -30,3 +30,4 @@ wayback>=0.4.5
 cryptography>=44.0.0
 feedparser>=6.0.11
 dateparser>=1.2.0
+playwright>=1.51.0

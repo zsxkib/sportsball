@@ -1,6 +1,6 @@
 """AFL AFLTables player model."""
 
-# pylint: disable=line-too-long
+# pylint: disable=line-too-long,duplicate-code
 import datetime
 import os
 from urllib.parse import urlparse

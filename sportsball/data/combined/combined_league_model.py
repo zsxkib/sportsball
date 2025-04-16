@@ -44,6 +44,13 @@ class CombinedLeagueModel(LeagueModel):
             "venue_identity_map not implemented on CombinedLeagueModel parent class."
         )
 
+    @classmethod
+    def player_identity_map(cls) -> dict[str, str]:
+        """A map to resolve the different player identities to a consistent identity."""
+        raise NotImplementedError(
+            "player_identity_map not implemented on CombinedLeagueModel parent class."
+        )
+
     @property
     def games(self) -> Iterator[GameModel]:
         games: dict[str, list[GameModel]] = {}
@@ -85,5 +92,6 @@ class CombinedLeagueModel(LeagueModel):
                 game_models,
                 self.venue_identity_map(),
                 team_identity_map,
+                self.player_identity_map(),
                 self.session,
             )

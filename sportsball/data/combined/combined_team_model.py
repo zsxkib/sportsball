@@ -1,6 +1,8 @@
 """Combined team model."""
 
 # pylint: disable=too-many-locals
+import logging
+
 from ..news_model import NewsModel
 from ..odds_model import OddsModel
 from ..player_model import PlayerModel
@@ -12,6 +14,7 @@ from .combined_player_model import create_combined_player_model
 def create_combined_team_model(
     team_models: list[TeamModel],
     identifier: str,
+    player_identity_map: dict[str, str],
 ) -> TeamModel:
     """Create a team model by combining many team models."""
     location = None
@@ -27,9 +30,16 @@ def create_combined_team_model(
         if team_model_location is not None:
             location = team_model_location
         for player_model in team_model.players:
+            player_id = player_model.identifier
+            if player_model.identifier not in player_identity_map:
+                logging.warning(
+                    "Failed to find %s player identifier.", player_model.identifier
+                )
+            else:
+                player_id = player_identity_map[player_id]
             key = player_model.jersey
             if key is None:
-                key = player_model.identifier
+                key = player_id
             players[key] = players.get(key, []) + [player_model]
         for odds_model in team_model.odds:
             key = f"{odds_model.bookie.identifier}-{odds_model.odds}"

@@ -45,6 +45,7 @@ Python 3.11.6:
 - [cryptography](https://cryptography.io/en/latest/)
 - [feedparser](https://github.com/kurtmckee/feedparser)
 - [dateparser](https://dateparser.readthedocs.io/en/latest/)
+- [playwright](https://playwright.dev/)
 
 ## Raison D'être :thought_balloon:
 
@@ -207,6 +208,10 @@ It's very recommended that the user uses proxies defined in the `PROXIES` enviro
 This is a python package hosted on pypi, so to install simply run the following command:
 
 `pip install sportsball`
+
+or install using this local repository:
+
+`python setup.py install --old-and-unmanageable`
 
 ## Usage example :eyes:
 

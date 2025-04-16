@@ -10,6 +10,7 @@ from ..oddsportal.ncaaf_oddsportal_league_model import \
 
 NCAAF_TEAM_IDENTITY_MAP: dict[str, str] = {}
 NCAAF_VENUE_IDENTITY_MAP: dict[str, str] = {}
+NCAAF_PLAYER_IDENTITY_MAP: dict[str, str] = {}
 
 
 class NCAAFCombinedLeagueModel(CombinedLeagueModel):
@@ -32,3 +33,7 @@ class NCAAFCombinedLeagueModel(CombinedLeagueModel):
     @classmethod
     def venue_identity_map(cls) -> dict[str, str]:
         return NCAAF_VENUE_IDENTITY_MAP
+
+    @classmethod
+    def player_identity_map(cls) -> dict[str, str]:
+        return NCAAF_PLAYER_IDENTITY_MAP

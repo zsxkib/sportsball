@@ -1,5 +1,6 @@
 """Sports Reference venue model."""
 
+# pylint: disable=duplicate-code
 import datetime
 
 import pytest_is_running

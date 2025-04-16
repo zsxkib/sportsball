@@ -370,6 +370,7 @@ NFL_VENUE_IDENTITY_MAP = {
     "17145": EMPOWER_FIELD,
     "30856": ATT_STADIUM,
 }
+NFL_PLAYER_IDENTITY_MAP: dict[str, str] = {}
 
 
 class NFLCombinedLeagueModel(CombinedLeagueModel):
@@ -394,3 +395,7 @@ class NFLCombinedLeagueModel(CombinedLeagueModel):
     @classmethod
     def venue_identity_map(cls) -> dict[str, str]:
         return NFL_VENUE_IDENTITY_MAP
+
+    @classmethod
+    def player_identity_map(cls) -> dict[str, str]:
+        return NFL_PLAYER_IDENTITY_MAP

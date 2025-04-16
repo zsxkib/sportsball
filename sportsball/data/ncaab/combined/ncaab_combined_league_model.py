@@ -741,6 +741,7 @@ NCAAB_TEAM_IDENTITY_MAP: dict[str, str] = {
     "Wagner Seahawks Men's": WAGNER_SEAHAWKS,
 }
 NCAAB_VENUE_IDENTITY_MAP: dict[str, str] = {}
+NCAAB_PLAYER_IDENTITY_MAP: dict[str, str] = {}
 
 
 class NCAABCombinedLeagueModel(CombinedLeagueModel):
@@ -764,3 +765,7 @@ class NCAABCombinedLeagueModel(CombinedLeagueModel):
     @classmethod
     def venue_identity_map(cls) -> dict[str, str]:
         return NCAAB_VENUE_IDENTITY_MAP
+
+    @classmethod
+    def player_identity_map(cls) -> dict[str, str]:
+        return NCAAB_PLAYER_IDENTITY_MAP

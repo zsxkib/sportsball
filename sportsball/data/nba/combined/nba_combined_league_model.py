@@ -884,6 +884,7 @@ NBA_VENUE_IDENTITY_MAP: dict[str, str] = {
     "24838": SPECTRUM_CENTER,
     "28619": KASEYA_CENTER,
 }
+NBA_PLAYER_IDENTITY_MAP: dict[str, str] = {}
 
 
 class NBACombinedLeagueModel(CombinedLeagueModel):
@@ -909,3 +910,7 @@ class NBACombinedLeagueModel(CombinedLeagueModel):
     @classmethod
     def venue_identity_map(cls) -> dict[str, str]:
         return NBA_VENUE_IDENTITY_MAP
+
+    @classmethod
+    def player_identity_map(cls) -> dict[str, str]:
+        return NBA_PLAYER_IDENTITY_MAP

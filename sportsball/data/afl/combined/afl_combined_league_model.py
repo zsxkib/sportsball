@@ -4,6 +4,7 @@ import requests_cache
 
 from ...combined.combined_league_model import CombinedLeagueModel
 from ...league import League
+from ..afl.afl_afl_league_model import AFLAFLLeagueModel
 from ..afltables.afl_afltables_league_model import AFLAFLTablesLeagueModel
 from ..aussportsbetting.afl_aussportsbetting_league_model import \
     AFLAusSportsBettingLeagueModel
@@ -195,6 +196,7 @@ AFL_VENUE_IDENTITY_MAP = {
     "riverway": RIVERWAY,
     "norwood": NORWOOD,
     "summit": SUMMIT,
+    "barossa": BAROSSA_PARK,
     # Aus Sports Betting
     "MCG": MCG,
     "SCG": SCG,
@@ -240,6 +242,7 @@ AFL_VENUE_IDENTITY_MAP = {
     "Ondrej Nepela Arena": TIPOS_ARENA,
     "Barossa Park": BAROSSA_PARK,
 }
+AFL_TEAM_IDENTITY_MAP = {}
 
 
 class AFLCombinedLeagueModel(CombinedLeagueModel):
@@ -254,6 +257,7 @@ class AFLCombinedLeagueModel(CombinedLeagueModel):
                 AFLESPNLeagueModel(session, position=1),
                 AFLAusSportsBettingLeagueModel(session, position=2),
                 AFLOddsPortalLeagueModel(session, position=3),
+                AFLAFLLeagueModel(session, position=4),
             ],
         )
 
@@ -264,3 +268,7 @@ class AFLCombinedLeagueModel(CombinedLeagueModel):
     @classmethod
     def venue_identity_map(cls) -> dict[str, str]:
         return AFL_VENUE_IDENTITY_MAP
+
+    @classmethod
+    def player_identity_map(cls) -> dict[str, str]:
+        return AFL_TEAM_IDENTITY_MAP

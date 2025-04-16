@@ -34,6 +34,7 @@ def _venue_models(
 def _team_models(
     game_models: list[GameModel],
     team_identity_map: dict[str, str],
+    player_identity_map: dict[str, str],
 ) -> list[TeamModel]:
     team_models: dict[str, list[TeamModel]] = {}
     for game_model in game_models:
@@ -50,7 +51,7 @@ def _team_models(
                     team_model
                 ]
     return [
-        create_combined_team_model(v, k)  # pyright: ignore
+        create_combined_team_model(v, k, player_identity_map)  # pyright: ignore
         for k, v in team_models.items()
     ]
 
@@ -59,11 +60,12 @@ def create_combined_game_model(
     game_models: list[GameModel],
     venue_identity_map: dict[str, str],
     team_identity_map: dict[str, str],
+    player_identity_map: dict[str, str],
     session: requests.Session,
 ) -> GameModel:
     """Create a game model by combining many game models."""
     venue_models, full_venue_identity = _venue_models(game_models, venue_identity_map)
-    full_team_models = _team_models(game_models, team_identity_map)
+    full_team_models = _team_models(game_models, team_identity_map, player_identity_map)
     attendance = None
     end_dt = None
     year = None
