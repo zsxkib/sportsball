@@ -12151,6 +12151,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Kerr Fitness Center, Pittsburgh, Pennsylvania": SportsballGeocodeTuple(
+        city="Pittsburgh",
+        state="PA",
+        postal="15237",
+        lat=40.5691309,
+        lng=-80.01166,
+        housenumber="9000",
+        country="USA",
+    ),
 }
 
 
@@ -12192,7 +12201,7 @@ def _create_google_address_model(
         )
     except Exception as exc:
         logging.warning("Failed to retrieve address model for query %s", query)
-        raise exc
+        raise ValueError(f"AddressModel failed to validate: {query}") from exc
 
 
 @MEMORY.cache(ignore=["session"])
