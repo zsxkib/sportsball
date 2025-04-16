@@ -12178,17 +12178,21 @@ def _create_google_address_model(
             dt,  # pyright: ignore
             tz,
         )
-    return AddressModel(
-        city=g.city,
-        state=g.state,
-        zipcode=g.postal,
-        latitude=latitude,
-        longitude=longitude,
-        housenumber=g.housenumber,
-        weather=weather_model,  # pyright: ignore
-        timezone=tz,
-        country=g.country,
-    )
+    try:
+        return AddressModel(
+            city=g.city,
+            state=g.state,
+            zipcode=g.postal,
+            latitude=latitude,
+            longitude=longitude,
+            housenumber=g.housenumber,
+            weather=weather_model,  # pyright: ignore
+            timezone=tz,
+            country=g.country,
+        )
+    except Exception as exc:
+        logging.warning("Failed to retrieve address model for query %s", query)
+        raise exc
 
 
 @MEMORY.cache(ignore=["session"])
