@@ -1,9 +1,14 @@
 """A class for holding address information."""
 
+from typing import Literal
+
 from pydantic import BaseModel, Field
 
 from .field_type import TYPE_KEY, FieldType
 from .weather_model import WeatherModel
+
+ADDRESS_LATITUDE_COLUMN: Literal["latitude"] = "latitude"
+ADDRESS_LONGITUDE_COLUMN: Literal["longitude"] = "longitude"
 
 
 class AddressModel(BaseModel):
@@ -14,8 +19,8 @@ class AddressModel(BaseModel):
     zipcode: str | None = Field(
         ..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL}
     )
-    latitude: float | None
-    longitude: float | None
+    latitude: float | None = Field(..., alias=ADDRESS_LATITUDE_COLUMN)
+    longitude: float | None = Field(..., alias=ADDRESS_LONGITUDE_COLUMN)
     housenumber: str | None = Field(
         ..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL}
     )

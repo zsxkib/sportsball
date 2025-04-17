@@ -2197,6 +2197,24 @@ EXTRAMILE_ARENA = SportsballGeocodeTuple(
     housenumber="1401",
     country="USA",
 )
+REYNOLDS_COLISEUM = SportsballGeocodeTuple(
+    city="Raleigh",
+    state="NC",
+    postal="",
+    lat=35.783,
+    lng=-78.67,
+    housenumber="103",
+    country="USA",
+)
+VANCOUVER_CONVENTION_CENTER = SportsballGeocodeTuple(
+    city="Vancouver",
+    state="BC",
+    postal="",
+    lat=49.289167,
+    lng=-123.113797,
+    housenumber="1055",
+    country="Canada",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -8975,15 +8993,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="4900",
         country="USA",
     ),
-    "Reynolds Coliseum, Raleigh, North Carolina": SportsballGeocodeTuple(
-        city="Raleigh",
-        state="NC",
-        postal="",
-        lat=35.783,
-        lng=-78.67,
-        housenumber="103",
-        country="USA",
-    ),
+    "Reynolds Coliseum, Raleigh, North Carolina": REYNOLDS_COLISEUM,
     "Walter E. Washington Convention Center, Washington, District of Columbia": SportsballGeocodeTuple(
         city="Washington",
         state="DC",
@@ -12267,6 +12277,56 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="300",
         country="USA",
     ),
+    "James T. Valvano Arena, Raleigh, North Carolina": REYNOLDS_COLISEUM,
+    "North Charleston Coliseum, Charleston, South Carolina": SportsballGeocodeTuple(
+        city="Charleston",
+        state="SC",
+        postal="29418",
+        lat=32.8656,
+        lng=-80.0224,
+        housenumber="5001",
+        country="USA",
+    ),
+    "Fiserv Forum,": FISERV_FORUM,
+    "First Horizon Coliseum, Greensboro, North Carolina": SportsballGeocodeTuple(
+        city="Greensboro",
+        state="NC",
+        postal="",
+        lat=36.0596,
+        lng=-79.8257,
+        housenumber="1921",
+        country="USA",
+    ),
+    "North Athletic Complex, Pittsburgh, Pennsylvania": SportsballGeocodeTuple(
+        city="Pittsburgh",
+        state="PA",
+        postal="",
+        lat=40.519083,
+        lng=-80.212405,
+        housenumber="",
+        country="USA",
+    ),
+    "Georgetown, Kentucky": SportsballGeocodeTuple(
+        city="Georgetown",
+        state="KY",
+        postal="",
+        lat=38.209722,
+        lng=-84.56,
+        housenumber="",
+        country="USA",
+    ),
+    "Gold Dome, Shreveport, Louisiana": SportsballGeocodeTuple(
+        city="Shreveport",
+        state="LA",
+        postal="71134",
+        lat=32.480921,
+        lng=-93.729818,
+        housenumber="2911",
+        country="USA",
+    ),
+    "American Airlines Arena, Miami, Florida": KASEYA_CENTER,
+    "Vancouver Convention Centre,": VANCOUVER_CONVENTION_CENTER,
+    "Vancouver Convention Centre, Vancouver": VANCOUVER_CONVENTION_CENTER,
 }
 
 
