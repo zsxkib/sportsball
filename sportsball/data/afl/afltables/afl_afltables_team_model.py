@@ -44,7 +44,7 @@ _TEAM_NAME_MAP = {
 
 def _create_afl_afltables_team_model(
     team_url: str,
-    players: list[tuple[str, str, int | None]],
+    players: list[tuple[str, str, int | None, str]],
     points: float,
     session: requests_cache.CachedSession,
     last_ladder_ranks: dict[str, int] | None,
@@ -71,8 +71,10 @@ def _create_afl_afltables_team_model(
         identifier=identifier,
         name=name,
         players=[  # pyright: ignore
-            create_afl_afltables_player_model(player_url, jersey, kicks, dt, session)
-            for player_url, jersey, kicks in players
+            create_afl_afltables_player_model(
+                player_url, jersey, kicks, dt, session, name
+            )
+            for player_url, jersey, kicks, name in players
         ],
         odds=[],
         points=points,
@@ -87,7 +89,7 @@ def _create_afl_afltables_team_model(
 @MEMORY.cache(ignore=["session"])
 def _cached_create_afl_afltables_team_model(
     team_url: str,
-    players: list[tuple[str, str, int | None]],
+    players: list[tuple[str, str, int | None, str]],
     points: float,
     session: requests_cache.CachedSession,
     last_ladder_ranks: dict[str, int] | None,
@@ -101,7 +103,7 @@ def _cached_create_afl_afltables_team_model(
 
 def create_afl_afltables_team_model(
     team_url: str,
-    players: list[tuple[str, str, int | None]],
+    players: list[tuple[str, str, int | None, str]],
     points: float,
     session: requests_cache.CachedSession,
     last_ladder_ranks: dict[str, int] | None,

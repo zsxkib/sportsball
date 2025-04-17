@@ -1,6 +1,6 @@
 """Combined game model."""
 
-# pylint: disable=too-many-locals,line-too-long
+# pylint: disable=too-many-locals,line-too-long,too-many-arguments
 import logging
 
 import requests
@@ -35,6 +35,7 @@ def _team_models(
     game_models: list[GameModel],
     team_identity_map: dict[str, str],
     player_identity_map: dict[str, str],
+    names: dict[str, str],
 ) -> list[TeamModel]:
     team_models: dict[str, list[TeamModel]] = {}
     for game_model in game_models:
@@ -51,7 +52,7 @@ def _team_models(
                     team_model
                 ]
     return [
-        create_combined_team_model(v, k, player_identity_map)  # pyright: ignore
+        create_combined_team_model(v, k, player_identity_map, names)  # pyright: ignore
         for k, v in team_models.items()
     ]
 
@@ -62,10 +63,13 @@ def create_combined_game_model(
     team_identity_map: dict[str, str],
     player_identity_map: dict[str, str],
     session: requests.Session,
+    names: dict[str, str],
 ) -> GameModel:
     """Create a game model by combining many game models."""
     venue_models, full_venue_identity = _venue_models(game_models, venue_identity_map)
-    full_team_models = _team_models(game_models, team_identity_map, player_identity_map)
+    full_team_models = _team_models(
+        game_models, team_identity_map, player_identity_map, names
+    )
     attendance = None
     end_dt = None
     year = None

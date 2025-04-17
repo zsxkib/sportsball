@@ -152,7 +152,7 @@ def _create_afl_afltables_game_model(
 
     def _find_teams_metadata(
         soup: BeautifulSoup, team_infos: list[tuple[str, str, int]]
-    ) -> list[tuple[str, list[tuple[str, str, int | None]], int]]:
+    ) -> list[tuple[str, list[tuple[str, str, int | None, str]], int]]:
         def _is_correct_table(table: Tag, name: str) -> bool:
             for th in table.find_all("th"):
                 header_text = th.get_text().strip()
@@ -160,8 +160,8 @@ def _create_afl_afltables_game_model(
                     return True
             return False
 
-        def _find_players(table: Tag) -> list[tuple[str, str, int | None]]:
-            players: list[tuple[str, str, int | None]] = []
+        def _find_players(table: Tag) -> list[tuple[str, str, int | None, str]]:
+            players: list[tuple[str, str, int | None, str]] = []
             for tr in table.find_all("tr"):
                 player_row = False
                 player_url = None
@@ -172,10 +172,18 @@ def _create_afl_afltables_game_model(
                         player_row = True
                 if player_row and player_url is not None:
                     jersey = None
+                    name = None
                     kicks = None
                     for count, td in enumerate(tr.find_all("td")):
                         if count == 0:
                             jersey = td.get_text().strip()
+                        elif count == 1:
+                            name = " ".join(
+                                [
+                                    x.strip()
+                                    for x in reversed(td.get_text().strip().split(","))
+                                ]
+                            )
                         elif count == 2:
                             kicks_text = td.get_text().strip()
                             if kicks_text:
@@ -183,8 +191,10 @@ def _create_afl_afltables_game_model(
 
                     if jersey is None:
                         raise ValueError("jersey is null.")
+                    if name is None:
+                        raise ValueError("name is null")
 
-                    players.append((player_url, jersey, kicks))
+                    players.append((player_url, jersey, kicks, name))
             return players
 
         team_metadata = []

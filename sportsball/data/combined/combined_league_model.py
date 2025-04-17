@@ -87,6 +87,7 @@ class CombinedLeagueModel(LeagueModel):
                 game_components = sorted(game_components)
                 key = "-".join(game_components)
                 games[key] = games.get(key, []) + [game_model]
+        names: dict[str, str] = {}
         for game_models in games.values():
             yield create_combined_game_model(  # type: ignore
                 game_models,
@@ -94,4 +95,5 @@ class CombinedLeagueModel(LeagueModel):
                 team_identity_map,
                 self.player_identity_map(),
                 self.session,
+                names,
             )

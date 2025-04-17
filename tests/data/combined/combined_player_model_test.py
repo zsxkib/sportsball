@@ -29,6 +29,7 @@ class TestCombinedPlayerModel(unittest.TestCase):
                 offensive_rebounds=None,
                 assists=None,
                 turnovers=None,
+                name="James Jones",
             )
             combined_player_model = create_combined_player_model(
                 [player_model],

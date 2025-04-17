@@ -18,6 +18,7 @@ class TestPlayerModel(unittest.TestCase):
             offensive_rebounds=None,
             assists=None,
             turnovers=None,
+            name="James Jones",
         )
 
     def test_field_goals_attempted(self):

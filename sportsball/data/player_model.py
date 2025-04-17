@@ -66,3 +66,4 @@ class PlayerModel(BaseModel):
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=TURNOVERS_COLUMN,
     )
+    name: str

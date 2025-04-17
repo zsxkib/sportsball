@@ -6,6 +6,7 @@ from ...player_model import PlayerModel
 def create_afl_afl_player_model(
     identifier: str,
     player_number: str,
+    name: str,
 ) -> PlayerModel:
     """Create a player model from AFL AFL."""
     return PlayerModel(
@@ -19,4 +20,5 @@ def create_afl_afl_player_model(
         offensive_rebounds=None,
         assists=None,
         turnovers=None,
+        name=name,
     )

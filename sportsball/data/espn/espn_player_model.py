@@ -29,6 +29,10 @@ def _create_espn_player_model(
                         fumbles = stat["value"]
                     if stat["name"] == "fumblesLost":
                         fumbles_lost = stat["value"]
+    athlete_response = session.get(player["athlete"]["$ref"])
+    athlete_response.raise_for_status()
+    athlete_dict = athlete_response.json()
+    name = athlete_dict["fullName"]
     return PlayerModel(
         identifier=identifier,
         jersey=jersey,
@@ -40,6 +44,7 @@ def _create_espn_player_model(
         offensive_rebounds=None,
         assists=None,
         turnovers=None,
+        name=name,
     )
 
 

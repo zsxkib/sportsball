@@ -17,6 +17,7 @@ def create_combined_player_model(
     offensive_rebounds = None
     assists = None
     turnovers = None
+    name = None
     for player_model in player_models:
         player_model_jersey = player_model.jersey
         if player_model_jersey is not None:
@@ -45,6 +46,11 @@ def create_combined_player_model(
         player_model_turnovers = player_model.turnovers
         if player_model_turnovers is not None:
             turnovers = player_model_turnovers
+        player_model_name = player_model.name
+        if player_model_name is not None:
+            name = player_model_name
+    if name is None:
+        raise ValueError("name is null.")
     return PlayerModel(
         identifier=identifier,
         jersey=jersey,
@@ -56,4 +62,5 @@ def create_combined_player_model(
         offensive_rebounds=offensive_rebounds,
         assists=assists,
         turnovers=turnovers,
+        name=name,
     )

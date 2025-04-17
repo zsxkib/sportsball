@@ -34,11 +34,13 @@ class TestCombinedGameModel(unittest.TestCase):
                 postponed=True,
                 play_off=None,
             )
+            names = {}
             combined_game_model = create_combined_game_model(
                 [game_model],
                 {},
                 {},
                 {},
                 self._session,
+                names,
             )
             self.assertEqual(combined_game_model.dt, dt)

@@ -44,15 +44,17 @@ class AFLAFLLeagueModel(LeagueModel):
                     "span", {"class": re.compile(".*team-lineups__team-name.*")}
                 ):
                     team_names.append(span.get_text().strip())
-                teams_players: list[list[tuple[str, str]]] = []
+                teams_players: list[list[tuple[str, str, str, str]]] = []
                 for div_team_players in div.find_all(
                     "div", {"class": re.compile(".*team-lineups__positions-players.*")}
                 ):
-                    team_players: list[tuple[str, str]] = []
+                    team_players: list[tuple[str, str, str, str]] = []
                     for a in div_team_players.find_all(
                         "a", {"class": re.compile(".*js-player-profile-link.*")}
                     ):
                         player_id = "afl:" + a.get("data-player-id")
+                        first_name = a.get("data-first-name")
+                        second_name = a.get("data-surname")
                         player_number = None
                         for span_player_number in a.find_all(
                             "span",
@@ -66,7 +68,9 @@ class AFLAFLLeagueModel(LeagueModel):
                             )
                         if player_number is None:
                             raise ValueError("player_number is null")
-                        team_players.append((player_id, player_number))
+                        team_players.append(
+                            (player_id, player_number, first_name, second_name)
+                        )
                     teams_players.append(team_players)
                 dt = None
                 for time in div.find_all(
@@ -79,7 +83,7 @@ class AFLAFLLeagueModel(LeagueModel):
                 for span in div.find_all(
                     "span", {"class": re.compile(".*match-list-alt__header-venue.*")}
                 ):
-                    venue_name = span.get_text().strip()
+                    venue_name = span.get_text().strip().replace(",", "")
                 if venue_name is None:
                     raise ValueError("venue_name is null")
                 if dt is None:

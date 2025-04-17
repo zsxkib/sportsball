@@ -23,5 +23,6 @@ class TestAFLTablesPlayerModel(unittest.TestCase):
                 10,
                 dt,
                 self._session,
+                "Dennis Armfield",
             )
             self.assertEqual(player_model.identifier, "Dennis_Armfield")

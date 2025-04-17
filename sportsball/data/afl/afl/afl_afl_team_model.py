@@ -13,14 +13,16 @@ from .afl_afl_player_model import create_afl_afl_player_model
 
 def create_afl_afl_team_model(
     team_name: str,
-    players: list[tuple[str, str]],
+    players: list[tuple[str, str, str, str]],
     session: requests_cache.CachedSession,
     dt: datetime.datetime,
 ) -> TeamModel:
     """Create a team model from AFL AFL."""
     player_models = [
-        create_afl_afl_player_model(identifier, player_number)
-        for identifier, player_number in players
+        create_afl_afl_player_model(
+            identifier, player_number, " ".join([first_name, second_name])
+        )
+        for identifier, player_number, first_name, second_name in players
     ]
     return TeamModel(
         identifier=team_name,

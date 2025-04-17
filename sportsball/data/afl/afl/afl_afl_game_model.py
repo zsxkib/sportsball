@@ -13,7 +13,7 @@ from .afl_afl_venue_model import create_afl_afl_venue_model
 
 def create_afl_afl_game_model(
     team_names: list[str],
-    players: list[list[tuple[str, str]]],
+    players: list[list[tuple[str, str, str, str]]],
     dt: datetime.datetime,
     venue_name: str,
     session: requests_cache.CachedSession,
