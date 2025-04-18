@@ -142,6 +142,7 @@ class ESPNLeagueModel(LeagueModel):
     @property
     def games(self) -> Iterator[GameModel]:
         page = 1
+        first = True
         with tqdm.tqdm(position=self.position) as pbar:
             while True:
                 if page == 1:
@@ -162,8 +163,9 @@ class ESPNLeagueModel(LeagueModel):
                         season_type_json = season_type_response.json()
 
                         yield from self._produce_week_games(
-                            season_type_json, page, pbar, page == 1
+                            season_type_json, page, pbar, first
                         )
+                    first = False
 
                 if page >= seasons.get("pageCount", 0):
                     break

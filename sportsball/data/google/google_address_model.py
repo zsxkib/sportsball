@@ -5277,7 +5277,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Davey L. Whitney Complex, Alcorn State, Mississippi": SportsballGeocodeTuple(
         city="Alcorn State",
-        state="MI",
+        state="MS",
         postal="",
         lat=31.873225,
         lng=-91.13318,
@@ -5313,7 +5313,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Lee E. Williams Athletics and Assembly Center, Jackson, Mississippi": SportsballGeocodeTuple(
         city="Jackson",
-        state="MI",
+        state="MS",
         postal="39217",
         lat=32.299724,
         lng=-90.211887,
@@ -5322,7 +5322,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Harrison HPER Complex, Itta Bena, Mississippi": SportsballGeocodeTuple(
         city="Itta Bena",
-        state="MI",
+        state="MS",
         postal="",
         lat=33.51406,
         lng=-90.189362,
@@ -5546,7 +5546,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Humphrey Coliseum, Starkville, Mississippi": SportsballGeocodeTuple(
         city="Starkville",
-        state="MI",
+        state="MS",
         postal="39762",
         lat=33.461667,
         lng=-88.794444,
@@ -5742,7 +5742,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Reed Green Coliseum, Hattiesburg, Mississippi": SportsballGeocodeTuple(
         city="Hattiesburg",
-        state="MI",
+        state="MS",
         postal="",
         lat=31.330833,
         lng=-89.337778,
@@ -6905,8 +6905,8 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "State Farm Arena, Atlanta, Georgia": STATE_FARM_ARENA,
     "Gainbridge Fieldhouse, Indianapolis, Indiana": GAINBRIDGE_FIELDHOUSE,
     "Mississippi Coast Coliseum, Biloxi, Mississippi": SportsballGeocodeTuple(
-        city="Indianapolis",
-        state="IN",
+        city="Biloxi",
+        state="MS",
         postal="39531",
         lat=30.3935,
         lng=-88.9746,
@@ -12414,6 +12414,34 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "E.J. Wade Arena at Stuart C. Siegel Center, Richmond, Virginia": STUAR_SIEGEL_CENTER,
+    "Allstate Arena, Rosemont, Illinois": SportsballGeocodeTuple(
+        city="Rosemont",
+        state="IL",
+        postal="",
+        lat=42.005278,
+        lng=-87.887778,
+        housenumber="400",
+        country="USA",
+    ),
+    "KeyArena at Seattle Center , Seattle, Washington": CLIMATE_PLEDGE_ARENA,
+    "Municipal Auditorium, Kansas City, Missouri": SportsballGeocodeTuple(
+        city="Kansas City",
+        state="MO",
+        postal="",
+        lat=39.098353,
+        lng=-94.586416,
+        housenumber="301",
+        country="USA",
+    ),
+    "Hattiesburg, Mississippi": SportsballGeocodeTuple(
+        city="Hattiesburg",
+        state="MS",
+        postal="",
+        lat=31.315833,
+        lng=-89.308611,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
