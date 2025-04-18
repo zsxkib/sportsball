@@ -21,6 +21,7 @@ OFFENSIVE_REBOUNDS_COLUMN: Literal["offensive_rebounds"] = "offensive_rebounds"
 ASSISTS_COLUMN: Literal["assists"] = "assists"
 TURNOVERS_COLUMN: Literal["turnovers"] = "turnovers"
 KICKS_COLUMN: Literal["kicks"] = "kicks"
+TEAM_ODDS_COLUMN: Literal["odds"] = "odds"
 
 
 def _calculate_kicks(data: dict[str, Any]) -> int | None:
@@ -122,7 +123,7 @@ class TeamModel(BaseModel):
         ..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL}
     )
     players: list[PlayerModel] = Field(..., alias=PLAYER_COLUMN_PREFIX)
-    odds: list[OddsModel]
+    odds: list[OddsModel] = Field(..., alias=TEAM_ODDS_COLUMN)
     points: float | None = Field(
         ..., json_schema_extra={TYPE_KEY: FieldType.POINTS}, alias=TEAM_POINTS_COLUMN
     )

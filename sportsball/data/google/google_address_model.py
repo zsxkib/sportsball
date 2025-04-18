@@ -2215,6 +2215,15 @@ VANCOUVER_CONVENTION_CENTER = SportsballGeocodeTuple(
     housenumber="1055",
     country="Canada",
 )
+KENDALL_ISAACS_GYMNASIUM = SportsballGeocodeTuple(
+    city="Nassau",
+    state="",
+    postal="",
+    lat=25.0524506,
+    lng=-77.3627058,
+    housenumber="",
+    country="Bahamas",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -12327,6 +12336,26 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "American Airlines Arena, Miami, Florida": KASEYA_CENTER,
     "Vancouver Convention Centre,": VANCOUVER_CONVENTION_CENTER,
     "Vancouver Convention Centre, Vancouver": VANCOUVER_CONVENTION_CENTER,
+    "Kendal Isaacs Gymnasium, Nassau": KENDALL_ISAACS_GYMNASIUM,
+    "Kendal Isaacs Gymnasium, Nassau, The Bahamas": KENDALL_ISAACS_GYMNASIUM,
+    "Otter Sports Center, Marina, California": SportsballGeocodeTuple(
+        city="Marina",
+        state="CA",
+        postal="93933",
+        lat=36.6544526,
+        lng=-121.8081741,
+        housenumber="2050",
+        country="USA",
+    ),
+    "SimpliFi Arena at Stan Sheriff Center, Honolulu, Hawaii": SportsballGeocodeTuple(
+        city="Marina",
+        state="CA",
+        postal="93933",
+        lat=36.6544526,
+        lng=-121.8081741,
+        housenumber="2050",
+        country="USA",
+    ),
 }
 
 
