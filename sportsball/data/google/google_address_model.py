@@ -2233,6 +2233,15 @@ SCHAR_CENTER = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
+STUAR_SIEGEL_CENTER = SportsballGeocodeTuple(
+    city="Richmond",
+    state="VA",
+    postal="23284",
+    lat=37.552918,
+    lng=-77.4529,
+    housenumber="1200",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5071,15 +5080,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Madison Square Garden (IV), New York, New York": MADISON_SQUARE_GARDEN,
-    "Stuart Siegel Center, Richmond, Virginia": SportsballGeocodeTuple(
-        city="Richmond",
-        state="VA",
-        postal="23284",
-        lat=37.552918,
-        lng=-77.4529,
-        housenumber="1200",
-        country="USA",
-    ),
+    "Stuart Siegel Center, Richmond, Virginia": STUAR_SIEGEL_CENTER,
     "Curb Event Center, Nashville, Tennessee": SportsballGeocodeTuple(
         city="Nashville",
         state="TN",
@@ -12403,6 +12404,16 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="2020",
         country="USA",
     ),
+    "Reno Events Center, Reno, Nevada": SportsballGeocodeTuple(
+        city="Reno",
+        state="NV",
+        postal="",
+        lat=39.5309,
+        lng=-119.8125,
+        housenumber="400",
+        country="USA",
+    ),
+    "E.J. Wade Arena at Stuart C. Siegel Center, Richmond, Virginia": STUAR_SIEGEL_CENTER,
 }
 
 

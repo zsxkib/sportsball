@@ -97,9 +97,9 @@ def _create_sportsreference_team_model(
         raise ValueError(f"title not a tag for {url}.")
     title_str = title.get_text().strip().lower()
     if "file not found" in title_str:
-        with session.cache_disabled():
-            response = session.get(url)
-            response.raise_for_status()
+        session.cache.delete_url(url)  # type: ignore
+        response = session.get(url)
+        response.raise_for_status()
 
     name = _find_name(response, soup, url)
 
