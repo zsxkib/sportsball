@@ -12442,6 +12442,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Hampton University Convocation Center, Hampton, Virginia": HAMPTON_CONVOCATION_CENTER,
 }
 
 
