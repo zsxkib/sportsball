@@ -159,7 +159,7 @@ class ProxySession(requests_cache.CachedSession):
                     self.cache.save_response(response=response, cache_key=key)
                     return response
         else:
-            logging.info("Request for %s.", request.url)
+            logging.info("Request for %s caching disabled.", request.url)
 
         response = super().send(request, **kwargs)
         if not _is_fast_fail_url(response.url):
