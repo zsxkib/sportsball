@@ -2242,6 +2242,24 @@ STUAR_SIEGEL_CENTER = SportsballGeocodeTuple(
     housenumber="1200",
     country="USA",
 )
+MEMORIAL_COLISEUM = SportsballGeocodeTuple(
+    city="Portland",
+    state="OR",
+    postal="",
+    lat=45.532,
+    lng=-122.669,
+    housenumber="300",
+    country="USA",
+)
+FINNERAN_PAVILION = SportsballGeocodeTuple(
+    city="Villanova",
+    state="PA",
+    postal="19085",
+    lat=40.034072,
+    lng=-75.336553,
+    housenumber="",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -6306,15 +6324,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Finneran Pavilion, Villanova, Pennsylvania": SportsballGeocodeTuple(
-        city="Villanova",
-        state="PA",
-        postal="19085",
-        lat=40.034072,
-        lng=-75.336553,
-        housenumber="",
-        country="USA",
-    ),
+    "Finneran Pavilion, Villanova, Pennsylvania": FINNERAN_PAVILION,
     "Allen Fieldhouse, Lawrence, Kansas": SportsballGeocodeTuple(
         city="Lawrence",
         state="KS",
@@ -7033,15 +7043,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1800",
         country="USA",
     ),
-    "Memorial Coliseum - Portland, Oregon - United States": SportsballGeocodeTuple(
-        city="Portland",
-        state="OR",
-        postal="",
-        lat=45.532,
-        lng=-122.669,
-        housenumber="300",
-        country="USA",
-    ),
+    "Memorial Coliseum - Portland, Oregon - United States": MEMORIAL_COLISEUM,
     "McNichols Sports Arena": MCNICHOLS_SPORTS_ARENA,
     "Kemper Arena": SportsballGeocodeTuple(
         city="Kansas City",
@@ -12462,6 +12464,36 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "CONSOL Enegery Center, Pittsburgh, Pennsylvania": PPG_PAINTS_ARENA,
+    "Chase Center - San Francisco, California, USA - United States": CHASE_CENTER,
+    "San Marcos, Texas": SportsballGeocodeTuple(
+        city="San Marcos",
+        state="TX",
+        postal="",
+        lat=29.879444,
+        lng=-97.938889,
+        housenumber="",
+        country="USA",
+    ),
+    "Retriever Activities Center, Baltimore, Maryland": SportsballGeocodeTuple(
+        city="Baltimore",
+        state="MD",
+        postal="21250",
+        lat=39.2528994,
+        lng=-76.712267,
+        housenumber="1000",
+        country="USA",
+    ),
+    "Memorial Coliseum, Portland, Oregon": MEMORIAL_COLISEUM,
+    "Charles L. Sewall Center, Coraopolis, Pennsylvania": SportsballGeocodeTuple(
+        city="Coraopolis",
+        state="PA",
+        postal="",
+        lat=40.520212,
+        lng=-80.21476,
+        housenumber="",
+        country="USA",
+    ),
+    "The Pavilion, Villanova, Pennsylvania": FINNERAN_PAVILION,
 }
 
 

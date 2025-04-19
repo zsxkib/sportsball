@@ -44,34 +44,45 @@ class AFLAFLLeagueModel(LeagueModel):
                     "span", {"class": re.compile(".*team-lineups__team-name.*")}
                 ):
                     team_names.append(span.get_text().strip())
-                teams_players: list[list[tuple[str, str, str, str]]] = []
-                for div_team_players in div.find_all(
-                    "div", {"class": re.compile(".*team-lineups__positions-players.*")}
+                teams_players: list[list[tuple[str, str, str, str]]] = [[], []]
+                for div_positions_row in div.find_all(
+                    "div", {"class": re.compile(".*team-lineups__positions-row.*")}
                 ):
-                    team_players: list[tuple[str, str, str, str]] = []
-                    for a in div_team_players.find_all(
-                        "a", {"class": re.compile(".*js-player-profile-link.*")}
+                    row_players: list[list[tuple[str, str, str, str]]] = []
+                    for div_team_players in div_positions_row.find_all(
+                        "div",
+                        {"class": re.compile(".*team-lineups__positions-players.*")},
                     ):
-                        player_id = "afl:" + a.get("data-player-id")
-                        first_name = a.get("data-first-name")
-                        second_name = a.get("data-surname")
-                        player_number = None
-                        for span_player_number in a.find_all(
-                            "span",
-                            {"class": re.compile(".*team-lineups__player-number.*")},
+                        team_players: list[tuple[str, str, str, str]] = []
+                        for a in div_team_players.find_all(
+                            "a", {"class": re.compile(".*js-player-profile-link.*")}
                         ):
-                            player_number = (
-                                span_player_number.get_text()
-                                .strip()
-                                .replace("[", "")
-                                .replace("]", "")
+                            player_id = "afl:" + a.get("data-player-id")
+                            first_name = a.get("data-first-name")
+                            second_name = a.get("data-surname")
+                            player_number = None
+                            for span_player_number in a.find_all(
+                                "span",
+                                {
+                                    "class": re.compile(
+                                        ".*team-lineups__player-number.*"
+                                    )
+                                },
+                            ):
+                                player_number = (
+                                    span_player_number.get_text()
+                                    .strip()
+                                    .replace("[", "")
+                                    .replace("]", "")
+                                )
+                            if player_number is None:
+                                raise ValueError("player_number is null")
+                            team_players.append(
+                                (player_id, player_number, first_name, second_name)
                             )
-                        if player_number is None:
-                            raise ValueError("player_number is null")
-                        team_players.append(
-                            (player_id, player_number, first_name, second_name)
-                        )
-                    teams_players.append(team_players)
+                        row_players.append(team_players)
+                    for count, row_players_list in enumerate(row_players):
+                        teams_players[count].extend(row_players_list)
                 dt = None
                 for time in div.find_all(
                     "time", {"class": re.compile(".*match-list-alt__header-time.*")}
