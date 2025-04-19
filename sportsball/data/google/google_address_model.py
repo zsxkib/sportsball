@@ -12443,6 +12443,25 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Hampton University Convocation Center, Hampton, Virginia": HAMPTON_CONVOCATION_CENTER,
+    "Alumni Gym, Elon, North Carolina": SportsballGeocodeTuple(
+        city="Elon",
+        state="NC",
+        postal="",
+        lat=36.109018,
+        lng=-79.506705,
+        housenumber="",
+        country="USA",
+    ),
+    "Jack and Ruth Ann Hill Convocation Center, Statesboro, Georgia": SportsballGeocodeTuple(
+        city="Statesboro",
+        state="GA",
+        postal="30458",
+        lat=32.40625,
+        lng=-81.783056,
+        housenumber="284",
+        country="USA",
+    ),
+    "CONSOL Enegery Center, Pittsburgh, Pennsylvania": PPG_PAINTS_ARENA,
 }
 
 

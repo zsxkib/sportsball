@@ -3,6 +3,7 @@
 # pylint: disable=too-many-arguments,too-many-locals,duplicate-code
 import datetime
 import json
+import logging
 import urllib.parse
 
 import extruct  # type: ignore
@@ -65,6 +66,7 @@ def _find_name(response: requests.Response, soup: BeautifulSoup, url: str) -> st
                     return a.get_text().strip()
             name_tag = soup.find("meta", itemprop="name")
             if not isinstance(name_tag, Tag):
+                logging.error(response.text)
                 raise ValueError("name_tag not a tag.") from exc
             content = name_tag.get("content")
             if not isinstance(content, str):
