@@ -2260,6 +2260,15 @@ FINNERAN_PAVILION = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
+SCHEELS_ARENA = SportsballGeocodeTuple(
+    city="Fargo",
+    state="ND",
+    postal="",
+    lat=46.900442,
+    lng=-96.799025,
+    housenumber="1600",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -4556,15 +4565,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="936",
         country="USA",
     ),
-    "Scheels Center, Fargo, North Dakota": SportsballGeocodeTuple(
-        city="Fargo",
-        state="ND",
-        postal="",
-        lat=46.900442,
-        lng=-96.799025,
-        housenumber="1600",
-        country="USA",
-    ),
+    "Scheels Center, Fargo, North Dakota": SCHEELS_ARENA,
     "Findlay Toyota Court at Walkup Skydome, Flagstaff, Arizona": WALKUP_SKYDOME,
     "Sanford Coyote Sports Center, Vermillon, South Dakota": SportsballGeocodeTuple(
         city="Vermillon",
@@ -12494,6 +12495,70 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "The Pavilion, Villanova, Pennsylvania": FINNERAN_PAVILION,
+    "Scheels Arena, Fargo, North Dakota": SCHEELS_ARENA,
+    "DakotaDome , Vermillion, South Dakota": SportsballGeocodeTuple(
+        city="Vermillion",
+        state="SD",
+        postal="",
+        lat=42.791111,
+        lng=-96.927778,
+        housenumber="1101",
+        country="USA",
+    ),
+    "Benjamin Johnson Arena, Spartanburg, South Carolina": SportsballGeocodeTuple(
+        city="Spartanburg",
+        state="SC",
+        postal="",
+        lat=34.960278,
+        lng=-81.932778,
+        housenumber="",
+        country="USA",
+    ),
+    "Hartford, Connecticut": SportsballGeocodeTuple(
+        city="Hartford",
+        state="CT",
+        postal="",
+        lat=41.7625,
+        lng=-72.674167,
+        housenumber="",
+        country="USA",
+    ),
+    "Quest MultiSport, Chicago, Illinois": SportsballGeocodeTuple(
+        city="Chicago",
+        state="IL",
+        postal="60612",
+        lat=41.8733479,
+        lng=-87.6923655,
+        housenumber="2641",
+        country="USA",
+    ),
+    "ICI Center (Embry-Riddle), Daytona Beach, Florida": SportsballGeocodeTuple(
+        city="Daytona Beach",
+        state="FL",
+        postal="32114",
+        lat=29.1886,
+        lng=-81.0487,
+        housenumber="1",
+        country="USA",
+    ),
+    "South Point Arena, Las Vegas, Nevada": SportsballGeocodeTuple(
+        city="Las Vegas",
+        state="NV",
+        postal="89183",
+        lat=36.0112358,
+        lng=-115.1752286,
+        housenumber="9777",
+        country="USA",
+    ),
+    "Abrams Physical Fitness Center, Fort Hood, Texas": SportsballGeocodeTuple(
+        city="Fort Hood",
+        state="TX",
+        postal="76544",
+        lat=31.1382238,
+        lng=-97.7772131,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
