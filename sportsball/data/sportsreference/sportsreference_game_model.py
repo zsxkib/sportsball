@@ -142,8 +142,11 @@ def _find_old_dt(
                     points = int(team_name.split()[-1].strip())
                     team_name = " ".join(team_name.split()[:-1]).strip()
                     break
+            team_name = team_name.split("(")[0].strip()
             team_a = soup.find("a", text=team_name, href=True)
             if not isinstance(team_a, Tag):
+                logging.error(team_name)
+                logging.error(response.url)
                 logging.error(response.text)
                 raise ValueError("team_a is not a tag.")
             team_url = urllib.parse.urljoin(url, str(team_a.get("href")))
