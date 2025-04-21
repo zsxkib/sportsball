@@ -19,6 +19,7 @@ class TestPlayerModel(unittest.TestCase):
             assists=None,
             turnovers=None,
             name="James Jones",
+            marks=None,
         )
 
     def test_field_goals_attempted(self):

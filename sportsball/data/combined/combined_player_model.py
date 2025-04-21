@@ -1,6 +1,6 @@
 """Combined player model."""
 
-# pylint: disable=too-many-locals
+# pylint: disable=too-many-locals,too-many-branches
 from ..player_model import PlayerModel
 
 
@@ -18,6 +18,7 @@ def create_combined_player_model(
     assists = None
     turnovers = None
     name = None
+    marks = None
     for player_model in player_models:
         player_model_jersey = player_model.jersey
         if player_model_jersey is not None:
@@ -49,6 +50,9 @@ def create_combined_player_model(
         player_model_name = player_model.name
         if player_model_name is not None:
             name = player_model_name
+        player_model_marks = player_model.marks
+        if player_model_marks is not None:
+            marks = player_model_marks
     if name is None:
         raise ValueError("name is null.")
     return PlayerModel(
@@ -63,4 +67,5 @@ def create_combined_player_model(
         assists=assists,
         turnovers=turnovers,
         name=name,
+        marks=marks,
     )

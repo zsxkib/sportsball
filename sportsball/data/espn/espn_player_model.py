@@ -45,6 +45,7 @@ def _create_espn_player_model(
         assists=None,
         turnovers=None,
         name=name,
+        marks=None,
     )
 
 

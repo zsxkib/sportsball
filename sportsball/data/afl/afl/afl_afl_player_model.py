@@ -21,4 +21,5 @@ def create_afl_afl_player_model(
         assists=None,
         turnovers=None,
         name=name,
+        marks=None,
     )

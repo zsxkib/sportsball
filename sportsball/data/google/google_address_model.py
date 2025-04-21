@@ -12661,6 +12661,16 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Monroe, Louisiana": SportsballGeocodeTuple(
+        city="Monroe",
+        state="LA",
+        postal="",
+        lat=32.509444,
+        lng=-92.118333,
+        housenumber="",
+        country="USA",
+    ),
+    "Bison Sports Arena, Fargo, North Dakota": SCHEELS_ARENA,
 }
 
 

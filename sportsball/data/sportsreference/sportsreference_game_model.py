@@ -210,12 +210,15 @@ def _find_old_dt(
         dt = parse(date)
         for df in dfs:
             test_row = df.iat[0, 0]
+            if isinstance(test_row, float):
+                continue
             try:
                 if "Prev Game" in test_row:
                     _process_team_row(df)
                     break
             except TypeError as exc:
                 logging.error(test_row)
+                logging.error(response.url)
                 logging.error(response.text)
                 raise exc
 

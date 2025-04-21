@@ -30,6 +30,7 @@ class TestCombinedPlayerModel(unittest.TestCase):
                 assists=None,
                 turnovers=None,
                 name="James Jones",
+                marks=None,
             )
             combined_player_model = create_combined_player_model(
                 [player_model],

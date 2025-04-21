@@ -78,6 +78,7 @@ def _create_sportsreference_player_model(
         assists=assists.get(name),
         turnovers=turnovers.get(name),
         name=name,
+        marks=None,
     )
 
 

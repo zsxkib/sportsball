@@ -1005,3 +1005,17 @@ class TestSportsReferenceGameModel(unittest.TestCase):
                 datetime.datetime(2010, 10, 10, 10, 10, 0),
             )
             self.assertEqual(game_model.dt, datetime.datetime(2016, 3, 24, 0, 0))
+
+    def test_dt_old_style_20(self):
+        url = "https://www.sports-reference.com/cbb/boxscores/2016-02-23-savannah-state.html"
+        with requests_mock.Mocker() as m:
+            with open(os.path.join(self.dir, "2016-02-23-savannah-state.html"), "rb") as f:
+                m.get(url, content=f.read())
+
+            game_model = create_sportsreference_game_model(
+                self.session,
+                url,
+                League.NBA,
+                datetime.datetime(2010, 10, 10, 10, 10, 0),
+            )
+            self.assertEqual(game_model.dt, datetime.datetime(2016, 2, 23, 0, 0))

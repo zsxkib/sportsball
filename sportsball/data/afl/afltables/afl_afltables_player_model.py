@@ -13,7 +13,7 @@ from ...player_model import PlayerModel
 
 
 def _create_afl_afltables_player_model(
-    player_url: str, jersey: str, kicks: int | None, name: str
+    player_url: str, jersey: str, kicks: int | None, name: str, marks: int | None
 ) -> PlayerModel:
     o = urlparse(player_url)
     last_component = o.path.split("/")[-1]
@@ -31,14 +31,15 @@ def _create_afl_afltables_player_model(
         assists=None,
         turnovers=None,
         name=name,
+        marks=marks,
     )
 
 
 @MEMORY.cache
 def _cached_create_afl_afltables_player_model(
-    player_url: str, jersey: str, kicks: int | None, name: str
+    player_url: str, jersey: str, kicks: int | None, name: str, marks: int | None
 ) -> PlayerModel:
-    return _create_afl_afltables_player_model(player_url, jersey, kicks, name)
+    return _create_afl_afltables_player_model(player_url, jersey, kicks, name, marks)
 
 
 def create_afl_afltables_player_model(
@@ -48,6 +49,7 @@ def create_afl_afltables_player_model(
     dt: datetime.datetime,
     session: requests_cache.CachedSession,
     name: str,
+    marks: int | None,
 ) -> PlayerModel:
     """Create a player model from AFL Tables."""
     if (
@@ -59,6 +61,9 @@ def create_afl_afltables_player_model(
             jersey,
             kicks,
             name,  # pyright: ignore
+            marks,
         )
     with session.cache_disabled():
-        return _create_afl_afltables_player_model(player_url, jersey, kicks, name)
+        return _create_afl_afltables_player_model(
+            player_url, jersey, kicks, name, marks
+        )

@@ -1,6 +1,6 @@
 """AFL AFLTables game model."""
 
-# pylint: disable=too-many-arguments
+# pylint: disable=too-many-arguments,too-many-branches
 import datetime
 import urllib.parse
 from urllib.parse import urlparse
@@ -152,7 +152,7 @@ def _create_afl_afltables_game_model(
 
     def _find_teams_metadata(
         soup: BeautifulSoup, team_infos: list[tuple[str, str, int]]
-    ) -> list[tuple[str, list[tuple[str, str, int | None, str]], int]]:
+    ) -> list[tuple[str, list[tuple[str, str, int | None, str, int | None]], int]]:
         def _is_correct_table(table: Tag, name: str) -> bool:
             for th in table.find_all("th"):
                 header_text = th.get_text().strip()
@@ -160,8 +160,10 @@ def _create_afl_afltables_game_model(
                     return True
             return False
 
-        def _find_players(table: Tag) -> list[tuple[str, str, int | None, str]]:
-            players: list[tuple[str, str, int | None, str]] = []
+        def _find_players(
+            table: Tag,
+        ) -> list[tuple[str, str, int | None, str, int | None]]:
+            players: list[tuple[str, str, int | None, str, int | None]] = []
             for tr in table.find_all("tr"):
                 player_row = False
                 player_url = None
@@ -174,6 +176,7 @@ def _create_afl_afltables_game_model(
                     jersey = None
                     name = None
                     kicks = None
+                    marks = None
                     for count, td in enumerate(tr.find_all("td")):
                         if count == 0:
                             jersey = td.get_text().strip()
@@ -188,13 +191,17 @@ def _create_afl_afltables_game_model(
                             kicks_text = td.get_text().strip()
                             if kicks_text:
                                 kicks = int(kicks_text)
+                        elif count == 3:
+                            marks_text = td.get_text().strip()
+                            if marks_text:
+                                marks = int(marks_text)
 
                     if jersey is None:
                         raise ValueError("jersey is null.")
                     if name is None:
                         raise ValueError("name is null")
 
-                    players.append((player_url, jersey, kicks, name))
+                    players.append((player_url, jersey, kicks, name, marks))
             return players
 
         team_metadata = []
