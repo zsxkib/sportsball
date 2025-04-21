@@ -68,6 +68,7 @@ def _find_name(response: requests.Response, soup: BeautifulSoup, url: str) -> st
             if not isinstance(name_tag, Tag):
                 name_tag = soup.find("meta", itemprop="og:title")
                 if not isinstance(name_tag, Tag):
+                    logging.error(type(name_tag))
                     logging.error(response.text)
                     raise ValueError("name_tag not a tag.") from exc
             content = name_tag.get("content")

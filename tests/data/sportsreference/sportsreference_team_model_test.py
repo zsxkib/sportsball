@@ -166,3 +166,23 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 {},
             )
             self.assertEqual(team_model.name, "Los Angeles Lakers")
+
+    def test_name_3(self):
+        url = "https://www.basketball-reference.com/teams/BOS/2015.html"
+        with requests_mock.Mocker() as m:
+            with open(os.path.join(self.dir, "BOS_2015.html"), "rb") as f:
+                m.get(url, content=f.read())
+            team_model = create_sportsreference_team_model(
+                self.session,
+                url,
+                datetime.datetime(2010, 10, 10, 10, 10, 00),
+                League.NBA,
+                set(),
+                10.0,
+                {},
+                {},
+                {},
+                {},
+                {},
+            )
+            self.assertEqual(team_model.name, "Boston Celtics")

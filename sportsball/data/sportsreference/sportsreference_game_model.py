@@ -4,6 +4,7 @@
 import datetime
 import io
 import logging
+import re
 import urllib.parse
 
 import dateutil
@@ -41,6 +42,7 @@ _MONTHS = [
     "November",
     "December",
 ]
+_NUMBER_PARENTHESIS_PATTERN = r"\(\d+\)"
 
 
 def _find_old_dt(
@@ -142,7 +144,9 @@ def _find_old_dt(
                     points = int(team_name.split()[-1].strip())
                     team_name = " ".join(team_name.split()[:-1]).strip()
                     break
-            team_name = team_name.split("(")[0].strip()
+            team_name = " ".join(
+                re.sub(_NUMBER_PARENTHESIS_PATTERN, "", team_name).split()
+            ).strip()
             team_a = soup.find("a", text=team_name, href=True)
             if not isinstance(team_a, Tag):
                 logging.error(team_name)
@@ -206,9 +210,14 @@ def _find_old_dt(
         dt = parse(date)
         for df in dfs:
             test_row = df.iat[0, 0]
-            if "Prev Game" in test_row:
-                _process_team_row(df)
-                break
+            try:
+                if "Prev Game" in test_row:
+                    _process_team_row(df)
+                    break
+            except TypeError as exc:
+                logging.error(test_row)
+                logging.error(response.text)
+                raise exc
 
     if venue_name is not None and not venue_name.replace(",", "").strip():
         venue_name = None

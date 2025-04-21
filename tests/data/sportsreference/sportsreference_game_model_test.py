@@ -945,3 +945,63 @@ class TestSportsReferenceGameModel(unittest.TestCase):
                 datetime.datetime(2010, 10, 10, 10, 10, 0),
             )
             self.assertEqual(game_model.dt, datetime.datetime(2016, 4, 2, 0, 0))
+
+    def test_dt_old_style_19(self):
+        url = "https://www.sports-reference.com/cbb/boxscores/2016-03-24-villanova.html"
+        with requests_mock.Mocker() as m:
+            with open(os.path.join(self.dir, "2016-03-24-villanova.html"), "rb") as f:
+                m.get(url, content=f.read())
+            with open(os.path.join(self.dir, "miami-fl_2016.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/schools/miami-fl/2016.html", content=f.read())
+            with open(os.path.join(self.dir, "sheldon-mcclellan-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/players/sheldon-mcclellan-1.html", content=f.read())
+            with open(os.path.join(self.dir, "anthony-lawrencejr-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/players/anthony-lawrencejr-1.html", content=f.read())
+            with open(os.path.join(self.dir, "davon-reed-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/players/davon-reed-1.html", content=f.read())
+            with open(os.path.join(self.dir, "kamari-murphy-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/players/kamari-murphy-1.html", content=f.read())
+            with open(os.path.join(self.dir, "angel-rodriguez-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/players/angel-rodriguez-1.html", content=f.read())
+            with open(os.path.join(self.dir, "mike-robinson-4.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/players/mike-robinson-4.html", content=f.read())
+            with open(os.path.join(self.dir, "ebuka-izundu-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/players/ebuka-izundu-1.html", content=f.read())
+            with open(os.path.join(self.dir, "jaquan-newton-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/players/jaquan-newton-1.html", content=f.read())
+            with open(os.path.join(self.dir, "james-palmer-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/players/james-palmer-1.html", content=f.read())
+            with open(os.path.join(self.dir, "tonye-jekiri-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/players/tonye-jekiri-1.html", content=f.read())
+            with open(os.path.join(self.dir, "villanova_2016.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/schools/villanova/2016.html", content=f.read())
+            with open(os.path.join(self.dir, "jalen-brunson-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/players/jalen-brunson-1.html", content=f.read())
+            with open(os.path.join(self.dir, "ryan-arcidiacono-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/players/ryan-arcidiacono-1.html", content=f.read())
+            with open(os.path.join(self.dir, "kevin-rafferty-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/players/kevin-rafferty-1.html", content=f.read())
+            with open(os.path.join(self.dir, "mikal-bridges-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/players/mikal-bridges-1.html", content=f.read())
+            with open(os.path.join(self.dir, "daniel-ochefu-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/players/daniel-ochefu-1.html", content=f.read())
+            with open(os.path.join(self.dir, "phil-booth-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/players/phil-booth-1.html", content=f.read())
+            with open(os.path.join(self.dir, "darryl-reynolds-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/players/darryl-reynolds-1.html", content=f.read())
+            with open(os.path.join(self.dir, "kris-jenkins-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/players/kris-jenkins-1.html", content=f.read())
+            with open(os.path.join(self.dir, "patrick-farrell-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/players/patrick-farrell-1.html", content=f.read())
+            with open(os.path.join(self.dir, "josh-hart-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/players/josh-hart-1.html", content=f.read())
+            with open(os.path.join(self.dir, "henry-lowe-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/players/henry-lowe-1.html", content=f.read())
+
+            game_model = create_sportsreference_game_model(
+                self.session,
+                url,
+                League.NBA,
+                datetime.datetime(2010, 10, 10, 10, 10, 0),
+            )
+            self.assertEqual(game_model.dt, datetime.datetime(2016, 3, 24, 0, 0))

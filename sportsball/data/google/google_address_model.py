@@ -12652,6 +12652,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="563",
         country="USA",
     ),
+    "Mercyhurst Athletic Center, Erie, Pennsylvania": SportsballGeocodeTuple(
+        city="Erie",
+        state="PA",
+        postal="",
+        lat=42.1046,
+        lng=-80.0556,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
