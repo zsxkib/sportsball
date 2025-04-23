@@ -328,37 +328,41 @@ def _create_sportsreference_game_model(
     handle = io.StringIO()
     handle.write(response.text)
     handle.seek(0)
-    dfs = pd.read_html(handle)
     fg = {}
     fga = {}
     offensive_rebounds = {}
     assists = {}
     turnovers = {}
-    for df in dfs:
-        if df.index.nlevels > 1:
-            df.columns = df.columns.get_level_values(1)
-        if "Starters" in df.columns.values:
-            players = df["Starters"].tolist()
-            if "FG" in df.columns.values:
-                fgs = df["FG"].tolist()
-                for idx, player in enumerate(players):
-                    fg[player] = fgs[idx]
-            if "FGA" in df.columns.values:
-                fgas = df["FGA"].tolist()
-                for idx, player in enumerate(players):
-                    fga[player] = fgas[idx]
-            if "OREB" in df.columns.values:
-                orebs = df["OREB"].tolist()
-                for idx, player in enumerate(players):
-                    offensive_rebounds[player] = orebs[idx]
-            if "AST" in df.columns.values:
-                asts = df["AST"].tolist()
-                for idx, player in enumerate(players):
-                    assists[player] = asts[idx]
-            if "TOV" in df.columns.values:
-                tovs = df["TOV"].tolist()
-                for idx, player in enumerate(players):
-                    turnovers[player] = tovs[idx]
+    try:
+        dfs = pd.read_html(handle)
+        for df in dfs:
+            if df.index.nlevels > 1:
+                df.columns = df.columns.get_level_values(1)
+            if "Starters" in df.columns.values:
+                players = df["Starters"].tolist()
+                if "FG" in df.columns.values:
+                    fgs = df["FG"].tolist()
+                    for idx, player in enumerate(players):
+                        fg[player] = fgs[idx]
+                if "FGA" in df.columns.values:
+                    fgas = df["FGA"].tolist()
+                    for idx, player in enumerate(players):
+                        fga[player] = fgas[idx]
+                if "OREB" in df.columns.values:
+                    orebs = df["OREB"].tolist()
+                    for idx, player in enumerate(players):
+                        offensive_rebounds[player] = orebs[idx]
+                if "AST" in df.columns.values:
+                    asts = df["AST"].tolist()
+                    for idx, player in enumerate(players):
+                        assists[player] = asts[idx]
+                if "TOV" in df.columns.values:
+                    tovs = df["TOV"].tolist()
+                    for idx, player in enumerate(players):
+                        turnovers[player] = tovs[idx]
+    except ValueError as exc:
+        logging.error(response.text)
+        raise exc
 
     scorebox_meta_div = soup.find("div", class_="scorebox_meta")
     if not isinstance(scorebox_meta_div, Tag):

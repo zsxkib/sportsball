@@ -2278,6 +2278,15 @@ BROOKSHIRE_GROCERY_ARENA = SportsballGeocodeTuple(
     housenumber="2000",
     country="USA",
 )
+NEW_ORLEANS_CITY = SportsballGeocodeTuple(
+    city="New Orleans",
+    state="LA",
+    postal="",
+    lat=29.976111,
+    lng=-90.078333,
+    housenumber="",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -11298,15 +11307,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "New Orleans, Louisiana": SportsballGeocodeTuple(
-        city="New Orleans",
-        state="LA",
-        postal="",
-        lat=29.976111,
-        lng=-90.078333,
-        housenumber="",
-        country="USA",
-    ),
+    "New Orleans, Louisiana": NEW_ORLEANS_CITY,
     "San Jose Civic Auditorium, San Jose, California": SAN_JOSE_CIVIC_AUDITORIUM,
     "Blackham Coliseum, Lafeyette, Louisiana": SportsballGeocodeTuple(
         city="Lafeyette",
@@ -12707,6 +12708,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "New Orleans , Louisiana": NEW_ORLEANS_CITY,
 }
 
 

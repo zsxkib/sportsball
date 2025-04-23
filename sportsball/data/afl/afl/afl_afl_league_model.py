@@ -1,7 +1,8 @@
 """AFL AFL league model."""
 
-# pylint: disable=too-many-statements,protected-access,too-many-locals
+# pylint: disable=too-many-statements,protected-access,too-many-locals,bare-except
 import datetime
+import logging
 import re
 from typing import Iterator
 
@@ -32,7 +33,14 @@ class AFLAFLLeagueModel(LeagueModel):
             browser = p.chromium.launch()
             context = browser.new_context()
             page = context.new_page()
-            page.goto("https://www.afl.com.au/ladder", wait_until="networkidle")
+            try:
+                page.goto(
+                    "https://www.afl.com.au/ladder",
+                    wait_until="networkidle",
+                    timeout=60000.0,
+                )
+            except:  # noqa: E722
+                logging.warning("Ladder URL timed out.")
             soup = BeautifulSoup(page.content(), "lxml")
             for span in soup.find_all(
                 "span", {"class": re.compile(".*stats-table__club-name.*")}
