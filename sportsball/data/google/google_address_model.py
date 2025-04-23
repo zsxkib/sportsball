@@ -12698,6 +12698,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Thibodaux, Louisiana": SportsballGeocodeTuple(
+        city="Thibodaux",
+        state="LA",
+        postal="",
+        lat=29.792222,
+        lng=-90.82,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 

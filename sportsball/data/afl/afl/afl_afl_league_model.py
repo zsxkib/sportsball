@@ -25,8 +25,28 @@ class AFLAFLLeagueModel(LeagueModel):
         super().__init__(League.AFL, session)
 
     @property
+    def _ladder(self) -> list[str]:
+        ladder = []
+        ensure_install()
+        with sync_playwright() as p:
+            browser = p.chromium.launch()
+            context = browser.new_context()
+            page = context.new_page()
+            page.goto("https://www.afl.com.au/ladder", wait_until="networkidle")
+            soup = BeautifulSoup(page.content(), "lxml")
+            for span in soup.find_all(
+                "span", {"class": re.compile(".*stats-table__club-name.*")}
+            ):
+                team_name = span.get_text().strip()
+                if team_name in ladder:
+                    continue
+                ladder.append(team_name)
+        return ladder
+
+    @property
     def games(self) -> Iterator[GameModel]:
         # https://www.afl.com.au/matches/team-lineups
+        ladder = self._ladder
         ensure_install()
         with sync_playwright() as p:
             browser = p.chromium.launch()
@@ -100,5 +120,5 @@ class AFLAFLLeagueModel(LeagueModel):
                 if dt is None:
                     raise ValueError("dt is null")
                 yield create_afl_afl_game_model(
-                    team_names, teams_players, dt, venue_name, self.session
+                    team_names, teams_players, dt, venue_name, self.session, ladder
                 )

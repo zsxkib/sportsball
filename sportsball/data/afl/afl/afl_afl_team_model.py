@@ -16,6 +16,7 @@ def create_afl_afl_team_model(
     players: list[tuple[str, str, str, str]],
     session: requests_cache.CachedSession,
     dt: datetime.datetime,
+    ladder: list[str],
 ) -> TeamModel:
     """Create a team model from AFL AFL."""
     player_models = [
@@ -31,7 +32,7 @@ def create_afl_afl_team_model(
         players=player_models,
         odds=[],
         points=None,
-        ladder_rank=None,
+        ladder_rank=ladder.index(team_name) + 1,
         kicks=None,
         news=create_google_news_models(team_name, session, dt, League.AFL),
         social=[],

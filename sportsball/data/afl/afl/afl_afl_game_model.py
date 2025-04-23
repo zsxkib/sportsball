@@ -1,6 +1,6 @@
 """AFL AFL game model."""
 
-# pylint: disable=too-many-statements,protected-access
+# pylint: disable=too-many-statements,protected-access,too-many-arguments
 import datetime
 
 import requests_cache
@@ -17,11 +17,12 @@ def create_afl_afl_game_model(
     dt: datetime.datetime,
     venue_name: str,
     session: requests_cache.CachedSession,
+    ladder: list[str],
 ) -> GameModel:
     """Create a game model from AFL Tables."""
     venue_model = create_afl_afl_venue_model(venue_name, session, dt)
     teams = [
-        create_afl_afl_team_model(x, players[count], session, dt)
+        create_afl_afl_team_model(x, players[count], session, dt, ladder)
         for count, x in enumerate(team_names)
     ]
     return GameModel(
