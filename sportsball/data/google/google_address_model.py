@@ -12671,6 +12671,33 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Bison Sports Arena, Fargo, North Dakota": SCHEELS_ARENA,
+    "F&M Bank Arena, Clarksville, Tennessee": SportsballGeocodeTuple(
+        city="Clarksville",
+        state="TN",
+        postal="",
+        lat=36.529444,
+        lng=-87.359722,
+        housenumber="101",
+        country="USA",
+    ),
+    "C.M. Tad Smith Coliseum, University, Mississippi": SportsballGeocodeTuple(
+        city="University",
+        state="MS",
+        postal="38677",
+        lat=34.362197,
+        lng=-89.539303,
+        housenumber="",
+        country="USA",
+    ),
+    "Verties Sails Gymnasium, Memphis, Tennessee": SportsballGeocodeTuple(
+        city="Memphis",
+        state="TN",
+        postal="38107",
+        lat=35.1565496,
+        lng=-89.9896643,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 

@@ -21,7 +21,7 @@ class TestSportsReferenceLeagueModel(unittest.TestCase):
     def test_day(self):
         url = "https://www.sports-reference.com/cbb/boxscores/index.cgi?month=11&day=22&year=2022"
         with open(os.path.join(self.dir, "22_11_2022.html")) as handle:
-            soup = BeautifulSoup(handle.read(), "html.parser")
+            soup = BeautifulSoup(handle.read(), "lxml")
             game_urls = _find_game_urls(soup, url)
             self.assertListEqual(game_urls, [
                 'https://www.sports-reference.com/cbb/boxscores/2022-11-22-20-cal-poly_w.html',

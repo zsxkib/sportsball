@@ -16,6 +16,31 @@ OFFENSIVE_REBOUNDS_COLUMN: Literal["offensive_rebounds"] = "offensive_rebounds"
 ASSISTS_COLUMN: Literal["assists"] = "assists"
 TURNOVERS_COLUMN: Literal["turnovers"] = "turnovers"
 PLAYER_MARKS_COLUMN: Literal["marks"] = "marks"
+PLAYER_HANDBALLS_COLUMN: Literal["handballs"] = "handballs"
+PLAYER_DISPOSALS_COLUMN: Literal["disposals"] = "disposals"
+PLAYER_GOALS_COLUMN: Literal["goals"] = "goals"
+PLAYER_BEHINDS_COLUMN: Literal["behinds"] = "behinds"
+PLAYER_HIT_OUTS_COLUMN: Literal["hit_outs"] = "hit_outs"
+PLAYER_TACKLES_COLUMN: Literal["tackles"] = "tackles"
+PLAYER_REBOUNDS_COLUMN: Literal["rebounds"] = "rebounds"
+PLAYER_INSIDES_COLUMN: Literal["insides"] = "insides"
+PLAYER_CLEARANCES_COLUMN: Literal["clearances"] = "clearances"
+PLAYER_CLANGERS_COLUMN: Literal["clangers"] = "clangers"
+PLAYER_FREE_KICKS_FOR_COLUMN: Literal["free_kicks_for"] = "free_kicks_for"
+PLAYER_FREE_KICKS_AGAINST_COLUMN: Literal["free_kicks_against"] = "free_kicks_against"
+PLAYER_BROWNLOW_VOTES_COLUMN: Literal["brownlow_votes"] = "brownlow_votes"
+PLAYER_CONTESTED_POSSESSIONS_COLUMN: Literal["contested_possessions"] = (
+    "contested_possessions"
+)
+PLAYER_UNCONTESTED_POSSESSIONS_COLUMN: Literal["uncontested_possessions"] = (
+    "uncontested_possessions"
+)
+PLAYER_CONTESTED_MARKS_COLUMN: Literal["contested_marks"] = "contested_marks"
+PLAYER_MARKS_INSIDE_COLUMN: Literal["marks_inside"] = "marks_inside"
+PLAYER_ONE_PERCENTERS_COLUMN: Literal["one_percenters"] = "one_percenters"
+PLAYER_BOUNCES_COLUMN: Literal["bounces"] = "bounces"
+PLAYER_GOAL_ASSISTS_COLUMN: Literal["goal_assists"] = "goal_assists"
+PLAYER_PERCENTAGE_PLAYED_COLUMN: Literal["percentage_played"] = "percentage_played"
 
 
 class PlayerModel(BaseModel):
@@ -72,4 +97,109 @@ class PlayerModel(BaseModel):
         ...,
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=PLAYER_MARKS_COLUMN,
+    )
+    handballs: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_HANDBALLS_COLUMN,
+    )
+    disposals: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_DISPOSALS_COLUMN,
+    )
+    goals: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_GOALS_COLUMN,
+    )
+    behinds: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_BEHINDS_COLUMN,
+    )
+    hit_outs: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_HIT_OUTS_COLUMN,
+    )
+    tackles: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_TACKLES_COLUMN,
+    )
+    rebounds: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_REBOUNDS_COLUMN,
+    )
+    insides: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_INSIDES_COLUMN,
+    )
+    clearances: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_CLEARANCES_COLUMN,
+    )
+    clangers: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_CLANGERS_COLUMN,
+    )
+    free_kicks_for: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_FREE_KICKS_FOR_COLUMN,
+    )
+    free_kicks_against: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_FREE_KICKS_AGAINST_COLUMN,
+    )
+    brownlow_votes: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_BROWNLOW_VOTES_COLUMN,
+    )
+    contested_possessions: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_CONTESTED_POSSESSIONS_COLUMN,
+    )
+    uncontested_possessions: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_UNCONTESTED_POSSESSIONS_COLUMN,
+    )
+    contested_marks: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_CONTESTED_MARKS_COLUMN,
+    )
+    marks_inside: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_MARKS_INSIDE_COLUMN,
+    )
+    one_percenters: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_ONE_PERCENTERS_COLUMN,
+    )
+    bounces: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_BOUNCES_COLUMN,
+    )
+    goal_assists: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_GOAL_ASSISTS_COLUMN,
+    )
+    percentage_played: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PERCENTAGE_PLAYED_COLUMN,
     )

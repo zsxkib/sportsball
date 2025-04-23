@@ -139,7 +139,7 @@ class OddsPortalLeagueModel(LeagueModel):
                 response = self.session.get(url, headers={X_NO_WAYBACK: "1"})
             response.raise_for_status()
 
-            soup = BeautifulSoup(response.text, "html.parser")
+            soup = BeautifulSoup(response.text, "lxml")
 
             # Find next URLs
             for option in soup.find_all("option"):

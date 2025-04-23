@@ -109,7 +109,7 @@ class SportsReferenceLeagueModel(LeagueModel):
                     )
                     if dt.year <= 1945:
                         break
-                soup = BeautifulSoup(response.text, "html.parser")
+                soup = BeautifulSoup(response.text, "lxml")
                 yield from self._produce_games(soup, pbar, dt, url)
                 prev_a = soup.find("a", class_="prev")
                 if isinstance(prev_a, Tag):

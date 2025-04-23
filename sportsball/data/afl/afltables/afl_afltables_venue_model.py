@@ -20,7 +20,7 @@ def _create_afl_afltables_venue_model(
     last_component = o.path.split("/")[-1]
     identifier, _ = os.path.splitext(last_component)
     response = session.get(url)
-    soup = BeautifulSoup(response.text, "html.parser")
+    soup = BeautifulSoup(response.text, "lxml")
     name = None
     for h1 in soup.find_all("h1"):
         name = h1.get_text()

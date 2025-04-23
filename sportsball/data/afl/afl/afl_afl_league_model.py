@@ -35,7 +35,7 @@ class AFLAFLLeagueModel(LeagueModel):
             page.goto(
                 "https://www.afl.com.au/matches/team-lineups", wait_until="networkidle"
             )
-            soup = BeautifulSoup(page.content(), "html.parser")
+            soup = BeautifulSoup(page.content(), "lxml")
             for div in soup.find_all(
                 "div", {"class": re.compile(".*js-match-list-item.*")}
             ):

@@ -1,6 +1,6 @@
 """AFL AFLTables team model."""
 
-# pylint: disable=too-many-arguments,too-many-locals
+# pylint: disable=too-many-arguments,too-many-locals,duplicate-code,line-too-long
 import datetime
 import os
 from urllib.parse import urlparse
@@ -44,7 +44,36 @@ _TEAM_NAME_MAP = {
 
 def _create_afl_afltables_team_model(
     team_url: str,
-    players: list[tuple[str, str, int | None, str, int | None]],
+    players: list[
+        tuple[
+            str,
+            str,
+            int | None,
+            str,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            float | None,
+        ]
+    ],
     points: float,
     session: requests_cache.CachedSession,
     last_ladder_ranks: dict[str, int] | None,
@@ -52,7 +81,7 @@ def _create_afl_afltables_team_model(
     league: League,
 ) -> TeamModel:
     response = session.get(team_url)
-    soup = BeautifulSoup(response.text, "html.parser")
+    soup = BeautifulSoup(response.text, "lxml")
     o = urlparse(team_url)
     last_component = o.path.split("/")[-1]
     identifier, _ = os.path.splitext(last_component)
@@ -72,9 +101,36 @@ def _create_afl_afltables_team_model(
         name=name,
         players=[  # pyright: ignore
             create_afl_afltables_player_model(
-                player_url, jersey, kicks, dt, session, name, marks
+                player_url,
+                jersey,
+                kicks,
+                dt,
+                session,
+                name,
+                marks,
+                handballs,
+                disposals,
+                goals,
+                behinds,
+                hit_outs,
+                tackles,
+                rebounds,
+                insides,
+                clearances,
+                clangers,
+                free_kicks_for,
+                free_kicks_against,
+                brownlow_votes,
+                contested_possessions,
+                uncontested_possessions,
+                contested_marks,
+                marks_inside,
+                one_percenters,
+                bounces,
+                goal_assists,
+                percentage_played,
             )
-            for player_url, jersey, kicks, name, marks in players
+            for player_url, jersey, kicks, name, marks, handballs, disposals, goals, behinds, hit_outs, tackles, rebounds, insides, clearances, clangers, free_kicks_for, free_kicks_against, brownlow_votes, contested_possessions, uncontested_possessions, contested_marks, marks_inside, one_percenters, bounces, goal_assists, percentage_played in players
         ],
         odds=[],
         points=points,
@@ -89,7 +145,36 @@ def _create_afl_afltables_team_model(
 @MEMORY.cache(ignore=["session"])
 def _cached_create_afl_afltables_team_model(
     team_url: str,
-    players: list[tuple[str, str, int | None, str, int | None]],
+    players: list[
+        tuple[
+            str,
+            str,
+            int | None,
+            str,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            float | None,
+        ]
+    ],
     points: float,
     session: requests_cache.CachedSession,
     last_ladder_ranks: dict[str, int] | None,
@@ -109,7 +194,36 @@ def _cached_create_afl_afltables_team_model(
 
 def create_afl_afltables_team_model(
     team_url: str,
-    players: list[tuple[str, str, int | None, str, int | None]],
+    players: list[
+        tuple[
+            str,
+            str,
+            int | None,
+            str,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            int | None,
+            float | None,
+        ]
+    ],
     points: float,
     session: requests_cache.CachedSession,
     last_ladder_ranks: dict[str, int] | None,

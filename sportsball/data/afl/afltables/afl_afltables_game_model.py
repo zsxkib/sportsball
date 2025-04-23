@@ -1,6 +1,6 @@
 """AFL AFLTables game model."""
 
-# pylint: disable=too-many-arguments,too-many-branches
+# pylint: disable=too-many-arguments,too-many-branches,too-many-statements
 import datetime
 import urllib.parse
 from urllib.parse import urlparse
@@ -148,11 +148,46 @@ def _create_afl_afltables_game_model(
     # pylint: disable=too-many-locals
     response = session.get(url)
     response.raise_for_status()
-    soup = BeautifulSoup(response.text, "html.parser")
+    soup = BeautifulSoup(response.text, "lxml")
 
     def _find_teams_metadata(
         soup: BeautifulSoup, team_infos: list[tuple[str, str, int]]
-    ) -> list[tuple[str, list[tuple[str, str, int | None, str, int | None]], int]]:
+    ) -> list[
+        tuple[
+            str,
+            list[
+                tuple[
+                    str,
+                    str,
+                    int | None,
+                    str,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    float | None,
+                ]
+            ],
+            int,
+        ]
+    ]:
         def _is_correct_table(table: Tag, name: str) -> bool:
             for th in table.find_all("th"):
                 header_text = th.get_text().strip()
@@ -162,8 +197,66 @@ def _create_afl_afltables_game_model(
 
         def _find_players(
             table: Tag,
-        ) -> list[tuple[str, str, int | None, str, int | None]]:
-            players: list[tuple[str, str, int | None, str, int | None]] = []
+        ) -> list[
+            tuple[
+                str,
+                str,
+                int | None,
+                str,
+                int | None,
+                int | None,
+                int | None,
+                int | None,
+                int | None,
+                int | None,
+                int | None,
+                int | None,
+                int | None,
+                int | None,
+                int | None,
+                int | None,
+                int | None,
+                int | None,
+                int | None,
+                int | None,
+                int | None,
+                int | None,
+                int | None,
+                int | None,
+                int | None,
+                float | None,
+            ]
+        ]:
+            players: list[
+                tuple[
+                    str,
+                    str,
+                    int | None,
+                    str,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    int | None,
+                    float | None,
+                ]
+            ] = []
             for tr in table.find_all("tr"):
                 player_row = False
                 player_url = None
@@ -177,6 +270,27 @@ def _create_afl_afltables_game_model(
                     name = None
                     kicks = None
                     marks = None
+                    handballs = None
+                    disposals = None
+                    goals: int | None = None
+                    behinds = None
+                    hit_outs = None
+                    tackles = None
+                    rebounds = None
+                    insides = None
+                    clearances = None
+                    clangers = None
+                    free_kicks_for = None
+                    free_kicks_against = None
+                    brownlow_votes = None
+                    contested_possessions = None
+                    uncontested_possessions = None
+                    contested_marks = None
+                    marks_inside = None
+                    one_percenters = None
+                    bounces = None
+                    goal_assists = None
+                    percentage_played = None
                     for count, td in enumerate(tr.find_all("td")):
                         if count == 0:
                             jersey = td.get_text().strip()
@@ -195,13 +309,128 @@ def _create_afl_afltables_game_model(
                             marks_text = td.get_text().strip()
                             if marks_text:
                                 marks = int(marks_text)
+                        elif count == 4:
+                            handballs_text = td.get_text().strip()
+                            if handballs_text:
+                                handballs = int(handballs_text)
+                        elif count == 5:
+                            disposals_text = td.get_text().strip()
+                            if disposals_text:
+                                disposals = int(disposals_text)
+                        elif count == 6:
+                            goals_text = td.get_text().strip()
+                            if goals_text:
+                                goals = int(goals_text)
+                        elif count == 7:
+                            behinds_text = td.get_text().strip()
+                            if behinds_text:
+                                behinds = int(behinds_text)
+                        elif count == 8:
+                            hit_outs_text = td.get_text().strip()
+                            if hit_outs_text:
+                                hit_outs = int(hit_outs_text)
+                        elif count == 9:
+                            tackles_text = td.get_text().strip()
+                            if tackles_text:
+                                tackles = int(tackles_text)
+                        elif count == 10:
+                            rebounds_text = td.get_text().strip()
+                            if rebounds_text:
+                                rebounds = int(rebounds_text)
+                        elif count == 11:
+                            insides_text = td.get_text().strip()
+                            if insides_text:
+                                insides = int(insides_text)
+                        elif count == 12:
+                            clearances_text = td.get_text().strip()
+                            if clearances_text:
+                                clearances = int(clearances_text)
+                        elif count == 13:
+                            clangers_text = td.get_text().strip()
+                            if clangers_text:
+                                clangers = int(clangers_text)
+                        elif count == 14:
+                            free_kicks_for_text = td.get_text().strip()
+                            if free_kicks_for_text:
+                                free_kicks_for = int(free_kicks_for_text)
+                        elif count == 15:
+                            free_kicks_against_text = td.get_text().strip()
+                            if free_kicks_against_text:
+                                free_kicks_against = int(free_kicks_against_text)
+                        elif count == 16:
+                            brownlow_votes_text = td.get_text().strip()
+                            if brownlow_votes_text:
+                                brownlow_votes = int(brownlow_votes_text)
+                        elif count == 17:
+                            contested_possessions_text = td.get_text().strip()
+                            if contested_possessions_text:
+                                contested_possessions = int(contested_possessions_text)
+                        elif count == 18:
+                            uncontested_possessions_text = td.get_text().strip()
+                            if uncontested_possessions_text:
+                                uncontested_possessions = int(
+                                    uncontested_possessions_text
+                                )
+                        elif count == 19:
+                            contested_marks_text = td.get_text().strip()
+                            if contested_marks_text:
+                                contested_marks = int(contested_marks_text)
+                        elif count == 20:
+                            marks_inside_text = td.get_text().strip()
+                            if marks_inside_text:
+                                marks_inside = int(marks_inside_text)
+                        elif count == 21:
+                            one_percenters_text = td.get_text().strip()
+                            if one_percenters_text:
+                                one_percenters = int(one_percenters_text)
+                        elif count == 22:
+                            bounces_text = td.get_text().strip()
+                            if bounces_text:
+                                bounces = int(bounces_text)
+                        elif count == 23:
+                            goal_assists_text = td.get_text().strip()
+                            if goal_assists_text:
+                                goal_assists = int(goal_assists_text)
+                        elif count == 24:
+                            percentage_played_text = td.get_text().strip()
+                            if percentage_played_text:
+                                percentage_played = float(percentage_played_text)
 
                     if jersey is None:
                         raise ValueError("jersey is null.")
                     if name is None:
                         raise ValueError("name is null")
 
-                    players.append((player_url, jersey, kicks, name, marks))
+                    players.append(
+                        (
+                            player_url,
+                            jersey,
+                            kicks,
+                            name,
+                            marks,
+                            handballs,
+                            disposals,
+                            goals,
+                            behinds,
+                            hit_outs,
+                            tackles,
+                            rebounds,
+                            insides,
+                            clearances,
+                            clangers,
+                            free_kicks_for,
+                            free_kicks_against,
+                            brownlow_votes,
+                            contested_possessions,
+                            uncontested_possessions,
+                            contested_marks,
+                            marks_inside,
+                            one_percenters,
+                            bounces,
+                            goal_assists,
+                            percentage_played,
+                        )
+                    )
             return players
 
         team_metadata = []

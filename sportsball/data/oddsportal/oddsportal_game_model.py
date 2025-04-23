@@ -32,7 +32,7 @@ def _create_oddsportal_game_model(
     )
     response.raise_for_status()
 
-    soup = BeautifulSoup(response.text, "html.parser")
+    soup = BeautifulSoup(response.text, "lxml")
     event_tag = soup.find("div", id="react-event-header")
     if not isinstance(event_tag, Tag):
         soup_x = BeautifulSoup(response.text, "xml")

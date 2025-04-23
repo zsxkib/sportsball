@@ -46,6 +46,8 @@ Python 3.11.6:
 - [feedparser](https://github.com/kurtmckee/feedparser)
 - [dateparser](https://dateparser.readthedocs.io/en/latest/)
 - [playwright](https://playwright.dev/)
+- [cchardet](https://github.com/PyYoshi/cChardet)
+- [lxml](https://lxml.de/)
 
 ## Raison D'être :thought_balloon:
 

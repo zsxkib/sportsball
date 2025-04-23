@@ -1,6 +1,6 @@
 """Sports reference player model."""
 
-# pylint: disable=too-many-arguments,unused-argument,line-too-long
+# pylint: disable=too-many-arguments,unused-argument,line-too-long,duplicate-code
 import datetime
 import http
 import logging
@@ -60,7 +60,7 @@ def _create_sportsreference_player_model(
         logging.warning("Cannot access player at URL %s", player_url)
         return None
     response.raise_for_status()
-    soup = BeautifulSoup(response.text, "html.parser")
+    soup = BeautifulSoup(response.text, "lxml")
     h1 = soup.find("h1")
     if h1 is None:
         logging.warning("h1 is null for %s", player_url)
@@ -79,6 +79,27 @@ def _create_sportsreference_player_model(
         turnovers=turnovers.get(name),
         name=name,
         marks=None,
+        handballs=None,
+        disposals=None,
+        goals=None,
+        behinds=None,
+        hit_outs=None,
+        tackles=None,
+        rebounds=None,
+        insides=None,
+        clearances=None,
+        clangers=None,
+        free_kicks_for=None,
+        free_kicks_against=None,
+        brownlow_votes=None,
+        contested_possessions=None,
+        uncontested_possessions=None,
+        contested_marks=None,
+        marks_inside=None,
+        one_percenters=None,
+        bounces=None,
+        goal_assists=None,
+        percentage_played=None,
     )
 
 

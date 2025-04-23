@@ -20,7 +20,7 @@ class GoogleNews:
     def __top_news_parser(self, text):
         """Return subarticles from the main and topic feeds"""
         try:
-            bs4_html = BeautifulSoup(text, "html.parser")
+            bs4_html = BeautifulSoup(text, "lxml")
             # find all li tags
             lis = bs4_html.find_all("li")
             sub_articles = []

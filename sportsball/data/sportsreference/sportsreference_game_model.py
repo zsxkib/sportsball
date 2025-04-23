@@ -300,16 +300,16 @@ def _create_sportsreference_game_model(
         headers = {X_NO_WAYBACK: "1"}
     response = session.get(url, headers=headers)
     response.raise_for_status()
-    soup = BeautifulSoup(response.text, "html.parser")
+    soup = BeautifulSoup(response.text, "lxml")
     page_title = soup.find("h1", class_="page_title")
 
     # If the page_title is bad, try fetching from a non wayback source
     if page_title is not None:
         if page_title.get_text().strip() == "File Not Found":
-            with session.cache_disabled():
-                response = session.get(url, headers={X_NO_WAYBACK: "1"})
-                response.raise_for_status()
-                soup = BeautifulSoup(response.text, "html.parser")
+            session.cache.delete(urls=[url])
+            response = session.get(url, headers={X_NO_WAYBACK: "1"})
+            response.raise_for_status()
+            soup = BeautifulSoup(response.text, "lxml")
 
     player_urls = set()
     for a in soup.find_all("a"):

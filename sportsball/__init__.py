@@ -1,3 +1,7 @@
 """The main module for sportsball."""
 
-__VERSION__ = "0.3.56"
+# flake8: noqa
+import cchardet  # type: ignore
+import lxml  # noqa: ignore
+
+__VERSION__ = "0.3.57"

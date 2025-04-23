@@ -62,7 +62,7 @@ class AFLAFLTablesLeagueModel(LeagueModel):
         else:
             response = self.session.get(season_url)
 
-        soup = BeautifulSoup(response.text, "html.parser")
+        soup = BeautifulSoup(response.text, "lxml")
         in_finals = False
         game_number = 0
         last_round_number = 0
@@ -151,7 +151,7 @@ class AFLAFLTablesLeagueModel(LeagueModel):
         with self.session.cache_disabled():
             response = self.session.get(_SEASON_URL)
         response.raise_for_status()
-        soup = BeautifulSoup(response.text, "html.parser")
+        soup = BeautifulSoup(response.text, "lxml")
         with tqdm.tqdm(position=self.position) as pbar:
             for table in soup.find_all("table"):
                 for tr in table.find_all("tr"):
