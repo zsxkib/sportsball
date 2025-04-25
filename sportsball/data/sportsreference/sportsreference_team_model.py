@@ -2,6 +2,7 @@
 
 # pylint: disable=too-many-arguments,too-many-locals,duplicate-code
 import datetime
+import http
 import json
 import logging
 import urllib.parse
@@ -89,25 +90,25 @@ def _create_sportsreference_team_model(
     offensive_rebounds: dict[str, int],
     assists: dict[str, int],
     turnovers: dict[str, int],
+    team_name: str,
 ) -> TeamModel:
-    if url == "https://www.sports-reference.com/cbb/schools/alaska-anchorage/2016.html":
-        name = "Alaska-Anchorage"
-        return TeamModel(
-            identifier=name,
-            name=name,
-            location="Alaska",
-            players=[],
-            odds=[],
-            points=points,
-            ladder_rank=None,
-            news=create_google_news_models(name, session, dt, league),
-            social=create_x_social_model(name, session, dt),
-        )
-
     headers = {}
     if url in _NON_WAYBACK_URLS:
         headers = {X_NO_WAYBACK: "1"}
     response = session.get(url, headers=headers)
+    if response.status_code == http.HTTPStatus.NOT_FOUND:
+        logging.warning("Could not find team %s at url %s", team_name, url)
+        return TeamModel(
+            identifier=team_name,
+            name=team_name,
+            location=None,
+            players=[],
+            odds=[],
+            points=points,
+            ladder_rank=None,
+            news=create_google_news_models(team_name, session, dt, league),
+            social=create_x_social_model(team_name, session, dt),
+        )
     response.raise_for_status()
 
     soup = BeautifulSoup(response.text, "lxml")
@@ -163,6 +164,7 @@ def _cached_create_sportsreference_team_model(
     offensive_rebounds: dict[str, int],
     assists: dict[str, int],
     turnovers: dict[str, int],
+    team_name: str,
 ) -> TeamModel:
     return _create_sportsreference_team_model(
         session,
@@ -176,6 +178,7 @@ def _cached_create_sportsreference_team_model(
         offensive_rebounds,
         assists,
         turnovers,
+        team_name,
     )
 
 
@@ -191,6 +194,7 @@ def create_sportsreference_team_model(
     offensive_rebounds: dict[str, int],
     assists: dict[str, int],
     turnovers: dict[str, int],
+    team_name: str,
 ) -> TeamModel:
     """Create a team model from Sports Reference."""
     if not pytest_is_running.is_running():
@@ -206,6 +210,7 @@ def create_sportsreference_team_model(
             offensive_rebounds,
             assists,
             turnovers,
+            team_name,
         )
     with session.cache_disabled():
         return _create_sportsreference_team_model(
@@ -220,4 +225,5 @@ def create_sportsreference_team_model(
             offensive_rebounds,
             assists,
             turnovers,
+            team_name,
         )

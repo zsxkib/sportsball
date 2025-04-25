@@ -169,6 +169,7 @@ def _find_old_dt(
                     offensive_rebounds,
                     assists,
                     turnovers,
+                    team_name,
                 )
             )
 
@@ -291,6 +292,7 @@ def _find_new_dt(
                     offensive_rebounds,
                     assists,
                     turnovers,
+                    a.get_text().strip(),
                 )
             )
 

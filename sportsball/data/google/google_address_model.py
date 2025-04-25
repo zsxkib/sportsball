@@ -12758,6 +12758,33 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Rimrock Auto Arena at MetraPark, Billings, Montana": SportsballGeocodeTuple(
+        city="Billings",
+        state="MT",
+        postal="59101",
+        lat=45.800103,
+        lng=-108.477201,
+        housenumber="308",
+        country="USA",
+    ),
+    "Corvallis, Oregon": SportsballGeocodeTuple(
+        city="Corvallis",
+        state="OR",
+        postal="",
+        lat=44.569722,
+        lng=-123.278333,
+        housenumber="",
+        country="USA",
+    ),
+    "Mabee Center, Liberty, Missouri": SportsballGeocodeTuple(
+        city="Liberty",
+        state="MO",
+        postal="64068",
+        lat=39.24962892,
+        lng=-94.4087267,
+        housenumber="924",
+        country="USA",
+    ),
 }
 
 

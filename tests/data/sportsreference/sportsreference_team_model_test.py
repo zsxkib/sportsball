@@ -32,6 +32,7 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 {},
                 {},
                 {},
+                "",
             )
             self.assertEqual(team_model.identifier, "Villanova Wildcats Men's")
 
@@ -57,6 +58,7 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 {},
                 {},
                 {},
+                "",
             )
             self.assertEqual(team_model.field_goals, 8)
 
@@ -84,6 +86,7 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 {},
                 {},
                 {},
+                "",
             )
             self.assertEqual(team_model.field_goals_attempted, 10)
 
@@ -104,6 +107,7 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 {},
                 {},
                 {},
+                "",
             )
             self.assertEqual(team_model.identifier, "Los Angeles Clippers")
 
@@ -124,6 +128,7 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 {},
                 {},
                 {},
+                "",
             )
             self.assertEqual(team_model.identifier, "Brooklyn Nets")
 
@@ -144,6 +149,7 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 {},
                 {},
                 {},
+                "",
             )
             self.assertEqual(team_model.name, "Cleveland Cavaliers")
 
@@ -164,6 +170,7 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 {},
                 {},
                 {},
+                "",
             )
             self.assertEqual(team_model.name, "Los Angeles Lakers")
 
@@ -184,5 +191,6 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 {},
                 {},
                 {},
+                "",
             )
             self.assertEqual(team_model.name, "Boston Celtics")
