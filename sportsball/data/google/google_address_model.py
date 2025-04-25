@@ -12738,6 +12738,17 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="300",
         country="USA",
     ),
+    "Boone, North Carolina": SportsballGeocodeTuple(
+        city="Boone",
+        state="NC",
+        postal="",
+        lat=36.211111,
+        lng=-81.666944,
+        housenumber="",
+        country="USA",
+    ),
+    "FedExForum - Memphis, Tennessee - United States": FEDEX_FORUM,
+    "Kia Center, Orlando, FL, EUA": KIA_CENTER,
 }
 
 

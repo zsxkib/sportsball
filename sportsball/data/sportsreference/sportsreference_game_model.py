@@ -179,27 +179,33 @@ def _find_old_dt(
             test_row = df.iat[0, 0]
             test_row_2 = df.iat[1, 0]
 
-            if (
-                "Prev Game" in test_row
-                or "Next Game" in test_row
-                or "Lost" in test_row
-                or "PM," in test_row_2
-            ):
-                date_venue_split = df.iat[1, 0].split()
-                current_idx = 5
-                try:
-                    dt = parse(" ".join(date_venue_split[:current_idx]))
-                except dateutil.parser._parser.ParserError:  # type: ignore
+            try:
+                if (
+                    "Prev Game" in test_row
+                    or "Next Game" in test_row
+                    or "Lost" in test_row
+                    or "PM," in test_row_2
+                ):
+                    date_venue_split = df.iat[1, 0].split()
+                    current_idx = 5
                     try:
-                        current_idx = 3
                         dt = parse(" ".join(date_venue_split[:current_idx]))
                     except dateutil.parser._parser.ParserError:  # type: ignore
-                        dt = parse(
-                            " ".join(",".join(test_row.split(",")[1:]).split()[:3])
-                        )
-                venue_name = " ".join(date_venue_split[current_idx:])
-                _process_team_row(df)
-                break
+                        try:
+                            current_idx = 3
+                            dt = parse(" ".join(date_venue_split[:current_idx]))
+                        except dateutil.parser._parser.ParserError:  # type: ignore
+                            dt = parse(
+                                " ".join(",".join(test_row.split(",")[1:]).split()[:3])
+                            )
+                    venue_name = " ".join(date_venue_split[current_idx:])
+                    _process_team_row(df)
+                    break
+            except TypeError as exc:
+                logging.error(test_row)
+                logging.error(response.url)
+                logging.error(response.text)
+                raise exc
 
     if dt is None:
         title_tag = soup.find("title")
