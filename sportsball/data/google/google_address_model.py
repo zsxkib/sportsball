@@ -2287,6 +2287,15 @@ NEW_ORLEANS_CITY = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
+PETCO_PARK = SportsballGeocodeTuple(
+    city="San Diego",
+    state="CA",
+    postal="92101",
+    lat=32.7073,
+    lng=-117.1566,
+    housenumber="100",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -4035,15 +4044,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Riccardo Silva Stadium - Miami - FL - 33199": PITBULL_STADIUM,
     "Ryan Field - Evanston - IL - 60208": LANNY_AND_SHARON_MARTIN_STADIUM,
-    "Petco Park - San Diego - CA - 92101": SportsballGeocodeTuple(
-        city="San Diego",
-        state="CA",
-        postal="92101",
-        lat=32.7073,
-        lng=-117.1566,
-        housenumber="100",
-        country="USA",
-    ),
+    "Petco Park - San Diego - CA - 92101": PETCO_PARK,
     "Providence Park - Portland - OR - 97205": SportsballGeocodeTuple(
         city="Portland",
         state="OR",
@@ -12709,6 +12710,34 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "New Orleans , Louisiana": NEW_ORLEANS_CITY,
+    "First Bank & Trust Arena, Brookings, South Dakota": SportsballGeocodeTuple(
+        city="Brookings",
+        state="SD",
+        postal="57007",
+        lat=44.317984,
+        lng=-96.779058,
+        housenumber="1165",
+        country="USA",
+    ),
+    "Cambria County War Memorial Arena, Johnstown, Pennsylvania": SportsballGeocodeTuple(
+        city="Johnstown",
+        state="PA",
+        postal="15901",
+        lat=40.32296,
+        lng=-78.922654,
+        housenumber="326",
+        country="USA",
+    ),
+    "Petco Park, San Diego, California": PETCO_PARK,
+    "Esby Gym, Glassboro, New Jersey": SportsballGeocodeTuple(
+        city="Glassboro",
+        state="NJ",
+        postal="08028",
+        lat=39.7106001,
+        lng=-75.1186627,
+        housenumber="300",
+        country="USA",
+    ),
 }
 
 

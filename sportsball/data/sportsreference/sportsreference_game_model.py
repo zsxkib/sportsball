@@ -305,7 +305,7 @@ def _create_sportsreference_game_model(
 
     # If the page_title is bad, try fetching from a non wayback source
     if page_title is not None:
-        if page_title.get_text().strip() == "File Not Found":
+        if "File Not Found" in page_title.get_text().strip():
             session.cache.delete(urls=[url])
             response = session.get(url, headers={X_NO_WAYBACK: "1"})
             response.raise_for_status()

@@ -90,6 +90,20 @@ def _create_sportsreference_team_model(
     assists: dict[str, int],
     turnovers: dict[str, int],
 ) -> TeamModel:
+    if url == "https://www.sports-reference.com/cbb/schools/alaska-anchorage/2016.html":
+        name = "Alaska-Anchorage"
+        return TeamModel(
+            identifier=name,
+            name=name,
+            location="Alaska",
+            players=[],
+            odds=[],
+            points=points,
+            ladder_rank=None,
+            news=create_google_news_models(name, session, dt, league),
+            social=create_x_social_model(name, session, dt),
+        )
+
     headers = {}
     if url in _NON_WAYBACK_URLS:
         headers = {X_NO_WAYBACK: "1"}
