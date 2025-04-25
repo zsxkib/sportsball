@@ -88,6 +88,9 @@ AFL_TEAM_IDENTITY_MAP = {
     "Fremantle Dockers": FREMANTLE,
     "West Coast Eagles": WESTCOAST,
     "Gold Coast Suns": GOLDCOAST,
+    # AFL
+    "GWS GIANTS": GWS,
+    "Gold Coast SUNS": GOLDCOAST,
 }
 BRUNSWICK_ST = "brunswick_st"
 VICTORIA_PARK = "victoria_park"

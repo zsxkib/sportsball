@@ -62,14 +62,14 @@ def _parse_game_info(
                 row_players.append(team_players)
                 if len(row_players) >= 2:
                     break
-            for count, row_players_list in enumerate(row_players):
-                try:
-                    teams_players[count].extend(row_players_list)
-                except IndexError as exc:
-                    # logging.error(html)
-                    logging.error(len(team_players))
-                    logging.error(count)
-                    raise exc
+                for count, row_players_list in enumerate(row_players):
+                    try:
+                        teams_players[count].extend(row_players_list)
+                    except IndexError as exc:
+                        # logging.error(html)
+                        logging.error(len(team_players))
+                        logging.error(count)
+                        raise exc
         dt = None
         for time in div.find_all(
             "time", {"class": re.compile(".*match-list-alt__header-time.*")}

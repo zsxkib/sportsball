@@ -12749,6 +12749,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "FedExForum - Memphis, Tennessee - United States": FEDEX_FORUM,
     "Kia Center, Orlando, FL, EUA": KIA_CENTER,
+    "Davis Field House, Greenville, South Carolina": SportsballGeocodeTuple(
+        city="Greenville",
+        state="SC",
+        postal="",
+        lat=34.8725,
+        lng=-82.361944,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 

@@ -178,6 +178,8 @@ def _find_old_dt(
         if len(df) == 2:
             test_row = df.iat[0, 0]
             test_row_2 = df.iat[1, 0]
+            if isinstance(test_row, float):
+                continue
 
             try:
                 if (
