@@ -371,6 +371,7 @@ def _create_sportsreference_game_model(
                     for idx, player in enumerate(players):
                         turnovers[player] = tovs[idx]
     except ValueError as exc:
+        logging.error(url)
         logging.error(response.text)
         raise exc
 

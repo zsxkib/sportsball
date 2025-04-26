@@ -29,12 +29,16 @@ _BAD_URLS = {
     "https://www.sports-reference.com/cbb/players/cia-eklof-1.html",
     "https://www.sports-reference.com/cbb/players/aj-caldwell-2.html",
     "https://www.sports-reference.com/cbb/players/akuwovo-ogheneyole-1.html",
+    "https://www.sports-reference.com/cbb/players/jevon-lyle-1.html",
 }
 _NON_WAYBACK_URLS: set[str] = {
     "https://www.sports-reference.com/cbb/schools/stony-brook/women/2021.html",
     "https://www.sports-reference.com/cbb/schools/minnesota/women/2019.html",
     "https://www.sports-reference.com/cbb/schools/rice/women/2019.html",
     "https://www.sports-reference.com/cbb/schools/north-carolina/women/2018.html",
+}
+_BAD_TEAM_URLS = {
+    "https://www.sports-reference.com/cbb/schools/mid-atlantic-christian/2016.html",
 }
 
 
@@ -95,6 +99,18 @@ def _create_sportsreference_team_model(
     headers = {}
     if url in _NON_WAYBACK_URLS:
         headers = {X_NO_WAYBACK: "1"}
+    if url in _BAD_TEAM_URLS:
+        return TeamModel(
+            identifier=team_name,
+            name=team_name,
+            location=None,
+            players=[],
+            odds=[],
+            points=points,
+            ladder_rank=None,
+            news=create_google_news_models(team_name, session, dt, league),
+            social=create_x_social_model(team_name, session, dt),
+        )
     response = session.get(url, headers=headers)
     if response.status_code == http.HTTPStatus.NOT_FOUND:
         logging.warning("Could not find team %s at url %s", team_name, url)
