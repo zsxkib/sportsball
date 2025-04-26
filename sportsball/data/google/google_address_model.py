@@ -12794,6 +12794,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Morehead, Kentucky": SportsballGeocodeTuple(
+        city="Morehead",
+        state="KY",
+        postal="",
+        lat=38.190833,
+        lng=-83.4475,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 

@@ -27,6 +27,7 @@ from .sportsreference_venue_model import create_sportsreference_venue_model
 _NON_WAYBACK_URLS: set[str] = {
     "https://www.sports-reference.com/cbb/boxscores/2025-03-01-14-saint-francis-pa.html",
     "https://www.sports-reference.com/cbb/boxscores/2025-03-01-15-bradley_w.html",
+    "https://www.basketball-reference.com/boxscores/201603070CLE.html",
 }
 _MONTHS = [
     "January",
@@ -315,8 +316,8 @@ def _create_sportsreference_game_model(
 
     # If the page_title is bad, try fetching from a non wayback source
     if page_title is not None:
-        if "File Not Found" in page_title.get_text().strip():
-            session.cache.delete(urls=[url])
+        if "file not found" in page_title.get_text().strip().lower():
+            session.cache.delete(urls=[url, response.url])
             response = session.get(url, headers={X_NO_WAYBACK: "1"})
             response.raise_for_status()
             soup = BeautifulSoup(response.text, "lxml")
