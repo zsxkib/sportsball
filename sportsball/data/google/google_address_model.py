@@ -2332,6 +2332,15 @@ BANK_OF_COLORADO_ARENA = SportsballGeocodeTuple(
     housenumber="270",
     country="USA",
 )
+LENOVO_CENTER = SportsballGeocodeTuple(
+    city="Raleigh",
+    state="NC",
+    postal="",
+    lat=35.803333,
+    lng=-78.721944,
+    housenumber="1400",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -11615,15 +11624,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Lenovo Center, Raleigh, North Carolina": SportsballGeocodeTuple(
-        city="Raleigh",
-        state="NC",
-        postal="",
-        lat=35.803333,
-        lng=-78.721944,
-        housenumber="1400",
-        country="USA",
-    ),
+    "Lenovo Center, Raleigh, North Carolina": LENOVO_CENTER,
     "Durham, North Carolina": SportsballGeocodeTuple(
         city="Durham",
         state="NC",
@@ -12873,6 +12874,36 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lat=42.352231,
         lng=-71.117792,
         housenumber="925",
+        country="USA",
+    ),
+    "Valparaiso, Indiana": SportsballGeocodeTuple(
+        city="Valparaisos",
+        state="IN",
+        postal="",
+        lat=41.476111,
+        lng=-87.040278,
+        housenumber="",
+        country="USA",
+    ),
+    "Asheville Civic Center, Asheville, North Carolina": HARRAHS_CHEROKEE_CENTER,
+    "RBC Center, Raleigh, North Carolina": LENOVO_CENTER,
+    "1st Mariner Arena, Baltimore, Maryland": SportsballGeocodeTuple(
+        city="Baltimore",
+        state="MD",
+        postal="",
+        lat=39.288611,
+        lng=-76.618889,
+        housenumber="201",
+        country="USA",
+    ),
+    "ASU Acadome, Montgomery, Alabama": DUNN_OLIVER_ACADOME,
+    "K.L. Johnson HPER Complex, Pine Bluff, Arkansas": SportsballGeocodeTuple(
+        city="Pine Bluff",
+        state="AK",
+        postal="71601",
+        lat=34.243825,
+        lng=-92.017429,
+        housenumber="1401",
         country="USA",
     ),
 }
