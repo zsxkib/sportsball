@@ -28,6 +28,7 @@ _NON_WAYBACK_URLS: set[str] = {
     "https://www.sports-reference.com/cbb/boxscores/2025-03-01-14-saint-francis-pa.html",
     "https://www.sports-reference.com/cbb/boxscores/2025-03-01-15-bradley_w.html",
     "https://www.basketball-reference.com/boxscores/201603070CLE.html",
+    "https://www.basketball-reference.com/boxscores/201602110MIL.html",
 }
 _MONTHS = [
     "January",

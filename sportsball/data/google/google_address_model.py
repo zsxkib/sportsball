@@ -2296,6 +2296,24 @@ PETCO_PARK = SportsballGeocodeTuple(
     housenumber="100",
     country="USA",
 )
+HART_RECREATION_CENTER = SportsballGeocodeTuple(
+    city="Worcester",
+    state="MA",
+    postal="01610",
+    lat=42.235046,
+    lng=-71.806381,
+    housenumber="1",
+    country="USA",
+)
+CFSB_CENTER = SportsballGeocodeTuple(
+    city="Murray",
+    state="KY",
+    postal="42071",
+    lat=36.62267,
+    lng=-88.32031,
+    housenumber="1401",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -6037,15 +6055,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "CFSB Center, Murray, Kentucky": SportsballGeocodeTuple(
-        city="Murray",
-        state="KY",
-        postal="42071",
-        lat=36.62267,
-        lng=-88.32031,
-        housenumber="1401",
-        country="USA",
-    ),
+    "CFSB Center, Murray, Kentucky": CFSB_CENTER,
     "Echols Memorial Hall, Norfolk, Virginia": SportsballGeocodeTuple(
         city="Norfolk",
         state="VA",
@@ -6427,15 +6437,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="9200",
         country="USA",
     ),
-    "Hart Recreation Center, Worcester, Massachusetts": SportsballGeocodeTuple(
-        city="Worcester",
-        state="MA",
-        postal="01610",
-        lat=42.235046,
-        lng=-71.806381,
-        housenumber="1",
-        country="USA",
-    ),
+    "Hart Recreation Center, Worcester, Massachusetts": HART_RECREATION_CENTER,
     "McAlister Field House, Charleston, South Carolina": SportsballGeocodeTuple(
         city="Charleston",
         state="SC",
@@ -12803,6 +12805,8 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Hart Center Arena, Worcester, Massachusetts": HART_RECREATION_CENTER,
+    "Regional Special Events Center, Murray, Kentucky": CFSB_CENTER,
 }
 
 
