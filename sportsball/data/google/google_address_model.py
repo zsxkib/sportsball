@@ -2314,6 +2314,15 @@ CFSB_CENTER = SportsballGeocodeTuple(
     housenumber="1401",
     country="USA",
 )
+TD_BANK_SPORTS_CENTER = SportsballGeocodeTuple(
+    city="Hamden",
+    state="CT",
+    postal="06518",
+    lat=41.413833,
+    lng=-72.911157,
+    housenumber="305",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -11538,15 +11547,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "IUPUI Gymnasium, Indianapolis, Indiana": THE_JUNGLE,
     "Daniel Lynch '38 Gymnasium, Brooklyn, New York": GENEROSO_POPE_ATHELTIC_COMPLEX,
-    "TD Bank Sports Center, Hamden, Connecticut": SportsballGeocodeTuple(
-        city="Hamden",
-        state="CT",
-        postal="06518",
-        lat=41.413833,
-        lng=-72.911157,
-        housenumber="305",
-        country="USA",
-    ),
+    "TD Bank Sports Center, Hamden, Connecticut": TD_BANK_SPORTS_CENTER,
     "University of Tasmania Stadium, Launceston, Austrália": UTAS_STADIUM,
     "Optus Stadium, Perth, Austrália": OPTUS_STADIUM,
     "San Francisco, California": SportsballGeocodeTuple(
@@ -12807,6 +12808,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Hart Center Arena, Worcester, Massachusetts": HART_RECREATION_CENTER,
     "Regional Special Events Center, Murray, Kentucky": CFSB_CENTER,
+    "M&T Bank Arena, Hamden, Connecticut": TD_BANK_SPORTS_CENTER,
 }
 
 
