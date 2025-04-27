@@ -30,6 +30,7 @@ _NON_WAYBACK_URLS: set[str] = {
     "https://www.basketball-reference.com/boxscores/201603070CLE.html",
     "https://www.basketball-reference.com/boxscores/201602110MIL.html",
     "https://www.basketball-reference.com/boxscores/201602050BRK.html",
+    "https://www.basketball-reference.com/boxscores/201601300CLE.html",
 }
 _MONTHS = [
     "January",
