@@ -12809,6 +12809,24 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Hart Center Arena, Worcester, Massachusetts": HART_RECREATION_CENTER,
     "Regional Special Events Center, Murray, Kentucky": CFSB_CENTER,
     "M&T Bank Arena, Hamden, Connecticut": TD_BANK_SPORTS_CENTER,
+    "Cape Girardeau, Missouri": SportsballGeocodeTuple(
+        city="Cape Girardeau",
+        state="MO",
+        postal="",
+        lat=37.310833,
+        lng=-89.559722,
+        housenumber="",
+        country="USA",
+    ),
+    "Memorial Center, Johnson City, Tennessee": SportsballGeocodeTuple(
+        city="Johnson City",
+        state="TN",
+        postal="37601",
+        lat=36.3037181,
+        lng=-82.3707852,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
