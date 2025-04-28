@@ -2368,6 +2368,24 @@ BANK_OF_KENTUCKY_CENTER = SportsballGeocodeTuple(
     housenumber="500",
     country="USA",
 )
+THE_NEST = SportsballGeocodeTuple(
+    city="Sacramento",
+    state="CA",
+    postal="",
+    lat=38.561903,
+    lng=-121.426878,
+    housenumber="",
+    country="USA",
+)
+EAGLEBANK_ARENA = SportsballGeocodeTuple(
+    city="Fairfax",
+    state="VA",
+    postal="",
+    lat=38.827,
+    lng=-77.31,
+    housenumber="4500",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5954,15 +5972,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="200",
         country="USA",
     ),
-    "EagleBank Arena, Fairfax, Virginia": SportsballGeocodeTuple(
-        city="Fairfax",
-        state="VA",
-        postal="",
-        lat=38.827,
-        lng=-77.31,
-        housenumber="4500",
-        country="USA",
-    ),
+    "EagleBank Arena, Fairfax, Virginia": EAGLEBANK_ARENA,
     "GSU Convocation Center, Atlanta, Georgia": GSU_CONVOCATION_CENTER,
     "Lavietes Pavilion, Boston, Massachusetts": SportsballGeocodeTuple(
         city="Boston",
@@ -6120,15 +6130,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1400",
         country="USA",
     ),
-    "The Nest, Sacramento, California": SportsballGeocodeTuple(
-        city="Sacramento",
-        state="CA",
-        postal="",
-        lat=38.561903,
-        lng=-121.426878,
-        housenumber="",
-        country="USA",
-    ),
+    "The Nest, Sacramento, California": THE_NEST,
     "Sam Vadalabene Center , Edwardsville, Illinois": SportsballGeocodeTuple(
         city="Edwardsville",
         state="IL",
@@ -12987,6 +12989,44 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Ninja Stadium, Bellerive, Australia": BLUNDSTONE_ARENA,
+    "Hornets Nest, Sacramento, California": THE_NEST,
+    "Patriot Center, Fairfax, Virginia": EAGLEBANK_ARENA,
+    "Carolina First Arena, Charleston, South Carolina": SportsballGeocodeTuple(
+        city="Charleston",
+        state="SC",
+        postal="",
+        lat=32.789444,
+        lng=-79.929444,
+        housenumber="",
+        country="USA",
+    ),
+    "Road Town": SportsballGeocodeTuple(
+        city="Road Town",
+        state="",
+        postal="",
+        lat=18.431389,
+        lng=-64.623056,
+        housenumber="",
+        country="British Virgin Islands",
+    ),
+    "D.J. Sokol Arena, Omaha, Nebraska": SportsballGeocodeTuple(
+        city="Omaha",
+        state="NB",
+        postal="",
+        lat=41.266146,
+        lng=-95.940471,
+        housenumber="",
+        country="USA",
+    ),
+    "Enterprise, Nevada": SportsballGeocodeTuple(
+        city="Enterprise",
+        state="NV",
+        postal="",
+        lat=36.031389,
+        lng=-115.198056,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 

@@ -244,6 +244,7 @@ AFL_VENUE_IDENTITY_MAP = {
     "Giants Stadium": GIANTS_STADIUM,
     "Ondrej Nepela Arena": TIPOS_ARENA,
     "Barossa Park": BAROSSA_PARK,
+    "Ninja Stadium": BELLERIVE_OVAL,
 }
 RYAN_LESTER = "afl:CD_I291548"
 JACK_PAYNE = "afl:CD_I1002347"

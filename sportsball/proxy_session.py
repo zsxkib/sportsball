@@ -131,13 +131,10 @@ class ProxySession(requests_cache.CachedSession):
         return None
 
     @func_set_timeout(DEFAULT_TIMEOUT)
-    def _perform_timeout_send(self, request: requests.PreparedRequest, **kwargs) -> Any:
+    def _perform_timeout_send(
+        self, request: requests.PreparedRequest, no_wayback: bool, **kwargs
+    ) -> Any:
         key = self.cache.create_key(request)
-
-        no_wayback = False
-        if X_NO_WAYBACK in request.headers:
-            no_wayback = request.headers.get(X_NO_WAYBACK) == "1"
-            del request.headers[X_NO_WAYBACK]
 
         if not self.settings.disabled:
             # Check the cache
@@ -184,8 +181,10 @@ class ProxySession(requests_cache.CachedSession):
         | retry_if_exception_type(requests.exceptions.ReadTimeout),
         reraise=True,
     )
-    def _perform_retry_send(self, request: requests.PreparedRequest, **kwargs) -> Any:
-        return self._perform_timeout_send(request, **kwargs)
+    def _perform_retry_send(
+        self, request: requests.PreparedRequest, no_wayback: bool, **kwargs
+    ) -> Any:
+        return self._perform_timeout_send(request, no_wayback, **kwargs)
 
     def send(
         self,
@@ -208,8 +207,12 @@ class ProxySession(requests_cache.CachedSession):
             self.cache.save_response(response)
             return response
 
+        no_wayback = request.headers.get(X_NO_WAYBACK) == "1"
+        if request.headers.get(X_NO_WAYBACK) is not None:
+            del request.headers[X_NO_WAYBACK]
         return self._perform_retry_send(
             request,
+            no_wayback,
             expire_after=expire_after,
             only_if_cached=only_if_cached,
             refresh=refresh,
