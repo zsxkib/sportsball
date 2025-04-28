@@ -24,15 +24,6 @@ from ..team_model import TeamModel
 from .sportsreference_team_model import create_sportsreference_team_model
 from .sportsreference_venue_model import create_sportsreference_venue_model
 
-_NON_WAYBACK_URLS: set[str] = {
-    "https://www.sports-reference.com/cbb/boxscores/2025-03-01-14-saint-francis-pa.html",
-    "https://www.sports-reference.com/cbb/boxscores/2025-03-01-15-bradley_w.html",
-    "https://www.basketball-reference.com/boxscores/201603070CLE.html",
-    "https://www.basketball-reference.com/boxscores/201602110MIL.html",
-    "https://www.basketball-reference.com/boxscores/201602050BRK.html",
-    "https://www.basketball-reference.com/boxscores/201601300CLE.html",
-    "https://www.basketball-reference.com/boxscores/201601230PHO.html",
-}
 _MONTHS = [
     "January",
     "February",
@@ -310,9 +301,7 @@ def _create_sportsreference_game_model(
     league: League,
 ) -> GameModel:
     # pylint: disable=too-many-branches
-    headers = {}
-    if url in _NON_WAYBACK_URLS:
-        headers = {X_NO_WAYBACK: "1"}
+    headers = {X_NO_WAYBACK: "1"}
     response = session.get(url, headers=headers)
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "lxml")
