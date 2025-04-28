@@ -12967,6 +12967,25 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Consol Energy Center, Pittsburgh, Pennsylvania": PPG_PAINTS_ARENA,
+    "Loretto, Pennsylvania": SportsballGeocodeTuple(
+        city="Loretto",
+        state="PA",
+        postal="",
+        lat=40.506389,
+        lng=-78.636111,
+        housenumber="",
+        country="USA",
+    ),
+    "Vermillion, South Dakota": SportsballGeocodeTuple(
+        city="Vermillion",
+        state="SD",
+        postal="",
+        lat=42.781389,
+        lng=-96.925278,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
