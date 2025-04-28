@@ -2359,6 +2359,15 @@ CENTRUM_ARENA = SportsballGeocodeTuple(
     housenumber="351",
     country="USA",
 )
+BANK_OF_KENTUCKY_CENTER = SportsballGeocodeTuple(
+    city="Highland Heights",
+    state="KY",
+    postal="41099",
+    lat=39.032273,
+    lng=-84.458864,
+    housenumber="500",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -6205,15 +6214,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="6801",
         country="USA",
     ),
-    "Bank of Kentucky Center, Highland Heights, Kentucky": SportsballGeocodeTuple(
-        city="Highland Heights",
-        state="KY",
-        postal="41099",
-        lat=39.032273,
-        lng=-84.458864,
-        housenumber="500",
-        country="USA",
-    ),
+    "Bank of Kentucky Center, Highland Heights, Kentucky": BANK_OF_KENTUCKY_CENTER,
     "Robins Center, Richmond, Virginia": SportsballGeocodeTuple(
         city="Richmond",
         state="VA",
@@ -9525,7 +9526,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "McNichols Sports Arena, Denver, Colorado": MCNICHOLS_SPORTS_ARENA,
     "Freedom Hall, Louisville, Kentucky": SportsballGeocodeTuple(
         city="Louisville",
-        state="KT",
+        state="KY",
         postal="",
         lat=38.200294,
         lng=-85.741886,
@@ -12944,6 +12945,25 @@ _CACHED_GEOCODES: dict[str, Any] = {
         postal="",
         lat=35.084444,
         lng=-106.650278,
+        housenumber="",
+        country="USA",
+    ),
+    "The Bank of Kentucky Center, Highland Heights, Kentucky": BANK_OF_KENTUCKY_CENTER,
+    "Little Rock, Arkansas": SportsballGeocodeTuple(
+        city="Little Rock",
+        state="AR",
+        postal="",
+        lat=34.744444,
+        lng=-92.288056,
+        housenumber="",
+        country="USA",
+    ),
+    "Bridgeport, Connecticut": SportsballGeocodeTuple(
+        city="Bridgeport",
+        state="CT",
+        postal="",
+        lat=41.186389,
+        lng=-73.195556,
         housenumber="",
         country="USA",
     ),
