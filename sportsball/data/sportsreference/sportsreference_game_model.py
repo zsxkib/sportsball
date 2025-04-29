@@ -301,8 +301,7 @@ def _create_sportsreference_game_model(
     league: League,
 ) -> GameModel:
     # pylint: disable=too-many-branches
-    headers = {X_NO_WAYBACK: "1"}
-    response = session.get(url, headers=headers)
+    response = session.get(url)
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "lxml")
     page_title = soup.find("h1", class_="page_title")

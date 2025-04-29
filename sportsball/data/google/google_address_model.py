@@ -13027,6 +13027,16 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Templeton Center, Clinton, South Carolina": ROSS_E_TEMPLETON_CENTER,
+    "Tupelo, Mississippi": SportsballGeocodeTuple(
+        city="Tupelo",
+        state="MS",
+        postal="",
+        lat=34.259722,
+        lng=-88.725833,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
