@@ -13192,6 +13192,16 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Times Warner Cable Arena, Charlotte, North Carolina": SPECTRUM_CENTRE,
+    "UHY Center, Loudonville, New York": SportsballGeocodeTuple(
+        city="Loudonville",
+        state="NY",
+        postal="12211",
+        lat=42.7174,
+        lng=-73.7487,
+        housenumber="515",
+        country="USA",
+    ),
 }
 
 
