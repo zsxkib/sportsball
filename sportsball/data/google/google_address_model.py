@@ -13269,6 +13269,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "HPER Complex, Grambling, Louisiana": FREDRICK_C_HOBDY_ASSEMBLY_CENTER,
+    "Jamaica, New York": SportsballGeocodeTuple(
+        city="Jamaica",
+        state="NY",
+        postal="",
+        lat=40.7,
+        lng=-73.8,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
