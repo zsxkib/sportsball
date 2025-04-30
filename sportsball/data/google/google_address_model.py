@@ -2512,6 +2512,15 @@ BEASLEY_COLISEUM = SportsballGeocodeTuple(
     housenumber="925",
     country="USA",
 )
+SCHOLLMAIER_ARENA = SportsballGeocodeTuple(
+    city="Fort Worth",
+    state="TX",
+    postal="76109",
+    lat=32.708774,
+    lng=-97.36673,
+    housenumber="2900",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5195,15 +5204,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="2195",
         country="USA",
     ),
-    "Ed & Rae Schollmaier Arena, Fort Worth, Texas": SportsballGeocodeTuple(
-        city="Fort Worth",
-        state="TX",
-        postal="76109",
-        lat=32.708774,
-        lng=-97.36673,
-        housenumber="2900",
-        country="USA",
-    ),
+    "Ed & Rae Schollmaier Arena, Fort Worth, Texas": SCHOLLMAIER_ARENA,
     "Strahan Coliseum, San Marcos, Texas": SportsballGeocodeTuple(
         city="San Marcos",
         state="TX",
@@ -13179,6 +13180,16 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lat=30.6361364,
         lng=-97.6633265,
         housenumber="930",
+        country="USA",
+    ),
+    "Daniel-Meyer Coliseum, Fort Worth, Texas": SCHOLLMAIER_ARENA,
+    "Statesboro, Georgia": SportsballGeocodeTuple(
+        city="Statesboro",
+        state="GA",
+        postal="",
+        lat=32.445278,
+        lng=-81.779167,
+        housenumber="",
         country="USA",
     ),
 }
