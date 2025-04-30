@@ -13278,6 +13278,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Waco, Texas": SportsballGeocodeTuple(
+        city="Waco",
+        state="TX",
+        postal="",
+        lat=31.551389,
+        lng=-97.155833,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
