@@ -13287,6 +13287,16 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Rebecca D. Lockhart Arena, Orem, Utah": SportsballGeocodeTuple(
+        city="Orem",
+        state="UT",
+        postal="84058",
+        lat=40.2787192,
+        lng=-111.7155783,
+        housenumber="785",
+        country="USA",
+    ),
+    "Reliant Stadium, Houston, Texas": NRG_STADIUM,
 }
 
 
