@@ -15,7 +15,7 @@ class TestAFLAFLLeagueModel(unittest.TestCase):
 
     def test_parse_game_info(self):
         with open(os.path.join(self.dir, "team-lineups.html")) as handle:
-            list(_parse_game_info(handle.read(), self._session, [
+            game_models = list(_parse_game_info(handle.read(), self._session, [
                 "Melbourne",
                 "Richmond",
                 "Collingwood",
@@ -35,3 +35,7 @@ class TestAFLAFLLeagueModel(unittest.TestCase):
                 "Hawthorn",
                 "West Coast Eagles",
             ]))
+            first_game = game_models[0]
+            self.assertEqual(len(first_game.teams), 2)
+            for team in first_game.teams:
+                self.assertEqual(len(team.players), 22)

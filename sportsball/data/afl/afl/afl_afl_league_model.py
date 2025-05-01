@@ -31,10 +31,16 @@ def _parse_game_info(
         for div_positions_row in div.find_all(
             "div", {"class": re.compile(".*team-lineups__positions-row.*")}
         ):
-            row_players: list[list[tuple[str, str, str, str]]] = []
-            for div_team_players in div_positions_row.find_all(
-                "div",
-                {"class": re.compile(".*team-lineups__positions-players.*")},
+            row_players: list[list[tuple[str, str, str, str]]] = [[], []]
+            for count, div_team_players in enumerate(
+                div_positions_row.find_all(
+                    "div",
+                    {
+                        "class": re.compile(
+                            ".*team-lineups__positions-players-container.*"
+                        )
+                    },
+                )
             ):
                 team_players: list[tuple[str, str, str, str]] = []
                 for a in div_team_players.find_all(
@@ -59,17 +65,9 @@ def _parse_game_info(
                     team_players.append(
                         (player_id, player_number, first_name, second_name)
                     )
-                row_players.append(team_players)
-                if len(row_players) >= 2:
-                    break
-                for count, row_players_list in enumerate(row_players):
-                    try:
-                        teams_players[count].extend(row_players_list)
-                    except IndexError as exc:
-                        # logging.error(html)
-                        logging.error(len(team_players))
-                        logging.error(count)
-                        raise exc
+                row_players[count].extend(team_players)
+            for count, row_players_list in enumerate(row_players):
+                teams_players[count].extend(row_players_list)
         dt = None
         for time in div.find_all(
             "time", {"class": re.compile(".*match-list-alt__header-time.*")}

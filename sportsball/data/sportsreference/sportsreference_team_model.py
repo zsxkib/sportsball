@@ -40,6 +40,7 @@ _NON_WAYBACK_URLS: set[str] = {
 }
 _BAD_TEAM_URLS = {
     "https://www.sports-reference.com/cbb/schools/mid-atlantic-christian/2016.html",
+    "https://www.sports-reference.com/cbb/schools/claflin/2013.html",
 }
 
 

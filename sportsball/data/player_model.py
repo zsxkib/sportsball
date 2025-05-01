@@ -41,6 +41,7 @@ PLAYER_ONE_PERCENTERS_COLUMN: Literal["one_percenters"] = "one_percenters"
 PLAYER_BOUNCES_COLUMN: Literal["bounces"] = "bounces"
 PLAYER_GOAL_ASSISTS_COLUMN: Literal["goal_assists"] = "goal_assists"
 PLAYER_PERCENTAGE_PLAYED_COLUMN: Literal["percentage_played"] = "percentage_played"
+PLAYER_NAME_COLUMN: Literal["name"] = "name"
 
 
 class PlayerModel(BaseModel):
@@ -92,7 +93,7 @@ class PlayerModel(BaseModel):
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=TURNOVERS_COLUMN,
     )
-    name: str
+    name: str = Field(..., alias=PLAYER_NAME_COLUMN)
     marks: int | None = Field(
         ...,
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},

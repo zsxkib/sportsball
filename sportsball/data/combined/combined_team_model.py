@@ -14,6 +14,13 @@ from .combined_player_model import create_combined_player_model
 REGEX = re.compile("[^a-zA-Z]")
 
 
+def _normalise_player_name(name: str) -> str:
+    # Handle "Surname, Firstname"
+    if "," in name:
+        name = " ".join(reversed([x.strip() for x in name.split(",")]))
+    return REGEX.sub("", unicodedata.normalize("NFC", name).lower())
+
+
 def create_combined_team_model(
     team_models: list[TeamModel],
     identifier: str,
@@ -35,9 +42,7 @@ def create_combined_team_model(
             location = team_model_location
         for player_model in team_model.players:
             player_id = player_model.identifier
-            player_name_key = REGEX.sub(
-                "", unicodedata.normalize("NFC", player_model.name).lower()
-            )
+            player_name_key = _normalise_player_name(player_model.name)
             if player_model.identifier in player_identity_map:
                 player_id = player_identity_map[player_id]
             elif player_name_key in names:

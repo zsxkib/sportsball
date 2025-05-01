@@ -13297,6 +13297,42 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Reliant Stadium, Houston, Texas": NRG_STADIUM,
+    "South Padre Island Convention Centre, South Padre Island, Texas": SportsballGeocodeTuple(
+        city="South Padre Island",
+        state="TX",
+        postal="78597",
+        lat=26.140556,
+        lng=-97.175,
+        housenumber="7355",
+        country="USA",
+    ),
+    "Moon Palace Resort, Cancun": SportsballGeocodeTuple(
+        city="Cancun",
+        state="QR",
+        postal="77500",
+        lat=20.9886511,
+        lng=-86.826701,
+        housenumber="340",
+        country="Mexico",
+    ),
+    "Meeks Family Fieldhouse at Carson Center, Evansville, Indiana": SportsballGeocodeTuple(
+        city="Evansville",
+        state="IN",
+        postal="",
+        lat=37.9963496,
+        lng=-87.6993641,
+        housenumber="",
+        country="USA",
+    ),
+    "José Miguel Agrelot Coliseum, San Juan": SportsballGeocodeTuple(
+        city="San Juan",
+        state="PR",
+        postal="",
+        lat=18.427717,
+        lng=-66.061392,
+        housenumber="500",
+        country="USA",
+    ),
 }
 
 
