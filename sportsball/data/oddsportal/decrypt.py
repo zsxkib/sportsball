@@ -92,6 +92,7 @@ def fetch_data(
     try:
         decoded_data = base64.b64decode(response.content).decode()
     except UnicodeDecodeError as exc:
+        logging.error("URL: %s", url)
         logging.error("Error base64 decoding payload: %s", response.content)
         raise exc
     encrypted, key = decoded_data.split(":")
