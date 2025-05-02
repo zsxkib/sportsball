@@ -399,6 +399,9 @@ def _create_sportsreference_game_model(
             assists,
             turnovers,
         )
+    for team in teams:
+        if team.name == "File Not Found":
+            raise ValueError("team name is File Not Found (invalid)")
 
     season_type = SeasonType.REGULAR
     for h2 in soup.find_all("h2"):

@@ -1,6 +1,7 @@
 """Combined team model."""
 
 # pylint: disable=too-many-locals
+import logging
 import re
 import unicodedata
 
@@ -18,7 +19,7 @@ def _normalise_player_name(name: str) -> str:
     # Handle "Surname, Firstname"
     if "," in name:
         name = " ".join(reversed([x.strip() for x in name.split(",")]))
-    return REGEX.sub("", unicodedata.normalize("NFC", name).lower())
+    return REGEX.sub("", unicodedata.normalize("NFC", name).lower().strip())
 
 
 def create_combined_team_model(
@@ -83,7 +84,7 @@ def create_combined_team_model(
         name=team_models[0].name,
         location=location,
         players=[  # pyright: ignore
-            create_combined_player_model(x, x[0].identifier) for x in players.values()
+            create_combined_player_model(v, k) for k, v in players.items()
         ],
         odds=[x[0] for x in odds.values()],
         points=points,

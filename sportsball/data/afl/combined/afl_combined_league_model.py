@@ -246,18 +246,6 @@ AFL_VENUE_IDENTITY_MAP = {
     "Barossa Park": BAROSSA_PARK,
     "Ninja Stadium": BELLERIVE_OVAL,
 }
-RYAN_LESTER = "afl:CD_I291548"
-JACK_PAYNE = "afl:CD_I1002347"
-DAYNE_ZORKO = "afl:CD_I261224"
-JAMES_WORPEL = "James_Worpel"
-JOSH_WEDDLE = "Josh_Weddle"
-AFL_PLAYER_IDENTITY_MAP = {
-    "afl:CD_I291548": RYAN_LESTER,
-    "afl:CD_I1002347": JACK_PAYNE,
-    "afl:CD_I261224": DAYNE_ZORKO,
-    "James_Worpel": JAMES_WORPEL,
-    "Josh_Weddle": JOSH_WEDDLE,
-}
 
 
 class AFLCombinedLeagueModel(CombinedLeagueModel):
@@ -283,7 +271,3 @@ class AFLCombinedLeagueModel(CombinedLeagueModel):
     @classmethod
     def venue_identity_map(cls) -> dict[str, str]:
         return AFL_VENUE_IDENTITY_MAP
-
-    @classmethod
-    def player_identity_map(cls) -> dict[str, str]:
-        return AFL_PLAYER_IDENTITY_MAP

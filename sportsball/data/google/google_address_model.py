@@ -1740,7 +1740,7 @@ DUNKIN_DONUTS_CENTER = SportsballGeocodeTuple(
 )
 CHI_HEALTH_CENTER = SportsballGeocodeTuple(
     city="Omaha",
-    state="NB",
+    state="NE",
     postal="",
     lat=41.263,
     lng=-95.928,
@@ -4599,7 +4599,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Pinnacle Bank Arena, Lincoln, Nebraska": SportsballGeocodeTuple(
         city="Lincoln",
-        state="NB",
+        state="NE",
         postal="",
         lat=40.817778,
         lng=-96.713333,
@@ -5947,7 +5947,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Baxter Arena, Omaha, Nebraska": SportsballGeocodeTuple(
         city="Omaha",
-        state="NB",
+        state="NE",
         postal="",
         lat=41.236,
         lng=-96.013,
@@ -11062,7 +11062,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Omaha, Nebraska": SportsballGeocodeTuple(
         city="Omaha",
-        state="NB",
+        state="NE",
         postal="",
         lat=41.258611,
         lng=-95.9375,
@@ -11352,7 +11352,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Lincoln, Nebraska": SportsballGeocodeTuple(
         city="Lincoln",
-        state="NB",
+        state="NE",
         postal="",
         lat=40.809167,
         lng=-96.678056,
@@ -12190,7 +12190,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Ralston, Nebraska": SportsballGeocodeTuple(
         city="Ralston",
-        state="NB",
+        state="NE",
         postal="",
         lat=41.200556,
         lng=-96.035556,
@@ -12862,7 +12862,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Ralston Arena, Ralston, Nebraska": SportsballGeocodeTuple(
         city="Ralston",
-        state="NB",
+        state="NE",
         postal="",
         lat=41.206944,
         lng=-96.026944,
@@ -13028,7 +13028,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "D.J. Sokol Arena, Omaha, Nebraska": SportsballGeocodeTuple(
         city="Omaha",
-        state="NB",
+        state="NE",
         postal="",
         lat=41.266146,
         lng=-95.940471,
@@ -13261,7 +13261,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Bob Devaney Sports Center, Lincoln, Nebraska": SportsballGeocodeTuple(
         city="Lincoln",
-        state="NB",
+        state="NE",
         postal="",
         lat=40.830207,
         lng=-96.697644,
@@ -13331,6 +13331,34 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lat=18.427717,
         lng=-66.061392,
         housenumber="500",
+        country="USA",
+    ),
+    "USB Sports Complex, Stony Brook, New York": SportsballGeocodeTuple(
+        city="Stony Brook",
+        state="NY",
+        postal="11790",
+        lat=40.917417,
+        lng=-73.124722,
+        housenumber="100",
+        country="USA",
+    ),
+    "L. A. Sports Arena, Los Angeles, California": LOS_ANGELES_MEMORIAL_COLESIUM,
+    "Kimbel Arena, Conway, South Carolina": SportsballGeocodeTuple(
+        city="Conway",
+        state="SC",
+        postal="",
+        lat=33.79382,
+        lng=-79.013243,
+        housenumber="",
+        country="USA",
+    ),
+    "Sapp Fieldhouse, Ralston, Nebraska": SportsballGeocodeTuple(
+        city="Ralston",
+        state="NE",
+        postal="68132",
+        lat=41.2574,
+        lng=-96.00922,
+        housenumber="6311",
         country="USA",
     ),
 }

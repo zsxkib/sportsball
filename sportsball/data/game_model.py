@@ -52,7 +52,11 @@ class GameModel(BaseModel):
     end_dt: datetime.datetime | None = Field(
         ..., json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD}, alias=END_DT_COLUMN
     )
-    attendance: int | None = Field(..., alias=GAME_ATTENDANCE_COLUMN)
+    attendance: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=GAME_ATTENDANCE_COLUMN,
+    )
     league: str = Field(..., alias=LEAGUE_COLUMN)
     year: int | None
     season_type: SeasonType | None

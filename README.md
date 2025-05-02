@@ -134,6 +134,29 @@ A representation of a player within a team within a game.
 * **offensive_rebounds**: The number of rebounds during offense by the player made in the game.
 * **assists**: The number of times the player made a pass that resulted in a field goal in the game.
 * **turnovers**: The number of times a player loses possession of the ball in the game.
+* **name**: The name of the player.
+* **marks**: The number of marks the player performed in the game.
+* **handballs**: The number of handballs the player performed in the game.
+* **disposals**: The number of disposals the player performed in the game.
+* **goals**: The number of goals scored by the player in the game.
+* **behinds**: The number of behinds scored by the player in the game.
+* **hit_outs**: The number of hit outs scored by the player in the game.
+* **tackles**: The number of tackles performed by the player in the game.
+* **rebounds**: The number of rebounds performed by the player in the game.
+* **insides**: The number of insides performed by the player in the game.
+* **clearances**: The number of clearances performed by the player in the game.
+* **clangers**: The number of clangers performed by the player in the game.
+* **free_kicks_for**: The number of free kicks given to the player in the game.
+* **free_kicks_against**: The number of free kicks given against an action taken by the player in the game.
+* **brownlow_votes**: The number of votes for the brownlow medal the player has in the current season.
+* **contested_possessions**: The number of possessions the player had in the game that were contested.
+* **uncontested_possessions**: The number of posessions the player had in the game that were uncontested.
+* **contested_marks**: The number of marks the player had in the game that were contested.
+* **marks_inside**: The number of marks the player had in the game inside the 50.
+* **one_percenters:** The number of times the player spoils, knock-ons, smothers or shepherds the ball during the game.
+* **bounces**: The number of bounces the player makes in the game.
+* **goal_assists**: The number of assists on goal the player had in the game.
+* **percentage_played**: The percentage of the game the player was on the field.
 
 #### Odds
 
