@@ -1,7 +1,6 @@
 """Combined team model."""
 
 # pylint: disable=too-many-locals
-import logging
 import re
 import unicodedata
 
