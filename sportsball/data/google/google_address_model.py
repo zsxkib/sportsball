@@ -13475,6 +13475,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="2600",
         country="USA",
     ),
+    "Mullett Arena, Tempe, Arizona": SportsballGeocodeTuple(
+        city="Tempe",
+        state="AZ",
+        postal="",
+        lat=33.426667,
+        lng=-111.928611,
+        housenumber="411",
+        country="USA",
+    ),
 }
 
 
