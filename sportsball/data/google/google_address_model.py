@@ -13409,6 +13409,24 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Sears Centre , Hoffman Estates, Illinois": SportsballGeocodeTuple(
+        city="Hoffman Estates",
+        state="IL",
+        postal="",
+        lat=42.071694,
+        lng=-88.209456,
+        housenumber="5333",
+        country="USA",
+    ),
+    "Nassau": SportsballGeocodeTuple(
+        city="Nassau",
+        state="",
+        postal="",
+        lat=25.044167,
+        lng=-77.350278,
+        housenumber="",
+        country="Bahamas",
+    ),
 }
 
 
