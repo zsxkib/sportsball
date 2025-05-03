@@ -13427,6 +13427,16 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Bahamas",
     ),
+    "Qwest Arena, Boise, Idaho": IDAHO_CENTRAL_ARENA,
+    "Coliseo Juan AubÃ­n Cruz Abreu, ManatÃ­": SportsballGeocodeTuple(
+        city="Manati",
+        state="PR",
+        postal="00674",
+        lat=18.4244569,
+        lng=-66.4696945,
+        housenumber="670",
+        country="USA",
+    ),
 }
 
 
