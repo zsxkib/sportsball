@@ -13448,6 +13448,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="255",
         country="USA",
     ),
+    "St. Thomas": SportsballGeocodeTuple(
+        city="St. Thomas",
+        state="VI",
+        postal="",
+        lat=18.333333,
+        lng=-64.916667,
+        housenumber="255",
+        country="USA",
+    ),
 }
 
 
