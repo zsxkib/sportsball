@@ -13457,6 +13457,24 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="255",
         country="USA",
     ),
+    "Cancun": SportsballGeocodeTuple(
+        city="Cancun",
+        state="QR",
+        postal="",
+        lat=21.160556,
+        lng=-86.8475,
+        housenumber="",
+        country="Mexico",
+    ),
+    "Roberts Stadium, Evansville, Indiana": SportsballGeocodeTuple(
+        city="Evansville",
+        state="IN",
+        postal="47711",
+        lat=37.97903,
+        lng=-87.515926,
+        housenumber="2600",
+        country="USA",
+    ),
 }
 
 
