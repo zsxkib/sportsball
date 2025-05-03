@@ -2548,6 +2548,15 @@ AMERANT_BANK_ARENA = SportsballGeocodeTuple(
     housenumber="1",
     country="USA",
 )
+COLISEO_JUAN_AUBIN_CRUZ_ABREU = SportsballGeocodeTuple(
+    city="Manati",
+    state="PR",
+    postal="00674",
+    lat=18.4244569,
+    lng=-66.4696945,
+    housenumber="670",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -13428,15 +13437,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="Bahamas",
     ),
     "Qwest Arena, Boise, Idaho": IDAHO_CENTRAL_ARENA,
-    "Coliseo Juan AubÃ­n Cruz Abreu, ManatÃ­": SportsballGeocodeTuple(
-        city="Manati",
-        state="PR",
-        postal="00674",
-        lat=18.4244569,
-        lng=-66.4696945,
-        housenumber="670",
-        country="USA",
-    ),
+    "Coliseo Juan AubÃ­n Cruz Abreu, ManatÃ­": COLISEO_JUAN_AUBIN_CRUZ_ABREU,
     "St. Pete Times Forum, Tampa, Florida": AMALIE_ARENA,
     "Alltel Arena, North Little Rock, Arkansas": SIMMONS_BANK_ARENA,
     "Mohegan Arena at Casey Plaza, Wilkes-Barre, Pennsylvania": SportsballGeocodeTuple(
@@ -13484,6 +13485,16 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="411",
         country="USA",
     ),
+    "Anderson Arena, Bowling Green, Ohio": SportsballGeocodeTuple(
+        city="Bowling Green",
+        state="OH",
+        postal="",
+        lat=41.376944,
+        lng=-83.636389,
+        housenumber="",
+        country="USA",
+    ),
+    "Coliseo Juan Aubín Cruz Abreu, Manatí": COLISEO_JUAN_AUBIN_CRUZ_ABREU,
 }
 
 
