@@ -13437,6 +13437,17 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="670",
         country="USA",
     ),
+    "St. Pete Times Forum, Tampa, Florida": AMALIE_ARENA,
+    "Alltel Arena, North Little Rock, Arkansas": SIMMONS_BANK_ARENA,
+    "Mohegan Arena at Casey Plaza, Wilkes-Barre, Pennsylvania": SportsballGeocodeTuple(
+        city="Wilkes-Barre",
+        state="PA",
+        postal="",
+        lat=41.240471,
+        lng=-75.848504,
+        housenumber="255",
+        country="USA",
+    ),
 }
 
 
