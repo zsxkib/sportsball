@@ -7440,7 +7440,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Rogers Place - Edmonton, Alberta, Canada - Canada": SportsballGeocodeTuple(
         city="Edmonton",
-        state="AL",
+        state="AB",
         postal="",
         lat=53.546944,
         lng=-113.497778,
@@ -13568,6 +13568,24 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "CenturyTel Center, Bossier City, Louisiana": BROOKSHIRE_GROCERY_ARENA,
+    "Glens Falls Civic Center, Glens Falls, New York": SportsballGeocodeTuple(
+        city="Glens Falls",
+        state="NY",
+        postal="12801",
+        lat=43.308169,
+        lng=-73.641782,
+        housenumber="1",
+        country="USA",
+    ),
+    "VisitLethbridge.com Arena, Lethbridge": SportsballGeocodeTuple(
+        city="Lethbridge",
+        state="AB",
+        postal="",
+        lat=49.666947,
+        lng=-112.805428,
+        housenumber="2510",
+        country="Canada",
+    ),
 }
 
 
