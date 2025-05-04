@@ -13531,6 +13531,24 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1601",
         country="USA",
     ),
+    "Poliforum Benito Juarez, Cancun": SportsballGeocodeTuple(
+        city="Cancun",
+        state="QR",
+        postal="",
+        lat=21.101111,
+        lng=-86.835,
+        housenumber="1601",
+        country="Mexico",
+    ),
+    "Alario Center, Westwego, Louisiana": SportsballGeocodeTuple(
+        city="Westwego",
+        state="LA",
+        postal="",
+        lat=29.90516,
+        lng=-90.16283,
+        housenumber="2000",
+        country="USA",
+    ),
 }
 
 
