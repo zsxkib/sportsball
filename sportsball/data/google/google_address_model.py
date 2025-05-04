@@ -13549,6 +13549,25 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="2000",
         country="USA",
     ),
+    "Blue Cross Arena, Rochester, New York": SportsballGeocodeTuple(
+        city="Rochester",
+        state="NY",
+        postal="",
+        lat=43.153694,
+        lng=-77.610778,
+        housenumber="1",
+        country="USA",
+    ),
+    "Walter Athletic Complex, Tampa, Florida": SportsballGeocodeTuple(
+        city="Tampa",
+        state="FL",
+        postal="33606",
+        lat=27.9471998,
+        lng=-82.4713179,
+        housenumber="400",
+        country="USA",
+    ),
+    "CenturyTel Center, Bossier City, Louisiana": BROOKSHIRE_GROCERY_ARENA,
 }
 
 
