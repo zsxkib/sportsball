@@ -13495,6 +13495,42 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Coliseo Juan Aubín Cruz Abreu, Manatí": COLISEO_JUAN_AUBIN_CRUZ_ABREU,
+    "Coppin Center, Baltimore, Maryland": SportsballGeocodeTuple(
+        city="Baltimore",
+        state="MD",
+        postal="",
+        lat=39.311111,
+        lng=-76.657778,
+        housenumber="",
+        country="USA",
+    ),
+    "San Juan": SportsballGeocodeTuple(
+        city="San Juan",
+        state="PR",
+        postal="",
+        lat=18.406389,
+        lng=-66.063889,
+        housenumber="",
+        country="USA",
+    ),
+    "Charlie Justice Center, Asheville, North Carolina": SportsballGeocodeTuple(
+        city="Asheville",
+        state="NC",
+        postal="",
+        lat=35.617507,
+        lng=-82.567711,
+        housenumber="",
+        country="USA",
+    ),
+    "McArthur Court, Eugene, Oregon": SportsballGeocodeTuple(
+        city="Eugene",
+        state="OR",
+        postal="",
+        lat=44.0416,
+        lng=-123.074,
+        housenumber="1601",
+        country="USA",
+    ),
 }
 
 
