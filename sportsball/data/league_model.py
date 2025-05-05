@@ -187,5 +187,7 @@ class LeagueModel(Model):
                 )
             df = _clear_column_list(df)
 
+            df = df[sorted(df.columns.values.tolist())]
+
             self._df = df
         return df

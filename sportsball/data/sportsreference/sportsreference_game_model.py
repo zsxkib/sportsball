@@ -482,6 +482,8 @@ def _create_sportsreference_game_model(
                 season_type = SeasonType.REGULAR
             case "NCAA Women's Tournament":
                 season_type = SeasonType.REGULAR
+            case "Pacific-10 Conference":
+                season_type = SeasonType.REGULAR
             case _:
                 logging.warning("Unrecognised Season Text: %s", season_text)
         break

@@ -13635,6 +13635,25 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="3201",
         country="USA",
     ),
+    "Acrisure Arena, Thousand Palms, California": SportsballGeocodeTuple(
+        city="Thousand Palms",
+        state="CA",
+        postal="",
+        lat=33.779167,
+        lng=-116.338889,
+        housenumber="75702",
+        country="USA",
+    ),
+    "Qwest Center Omaha, Omaha, Nebraska": CHI_HEALTH_CENTER,
+    "Bossier City, Louisiana": SportsballGeocodeTuple(
+        city="Bossier City",
+        state="LA",
+        postal="",
+        lat=32.517778,
+        lng=-93.691389,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
