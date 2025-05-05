@@ -13606,6 +13606,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Coliseum, Cincinnati, Ohio": PAYCOR_STADIUM,
     "Riverfront Coliseum, Cincinnati, Ohio": PAYCOR_STADIUM,
+    "Coliseo Rubén Rodríguez, Bayamon": SportsballGeocodeTuple(
+        city="Bayamon",
+        state="PR",
+        postal="",
+        lat=18.394958,
+        lng=-66.150833,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
