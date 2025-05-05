@@ -2557,6 +2557,15 @@ COLISEO_JUAN_AUBIN_CRUZ_ABREU = SportsballGeocodeTuple(
     housenumber="670",
     country="USA",
 )
+COLISEO_RUBEN_RODRIGUEZ = SportsballGeocodeTuple(
+    city="Bayamon",
+    state="PR",
+    postal="",
+    lat=18.394958,
+    lng=-66.150833,
+    housenumber="",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -13606,13 +13615,24 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Coliseum, Cincinnati, Ohio": PAYCOR_STADIUM,
     "Riverfront Coliseum, Cincinnati, Ohio": PAYCOR_STADIUM,
-    "Coliseo Rubén Rodríguez, Bayamon": SportsballGeocodeTuple(
-        city="Bayamon",
-        state="PR",
+    "Coliseo Rubén Rodríguez, Bayamon": COLISEO_RUBEN_RODRIGUEZ,
+    "BankCorp South Arena, Tupelo, Mississippi": SportsballGeocodeTuple(
+        city="Tupelo",
+        state="MS",
+        postal="38804",
+        lat=34.26,
+        lng=-88.7,
+        housenumber="375",
+        country="USA",
+    ),
+    "Coliseo RubÃ©n RodrÃ­guez, Bayamon": COLISEO_RUBEN_RODRIGUEZ,
+    "Tim's Toyota Center, Prescott, Arizona": SportsballGeocodeTuple(
+        city="Prescott",
+        state="AZ",
         postal="",
-        lat=18.394958,
-        lng=-66.150833,
-        housenumber="",
+        lat=34.589242,
+        lng=-112.336361,
+        housenumber="3201",
         country="USA",
     ),
 }

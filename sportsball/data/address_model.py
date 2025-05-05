@@ -9,6 +9,7 @@ from .weather_model import WeatherModel
 
 ADDRESS_LATITUDE_COLUMN: Literal["latitude"] = "latitude"
 ADDRESS_LONGITUDE_COLUMN: Literal["longitude"] = "longitude"
+ADDRESS_TIMEZONE_COLUMN: Literal["timezone"] = "timezone"
 
 
 class AddressModel(BaseModel):
@@ -25,5 +26,9 @@ class AddressModel(BaseModel):
         ..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL}
     )
     weather: WeatherModel | None
-    timezone: str = Field(..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL})
+    timezone: str = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL},
+        alias=ADDRESS_TIMEZONE_COLUMN,
+    )
     country: str = Field(..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL})

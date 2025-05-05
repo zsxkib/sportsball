@@ -52,7 +52,7 @@ TEAM_GOAL_ASSISTS_COLUMN: Literal["goal_assists"] = "goal_assists"
 def _calculate_kicks(data: dict[str, Any]) -> int | None:
     kicks = 0
     found_kicks = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_kicks = player.kicks
         if player_kicks is None:
             continue
@@ -66,7 +66,7 @@ def _calculate_kicks(data: dict[str, Any]) -> int | None:
 def _calculate_field_goals(data: dict[str, Any]) -> int | None:
     field_goals = 0
     found_field_goals = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_field_goals = player.field_goals
         if player_field_goals is None:
             continue
@@ -80,7 +80,7 @@ def _calculate_field_goals(data: dict[str, Any]) -> int | None:
 def _calculate_field_goals_attempted(data: dict[str, Any]) -> int | None:
     field_goals_attempted = 0
     found_field_goals_attempted = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_field_goals_attempted = player.field_goals_attempted
         if player_field_goals_attempted is None:
             continue
@@ -94,7 +94,7 @@ def _calculate_field_goals_attempted(data: dict[str, Any]) -> int | None:
 def _calculate_offensive_rebounds(data: dict[str, Any]) -> int | None:
     offensive_rebounds = 0
     found_offensive_rebounds = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_offensive_rebounds = player.offensive_rebounds
         if player_offensive_rebounds is None:
             continue
@@ -108,7 +108,7 @@ def _calculate_offensive_rebounds(data: dict[str, Any]) -> int | None:
 def _calculate_assists(data: dict[str, Any]) -> int | None:
     assists = 0
     found_assists = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_assists = player.assists
         if player_assists is None:
             continue
@@ -122,7 +122,7 @@ def _calculate_assists(data: dict[str, Any]) -> int | None:
 def _calculate_turnovers(data: dict[str, Any]) -> int | None:
     turnovers = 0
     found_turnovers = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_turnovers = player.turnovers
         if player_turnovers is None:
             continue
@@ -136,7 +136,7 @@ def _calculate_turnovers(data: dict[str, Any]) -> int | None:
 def _calculate_marks(data: dict[str, Any]) -> int | None:
     marks = 0
     found_marks = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_marks = player.marks
         if player_marks is None:
             continue
@@ -150,7 +150,7 @@ def _calculate_marks(data: dict[str, Any]) -> int | None:
 def _calculate_handballs(data: dict[str, Any]) -> int | None:
     handballs = 0
     found_handballs = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_handballs = player.handballs
         if player_handballs is None:
             continue
@@ -164,7 +164,7 @@ def _calculate_handballs(data: dict[str, Any]) -> int | None:
 def _calculate_disposals(data: dict[str, Any]) -> int | None:
     disposals = 0
     found_disposals = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_disposals = player.disposals
         if player_disposals is None:
             continue
@@ -178,7 +178,7 @@ def _calculate_disposals(data: dict[str, Any]) -> int | None:
 def _calculate_goals(data: dict[str, Any]) -> int | None:
     goals = 0
     found_goals = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_goals = player.goals
         if player_goals is None:
             continue
@@ -192,7 +192,7 @@ def _calculate_goals(data: dict[str, Any]) -> int | None:
 def _calculate_behinds(data: dict[str, Any]) -> int | None:
     behinds = 0
     found_behinds = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_behinds = player.behinds
         if player_behinds is None:
             continue
@@ -206,7 +206,7 @@ def _calculate_behinds(data: dict[str, Any]) -> int | None:
 def _calculate_hit_outs(data: dict[str, Any]) -> int | None:
     hit_outs = 0
     found_hit_outs = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_hit_outs = player.hit_outs
         if player_hit_outs is None:
             continue
@@ -220,7 +220,7 @@ def _calculate_hit_outs(data: dict[str, Any]) -> int | None:
 def _calculate_tackles(data: dict[str, Any]) -> int | None:
     tackles = 0
     found_tackles = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_tackles = player.tackles
         if player_tackles is None:
             continue
@@ -234,7 +234,7 @@ def _calculate_tackles(data: dict[str, Any]) -> int | None:
 def _calculate_rebounds(data: dict[str, Any]) -> int | None:
     rebounds = 0
     found_rebounds = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_rebounds = player.rebounds
         if player_rebounds is None:
             continue
@@ -248,7 +248,7 @@ def _calculate_rebounds(data: dict[str, Any]) -> int | None:
 def _calculate_insides(data: dict[str, Any]) -> int | None:
     insides = 0
     found_insides = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_insides = player.insides
         if player_insides is None:
             continue
@@ -262,7 +262,7 @@ def _calculate_insides(data: dict[str, Any]) -> int | None:
 def _calculate_clearances(data: dict[str, Any]) -> int | None:
     clearances = 0
     found_clearances = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_clearances = player.clearances
         if player_clearances is None:
             continue
@@ -276,7 +276,7 @@ def _calculate_clearances(data: dict[str, Any]) -> int | None:
 def _calculate_clangers(data: dict[str, Any]) -> int | None:
     clangers = 0
     found_clangers = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_clangers = player.clangers
         if player_clangers is None:
             continue
@@ -290,7 +290,7 @@ def _calculate_clangers(data: dict[str, Any]) -> int | None:
 def _calculate_free_kicks_for(data: dict[str, Any]) -> int | None:
     free_kicks_for = 0
     found_free_kicks_for = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_free_kicks_for = player.free_kicks_for
         if player_free_kicks_for is None:
             continue
@@ -304,7 +304,7 @@ def _calculate_free_kicks_for(data: dict[str, Any]) -> int | None:
 def _calculate_free_kicks_against(data: dict[str, Any]) -> int | None:
     free_kicks_against = 0
     found_free_kicks_against = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_free_kicks_against = player.free_kicks_against
         if player_free_kicks_against is None:
             continue
@@ -318,7 +318,7 @@ def _calculate_free_kicks_against(data: dict[str, Any]) -> int | None:
 def _calculate_brownlow_votes(data: dict[str, Any]) -> int | None:
     brownlow_votes = 0
     found_brownlow_votes = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_brownlow_votes = player.brownlow_votes
         if player_brownlow_votes is None:
             continue
@@ -332,7 +332,7 @@ def _calculate_brownlow_votes(data: dict[str, Any]) -> int | None:
 def _calculate_contested_possessions(data: dict[str, Any]) -> int | None:
     contested_possessions = 0
     found_contested_possessions = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_contested_possessions = player.contested_possessions
         if player_contested_possessions is None:
             continue
@@ -346,7 +346,7 @@ def _calculate_contested_possessions(data: dict[str, Any]) -> int | None:
 def _calculate_uncontested_possessions(data: dict[str, Any]) -> int | None:
     uncontested_possessions = 0
     found_uncontested_possessions = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_uncontested_possessions = player.uncontested_possessions
         if player_uncontested_possessions is None:
             continue
@@ -360,7 +360,7 @@ def _calculate_uncontested_possessions(data: dict[str, Any]) -> int | None:
 def _calculate_contested_marks(data: dict[str, Any]) -> int | None:
     contested_marks = 0
     found_contested_marks = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_contested_marks = player.contested_marks
         if player_contested_marks is None:
             continue
@@ -374,7 +374,7 @@ def _calculate_contested_marks(data: dict[str, Any]) -> int | None:
 def _calculate_marks_inside(data: dict[str, Any]) -> int | None:
     marks_inside = 0
     found_marks_inside = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_marks_inside = player.marks_inside
         if player_marks_inside is None:
             continue
@@ -388,7 +388,7 @@ def _calculate_marks_inside(data: dict[str, Any]) -> int | None:
 def _calculate_one_percenters(data: dict[str, Any]) -> int | None:
     one_percenters = 0
     found_one_percenters = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_one_percenters = player.one_percenters
         if player_one_percenters is None:
             continue
@@ -402,7 +402,7 @@ def _calculate_one_percenters(data: dict[str, Any]) -> int | None:
 def _calculate_bounces(data: dict[str, Any]) -> int | None:
     bounces = 0
     found_bounces = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_bounces = player.bounces
         if player_bounces is None:
             continue
@@ -416,7 +416,7 @@ def _calculate_bounces(data: dict[str, Any]) -> int | None:
 def _calculate_goal_assists(data: dict[str, Any]) -> int | None:
     goal_assists = 0
     found_goal_assists = False
-    for player in data[PLAYER_COLUMN_PREFIX]:
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
         player_goal_assists = player.goal_assists
         if player_goal_assists is None:
             continue
@@ -580,7 +580,7 @@ class TeamModel(BaseModel):
         alias=TEAM_BOUNCES_COLUMN,
     )
     goal_assists: int | None = Field(
-        default_factory=_calculate_bounces,
+        default_factory=_calculate_goal_assists,
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=TEAM_GOAL_ASSISTS_COLUMN,
     )

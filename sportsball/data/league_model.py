@@ -9,10 +9,12 @@ import tqdm
 from flatten_json import flatten  # type: ignore
 from pydantic import BaseModel
 
+from .address_model import ADDRESS_TIMEZONE_COLUMN
 from .field_type import FieldType
-from .game_model import GAME_DT_COLUMN, GameModel
+from .game_model import GAME_DT_COLUMN, VENUE_COLUMN_PREFIX, GameModel
 from .league import League
 from .model import Model
+from .venue_model import VENUE_ADDRESS_COLUMN
 
 LEAGUE_COLUMN = "league"
 DELIMITER = "/"
@@ -25,6 +27,37 @@ def _clear_column_list(df: pd.DataFrame) -> pd.DataFrame:
     mask = df.apply(has_list)
     cols = df.columns[mask].tolist()
     return df.drop(columns=cols)
+
+
+def _normalize_tz(df: pd.DataFrame) -> pd.DataFrame:
+    tz_column = DELIMITER.join(
+        [VENUE_COLUMN_PREFIX, VENUE_ADDRESS_COLUMN, ADDRESS_TIMEZONE_COLUMN]
+    )
+    if tz_column not in df.columns.values.tolist():
+        return df
+
+    tqdm.tqdm.pandas(desc="Timezone Conversions")
+
+    # Check each row to see if they have the correct timezone
+    def apply_tz(row: pd.Series) -> pd.Series:
+        if tz_column not in row:
+            return row
+        tz = row[tz_column]
+        if pd.isnull(tz):
+            return row
+
+        datetimes = {
+            col: val for col, val in row.items() if isinstance(val, pd.Timestamp)
+        }
+        for col, dt in datetimes.items():
+            if dt.tz is None:
+                row[col] = dt.tz_localize(tz, ambiguous=True)
+            elif str(dt.tz) != str(tz):
+                row[col] = dt.tz_convert(tz)
+
+        return row
+
+    return df.apply(apply_tz, axis=1)
 
 
 class LeagueModel(Model):
@@ -143,6 +176,9 @@ class LeagueModel(Model):
 
             for categorical_column in df.attrs[str(FieldType.CATEGORICAL)]:
                 df[categorical_column] = df[categorical_column].astype("category")
+
+            df = _normalize_tz(df)
+
             if GAME_DT_COLUMN in df.columns.values:
                 df[GAME_DT_COLUMN] = pd.to_datetime(df[GAME_DT_COLUMN], utc=True)
                 df = df.sort_values(
