@@ -13586,6 +13586,26 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="2510",
         country="Canada",
     ),
+    "Memorial Gym, Moscow, Idaho": SportsballGeocodeTuple(
+        city="Moscow",
+        state="ID",
+        postal="",
+        lat=46.7265,
+        lng=-117.014,
+        housenumber="1001",
+        country="USA",
+    ),
+    "Grand Cayman": SportsballGeocodeTuple(
+        city="Grand Cayman",
+        state="",
+        postal="",
+        lat=19.33,
+        lng=-81.24,
+        housenumber="",
+        country="UK",
+    ),
+    "Coliseum, Cincinnati, Ohio": PAYCOR_STADIUM,
+    "Riverfront Coliseum, Cincinnati, Ohio": PAYCOR_STADIUM,
 }
 
 
