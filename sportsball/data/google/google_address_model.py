@@ -13654,6 +13654,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Seabury Center, Berea, Ohio": SportsballGeocodeTuple(
+        city="Berea",
+        state="OH",
+        postal="40404",
+        lat=37.5742278,
+        lng=-84.2930863,
+        housenumber="313",
+        country="USA",
+    ),
 }
 
 
