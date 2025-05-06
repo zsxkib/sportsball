@@ -13663,6 +13663,24 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="313",
         country="USA",
     ),
+    "Anchorage, Alaska": SportsballGeocodeTuple(
+        city="Anchorage",
+        state="AL",
+        postal="",
+        lat=61.216667,
+        lng=-149.893611,
+        housenumber="",
+        country="USA",
+    ),
+    "Mott Gymn, San Luis Obispo, California": SportsballGeocodeTuple(
+        city="San Luis Obispo",
+        state="CA",
+        postal="",
+        lat=35.29886,
+        lng=-120.65855,
+        housenumber="1",
+        country="USA",
+    ),
 }
 
 
