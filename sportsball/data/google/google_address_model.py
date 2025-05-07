@@ -2566,6 +2566,15 @@ COLISEO_RUBEN_RODRIGUEZ = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
+DONALD_L_TUCKER_CENTER = SportsballGeocodeTuple(
+    city="Tallahassee",
+    state="FL",
+    postal="32301-1619",
+    lat=30.437842,
+    lng=-84.28669,
+    housenumber="505",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5277,15 +5286,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="2240",
         country="USA",
     ),
-    "Donald L. Tucker Center, Tallahassee, Florida": SportsballGeocodeTuple(
-        city="Tallahassee",
-        state="FL",
-        postal="32301-1619",
-        lat=30.437842,
-        lng=-84.28669,
-        housenumber="505",
-        country="USA",
-    ),
+    "Donald L. Tucker Center, Tallahassee, Florida": DONALD_L_TUCKER_CENTER,
     "John Paul Jones Arena, Charlottesville, Virginia": SportsballGeocodeTuple(
         city="Charlottesville",
         state="VA",
@@ -13681,6 +13682,25 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1",
         country="USA",
     ),
+    "Beard–Eaves–Memorial Coliseum, Auburn, Alabama": SportsballGeocodeTuple(
+        city="Auburn",
+        state="AL",
+        postal="",
+        lat=32.600278,
+        lng=-85.492222,
+        housenumber="101",
+        country="USA",
+    ),
+    "Colonial Hall at The Greenbrier, White Sulphur Springs, West Virginia": SportsballGeocodeTuple(
+        city="White Sulphur Springs",
+        state="WV",
+        postal="36832",
+        lat=37.7854,
+        lng=-80.3083,
+        housenumber="",
+        country="USA",
+    ),
+    "Tallahassee-Leon County Civic Center, Tallahassee, Florida": DONALD_L_TUCKER_CENTER,
 }
 
 
