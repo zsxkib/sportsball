@@ -2575,6 +2575,15 @@ DONALD_L_TUCKER_CENTER = SportsballGeocodeTuple(
     housenumber="505",
     country="USA",
 )
+BEARD_EAVES_MEMORIAL_COLISEUM = SportsballGeocodeTuple(
+    city="Auburn",
+    state="AL",
+    postal="",
+    lat=32.600278,
+    lng=-85.492222,
+    housenumber="101",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -13682,15 +13691,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1",
         country="USA",
     ),
-    "Beard–Eaves–Memorial Coliseum, Auburn, Alabama": SportsballGeocodeTuple(
-        city="Auburn",
-        state="AL",
-        postal="",
-        lat=32.600278,
-        lng=-85.492222,
-        housenumber="101",
-        country="USA",
-    ),
+    "Beard–Eaves–Memorial Coliseum, Auburn, Alabama": BEARD_EAVES_MEMORIAL_COLISEUM,
     "Colonial Hall at The Greenbrier, White Sulphur Springs, West Virginia": SportsballGeocodeTuple(
         city="White Sulphur Springs",
         state="WV",
@@ -13701,6 +13702,16 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Tallahassee-Leon County Civic Center, Tallahassee, Florida": DONALD_L_TUCKER_CENTER,
+    "CFG Bank Arena, Baltimore, Maryland": SportsballGeocodeTuple(
+        city="Baltimore",
+        state="MD",
+        postal="",
+        lat=39.288611,
+        lng=-76.618889,
+        housenumber="201",
+        country="USA",
+    ),
+    "BeardâEavesâMemorial Coliseum, Auburn, Alabama": BEARD_EAVES_MEMORIAL_COLISEUM,
 }
 
 
