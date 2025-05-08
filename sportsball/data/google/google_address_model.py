@@ -13721,6 +13721,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1201",
         country="USA",
     ),
+    "Ninja Stadium": BLUNDSTONE_ARENA,
 }
 
 
