@@ -13712,6 +13712,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "BeardâEavesâMemorial Coliseum, Auburn, Alabama": BEARD_EAVES_MEMORIAL_COLISEUM,
+    "Vibrant Arena at The MARK, Moline, Illinois": SportsballGeocodeTuple(
+        city="Moline",
+        state="IL",
+        postal="61265",
+        lat=41.507837,
+        lng=-90.520437,
+        housenumber="1201",
+        country="USA",
+    ),
 }
 
 
