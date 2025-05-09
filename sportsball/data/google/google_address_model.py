@@ -13749,6 +13749,24 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Tahoe Blue Event Center, Stateline, Nevada": SportsballGeocodeTuple(
+        city="Stateline",
+        state="NV",
+        postal="89449",
+        lat=38.96275,
+        lng=-119.938472,
+        housenumber="75",
+        country="USA",
+    ),
+    "Greenville, Mississippi": SportsballGeocodeTuple(
+        city="Greenville",
+        state="MS",
+        postal="",
+        lat=33.384722,
+        lng=-91.048333,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
