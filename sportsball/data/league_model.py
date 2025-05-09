@@ -57,7 +57,9 @@ def _normalize_tz(df: pd.DataFrame) -> pd.DataFrame:
             if isinstance(dt, datetime.datetime):
                 dt = pd.to_datetime(dt)
             if dt.tz is None:
-                row[col] = dt.tz_localize(tz, ambiguous=True)
+                row[col] = dt.tz_localize(
+                    tz, ambiguous=True, nonexistent="shift_forward"
+                )
             elif str(dt.tz) != str(tz):
                 row[col] = dt.tz_convert(tz)
 
@@ -200,6 +202,7 @@ class LeagueModel(Model):
                     ascending=True,
                 )
             df = _clear_column_list(df)
+            df = df.reset_index()
 
             df = df[sorted(df.columns.values.tolist())]
 
