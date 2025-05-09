@@ -2,6 +2,7 @@
 
 from ..address_model import AddressModel
 from .combined_weather_model import create_combined_weather_model
+from .null_check import is_null
 
 
 def create_combined_address_model(
@@ -16,16 +17,16 @@ def create_combined_address_model(
     weather_models = []
     for address_model in address_models:
         address_model_latitude = address_model.latitude
-        if address_model_latitude is not None:
+        if not is_null(address_model_latitude):
             latitude = address_model_latitude
         address_model_longitude = address_model.longitude
-        if address_model_longitude is not None:
+        if not is_null(address_model_longitude):
             longitude = address_model_longitude
         address_model_housenumber = address_model.housenumber
-        if address_model_housenumber is not None:
+        if not is_null(address_model_housenumber):
             housenumber = address_model_housenumber
         address_model_weather = address_model.weather
-        if address_model_weather is not None:
+        if not is_null(address_model_weather):
             weather_models.append(address_model_weather)
     return AddressModel(
         city=address_models[0].city,
@@ -34,7 +35,7 @@ def create_combined_address_model(
         latitude=latitude,
         longitude=longitude,
         housenumber=housenumber,
-        weather=create_combined_weather_model(weather_models),  # pyright: ignore
+        weather=create_combined_weather_model(weather_models),  # type: ignore
         timezone=address_models[0].timezone,
         country=address_models[0].country,
     )

@@ -24,6 +24,11 @@ def parse_args() -> argparse.Namespace:
         required=False,
     )
     parser.add_argument(
+        "--leaguemodel",
+        required=False,
+        help="The league model to use.",
+    )
+    parser.add_argument(
         "file",
         default=STDOUT_FILE,
         help="The file to write the output to (- if to stdout).",

@@ -376,7 +376,9 @@ NFL_PLAYER_IDENTITY_MAP: dict[str, str] = {}
 class NFLCombinedLeagueModel(CombinedLeagueModel):
     """NFL combined implementation of the league model."""
 
-    def __init__(self, session: requests_cache.CachedSession) -> None:
+    def __init__(
+        self, session: requests_cache.CachedSession, league_filter: str | None
+    ) -> None:
         super().__init__(
             session,
             League.NFL,
@@ -386,7 +388,12 @@ class NFLCombinedLeagueModel(CombinedLeagueModel):
                 NFLAusSportsBettingLeagueModel(session, position=2),
                 NFLOddsPortalLeagueModel(session, position=3),
             ],
+            league_filter,
         )
+
+    @classmethod
+    def name(cls) -> str:
+        return "nfl-combined-league-model"
 
     @classmethod
     def team_identity_map(cls) -> dict[str, str]:

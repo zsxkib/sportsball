@@ -26,8 +26,13 @@ class CombinedLeagueModel(LeagueModel):
         session: requests_cache.CachedSession,
         league: League,
         league_models: list[LeagueModel],
+        league_filter: str | None,
     ) -> None:
         super().__init__(league, session)
+        if league_filter is not None:
+            league_models = [x for x in league_models if x.name() == league_filter]
+        if not league_models:
+            raise ValueError("No league models to run")
         self._league_models = league_models
 
     @classmethod

@@ -8,6 +8,7 @@ from typing import Iterator
 
 import requests_cache
 from bs4 import BeautifulSoup
+from dateutil.parser import parse
 from playwright.sync_api import sync_playwright
 
 from ....playwright import ensure_install
@@ -73,6 +74,11 @@ def _parse_game_info(
             "time", {"class": re.compile(".*match-list-alt__header-time.*")}
         ):
             dt = datetime.datetime.fromtimestamp(float(time.get("data-date")) / 1000.0)
+        for span_tz in div.find_all(
+            "span", {"class": re.compile(".*match-list-alt__header-timezone.*")}
+        ):
+            tz_text = span_tz.get_text().strip().replace("(", "").replace(")", "")
+            dt = parse(" ".join([str(dt), tz_text]))
         venue_name: str | None = None
         for span in div.find_all(
             "span", {"class": re.compile(".*match-list-alt__header-venue.*")}
@@ -94,6 +100,10 @@ class AFLAFLLeagueModel(LeagueModel):
         self, session: requests_cache.CachedSession, position: int | None = None
     ) -> None:
         super().__init__(League.AFL, session)
+
+    @classmethod
+    def name(cls) -> str:
+        return "afl-afl-league-model"
 
     @property
     def _ladder(self) -> list[str]:

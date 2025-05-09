@@ -21,7 +21,7 @@ def main() -> None:
     logging.info("--- sportsball %s ---", __VERSION__)
 
     ball = SportsBall()
-    league = ball.league(league_from_str(args.league))
+    league = ball.league(league_from_str(args.league), args.leaguemodel)
     df = league.to_frame()
     handle = io.BytesIO()
     df.to_parquet(handle, compression="gzip")

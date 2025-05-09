@@ -11,5 +11,5 @@ class TestSportsball(unittest.TestCase):
         self.sportsball = SportsBall()
 
     def test_league(self):
-        league = self.sportsball.league(League.NFL)
+        league = self.sportsball.league(League.NFL, None)
         self.assertIsNotNone(league)

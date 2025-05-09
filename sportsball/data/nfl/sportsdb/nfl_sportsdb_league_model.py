@@ -13,3 +13,7 @@ class NFLSportsDBLeagueModel(SportsDBLeagueModel):
         self, session: requests_cache.CachedSession, position: int | None = None
     ) -> None:
         super().__init__(session, "4391", League.NFL, position=position)
+
+    @classmethod
+    def name(cls) -> str:
+        return "nfl-sportsdb-league-model"

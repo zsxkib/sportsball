@@ -1,6 +1,7 @@
 """The prototype class defining how to interface to the league."""
 
 # pylint: disable=line-too-long
+import datetime
 from typing import Iterator, get_args, get_origin
 
 import pandas as pd
@@ -35,6 +36,7 @@ def _normalize_tz(df: pd.DataFrame) -> pd.DataFrame:
     )
     if tz_column not in df.columns.values.tolist():
         return df
+    df = df.dropna(subset=tz_column)
 
     tqdm.tqdm.pandas(desc="Timezone Conversions")
 
@@ -46,10 +48,14 @@ def _normalize_tz(df: pd.DataFrame) -> pd.DataFrame:
         if pd.isnull(tz):
             return row
 
-        datetimes = {
-            col: val for col, val in row.items() if isinstance(val, pd.Timestamp)
+        datetime_cols = {
+            col for col, val in row.items() if isinstance(val, pd.Timestamp)
         }
-        for col, dt in datetimes.items():
+        datetime_cols.add(GAME_DT_COLUMN)
+        for col in datetime_cols:
+            dt = row[col]  # type: ignore
+            if isinstance(dt, datetime.datetime):
+                dt = pd.to_datetime(dt)
             if dt.tz is None:
                 row[col] = dt.tz_localize(tz, ambiguous=True)
             elif str(dt.tz) != str(tz):
@@ -57,7 +63,7 @@ def _normalize_tz(df: pd.DataFrame) -> pd.DataFrame:
 
         return row
 
-    return df.apply(apply_tz, axis=1)
+    return df.progress_apply(apply_tz, axis=1)  # type: ignore
 
 
 class LeagueModel(Model):
@@ -75,6 +81,11 @@ class LeagueModel(Model):
         self._league = league
         self._df = None
         self.position = position
+
+    @classmethod
+    def name(cls) -> str:
+        """The name of the league model."""
+        raise NotImplementedError("name is not implemented by parent class.")
 
     @property
     def games(self) -> Iterator[GameModel]:
@@ -180,7 +191,10 @@ class LeagueModel(Model):
             df = _normalize_tz(df)
 
             if GAME_DT_COLUMN in df.columns.values:
-                df[GAME_DT_COLUMN] = pd.to_datetime(df[GAME_DT_COLUMN], utc=True)
+                # df[GAME_DT_COLUMN] = pd.to_datetime(df[GAME_DT_COLUMN])
+                # naive_times = df[df[GAME_DT_COLUMN].dt.tz.isna()]
+                # print("naive_times:")
+                # print(naive_times)
                 df = df.sort_values(
                     by=GAME_DT_COLUMN,
                     ascending=True,

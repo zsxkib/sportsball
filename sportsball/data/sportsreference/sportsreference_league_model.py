@@ -72,6 +72,10 @@ class SportsReferenceLeagueModel(LeagueModel):
         super().__init__(league, session, position=position)
         self._base_url = base_url
 
+    @classmethod
+    def name(cls) -> str:
+        return "sportsreference-league-model"
+
     def _produce_games(
         self, soup: BeautifulSoup, pbar: tqdm.tqdm, dt: datetime.datetime, url: str
     ) -> Iterator[GameModel]:

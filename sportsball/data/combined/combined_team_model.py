@@ -10,6 +10,7 @@ from ..player_model import PlayerModel
 from ..social_model import SocialModel
 from ..team_model import TeamModel
 from .combined_player_model import create_combined_player_model
+from .null_check import is_null
 
 REGEX = re.compile("[^a-zA-Z]")
 
@@ -54,10 +55,10 @@ def create_combined_team_model(
             key = f"{odds_model.bookie.identifier}-{odds_model.odds}"
             odds[key] = odds.get(key, []) + [odds_model]
         team_model_points = team_model.points
-        if team_model_points is not None:
+        if not is_null(team_model_points):
             points = team_model_points
         team_model_ladder_rank = team_model.ladder_rank
-        if team_model_ladder_rank is not None:
+        if not is_null(team_model_ladder_rank):
             ladder_rank = team_model_ladder_rank
         for news_model in team_model.news:
             news_key = "-".join(
@@ -75,7 +76,7 @@ def create_combined_team_model(
             )
             social[social_key] = social_model
         team_model_field_goals = team_model.field_goals
-        if team_model_field_goals is not None:
+        if not is_null(team_model_field_goals):
             field_goals = team_model_field_goals
 
     return TeamModel(

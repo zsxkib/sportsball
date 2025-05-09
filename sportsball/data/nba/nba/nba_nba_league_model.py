@@ -74,6 +74,10 @@ class NBANBALeagueModel(LeagueModel):
         self._league_id = "00"
         NBAHTTP.set_session(session)
 
+    @classmethod
+    def name(cls) -> str:
+        return "nba-nba-league-model"
+
     def _produce_games(
         self,
         all_games: pd.DataFrame,

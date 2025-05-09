@@ -21,3 +21,7 @@ class NBASportsReferenceLeagueModel(SportsReferenceLeagueModel):
             "https://www.basketball-reference.com/boxscores/",
             position=position,
         )
+
+    @classmethod
+    def name(cls) -> str:
+        return "nba-sportsreference-league-model"

@@ -39,6 +39,10 @@ class AusSportsBettingLeagueModel(LeagueModel):
                     f"League {league} not supported by aus sports betting."
                 )
 
+    @classmethod
+    def name(cls) -> str:
+        return "aussportsbetting-league-model"
+
     def _row_to_game(self, row: Any) -> GameModel | None:
         current_cell_idx = 0
         date_cell = str(row[0].value)

@@ -17,3 +17,7 @@ class NFLESPNLeagueModel(ESPNLeagueModel):
         self, session: requests_cache.CachedSession, position: int | None = None
     ) -> None:
         super().__init__(_SEASON_URL, League.NFL, session, position=position)
+
+    @classmethod
+    def name(cls) -> str:
+        return "nfl-espn-league-model"

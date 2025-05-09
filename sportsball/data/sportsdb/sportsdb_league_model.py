@@ -29,6 +29,10 @@ class SportsDBLeagueModel(LeagueModel):
         super().__init__(league, session, position=position)
         self._league_id = league_id
 
+    @classmethod
+    def name(cls) -> str:
+        return "sportsdb-league-model"
+
     def _produce_games(
         self,
         round_str: str,

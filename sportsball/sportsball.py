@@ -31,19 +31,19 @@ class SportsBall:
         simplefilter(action="ignore", category=pd.errors.PerformanceWarning)
         load_dotenv()
 
-    def league(self, league: League) -> LeagueModel:
+    def league(self, league: League, league_filter: str | None) -> LeagueModel:
         """Provide a league model for the given league."""
         if league not in self._leagues:
             if league == League.NFL:
-                self._leagues[league] = NFLLeagueModel(self._session)
+                self._leagues[league] = NFLLeagueModel(self._session, league_filter)
             elif league == League.AFL:
-                self._leagues[league] = AFLLeagueModel(self._session)
+                self._leagues[league] = AFLLeagueModel(self._session, league_filter)
             elif league == League.NBA:
-                self._leagues[league] = NBALeagueModel(self._session)
+                self._leagues[league] = NBALeagueModel(self._session, league_filter)
             elif league == League.NCAAF:
-                self._leagues[league] = NCAAFLeagueModel(self._session)
+                self._leagues[league] = NCAAFLeagueModel(self._session, league_filter)
             elif league == League.NCAAB:
-                self._leagues[league] = NCAABLeagueModel(self._session)
+                self._leagues[league] = NCAABLeagueModel(self._session, league_filter)
             else:
                 raise ValueError(f"Unrecognised league: {league}")
         return self._leagues[league]

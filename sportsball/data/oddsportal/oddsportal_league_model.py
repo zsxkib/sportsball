@@ -80,6 +80,10 @@ def _process_results_pages(
 class OddsPortalLeagueModel(LeagueModel):
     """Odds Portal implementation of the league model."""
 
+    @classmethod
+    def name(cls) -> str:
+        return "oddsportal-league-model"
+
     @property
     def _path(self) -> str:
         match self.league:

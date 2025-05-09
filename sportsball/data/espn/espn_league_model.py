@@ -38,6 +38,10 @@ class ESPNLeagueModel(LeagueModel):
         super().__init__(league, session, position=position)
         self._start_url = start_url
 
+    @classmethod
+    def name(cls) -> str:
+        return "espn-league-model"
+
     def _produce_games(
         self,
         week: dict[str, Any],

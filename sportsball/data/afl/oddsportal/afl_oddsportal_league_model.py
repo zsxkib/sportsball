@@ -15,3 +15,7 @@ class AFLOddsPortalLeagueModel(OddsPortalLeagueModel):
         self, session: requests_cache.CachedSession, position: int | None = None
     ) -> None:
         super().__init__(League.AFL, session, position=position)
+
+    @classmethod
+    def name(cls) -> str:
+        return "afl-oddsportal-league-model"

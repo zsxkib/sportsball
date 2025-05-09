@@ -2,6 +2,7 @@
 
 # pylint: disable=too-many-locals,too-many-branches,too-many-statements,duplicate-code
 from ..player_model import PlayerModel
+from .null_check import is_null
 
 
 def create_combined_player_model(
@@ -42,100 +43,100 @@ def create_combined_player_model(
     percentage_played = None
     for player_model in player_models:
         player_model_jersey = player_model.jersey
-        if player_model_jersey is not None:
+        if not is_null(player_model_jersey):
             jersey = player_model_jersey
         player_model_kicks = player_model.kicks
-        if player_model_kicks is not None:
+        if not is_null(player_model_kicks):
             kicks = player_model_kicks
         player_model_fumbles = player_model.fumbles
-        if player_model_fumbles is not None:
+        if not is_null(player_model_fumbles):
             fumbles = player_model_fumbles
         player_model_fumbles_lost = player_model.fumbles_lost
-        if player_model_fumbles_lost is not None:
+        if not is_null(player_model_fumbles_lost):
             fumbles_lost = player_model_fumbles_lost
         player_model_field_goals = player_model.field_goals
-        if player_model_field_goals is not None:
+        if not is_null(player_model_field_goals):
             field_goals = player_model_field_goals
         player_model_field_goals_attempted = player_model.field_goals_attempted
-        if player_model_field_goals_attempted is not None:
+        if not is_null(player_model_field_goals_attempted):
             field_goals_attempted = player_model_field_goals_attempted
         player_model_offensive_rebounds = player_model.offensive_rebounds
-        if player_model_offensive_rebounds is not None:
+        if not is_null(player_model_offensive_rebounds):
             offensive_rebounds = player_model_offensive_rebounds
         player_model_assists = player_model.assists
-        if player_model_assists is not None:
+        if not is_null(player_model_assists):
             assists = player_model_assists
         player_model_turnovers = player_model.turnovers
-        if player_model_turnovers is not None:
+        if not is_null(player_model_turnovers):
             turnovers = player_model_turnovers
         player_model_name = player_model.name
-        if player_model_name is not None:
+        if not is_null(player_model_name):
             name = player_model_name
         player_model_marks = player_model.marks
-        if player_model_marks is not None:
+        if not is_null(player_model_marks):
             marks = player_model_marks
         player_model_handballs = player_model.handballs
-        if player_model_handballs is not None:
+        if not is_null(player_model_handballs):
             handballs = player_model_handballs
         player_model_disposals = player_model.disposals
-        if player_model_disposals is not None:
+        if not is_null(player_model_disposals):
             disposals = player_model_disposals
         player_model_goals = player_model.goals
-        if player_model_goals is not None:
+        if not is_null(player_model_goals):
             goals = player_model_goals
         player_model_behinds = player_model.behinds
-        if player_model_behinds is not None:
+        if not is_null(player_model_behinds):
             behinds = player_model_behinds
         player_model_hit_outs = player_model.hit_outs
-        if player_model_hit_outs is not None:
+        if not is_null(player_model_hit_outs):
             hit_outs = player_model_hit_outs
         player_model_tackles = player_model.tackles
-        if player_model_tackles is not None:
+        if not is_null(player_model_tackles):
             tackles = player_model_tackles
         player_model_rebounds = player_model.rebounds
-        if player_model_rebounds is not None:
+        if not is_null(player_model_rebounds):
             rebounds = player_model_rebounds
         player_model_insides = player_model.insides
-        if player_model_insides is not None:
+        if not is_null(player_model_insides):
             insides = player_model_insides
         player_model_clearances = player_model.clearances
-        if player_model_clearances is not None:
+        if not is_null(player_model_clearances):
             clearances = player_model_clearances
         player_model_clangers = player_model.clangers
-        if player_model_clangers is not None:
+        if not is_null(player_model_clangers):
             clangers = player_model_clangers
         player_model_free_kicks_for = player_model.free_kicks_for
-        if player_model_free_kicks_for is not None:
+        if not is_null(player_model_free_kicks_for):
             free_kicks_for = player_model_free_kicks_for
         player_model_free_kicks_against = player_model.free_kicks_against
-        if player_model_free_kicks_against is not None:
+        if not is_null(player_model_free_kicks_against):
             free_kicks_against = player_model_free_kicks_against
         player_model_brownlow_votes = player_model.brownlow_votes
-        if player_model_brownlow_votes is not None:
+        if not is_null(player_model_brownlow_votes):
             brownlow_votes = player_model_brownlow_votes
         player_model_contested_possessions = player_model.contested_possessions
-        if player_model_contested_possessions is not None:
+        if not is_null(player_model_contested_possessions):
             contested_possessions = player_model_contested_possessions
         player_model_uncontested_possessions = player_model.uncontested_possessions
-        if player_model_uncontested_possessions is not None:
+        if not is_null(player_model_uncontested_possessions):
             uncontested_possessions = player_model_uncontested_possessions
         player_model_contested_marks = player_model.contested_marks
-        if player_model_contested_marks is not None:
+        if not is_null(player_model_contested_marks):
             contested_marks = player_model_contested_marks
         player_model_marks_inside = player_model.marks_inside
-        if player_model_marks_inside is not None:
+        if not is_null(player_model_marks_inside):
             marks_inside = player_model_marks_inside
         player_model_one_percenters = player_model.one_percenters
-        if player_model_one_percenters is not None:
+        if not is_null(player_model_one_percenters):
             one_percenters = player_model_one_percenters
         player_model_bounces = player_model.bounces
-        if player_model_bounces is not None:
+        if not is_null(player_model_bounces):
             bounces = player_model_bounces
         player_model_goal_assists = player_model.goal_assists
-        if player_model_goal_assists is not None:
+        if not is_null(player_model_goal_assists):
             goal_assists = player_model_goal_assists
         player_model_percentage_played = player_model.percentage_played
-        if player_model_percentage_played is not None:
+        if not is_null(player_model_percentage_played):
             percentage_played = player_model_percentage_played
     if name is None:
         raise ValueError("name is null.")

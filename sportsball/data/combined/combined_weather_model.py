@@ -1,6 +1,7 @@
 """Combined weather model."""
 
 from ..weather_model import WeatherModel
+from .null_check import is_null
 
 
 def create_combined_weather_model(
@@ -13,9 +14,9 @@ def create_combined_weather_model(
     relative_humidity = None
     for weather_model in weather_models:
         weather_model_temperature = weather_model.temperature
-        if weather_model_temperature is not None:
+        if not is_null(weather_model_temperature):
             temperature = weather_model_temperature
         weather_model_relative_humidity = weather_model.relative_humidity
-        if weather_model_relative_humidity is not None:
+        if not is_null(weather_model_relative_humidity):
             relative_humidity = weather_model_relative_humidity
     return WeatherModel(temperature=temperature, relative_humidity=relative_humidity)

@@ -47,6 +47,10 @@ class AFLAFLTablesLeagueModel(LeagueModel):
     ) -> None:
         super().__init__(League.AFL, session)
 
+    @classmethod
+    def name(cls) -> str:
+        return "afl-afltables-league-model"
+
     def _produce_games(
         self, season_url: str, season_type: SeasonType, pbar: tqdm.tqdm
     ) -> Iterator[GameModel]:

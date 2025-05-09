@@ -13722,6 +13722,33 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Ninja Stadium": BLUNDSTONE_ARENA,
+    "Summit Arena, Rapid City, South Dakota": SportsballGeocodeTuple(
+        city="Rapid City",
+        state="SD",
+        postal="",
+        lat=44.08854,
+        lng=-103.225816,
+        housenumber="444",
+        country="USA",
+    ),
+    "Charleston, West Virginia": SportsballGeocodeTuple(
+        city="Charleston",
+        state="WV",
+        postal="",
+        lat=38.349819,
+        lng=-81.632622,
+        housenumber="",
+        country="USA",
+    ),
+    "Shreveport, Louisiana": SportsballGeocodeTuple(
+        city="Shreveport",
+        state="LA",
+        postal="",
+        lat=32.463889,
+        lng=-93.794444,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 

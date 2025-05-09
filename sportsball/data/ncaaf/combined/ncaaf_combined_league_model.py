@@ -16,7 +16,9 @@ NCAAF_PLAYER_IDENTITY_MAP: dict[str, str] = {}
 class NCAAFCombinedLeagueModel(CombinedLeagueModel):
     """NCAAF combined implementation of the league model."""
 
-    def __init__(self, session: requests_cache.CachedSession) -> None:
+    def __init__(
+        self, session: requests_cache.CachedSession, league_filter: str | None
+    ) -> None:
         super().__init__(
             session,
             League.NCAAF,
@@ -24,6 +26,7 @@ class NCAAFCombinedLeagueModel(CombinedLeagueModel):
                 NCAAFESPNLeagueModel(session, position=0),
                 NCAAFOddsPortalLeagueModel(session, position=1),
             ],
+            league_filter,
         )
 
     @classmethod
@@ -37,3 +40,7 @@ class NCAAFCombinedLeagueModel(CombinedLeagueModel):
     @classmethod
     def player_identity_map(cls) -> dict[str, str]:
         return NCAAF_PLAYER_IDENTITY_MAP
+
+    @classmethod
+    def name(cls) -> str:
+        return "ncaaf-combined-league-model"

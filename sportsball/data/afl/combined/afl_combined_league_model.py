@@ -251,7 +251,9 @@ AFL_VENUE_IDENTITY_MAP = {
 class AFLCombinedLeagueModel(CombinedLeagueModel):
     """AFL combined implementation of the league model."""
 
-    def __init__(self, session: requests_cache.CachedSession) -> None:
+    def __init__(
+        self, session: requests_cache.CachedSession, league_filter: str | None
+    ) -> None:
         super().__init__(
             session,
             League.AFL,
@@ -262,6 +264,7 @@ class AFLCombinedLeagueModel(CombinedLeagueModel):
                 AFLOddsPortalLeagueModel(session, position=3),
                 AFLAFLLeagueModel(session, position=4),
             ],
+            league_filter,
         )
 
     @classmethod
@@ -271,3 +274,7 @@ class AFLCombinedLeagueModel(CombinedLeagueModel):
     @classmethod
     def venue_identity_map(cls) -> dict[str, str]:
         return AFL_VENUE_IDENTITY_MAP
+
+    @classmethod
+    def name(cls) -> str:
+        return "afl-combined-league-model"

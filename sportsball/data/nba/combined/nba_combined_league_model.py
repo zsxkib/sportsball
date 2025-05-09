@@ -891,7 +891,9 @@ NBA_PLAYER_IDENTITY_MAP: dict[str, str] = {}
 class NBACombinedLeagueModel(CombinedLeagueModel):
     """NBA combined implementation of the league model."""
 
-    def __init__(self, session: requests_cache.CachedSession) -> None:
+    def __init__(
+        self, session: requests_cache.CachedSession, league_filter: str | None
+    ) -> None:
         super().__init__(
             session,
             League.NBA,
@@ -902,6 +904,7 @@ class NBACombinedLeagueModel(CombinedLeagueModel):
                 NBASportsReferenceLeagueModel(session, position=3),
                 NBAOddsPortalLeagueModel(session, position=4),
             ],
+            league_filter,
         )
 
     @classmethod
@@ -915,3 +918,7 @@ class NBACombinedLeagueModel(CombinedLeagueModel):
     @classmethod
     def player_identity_map(cls) -> dict[str, str]:
         return NBA_PLAYER_IDENTITY_MAP
+
+    @classmethod
+    def name(cls) -> str:
+        return "nba-combined-league-model"

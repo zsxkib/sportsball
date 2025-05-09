@@ -1,6 +1,7 @@
 """Tests for the afltables game model class."""
 import unittest
 import os
+import datetime
 
 import requests_cache
 import requests_mock
@@ -38,3 +39,4 @@ class TestAFLTablesGameModel(unittest.TestCase):
                 season_type=None,
             )
             self.assertIsNotNone(game_model.teams[0].players[0].identifier)
+            self.assertEqual(game_model.dt, datetime.datetime(2025, 3, 30, 15, 10))

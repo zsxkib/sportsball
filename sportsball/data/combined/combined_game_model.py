@@ -1,6 +1,6 @@
 """Combined game model."""
 
-# pylint: disable=too-many-locals,line-too-long,too-many-arguments
+# pylint: disable=too-many-locals,line-too-long,too-many-arguments,too-many-branches
 import logging
 
 import requests
@@ -10,6 +10,7 @@ from ..team_model import TeamModel
 from ..venue_model import VenueModel
 from .combined_team_model import create_combined_team_model
 from .combined_venue_model import create_combined_venue_model
+from .null_check import is_null
 
 
 def _venue_models(
@@ -78,30 +79,34 @@ def create_combined_game_model(
     game_number = None
     postponed = None
     play_off = None
+    dt = game_models[0].dt
     for game_model in game_models:
+        game_model_dt = game_model.dt
+        if game_model_dt.tzinfo is not None and dt.tzinfo is None:
+            dt = game_model_dt
         game_model_attendance = game_model.attendance
-        if game_model_attendance is not None:
+        if not is_null(game_model_attendance):
             attendance = game_model_attendance
         game_model_end_dt = game_model.end_dt
-        if game_model_end_dt is not None:
+        if not is_null(game_model_end_dt):
             end_dt = game_model_end_dt
         game_model_year = game_model.year
-        if game_model_year is not None:
+        if not is_null(game_model_year):
             year = game_model_year
         game_model_season_type = game_model.season_type
-        if game_model_season_type is not None:
+        if not is_null(game_model_season_type):
             season_type = game_model_season_type
         game_model_week = game_model.week
-        if game_model_week is not None:
+        if not is_null(game_model_week):
             week = game_model_week
         game_model_game_number = game_model.game_number
-        if game_model_game_number is not None:
+        if not is_null(game_model_game_number):
             game_number = game_model_game_number
         game_model_postponed = game_model.postponed
-        if game_model_postponed is not None:
+        if not is_null(game_model_postponed):
             postponed = game_model_postponed
         game_model_play_off = game_model.play_off
-        if game_model_play_off is not None:
+        if not is_null(game_model_play_off):
             play_off = game_model_play_off
 
     if full_venue_identity is None and venue_models:
@@ -111,7 +116,7 @@ def create_combined_game_model(
                 full_venue_identity = venue_model_identifier
 
     return GameModel(
-        dt=game_models[0].dt,
+        dt=dt,
         week=week,
         game_number=game_number,
         venue=create_combined_venue_model(venue_models, full_venue_identity, session),  # pyright: ignore
