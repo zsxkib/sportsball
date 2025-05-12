@@ -2584,6 +2584,15 @@ BEARD_EAVES_MEMORIAL_COLISEUM = SportsballGeocodeTuple(
     housenumber="101",
     country="USA",
 )
+JOSE_MIGUEL_AGRELOT_COLISEUM = SportsballGeocodeTuple(
+    city="San Juan",
+    state="PR",
+    postal="",
+    lat=18.427717,
+    lng=-66.061392,
+    housenumber="500",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -13353,15 +13362,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "José Miguel Agrelot Coliseum, San Juan": SportsballGeocodeTuple(
-        city="San Juan",
-        state="PR",
-        postal="",
-        lat=18.427717,
-        lng=-66.061392,
-        housenumber="500",
-        country="USA",
-    ),
+    "José Miguel Agrelot Coliseum, San Juan": JOSE_MIGUEL_AGRELOT_COLISEUM,
     "USB Sports Complex, Stony Brook, New York": SportsballGeocodeTuple(
         city="Stony Brook",
         state="NY",
@@ -13840,6 +13841,16 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="50",
         country="USA",
     ),
+    "Wooden Family Fieldhouse, Xenia, Ohio": SportsballGeocodeTuple(
+        city="Xenia",
+        state="OH",
+        postal="45385",
+        lat=39.665597,
+        lng=-83.9246487,
+        housenumber="1310",
+        country="USA",
+    ),
+    "JosÃ© Miguel Agrelot Coliseum, San Juan": JOSE_MIGUEL_AGRELOT_COLISEUM,
 }
 
 
