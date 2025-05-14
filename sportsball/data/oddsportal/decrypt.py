@@ -30,7 +30,7 @@ def _find_decryption_data(
         src = script.get("src")
         if src is None:
             continue
-        if "/app.js" in src:
+        if ("/app-" in src and src.endswith(".js")) or "/app.js" in src:
             src_url = urllib.parse.urljoin(referer_url, src)
             headers = {X_NO_WAYBACK: "1"}
             if user_agent is not None:
@@ -55,7 +55,7 @@ def _find_decryption_data(
             password = str.encode(password_str)
             break
     if salt is None:
-        raise ValueError("salt is null.")
+        raise ValueError(f"salt is null for {referer_url}.")
     if password is None:
         raise ValueError("password is null.")
     return salt, password

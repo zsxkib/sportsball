@@ -37,6 +37,7 @@ _NON_WAYBACK_URLS: set[str] = {
     "https://www.sports-reference.com/cbb/schools/minnesota/women/2019.html",
     "https://www.sports-reference.com/cbb/schools/rice/women/2019.html",
     "https://www.sports-reference.com/cbb/schools/north-carolina/women/2018.html",
+    "https://www.sports-reference.com/cbb/schools/minnesota/women/2009.html",
 }
 _BAD_TEAM_URLS = {
     "https://www.sports-reference.com/cbb/schools/mid-atlantic-christian/2016.html",
@@ -53,6 +54,7 @@ def _find_name(response: requests.Response, soup: BeautifulSoup, url: str) -> st
     except (json.decoder.JSONDecodeError, IndexError) as exc:
         h1 = soup.find("h1")
         if not isinstance(h1, Tag):
+            logging.error(response.text)
             raise ValueError(f"h1 is null for {url}.") from exc
         span = h1.find_all("span")
         try:

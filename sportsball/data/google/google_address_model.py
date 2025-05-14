@@ -2593,6 +2593,15 @@ JOSE_MIGUEL_AGRELOT_COLISEUM = SportsballGeocodeTuple(
     housenumber="500",
     country="USA",
 )
+VIEJAS_ARENA = SportsballGeocodeTuple(
+    city="San Diego",
+    state="CA",
+    postal="",
+    lat=32.77375,
+    lng=-117.074583,
+    housenumber="5500",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5550,15 +5559,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Maravich Assembly Center, Baton Rouge, Louisiana": PETE_MARAVICH_ASSEMBLY_CENTER,
-    "Viejas Arena, San Diego, California": SportsballGeocodeTuple(
-        city="San Diego",
-        state="CA",
-        postal="",
-        lat=32.77375,
-        lng=-117.074583,
-        housenumber="5500",
-        country="USA",
-    ),
+    "Viejas Arena, San Diego, California": VIEJAS_ARENA,
     "Reitz Arena, Baltimore, Maryland": SportsballGeocodeTuple(
         city="Baltimore",
         state="MD",
@@ -13851,6 +13852,16 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "JosÃ© Miguel Agrelot Coliseum, San Juan": JOSE_MIGUEL_AGRELOT_COLISEUM,
+    "Sun National Bank Center, Trenton, New Jersey": SportsballGeocodeTuple(
+        city="Trenton",
+        state="NJ",
+        postal="08611",
+        lat=40.212778,
+        lng=-74.757561,
+        housenumber="81",
+        country="USA",
+    ),
+    "Cox Arena, San Diego, California": VIEJAS_ARENA,
 }
 
 
