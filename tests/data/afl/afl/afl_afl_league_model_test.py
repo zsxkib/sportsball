@@ -34,7 +34,7 @@ class TestAFLAFLLeagueModel(unittest.TestCase):
                 "Geelong Cats",
                 "Hawthorn",
                 "West Coast Eagles",
-            ]))
+            ], "https://www.afl.com.au/matches/team-lineups"))
             first_game = game_models[0]
             self.assertEqual(len(first_game.teams), 2)
             for team in first_game.teams:

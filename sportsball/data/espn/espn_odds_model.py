@@ -18,4 +18,4 @@ def create_espn_odds_model(odds: dict[str, Any], bookie: BookieModel) -> OddsMod
         odds_val = (float(moneyline) / 100.0) + 1.0
     elif moneyline < 0:
         odds_val = (100.0 / float(abs(moneyline))) + 1.0
-    return OddsModel(odds=odds_val, bookie=bookie, dt=None)
+    return OddsModel(odds=odds_val, bookie=bookie, dt=None, canonical=False)

@@ -1,6 +1,6 @@
 """AFL AFL team model."""
 
-# pylint: disable=duplicate-code
+# pylint: disable=duplicate-code,too-many-arguments
 import datetime
 
 import requests_cache
@@ -8,6 +8,7 @@ import requests_cache
 from ...google.google_news_model import create_google_news_models
 from ...league import League
 from ...team_model import TeamModel
+from .afl_afl_odds_model import create_afl_afl_odds_model
 from .afl_afl_player_model import create_afl_afl_player_model
 
 
@@ -17,6 +18,7 @@ def create_afl_afl_team_model(
     session: requests_cache.CachedSession,
     dt: datetime.datetime,
     ladder: list[str],
+    odds: float | None,
 ) -> TeamModel:
     """Create a team model from AFL AFL."""
     player_models = [
@@ -25,12 +27,15 @@ def create_afl_afl_team_model(
         )
         for identifier, player_number, first_name, second_name in players
     ]
+    odds_models = []
+    if odds is not None:
+        odds_models.append(create_afl_afl_odds_model(odds))
     return TeamModel(
         identifier=team_name,
         name=team_name,
         location=None,
         players=player_models,
-        odds=[],
+        odds=odds_models,
         points=None,
         ladder_rank=ladder.index(team_name) + 1,
         kicks=None,

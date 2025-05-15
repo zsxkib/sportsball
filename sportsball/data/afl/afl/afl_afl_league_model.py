@@ -1,9 +1,10 @@
 """AFL AFL league model."""
 
-# pylint: disable=too-many-statements,protected-access,too-many-locals,bare-except,too-many-branches
+# pylint: disable=too-many-statements,protected-access,too-many-locals,bare-except,too-many-branches,duplicate-code
 import datetime
 import logging
 import re
+import urllib.parse
 from typing import Iterator
 
 import requests_cache
@@ -19,7 +20,7 @@ from .afl_afl_game_model import create_afl_afl_game_model
 
 
 def _parse_game_info(
-    html: str, session: requests_cache.CachedSession, ladder: list[str]
+    html: str, session: requests_cache.CachedSession, ladder: list[str], html_url: str
 ) -> Iterator[GameModel]:
     soup = BeautifulSoup(html, "lxml")
     for div in soup.find_all("div", {"class": re.compile(".*js-match-list-item.*")}):
@@ -88,8 +89,13 @@ def _parse_game_info(
             raise ValueError("venue_name is null")
         if dt is None:
             raise ValueError("dt is null")
+        url = None
+        for a in div.find_all(
+            "a", {"class": re.compile(".*match-list-alt__header-mc-link.*")}
+        ):
+            url = urllib.parse.urljoin(html_url, a.get("href"))
         yield create_afl_afl_game_model(
-            team_names, teams_players, dt, venue_name, session, ladder
+            team_names, teams_players, dt, venue_name, session, ladder, url
         )
 
 
@@ -139,7 +145,6 @@ class AFLAFLLeagueModel(LeagueModel):
             browser = p.chromium.launch()
             context = browser.new_context()
             page = context.new_page()
-            page.goto(
-                "https://www.afl.com.au/matches/team-lineups", wait_until="networkidle"
-            )
-            yield from _parse_game_info(page.content(), self.session, ladder)
+            url = "https://www.afl.com.au/matches/team-lineups"
+            page.goto(url, wait_until="networkidle")
+            yield from _parse_game_info(page.content(), self.session, ladder, url)

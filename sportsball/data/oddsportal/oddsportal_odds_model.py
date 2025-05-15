@@ -13,4 +13,4 @@ def create_oddsportal_odds_model(
 ) -> OddsModel:
     """Create an odds model based off aus sports betting."""
     bookie = create_oddsportal_bookie_model(bookie_name, bookie_id)
-    return OddsModel(odds=odds, bookie=bookie, dt=dt)  # pyright: ignore
+    return OddsModel(odds=odds, bookie=bookie, dt=dt, canonical=False)  # pyright: ignore

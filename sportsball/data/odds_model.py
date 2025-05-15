@@ -11,6 +11,7 @@ from .field_type import TYPE_KEY, FieldType
 DT_COLUMN: Literal["dt"] = "dt"
 ODDS_ODDS_COLUMN: Literal["odds"] = "odds"
 ODDS_BOOKIE_COLUMN: Literal["bookie"] = "bookie"
+ODDS_CANONICAL_COLUMN: Literal["canonical"] = "canonical"
 
 
 class OddsModel(BaseModel):
@@ -24,3 +25,4 @@ class OddsModel(BaseModel):
         ...,
         alias=DT_COLUMN,
     )
+    canonical: bool = Field(..., alias=ODDS_CANONICAL_COLUMN)
