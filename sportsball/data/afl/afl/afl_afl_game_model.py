@@ -7,7 +7,7 @@ import logging
 import pytest_is_running
 import requests_cache
 from bs4 import BeautifulSoup
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import Playwright
 
 from ....playwright import ensure_install
 from ...game_model import GameModel
@@ -32,20 +32,20 @@ def create_afl_afl_game_model(
     session: requests_cache.CachedSession,
     ladder: list[str],
     url: str | None,
+    playwright: Playwright,
 ) -> GameModel:
     """Create a game model from AFL Tables."""
     odds = []
     if url is not None and not pytest_is_running.is_running():
         ensure_install()
-        with sync_playwright() as p:
-            browser = p.chromium.launch()
-            context = browser.new_context()
-            page = context.new_page()
-            try:
-                page.goto(url, wait_until="networkidle")
-            except:  # noqa: E722
-                logging.warning("Ladder URL timed out.")
-            odds = _extract_odds(page.content())
+        browser = playwright.chromium.launch()
+        context = browser.new_context()
+        page = context.new_page()
+        try:
+            page.goto(url, wait_until="networkidle")
+        except:  # noqa: E722
+            logging.warning("Ladder URL timed out.")
+        odds = _extract_odds(page.content())
 
     venue_model = create_afl_afl_venue_model(venue_name, session, dt)
     teams = [

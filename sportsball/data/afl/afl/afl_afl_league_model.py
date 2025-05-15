@@ -10,7 +10,7 @@ from typing import Iterator
 import requests_cache
 from bs4 import BeautifulSoup
 from dateutil.parser import parse
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import Playwright, sync_playwright
 
 from ....playwright import ensure_install
 from ...game_model import GameModel
@@ -20,7 +20,11 @@ from .afl_afl_game_model import create_afl_afl_game_model
 
 
 def _parse_game_info(
-    html: str, session: requests_cache.CachedSession, ladder: list[str], html_url: str
+    html: str,
+    session: requests_cache.CachedSession,
+    ladder: list[str],
+    html_url: str,
+    playwright: Playwright,
 ) -> Iterator[GameModel]:
     soup = BeautifulSoup(html, "lxml")
     for div in soup.find_all("div", {"class": re.compile(".*js-match-list-item.*")}):
@@ -95,7 +99,14 @@ def _parse_game_info(
         ):
             url = urllib.parse.urljoin(html_url, a.get("href"))
         yield create_afl_afl_game_model(
-            team_names, teams_players, dt, venue_name, session, ladder, url
+            team_names,
+            teams_players,
+            dt,
+            venue_name,
+            session,
+            ladder,
+            url,
+            playwright,
         )
 
 
@@ -147,4 +158,4 @@ class AFLAFLLeagueModel(LeagueModel):
             page = context.new_page()
             url = "https://www.afl.com.au/matches/team-lineups"
             page.goto(url, wait_until="networkidle")
-            yield from _parse_game_info(page.content(), self.session, ladder, url)
+            yield from _parse_game_info(page.content(), self.session, ladder, url, p)
