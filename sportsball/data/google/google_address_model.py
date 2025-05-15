@@ -2602,6 +2602,15 @@ VIEJAS_ARENA = SportsballGeocodeTuple(
     housenumber="5500",
     country="USA",
 )
+OMNI_COLISEUM = SportsballGeocodeTuple(
+    city="Atlanta",
+    state="GA",
+    postal="30303",
+    lat=33.7575,
+    lng=-84.396667,
+    housenumber="100",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -7228,15 +7237,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1800",
         country="USA",
     ),
-    "Omni Coliseum": SportsballGeocodeTuple(
-        city="Atlanta",
-        state="GA",
-        postal="30303",
-        lat=33.7575,
-        lng=-84.396667,
-        housenumber="100",
-        country="USA",
-    ),
+    "Omni Coliseum": OMNI_COLISEUM,
     "Great Western Forum": THE_FORUM,
     "The Palace of Auburn Hills - Auburn Hills, MI - USA": THE_PALACE_OF_AUBURN_HILLS,
     "America West Arena": AMERICA_WEST_ARENA,
@@ -13862,6 +13863,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Cox Arena, San Diego, California": VIEJAS_ARENA,
+    "The Omni, Atlanta, Georgia": OMNI_COLISEUM,
 }
 
 

@@ -91,6 +91,12 @@ AFL_TEAM_IDENTITY_MAP = {
     # AFL
     "GWS GIANTS": GWS,
     "Gold Coast SUNS": GOLDCOAST,
+    "Kuwarna": ADELAIDE,
+    "Yartapuulti": PORT_ADELAIDE,
+    "Walyalup": FREMANTLE,
+    "Narrm": MELBOURNE,
+    "Waalitj Marawar": WESTCOAST,
+    "Euro-Yroke": STKILDA,
 }
 BRUNSWICK_ST = "brunswick_st"
 VICTORIA_PARK = "victoria_park"

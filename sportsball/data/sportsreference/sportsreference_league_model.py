@@ -39,6 +39,8 @@ BAD_URLS = {
     "https://www.sports-reference.com/cbb/boxscores/2009-11-14-san-diego_w.html",
     "https://www.sports-reference.com/cbb/boxscores/2009-04-03-texas-el-paso.html",
     "https://www.sports-reference.com/cbb/boxscores/2009-04-01-texas-el-paso.html",
+    "https://www.sports-reference.com/cbb/boxscores/2009-03-15-florida-state.html",
+    "https://www.sports-reference.com/cbb/boxscores/2009-03-15-purdue.html",
 }
 
 
