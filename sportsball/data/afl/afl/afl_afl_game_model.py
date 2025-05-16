@@ -2,7 +2,7 @@
 
 # pylint: disable=too-many-statements,protected-access,too-many-arguments,bare-except
 import datetime
-import logging
+import re
 
 import pytest_is_running
 import requests_cache
@@ -16,18 +16,29 @@ from .afl_afl_team_model import create_afl_afl_team_model
 from .afl_afl_venue_model import create_afl_afl_venue_model
 
 
-def _extract_odds(html: str) -> list[float]:
+def _extract_odds(soup: BeautifulSoup) -> list[float]:
     odds = []
-    soup = BeautifulSoup(html, "lxml")
     for span in soup.find_all("span", {"class": "betting-button__money"}):
         odds.append(float(span.get_text().strip().replace("$", "")))
     return odds
 
 
+def _extract_dt(soup: BeautifulSoup) -> datetime.datetime:
+    for div in soup.find_all("div", {"class": re.compile(".*js-match-start-time.*")}):
+        start_time = div.get("data-start-time")
+        return datetime.datetime.fromisoformat(start_time)
+    raise ValueError("Unable to find datetime")
+
+
+def _parse(html: str) -> tuple[list[float], datetime.datetime]:
+    soup = BeautifulSoup(html, "lxml")
+    return _extract_odds(soup), _extract_dt(soup)
+
+
 def create_afl_afl_game_model(
     team_names: list[str],
     players: list[list[tuple[str, str, str, str]]],
-    dt: datetime.datetime,
+    dt: datetime.datetime | None,
     venue_name: str,
     session: requests_cache.CachedSession,
     ladder: list[str],
@@ -35,7 +46,7 @@ def create_afl_afl_game_model(
     playwright: Playwright,
 ) -> GameModel:
     """Create a game model from AFL Tables."""
-    odds = []
+    odds: list[float] = []
     if url is not None and not pytest_is_running.is_running():
         ensure_install()
         browser = playwright.chromium.launch()
@@ -44,8 +55,10 @@ def create_afl_afl_game_model(
         try:
             page.goto(url, wait_until="networkidle")
         except:  # noqa: E722
-            logging.warning("Ladder URL timed out.")
-        odds = _extract_odds(page.content())
+            pass
+        odds, dt = _parse(page.content())
+    if dt is None:
+        raise ValueError("dt is null")
 
     venue_model = create_afl_afl_venue_model(venue_name, session, dt)
     teams = [

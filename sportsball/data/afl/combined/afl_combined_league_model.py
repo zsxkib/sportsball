@@ -251,6 +251,15 @@ AFL_VENUE_IDENTITY_MAP = {
     "Ondrej Nepela Arena": TIPOS_ARENA,
     "Barossa Park": BAROSSA_PARK,
     "Ninja Stadium": BELLERIVE_OVAL,
+    # AFL
+    "TIO Stadium, Darwin": MARRARA_OVAL,
+    "SCG, Sydney": SCG,
+    "MCG, Melbourne": MCG,
+    "Adelaide Oval, Adelaide": ADELAIDE_OVAL,
+    "ENGIE Stadium, Sydney": STADIUM_AUSTRALIA,
+    "Marvel Stadium, Melbourne": DOCKLANDS,
+    "Gabba, Brisbane": GABBA,
+    "Optus Stadium, Perth": PERTH,
 }
 
 

@@ -8,7 +8,7 @@ import urllib.parse
 from typing import Iterator
 
 import requests_cache
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Tag
 from dateutil.parser import parse
 from playwright.sync_api import Playwright, sync_playwright
 
@@ -19,14 +19,13 @@ from ...league_model import LeagueModel
 from .afl_afl_game_model import create_afl_afl_game_model
 
 
-def _parse_game_info(
-    html: str,
+def _parse_v1(
+    soup: BeautifulSoup,
     session: requests_cache.CachedSession,
     ladder: list[str],
     html_url: str,
     playwright: Playwright,
 ) -> Iterator[GameModel]:
-    soup = BeautifulSoup(html, "lxml")
     for div in soup.find_all("div", {"class": re.compile(".*js-match-list-item.*")}):
         team_names = []
         for span in div.find_all(
@@ -110,6 +109,90 @@ def _parse_game_info(
         )
 
 
+def _parse_v2(
+    soup: BeautifulSoup,
+    session: requests_cache.CachedSession,
+    ladder: list[str],
+    html_url: str,
+    playwright: Playwright,
+) -> Iterator[GameModel]:
+    for div in soup.find_all("div", {"class": "team-lineups__item"}):
+        team_names = []
+        for span in div.find_all(
+            "span", {"class": re.compile(".*team-lineups-header__name.*")}
+        ):
+            team_names = [x.strip() for x in span.get_text().strip().split(" v ")]
+        team_players: list[list[tuple[str, str, str, str]]] = [[], []]
+
+        def process_a_player(
+            a: Tag, idx: int, team_players: list[list[tuple[str, str, str, str]]]
+        ) -> list[list[tuple[str, str, str, str]]]:
+            href = a.get("href")
+            if not isinstance(href, str):
+                raise ValueError("href is not a str")
+            player_id = "afl:" + href.split("/")[2]
+            name = a.get("title")
+            if not isinstance(name, str):
+                raise ValueError("name is not a str")
+            first_name, sur_name = name.split()
+            jersey = None
+            for div_shirt in a.find_all(
+                "div", {"class": re.compile(".*team-lineups__player-entry--shirt.*")}
+            ):
+                jersey = div_shirt.get_text().strip()
+            if jersey is None:
+                raise ValueError("jersey is null")
+            team_players[idx].append((player_id, first_name, sur_name, jersey))
+            return team_players
+
+        for a in div.find_all(
+            "a", {"class": re.compile(".*team-lineups__player-entry--home-team.*")}
+        ):
+            team_players = process_a_player(a, 0, team_players)
+        for a in div.find_all(
+            "a", {"class": re.compile(".*team-lineups__player-entry--away-team.*")}
+        ):
+            team_players = process_a_player(a, 1, team_players)
+
+        venue_name = None
+        for div_info in div.find_all("div", {"class": "team-lineups-header__info"}):
+            header_info = div_info.get_text().strip()
+            venue_name = header_info.split("･")[1].strip()
+        if venue_name is None:
+            raise ValueError("venue_name is null")
+
+        url = None
+        for a in div.find_all("a", {"class": "team-lineups-header"}):
+            url = urllib.parse.urljoin(html_url, a.get("href"))
+
+        yield create_afl_afl_game_model(
+            team_names,
+            team_players,
+            None,
+            venue_name,
+            session,
+            ladder,
+            url,
+            playwright,
+        )
+
+
+def _parse_game_info(
+    html: str,
+    session: requests_cache.CachedSession,
+    ladder: list[str],
+    html_url: str,
+    playwright: Playwright,
+) -> Iterator[GameModel]:
+    soup = BeautifulSoup(html, "lxml")
+    found = False
+    for game_model in _parse_v1(soup, session, ladder, html_url, playwright):
+        found = True
+        yield game_model
+    if not found:
+        yield from _parse_v2(soup, session, ladder, html_url, playwright)
+
+
 class AFLAFLLeagueModel(LeagueModel):
     """AFL AFL implementation of the league model."""
 
@@ -137,7 +220,7 @@ class AFLAFLLeagueModel(LeagueModel):
                     timeout=60000.0,
                 )
             except:  # noqa: E722
-                logging.warning("Ladder URL timed out.")
+                pass
             soup = BeautifulSoup(page.content(), "lxml")
             for span in soup.find_all(
                 "span", {"class": re.compile(".*stats-table__club-name.*")}
@@ -146,6 +229,7 @@ class AFLAFLLeagueModel(LeagueModel):
                 if team_name in ladder:
                     continue
                 ladder.append(team_name)
+            logging.info("Found ladder: %s", ",".join(ladder))
         return ladder
 
     @property

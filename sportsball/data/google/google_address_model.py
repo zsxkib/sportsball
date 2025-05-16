@@ -13864,6 +13864,24 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Cox Arena, San Diego, California": VIEJAS_ARENA,
     "The Omni, Atlanta, Georgia": OMNI_COLISEUM,
+    "TD Banknorth Sports Center, Hamden, Connecticut": TD_BANK_SPORTS_CENTER,
+    "The Event Center, San Jose, California": SportsballGeocodeTuple(
+        city="San Jose",
+        state="CA",
+        postal="95192",
+        lat=37.33536,
+        lng=-121.87985,
+        housenumber="290",
+        country="USA",
+    ),
+    "TIO Stadium, Darwin": TIO_STADIUM,
+    "SCG, Sydney": SCG,
+    "MCG, Melbourne": MCG,
+    "Adelaide Oval, Adelaide": ADELAIDE_OVAL,
+    "ENGIE Stadium, Sydney": ENGIE_STADIUM,
+    "Marvel Stadium, Melbourne": MARVEL_STADIUM,
+    "Gabba, Brisbane": GABBA,
+    "Optus Stadium, Perth": OPTUS_STADIUM,
 }
 
 
