@@ -199,7 +199,7 @@ class AFLAFLLeagueModel(LeagueModel):
     def __init__(
         self, session: requests_cache.CachedSession, position: int | None = None
     ) -> None:
-        super().__init__(League.AFL, session)
+        super().__init__(League.AFL, session, position=position)
 
     @classmethod
     def name(cls) -> str:

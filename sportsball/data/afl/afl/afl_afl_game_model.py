@@ -1,6 +1,6 @@
 """AFL AFL game model."""
 
-# pylint: disable=too-many-statements,protected-access,too-many-arguments,bare-except
+# pylint: disable=too-many-statements,protected-access,too-many-arguments,bare-except,duplicate-code
 import datetime
 import re
 

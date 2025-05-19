@@ -1,6 +1,6 @@
-"""AFL AFL venue model."""
+"""NBA NBA.com venue model."""
 
-# pylint: disable=too-many-statements,protected-access,duplicate-code
+# pylint: disable=too-many-statements,protected-access
 import datetime
 
 import requests_cache
@@ -9,7 +9,7 @@ from ...google.google_address_model import create_google_address_model
 from ...venue_model import VenueModel
 
 
-def create_afl_afl_venue_model(
+def create_nba_nbacom_venue_model(
     venue_name: str,
     session: requests_cache.CachedSession,
     dt: datetime.datetime,

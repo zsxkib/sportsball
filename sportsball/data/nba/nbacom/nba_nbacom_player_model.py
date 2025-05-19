@@ -1,18 +1,15 @@
-"""AFL AFL player model."""
+"""NBA NBA.com player model."""
 
-# pylint: disable=duplicate-code
+from typing import Any
+
 from ...player_model import PlayerModel
 
 
-def create_afl_afl_player_model(
-    identifier: str,
-    player_number: str,
-    name: str,
-) -> PlayerModel:
+def create_nba_nbacom_player_model(player_dict: dict[str, Any]) -> PlayerModel:
     """Create a player model from AFL AFL."""
     return PlayerModel(
-        identifier=identifier,
-        jersey=player_number,
+        identifier=str(player_dict["personId"]),
+        jersey=None,
         kicks=None,
         fumbles=None,
         fumbles_lost=None,
@@ -21,7 +18,7 @@ def create_afl_afl_player_model(
         offensive_rebounds=None,
         assists=None,
         turnovers=None,
-        name=name,
+        name=player_dict["playerName"],
         marks=None,
         handballs=None,
         disposals=None,

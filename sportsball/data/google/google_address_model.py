@@ -2611,6 +2611,15 @@ OMNI_COLISEUM = SportsballGeocodeTuple(
     housenumber="100",
     country="USA",
 )
+MCCAMISH_PAVILION = SportsballGeocodeTuple(
+    city="Atlanta",
+    state="GA",
+    postal="",
+    lat=33.780833,
+    lng=-84.392778,
+    housenumber="965",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5558,15 +5567,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="701",
         country="USA",
     ),
-    "McCamish Pavilion, Atlanta, Georgia": SportsballGeocodeTuple(
-        city="Atlanta",
-        state="GA",
-        postal="",
-        lat=33.780833,
-        lng=-84.392778,
-        housenumber="965",
-        country="USA",
-    ),
+    "McCamish Pavilion, Atlanta, Georgia": MCCAMISH_PAVILION,
     "Maravich Assembly Center, Baton Rouge, Louisiana": PETE_MARAVICH_ASSEMBLY_CENTER,
     "Viejas Arena, San Diego, California": VIEJAS_ARENA,
     "Reitz Arena, Baltimore, Maryland": SportsballGeocodeTuple(
@@ -13882,6 +13883,27 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Marvel Stadium, Melbourne": MARVEL_STADIUM,
     "Gabba, Brisbane": GABBA,
     "Optus Stadium, Perth": OPTUS_STADIUM,
+    "Ball Arena - Denver, Colorado, USA - United States": PEPSI_CENTRE,
+    "Alexander Memorial Coliseum, Atlanta, Georgia": MCCAMISH_PAVILION,
+    "Alltell Arena, North Little Rock, Arkansas": SIMMONS_BANK_ARENA,
+    "Auburn Hills, Michigan": SportsballGeocodeTuple(
+        city="Auburn Hills",
+        state="MI",
+        postal="",
+        lat=42.6875,
+        lng=-83.234167,
+        housenumber="",
+        country="USA",
+    ),
+    "Guaynabo": SportsballGeocodeTuple(
+        city="Guaynabo",
+        state="PR",
+        postal="",
+        lat=18.366667,
+        lng=-66.1,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 

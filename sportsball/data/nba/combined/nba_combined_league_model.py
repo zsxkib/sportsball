@@ -8,6 +8,7 @@ from ...combined.combined_league_model import CombinedLeagueModel
 from ...league import League
 from ..espn.nba_espn_league_model import NBAESPNLeagueModel
 from ..nba.nba_nba_league_model import NBANBALeagueModel
+from ..nbacom.nba_nbacom_league_model import NBANBAComLeagueModel
 from ..oddsportal.nba_oddsportal_league_model import NBAOddsPortalLeagueModel
 from ..sportsdb.nba_sportsdb_league_model import NBASportsDBLeagueModel
 from ..sportsreference.nba_sportsreference_league_model import \
@@ -903,6 +904,7 @@ class NBACombinedLeagueModel(CombinedLeagueModel):
                 NBASportsDBLeagueModel(session, position=2),
                 NBASportsReferenceLeagueModel(session, position=3),
                 NBAOddsPortalLeagueModel(session, position=4),
+                NBANBAComLeagueModel(session, position=5),
             ],
             league_filter,
         )
