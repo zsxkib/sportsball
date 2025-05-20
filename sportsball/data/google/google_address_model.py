@@ -13923,6 +13923,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "GMHBA Stadium, Geelong": GMHBA_STADIUM,
+    "Paycom Center, Oklahoma City, OK": PAYCOM_CENTRE,
 }
 
 

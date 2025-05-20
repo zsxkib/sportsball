@@ -885,6 +885,8 @@ NBA_VENUE_IDENTITY_MAP: dict[str, str] = {
     "24838": SPECTRUM_CENTER,
     "28619": KASEYA_CENTER,
     "24727": FEDEX_FORUM,
+    # NBACom
+    "Paycom Center, Oklahoma City, OK": PAYCOM_CENTER,
 }
 NBA_PLAYER_IDENTITY_MAP: dict[str, str] = {}
 
