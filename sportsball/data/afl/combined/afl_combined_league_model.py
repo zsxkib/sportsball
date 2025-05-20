@@ -260,6 +260,7 @@ AFL_VENUE_IDENTITY_MAP = {
     "Marvel Stadium, Melbourne": DOCKLANDS,
     "Gabba, Brisbane": GABBA,
     "Optus Stadium, Perth": PERTH,
+    "GMHBA Stadium, Geelong": KARDINIA_PARK,
 }
 
 
