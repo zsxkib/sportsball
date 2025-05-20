@@ -13904,6 +13904,25 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Biloxi, Mississippi": SportsballGeocodeTuple(
+        city="Biloxi",
+        state="MS",
+        postal="",
+        lat=30.411944,
+        lng=-88.927778,
+        housenumber="",
+        country="USA",
+    ),
+    "Glendale, Arizona": SportsballGeocodeTuple(
+        city="Glendale",
+        state="AZ",
+        postal="",
+        lat=33.538611,
+        lng=-112.186389,
+        housenumber="",
+        country="USA",
+    ),
+    "GMHBA Stadium, Geelong": GMHBA_STADIUM,
 }
 
 
