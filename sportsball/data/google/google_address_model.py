@@ -13924,6 +13924,16 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "GMHBA Stadium, Geelong": GMHBA_STADIUM,
     "Paycom Center, Oklahoma City, OK": PAYCOM_CENTRE,
+    "Kentucky International Convention Center, Louisville, Kentucky": SportsballGeocodeTuple(
+        city="Louisville",
+        state="KY",
+        postal="",
+        lat=38.254194,
+        lng=-85.755111,
+        housenumber="",
+        country="USA",
+    ),
+    "Madison Square Garden, New York, NY": MADISON_SQUARE_GARDEN,
 }
 
 

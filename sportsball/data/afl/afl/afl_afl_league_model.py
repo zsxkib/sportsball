@@ -16,7 +16,7 @@ from ....playwright import ensure_install
 from ...game_model import GameModel
 from ...league import League
 from ...league_model import LeagueModel
-from .afl_afl_game_model import create_afl_afl_game_model
+from .afl_afl_game_model import create_afl_afl_game_model, parse_players_v1
 
 
 def _parse_v1(
@@ -32,47 +32,7 @@ def _parse_v1(
             "span", {"class": re.compile(".*team-lineups__team-name.*")}
         ):
             team_names.append(span.get_text().strip())
-        teams_players: list[list[tuple[str, str, str, str]]] = [[], []]
-        for div_positions_row in div.find_all(
-            "div", {"class": re.compile(".*team-lineups__positions-row.*")}
-        ):
-            row_players: list[list[tuple[str, str, str, str]]] = [[], []]
-            for count, div_team_players in enumerate(
-                div_positions_row.find_all(
-                    "div",
-                    {
-                        "class": re.compile(
-                            ".*team-lineups__positions-players-container.*"
-                        )
-                    },
-                )
-            ):
-                team_players: list[tuple[str, str, str, str]] = []
-                for a in div_team_players.find_all(
-                    "a", {"class": re.compile(".*js-player-profile-link.*")}
-                ):
-                    player_id = "afl:" + a.get("data-player-id")
-                    first_name = a.get("data-first-name")
-                    second_name = a.get("data-surname")
-                    player_number = None
-                    for span_player_number in a.find_all(
-                        "span",
-                        {"class": re.compile(".*team-lineups__player-number.*")},
-                    ):
-                        player_number = (
-                            span_player_number.get_text()
-                            .strip()
-                            .replace("[", "")
-                            .replace("]", "")
-                        )
-                    if player_number is None:
-                        raise ValueError("player_number is null")
-                    team_players.append(
-                        (player_id, player_number, first_name, second_name)
-                    )
-                row_players[count].extend(team_players)
-            for count, row_players_list in enumerate(row_players):
-                teams_players[count].extend(row_players_list)
+        teams_players = parse_players_v1(div)
         dt = None
         for time in div.find_all(
             "time", {"class": re.compile(".*match-list-alt__header-time.*")}
@@ -109,13 +69,9 @@ def _parse_v1(
         )
 
 
-def _parse_v2(
-    soup: BeautifulSoup,
-    session: requests_cache.CachedSession,
-    ladder: list[str],
-    html_url: str,
-    playwright: Playwright,
-) -> Iterator[GameModel]:
+def _parse_v2_soup(
+    soup: BeautifulSoup, html_url: str
+) -> Iterator[tuple[list[str], list[list[tuple[str, str, str, str]]], str, str]]:
     for div in soup.find_all("div", {"class": "team-lineups__item"}):
         team_names = []
         for span in div.find_all(
@@ -154,7 +110,7 @@ def _parse_v2(
         ):
             team_players = process_a_player(a, 1, team_players)
 
-        venue_name = None
+        venue_name: str | None = None
         for div_info in div.find_all("div", {"class": "team-lineups-header__info"}):
             header_info = div_info.get_text().strip()
             venue_name = header_info.split("･")[1].strip()
@@ -164,7 +120,20 @@ def _parse_v2(
         url = None
         for a in div.find_all("a", {"class": "team-lineups-header"}):
             url = urllib.parse.urljoin(html_url, a.get("href"))
+        if url is None:
+            raise ValueError("url is null")
 
+        yield (team_names, team_players, venue_name, url)
+
+
+def _parse_v2(
+    soup: BeautifulSoup,
+    session: requests_cache.CachedSession,
+    ladder: list[str],
+    html_url: str,
+    playwright: Playwright,
+) -> Iterator[GameModel]:
+    for team_names, team_players, venue_name, url in _parse_v2_soup(soup, html_url):
         yield create_afl_afl_game_model(
             team_names,
             team_players,

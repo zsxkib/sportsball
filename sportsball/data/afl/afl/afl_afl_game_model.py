@@ -6,7 +6,7 @@ import re
 
 import pytest_is_running
 import requests_cache
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Tag
 from playwright.sync_api import Playwright
 
 from ....playwright import ensure_install
@@ -14,6 +14,46 @@ from ...game_model import GameModel
 from ...league import League
 from .afl_afl_team_model import create_afl_afl_team_model
 from .afl_afl_venue_model import create_afl_afl_venue_model
+
+
+def parse_players_v1(div: Tag) -> list[list[tuple[str, str, str, str]]]:
+    """Parses the players from a v1 format."""
+    teams_players: list[list[tuple[str, str, str, str]]] = [[], []]
+    for div_positions_row in div.find_all(
+        "div", {"class": re.compile(".*team-lineups__positions-row.*")}
+    ):
+        row_players: list[list[tuple[str, str, str, str]]] = [[], []]
+        for count, div_team_players in enumerate(
+            div_positions_row.find_all(
+                "div",
+                {"class": re.compile(".*team-lineups__positions-players-container.*")},
+            )
+        ):
+            team_players: list[tuple[str, str, str, str]] = []
+            for a in div_team_players.find_all(
+                "a", {"class": re.compile(".*js-player-profile-link.*")}
+            ):
+                player_id = "afl:" + a.get("data-player-id")
+                first_name = a.get("data-first-name")
+                second_name = a.get("data-surname")
+                player_number = None
+                for span_player_number in a.find_all(
+                    "span",
+                    {"class": re.compile(".*team-lineups__player-number.*")},
+                ):
+                    player_number = (
+                        span_player_number.get_text()
+                        .strip()
+                        .replace("[", "")
+                        .replace("]", "")
+                    )
+                if player_number is None:
+                    raise ValueError("player_number is null")
+                team_players.append((player_id, player_number, first_name, second_name))
+            row_players[count].extend(team_players)
+        for count, row_players_list in enumerate(row_players):
+            teams_players[count].extend(row_players_list)
+    return teams_players
 
 
 def _extract_odds(soup: BeautifulSoup) -> list[float]:
@@ -30,9 +70,34 @@ def _extract_dt(soup: BeautifulSoup) -> datetime.datetime:
     raise ValueError("Unable to find datetime")
 
 
-def _parse(html: str) -> tuple[list[float], datetime.datetime]:
+def _extract_players(
+    soup: BeautifulSoup, players: list[list[tuple[str, str, str, str]]]
+) -> list[list[tuple[str, str, str, str]]]:
+    def is_players_empty() -> bool:
+        nonlocal players
+        if not players:
+            return True
+        for team in players:
+            if not team:
+                return True
+        return False
+
+    if not is_players_empty():
+        return players
+
+    for div in soup.find_all("div", {"class": re.compile(".*js-match-list-item.*")}):
+        players = parse_players_v1(div)
+        if not is_players_empty():
+            return players
+
+    return players
+
+
+def _parse(
+    html: str, players: list[list[tuple[str, str, str, str]]]
+) -> tuple[list[float], datetime.datetime, list[list[tuple[str, str, str, str]]]]:
     soup = BeautifulSoup(html, "lxml")
-    return _extract_odds(soup), _extract_dt(soup)
+    return _extract_odds(soup), _extract_dt(soup), _extract_players(soup, players)
 
 
 def create_afl_afl_game_model(
@@ -53,10 +118,10 @@ def create_afl_afl_game_model(
         context = browser.new_context()
         page = context.new_page()
         try:
-            page.goto(url, wait_until="networkidle")
+            page.goto(url + "#line-ups", wait_until="networkidle")
         except:  # noqa: E722
             pass
-        odds, dt = _parse(page.content())
+        odds, dt, players = _parse(page.content(), players)
     if dt is None:
         raise ValueError("dt is null")
 

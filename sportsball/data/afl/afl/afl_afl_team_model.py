@@ -30,6 +30,8 @@ def create_afl_afl_team_model(
     odds_models = []
     if odds is not None:
         odds_models.append(create_afl_afl_odds_model(odds))
+    if team_name not in ladder:
+        raise ValueError(f"{team_name} not found in ladder")
     return TeamModel(
         identifier=team_name,
         name=team_name,
