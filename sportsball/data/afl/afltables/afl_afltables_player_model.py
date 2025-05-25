@@ -1,6 +1,7 @@
 """AFL AFLTables player model."""
 
 # pylint: disable=line-too-long,duplicate-code,too-many-arguments,too-many-locals
+import logging
 import os
 from urllib.parse import urlparse
 
@@ -49,7 +50,11 @@ def _create_afl_afltables_player_model(
     response = session.get(player_url)
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "lxml")
-    birth_date = parse(soup.get_text().split("Born:")[1].strip().split()[0].strip())
+    try:
+        birth_date = parse(soup.get_text().split("Born:")[1].strip().split()[0].strip())
+    except IndexError:
+        logging.error(response.text)
+        raise
     return PlayerModel(
         identifier=identifier,
         jersey=jersey,

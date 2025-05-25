@@ -99,7 +99,6 @@ class AFLAFLTablesLeagueModel(LeagueModel):
                             self.league,  # pyright: ignore
                             year,
                             season_type,
-                            current_dt,
                         )
                         model_week = game_model.week
                         if model_week is None:
@@ -121,7 +120,6 @@ class AFLAFLTablesLeagueModel(LeagueModel):
                             self.league,  # pyright: ignore
                             year,
                             season_type,
-                            current_dt,
                         )
                         pbar.update(1)
                         pbar.set_description(

@@ -57,6 +57,7 @@ The models it uses are designed to be used for many different types of sports.
 The supported leagues are:
 
 * 🏉 [AFL](https://www.afl.com.au/)
+* 🐎 [HKJC](https://www.hkjc.com/home/english/index.aspx)
 * 🏀 [NBA](https://www.nba.com/)
 * 🏀 [NCAAB](https://www.ncaa.com/sports/basketball-men/d1)
 * 🏈 [NCAAF](https://www.ncaa.com/sports/football/fbs)
@@ -119,6 +120,7 @@ A representation of a team within a game.
 * **offensive_rebounds**: The number of rebounds during offense by the team in the game.
 * **assists**: The number of times the player on the team made a pass that resulted in a field goal in the game.
 * **turnovers**: The number of times a player on the team loses possession of the ball in the game.
+* **marks**: The number of times a player on the team marks the ball in the game.
 
 #### Player
 
@@ -157,6 +159,7 @@ A representation of a player within a team within a game.
 * **bounces**: The number of bounces the player makes in the game.
 * **goal_assists**: The number of assists on goal the player had in the game.
 * **percentage_played**: The percentage of the game the player was on the field.
+* **birth_date**: The birth date of the player.
 
 #### Odds
 

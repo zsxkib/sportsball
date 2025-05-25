@@ -504,13 +504,9 @@ def create_afl_afltables_game_model(
     league: League,
     season_year: int | None,
     season_type: SeasonType | None,
-    dt: datetime.datetime,
 ) -> GameModel:
     """Create a game model from AFL Tables."""
-    if (
-        not pytest_is_running.is_running()
-        and dt < datetime.datetime.now() - datetime.timedelta(days=7)
-    ):
+    if not pytest_is_running.is_running():
         return _cached_create_afl_afltables_game_model(
             game_number,
             session,

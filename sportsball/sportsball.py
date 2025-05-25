@@ -8,6 +8,7 @@ import requests_cache
 from dotenv import load_dotenv
 
 from .data.afl import AFLLeagueModel
+from .data.hkjc import HKJCLeagueModel
 from .data.league import League
 from .data.league_model import LeagueModel
 from .data.nba import NBALeagueModel
@@ -44,6 +45,8 @@ class SportsBall:
                 self._leagues[league] = NCAAFLeagueModel(self._session, league_filter)
             elif league == League.NCAAB:
                 self._leagues[league] = NCAABLeagueModel(self._session, league_filter)
+            elif league == League.HKJC:
+                self._leagues[league] = HKJCLeagueModel(self._session)
             else:
                 raise ValueError(f"Unrecognised league: {league}")
         return self._leagues[league]
