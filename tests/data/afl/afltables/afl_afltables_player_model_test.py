@@ -1,5 +1,4 @@
 """Tests for the afltables player model class."""
-import datetime
 import os
 import unittest
 
@@ -15,7 +14,6 @@ class TestAFLTablesPlayerModel(unittest.TestCase):
         self.dir = os.path.dirname(__file__)
 
     def test_dt(self):
-        dt = datetime.datetime(2023, 9, 15, 0, 15)
         with requests_mock.Mocker() as m:
             with open(os.path.join(self.dir, "Dennis_Armfield.html"), "rb") as f:
                 m.get("https://afltables.com/afl/stats/players/D/Dennis_Armfield.html", content=f.read())
@@ -49,3 +47,38 @@ class TestAFLTablesPlayerModel(unittest.TestCase):
                 0.0,
             )
             self.assertEqual(player_model.identifier, "Dennis_Armfield")
+
+    def test_null_birthdate(self):
+        with requests_mock.Mocker() as m:
+            with open(os.path.join(self.dir, "Jim_Schellnack.html"), "rb") as f:
+                m.get("https://afltables.com/afl/stats/players/J/Jim_Schellnack.html", content=f.read())
+            player_model = create_afl_afltables_player_model(
+                "https://afltables.com/afl/stats/players/J/Jim_Schellnack.html",
+                "35",
+                10,
+                self._session,
+                "Dennis Armfield",
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0.0,
+            )
+            self.assertIsNone(player_model.birth_date)

@@ -50,11 +50,11 @@ def _create_afl_afltables_player_model(
     response = session.get(player_url)
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "lxml")
+    birth_date = None
     try:
         birth_date = parse(soup.get_text().split("Born:")[1].strip().split()[0].strip())
     except IndexError:
-        logging.error(response.text)
-        raise
+        logging.warning("Couldn't find birth date from %s", response.url)
     return PlayerModel(
         identifier=identifier,
         jersey=jersey,
