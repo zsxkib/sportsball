@@ -6,6 +6,7 @@ from typing import Any
 
 import pytest_is_running
 import requests_cache
+from dateutil.parser import parse
 
 from ...cache import MEMORY
 from ..player_model import PlayerModel
@@ -33,6 +34,7 @@ def _create_espn_player_model(
     athlete_response.raise_for_status()
     athlete_dict = athlete_response.json()
     name = athlete_dict["fullName"]
+    birth_date = parse(athlete_dict["dateOfBirth"]).date()
     return PlayerModel(
         identifier=identifier,
         jersey=jersey,
@@ -67,6 +69,7 @@ def _create_espn_player_model(
         bounces=None,
         goal_assists=None,
         percentage_played=None,
+        birth_date=birth_date,
     )
 
 

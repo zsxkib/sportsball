@@ -41,6 +41,7 @@ class TestPlayerModel(unittest.TestCase):
             bounces=None,
             goal_assists=None,
             percentage_played=None,
+            birth_date=None,
         )
 
     def test_field_goals_attempted(self):

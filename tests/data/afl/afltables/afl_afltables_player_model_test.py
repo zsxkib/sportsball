@@ -17,11 +17,12 @@ class TestAFLTablesPlayerModel(unittest.TestCase):
     def test_dt(self):
         dt = datetime.datetime(2023, 9, 15, 0, 15)
         with requests_mock.Mocker() as m:
+            with open(os.path.join(self.dir, "Dennis_Armfield.html"), "rb") as f:
+                m.get("https://afltables.com/afl/stats/players/D/Dennis_Armfield.html", content=f.read())
             player_model = create_afl_afltables_player_model(
                 "https://afltables.com/afl/stats/players/D/Dennis_Armfield.html",
                 "35",
                 10,
-                dt,
                 self._session,
                 "Dennis Armfield",
                 0,

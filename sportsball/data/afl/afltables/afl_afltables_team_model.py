@@ -104,7 +104,6 @@ def _create_afl_afltables_team_model(
                 player_url,
                 jersey,
                 kicks,
-                dt,
                 session,
                 name,
                 marks,
@@ -231,10 +230,7 @@ def create_afl_afltables_team_model(
     league: League,
 ) -> TeamModel:
     """Create a team model from AFL Tables."""
-    if (
-        not pytest_is_running.is_running()
-        and dt < datetime.datetime.now() - datetime.timedelta(days=7)
-    ):
+    if not pytest_is_running.is_running():
         return _cached_create_afl_afltables_team_model(
             team_url, players, points, session, last_ladder_ranks, dt, league
         )

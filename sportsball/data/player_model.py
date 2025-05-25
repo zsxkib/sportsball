@@ -1,5 +1,6 @@
 """The prototype class for a player."""
 
+import datetime
 from typing import Literal
 
 from pydantic import BaseModel, Field
@@ -42,6 +43,7 @@ PLAYER_BOUNCES_COLUMN: Literal["bounces"] = "bounces"
 PLAYER_GOAL_ASSISTS_COLUMN: Literal["goal_assists"] = "goal_assists"
 PLAYER_PERCENTAGE_PLAYED_COLUMN: Literal["percentage_played"] = "percentage_played"
 PLAYER_NAME_COLUMN: Literal["name"] = "name"
+PLAYER_BIRTH_DATE_COLUMN: Literal["birth_date"] = "birth_date"
 
 
 class PlayerModel(BaseModel):
@@ -204,3 +206,4 @@ class PlayerModel(BaseModel):
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=PLAYER_PERCENTAGE_PLAYED_COLUMN,
     )
+    birth_date: datetime.date | None = Field(..., alias=PLAYER_BIRTH_DATE_COLUMN)

@@ -41,6 +41,7 @@ def create_combined_player_model(
     bounces = None
     goal_assists = None
     percentage_played = None
+    birth_date = None
     for player_model in player_models:
         player_model_jersey = player_model.jersey
         if not is_null(player_model_jersey):
@@ -138,6 +139,9 @@ def create_combined_player_model(
         player_model_percentage_played = player_model.percentage_played
         if not is_null(player_model_percentage_played):
             percentage_played = player_model_percentage_played
+        player_model_birth_date = player_model.birth_date
+        if not is_null(player_model_birth_date):
+            birth_date = player_model_birth_date
     if name is None:
         raise ValueError("name is null.")
     return PlayerModel(
@@ -174,4 +178,5 @@ def create_combined_player_model(
         bounces=bounces,
         goal_assists=goal_assists,
         percentage_played=percentage_played,
+        birth_date=birth_date,
     )

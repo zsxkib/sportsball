@@ -53,6 +53,7 @@ class TestCombinedTeamModel(unittest.TestCase):
                 bounces=None,
                 goal_assists=None,
                 percentage_played=None,
+                birth_date=None,
             )]
             team_models = [TeamModel(
                 identifier="a",
@@ -100,6 +101,7 @@ class TestCombinedTeamModel(unittest.TestCase):
                 bounces=None,
                 goal_assists=None,
                 percentage_played=None,
+                birth_date=None,
             )]
             team_models_2 = [TeamModel(
                 identifier="a",
@@ -152,6 +154,7 @@ class TestCombinedTeamModel(unittest.TestCase):
                 bounces=None,
                 goal_assists=None,
                 percentage_played=None,
+                birth_date=None,
             )]
             team_models = [TeamModel(
                 identifier="a",
@@ -199,6 +202,7 @@ class TestCombinedTeamModel(unittest.TestCase):
                 bounces=None,
                 goal_assists=None,
                 percentage_played=None,
+                birth_date=None,
             )]
             team_models_2 = [TeamModel(
                 identifier="a",

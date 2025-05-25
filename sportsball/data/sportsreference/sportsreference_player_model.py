@@ -6,9 +6,11 @@ import http
 import logging
 from urllib.parse import unquote
 
+import extruct  # type: ignore
 import pytest_is_running
 import requests_cache
 from bs4 import BeautifulSoup
+from dateutil.parser import parse
 
 from ...cache import MEMORY
 from ...session import DEFAULT_TIMEOUT
@@ -52,7 +54,7 @@ def _create_sportsreference_player_model(
     assists: dict[str, int],
     turnovers: dict[str, int],
 ) -> PlayerModel | None:
-    """Create a player model from NCAAB sports reference."""
+    """Create a player model from sports reference."""
     player_url = _fix_url(player_url)
     response = session.get(player_url, timeout=DEFAULT_TIMEOUT)
     # Some players can't be accessed on sports reference
@@ -66,6 +68,12 @@ def _create_sportsreference_player_model(
         logging.warning("h1 is null for %s", player_url)
         return None
     name = h1.get_text().strip()
+    data = extruct.extract(response.text, base_url=response.url)
+    birth_date = None
+    for jsonld in data["json-ld"]:
+        if jsonld["@type"] != "Person":
+            continue
+        birth_date = parse(jsonld["birthDate"])
     return PlayerModel(
         identifier=name,
         jersey=None,
@@ -100,6 +108,7 @@ def _create_sportsreference_player_model(
         bounces=None,
         goal_assists=None,
         percentage_played=None,
+        birth_date=birth_date,
     )
 
 

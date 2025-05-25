@@ -44,4 +44,5 @@ def create_afl_afl_player_model(
         bounces=None,
         goal_assists=None,
         percentage_played=None,
+        birth_date=None,
     )

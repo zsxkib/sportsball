@@ -889,6 +889,7 @@ NBA_VENUE_IDENTITY_MAP: dict[str, str] = {
     # NBACom
     "Paycom Center, Oklahoma City, OK": PAYCOM_CENTER,
     "Madison Square Garden, New York, NY": MADISON_SQUARE_GARDEN,
+    "Target Center, Minneapolis, MN": TARGET_CENTER,
 }
 NBA_PLAYER_IDENTITY_MAP: dict[str, str] = {}
 

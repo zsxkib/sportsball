@@ -52,6 +52,7 @@ class TestCombinedPlayerModel(unittest.TestCase):
                 bounces=None,
                 goal_assists=None,
                 percentage_played=None,
+                birth_date=None,
             )
             combined_player_model = create_combined_player_model(
                 [player_model],

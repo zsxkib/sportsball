@@ -2620,6 +2620,33 @@ MCCAMISH_PAVILION = SportsballGeocodeTuple(
     housenumber="965",
     country="USA",
 )
+TUDOR_FIELDHOUSE = SportsballGeocodeTuple(
+    city="Houston",
+    state="TX",
+    postal="77251",
+    lat=29.715102,
+    lng=-95.403895,
+    housenumber="6100",
+    country="USA",
+)
+HAGAN_ARENA = SportsballGeocodeTuple(
+    city="Philadelphia",
+    state="PA",
+    postal="",
+    lat=39.995245,
+    lng=-75.234806,
+    housenumber="",
+    country="USA",
+)
+COORS_EVENTS_CONFERENCE_CENTER = SportsballGeocodeTuple(
+    city="Boulder",
+    state="CO",
+    postal="",
+    lat=40.0047,
+    lng=-105.2606,
+    housenumber="950",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -4566,15 +4593,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="820",
         country="USA",
     ),
-    "Hagan Arena, Philadelphia, Pennsylvania": SportsballGeocodeTuple(
-        city="Philadelphia",
-        state="PA",
-        postal="",
-        lat=39.995245,
-        lng=-75.234806,
-        housenumber="",
-        country="USA",
-    ),
+    "Hagan Arena, Philadelphia, Pennsylvania": HAGAN_ARENA,
     "Wells Fargo Center, Philadelphia, Pennsylvania": SPECTRUM,
     "UW-Milwaukee Panther Arena, Milwaukee, Wisconsin": MILWAUKEE_ARENA,
     "Pauley Pavilion, Los Angeles, California": SportsballGeocodeTuple(
@@ -5313,15 +5332,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="601",
         country="USA",
     ),
-    "Coors Events/Conference Center, Boulder, Colorado": SportsballGeocodeTuple(
-        city="Boulder",
-        state="CO",
-        postal="",
-        lat=40.0047,
-        lng=-105.2606,
-        housenumber="950",
-        country="USA",
-    ),
+    "Coors Events/Conference Center, Boulder, Colorado": COORS_EVENTS_CONFERENCE_CENTER,
     "Hamilton Gymnasium, Denver, Colorado": SportsballGeocodeTuple(
         city="Denver",
         state="CO",
@@ -5539,15 +5550,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Charles Koch Arena, Wichita, Kansas": CHARLES_KOCH_ARENA,
     "CHI Health Center Omaha, Omaha, Nebraska": CHI_HEALTH_CENTER,
-    "Tudor Fieldhouse, Houston, Texas": SportsballGeocodeTuple(
-        city="Houston",
-        state="TX",
-        postal="77251",
-        lat=29.715102,
-        lng=-95.403895,
-        housenumber="6100",
-        country="USA",
-    ),
+    "Tudor Fieldhouse, Houston, Texas": TUDOR_FIELDHOUSE,
     "Show Me Center, Cape Girardeau, Missouri": SportsballGeocodeTuple(
         city="Cape Girardeau",
         state="MO",
@@ -6228,7 +6231,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Mizzou Arena, Columbia, Missouri": SportsballGeocodeTuple(
         city="Columbia",
-        state="MS",
+        state="MO",
         postal="65211",
         lat=38.93237,
         lng=-92.33303,
@@ -7637,7 +7640,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "T-Mobile Center, Kansas City, Missouri": SportsballGeocodeTuple(
         city="Kansas City",
-        state="MS",
+        state="MO",
         postal="",
         lat=39.0975,
         lng=-94.580278,
@@ -10383,7 +10386,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "ExploreAsheville.com Arena, Asheville, North Carolina": HARRAHS_CHEROKEE_CENTER,
     "St. Louis, Missouri": SportsballGeocodeTuple(
         city="St. Louis",
-        state="MS",
+        state="MO",
         postal="",
         lat=38.627222,
         lng=-90.197778,
@@ -10500,7 +10503,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Springfield, Missouri": SportsballGeocodeTuple(
         city="Springfield",
-        state="MS",
+        state="MO",
         postal="",
         lat=37.215278,
         lng=-93.298333,
@@ -10894,7 +10897,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Sikeston Field House, Sikeston, Missouri": SportsballGeocodeTuple(
         city="Sikeston",
-        state="MS",
+        state="MO",
         postal="63801",
         lat=36.87943,
         lng=-89.57209,
@@ -10994,7 +10997,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Columbia, Missouri": SportsballGeocodeTuple(
         city="Columbia",
-        state="MS",
+        state="MO",
         postal="",
         lat=38.9475,
         lng=-92.326667,
@@ -11462,7 +11465,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Miami Beach Auditorium, Miami Beach, Florida": MIAMI_BEACH_CONVENTION_CENTER,
     "Kiel Auditorium, St. Louis, Missouri": SportsballGeocodeTuple(
         city="St. Louis",
-        state="MS",
+        state="MO",
         postal="63103",
         lat=38.627972,
         lng=-90.201782,
@@ -13934,6 +13937,47 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Madison Square Garden, New York, NY": MADISON_SQUARE_GARDEN,
+    "Hoffman Estates, Illinois": SportsballGeocodeTuple(
+        city="Hoffman Estates",
+        state="IL",
+        postal="",
+        lat=42.063889,
+        lng=-88.146944,
+        housenumber="",
+        country="USA",
+    ),
+    "Bojangles Coliseum, Charlotte, North Carolina": SportsballGeocodeTuple(
+        city="Charlotte",
+        state="NC",
+        postal="",
+        lat=35.205164,
+        lng=-80.795103,
+        housenumber="2700",
+        country="USA",
+    ),
+    "Rice Gymnasium, Houston, Texas": TUDOR_FIELDHOUSE,
+    "Alumni Memorial Fieldhouse, Philadelphia, Pennsylvania": HAGAN_ARENA,
+    "Colonial Center, Columbia, South Carolina": COLONIAL_LIFE_ARENA,
+    "F. Mitchell Johnson Center, Charleston, South Carolina": SportsballGeocodeTuple(
+        city="Charleston",
+        state="SC",
+        postal="",
+        lat=32.785278,
+        lng=-79.934167,
+        housenumber="",
+        country="USA",
+    ),
+    "Coors Events Center, Boulder, Colorado": COORS_EVENTS_CONFERENCE_CENTER,
+    "Target Center, Minneapolis, MN": TARGET_CENTER,
+    "Hammons Student Center, Springfield, Missouri": SportsballGeocodeTuple(
+        city="Springfield",
+        state="MO",
+        postal="",
+        lat=37.202222,
+        lng=-93.284444,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 

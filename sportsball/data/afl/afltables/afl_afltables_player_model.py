@@ -1,12 +1,13 @@
 """AFL AFLTables player model."""
 
 # pylint: disable=line-too-long,duplicate-code,too-many-arguments,too-many-locals
-import datetime
 import os
 from urllib.parse import urlparse
 
 import pytest_is_running
 import requests_cache
+from bs4 import BeautifulSoup
+from dateutil.parser import parse
 
 from ....cache import MEMORY
 from ...player_model import PlayerModel
@@ -39,11 +40,16 @@ def _create_afl_afltables_player_model(
     bounces: int | None,
     goal_assists: int | None,
     percentage_played: float | None,
+    session: requests_cache.CachedSession,
 ) -> PlayerModel:
     o = urlparse(player_url)
     last_component = o.path.split("/")[-1]
     identifier, _ = os.path.splitext(last_component)
     jersey = "".join(filter(str.isdigit, jersey))
+    response = session.get(player_url)
+    response.raise_for_status()
+    soup = BeautifulSoup(response.text, "lxml")
+    birth_date = parse(soup.get_text().split("Born:")[1].strip().split()[0].strip())
     return PlayerModel(
         identifier=identifier,
         jersey=jersey,
@@ -78,6 +84,7 @@ def _create_afl_afltables_player_model(
         bounces=bounces,
         goal_assists=goal_assists,
         percentage_played=percentage_played,
+        birth_date=birth_date,
     )
 
 
@@ -109,6 +116,7 @@ def _cached_create_afl_afltables_player_model(
     bounces: int | None,
     goal_assists: int | None,
     percentage_played: float | None,
+    session: requests_cache.CachedSession,
 ) -> PlayerModel:
     return _create_afl_afltables_player_model(
         player_url,
@@ -137,6 +145,7 @@ def _cached_create_afl_afltables_player_model(
         bounces,
         goal_assists,
         percentage_played,
+        session,
     )
 
 
@@ -144,7 +153,6 @@ def create_afl_afltables_player_model(
     player_url: str,
     jersey: str,
     kicks: int | None,
-    dt: datetime.datetime,
     session: requests_cache.CachedSession,
     name: str,
     marks: int | None,
@@ -171,10 +179,7 @@ def create_afl_afltables_player_model(
     percentage_played: float | None,
 ) -> PlayerModel:
     """Create a player model from AFL Tables."""
-    if (
-        not pytest_is_running.is_running()
-        and dt < datetime.datetime.now() - datetime.timedelta(days=7)
-    ):
+    if not pytest_is_running.is_running():
         return _cached_create_afl_afltables_player_model(
             player_url,
             jersey,
@@ -202,6 +207,7 @@ def create_afl_afltables_player_model(
             bounces,
             goal_assists,
             percentage_played,
+            session,
         )
     with session.cache_disabled():
         return _create_afl_afltables_player_model(
@@ -231,4 +237,5 @@ def create_afl_afltables_player_model(
             bounces,
             goal_assists,
             percentage_played,
+            session,
         )

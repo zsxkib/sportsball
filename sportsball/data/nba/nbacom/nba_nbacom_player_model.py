@@ -41,4 +41,5 @@ def create_nba_nbacom_player_model(player_dict: dict[str, Any]) -> PlayerModel:
         bounces=None,
         goal_assists=None,
         percentage_played=None,
+        birth_date=None,
     )
