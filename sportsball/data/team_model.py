@@ -47,6 +47,7 @@ TEAM_MARKS_INSIDE_COLUMN: Literal["marks_inside"] = "marks_inside"
 TEAM_ONE_PERCENTERS_COLUMN: Literal["one_percenters"] = "one_percenters"
 TEAM_BOUNCES_COLUMN: Literal["bounces"] = "bounces"
 TEAM_GOAL_ASSISTS_COLUMN: Literal["goal_assists"] = "goal_assists"
+TEAM_NEWS_COLUMN: Literal["news"] = "news"
 
 
 def _calculate_kicks(data: dict[str, Any]) -> int | None:
@@ -452,7 +453,7 @@ class TeamModel(BaseModel):
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=KICKS_COLUMN,
     )
-    news: list[NewsModel]
+    news: list[NewsModel] = Field(..., alias=TEAM_NEWS_COLUMN)
     social: list[SocialModel]
     field_goals: int | None = Field(
         default_factory=_calculate_field_goals,

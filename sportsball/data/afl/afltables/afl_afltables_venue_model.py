@@ -47,10 +47,7 @@ def create_afl_afltables_venue_model(
     url: str, session: requests_cache.CachedSession, dt: datetime.datetime
 ) -> VenueModel:
     """Create a venue model from AFL tables."""
-    if (
-        not pytest_is_running.is_running()
-        and dt < datetime.datetime.now() - datetime.timedelta(days=7)
-    ):
+    if not pytest_is_running.is_running():
         return _cached_create_afl_afltables_venue_model(url, session, dt)
     with session.cache_disabled():
         return _create_afl_afltables_venue_model(url, session, dt)

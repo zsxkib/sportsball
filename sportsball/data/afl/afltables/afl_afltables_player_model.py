@@ -88,7 +88,7 @@ def _create_afl_afltables_player_model(
     )
 
 
-@MEMORY.cache
+@MEMORY.cache(ignore=["session"])
 def _cached_create_afl_afltables_player_model(
     player_url: str,
     jersey: str,
