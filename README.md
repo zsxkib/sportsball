@@ -48,6 +48,7 @@ Python 3.11.6:
 - [playwright](https://playwright.dev/)
 - [cchardet](https://github.com/PyYoshi/cChardet)
 - [lxml](https://lxml.de/)
+- [gender-guesser](https://github.com/lead-ratings/gender-guesser)
 
 ## Raison D'être :thought_balloon:
 
@@ -74,6 +75,7 @@ The supported leagues are:
             * **Bookie**: The bookie publishing the odds.
         * **News**: News about the team the day before the game.
         * **Social**: Social posts from the team the day before the game.
+        * **Coach**: A coach for the team.
     * **Venue**: The venue the game was played in.
         * **Address**: The address information of a venue.
             * **Weather**: The weather at the address.
@@ -100,6 +102,7 @@ A representation of the game within a season.
 * **season_type**: The type of the season the game was played in.
 * **postponed**: Whether the game was postponed.
 * **playoff**: Whether the game was a playoff game.
+* **distance**: The distance the game was played over.
 
 #### Team
 
@@ -121,6 +124,27 @@ A representation of a team within a game.
 * **assists**: The number of times the player on the team made a pass that resulted in a field goal in the game.
 * **turnovers**: The number of times a player on the team loses possession of the ball in the game.
 * **marks**: The number of times a player on the team marks the ball in the game.
+* **handballs**: The number of times a player on the team handballs the ball in the game.
+* **disposals**: The number of times a player on the team disposes of the ball in the game.
+* **goals**: The number of times a player on the team scored a goal in the game.
+* **behinds**: The number of times a player on the team scored a behind in the game.
+* **hit_outs**: The number of times a player on the team hit out the ball in the game.
+* **tackles**: The number of times a player on the team tackled another player in the game.
+* **rebounds**: The number of times a player on the team gets a rebound in the game.
+* **insides**: The number of times a player on the team kicks a ball inside 50 in the game.
+* **clearances**: The number of times a player on the team performs a clearance in the game.
+* **clangers**: The number of times a player on the team performs a clanger in the game.
+* **free_kicks_for**: The number of times a player on the team was rewarded a free kick in the game.
+* **free_kicks_against**: The number of times a player on the team gave a player on the other team a free kick in the game.
+* **brownlow_votes**: The number of times a player on the team was given a brownlow vote in the game.
+* **contested_possessions**: The number of times a player on the team got a contested posession in the game.
+* **uncontested_possessions**: The number of times a player on the team got an uncontested posession in the game.
+* **contested_marks**: The number of times a player on the team got a contested mark in the game.
+* **marks_inside**: The number of times a player on the team got a mark inside 50 in the game.
+* **one_percenters**: The number of times a player on the team performs a "one-percenter" in the game.
+* **bounces**: The number of times a player on the team bounces a ball.
+* **goal_assists**: The number of times a player on the team assists another player on the team with a goal in the game.
+* **coaches**: The coaches on the team during the game.
 
 #### Player
 
@@ -160,6 +184,12 @@ A representation of a player within a team within a game.
 * **goal_assists**: The number of assists on goal the player had in the game.
 * **percentage_played**: The percentage of the game the player was on the field.
 * **birth_date**: The birth date of the player.
+* **species**: The species of the player.
+* **handicap_weight**: The handicap weight of the player (in KGs).
+* **father**: The player representing the father of the player.
+* **sex**: The sex of the player.
+* **age**: The age of the player in years.
+* **starting_position**: The starting position of the player.
 
 #### Odds
 
@@ -220,6 +250,13 @@ Social media posts one day out from the game.
 * **likes**: The number of likes the post received.
 * **views**: The number of views the post has.
 * **published**: When the post was published.
+
+#### Coach
+
+The coach on the team at the time of the game.
+
+* **identifier**: The unique identifier for the coach.
+* **name**: The name of the coach.
 
 ## Caching
 

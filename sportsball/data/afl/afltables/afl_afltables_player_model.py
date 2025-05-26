@@ -12,6 +12,8 @@ from dateutil.parser import parse
 
 from ....cache import MEMORY
 from ...player_model import PlayerModel
+from ...sex import Sex
+from ...species import Species
 
 
 def _create_afl_afltables_player_model(
@@ -90,6 +92,11 @@ def _create_afl_afltables_player_model(
         goal_assists=goal_assists,
         percentage_played=percentage_played,
         birth_date=birth_date,
+        species=str(Species.HUMAN),
+        handicap_weight=None,
+        father=None,
+        sex=str(Sex.MALE),
+        starting_position=None,
     )
 
 

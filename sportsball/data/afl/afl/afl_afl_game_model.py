@@ -1,6 +1,6 @@
 """AFL AFL game model."""
 
-# pylint: disable=too-many-statements,protected-access,too-many-arguments,bare-except,duplicate-code
+# pylint: disable=too-many-statements,protected-access,too-many-arguments,bare-except,duplicate-code,too-many-locals
 import datetime
 import re
 
@@ -12,24 +12,32 @@ from playwright.sync_api import Playwright
 from ....playwright import ensure_install
 from ...game_model import GameModel
 from ...league import League
+from ..position import Position, position_from_str
 from .afl_afl_team_model import create_afl_afl_team_model
 from .afl_afl_venue_model import create_afl_afl_venue_model
 
 
-def parse_players_v1(div: Tag) -> list[list[tuple[str, str, str, str]]]:
+def parse_players_v1(div: Tag) -> list[list[tuple[str, str, str, str, Position]]]:
     """Parses the players from a v1 format."""
-    teams_players: list[list[tuple[str, str, str, str]]] = [[], []]
+    teams_players: list[list[tuple[str, str, str, str, Position]]] = [[], []]
     for div_positions_row in div.find_all(
         "div", {"class": re.compile(".*team-lineups__positions-row.*")}
     ):
-        row_players: list[list[tuple[str, str, str, str]]] = [[], []]
+        row_players: list[list[tuple[str, str, str, str, Position]]] = [[], []]
         for count, div_team_players in enumerate(
             div_positions_row.find_all(
                 "div",
                 {"class": re.compile(".*team-lineups__positions-players-container.*")},
             )
         ):
-            team_players: list[tuple[str, str, str, str]] = []
+            team_players: list[tuple[str, str, str, str, Position]] = []
+            position = None
+            for span in div_team_players.find_all(
+                "span", {"class": re.compile(".*team-lineups__position-meta-label.*")}
+            ):
+                position = position_from_str(span.get_text().strip())
+            if position is None:
+                raise ValueError("position is null")
             for a in div_team_players.find_all(
                 "a", {"class": re.compile(".*js-player-profile-link.*")}
             ):
@@ -49,7 +57,9 @@ def parse_players_v1(div: Tag) -> list[list[tuple[str, str, str, str]]]:
                     )
                 if player_number is None:
                     raise ValueError("player_number is null")
-                team_players.append((player_id, player_number, first_name, second_name))
+                team_players.append(
+                    (player_id, player_number, first_name, second_name, position)
+                )
             row_players[count].extend(team_players)
         for count, row_players_list in enumerate(row_players):
             teams_players[count].extend(row_players_list)
@@ -71,8 +81,8 @@ def _extract_dt(soup: BeautifulSoup) -> datetime.datetime:
 
 
 def _extract_players(
-    soup: BeautifulSoup, players: list[list[tuple[str, str, str, str]]]
-) -> list[list[tuple[str, str, str, str]]]:
+    soup: BeautifulSoup, players: list[list[tuple[str, str, str, str, Position]]]
+) -> list[list[tuple[str, str, str, str, Position]]]:
     def is_players_empty() -> bool:
         nonlocal players
         if not players:
@@ -94,15 +104,17 @@ def _extract_players(
 
 
 def _parse(
-    html: str, players: list[list[tuple[str, str, str, str]]]
-) -> tuple[list[float], datetime.datetime, list[list[tuple[str, str, str, str]]]]:
+    html: str, players: list[list[tuple[str, str, str, str, Position]]]
+) -> tuple[
+    list[float], datetime.datetime, list[list[tuple[str, str, str, str, Position]]]
+]:
     soup = BeautifulSoup(html, "lxml")
     return _extract_odds(soup), _extract_dt(soup), _extract_players(soup, players)
 
 
 def create_afl_afl_game_model(
     team_names: list[str],
-    players: list[list[tuple[str, str, str, str]]],
+    players: list[list[tuple[str, str, str, str, Position]]],
     dt: datetime.datetime | None,
     venue_name: str,
     session: requests_cache.CachedSession,
@@ -150,4 +162,5 @@ def create_afl_afl_game_model(
         season_type=None,
         postponed=None,
         play_off=None,
+        distance=None,
     )

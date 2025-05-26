@@ -70,6 +70,7 @@ def _create_oddsportal_team_model(
         news=create_google_news_models(team_name, session, dt, league),
         social=create_x_social_model(team_name, session, dt),
         field_goals=None,
+        coaches=[],
     )
 
 

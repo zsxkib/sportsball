@@ -271,4 +271,5 @@ def create_proxy_session() -> ProxySession:
     return ProxySession(
         "sportsball",
         expire_after=requests_cache.NEVER_EXPIRE,
+        allowable_methods=('GET', 'HEAD', "POST")
     )

@@ -1,8 +1,12 @@
 """NBA NBA.com player model."""
 
+# pylint: disable=duplicate-code
 from typing import Any
 
 from ...player_model import PlayerModel
+from ...sex import Sex
+from ...species import Species
+from ..position import position_from_str
 
 
 def create_nba_nbacom_player_model(player_dict: dict[str, Any]) -> PlayerModel:
@@ -42,4 +46,9 @@ def create_nba_nbacom_player_model(player_dict: dict[str, Any]) -> PlayerModel:
         goal_assists=None,
         percentage_played=None,
         birth_date=None,
+        species=str(Species.HUMAN),
+        handicap_weight=None,
+        father=None,
+        sex=str(Sex.MALE),
+        starting_position=str(position_from_str(player_dict["position"])),
     )

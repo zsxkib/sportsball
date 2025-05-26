@@ -27,6 +27,7 @@ def _create_espn_team(
     session: requests_cache.CachedSession,
     dt: datetime.datetime,
     league: League,
+    positions_validator: dict[str, str],
 ) -> TeamModel:
     team_response = session.get(competitor["team"]["$ref"])
     team_response.raise_for_status()
@@ -62,6 +63,7 @@ def _create_espn_team(
         score_dict,
         dt,
         league,
+        positions_validator,
     )
 
 
@@ -87,6 +89,7 @@ def _create_teams(
     venue: VenueModel | None,
     dt: datetime.datetime,
     league: League,
+    positions_validator: dict[str, str],
 ) -> tuple[list[TeamModel], int | None, datetime.datetime | None]:
     # pylint: disable=too-many-locals
     teams = []
@@ -100,7 +103,11 @@ def _create_teams(
             odds_dict = odds_response.json()
 
         for competitor in competition["competitors"]:
-            teams.append(_create_espn_team(competitor, odds_dict, session, dt, league))
+            teams.append(
+                _create_espn_team(
+                    competitor, odds_dict, session, dt, league, positions_validator
+                )
+            )
         attendance = competition["attendance"]
         if "situation" in competition:
             situation_url = competition["situation"]["$ref"]
@@ -126,12 +133,15 @@ def _create_espn_game_model(
     league: League,
     year: int | None,
     season_type: SeasonType | None,
+    positions_validator: dict[str, str],
 ) -> GameModel:
     dt = parse(event["date"])
     venue = _create_venue(event, session, dt)
     if venue is not None:
         dt = localize(venue, dt)
-    teams, attendance, end_dt = _create_teams(event, session, venue, dt, league)
+    teams, attendance, end_dt = _create_teams(
+        event, session, venue, dt, league, positions_validator
+    )
     return GameModel(
         dt=dt,
         week=week,
@@ -145,6 +155,7 @@ def _create_espn_game_model(
         season_type=season_type,
         postponed=None,
         play_off=None,
+        distance=None,
     )
 
 
@@ -157,9 +168,17 @@ def _cached_create_espn_game_model(
     league: League,
     year: int | None,
     season_type: SeasonType | None,
+    positions_validator: dict[str, str],
 ) -> GameModel:
     return _create_espn_game_model(
-        event, week, game_number, session, league, year, season_type
+        event,
+        week,
+        game_number,
+        session,
+        league,
+        year,
+        season_type,
+        positions_validator,
     )
 
 
@@ -171,6 +190,7 @@ def create_espn_game_model(
     league: League,
     year: int | None,
     season_type: SeasonType | None,
+    positions_validator: dict[str, str],
 ) -> GameModel:
     """Creates an ESPN game model."""
     dt = parse(event["date"])
@@ -179,9 +199,23 @@ def create_espn_game_model(
         and dt < datetime.datetime.now() - datetime.timedelta(days=7)
     ):
         return _cached_create_espn_game_model(
-            event, week, game_number, session, league, year, season_type
+            event,
+            week,
+            game_number,
+            session,
+            league,
+            year,
+            season_type,
+            positions_validator,
         )
     with session.cache_disabled():
         return _create_espn_game_model(
-            event, week, game_number, session, league, year, season_type
+            event,
+            week,
+            game_number,
+            session,
+            league,
+            year,
+            season_type,
+            positions_validator,
         )

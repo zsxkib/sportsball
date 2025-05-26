@@ -37,6 +37,7 @@ def _team_models(
     team_identity_map: dict[str, str],
     player_identity_map: dict[str, str],
     names: dict[str, str],
+    coach_names: dict[str, str],
 ) -> list[TeamModel]:
     team_models: dict[str, list[TeamModel]] = {}
     for game_model in game_models:
@@ -53,7 +54,7 @@ def _team_models(
                     team_model
                 ]
     return [
-        create_combined_team_model(v, k, player_identity_map, names)  # pyright: ignore
+        create_combined_team_model(v, k, player_identity_map, names, coach_names)  # pyright: ignore
         for k, v in team_models.items()
     ]
 
@@ -65,11 +66,12 @@ def create_combined_game_model(
     player_identity_map: dict[str, str],
     session: requests.Session,
     names: dict[str, str],
+    coach_names: dict[str, str],
 ) -> GameModel:
     """Create a game model by combining many game models."""
     venue_models, full_venue_identity = _venue_models(game_models, venue_identity_map)
     full_team_models = _team_models(
-        game_models, team_identity_map, player_identity_map, names
+        game_models, team_identity_map, player_identity_map, names, coach_names
     )
     attendance = None
     end_dt = None
@@ -79,6 +81,7 @@ def create_combined_game_model(
     game_number = None
     postponed = None
     play_off = None
+    distance = None
     dt = game_models[0].dt
     for game_model in game_models:
         game_model_dt = game_model.dt
@@ -108,6 +111,9 @@ def create_combined_game_model(
         game_model_play_off = game_model.play_off
         if not is_null(game_model_play_off):
             play_off = game_model_play_off
+        game_model_distance = game_model.distance
+        if not is_null(game_model_distance):
+            distance = game_model_distance
 
     if full_venue_identity is None and venue_models:
         for venue_model in venue_models:
@@ -128,4 +134,5 @@ def create_combined_game_model(
         season_type=season_type,
         postponed=postponed,
         play_off=play_off,
+        distance=distance,
     )

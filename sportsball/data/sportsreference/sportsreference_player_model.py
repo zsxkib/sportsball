@@ -1,7 +1,6 @@
 """Sports reference player model."""
 
-# pylint: disable=too-many-arguments,unused-argument,line-too-long,duplicate-code
-import datetime
+# pylint: disable=too-many-arguments,unused-argument,line-too-long,duplicate-code,too-many-locals
 import http
 import logging
 from urllib.parse import unquote
@@ -15,6 +14,8 @@ from dateutil.parser import parse
 from ...cache import MEMORY
 from ...session import DEFAULT_TIMEOUT
 from ..player_model import PlayerModel
+from ..sex import Sex
+from ..species import Species
 
 _FIX_URLS = {
     "https://www.sports-reference.com/cbb/players/leyla-öztürk-1.html": "https://www.sports-reference.com/cbb/players/leyla-ozturk-1.html",
@@ -53,6 +54,9 @@ def _create_sportsreference_player_model(
     offensive_rebounds: dict[str, int],
     assists: dict[str, int],
     turnovers: dict[str, int],
+    positions: dict[str, str],
+    positions_validator: dict[str, str],
+    sex: Sex,
 ) -> PlayerModel | None:
     """Create a player model from sports reference."""
     player_url = _fix_url(player_url)
@@ -74,6 +78,7 @@ def _create_sportsreference_player_model(
         if jsonld["@type"] != "Person":
             continue
         birth_date = parse(jsonld["birthDate"])
+    position = positions.get(name)
     return PlayerModel(
         identifier=name,
         jersey=None,
@@ -109,6 +114,13 @@ def _create_sportsreference_player_model(
         goal_assists=None,
         percentage_played=None,
         birth_date=birth_date,
+        species=str(Species.HUMAN),
+        handicap_weight=None,
+        father=None,
+        sex=str(sex),
+        starting_position=positions_validator[position]
+        if position is not None
+        else None,
     )
 
 
@@ -121,28 +133,60 @@ def _cached_create_sportsreference_player_model(
     offensive_rebounds: dict[str, int],
     assists: dict[str, int],
     turnovers: dict[str, int],
+    positions: dict[str, str],
+    positions_validator: dict[str, str],
+    sex: Sex,
 ) -> PlayerModel | None:
     return _create_sportsreference_player_model(
-        session, player_url, fg, fga, offensive_rebounds, assists, turnovers
+        session,
+        player_url,
+        fg,
+        fga,
+        offensive_rebounds,
+        assists,
+        turnovers,
+        positions,
+        positions_validator,
+        sex,
     )
 
 
 def create_sportsreference_player_model(
     session: requests_cache.CachedSession,
     player_url: str,
-    dt: datetime.datetime,
     fg: dict[str, int],
     fga: dict[str, int],
     offensive_rebounds: dict[str, int],
     assists: dict[str, int],
     turnovers: dict[str, int],
+    positions: dict[str, str],
+    positions_validator: dict[str, str],
+    sex: Sex,
 ) -> PlayerModel | None:
     """Create a player model from sports reference."""
     if not pytest_is_running.is_running():
         return _cached_create_sportsreference_player_model(
-            session, player_url, fg, fga, offensive_rebounds, assists, turnovers
+            session,
+            player_url,
+            fg,
+            fga,
+            offensive_rebounds,
+            assists,
+            turnovers,
+            positions,
+            positions_validator,
+            sex,
         )
     with session.cache_disabled():
         return _create_sportsreference_player_model(
-            session, player_url, fg, fga, offensive_rebounds, assists, turnovers
+            session,
+            player_url,
+            fg,
+            fga,
+            offensive_rebounds,
+            assists,
+            turnovers,
+            positions,
+            positions_validator,
+            sex,
         )

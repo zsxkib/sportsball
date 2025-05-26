@@ -85,13 +85,20 @@ class SportsReferenceLeagueModel(LeagueModel):
     def name(cls) -> str:
         return "sportsreference-league-model"
 
+    @classmethod
+    def position_validator(cls) -> dict[str, str]:
+        """A dictionary that contains the mapping from positions to standard positions."""
+        raise NotImplementedError(
+            "position_validator is not implemented by parent class"
+        )
+
     def _produce_games(
-        self, soup: BeautifulSoup, pbar: tqdm.tqdm, dt: datetime.datetime, url: str
+        self, soup: BeautifulSoup, pbar: tqdm.tqdm, url: str
     ) -> Iterator[GameModel]:
         for game_url in _find_game_urls(soup, url):
             pbar.update(1)
             game_model = create_sportsreference_game_model(
-                self.session, game_url, self.league, dt
+                self.session, game_url, self.league, self.position_validator()
             )
             pbar.set_description(
                 f"SportsReference {game_model.year} - {game_model.season_type} - {game_model.dt}"
@@ -123,7 +130,7 @@ class SportsReferenceLeagueModel(LeagueModel):
                     if dt.year <= 1945:
                         break
                 soup = BeautifulSoup(response.text, "lxml")
-                yield from self._produce_games(soup, pbar, dt, url)
+                yield from self._produce_games(soup, pbar, url)
                 prev_a = soup.find("a", class_="prev")
                 if isinstance(prev_a, Tag):
                     href = prev_a.get("href")

@@ -3,6 +3,7 @@
 # pylint: disable=too-many-arguments,too-many-locals,duplicate-code,line-too-long
 import datetime
 import os
+import urllib.parse
 from urllib.parse import urlparse
 
 import pytest_is_running
@@ -14,6 +15,7 @@ from ...google.google_news_model import create_google_news_models
 from ...league import League
 from ...team_model import TeamModel
 from ...x.x_social_model import create_x_social_model
+from .afl_afltables_coach_model import create_afl_afltables_coach_model
 from .afl_afltables_player_model import create_afl_afltables_player_model
 
 _TEAM_NAME_MAP = {
@@ -96,6 +98,14 @@ def _create_afl_afltables_team_model(
             if short_name in last_ladder_ranks:
                 last_ladder_rank = last_ladder_ranks[short_name]
                 break
+    coaches_url = None
+    for a in soup.find_all("a", href=True):
+        a_text = a.get_text()
+        if a_text == "Coaches":
+            coaches_url = urllib.parse.urljoin(team_url, a.get("href"))
+            break
+    if coaches_url is None:
+        raise ValueError("coaches_url is null")
     return TeamModel(
         identifier=identifier,
         name=name,
@@ -138,6 +148,7 @@ def _create_afl_afltables_team_model(
         news=create_google_news_models(name, session, dt, league),
         social=create_x_social_model(identifier, session, dt),
         field_goals=None,
+        coaches=[create_afl_afltables_coach_model(coaches_url, session, dt.year)],
     )
 
 

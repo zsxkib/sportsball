@@ -6,6 +6,7 @@ import unittest
 import requests_mock
 import requests_cache
 from sportsball.data.sportsreference.sportsreference_player_model import create_sportsreference_player_model
+from sportsball.data.sex import Sex
 
 
 class TestSportsReferencePlayerModel(unittest.TestCase):
@@ -20,13 +21,15 @@ class TestSportsReferencePlayerModel(unittest.TestCase):
             with open(os.path.join(self.dir, "barnesc01.html"), "rb") as f:
                 m.get(url, content=f.read())
             player_model = create_sportsreference_player_model(
-                self.session,
-                url,
-                datetime.datetime(2010, 10, 10, 10, 10, 0),
-                {"Scottie Barnes": 8},
-                {},
-                {},
-                {},
-                {},
+                session=self.session,
+                player_url=url,
+                fg={"Scottie Barnes": 8},
+                fga={},
+                offensive_rebounds={},
+                assists={},
+                turnovers={},
+                positions={},
+                positions_validator={},
+                sex=Sex.MALE,
             )
             self.assertEqual(player_model.field_goals, 8)

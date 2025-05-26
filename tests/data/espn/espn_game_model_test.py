@@ -21,16 +21,17 @@ class TestESPNGameModel(unittest.TestCase):
         with requests_mock.Mocker() as m:
 
             game_model = create_espn_game_model(
-                {
+                event={
                     "date": dt.isoformat(),
                     "competitions": [],
                 },
-                1,
-                1,
-                self._session,
-                League.NFL,
-                2016,
-                SeasonType.REGULAR,
+                week=1,
+                game_number=1,
+                session=self._session,
+                league=League.NFL,
+                year=2016,
+                season_type=SeasonType.REGULAR,
+                positions_validator={},
             )
 
             self.assertEqual(game_model.dt, dt)

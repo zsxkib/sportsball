@@ -7,6 +7,7 @@ import requests_cache
 from ...league import League
 from ...sportsreference.sportsreference_league_model import \
     SportsReferenceLeagueModel
+from ..position import Position
 
 
 class NBASportsReferenceLeagueModel(SportsReferenceLeagueModel):
@@ -25,3 +26,7 @@ class NBASportsReferenceLeagueModel(SportsReferenceLeagueModel):
     @classmethod
     def name(cls) -> str:
         return "nba-sportsreference-league-model"
+
+    @classmethod
+    def position_validator(cls) -> dict[str, str]:
+        return {str(x): str(x) for x in Position}

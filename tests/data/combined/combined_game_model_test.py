@@ -33,14 +33,17 @@ class TestCombinedGameModel(unittest.TestCase):
                 season_type=SeasonType.REGULAR,
                 postponed=True,
                 play_off=None,
+                distance=None,
             )
             names = {}
+            coach_names = {}
             combined_game_model = create_combined_game_model(
-                [game_model],
-                {},
-                {},
-                {},
-                self._session,
-                names,
+                game_models=[game_model],
+                venue_identity_map={},
+                team_identity_map={},
+                player_identity_map={},
+                session=self._session,
+                names=names,
+                coach_names=coach_names,
             )
             self.assertEqual(combined_game_model.dt, dt)

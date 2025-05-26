@@ -1,6 +1,6 @@
 """OddsPortal game model."""
 
-# pylint: disable=too-many-locals,too-many-statements,line-too-long,broad-exception-caught
+# pylint: disable=too-many-locals,too-many-statements,line-too-long,broad-exception-caught,duplicate-code
 import datetime
 import json
 import logging
@@ -123,6 +123,7 @@ def _create_oddsportal_game_model(
         season_type=None,
         postponed=event_data["isPostponed"],
         play_off=None,
+        distance=None,
     )
 
 

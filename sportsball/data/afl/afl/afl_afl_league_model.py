@@ -16,6 +16,7 @@ from ....playwright import ensure_install
 from ...game_model import GameModel
 from ...league import League
 from ...league_model import LeagueModel
+from ..position import Position, position_from_str
 from .afl_afl_game_model import create_afl_afl_game_model, parse_players_v1
 
 
@@ -71,18 +72,23 @@ def _parse_v1(
 
 def _parse_v2_soup(
     soup: BeautifulSoup, html_url: str
-) -> Iterator[tuple[list[str], list[list[tuple[str, str, str, str]]], str, str]]:
+) -> Iterator[
+    tuple[list[str], list[list[tuple[str, str, str, str, Position]]], str, str]
+]:
     for div in soup.find_all("div", {"class": "team-lineups__item"}):
         team_names = []
         for span in div.find_all(
             "span", {"class": re.compile(".*team-lineups-header__name.*")}
         ):
             team_names = [x.strip() for x in span.get_text().strip().split(" v ")]
-        team_players: list[list[tuple[str, str, str, str]]] = [[], []]
+        team_players: list[list[tuple[str, str, str, str, Position]]] = [[], []]
 
         def process_a_player(
-            a: Tag, idx: int, team_players: list[list[tuple[str, str, str, str]]]
-        ) -> list[list[tuple[str, str, str, str]]]:
+            a: Tag,
+            idx: int,
+            team_players: list[list[tuple[str, str, str, str, Position]]],
+            div: Tag,
+        ) -> list[list[tuple[str, str, str, str, Position]]]:
             href = a.get("href")
             if not isinstance(href, str):
                 raise ValueError("href is not a str")
@@ -98,17 +104,26 @@ def _parse_v2_soup(
                 jersey = div_shirt.get_text().strip()
             if jersey is None:
                 raise ValueError("jersey is null")
-            team_players[idx].append((player_id, first_name, sur_name, jersey))
+            position = None
+            for span in div.find_all(
+                "span", {"class": re.compile(".*team-lineups__position-meta-label.*")}
+            ):
+                position = position_from_str(span.get_text().strip())
+            if position is None:
+                raise ValueError("position is null")
+            team_players[idx].append(
+                (player_id, first_name, sur_name, jersey, position)
+            )
             return team_players
 
         for a in div.find_all(
             "a", {"class": re.compile(".*team-lineups__player-entry--home-team.*")}
         ):
-            team_players = process_a_player(a, 0, team_players)
+            team_players = process_a_player(a, 0, team_players, div)
         for a in div.find_all(
             "a", {"class": re.compile(".*team-lineups__player-entry--away-team.*")}
         ):
-            team_players = process_a_player(a, 1, team_players)
+            team_players = process_a_player(a, 1, team_players, div)
 
         venue_name: str | None = None
         for div_info in div.find_all("div", {"class": "team-lineups-header__info"}):

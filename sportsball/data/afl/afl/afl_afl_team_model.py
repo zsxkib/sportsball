@@ -8,13 +8,14 @@ import requests_cache
 from ...google.google_news_model import create_google_news_models
 from ...league import League
 from ...team_model import TeamModel
+from ..position import Position
 from .afl_afl_odds_model import create_afl_afl_odds_model
 from .afl_afl_player_model import create_afl_afl_player_model
 
 
 def create_afl_afl_team_model(
     team_name: str,
-    players: list[tuple[str, str, str, str]],
+    players: list[tuple[str, str, str, str, Position]],
     session: requests_cache.CachedSession,
     dt: datetime.datetime,
     ladder: list[str],
@@ -23,9 +24,9 @@ def create_afl_afl_team_model(
     """Create a team model from AFL AFL."""
     player_models = [
         create_afl_afl_player_model(
-            identifier, player_number, " ".join([first_name, second_name])
+            identifier, player_number, " ".join([first_name, second_name]), position
         )
-        for identifier, player_number, first_name, second_name in players
+        for identifier, player_number, first_name, second_name, position in players
     ]
     odds_models = []
     if odds is not None:
@@ -48,4 +49,5 @@ def create_afl_afl_team_model(
         offensive_rebounds=None,
         assists=None,
         turnovers=None,
+        coaches=[],
     )

@@ -22,6 +22,7 @@ LEAGUE_COLUMN: Literal["league"] = "league"
 END_DT_COLUMN: Literal["end_dt"] = "end_dt"
 POSTPONED_COLUMN: Literal["postponed"] = "postponed"
 PLAY_OFF_COLUMN: Literal["play_off"] = "play_off"
+GAME_DISTANCE_COLUMN: Literal["distance"] = "distance"
 
 
 def localize(venue: VenueModel | None, dt: datetime.datetime) -> datetime.datetime:
@@ -64,3 +65,4 @@ class GameModel(BaseModel):
         ..., json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD}, alias=POSTPONED_COLUMN
     )
     play_off: bool | None = Field(..., alias=PLAY_OFF_COLUMN)
+    distance: float | None = Field(..., alias=GAME_DISTANCE_COLUMN)

@@ -1,11 +1,16 @@
 """The prototype class for a player."""
 
-import datetime
-from typing import Literal
+from __future__ import annotations
 
+import datetime
+from typing import Any, Literal
+
+import gender_guesser.detector as gender  # type: ignore
+from dateutil.relativedelta import relativedelta
 from pydantic import BaseModel, Field
 
 from .field_type import TYPE_KEY, FieldType
+from .sex import Sex
 
 PLAYER_KICKS_COLUMN: Literal["kicks"] = "kicks"
 PLAYER_IDENTIFIER_COLUMN: Literal["identifier"] = "identifier"
@@ -44,6 +49,37 @@ PLAYER_GOAL_ASSISTS_COLUMN: Literal["goal_assists"] = "goal_assists"
 PLAYER_PERCENTAGE_PLAYED_COLUMN: Literal["percentage_played"] = "percentage_played"
 PLAYER_NAME_COLUMN: Literal["name"] = "name"
 PLAYER_BIRTH_DATE_COLUMN: Literal["birth_date"] = "birth_date"
+PLAYER_SPECIES_COLUMN: Literal["species"] = "species"
+PLAYER_HANDICAP_WEIGHT_COLUMN: Literal["handicap_weight"] = "handicap_weight"
+PLAYER_FATHER_COLUMN: Literal["father"] = "father"
+PLAYER_SEX_COLUMN: Literal["sex"] = "sex"
+PLAYER_AGE_COLUMN: Literal["age"] = "age"
+PLAYER_STARTING_POSITION_COLUMN: Literal["starting_position"] = "starting_position"
+
+_GENDER_DETECTOR = gender.Detector()
+_MALE_GENDERS = {"male", "mostly_male"}
+_FEMALE_GENDERS = {"female", "mostly_female"}
+_UNCERTAIN_GENDERS = {"andy", "unknown"}
+
+
+def _guess_sex(data: dict[str, Any]) -> str | None:
+    name = data[PLAYER_NAME_COLUMN]
+    gender_tag = _GENDER_DETECTOR.get_gender(name)
+    if gender_tag in _MALE_GENDERS:
+        return str(Sex.MALE)
+    if gender_tag in _FEMALE_GENDERS:
+        return str(Sex.FEMALE)
+    if gender_tag in _UNCERTAIN_GENDERS:
+        return None
+    return None
+
+
+def _determine_age(data: dict[str, Any]) -> int | None:
+    birth_date = data.get(PLAYER_BIRTH_DATE_COLUMN)
+    if birth_date is not None:
+        current_date = datetime.datetime.today().date()
+        return relativedelta(current_date, birth_date).years
+    return None
 
 
 class PlayerModel(BaseModel):
@@ -207,3 +243,21 @@ class PlayerModel(BaseModel):
         alias=PLAYER_PERCENTAGE_PLAYED_COLUMN,
     )
     birth_date: datetime.date | None = Field(..., alias=PLAYER_BIRTH_DATE_COLUMN)
+    species: str = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL},
+        alias=PLAYER_SPECIES_COLUMN,
+    )
+    handicap_weight: float | None = Field(..., alias=PLAYER_HANDICAP_WEIGHT_COLUMN)
+    father: PlayerModel | None = Field(..., alias=PLAYER_FATHER_COLUMN)
+    sex: str | None = Field(
+        default_factory=_guess_sex,
+        json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL},
+        alias=PLAYER_SEX_COLUMN,
+    )
+    age: int | None = Field(default_factory=_determine_age, alias=PLAYER_AGE_COLUMN)
+    starting_position: str | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL},
+        alias=PLAYER_STARTING_POSITION_COLUMN,
+    )

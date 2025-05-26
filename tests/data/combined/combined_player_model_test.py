@@ -6,6 +6,7 @@ import requests_mock
 import requests_cache
 from sportsball.data.combined.combined_player_model import create_combined_player_model
 from sportsball.data.player_model import PlayerModel
+from sportsball.data.species import Species
 
 
 class TestCombinedPlayerModel(unittest.TestCase):
@@ -53,6 +54,10 @@ class TestCombinedPlayerModel(unittest.TestCase):
                 goal_assists=None,
                 percentage_played=None,
                 birth_date=None,
+                species=str(Species.HUMAN),
+                handicap_weight=None,
+                father=None,
+                starting_position=None,
             )
             combined_player_model = create_combined_player_model(
                 [player_model],

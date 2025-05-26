@@ -1,6 +1,6 @@
 """Combined league model."""
 
-# pylint: disable=raise-missing-from
+# pylint: disable=raise-missing-from,too-many-locals
 import logging
 import multiprocessing
 from concurrent.futures import ThreadPoolExecutor
@@ -91,6 +91,7 @@ class CombinedLeagueModel(LeagueModel):
                 key = "-".join(game_components)
                 games[key] = games.get(key, []) + [game_model]
         names: dict[str, str] = {}
+        coach_names: dict[str, str] = {}
         for game_models in games.values():
             yield create_combined_game_model(  # type: ignore
                 game_models,
@@ -99,4 +100,5 @@ class CombinedLeagueModel(LeagueModel):
                 self.player_identity_map(),
                 self.session,
                 names,
+                coach_names,
             )

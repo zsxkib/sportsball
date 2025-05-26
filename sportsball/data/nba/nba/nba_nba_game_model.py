@@ -55,6 +55,7 @@ def _create_nba_nba_game_model(
         season_type=_SEASON_TYPE_MAP[season_id[0]],
         postponed=None,
         play_off=None,
+        distance=None,
     )
 
 

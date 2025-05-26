@@ -2,12 +2,16 @@
 
 # pylint: disable=duplicate-code
 from ...player_model import PlayerModel
+from ...sex import Sex
+from ...species import Species
+from ..position import Position
 
 
 def create_afl_afl_player_model(
     identifier: str,
     player_number: str,
     name: str,
+    position: Position,
 ) -> PlayerModel:
     """Create a player model from AFL AFL."""
     return PlayerModel(
@@ -45,4 +49,9 @@ def create_afl_afl_player_model(
         goal_assists=None,
         percentage_played=None,
         birth_date=None,
+        species=str(Species.HUMAN),
+        handicap_weight=None,
+        father=None,
+        sex=str(Sex.MALE),
+        starting_position=str(position),
     )

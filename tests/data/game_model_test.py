@@ -22,6 +22,7 @@ class TestGameModel(unittest.TestCase):
             season_type=None,
             postponed=True,
             play_off=None,
+            distance=None,
         )
 
     def test_postponed(self):

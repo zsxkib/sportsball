@@ -19,14 +19,17 @@ class TestESPNPlayerModel(unittest.TestCase):
         identifier = "a"
         statistics_url = "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/401671855/competitions/401671855/competitors/5/roster/16837/statistics/0?lang=en&region=us"
         athletes_url = "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/athletes/16837?lang=en&region=us"
+        position_url = "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/positions/32?lang=en&region=us"
         with requests_mock.Mocker() as m:
             with open(os.path.join(self.dir, "16837_statistics.json"), "rb") as f:
                 m.get(statistics_url, content=f.read())
             with open(os.path.join(self.dir, "16837_athletes.json"), "rb") as f:
                 m.get(athletes_url, content=f.read())
+            with open(os.path.join(self.dir, "32_positions.json"), "rb") as f:
+                m.get(position_url, content=f.read())
             player_model = create_espn_player_model(
-                self._session,
-                {
+                session=self._session,
+                player={
                     "playerId": identifier,
                     "period": 0,
                     "active": False,
@@ -38,7 +41,7 @@ class TestESPNPlayerModel(unittest.TestCase):
                         "$ref": athletes_url,
                     },
                     "position": {
-                        "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/positions/32?lang=en&region=us",
+                        "$ref": position_url,
                     },
                     "statistics": {
                         "$ref": statistics_url,
@@ -46,7 +49,8 @@ class TestESPNPlayerModel(unittest.TestCase):
                     "didNotPlay": False,
                     "displayName": "S. Harris",
                 },
-                dt,
+                dt=dt,
+                positions_validator={"DT": "DT"},
             )
 
             self.assertEqual(player_model.identifier, identifier)

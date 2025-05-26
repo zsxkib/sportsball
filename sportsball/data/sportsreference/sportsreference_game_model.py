@@ -54,6 +54,7 @@ def _find_old_dt(
     assists: dict[str, int],
     turnovers: dict[str, int],
     response: requests.Response,
+    positions_validator: dict[str, str],
 ) -> tuple[datetime.datetime, list[TeamModel], str | None]:
     teams: list[TeamModel] = []
 
@@ -166,6 +167,7 @@ def _find_old_dt(
                     assists,
                     turnovers,
                     team_name,
+                    positions_validator,
                 )
             )
 
@@ -251,6 +253,7 @@ def _find_new_dt(
     offensive_rebounds: dict[str, int],
     assists: dict[str, int],
     turnovers: dict[str, int],
+    positions_validator: dict[str, str],
 ) -> tuple[datetime.datetime, list[TeamModel], str]:
     in_divs = scorebox_meta_div.find_all("div")
     current_in_div_idx = 0
@@ -289,6 +292,7 @@ def _find_new_dt(
                     assists,
                     turnovers,
                     a.get_text().strip(),
+                    positions_validator,
                 )
             )
 
@@ -299,6 +303,7 @@ def _create_sportsreference_game_model(
     session: requests_cache.CachedSession,
     url: str,
     league: League,
+    positions_validator: dict[str, str],
 ) -> GameModel:
     # pylint: disable=too-many-branches
     response = session.get(url)
@@ -383,6 +388,7 @@ def _create_sportsreference_game_model(
             assists,
             turnovers,
             response,
+            positions_validator,
         )
     else:
         dt, teams, venue_name = _find_new_dt(
@@ -398,6 +404,7 @@ def _create_sportsreference_game_model(
             offensive_rebounds,
             assists,
             turnovers,
+            positions_validator,
         )
     for team in teams:
         if team.name == "File Not Found":
@@ -503,6 +510,7 @@ def _create_sportsreference_game_model(
         attendance=None,
         postponed=None,
         play_off=None,
+        distance=None,
     )
 
 
@@ -511,18 +519,23 @@ def _cached_create_sportsreference_game_model(
     session: requests_cache.CachedSession,
     url: str,
     league: League,
+    positions_validator: dict[str, str],
 ) -> GameModel:
-    return _create_sportsreference_game_model(session, url, league)
+    return _create_sportsreference_game_model(session, url, league, positions_validator)
 
 
 def create_sportsreference_game_model(
     session: requests_cache.CachedSession,
     url: str,
     league: League,
-    dt: datetime.datetime,
+    positions_validator: dict[str, str],
 ) -> GameModel:
     """Create a sports reference game model."""
     if not pytest_is_running.is_running():
-        return _cached_create_sportsreference_game_model(session, url, league)
+        return _cached_create_sportsreference_game_model(
+            session, url, league, positions_validator
+        )
     with session.cache_disabled():
-        return _create_sportsreference_game_model(session, url, league)
+        return _create_sportsreference_game_model(
+            session, url, league, positions_validator
+        )

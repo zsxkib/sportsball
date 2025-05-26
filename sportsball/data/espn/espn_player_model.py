@@ -1,6 +1,6 @@
 """ESPN player model."""
 
-# pylint: disable=duplicate-code
+# pylint: disable=duplicate-code,too-many-locals
 import datetime
 from typing import Any
 
@@ -10,10 +10,14 @@ from dateutil.parser import parse
 
 from ...cache import MEMORY
 from ..player_model import PlayerModel
+from ..sex import Sex
+from ..species import Species
 
 
 def _create_espn_player_model(
-    session: requests_cache.CachedSession, player: dict[str, Any]
+    session: requests_cache.CachedSession,
+    player: dict[str, Any],
+    positions_validator: dict[str, str],
 ) -> PlayerModel:
     identifier = str(player["playerId"])
     jersey = player.get("jersey")
@@ -33,6 +37,9 @@ def _create_espn_player_model(
     athlete_response = session.get(player["athlete"]["$ref"])
     athlete_response.raise_for_status()
     athlete_dict = athlete_response.json()
+    position_response = session.get(player["position"]["$ref"])
+    position_response.raise_for_status()
+    position_dict = position_response.json()
     name = athlete_dict["fullName"]
     birth_date = parse(athlete_dict["dateOfBirth"]).date()
     return PlayerModel(
@@ -70,24 +77,34 @@ def _create_espn_player_model(
         goal_assists=None,
         percentage_played=None,
         birth_date=birth_date,
+        species=str(Species.HUMAN),
+        handicap_weight=None,
+        father=None,
+        sex=str(Sex.MALE),
+        starting_position=positions_validator[position_dict["abbreviation"]],
     )
 
 
 @MEMORY.cache(ignore=["session"])
 def _cached_create_espn_player_model(
-    session: requests_cache.CachedSession, player: dict[str, Any]
+    session: requests_cache.CachedSession,
+    player: dict[str, Any],
+    positions_validator: dict[str, str],
 ) -> PlayerModel:
-    return _create_espn_player_model(session, player)
+    return _create_espn_player_model(session, player, positions_validator)
 
 
 def create_espn_player_model(
-    session: requests_cache.CachedSession, player: dict[str, Any], dt: datetime.datetime
+    session: requests_cache.CachedSession,
+    player: dict[str, Any],
+    dt: datetime.datetime,
+    positions_validator: dict[str, str],
 ) -> PlayerModel:
     """Create a player model based off ESPN."""
     if (
         not pytest_is_running.is_running()
         and dt < datetime.datetime.now() - datetime.timedelta(days=7)
     ):
-        return _cached_create_espn_player_model(session, player)
+        return _cached_create_espn_player_model(session, player, positions_validator)
     with session.cache_disabled():
-        return _create_espn_player_model(session, player)
+        return _create_espn_player_model(session, player, positions_validator)

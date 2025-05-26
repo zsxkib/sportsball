@@ -86,6 +86,10 @@ class TestSportsReferenceGameModel(unittest.TestCase):
                 m.get("http://www.basketball-reference.com/players/s/speigma01.html", content=f.read())
             with open(os.path.join(self.dir, "iguodan01.html"), "rb") as f:
                 m.get("http://www.basketball-reference.com/players/i/iguodan01.html", content=f.read())
+            with open(os.path.join(self.dir, "blattda99c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/blattda99c.html", content=f.read())
+            with open(os.path.join(self.dir, "kerrst01c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/kerrst01c.html", content=f.read())
             m.get("https://historical-forecast-api.open-meteo.com/v1/forecast?latitude=37.750278&longitude=-122.203056&start_date=2016-06-18&end_date=2016-06-19&hourly=temperature_2m&hourly=relative_humidity_2m&hourly=dew_point_2m&hourly=apparent_temperature&hourly=precipitation&hourly=rain&hourly=snowfall&hourly=snow_depth&hourly=weather_code&hourly=pressure_msl&hourly=surface_pressure&hourly=cloud_cover&hourly=cloud_cover_low&hourly=cloud_cover_mid&hourly=cloud_cover_high&hourly=et0_fao_evapotranspiration&hourly=vapour_pressure_deficit&hourly=wind_speed_10m&hourly=wind_speed_100m&hourly=wind_direction_10m&hourly=wind_direction_100m&hourly=wind_gusts_10m&hourly=soil_temperature_0_to_7cm&hourly=soil_temperature_7_to_28cm&hourly=soil_temperature_28_to_100cm&hourly=soil_temperature_100_to_255cm&hourly=soil_moisture_0_to_7cm&hourly=soil_moisture_7_to_28cm&hourly=soil_moisture_28_to_100cm&hourly=soil_moisture_100_to_255cm&daily=weather_code&daily=temperature_2m_max&daily=temperature_2m_min&daily=temperature_2m_mean&daily=apparent_temperature_max&daily=apparent_temperature_min&daily=apparent_temperature_mean&daily=sunrise&daily=sunset&daily=daylight_duration&daily=sunshine_duration&daily=precipitation_sum&daily=rain_sum&daily=snowfall_sum&daily=precipitation_hours&daily=wind_speed_10m_max&daily=wind_gusts_10m_max&daily=wind_direction_10m_dominant&daily=shortwave_radiation_sum&daily=et0_fao_evapotranspiration&timezone=America%2FLos_Angeles&format=flatbuffers")
             
             game_model = create_sportsreference_game_model(
@@ -165,6 +169,10 @@ class TestSportsReferenceGameModel(unittest.TestCase):
                 m.get("http://www.basketball-reference.com/players/s/sefolth01.html", content=f.read())
             with open(os.path.join(self.dir, "humphkr01.html"), "rb") as f:
                 m.get("http://www.basketball-reference.com/players/h/humphkr01.html", content=f.read())
+            with open(os.path.join(self.dir, "stevebr99c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/stevebr99c.html", content=f.read())
+            with open(os.path.join(self.dir, "budenmi99c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/budenmi99c.html", content=f.read())
             m.get("https://historical-forecast-api.open-meteo.com/v1/forecast?latitude=33.757222&longitude=-84.396389&start_date=2016-04-15&end_date=2016-04-16&hourly=temperature_2m&hourly=relative_humidity_2m&hourly=dew_point_2m&hourly=apparent_temperature&hourly=precipitation&hourly=rain&hourly=snowfall&hourly=snow_depth&hourly=weather_code&hourly=pressure_msl&hourly=surface_pressure&hourly=cloud_cover&hourly=cloud_cover_low&hourly=cloud_cover_mid&hourly=cloud_cover_high&hourly=et0_fao_evapotranspiration&hourly=vapour_pressure_deficit&hourly=wind_speed_10m&hourly=wind_speed_100m&hourly=wind_direction_10m&hourly=wind_direction_100m&hourly=wind_gusts_10m&hourly=soil_temperature_0_to_7cm&hourly=soil_temperature_7_to_28cm&hourly=soil_temperature_28_to_100cm&hourly=soil_temperature_100_to_255cm&hourly=soil_moisture_0_to_7cm&hourly=soil_moisture_7_to_28cm&hourly=soil_moisture_28_to_100cm&hourly=soil_moisture_100_to_255cm&daily=weather_code&daily=temperature_2m_max&daily=temperature_2m_min&daily=temperature_2m_mean&daily=apparent_temperature_max&daily=apparent_temperature_min&daily=apparent_temperature_mean&daily=sunrise&daily=sunset&daily=daylight_duration&daily=sunshine_duration&daily=precipitation_sum&daily=rain_sum&daily=snowfall_sum&daily=precipitation_hours&daily=wind_speed_10m_max&daily=wind_gusts_10m_max&daily=wind_direction_10m_dominant&daily=shortwave_radiation_sum&daily=et0_fao_evapotranspiration&timezone=America%2FNew_York&format=flatbuffers")
             
             game_model = create_sportsreference_game_model(
@@ -244,6 +252,10 @@ class TestSportsReferenceGameModel(unittest.TestCase):
                 m.get("http://www.basketball-reference.com/players/v/vaughra01.html", content=f.read())
             with open(os.path.join(self.dir, "monrogr01.html"), "rb") as f:
                 m.get("http://www.basketball-reference.com/players/m/monrogr01.html", content=f.read())
+            with open(os.path.join(self.dir, "vogelfr99c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/vogelfr99c.html", content=f.read())
+            with open(os.path.join(self.dir, "kiddja01c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/kiddja01c.html", content=f.read())
             m.get("https://historical-forecast-api.open-meteo.com/v1/forecast?latitude=43.043611&longitude=-87.916944&start_date=2016-04-12&end_date=2016-04-13&hourly=temperature_2m&hourly=relative_humidity_2m&hourly=dew_point_2m&hourly=apparent_temperature&hourly=precipitation&hourly=rain&hourly=snowfall&hourly=snow_depth&hourly=weather_code&hourly=pressure_msl&hourly=surface_pressure&hourly=cloud_cover&hourly=cloud_cover_low&hourly=cloud_cover_mid&hourly=cloud_cover_high&hourly=et0_fao_evapotranspiration&hourly=vapour_pressure_deficit&hourly=wind_speed_10m&hourly=wind_speed_100m&hourly=wind_direction_10m&hourly=wind_direction_100m&hourly=wind_gusts_10m&hourly=soil_temperature_0_to_7cm&hourly=soil_temperature_7_to_28cm&hourly=soil_temperature_28_to_100cm&hourly=soil_temperature_100_to_255cm&hourly=soil_moisture_0_to_7cm&hourly=soil_moisture_7_to_28cm&hourly=soil_moisture_28_to_100cm&hourly=soil_moisture_100_to_255cm&daily=weather_code&daily=temperature_2m_max&daily=temperature_2m_min&daily=temperature_2m_mean&daily=apparent_temperature_max&daily=apparent_temperature_min&daily=apparent_temperature_mean&daily=sunrise&daily=sunset&daily=daylight_duration&daily=sunshine_duration&daily=precipitation_sum&daily=rain_sum&daily=snowfall_sum&daily=precipitation_hours&daily=wind_speed_10m_max&daily=wind_gusts_10m_max&daily=wind_direction_10m_dominant&daily=shortwave_radiation_sum&daily=et0_fao_evapotranspiration&timezone=America%2FChicago&format=flatbuffers")
             
             game_model = create_sportsreference_game_model(
@@ -305,6 +317,10 @@ class TestSportsReferenceGameModel(unittest.TestCase):
                 m.get("http://www.basketball-reference.com/players/t/thomptr01.html", content=f.read())
             with open(os.path.join(self.dir, "waltolu01.html"), "rb") as f:
                 m.get("http://www.basketball-reference.com/players/w/waltolu01.html", content=f.read())
+            with open(os.path.join(self.dir, "wittmra01c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/wittmra01c.html", content=f.read())
+            with open(os.path.join(self.dir, "scottby01c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/scottby01c.html", content=f.read())
             m.get("https://historical-forecast-api.open-meteo.com/v1/forecast?latitude=41.496389&longitude=-81.688056&start_date=2012-10-29&end_date=2012-10-30&hourly=temperature_2m&hourly=relative_humidity_2m&hourly=dew_point_2m&hourly=apparent_temperature&hourly=precipitation&hourly=rain&hourly=snowfall&hourly=snow_depth&hourly=weather_code&hourly=pressure_msl&hourly=surface_pressure&hourly=cloud_cover&hourly=cloud_cover_low&hourly=cloud_cover_mid&hourly=cloud_cover_high&hourly=et0_fao_evapotranspiration&hourly=vapour_pressure_deficit&hourly=wind_speed_10m&hourly=wind_speed_100m&hourly=wind_direction_10m&hourly=wind_direction_100m&hourly=wind_gusts_10m&hourly=soil_temperature_0_to_7cm&hourly=soil_temperature_7_to_28cm&hourly=soil_temperature_28_to_100cm&hourly=soil_temperature_100_to_255cm&hourly=soil_moisture_0_to_7cm&hourly=soil_moisture_7_to_28cm&hourly=soil_moisture_28_to_100cm&hourly=soil_moisture_100_to_255cm&daily=weather_code&daily=temperature_2m_max&daily=temperature_2m_min&daily=temperature_2m_mean&daily=apparent_temperature_max&daily=apparent_temperature_min&daily=apparent_temperature_mean&daily=sunrise&daily=sunset&daily=daylight_duration&daily=sunshine_duration&daily=precipitation_sum&daily=rain_sum&daily=snowfall_sum&daily=precipitation_hours&daily=wind_speed_10m_max&daily=wind_gusts_10m_max&daily=wind_direction_10m_dominant&daily=shortwave_radiation_sum&daily=et0_fao_evapotranspiration&timezone=America%2FNew_York&format=flatbuffers")
 
             game_model = create_sportsreference_game_model(
@@ -372,6 +388,10 @@ class TestSportsReferenceGameModel(unittest.TestCase):
                 m.get("http://www.basketball-reference.com/players/j/jonesja02.html", content=f.read())
             with open(os.path.join(self.dir, "chalmma01.html"), "rb") as f:
                 m.get("http://www.basketball-reference.com/players/c/chalmma01.html", content=f.read())
+            with open(os.path.join(self.dir, "brooksc01c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/brooksc01c.html", content=f.read())
+            with open(os.path.join(self.dir, "spoeler99c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/spoeler99c.html", content=f.read())
 
             game_model = create_sportsreference_game_model(
                 self.session,
@@ -438,6 +458,10 @@ class TestSportsReferenceGameModel(unittest.TestCase):
                 m.get("http://www.basketball-reference.com/players/n/nowitdi01.html", content=f.read())
             with open(os.path.join(self.dir, "terryja01.html"), "rb") as f:
                 m.get("http://www.basketball-reference.com/players/t/terryja01.html", content=f.read())
+            with open(os.path.join(self.dir, "karlge01c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/karlge01c.html", content=f.read())
+            with open(os.path.join(self.dir, "carliri01c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/carliri01c.html", content=f.read())
 
             game_model = create_sportsreference_game_model(
                 self.session,
@@ -498,6 +522,10 @@ class TestSportsReferenceGameModel(unittest.TestCase):
                 m.get("http://www.basketball-reference.com/players/h/houseed01.html", content=f.read())
             with open(os.path.join(self.dir, "wilcoch01.html"), "rb") as f:
                 m.get("http://www.basketball-reference.com/players/w/wilcoch01.html", content=f.read())
+            with open(os.path.join(self.dir, "mcmilna01c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/mcmilna01c.html", content=f.read())
+            with open(os.path.join(self.dir, "dunlemi01c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/dunlemi01c.html", content=f.read())
 
             game_model = create_sportsreference_game_model(
                 self.session,
@@ -562,6 +590,10 @@ class TestSportsReferenceGameModel(unittest.TestCase):
                 m.get("http://www.basketball-reference.com/players/b/bradlch01.html", content=f.read())
             with open(os.path.join(self.dir, "robeyri01.html"), "rb") as f:
                 m.get("http://www.basketball-reference.com/players/r/robeyri01.html", content=f.read())
+            with open(os.path.join(self.dir, "nelsodo01c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/nelsodo01c.html", content=f.read())
+            with open(os.path.join(self.dir, "fitchbi99c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/fitchbi99c.html", content=f.read())
 
             game_model = create_sportsreference_game_model(
                 self.session,
@@ -620,6 +652,10 @@ class TestSportsReferenceGameModel(unittest.TestCase):
                 m.get("http://www.basketball-reference.com/players/m/mcneila01.html", content=f.read())
             with open(os.path.join(self.dir, "kojisdo01.html"), "rb") as f:
                 m.get("http://www.basketball-reference.com/players/k/kojisdo01.html", content=f.read())
+            with open(os.path.join(self.dir, "mottadi99c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/mottadi99c.html", content=f.read())
+            with open(os.path.join(self.dir, "johnsph99c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/johnsph99c.html", content=f.read())
 
             game_model = create_sportsreference_game_model(
                 self.session,
@@ -666,6 +702,10 @@ class TestSportsReferenceGameModel(unittest.TestCase):
                 m.get("http://www.basketball-reference.com/players/a/adelmri01.html", content=f.read())
             with open(os.path.join(self.dir, "johnsol01.html"), "rb") as f:
                 m.get("http://www.basketball-reference.com/players/j/johnsol01.html", content=f.read())
+            with open(os.path.join(self.dir, "fitchbi99c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/fitchbi99c.html", content=f.read())
+            with open(os.path.join(self.dir, "johnsph99c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/johnsph99c.html", content=f.read())
 
             game_model = create_sportsreference_game_model(
                 self.session,
@@ -684,6 +724,10 @@ class TestSportsReferenceGameModel(unittest.TestCase):
                 m.get("http://www.basketball-reference.com/teams/NOB/1968.html", content=f.read())
             with open(os.path.join(self.dir, "PTP_1968.html"), "rb") as f:
                 m.get("http://www.basketball-reference.com/teams/PTP/1968.html", content=f.read())
+            with open(os.path.join(self.dir, "mccarba99c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/mccarba99c.html", content=f.read())
+            with open(os.path.join(self.dir, "cazzevi99c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/cazzevi99c.html", content=f.read())
 
             game_model = create_sportsreference_game_model(
                 self.session,
@@ -702,6 +746,10 @@ class TestSportsReferenceGameModel(unittest.TestCase):
                 m.get("http://www.basketball-reference.com/teams/DNR/1968.html", content=f.read())
             with open(os.path.join(self.dir, "NOB_1968.html"), "rb") as f:
                 m.get("http://www.basketball-reference.com/teams/NOB/1968.html", content=f.read())
+            with open(os.path.join(self.dir, "bassbo99c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/bassbo99c.html", content=f.read())
+            with open(os.path.join(self.dir, "mccarba99c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/mccarba99c.html", content=f.read())
 
             game_model = create_sportsreference_game_model(
                 self.session,
@@ -720,6 +768,10 @@ class TestSportsReferenceGameModel(unittest.TestCase):
                 m.get("http://www.basketball-reference.com/teams/PTP/1968.html", content=f.read())
             with open(os.path.join(self.dir, "ANA_1968.html"), "rb") as f:
                 m.get("http://www.basketball-reference.com/teams/ANA/1968.html", content=f.read())
+            with open(os.path.join(self.dir, "cazzevi99c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/cazzevi99c.html", content=f.read())
+            with open(os.path.join(self.dir, "brighal01c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/brighal01c.html", content=f.read())
 
             game_model = create_sportsreference_game_model(
                 self.session,
@@ -738,6 +790,10 @@ class TestSportsReferenceGameModel(unittest.TestCase):
                 m.get("http://www.basketball-reference.com/teams/HSM/1968.html", content=f.read())
             with open(os.path.join(self.dir, "DNR_1968.html"), "rb") as f:
                 m.get("http://www.basketball-reference.com/teams/DNR/1968.html", content=f.read())
+            with open(os.path.join(self.dir, "martisl01c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/martisl01c.html", content=f.read())
+            with open(os.path.join(self.dir, "bassbo99c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/bassbo99c.html", content=f.read())
 
             game_model = create_sportsreference_game_model(
                 self.session,
@@ -800,6 +856,10 @@ class TestSportsReferenceGameModel(unittest.TestCase):
                 m.get("http://www.basketball-reference.com/players/h/hasleud01.html", content=f.read())
             with open(os.path.join(self.dir, "coleno01.html"), "rb") as f:
                 m.get("http://www.basketball-reference.com/players/c/coleno01.html", content=f.read())
+            with open(os.path.join(self.dir, "riverdo01c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/riverdo01c.html", content=f.read())
+            with open(os.path.join(self.dir, "spoeler99c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/spoeler99c.html", content=f.read())
 
             game_model = create_sportsreference_game_model(
                 self.session,
@@ -856,6 +916,10 @@ class TestSportsReferenceGameModel(unittest.TestCase):
                 m.get("http://www.basketball-reference.com/players/m/maggeco01.html", content=f.read())
             with open(os.path.join(self.dir, "ewingda01.html"), "rb") as f:
                 m.get("http://www.basketball-reference.com/players/e/ewingda01.html", content=f.read())
+            with open(os.path.join(self.dir, "scottby01c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/scottby01c.html", content=f.read())
+            with open(os.path.join(self.dir, "dunlemi01c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/dunlemi01c.html", content=f.read())
             m.get("https://historical-forecast-api.open-meteo.com/v1/forecast?latitude=34.0429909&longitude=-118.2673753&start_date=2007-04-17&end_date=2007-04-18&hourly=temperature_2m&hourly=relative_humidity_2m&hourly=dew_point_2m&hourly=apparent_temperature&hourly=precipitation&hourly=rain&hourly=snowfall&hourly=snow_depth&hourly=weather_code&hourly=pressure_msl&hourly=surface_pressure&hourly=cloud_cover&hourly=cloud_cover_low&hourly=cloud_cover_mid&hourly=cloud_cover_high&hourly=et0_fao_evapotranspiration&hourly=vapour_pressure_deficit&hourly=wind_speed_10m&hourly=wind_speed_100m&hourly=wind_direction_10m&hourly=wind_direction_100m&hourly=wind_gusts_10m&hourly=soil_temperature_0_to_7cm&hourly=soil_temperature_7_to_28cm&hourly=soil_temperature_28_to_100cm&hourly=soil_temperature_100_to_255cm&hourly=soil_moisture_0_to_7cm&hourly=soil_moisture_7_to_28cm&hourly=soil_moisture_28_to_100cm&hourly=soil_moisture_100_to_255cm&daily=weather_code&daily=temperature_2m_max&daily=temperature_2m_min&daily=temperature_2m_mean&daily=apparent_temperature_max&daily=apparent_temperature_min&daily=apparent_temperature_mean&daily=sunrise&daily=sunset&daily=daylight_duration&daily=sunshine_duration&daily=precipitation_sum&daily=rain_sum&daily=snowfall_sum&daily=precipitation_hours&daily=wind_speed_10m_max&daily=wind_gusts_10m_max&daily=wind_direction_10m_dominant&daily=shortwave_radiation_sum&daily=et0_fao_evapotranspiration&timezone=America%2FLos_Angeles&format=flatbuffers")
 
             game_model = create_sportsreference_game_model(
@@ -875,6 +939,10 @@ class TestSportsReferenceGameModel(unittest.TestCase):
                 m.get("http://www.basketball-reference.com/teams/MNM/1968.html", content=f.read())
             with open(os.path.join(self.dir, "PTP_1968.html"), "rb") as f:
                 m.get("http://www.basketball-reference.com/teams/PTP/1968.html", content=f.read())
+            with open(os.path.join(self.dir, "pollaji01c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/pollaji01c.html", content=f.read())
+            with open(os.path.join(self.dir, "cazzevi99c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/cazzevi99c.html", content=f.read())
 
             game_model = create_sportsreference_game_model(
                 self.session,
@@ -937,6 +1005,10 @@ class TestSportsReferenceGameModel(unittest.TestCase):
                 m.get("https://www.sports-reference.com/cbb/players/stilman-white-1.html", content=f.read())
             with open(os.path.join(self.dir, "isaiah-hicks-1.html"), "rb") as f:
                 m.get("https://www.sports-reference.com/cbb/players/isaiah-hicks-1.html", content=f.read())
+            with open(os.path.join(self.dir, "mike-hopkins-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/coaches/mike-hopkins-1.html", content=f.read())
+            with open(os.path.join(self.dir, "roy-williams-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/coaches/roy-williams-1.html", content=f.read())
 
             game_model = create_sportsreference_game_model(
                 self.session,
@@ -997,6 +1069,10 @@ class TestSportsReferenceGameModel(unittest.TestCase):
                 m.get("https://www.sports-reference.com/cbb/players/josh-hart-1.html", content=f.read())
             with open(os.path.join(self.dir, "henry-lowe-1.html"), "rb") as f:
                 m.get("https://www.sports-reference.com/cbb/players/henry-lowe-1.html", content=f.read())
+            with open(os.path.join(self.dir, "jim-larranaga-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/coaches/jim-larranaga-1.html", content=f.read())
+            with open(os.path.join(self.dir, "jay-wright-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/coaches/jay-wright-1.html", content=f.read())
 
             game_model = create_sportsreference_game_model(
                 self.session,

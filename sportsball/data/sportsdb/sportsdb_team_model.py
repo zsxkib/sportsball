@@ -32,6 +32,7 @@ def _create_sportsdb_team_model(
         news=create_google_news_models(name, session, dt, league),
         social=create_x_social_model(team_id, session, dt),
         field_goals=None,
+        coaches=[],
     )
 
 

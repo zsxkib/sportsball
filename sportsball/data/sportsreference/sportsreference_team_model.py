@@ -1,11 +1,12 @@
 """Sports Reference team model."""
 
-# pylint: disable=too-many-arguments,too-many-locals,duplicate-code
+# pylint: disable=too-many-arguments,too-many-locals,duplicate-code,too-many-branches,too-many-statements
 import datetime
 import http
 import json
 import logging
 import urllib.parse
+from urllib.parse import urlparse
 
 import extruct  # type: ignore
 import pytest_is_running
@@ -18,8 +19,10 @@ from ...cache import MEMORY
 from ...proxy_session import X_NO_WAYBACK
 from ..google.google_news_model import create_google_news_models
 from ..league import League
+from ..sex import Sex
 from ..team_model import TeamModel
 from ..x.x_social_model import create_x_social_model
+from .sportsreference_coach_model import create_sportsreference_coach_model
 from .sportsreference_player_model import create_sportsreference_player_model
 
 _BAD_URLS = {
@@ -100,6 +103,7 @@ def _create_sportsreference_team_model(
     assists: dict[str, int],
     turnovers: dict[str, int],
     team_name: str,
+    positions_validator: dict[str, str],
 ) -> TeamModel:
     headers = {}
     if url in _NON_WAYBACK_URLS:
@@ -115,6 +119,7 @@ def _create_sportsreference_team_model(
             ladder_rank=None,
             news=create_google_news_models(team_name, session, dt, league),
             social=create_x_social_model(team_name, session, dt),
+            coaches=[],
         )
     response = session.get(url, headers=headers)
     if response.status_code == http.HTTPStatus.NOT_FOUND:
@@ -129,6 +134,7 @@ def _create_sportsreference_team_model(
             ladder_rank=None,
             news=create_google_news_models(team_name, session, dt, league),
             social=create_x_social_model(team_name, session, dt),
+            coaches=[],
         )
     response.raise_for_status()
 
@@ -150,6 +156,41 @@ def _create_sportsreference_team_model(
         if player_url in player_urls and player_url not in _BAD_URLS:
             valid_player_urls.add(player_url)
 
+    coach_url = None
+    for a in soup.find_all("a", href=True):
+        a_url = urllib.parse.urljoin(url, a.get("href"))
+        a_o = urlparse(a_url)
+        path_split = a_o.path.split("/")
+        if len(path_split) <= 2:
+            continue
+        if not path_split[-1]:
+            continue
+        entity_identifier = path_split[-2]
+        if entity_identifier == "coaches":
+            coach_url = a_url
+            break
+    if coach_url is None:
+        raise ValueError("coach_url is null")
+
+    o = urlparse(url)
+    sex_id = o.path.split("/")[-2]
+    sex = Sex.MALE
+    if sex_id == "women":
+        sex = Sex.FEMALE
+
+    positions = {}
+    for tr in soup.find_all("tr"):
+        player_name = None
+        position = None
+        for td in tr.find_all("td"):
+            data_stat = td.get("pos")
+            if data_stat == "player":
+                player_name = td.get_text().strip()
+            elif data_stat == "pos":
+                position = td.get_text().strip()
+        if player_name is not None and position is not None:
+            positions[player_name] = position
+
     return TeamModel(
         identifier=name,
         name=name,
@@ -157,7 +198,16 @@ def _create_sportsreference_team_model(
             y
             for y in [  # pyright: ignore
                 create_sportsreference_player_model(
-                    session, x, dt, fg, fga, offensive_rebounds, assists, turnovers
+                    session,
+                    x,
+                    fg,
+                    fga,
+                    offensive_rebounds,
+                    assists,
+                    turnovers,
+                    positions,
+                    positions_validator,
+                    sex,
                 )
                 for x in valid_player_urls
             ]
@@ -169,6 +219,7 @@ def _create_sportsreference_team_model(
         location=None,
         news=create_google_news_models(name, session, dt, league),
         social=create_x_social_model(name, session, dt),
+        coaches=[create_sportsreference_coach_model(session, coach_url)],
     )
 
 
@@ -186,6 +237,7 @@ def _cached_create_sportsreference_team_model(
     assists: dict[str, int],
     turnovers: dict[str, int],
     team_name: str,
+    positions_validator: dict[str, str],
 ) -> TeamModel:
     return _create_sportsreference_team_model(
         session,
@@ -200,6 +252,7 @@ def _cached_create_sportsreference_team_model(
         assists,
         turnovers,
         team_name,
+        positions_validator,
     )
 
 
@@ -216,6 +269,7 @@ def create_sportsreference_team_model(
     assists: dict[str, int],
     turnovers: dict[str, int],
     team_name: str,
+    positions_validator: dict[str, str],
 ) -> TeamModel:
     """Create a team model from Sports Reference."""
     if not pytest_is_running.is_running():
@@ -232,6 +286,7 @@ def create_sportsreference_team_model(
             assists,
             turnovers,
             team_name,
+            positions_validator,
         )
     with session.cache_disabled():
         return _create_sportsreference_team_model(
@@ -247,4 +302,5 @@ def create_sportsreference_team_model(
             assists,
             turnovers,
             team_name,
+            positions_validator,
         )

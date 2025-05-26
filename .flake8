@@ -4,4 +4,5 @@ per-file-ignores =
     __init__.py: F401
     sportsball/data/afl/afl/afl_afl_league_model.py: E722
     sportsball/vendor/pygooglenews/__init__.py: E722,E712,E501
+    sportsball/data/hkjc/hkjc/hkjc_hkjc_league_model.py: E501
 extend-ignore = E203

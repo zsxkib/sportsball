@@ -5,6 +5,7 @@ import requests_cache
 
 from ...espn.espn_league_model import ESPNLeagueModel
 from ...league import League
+from ...nba.position import Position
 
 _SEASON_URL = "http://sports.core.api.espn.com/v2/sports/basketball/leagues/mens-college-basketball?lang=en&region=us"
 
@@ -16,3 +17,11 @@ class NCAABESPNLeagueModel(ESPNLeagueModel):
         self, session: requests_cache.CachedSession, position: int | None = None
     ) -> None:
         super().__init__(_SEASON_URL, League.NCAAB, session, position=position)
+
+    @classmethod
+    def name(cls) -> str:
+        return "ncaab-espn-league-model"
+
+    @classmethod
+    def position_validator(cls) -> dict[str, str]:
+        return {str(x): str(x) for x in Position}

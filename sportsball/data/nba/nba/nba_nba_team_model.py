@@ -49,6 +49,7 @@ def _create_nba_nba_team_model(
         offensive_rebounds=offensive_rebounds,
         assists=row["AST" + suffix],
         turnovers=row["TOV" + suffix],
+        coaches=[],
     )
 
 

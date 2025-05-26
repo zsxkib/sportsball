@@ -2,6 +2,7 @@
 import unittest
 
 from sportsball.data.player_model import PlayerModel
+from sportsball.data.species import Species
 
 
 class TestPlayerModel(unittest.TestCase):
@@ -42,6 +43,10 @@ class TestPlayerModel(unittest.TestCase):
             goal_assists=None,
             percentage_played=None,
             birth_date=None,
+            species=str(Species.HUMAN),
+            handicap_weight=None,
+            father=None,
+            starting_position=None,
         )
 
     def test_field_goals_attempted(self):

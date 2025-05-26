@@ -1,21 +1,23 @@
 """Combined team model."""
 
-# pylint: disable=too-many-locals
+# pylint: disable=too-many-locals,too-many-branches
 import re
 import unicodedata
 
+from ..coach_model import CoachModel
 from ..news_model import NewsModel
 from ..odds_model import OddsModel
 from ..player_model import PlayerModel
 from ..social_model import SocialModel
 from ..team_model import TeamModel
+from .combined_coach_model import create_combined_coach_model
 from .combined_player_model import create_combined_player_model
 from .null_check import is_null
 
 REGEX = re.compile("[^a-zA-Z]")
 
 
-def _normalise_player_name(name: str) -> str:
+def _normalise_name(name: str) -> str:
     # Handle "Surname, Firstname"
     if "," in name:
         name = " ".join(reversed([x.strip() for x in name.split(",")]))
@@ -27,6 +29,7 @@ def create_combined_team_model(
     identifier: str,
     player_identity_map: dict[str, str],
     names: dict[str, str],
+    coach_names: dict[str, str],
 ) -> TeamModel:
     """Create a team model by combining many team models."""
     location = None
@@ -34,6 +37,7 @@ def create_combined_team_model(
     odds: dict[str, list[OddsModel]] = {}
     news: dict[str, NewsModel] = {}
     social: dict[str, SocialModel] = {}
+    coaches: dict[str, list[CoachModel]] = {}
     points = None
     ladder_rank = None
     field_goals = None
@@ -43,7 +47,7 @@ def create_combined_team_model(
             location = team_model_location
         for player_model in team_model.players:
             player_id = player_model.identifier
-            player_name_key = _normalise_player_name(player_model.name)
+            player_name_key = _normalise_name(player_model.name)
             if player_model.identifier in player_identity_map:
                 player_id = player_identity_map[player_id]
             elif player_name_key in names:
@@ -78,6 +82,14 @@ def create_combined_team_model(
         team_model_field_goals = team_model.field_goals
         if not is_null(team_model_field_goals):
             field_goals = team_model_field_goals
+        for coach_model in team_model.coaches:
+            coach_id = coach_model.identifier
+            coach_name_key = _normalise_name(coach_model.name)
+            if coach_name_key in coach_names:
+                coach_id = coach_names[coach_name_key]
+            else:
+                coach_names[coach_name_key] = coach_id
+            coaches[coach_id] = coaches.get(coach_id, []) + [coach_model]
 
     return TeamModel(
         identifier=identifier,
@@ -92,4 +104,5 @@ def create_combined_team_model(
         news=sorted(news.values(), key=lambda x: x.published),
         social=sorted(social.values(), key=lambda x: x.published),
         field_goals=field_goals,
+        coaches=[create_combined_coach_model(v, k) for k, v in coaches.items()],
     )

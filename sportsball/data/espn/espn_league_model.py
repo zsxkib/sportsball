@@ -42,6 +42,13 @@ class ESPNLeagueModel(LeagueModel):
     def name(cls) -> str:
         return "espn-league-model"
 
+    @classmethod
+    def position_validator(cls) -> dict[str, str]:
+        """A dictionary that contains the mapping from positions to standard positions."""
+        raise NotImplementedError(
+            "position_validator is not implemented by parent class"
+        )
+
     def _produce_games(
         self,
         week: dict[str, Any],
@@ -69,6 +76,7 @@ class ESPNLeagueModel(LeagueModel):
                 self.league,
                 season_type_json["year"],
                 _season_type_from_name(season_type_json["name"]),
+                self.position_validator(),
             )
             pbar.update(1)
             pbar.set_description(

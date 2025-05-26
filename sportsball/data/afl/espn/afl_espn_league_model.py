@@ -17,3 +17,11 @@ class AFLESPNLeagueModel(ESPNLeagueModel):
         self, session: requests_cache.CachedSession, position: int | None = None
     ) -> None:
         super().__init__(_SEASON_URL, League.AFL, session, position=position)
+
+    @classmethod
+    def name(cls) -> str:
+        return "afl-espn-league-model"
+
+    @classmethod
+    def position_validator(cls) -> dict[str, str]:
+        return {}

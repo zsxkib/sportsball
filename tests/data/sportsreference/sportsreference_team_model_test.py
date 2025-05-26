@@ -19,6 +19,8 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
         with requests_mock.Mocker() as m:
             with open(os.path.join(self.dir, "2025.html"), "rb") as f:
                 m.get("https://www.sports-reference.com/cbb/schools/villanova/men/2025.html", content=f.read())
+            with open(os.path.join(self.dir, "kyle-neptune-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/coaches/kyle-neptune-1.html", content=f.read())
             m.get("https://news.google.com/rss/search?q=%22Villanova+Wildcats+Men%27s%22+%2B+%28sport+OR+ncaab+OR+%22NCAA+Division+I+Basketball%22%29+after%3A2010-10-08+before%3A2010-10-09&ceid=US:en&hl=en&gl=US")
             team_model = create_sportsreference_team_model(
                 self.session,
@@ -33,6 +35,7 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 {},
                 {},
                 "",
+                {},
             )
             self.assertEqual(team_model.identifier, "Villanova Wildcats Men's")
 
@@ -44,6 +47,8 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 m.get(url, content=f.read())
             with open(os.path.join(self.dir, "eric-dixon-1.html"), "rb") as f:
                 m.get(player_url, content=f.read())
+            with open(os.path.join(self.dir, "kyle-neptune-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/coaches/kyle-neptune-1.html", content=f.read())
             team_model = create_sportsreference_team_model(
                 self.session,
                 url,
@@ -59,6 +64,7 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 {},
                 {},
                 "",
+                {},
             )
             self.assertEqual(team_model.field_goals, 8)
 
@@ -70,6 +76,8 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 m.get(url, content=f.read())
             with open(os.path.join(self.dir, "eric-dixon-1.html"), "rb") as f:
                 m.get(player_url, content=f.read())
+            with open(os.path.join(self.dir, "kyle-neptune-1.html"), "rb") as f:
+                m.get("https://www.sports-reference.com/cbb/coaches/kyle-neptune-1.html", content=f.read())
             team_model = create_sportsreference_team_model(
                 self.session,
                 url,
@@ -87,6 +95,7 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 {},
                 {},
                 "",
+                {},
             )
             self.assertEqual(team_model.field_goals_attempted, 10)
 
@@ -95,6 +104,8 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
         with requests_mock.Mocker() as m:
             with open(os.path.join(self.dir, "LAC_2015.html"), "rb") as f:
                 m.get(url, content=f.read())
+            with open(os.path.join(self.dir, "riverdo01c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/riverdo01c.html", content=f.read())
             team_model = create_sportsreference_team_model(
                 self.session,
                 url,
@@ -108,6 +119,7 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 {},
                 {},
                 "",
+                {},
             )
             self.assertEqual(team_model.identifier, "Los Angeles Clippers")
 
@@ -116,6 +128,8 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
         with requests_mock.Mocker() as m:
             with open(os.path.join(self.dir, "BRK_2014.html"), "rb") as f:
                 m.get(url, content=f.read())
+            with open(os.path.join(self.dir, "kiddja01c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/kiddja01c.html", content=f.read())
             team_model = create_sportsreference_team_model(
                 self.session,
                 url,
@@ -129,6 +143,7 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 {},
                 {},
                 "",
+                {},
             )
             self.assertEqual(team_model.identifier, "Brooklyn Nets")
 
@@ -137,6 +152,8 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
         with requests_mock.Mocker() as m:
             with open(os.path.join(self.dir, "CLE_2016.html"), "rb") as f:
                 m.get(url, content=f.read())
+            with open(os.path.join(self.dir, "luety01c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/luety01c.html", content=f.read())
             team_model = create_sportsreference_team_model(
                 self.session,
                 url,
@@ -150,6 +167,7 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 {},
                 {},
                 "",
+                {},
             )
             self.assertEqual(team_model.name, "Cleveland Cavaliers")
 
@@ -158,6 +176,8 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
         with requests_mock.Mocker() as m:
             with open(os.path.join(self.dir, "LAL_2015.html"), "rb") as f:
                 m.get(url, content=f.read())
+            with open(os.path.join(self.dir, "scottby01c.html"), "rb") as f:
+                m.get("http://www.basketball-reference.com/coaches/scottby01c.html", content=f.read())
             team_model = create_sportsreference_team_model(
                 self.session,
                 url,
@@ -171,6 +191,7 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 {},
                 {},
                 "",
+                {},
             )
             self.assertEqual(team_model.name, "Los Angeles Lakers")
 
@@ -179,6 +200,8 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
         with requests_mock.Mocker() as m:
             with open(os.path.join(self.dir, "BOS_2015.html"), "rb") as f:
                 m.get(url, content=f.read())
+            with open(os.path.join(self.dir, "stevebr99c.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/coaches/stevebr99c.html", content=f.read())
             team_model = create_sportsreference_team_model(
                 self.session,
                 url,
@@ -192,5 +215,6 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 {},
                 {},
                 "",
+                {},
             )
             self.assertEqual(team_model.name, "Boston Celtics")

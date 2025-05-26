@@ -42,6 +42,10 @@ def create_combined_player_model(
     goal_assists = None
     percentage_played = None
     birth_date = None
+    species = None
+    handicap_weight = None
+    father = None
+    starting_position = None
     for player_model in player_models:
         player_model_jersey = player_model.jersey
         if not is_null(player_model_jersey):
@@ -142,8 +146,22 @@ def create_combined_player_model(
         player_model_birth_date = player_model.birth_date
         if not is_null(player_model_birth_date):
             birth_date = player_model_birth_date
+        player_model_species = player_model.species
+        if not is_null(player_model_species):
+            species = player_model_species
+        player_model_handicap_weight = player_model.handicap_weight
+        if not is_null(player_model_handicap_weight):
+            handicap_weight = player_model_handicap_weight
+        player_model_father = player_model.father
+        if not is_null(player_model_father):
+            father = player_model_father
+        player_model_starting_position = player_model.starting_position
+        if not is_null(player_model_starting_position):
+            starting_position = player_model_starting_position
     if name is None:
-        raise ValueError("name is null.")
+        raise ValueError("name is null")
+    if species is None:
+        raise ValueError("species is null")
     return PlayerModel(
         identifier=identifier,
         jersey=jersey,
@@ -179,4 +197,8 @@ def create_combined_player_model(
         goal_assists=goal_assists,
         percentage_played=percentage_played,
         birth_date=birth_date,
+        species=species,
+        handicap_weight=handicap_weight,
+        father=father,
+        starting_position=starting_position,
     )

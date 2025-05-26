@@ -8,6 +8,7 @@ import requests_cache
 from sportsball.data.combined.combined_team_model import create_combined_team_model
 from sportsball.data.team_model import TeamModel
 from sportsball.data.player_model import PlayerModel
+from sportsball.data.species import Species
 
 
 class TestCombinedTeamModel(unittest.TestCase):
@@ -19,6 +20,7 @@ class TestCombinedTeamModel(unittest.TestCase):
     def test_names_resolve(self):
         with requests_mock.Mocker() as m:
             names = {}
+            coach_names = {}
             player_models = [PlayerModel(
                 identifier="1",
                 jersey=None,
@@ -54,6 +56,10 @@ class TestCombinedTeamModel(unittest.TestCase):
                 goal_assists=None,
                 percentage_played=None,
                 birth_date=None,
+                species=str(Species.HUMAN),
+                handicap_weight=None,
+                father=None,
+                starting_position=None,
             )]
             team_models = [TeamModel(
                 identifier="a",
@@ -65,8 +71,15 @@ class TestCombinedTeamModel(unittest.TestCase):
                 ladder_rank=None,
                 news=[],
                 social=[],
+                coaches=[],
             )]
-            team_model = create_combined_team_model(team_models=team_models, identifier="a", player_identity_map={}, names=names)
+            team_model = create_combined_team_model(
+                team_models=team_models,
+                identifier="a",
+                player_identity_map={},
+                names=names,
+                coach_names=coach_names,
+            )
             player_models_2 = [PlayerModel(
                 identifier="1a",
                 jersey=None,
@@ -102,6 +115,10 @@ class TestCombinedTeamModel(unittest.TestCase):
                 goal_assists=None,
                 percentage_played=None,
                 birth_date=None,
+                species=str(Species.HUMAN),
+                handicap_weight=None,
+                father=None,
+                starting_position=None,
             )]
             team_models_2 = [TeamModel(
                 identifier="a",
@@ -113,13 +130,21 @@ class TestCombinedTeamModel(unittest.TestCase):
                 ladder_rank=None,
                 news=[],
                 social=[],
+                coaches=[],
             )]
-            team_model_2 = create_combined_team_model(team_models=team_models_2, identifier="a", player_identity_map={}, names=names)
+            team_model_2 = create_combined_team_model(
+                team_models=team_models_2,
+                identifier="a",
+                player_identity_map={},
+                names=names,
+                coach_names=coach_names,
+            )
             self.assertEqual(team_model.players[0].identifier, team_model_2.players[0].identifier)
 
     def test_names_resolve_with_surname_firstname(self):
         with requests_mock.Mocker() as m:
             names = {}
+            coach_names = {}
             player_models = [PlayerModel(
                 identifier="1",
                 jersey=None,
@@ -155,6 +180,10 @@ class TestCombinedTeamModel(unittest.TestCase):
                 goal_assists=None,
                 percentage_played=None,
                 birth_date=None,
+                species=str(Species.HUMAN),
+                handicap_weight=None,
+                father=None,
+                starting_position=None,
             )]
             team_models = [TeamModel(
                 identifier="a",
@@ -166,8 +195,15 @@ class TestCombinedTeamModel(unittest.TestCase):
                 ladder_rank=None,
                 news=[],
                 social=[],
+                coaches=[],
             )]
-            team_model = create_combined_team_model(team_models=team_models, identifier="a", player_identity_map={}, names=names)
+            team_model = create_combined_team_model(
+                team_models=team_models,
+                identifier="a",
+                player_identity_map={},
+                names=names,
+                coach_names=coach_names,
+            )
             player_models_2 = [PlayerModel(
                 identifier="1a",
                 jersey=None,
@@ -203,6 +239,10 @@ class TestCombinedTeamModel(unittest.TestCase):
                 goal_assists=None,
                 percentage_played=None,
                 birth_date=None,
+                species=str(Species.HUMAN),
+                handicap_weight=None,
+                father=None,
+                starting_position=None,
             )]
             team_models_2 = [TeamModel(
                 identifier="a",
@@ -214,6 +254,13 @@ class TestCombinedTeamModel(unittest.TestCase):
                 ladder_rank=None,
                 news=[],
                 social=[],
+                coaches=[],
             )]
-            team_model_2 = create_combined_team_model(team_models=team_models_2, identifier="a", player_identity_map={}, names=names)
+            team_model_2 = create_combined_team_model(
+                team_models=team_models_2,
+                identifier="a",
+                player_identity_map={},
+                names=names,
+                coach_names=coach_names,
+            )
             self.assertEqual(team_model.players[0].identifier, team_model_2.players[0].identifier)
