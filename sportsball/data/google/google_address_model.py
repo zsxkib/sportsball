@@ -15525,6 +15525,8 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Italy",
     ),
+    "TIO Traeger Park, Alice Springs": TIO_STADIUM,
+    "Hard Rock Stadium, Miami Gardens, FL, USA": HARD_ROCK_STADIUM,
 }
 
 

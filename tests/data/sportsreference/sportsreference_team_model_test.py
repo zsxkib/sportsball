@@ -218,3 +218,27 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 {},
             )
             self.assertEqual(team_model.name, "Boston Celtics")
+
+    def test_coach_url_null(self):
+        url = "https://www.basketball-reference.com/teams/GSW/2016.html"
+        with requests_mock.Mocker() as m:
+            with open(os.path.join(self.dir, "GSW_2016_2.html"), "rb") as f:
+                m.get(url, content=f.read())
+            with open(os.path.join(self.dir, "kerrst01c.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/coaches/kerrst01c.html", content=f.read())
+            team_model = create_sportsreference_team_model(
+                session=self.session,
+                url=url,
+                dt=datetime.datetime(2010, 10, 10, 10, 10, 00),
+                league=League.NBA,
+                player_urls=set(),
+                points=10.0,
+                fg={},
+                fga={},
+                offensive_rebounds={},
+                assists={},
+                turnovers={},
+                team_name="",
+                positions_validator={},
+            )
+            self.assertListEqual(team_model.coaches, [])

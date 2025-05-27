@@ -41,6 +41,7 @@ _NON_WAYBACK_URLS: set[str] = {
     "https://www.sports-reference.com/cbb/schools/rice/women/2019.html",
     "https://www.sports-reference.com/cbb/schools/north-carolina/women/2018.html",
     "https://www.sports-reference.com/cbb/schools/minnesota/women/2009.html",
+    "https://www.basketball-reference.com/teams/GSW/2016.html",
 }
 _BAD_TEAM_URLS = {
     "https://www.sports-reference.com/cbb/schools/mid-atlantic-christian/2016.html",
@@ -173,10 +174,6 @@ def _create_sportsreference_team_model(
         if entity_identifier == "coaches":
             coach_url = a_url
             break
-    if coach_url is None:
-        logging.error(response.text)
-        logging.error(response.url)
-        raise ValueError("coach_url is null")
 
     o = urlparse(url)
     sex_id = o.path.split("/")[-2]
@@ -226,7 +223,9 @@ def _create_sportsreference_team_model(
         location=None,
         news=create_google_news_models(name, session, dt, league),
         social=create_x_social_model(name, session, dt),
-        coaches=[create_sportsreference_coach_model(session, coach_url, dt)],
+        coaches=[create_sportsreference_coach_model(session, coach_url, dt)]
+        if coach_url is not None
+        else [],
         lbw=None,
         end_dt=None,
     )

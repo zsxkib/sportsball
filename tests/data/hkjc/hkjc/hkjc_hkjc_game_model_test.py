@@ -118,3 +118,15 @@ class TestHKJCHKJCGameModel(unittest.TestCase):
                 url="https://racing.hkjc.com/racing/information/English/Racing/LocalResults.aspx?RaceDate=2025/05/26&Racecourse=HV&RaceNo=1",
             )
             self.assertIsNone(game_model)
+
+    def test_race_declared_abandoned(self):
+        with requests_mock.Mocker() as m:
+            html = ""
+            with open(os.path.join(self.dir, "game3.html"), "r") as f:
+                html = f.read()
+            game_model = create_hkjc_hkjc_game_model(
+                session=self._session,
+                html=html,
+                url="https://racing.hkjc.com/racing/information/English/Racing/LocalResults.aspx?RaceDate=2024%2F11%2F13&RaceNo=7&Racecourse=HV",
+            )
+            self.assertIsNone(game_model)

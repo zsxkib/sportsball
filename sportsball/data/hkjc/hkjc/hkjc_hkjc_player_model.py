@@ -40,6 +40,10 @@ def _create_hkjc_hkjc_player_model(
         dfs = pd.read_html(handle)
     except AttributeError as exc:
         logging.warning(str(exc))
+    except ValueError:
+        logging.error(response.text)
+        logging.error(url)
+        raise
     o = urlparse(url)
     soup = BeautifulSoup(response.text, "lxml")
 

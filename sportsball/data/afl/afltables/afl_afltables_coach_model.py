@@ -47,7 +47,7 @@ def _create_afl_afltables_coach_model(
             start_year, end_year = [int(x) for x in year_range.split("-")]
         else:
             start_year = end_year = int(year_range)
-        if start_year <= year >= end_year:
+        if start_year <= year <= end_year:
             name = names[count].strip()
             break
     if name is None:

@@ -3,6 +3,7 @@
 # pylint: disable=too-many-nested-blocks,too-many-statements,too-many-branches,too-many-locals
 import datetime
 import io
+import logging
 import urllib.parse
 from urllib.parse import urlparse
 
@@ -36,6 +37,10 @@ def _create_hkjc_hkjc_game_model(
         div_text = div.get_text().strip()
         if div_text.lower() == "no information.":
             return None
+    for div in soup.find_all("div"):
+        div_text = div.get_text().strip()
+        if "this race is declared abandoned" in div_text.lower():
+            return None
 
     o = urlparse(url)
     query = urllib.parse.parse_qs(o.query)
@@ -55,7 +60,13 @@ def _create_hkjc_hkjc_game_model(
     for count, df in enumerate(dfs):
         if count == 1:
             race_track = df.iat[2, 2].split("-")[0].strip()
-            distance = float(df.iat[1, 0].split("-")[1].strip().replace("M", ""))
+            distance = 0.0
+            try:
+                distance = float(df.iat[1, 0].split("-")[1].strip().replace("M", ""))
+            except IndexError:
+                logging.error(html)
+                logging.error(url)
+                raise
             pot = float(df.iat[3, 0].split()[-1].strip().replace(",", ""))
         elif count == 2:
             for _, row in df.iterrows():
@@ -165,6 +176,7 @@ def _create_hkjc_hkjc_game_model(
                 dividend_str = str(row_df.iat[2, 0]).strip().lower()
                 if dividend_str == "details":
                     continue
+                dividend_str = dividend_str.split("/", maxsplit=1)[0].replace(",", "")
                 dividend = float(dividend_str)
 
                 combination = None
