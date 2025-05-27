@@ -91,7 +91,7 @@ def _create_hkjc_hkjc_game_model(
                 if starting_position_str.strip() != "---":
                     starting_position = position_from_str(starting_position_str.strip())
 
-                lbw = 0.0
+                lbw: float | None = 0.0
                 lbw_str = row["LBW"].strip()
                 if lbw_str == "HD":
                     lbw = 2.4 * 0.2
@@ -99,14 +99,17 @@ def _create_hkjc_hkjc_game_model(
                     lbw = 2.4 * 0.2 * 0.5
                 elif lbw_str in {"NOSE", "N"}:
                     lbw = 2.4 * 0.05
+                elif lbw_str == "ML":
+                    lbw = None
                 elif lbw_str and lbw_str != "-" and lbw_str != "---":
-                    if "-" in lbw_str:
-                        lbw_horses, lbw_str = lbw_str.split("-")
-                        lbw += 2.4 * int(lbw_horses)
-                    if "/" in lbw_str:
-                        lbw += 2.4 * (1.0 / int(lbw_str.split("/")[-1]))
-                    else:
-                        lbw += 2.4 * int(lbw_str)
+                    if lbw is not None:
+                        if "-" in lbw_str:
+                            lbw_horses, lbw_str = lbw_str.split("-")
+                            lbw += 2.4 * int(lbw_horses)
+                        if "/" in lbw_str:
+                            lbw += 2.4 * (1.0 / int(lbw_str.split("/")[-1]))
+                        else:
+                            lbw += 2.4 * int(lbw_str)
 
                 finish_time_str = row["Finish Time"].strip()
                 end_dt = None

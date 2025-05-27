@@ -32,6 +32,10 @@ def _create_hkjc_hkjc_player_model(
     headers = {X_NO_WAYBACK: "1"}
     response = session.get(url, headers=headers)
     response.raise_for_status()
+
+    o = urlparse(url)
+    is_sire = o.path.endswith("Horse/SameSire.aspx")
+
     handle = io.StringIO()
     handle.write(response.text)
     handle.seek(0)
@@ -41,10 +45,11 @@ def _create_hkjc_hkjc_player_model(
     except AttributeError as exc:
         logging.warning(str(exc))
     except ValueError:
-        logging.error(response.text)
-        logging.error(url)
-        raise
-    o = urlparse(url)
+        if not is_sire:
+            logging.error(response.text)
+            logging.error(url)
+            raise
+
     soup = BeautifulSoup(response.text, "lxml")
 
     name = None

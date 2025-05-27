@@ -3196,6 +3196,24 @@ MONROE = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
+YOKOHAMA_ARENA = SportsballGeocodeTuple(
+    city="Kanagawa",
+    state="",
+    postal="",
+    lat=35.512389,
+    lng=139.620056,
+    housenumber="",
+    country="Japan",
+)
+BELL_CENTRE = SportsballGeocodeTuple(
+    city="Montreal",
+    state="QC",
+    postal="",
+    lat=45.496111,
+    lng=-73.569444,
+    housenumber="1909",
+    country="CA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -7990,15 +8008,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Target Center - Minneapolis, Minnesota - United States": TARGET_CENTER,
     "Thomas & Mack Center - Paradise, NV - United States": THOMAS_AND_MACK_CENTER,
     "Delta Center - Salt Lake City, Utah - United States": DELTA_CENTER,
-    "Yokohama Arena": SportsballGeocodeTuple(
-        city="Kanagawa",
-        state="",
-        postal="",
-        lat=35.512389,
-        lng=139.620056,
-        housenumber="",
-        country="Japan",
-    ),
+    "Yokohama Arena": YOKOHAMA_ARENA,
     "Anaheim Convention Center": ANAHEIM_CONVENTION_CENTER,
     "TD Banknorth Garden": TD_GARDEN,
     "Amway Arena": ORLANDO_ARENA,
@@ -8875,15 +8885,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Climate Pledge Arena - Seattle, Washington - United States": CLIMATE_PLEDGE_ARENA,
     "Wells Fargo Center - Philadelphia, PA - United States": SPECTRUM,
     "State Farm Arena - Atlanta, Georgia - United States": STATE_FARM_ARENA,
-    "Bell Centre": SportsballGeocodeTuple(
-        city="Montreal",
-        state="QC",
-        postal="",
-        lat=45.496111,
-        lng=-73.569444,
-        housenumber="1909",
-        country="CA",
-    ),
+    "Bell Centre": BELL_CENTRE,
     "Footprint Center - Phoenix, Arizona - United States": AMERICA_WEST_ARENA,
     "Smoothie King Center - New Orleans, Louisiana, USA - United States": CAESARS_SUPERDOME,
     "Kaseya Center - Miami, Florida - United States": KASEYA_CENTER,
@@ -15527,6 +15529,8 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "TIO Traeger Park, Alice Springs": TIO_STADIUM,
     "Hard Rock Stadium, Miami Gardens, FL, USA": HARD_ROCK_STADIUM,
+    "Yokohama Arena - Yokohama, Kanagawa - Japan": YOKOHAMA_ARENA,
+    "Centre Bell - Montreal, Quebec, Canada - Canada": BELL_CENTRE,
 }
 
 

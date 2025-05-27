@@ -24,7 +24,7 @@ def _create_hkjc_hkjc_team_model(
     handicap_weight: float,
     horse_weight: float | None,
     starting_position: Position | None,
-    lbw: float,
+    lbw: float | None,
     end_dt: datetime.datetime | None,
     odds: list[OddsModel],
 ) -> TeamModel:
@@ -75,7 +75,7 @@ def _cached_create_hkjc_hkjc_team_model(
     handicap_weight: float,
     horse_weight: float | None,
     starting_position: Position | None,
-    lbw: float,
+    lbw: float | None,
     end_dt: datetime.datetime | None,
     odds: list[OddsModel],
 ) -> TeamModel:
@@ -105,7 +105,7 @@ def create_hkjc_hkjc_team_model(
     handicap_weight: float,
     horse_weight: float | None,
     starting_position: Position | None,
-    lbw: float,
+    lbw: float | None,
     end_dt: datetime.datetime | None,
     odds: list[OddsModel],
 ) -> TeamModel:
