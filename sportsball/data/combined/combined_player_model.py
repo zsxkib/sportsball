@@ -45,7 +45,12 @@ def create_combined_player_model(
     species = None
     handicap_weight = None
     father = None
+    sex = None
+    age = None
     starting_position = None
+    weight = None
+    birth_address = None
+    owner = None
     for player_model in player_models:
         player_model_jersey = player_model.jersey
         if not is_null(player_model_jersey):
@@ -155,9 +160,24 @@ def create_combined_player_model(
         player_model_father = player_model.father
         if not is_null(player_model_father):
             father = player_model_father
+        player_model_sex = player_model.sex
+        if not is_null(player_model_sex):
+            sex = player_model_sex
+        player_model_age = player_model.age
+        if not is_null(player_model_age):
+            age = player_model_age
         player_model_starting_position = player_model.starting_position
         if not is_null(player_model_starting_position):
             starting_position = player_model_starting_position
+        player_model_weight = player_model.weight
+        if not is_null(player_model_weight):
+            weight = player_model_weight
+        player_model_birth_address = player_model.birth_address
+        if not is_null(player_model_birth_address):
+            birth_address = player_model_birth_address
+        player_model_owner = player_model.owner
+        if not is_null(player_model_owner):
+            owner = player_model_owner
     if name is None:
         raise ValueError("name is null")
     if species is None:
@@ -200,5 +220,10 @@ def create_combined_player_model(
         species=species,
         handicap_weight=handicap_weight,
         father=father,
+        sex=sex,
+        age=age,
         starting_position=starting_position,
+        weight=weight,
+        birth_address=birth_address,
+        owner=owner,
     )

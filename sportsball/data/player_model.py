@@ -6,10 +6,11 @@ import datetime
 from typing import Any, Literal
 
 import gender_guesser.detector as gender  # type: ignore
-from dateutil.relativedelta import relativedelta
 from pydantic import BaseModel, Field
 
+from .address_model import AddressModel
 from .field_type import TYPE_KEY, FieldType
+from .owner_model import OwnerModel
 from .sex import Sex
 
 PLAYER_KICKS_COLUMN: Literal["kicks"] = "kicks"
@@ -55,6 +56,9 @@ PLAYER_FATHER_COLUMN: Literal["father"] = "father"
 PLAYER_SEX_COLUMN: Literal["sex"] = "sex"
 PLAYER_AGE_COLUMN: Literal["age"] = "age"
 PLAYER_STARTING_POSITION_COLUMN: Literal["starting_position"] = "starting_position"
+PLAYER_WEIGHT_COLUMN: Literal["weight"] = "weight"
+PLAYER_BIRTH_ADDRESS_COLUMN: Literal["birth_address"] = "birth_address"
+PLAYER_OWNER_COLUMN: Literal["owner"] = "owner"
 
 _GENDER_DETECTOR = gender.Detector()
 _MALE_GENDERS = {"male", "mostly_male"}
@@ -71,14 +75,6 @@ def _guess_sex(data: dict[str, Any]) -> str | None:
         return str(Sex.FEMALE)
     if gender_tag in _UNCERTAIN_GENDERS:
         return None
-    return None
-
-
-def _determine_age(data: dict[str, Any]) -> int | None:
-    birth_date = data.get(PLAYER_BIRTH_DATE_COLUMN)
-    if birth_date is not None:
-        current_date = datetime.datetime.today().date()
-        return relativedelta(current_date, birth_date).years
     return None
 
 
@@ -255,9 +251,12 @@ class PlayerModel(BaseModel):
         json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL},
         alias=PLAYER_SEX_COLUMN,
     )
-    age: int | None = Field(default_factory=_determine_age, alias=PLAYER_AGE_COLUMN)
+    age: int | None = Field(..., alias=PLAYER_AGE_COLUMN)
     starting_position: str | None = Field(
         ...,
         json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL},
         alias=PLAYER_STARTING_POSITION_COLUMN,
     )
+    weight: float | None = Field(..., alias=PLAYER_WEIGHT_COLUMN)
+    birth_address: AddressModel | None = Field(..., alias=PLAYER_BIRTH_ADDRESS_COLUMN)
+    owner: OwnerModel | None = Field(..., alias=PLAYER_OWNER_COLUMN)

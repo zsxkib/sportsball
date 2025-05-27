@@ -470,6 +470,8 @@ def _create_afl_afltables_game_model(
         postponed=None,
         play_off=None,
         distance=None,
+        dividends=[],
+        pot=None,
     )
 
 

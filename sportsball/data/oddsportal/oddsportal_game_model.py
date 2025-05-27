@@ -124,6 +124,8 @@ def _create_oddsportal_game_model(
         postponed=event_data["isPostponed"],
         play_off=None,
         distance=None,
+        dividends=[],
+        pot=None,
     )
 
 

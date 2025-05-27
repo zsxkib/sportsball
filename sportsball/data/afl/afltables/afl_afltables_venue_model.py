@@ -33,6 +33,8 @@ def _create_afl_afltables_venue_model(
         address=address,  # pyright: ignore
         is_grass=None,
         is_indoor=None,
+        is_turf=None,
+        is_dirt=None,
     )
 
 

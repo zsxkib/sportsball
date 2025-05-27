@@ -1,6 +1,6 @@
 """NBA NBA.com venue model."""
 
-# pylint: disable=too-many-statements,protected-access
+# pylint: disable=too-many-statements,protected-access,duplicate-code
 import datetime
 
 import requests_cache
@@ -22,4 +22,6 @@ def create_nba_nbacom_venue_model(
         address=address_model,
         is_grass=None,
         is_indoor=None,
+        is_turf=None,
+        is_dirt=None,
     )

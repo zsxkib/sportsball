@@ -71,6 +71,8 @@ def _create_oddsportal_team_model(
         social=create_x_social_model(team_name, session, dt),
         field_goals=None,
         coaches=[],
+        lbw=None,
+        end_dt=None,
     )
 
 

@@ -1,6 +1,6 @@
 """ESPN game model."""
 
-# pylint: disable=too-many-arguments
+# pylint: disable=too-many-arguments,duplicate-code
 import datetime
 from typing import Any, Dict
 
@@ -156,6 +156,8 @@ def _create_espn_game_model(
         postponed=None,
         play_off=None,
         distance=None,
+        dividends=[],
+        pot=None,
     )
 
 

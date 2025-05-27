@@ -1,6 +1,7 @@
 """AFL AFLTables player model."""
 
 # pylint: disable=line-too-long,duplicate-code,too-many-arguments,too-many-locals
+import datetime
 import logging
 import os
 from urllib.parse import urlparse
@@ -9,6 +10,7 @@ import pytest_is_running
 import requests_cache
 from bs4 import BeautifulSoup
 from dateutil.parser import parse
+from dateutil.relativedelta import relativedelta
 
 from ....cache import MEMORY
 from ...player_model import PlayerModel
@@ -44,6 +46,7 @@ def _create_afl_afltables_player_model(
     goal_assists: int | None,
     percentage_played: float | None,
     session: requests_cache.CachedSession,
+    dt: datetime.datetime,
 ) -> PlayerModel:
     o = urlparse(player_url)
     last_component = o.path.split("/")[-1]
@@ -51,12 +54,20 @@ def _create_afl_afltables_player_model(
     jersey = "".join(filter(str.isdigit, jersey))
     response = session.get(player_url)
     response.raise_for_status()
+
     soup = BeautifulSoup(response.text, "lxml")
+    player_page_text = soup.get_text()
+
     birth_date = None
     try:
-        birth_date = parse(soup.get_text().split("Born:")[1].strip().split()[0].strip())
+        birth_date = parse(
+            player_page_text.split("Born:")[1].strip().split()[0].strip()
+        )
     except IndexError:
         logging.warning("Couldn't find birth date from %s", response.url)
+
+    weight = float(player_page_text.split("Weight:")[1].strip().split()[0].strip())
+
     return PlayerModel(
         identifier=identifier,
         jersey=jersey,
@@ -96,7 +107,11 @@ def _create_afl_afltables_player_model(
         handicap_weight=None,
         father=None,
         sex=str(Sex.MALE),
+        age=None if birth_date is None else relativedelta(birth_date, dt).years,
         starting_position=None,
+        weight=weight,
+        birth_address=None,
+        owner=None,
     )
 
 
@@ -129,35 +144,37 @@ def _cached_create_afl_afltables_player_model(
     goal_assists: int | None,
     percentage_played: float | None,
     session: requests_cache.CachedSession,
+    dt: datetime.datetime,
 ) -> PlayerModel:
     return _create_afl_afltables_player_model(
-        player_url,
-        jersey,
-        kicks,
-        name,
-        marks,
-        handballs,
-        disposals,
-        goals,
-        behinds,
-        hit_outs,
-        tackles,
-        rebounds,
-        insides,
-        clearances,
-        clangers,
-        free_kicks_for,
-        free_kicks_against,
-        brownlow_votes,
-        contested_possessions,
-        uncontested_possessions,
-        contested_marks,
-        marks_inside,
-        one_percenters,
-        bounces,
-        goal_assists,
-        percentage_played,
-        session,
+        player_url=player_url,
+        jersey=jersey,
+        kicks=kicks,
+        name=name,
+        marks=marks,
+        handballs=handballs,
+        disposals=disposals,
+        goals=goals,
+        behinds=behinds,
+        hit_outs=hit_outs,
+        tackles=tackles,
+        rebounds=rebounds,
+        insides=insides,
+        clearances=clearances,
+        clangers=clangers,
+        free_kicks_for=free_kicks_for,
+        free_kicks_against=free_kicks_against,
+        brownlow_votes=brownlow_votes,
+        contested_possessions=contested_possessions,
+        uncontested_possessions=uncontested_possessions,
+        contested_marks=contested_marks,
+        marks_inside=marks_inside,
+        one_percenters=one_percenters,
+        bounces=bounces,
+        goal_assists=goal_assists,
+        percentage_played=percentage_played,
+        session=session,
+        dt=dt,
     )
 
 
@@ -189,65 +206,68 @@ def create_afl_afltables_player_model(
     bounces: int | None,
     goal_assists: int | None,
     percentage_played: float | None,
+    dt: datetime.datetime,
 ) -> PlayerModel:
     """Create a player model from AFL Tables."""
     if not pytest_is_running.is_running():
         return _cached_create_afl_afltables_player_model(
-            player_url,
-            jersey,
-            kicks,
-            name,
-            marks,
-            handballs,  # pyright: ignore
-            disposals,
-            goals,
-            behinds,
-            hit_outs,
-            tackles,
-            rebounds,
-            insides,
-            clearances,
-            clangers,
-            free_kicks_for,
-            free_kicks_against,
-            brownlow_votes,
-            contested_possessions,
-            uncontested_possessions,
-            contested_marks,
-            marks_inside,
-            one_percenters,
-            bounces,
-            goal_assists,
-            percentage_played,
-            session,
+            player_url=player_url,
+            jersey=jersey,
+            kicks=kicks,
+            name=name,
+            marks=marks,
+            handballs=handballs,  # pyright: ignore
+            disposals=disposals,
+            goals=goals,
+            behinds=behinds,
+            hit_outs=hit_outs,
+            tackles=tackles,
+            rebounds=rebounds,
+            insides=insides,
+            clearances=clearances,
+            clangers=clangers,
+            free_kicks_for=free_kicks_for,
+            free_kicks_against=free_kicks_against,
+            brownlow_votes=brownlow_votes,
+            contested_possessions=contested_possessions,
+            uncontested_possessions=uncontested_possessions,
+            contested_marks=contested_marks,
+            marks_inside=marks_inside,
+            one_percenters=one_percenters,
+            bounces=bounces,
+            goal_assists=goal_assists,
+            percentage_played=percentage_played,
+            session=session,
+            dt=dt,
         )
     with session.cache_disabled():
         return _create_afl_afltables_player_model(
-            player_url,
-            jersey,
-            kicks,
-            name,
-            marks,
-            handballs,
-            disposals,
-            goals,
-            behinds,
-            hit_outs,
-            tackles,
-            rebounds,
-            insides,
-            clearances,
-            clangers,
-            free_kicks_for,
-            free_kicks_against,
-            brownlow_votes,
-            contested_possessions,
-            uncontested_possessions,
-            contested_marks,
-            marks_inside,
-            one_percenters,
-            bounces,
-            goal_assists,
-            percentage_played,
-            session,
+            player_url=player_url,
+            jersey=jersey,
+            kicks=kicks,
+            name=name,
+            marks=marks,
+            handballs=handballs,
+            disposals=disposals,
+            goals=goals,
+            behinds=behinds,
+            hit_outs=hit_outs,
+            tackles=tackles,
+            rebounds=rebounds,
+            insides=insides,
+            clearances=clearances,
+            clangers=clangers,
+            free_kicks_for=free_kicks_for,
+            free_kicks_against=free_kicks_against,
+            brownlow_votes=brownlow_votes,
+            contested_possessions=contested_possessions,
+            uncontested_possessions=uncontested_possessions,
+            contested_marks=contested_marks,
+            marks_inside=marks_inside,
+            one_percenters=one_percenters,
+            bounces=bounces,
+            goal_assists=goal_assists,
+            percentage_played=percentage_played,
+            session=session,
+            dt=dt,
         )

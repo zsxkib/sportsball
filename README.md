@@ -71,6 +71,8 @@ The supported leagues are:
 * **Game**: A game within a season.
     * **Team**: The team within the game. Note that in games with individual players a team exists as a wrapper.
         * **Player**: A player within the team.
+            * **Address**: The address information of a players birth.
+            * **Owner**: The owner of the player.
         * **Odds**: The odds for the team to win the game.
             * **Bookie**: The bookie publishing the odds.
         * **News**: News about the team the day before the game.
@@ -79,6 +81,7 @@ The supported leagues are:
     * **Venue**: The venue the game was played in.
         * **Address**: The address information of a venue.
             * **Weather**: The weather at the address.
+    * **Dividend**: The dividends the game pays out.
 
 ### Objects
 
@@ -145,6 +148,8 @@ A representation of a team within a game.
 * **bounces**: The number of times a player on the team bounces a ball.
 * **goal_assists**: The number of times a player on the team assists another player on the team with a goal in the game.
 * **coaches**: The coaches on the team during the game.
+* **lbw**: Length behind winner, expressed in metres.
+* **dividends**: The dividends the game pays out.
 
 #### Player
 
@@ -190,6 +195,8 @@ A representation of a player within a team within a game.
 * **sex**: The sex of the player.
 * **age**: The age of the player in years.
 * **starting_position**: The starting position of the player.
+* **weight**: The weight of the player in (in KGs).
+* **birth_address**: The address model for the players birth location.
 
 #### Odds
 
@@ -198,6 +205,8 @@ A representation of the odds for a team to win within a game.
 * **odds**: The decimal odds offered by a bookie for the team to win in the game.
 * **bookie**: The bookie offering these odds.
 * **dt**: When the odds were posted.
+* **canonical**: Whether these odds can be treated as canonical for the purposes of backtesting.
+* **bet**: The type of bet the odds represent.
 
 #### Venue
 
@@ -257,6 +266,23 @@ The coach on the team at the time of the game.
 
 * **identifier**: The unique identifier for the coach.
 * **name**: The name of the coach.
+* **birth_date**: The birth date of the coach.
+* **age**: The age of the coach.
+
+#### Dividend
+
+The dividend payout at the end of the game.
+
+* **pool**: The type of bet paying the dividend.
+* **combination**: The combination of team identifiers making up the dividend.
+* **dividend**: The payout of the dividend.
+
+#### Owner
+
+The owner of a player.
+
+* **name**: The name of the owner.
+* **identifier**: The unique identifier of the owner.
 
 ## Caching
 

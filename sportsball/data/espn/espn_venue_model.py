@@ -34,4 +34,6 @@ def create_espn_venue_model(
         address=address,  # pyright: ignore
         is_grass=grass,
         is_indoor=indoor,
+        is_turf=None,
+        is_dirt=None,
     )

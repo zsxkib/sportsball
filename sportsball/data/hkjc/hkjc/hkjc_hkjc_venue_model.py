@@ -9,23 +9,29 @@ from ....cache import MEMORY
 from ...google.google_address_model import create_google_address_model
 from ...venue_model import VenueModel
 
+SHA_TIN_VENUE_CODE = "ST"
+HAPPY_VALLEY_VENUE_CODE = "HV"
+
+ADDRESSES = {
+    SHA_TIN_VENUE_CODE: "Sha Tin, China",
+    HAPPY_VALLEY_VENUE_CODE: "Hally Valley, China",
+}
+
 
 @MEMORY.cache(ignore=["session"])
 def create_hkjc_hkjc_venue_model(
     session: requests_cache.CachedSession,
     dt: datetime.datetime,
-    country: str,
-    race_track: str,
-    race_course: str,
     venue_code: str,
+    race_track: str,
 ) -> VenueModel:
-    """Create a venue model from an ESPN result."""
+    """Create a venue model from an HKJC result."""
     address = create_google_address_model(
-        ", ".join([race_course, country]),
+        ADDRESSES[venue_code],
         session,
         dt,
     )
-    name = ", ".join([race_track, race_course, country, venue_code])
+    name = ", ".join([race_track, venue_code])
     return VenueModel(
         identifier=name,
         name=name,

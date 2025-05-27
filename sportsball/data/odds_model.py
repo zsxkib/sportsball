@@ -12,6 +12,7 @@ DT_COLUMN: Literal["dt"] = "dt"
 ODDS_ODDS_COLUMN: Literal["odds"] = "odds"
 ODDS_BOOKIE_COLUMN: Literal["bookie"] = "bookie"
 ODDS_CANONICAL_COLUMN: Literal["canonical"] = "canonical"
+ODDS_BET_COLUMN: Literal["bet"] = "bet"
 
 
 class OddsModel(BaseModel):
@@ -26,3 +27,4 @@ class OddsModel(BaseModel):
         alias=DT_COLUMN,
     )
     canonical: bool = Field(..., alias=ODDS_CANONICAL_COLUMN)
+    bet: str = Field(..., alias=ODDS_BET_COLUMN)

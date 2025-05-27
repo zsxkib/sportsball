@@ -1,8 +1,10 @@
 """OddsPortal odds model."""
 
+# pylint: disable=line-too-long
 import datetime
 
 from ...cache import MEMORY
+from ..bet import Bet
 from ..team_model import OddsModel
 from .oddsportal_bookie_model import create_oddsportal_bookie_model
 
@@ -13,4 +15,4 @@ def create_oddsportal_odds_model(
 ) -> OddsModel:
     """Create an odds model based off aus sports betting."""
     bookie = create_oddsportal_bookie_model(bookie_name, bookie_id)
-    return OddsModel(odds=odds, bookie=bookie, dt=dt, canonical=False)  # pyright: ignore
+    return OddsModel(odds=odds, bookie=bookie, dt=dt, canonical=False, bet=str(Bet.WIN))  # pyright: ignore

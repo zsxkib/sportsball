@@ -1,6 +1,6 @@
 """NBA NBA.com game model."""
 
-# pylint: disable=too-many-statements,protected-access,too-many-arguments,bare-except
+# pylint: disable=too-many-statements,protected-access,too-many-arguments,bare-except,duplicate-code
 import datetime
 from typing import Any
 
@@ -54,4 +54,6 @@ def create_nba_nbacom_game_model(
         postponed=None,
         play_off=None,
         distance=None,
+        dividends=[],
+        pot=None,
     )

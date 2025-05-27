@@ -10,7 +10,8 @@ from ..coach_model import CoachModel
 
 
 def _create_espn_coach_model(
-    session: requests_cache.CachedSession, url: str
+    session: requests_cache.CachedSession,
+    url: str,
 ) -> CoachModel:
     response = session.get(url)
     response.raise_for_status()
@@ -18,6 +19,8 @@ def _create_espn_coach_model(
     return CoachModel(
         identifier=data["id"],
         name=" ".join([data["firstName"], data["lastName"]]),
+        birth_date=None,
+        age=None,
     )
 
 

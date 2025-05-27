@@ -67,6 +67,8 @@ def _create_sportsdb_game_model(
         postponed=postponed,
         play_off=None,
         distance=None,
+        dividends=[],
+        pot=None,
     )
 
 

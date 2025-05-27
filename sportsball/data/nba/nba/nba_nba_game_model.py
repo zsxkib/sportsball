@@ -1,6 +1,6 @@
 """NBA NBA API game model."""
 
-# pylint: disable=too-many-arguments,line-too-long
+# pylint: disable=too-many-arguments,line-too-long,duplicate-code
 import datetime
 
 import pandas as pd
@@ -56,6 +56,8 @@ def _create_nba_nba_game_model(
         postponed=None,
         play_off=None,
         distance=None,
+        dividends=[],
+        pot=None,
     )
 
 

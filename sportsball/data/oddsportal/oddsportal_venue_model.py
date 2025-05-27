@@ -25,6 +25,8 @@ def _create_oddsportal_venue_model(
         ),
         is_grass=None,
         is_indoor=None,
+        is_turf=None,
+        is_dirt=None,
     )
 
 

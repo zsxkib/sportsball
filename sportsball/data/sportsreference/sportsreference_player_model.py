@@ -1,6 +1,7 @@
 """Sports reference player model."""
 
 # pylint: disable=too-many-arguments,unused-argument,line-too-long,duplicate-code,too-many-locals
+import datetime
 import http
 import logging
 from urllib.parse import unquote
@@ -10,9 +11,11 @@ import pytest_is_running
 import requests_cache
 from bs4 import BeautifulSoup
 from dateutil.parser import parse
+from dateutil.relativedelta import relativedelta
 
 from ...cache import MEMORY
 from ...session import DEFAULT_TIMEOUT
+from ..google.google_address_model import create_google_address_model
 from ..player_model import PlayerModel
 from ..sex import Sex
 from ..species import Species
@@ -57,6 +60,7 @@ def _create_sportsreference_player_model(
     positions: dict[str, str],
     positions_validator: dict[str, str],
     sex: Sex,
+    dt: datetime.datetime,
 ) -> PlayerModel | None:
     """Create a player model from sports reference."""
     player_url = _fix_url(player_url)
@@ -74,10 +78,18 @@ def _create_sportsreference_player_model(
     name = h1.get_text().strip()
     data = extruct.extract(response.text, base_url=response.url)
     birth_date = None
+    weight = None
+    birth_address = None
     for jsonld in data["json-ld"]:
         if jsonld["@type"] != "Person":
             continue
         birth_date = parse(jsonld["birthDate"])
+        weight = float(jsonld["weight"]["value"].split()[0]) * 0.453592
+        birth_address = create_google_address_model(
+            query=jsonld["birthPlace"],
+            session=session,
+            dt=None,
+        )
     position = positions.get(name)
     return PlayerModel(
         identifier=name,
@@ -118,9 +130,13 @@ def _create_sportsreference_player_model(
         handicap_weight=None,
         father=None,
         sex=str(sex),
+        age=None if birth_date is None else relativedelta(birth_date, dt).years,
         starting_position=positions_validator[position]
         if position is not None
         else None,
+        weight=weight,
+        birth_address=birth_address,
+        owner=None,
     )
 
 
@@ -136,18 +152,20 @@ def _cached_create_sportsreference_player_model(
     positions: dict[str, str],
     positions_validator: dict[str, str],
     sex: Sex,
+    dt: datetime.datetime,
 ) -> PlayerModel | None:
     return _create_sportsreference_player_model(
-        session,
-        player_url,
-        fg,
-        fga,
-        offensive_rebounds,
-        assists,
-        turnovers,
-        positions,
-        positions_validator,
-        sex,
+        session=session,
+        player_url=player_url,
+        fg=fg,
+        fga=fga,
+        offensive_rebounds=offensive_rebounds,
+        assists=assists,
+        turnovers=turnovers,
+        positions=positions,
+        positions_validator=positions_validator,
+        sex=sex,
+        dt=dt,
     )
 
 
@@ -162,31 +180,34 @@ def create_sportsreference_player_model(
     positions: dict[str, str],
     positions_validator: dict[str, str],
     sex: Sex,
+    dt: datetime.datetime,
 ) -> PlayerModel | None:
     """Create a player model from sports reference."""
     if not pytest_is_running.is_running():
         return _cached_create_sportsreference_player_model(
-            session,
-            player_url,
-            fg,
-            fga,
-            offensive_rebounds,
-            assists,
-            turnovers,
-            positions,
-            positions_validator,
-            sex,
+            session=session,
+            player_url=player_url,
+            fg=fg,
+            fga=fga,
+            offensive_rebounds=offensive_rebounds,
+            assists=assists,
+            turnovers=turnovers,
+            positions=positions,
+            positions_validator=positions_validator,
+            sex=sex,
+            dt=dt,
         )
     with session.cache_disabled():
         return _create_sportsreference_player_model(
-            session,
-            player_url,
-            fg,
-            fga,
-            offensive_rebounds,
-            assists,
-            turnovers,
-            positions,
-            positions_validator,
-            sex,
+            session=session,
+            player_url=player_url,
+            fg=fg,
+            fga=fga,
+            offensive_rebounds=offensive_rebounds,
+            assists=assists,
+            turnovers=turnovers,
+            positions=positions,
+            positions_validator=positions_validator,
+            sex=sex,
+            dt=dt,
         )

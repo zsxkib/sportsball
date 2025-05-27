@@ -50,4 +50,6 @@ def create_afl_afl_team_model(
         assists=None,
         turnovers=None,
         coaches=[],
+        lbw=None,
+        end_dt=None,
     )

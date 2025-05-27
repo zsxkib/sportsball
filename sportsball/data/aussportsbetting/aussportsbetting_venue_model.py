@@ -21,4 +21,6 @@ def create_aussportsbetting_venue_model(
         address=address_model,
         is_grass=None,
         is_indoor=None,
+        is_turf=None,
+        is_dirt=None,
     )

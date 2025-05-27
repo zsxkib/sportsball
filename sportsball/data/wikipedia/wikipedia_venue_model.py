@@ -108,4 +108,6 @@ def create_wikipedia_venue_model(
         address=None,
         is_grass=None,
         is_indoor=None,
+        is_turf=None,
+        is_dirt=None,
     )

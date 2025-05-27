@@ -36,4 +36,6 @@ def create_aussportsbetting_team_model(
         social=create_x_social_model(name, session, dt),
         field_goals=None,
         coaches=[],
+        lbw=None,
+        end_dt=None,
     )

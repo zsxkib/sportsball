@@ -120,6 +120,8 @@ def _create_sportsreference_team_model(
             news=create_google_news_models(team_name, session, dt, league),
             social=create_x_social_model(team_name, session, dt),
             coaches=[],
+            lbw=None,
+            end_dt=None,
         )
     response = session.get(url, headers=headers)
     if response.status_code == http.HTTPStatus.NOT_FOUND:
@@ -135,6 +137,8 @@ def _create_sportsreference_team_model(
             news=create_google_news_models(team_name, session, dt, league),
             social=create_x_social_model(team_name, session, dt),
             coaches=[],
+            lbw=None,
+            end_dt=None,
         )
     response.raise_for_status()
 
@@ -198,16 +202,17 @@ def _create_sportsreference_team_model(
             y
             for y in [  # pyright: ignore
                 create_sportsreference_player_model(
-                    session,
-                    x,
-                    fg,
-                    fga,
-                    offensive_rebounds,
-                    assists,
-                    turnovers,
-                    positions,
-                    positions_validator,
-                    sex,
+                    session=session,
+                    player_url=x,
+                    fg=fg,
+                    fga=fga,
+                    offensive_rebounds=offensive_rebounds,
+                    assists=assists,
+                    turnovers=turnovers,
+                    positions=positions,
+                    positions_validator=positions_validator,
+                    sex=sex,
+                    dt=dt,
                 )
                 for x in valid_player_urls
             ]
@@ -219,7 +224,9 @@ def _create_sportsreference_team_model(
         location=None,
         news=create_google_news_models(name, session, dt, league),
         social=create_x_social_model(name, session, dt),
-        coaches=[create_sportsreference_coach_model(session, coach_url)],
+        coaches=[create_sportsreference_coach_model(session, coach_url, dt)],
+        lbw=None,
+        end_dt=None,
     )
 
 

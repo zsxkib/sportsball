@@ -23,6 +23,8 @@ class TestGameModel(unittest.TestCase):
             postponed=True,
             play_off=None,
             distance=None,
+            dividends=[],
+            pot=None,
         )
 
     def test_postponed(self):

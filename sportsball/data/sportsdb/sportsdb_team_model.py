@@ -33,6 +33,8 @@ def _create_sportsdb_team_model(
         social=create_x_social_model(team_id, session, dt),
         field_goals=None,
         coaches=[],
+        lbw=None,
+        end_dt=None,
     )
 
 

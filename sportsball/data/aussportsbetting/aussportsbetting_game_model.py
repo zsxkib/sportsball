@@ -49,6 +49,8 @@ def _create_aussportsbetting_game_model(
         postponed=None,
         play_off=play_off,
         distance=None,
+        dividends=[],
+        pot=None,
     )
 
 

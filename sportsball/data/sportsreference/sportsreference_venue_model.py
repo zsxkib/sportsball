@@ -23,6 +23,8 @@ def _create_sportsreference_venue_model(
         address=address_model,
         is_grass=None,
         is_indoor=None,
+        is_turf=None,
+        is_dirt=None,
     )
 
 

@@ -56,10 +56,14 @@ class TestCombinedTeamModel(unittest.TestCase):
                 goal_assists=None,
                 percentage_played=None,
                 birth_date=None,
+                age=None,
                 species=str(Species.HUMAN),
                 handicap_weight=None,
                 father=None,
                 starting_position=None,
+                weight=None,
+                birth_address=None,
+                owner=None,
             )]
             team_models = [TeamModel(
                 identifier="a",
@@ -72,6 +76,8 @@ class TestCombinedTeamModel(unittest.TestCase):
                 news=[],
                 social=[],
                 coaches=[],
+                lbw=None,
+                end_dt=None,
             )]
             team_model = create_combined_team_model(
                 team_models=team_models,
@@ -115,10 +121,14 @@ class TestCombinedTeamModel(unittest.TestCase):
                 goal_assists=None,
                 percentage_played=None,
                 birth_date=None,
+                age=None,
                 species=str(Species.HUMAN),
                 handicap_weight=None,
                 father=None,
                 starting_position=None,
+                weight=None,
+                birth_address=None,
+                owner=None,
             )]
             team_models_2 = [TeamModel(
                 identifier="a",
@@ -131,6 +141,8 @@ class TestCombinedTeamModel(unittest.TestCase):
                 news=[],
                 social=[],
                 coaches=[],
+                lbw=None,
+                end_dt=None,
             )]
             team_model_2 = create_combined_team_model(
                 team_models=team_models_2,
@@ -180,10 +192,14 @@ class TestCombinedTeamModel(unittest.TestCase):
                 goal_assists=None,
                 percentage_played=None,
                 birth_date=None,
+                age=None,
                 species=str(Species.HUMAN),
                 handicap_weight=None,
                 father=None,
                 starting_position=None,
+                weight=None,
+                birth_address=None,
+                owner=None,
             )]
             team_models = [TeamModel(
                 identifier="a",
@@ -196,6 +212,8 @@ class TestCombinedTeamModel(unittest.TestCase):
                 news=[],
                 social=[],
                 coaches=[],
+                lbw=None,
+                end_dt=None,
             )]
             team_model = create_combined_team_model(
                 team_models=team_models,
@@ -239,10 +257,14 @@ class TestCombinedTeamModel(unittest.TestCase):
                 goal_assists=None,
                 percentage_played=None,
                 birth_date=None,
+                age=None,
                 species=str(Species.HUMAN),
                 handicap_weight=None,
                 father=None,
                 starting_position=None,
+                weight=None,
+                birth_address=None,
+                owner=None,
             )]
             team_models_2 = [TeamModel(
                 identifier="a",
@@ -255,6 +277,8 @@ class TestCombinedTeamModel(unittest.TestCase):
                 news=[],
                 social=[],
                 coaches=[],
+                lbw=None,
+                end_dt=None,
             )]
             team_model_2 = create_combined_team_model(
                 team_models=team_models_2,

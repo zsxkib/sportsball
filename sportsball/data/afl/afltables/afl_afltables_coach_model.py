@@ -1,6 +1,7 @@
 """AFL AFLTables coach model."""
 
 # pylint: disable=too-many-locals
+import datetime
 import io
 import os
 import urllib.parse
@@ -10,6 +11,8 @@ import pandas as pd
 import pytest_is_running
 import requests_cache
 from bs4 import BeautifulSoup
+from dateutil.parser import parse
+from dateutil.relativedelta import relativedelta
 
 from ....cache import MEMORY
 from ...coach_model import CoachModel
@@ -18,7 +21,7 @@ _COACH_URL_CACHE: dict[str, str] = {}
 
 
 def _create_afl_afltables_coach_model(
-    url: str, session: requests_cache.CachedSession, year: int
+    url: str, session: requests_cache.CachedSession, year: int, dt: datetime.datetime
 ) -> CoachModel:
     html = _COACH_URL_CACHE.get(url)
     if html is None:
@@ -57,24 +60,36 @@ def _create_afl_afltables_coach_model(
     o = urlparse(coach_url)
     last_component = o.path.split("/")[-1]
     identifier, _ = os.path.splitext(last_component)
+
+    response = session.get(coach_url)
+    response.raise_for_status()
+    soup = BeautifulSoup(response.text, "lxml")
+    birth_date = parse(soup.get_text().split("Born:")[1].strip().split()[0])
+
     return CoachModel(
         identifier=identifier,
         name=name,
+        birth_date=birth_date,
+        age=relativedelta(birth_date, dt).years,
     )
 
 
 @MEMORY.cache(ignore=["session"])
 def _cached_create_afl_afltables_coach_model(
-    url: str, session: requests_cache.CachedSession, year: int
+    url: str, session: requests_cache.CachedSession, year: int, dt: datetime.datetime
 ) -> CoachModel:
-    return _create_afl_afltables_coach_model(url, session, year)
+    return _create_afl_afltables_coach_model(url=url, session=session, year=year, dt=dt)
 
 
 def create_afl_afltables_coach_model(
-    url: str, session: requests_cache.CachedSession, year: int
+    url: str, session: requests_cache.CachedSession, year: int, dt: datetime.datetime
 ) -> CoachModel:
     """Create a coach model from AFL tables."""
     if not pytest_is_running.is_running():
-        return _cached_create_afl_afltables_coach_model(url, session, year)
+        return _cached_create_afl_afltables_coach_model(
+            url=url, session=session, year=year, dt=dt
+        )
     with session.cache_disabled():
-        return _create_afl_afltables_coach_model(url, session, year)
+        return _create_afl_afltables_coach_model(
+            url=url, session=session, year=year, dt=dt
+        )

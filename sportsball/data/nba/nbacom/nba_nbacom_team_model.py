@@ -36,4 +36,6 @@ def create_nba_nbacom_team_model(
         assists=None,
         turnovers=None,
         coaches=[],
+        lbw=None,
+        end_dt=None,
     )

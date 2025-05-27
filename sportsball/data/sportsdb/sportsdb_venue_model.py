@@ -1,5 +1,6 @@
 """SportsDB venue model."""
 
+# pylint: disable=duplicate-code
 import datetime
 
 import pytest_is_running
@@ -61,6 +62,8 @@ def _create_sportsdb_venue_model(
         address=address,  # pyright: ignore
         is_grass=None,
         is_indoor=None,
+        is_turf=None,
+        is_dirt=None,
     )
 
 

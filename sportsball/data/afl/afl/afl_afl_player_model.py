@@ -49,9 +49,13 @@ def create_afl_afl_player_model(
         goal_assists=None,
         percentage_played=None,
         birth_date=None,
+        age=None,
         species=str(Species.HUMAN),
         handicap_weight=None,
         father=None,
         sex=str(Sex.MALE),
         starting_position=str(position),
+        weight=None,
+        birth_address=None,
+        owner=None,
     )

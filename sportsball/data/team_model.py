@@ -1,6 +1,7 @@
 """The prototype class for a team."""
 
 # pylint: disable=duplicate-code
+import datetime
 from typing import Any, Literal
 
 from pydantic import BaseModel, Field
@@ -50,6 +51,8 @@ TEAM_BOUNCES_COLUMN: Literal["bounces"] = "bounces"
 TEAM_GOAL_ASSISTS_COLUMN: Literal["goal_assists"] = "goal_assists"
 TEAM_NEWS_COLUMN: Literal["news"] = "news"
 TEAM_COACHES_COLUMN: Literal["coaches"] = "coaches"
+TEAM_LENGTH_BEHIND_WINNER_COLUMN: Literal["lbw"] = "lbw"
+TEAM_END_DT_COLUMN: Literal["end_dt"] = "end_dt"
 
 
 def _calculate_kicks(data: dict[str, Any]) -> int | None:
@@ -588,3 +591,11 @@ class TeamModel(BaseModel):
         alias=TEAM_GOAL_ASSISTS_COLUMN,
     )
     coaches: list[CoachModel] = Field(..., alias=TEAM_COACHES_COLUMN)
+    lbw: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_LENGTH_BEHIND_WINNER_COLUMN,
+    )
+    end_dt: datetime.datetime | None = Field(
+        ..., json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD}, alias=TEAM_END_DT_COLUMN
+    )

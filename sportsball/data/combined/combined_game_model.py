@@ -1,6 +1,6 @@
 """Combined game model."""
 
-# pylint: disable=too-many-locals,line-too-long,too-many-arguments,too-many-branches
+# pylint: disable=too-many-locals,line-too-long,too-many-arguments,too-many-branches,too-many-statements
 import logging
 
 import requests
@@ -82,6 +82,8 @@ def create_combined_game_model(
     postponed = None
     play_off = None
     distance = None
+    dividends = []
+    pot = None
     dt = game_models[0].dt
     for game_model in game_models:
         game_model_dt = game_model.dt
@@ -114,6 +116,10 @@ def create_combined_game_model(
         game_model_distance = game_model.distance
         if not is_null(game_model_distance):
             distance = game_model_distance
+        dividends.extend(game_model.dividends)
+        game_model_pot = game_model.pot
+        if not is_null(game_model_pot):
+            pot = game_model_pot
 
     if full_venue_identity is None and venue_models:
         for venue_model in venue_models:
@@ -135,4 +141,6 @@ def create_combined_game_model(
         postponed=postponed,
         play_off=play_off,
         distance=distance,
+        dividends=dividends,
+        pot=pot,
     )

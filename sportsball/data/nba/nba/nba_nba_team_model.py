@@ -50,6 +50,8 @@ def _create_nba_nba_team_model(
         assists=row["AST" + suffix],
         turnovers=row["TOV" + suffix],
         coaches=[],
+        lbw=None,
+        end_dt=None,
     )
 
 

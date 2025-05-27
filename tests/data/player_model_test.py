@@ -43,10 +43,14 @@ class TestPlayerModel(unittest.TestCase):
             goal_assists=None,
             percentage_played=None,
             birth_date=None,
+            age=None,
             species=str(Species.HUMAN),
             handicap_weight=None,
             father=None,
             starting_position=None,
+            weight=None,
+            birth_address=None,
+            owner=None,
         )
 
     def test_field_goals_attempted(self):

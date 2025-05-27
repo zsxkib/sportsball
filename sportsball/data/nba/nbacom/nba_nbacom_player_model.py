@@ -46,9 +46,13 @@ def create_nba_nbacom_player_model(player_dict: dict[str, Any]) -> PlayerModel:
         goal_assists=None,
         percentage_played=None,
         birth_date=None,
+        age=None,
         species=str(Species.HUMAN),
         handicap_weight=None,
         father=None,
         sex=str(Sex.MALE),
         starting_position=str(position_from_str(player_dict["position"])),
+        weight=None,
+        birth_address=None,
+        owner=None,
     )

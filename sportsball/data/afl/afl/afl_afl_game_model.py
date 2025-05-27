@@ -163,4 +163,6 @@ def create_afl_afl_game_model(
         postponed=None,
         play_off=None,
         distance=None,
+        dividends=[],
+        pot=None,
     )

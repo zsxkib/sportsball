@@ -53,6 +53,8 @@ def _create_espn_team_model(
         social=create_x_social_model(identifier, session, dt),
         field_goals=None,
         coaches=[create_espn_coach_model(session, dt, x) for x in coaches_urls],
+        lbw=None,
+        end_dt=None,
     )
 
 

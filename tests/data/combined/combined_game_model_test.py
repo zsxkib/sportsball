@@ -34,6 +34,8 @@ class TestCombinedGameModel(unittest.TestCase):
                 postponed=True,
                 play_off=None,
                 distance=None,
+                dividends=[],
+                pot=None,
             )
             names = {}
             coach_names = {}

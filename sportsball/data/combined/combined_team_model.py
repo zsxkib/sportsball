@@ -1,6 +1,6 @@
 """Combined team model."""
 
-# pylint: disable=too-many-locals,too-many-branches
+# pylint: disable=too-many-locals,too-many-branches,too-many-statements
 import re
 import unicodedata
 
@@ -41,6 +41,8 @@ def create_combined_team_model(
     points = None
     ladder_rank = None
     field_goals = None
+    lbw = None
+    end_dt = None
     for team_model in team_models:
         team_model_location = team_model.location
         if team_model_location is not None:
@@ -90,6 +92,12 @@ def create_combined_team_model(
             else:
                 coach_names[coach_name_key] = coach_id
             coaches[coach_id] = coaches.get(coach_id, []) + [coach_model]
+        team_model_lbw = team_model.lbw
+        if not is_null(team_model_lbw):
+            lbw = team_model_lbw
+        team_model_end_dt = team_model.end_dt
+        if not is_null(team_model_end_dt):
+            end_dt = team_model_end_dt
 
     return TeamModel(
         identifier=identifier,
@@ -105,4 +113,6 @@ def create_combined_team_model(
         social=sorted(social.values(), key=lambda x: x.published),
         field_goals=field_goals,
         coaches=[create_combined_coach_model(v, k) for k, v in coaches.items()],
+        lbw=lbw,
+        end_dt=end_dt,
     )

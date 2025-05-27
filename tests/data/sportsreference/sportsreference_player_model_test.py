@@ -31,5 +31,6 @@ class TestSportsReferencePlayerModel(unittest.TestCase):
                 positions={},
                 positions_validator={},
                 sex=Sex.MALE,
+                dt=datetime.datetime(2022, 10, 10),
             )
             self.assertEqual(player_model.field_goals, 8)

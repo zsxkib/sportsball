@@ -1,6 +1,6 @@
 """Sports Reference game model."""
 
-# pylint: disable=too-many-locals,too-many-statements,unused-argument,protected-access,too-many-arguments,use-maxsplit-arg,too-many-branches
+# pylint: disable=too-many-locals,too-many-statements,unused-argument,protected-access,too-many-arguments,use-maxsplit-arg,too-many-branches,duplicate-code
 import datetime
 import io
 import logging
@@ -511,6 +511,8 @@ def _create_sportsreference_game_model(
         postponed=None,
         play_off=None,
         distance=None,
+        dividends=[],
+        pot=None,
     )
 
 

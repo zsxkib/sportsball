@@ -7,8 +7,10 @@ from typing import Any
 import pytest_is_running
 import requests_cache
 from dateutil.parser import parse
+from dateutil.relativedelta import relativedelta
 
 from ...cache import MEMORY
+from ..google.google_address_model import create_google_address_model
 from ..player_model import PlayerModel
 from ..sex import Sex
 from ..species import Species
@@ -18,6 +20,7 @@ def _create_espn_player_model(
     session: requests_cache.CachedSession,
     player: dict[str, Any],
     positions_validator: dict[str, str],
+    dt: datetime.datetime,
 ) -> PlayerModel:
     identifier = str(player["playerId"])
     jersey = player.get("jersey")
@@ -42,6 +45,7 @@ def _create_espn_player_model(
     position_dict = position_response.json()
     name = athlete_dict["fullName"]
     birth_date = parse(athlete_dict["dateOfBirth"]).date()
+    birth_place = athlete_dict["birthPlace"]
     return PlayerModel(
         identifier=identifier,
         jersey=jersey,
@@ -81,7 +85,17 @@ def _create_espn_player_model(
         handicap_weight=None,
         father=None,
         sex=str(Sex.MALE),
+        age=None if birth_date is None else relativedelta(birth_date, dt).years,
         starting_position=positions_validator[position_dict["abbreviation"]],
+        weight=athlete_dict["weight"] * 0.453592,
+        birth_address=create_google_address_model(
+            query=", ".join(
+                [birth_place["city"], birth_place["state"], birth_place["country"]]
+            ),
+            session=session,
+            dt=None,
+        ),
+        owner=None,
     )
 
 
@@ -90,8 +104,11 @@ def _cached_create_espn_player_model(
     session: requests_cache.CachedSession,
     player: dict[str, Any],
     positions_validator: dict[str, str],
+    dt: datetime.datetime,
 ) -> PlayerModel:
-    return _create_espn_player_model(session, player, positions_validator)
+    return _create_espn_player_model(
+        session=session, player=player, positions_validator=positions_validator, dt=dt
+    )
 
 
 def create_espn_player_model(
@@ -105,6 +122,16 @@ def create_espn_player_model(
         not pytest_is_running.is_running()
         and dt < datetime.datetime.now() - datetime.timedelta(days=7)
     ):
-        return _cached_create_espn_player_model(session, player, positions_validator)
+        return _cached_create_espn_player_model(
+            session=session,
+            player=player,
+            positions_validator=positions_validator,
+            dt=dt,
+        )
     with session.cache_disabled():
-        return _create_espn_player_model(session, player, positions_validator)
+        return _create_espn_player_model(
+            session=session,
+            player=player,
+            positions_validator=positions_validator,
+            dt=dt,
+        )
