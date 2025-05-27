@@ -19,5 +19,13 @@ class DividendModel(BaseModel):
         json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL},
         alias=DIVIDEND_POOL_COLUMN,
     )
-    combination: list[str] = Field(..., alias=DIVIDEND_COMBINATION_COLUMN)
-    dividend: float = Field(..., alias=DIVIDEND_DIVIDEND_COLUMN)
+    combination: list[str] = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=DIVIDEND_COMBINATION_COLUMN,
+    )
+    dividend: float = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=DIVIDEND_DIVIDEND_COLUMN,
+    )

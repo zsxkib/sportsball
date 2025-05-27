@@ -29,7 +29,10 @@ def _create_hkjc_hkjc_coach_model(
     for count, df in enumerate(dfs):
         if count == 0:
             name = df.iat[0, 0].strip()
-            age = int(df.iat[1, 0].strip().split(":")[-1].strip())
+            age_str = df.iat[1, 0].strip().split(":")[-1].strip().split(",")[0].strip()
+            if "–" in age_str:
+                age_str = age_str.split("–")[-1].strip()
+            age = int(age_str)
 
     if name is None:
         raise ValueError("name is null")

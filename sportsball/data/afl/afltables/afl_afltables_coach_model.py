@@ -3,6 +3,7 @@
 # pylint: disable=too-many-locals
 import datetime
 import io
+import logging
 import os
 import urllib.parse
 from urllib.parse import urlparse
@@ -29,13 +30,16 @@ def _create_afl_afltables_coach_model(
             response = session.get(url)
             html = response.text
             _COACH_URL_CACHE[url] = html
+
     handle = io.StringIO()
     handle.write(html)
     handle.seek(0)
     dfs = pd.read_html(handle)
     df = dfs[0]
     df = df[df.columns.values.tolist()[:2]]
+
     year_ranges = df[df.columns.values.tolist()[1]].tolist()
+
     names = df[df.columns.values.tolist()[0]].tolist()
     name = None
     for count, year_range in enumerate(year_ranges):
@@ -47,7 +51,10 @@ def _create_afl_afltables_coach_model(
             name = names[count].strip()
             break
     if name is None:
+        logging.error(html)
+        logging.error(url)
         raise ValueError("name is null")
+
     coach_url = None
     soup = BeautifulSoup(html, "lxml")
     for a in soup.find_all("a", href=True):

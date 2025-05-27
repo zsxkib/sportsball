@@ -174,6 +174,8 @@ def _create_sportsreference_team_model(
             coach_url = a_url
             break
     if coach_url is None:
+        logging.error(response.text)
+        logging.error(response.url)
         raise ValueError("coach_url is null")
 
     o = urlparse(url)
