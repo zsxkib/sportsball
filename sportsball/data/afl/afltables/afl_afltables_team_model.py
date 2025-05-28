@@ -106,6 +106,11 @@ def _create_afl_afltables_team_model(
             break
     if coaches_url is None:
         raise ValueError("coaches_url is null")
+
+    coach_model = create_afl_afltables_coach_model(
+        url=coaches_url, session=session, year=dt.year, dt=dt
+    )
+
     return TeamModel(
         identifier=identifier,
         name=name,
@@ -149,11 +154,7 @@ def _create_afl_afltables_team_model(
         news=create_google_news_models(name, session, dt, league),
         social=create_x_social_model(identifier, session, dt),
         field_goals=None,
-        coaches=[
-            create_afl_afltables_coach_model(
-                url=coaches_url, session=session, year=dt.year, dt=dt
-            )
-        ],
+        coaches=[coach_model] if coach_model is not None else [],
         lbw=None,
         end_dt=None,
     )

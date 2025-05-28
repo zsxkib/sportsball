@@ -3,7 +3,6 @@
 # pylint: disable=too-many-locals
 import datetime
 import io
-import logging
 import os
 import urllib.parse
 from urllib.parse import urlparse
@@ -23,7 +22,7 @@ _COACH_URL_CACHE: dict[str, str] = {}
 
 def _create_afl_afltables_coach_model(
     url: str, session: requests_cache.CachedSession, year: int, dt: datetime.datetime
-) -> CoachModel:
+) -> CoachModel | None:
     html = _COACH_URL_CACHE.get(url)
     if html is None:
         with session.cache_disabled():
@@ -51,9 +50,7 @@ def _create_afl_afltables_coach_model(
             name = names[count].strip()
             break
     if name is None:
-        logging.error(html)
-        logging.error(url)
-        raise ValueError("name is null")
+        return None
 
     coach_url = None
     soup = BeautifulSoup(html, "lxml")
@@ -84,13 +81,13 @@ def _create_afl_afltables_coach_model(
 @MEMORY.cache(ignore=["session"])
 def _cached_create_afl_afltables_coach_model(
     url: str, session: requests_cache.CachedSession, year: int, dt: datetime.datetime
-) -> CoachModel:
+) -> CoachModel | None:
     return _create_afl_afltables_coach_model(url=url, session=session, year=year, dt=dt)
 
 
 def create_afl_afltables_coach_model(
     url: str, session: requests_cache.CachedSession, year: int, dt: datetime.datetime
-) -> CoachModel:
+) -> CoachModel | None:
     """Create a coach model from AFL tables."""
     if not pytest_is_running.is_running():
         return _cached_create_afl_afltables_coach_model(
