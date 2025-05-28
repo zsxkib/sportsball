@@ -36,6 +36,7 @@ class Bet(StrEnum):
     SECOND_TREBLE = auto()
     FIFTH_DOUBLE_TRIO = auto()
     SIX_UP = auto()
+    TREBLE = auto()
 
 
 _BETS = {str(x).lower(): x for x in Bet}

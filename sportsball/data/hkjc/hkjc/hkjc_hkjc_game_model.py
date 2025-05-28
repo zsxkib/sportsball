@@ -1,6 +1,6 @@
 """HKJC HKJC game model."""
 
-# pylint: disable=too-many-nested-blocks,too-many-statements,too-many-branches,too-many-locals
+# pylint: disable=too-many-nested-blocks,too-many-statements,too-many-branches,too-many-locals,too-many-return-statements
 import datetime
 import io
 import logging
@@ -47,6 +47,8 @@ def _create_hkjc_hkjc_game_model(
             return None
         if "unofficial dividends" in div_text.lower():
             return None
+        if "this race has been abandoned" in div_text.lower():
+            return None
 
     o = urlparse(url)
     query = urllib.parse.parse_qs(o.query)
@@ -82,7 +84,13 @@ def _create_hkjc_hkjc_game_model(
             pot = float(df.iat[3, 0].split()[-1].strip().replace(",", ""))
         elif count == 2:
             for _, row in df.iterrows():
-                horse_name = row["Horse"].split("(")[0].strip()
+                horse_name = None
+                try:
+                    horse_name = row["Horse"].split("(")[0].strip()
+                except KeyError:
+                    logging.error(url)
+                    raise
+
                 jockey_name = row["Jockey"].split("(")[0].strip()
 
                 trainer_name = None
@@ -127,6 +135,8 @@ def _create_hkjc_hkjc_game_model(
                     lbw = 2.4 * 0.05
                 elif lbw_str == "ML":
                     lbw = None
+                elif lbw_str == "TO":
+                    lbw = 100.0
                 elif lbw_str and lbw_str != "-" and lbw_str != "---":
                     if lbw is not None:
                         if "-" in lbw_str:
@@ -240,6 +250,9 @@ def _create_hkjc_hkjc_game_model(
         logging.error(url)
         raise ValueError("race_track is null")
 
+    end_dts = [x.end_dt for x in teams if x.end_dt is not None]
+    end_dt = None if not end_dts else min(end_dts)
+
     return GameModel(
         dt=dt,
         week=None,
@@ -251,7 +264,7 @@ def _create_hkjc_hkjc_game_model(
             race_track=race_track,
         ),
         teams=teams,
-        end_dt=min(x.end_dt for x in teams if x.end_dt is not None),
+        end_dt=end_dt,
         attendance=None,
         league=str(League.HKJC),
         year=dt.year,

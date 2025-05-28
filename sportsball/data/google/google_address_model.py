@@ -15531,6 +15531,8 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Hard Rock Stadium, Miami Gardens, FL, USA": HARD_ROCK_STADIUM,
     "Yokohama Arena - Yokohama, Kanagawa - Japan": YOKOHAMA_ARENA,
     "Centre Bell - Montreal, Quebec, Canada - Canada": BELL_CENTRE,
+    "Yankee Stadium - Bronx, New York, USA - United States": YANKEE_STADIUM,
+    "Allegiant Stadium, Paradise, NV, USA": ALLEGIANT_STADIUM,
 }
 
 
