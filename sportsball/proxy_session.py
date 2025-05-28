@@ -5,6 +5,7 @@ import datetime
 import logging
 import os
 import random
+import sqlite3
 from io import BytesIO
 from typing import Any, MutableMapping, Optional
 
@@ -178,7 +179,8 @@ class ProxySession(requests_cache.CachedSession):
         | retry_if_exception_type(requests.exceptions.ChunkedEncodingError)
         | retry_if_exception_type(ValueError)
         | retry_if_exception_type(requests.exceptions.HTTPError)
-        | retry_if_exception_type(requests.exceptions.ReadTimeout),
+        | retry_if_exception_type(requests.exceptions.ReadTimeout)
+        | retry_if_exception_type(sqlite3.OperationalError),
         reraise=True,
     )
     def _perform_retry_send(

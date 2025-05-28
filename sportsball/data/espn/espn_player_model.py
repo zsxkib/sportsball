@@ -120,7 +120,7 @@ def create_espn_player_model(
     """Create a player model based off ESPN."""
     if (
         not pytest_is_running.is_running()
-        and dt < datetime.datetime.now() - datetime.timedelta(days=7)
+        and dt.date() < datetime.datetime.today().date() - datetime.timedelta(days=7)
     ):
         return _cached_create_espn_player_model(
             session=session,
