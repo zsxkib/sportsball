@@ -41,3 +41,16 @@ class TestAFLTablesCoachModel(unittest.TestCase):
                 dt=datetime.datetime(2012, 10, 10),
             )
             self.assertIsNone(coach_model)
+
+    def test_bad_year_range(self):
+        with requests_mock.Mocker() as m:
+            url = "https://afltables.com/afl/stats/coaches/collingwood.html"
+            with open(os.path.join(self.dir, "coaches_collingwood.html"), "rb") as f:
+                m.get(url, content=f.read())
+            coach_model = create_afl_afltables_coach_model(
+                url=url,
+                session=self._session,
+                year=1897,
+                dt=datetime.datetime(2012, 10, 10),
+            )
+            self.assertIsNone(coach_model)
