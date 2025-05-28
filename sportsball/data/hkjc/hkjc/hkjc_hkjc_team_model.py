@@ -21,13 +21,14 @@ def _create_hkjc_hkjc_team_model(
     trainer_url: str | None,
     points: float,
     jersey: str,
-    handicap_weight: float,
+    handicap_weight: float | None,
     horse_weight: float | None,
     starting_position: Position | None,
     lbw: float | None,
     end_dt: datetime.datetime | None,
     odds: list[OddsModel],
 ) -> TeamModel:
+    players = []
     horse_player = create_hkjc_hkjc_player_model(
         session=session,
         url=horse_url,
@@ -36,7 +37,8 @@ def _create_hkjc_hkjc_team_model(
         starting_position=starting_position,
         weight=horse_weight,
     )
-    players = [horse_player]
+    if horse_player is not None:
+        players.append(horse_player)
     if jockey_url is not None:
         jockey_player = create_hkjc_hkjc_player_model(
             session=session,
@@ -46,7 +48,8 @@ def _create_hkjc_hkjc_team_model(
             starting_position=starting_position,
             weight=None,
         )
-        players.append(jockey_player)
+        if jockey_player is not None:
+            players.append(jockey_player)
     coaches = (
         [create_hkjc_hkjc_coach_model(session=session, url=trainer_url)]
         if trainer_url is not None
@@ -78,7 +81,7 @@ def _cached_create_hkjc_hkjc_team_model(
     trainer_url: str | None,
     points: float,
     jersey: str,
-    handicap_weight: float,
+    handicap_weight: float | None,
     horse_weight: float | None,
     starting_position: Position | None,
     lbw: float | None,
@@ -108,7 +111,7 @@ def create_hkjc_hkjc_team_model(
     trainer_url: str | None,
     points: float,
     jersey: str,
-    handicap_weight: float,
+    handicap_weight: float | None,
     horse_weight: float | None,
     starting_position: Position | None,
     lbw: float | None,

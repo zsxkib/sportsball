@@ -43,6 +43,10 @@ def _create_hkjc_hkjc_game_model(
             return None
         if "this race is declared void" in div_text.lower():
             return None
+        if "information will be released shortly" in div_text.lower():
+            return None
+        if "unofficial dividends" in div_text.lower():
+            return None
 
     o = urlparse(url)
     query = urllib.parse.parse_qs(o.query)
@@ -61,7 +65,13 @@ def _create_hkjc_hkjc_game_model(
     dividends = []
     for count, df in enumerate(dfs):
         if count == 1:
-            race_track = df.iat[2, 2].split("-")[0].strip()
+            race_track = ""
+            try:
+                race_track = df.iat[2, 2].split("-")[0].strip()
+            except IndexError:
+                logging.error(url)
+                raise
+
             distance = 0.0
             try:
                 distance = float(df.iat[1, 0].split("-")[1].strip().replace("M", ""))
@@ -74,7 +84,12 @@ def _create_hkjc_hkjc_game_model(
             for _, row in df.iterrows():
                 horse_name = row["Horse"].split("(")[0].strip()
                 jockey_name = row["Jockey"].split("(")[0].strip()
-                trainer_name = row["Trainer"].split("(")[0].strip()
+
+                trainer_name = None
+                try:
+                    trainer_name = row["Trainer"].split("(")[0].strip()
+                except KeyError:
+                    logging.warning("Failed to find trainer name for %s", url)
 
                 place_str = str(row["Pla."]).strip()
                 place = None
@@ -83,10 +98,19 @@ def _create_hkjc_hkjc_game_model(
 
                 jersey = str(row["Horse No."])
 
-                handicap_weight = float(row["Act. Wt."]) * 0.453592
+                handicap_weight = None
+                try:
+                    handicap_weight = float(row["Act. Wt."]) * 0.453592
+                except KeyError:
+                    logging.warning("Failed to find handicap weight for %s", url)
+
                 horse_weight = None
-                if row["Declar. Horse Wt."] != "---":
-                    horse_weight = float(row["Declar. Horse Wt."]) * 0.453592
+                try:
+                    horse_weight_str = row["Declar. Horse Wt."]
+                    if horse_weight_str != "---":
+                        horse_weight = float(horse_weight_str) * 0.453592
+                except KeyError:
+                    logging.warning("Failed to find horse weight for %s", url)
 
                 starting_position = None
                 starting_position_str = str(row["Dr."]).strip()
@@ -143,7 +167,7 @@ def _create_hkjc_hkjc_game_model(
                         o = urlparse(a_url)
                         if o.path.endswith("/Jockey/JockeyProfile.aspx"):
                             jockey_url = a_url
-                    elif a_text == trainer_name:
+                    elif trainer_name is not None and a_text == trainer_name:
                         a_url = urllib.parse.urljoin(url, a.get("href"))
                         o = urlparse(a_url)
                         if o.path.endswith("/Trainers/TrainerProfile.aspx"):
@@ -213,6 +237,7 @@ def _create_hkjc_hkjc_game_model(
                 dividends.append(dividend_model)
 
     if race_track is None:
+        logging.error(url)
         raise ValueError("race_track is null")
 
     return GameModel(

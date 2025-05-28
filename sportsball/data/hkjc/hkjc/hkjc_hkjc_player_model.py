@@ -28,7 +28,7 @@ def _create_hkjc_hkjc_player_model(
     handicap_weight: float | None,
     starting_position: Position | None,
     weight: float | None,
-) -> PlayerModel:
+) -> PlayerModel | None:
     headers = {X_NO_WAYBACK: "1"}
     response = session.get(url, headers=headers)
     response.raise_for_status()
@@ -51,6 +51,12 @@ def _create_hkjc_hkjc_player_model(
             raise
 
     soup = BeautifulSoup(response.text, "lxml")
+    for noscript in soup.find_all("noscript"):
+        no_script_text = noscript.get_text().strip().lower()
+        if "javascript must be enabled in order to view this page." in no_script_text:
+            logging.error("Javascript error on %s", url)
+            session.cache.delete(urls=[url, response.url])
+            return None
 
     name = None
     species = Species.HUMAN
@@ -114,6 +120,10 @@ def _create_hkjc_hkjc_player_model(
         name = query["HorseSire"][0]
 
     if name is None:
+        logging.error(response.text)
+        logging.error(dfs)
+        logging.error(o.path)
+        logging.error(url)
         raise ValueError("name is null")
 
     return PlayerModel(
@@ -173,7 +183,7 @@ def _cached_create_hkjc_hkjc_player_model(
     handicap_weight: float | None,
     starting_position: Position | None,
     weight: float | None,
-) -> PlayerModel:
+) -> PlayerModel | None:
     return _create_hkjc_hkjc_player_model(
         session=session,
         url=url,
@@ -191,7 +201,7 @@ def create_hkjc_hkjc_player_model(
     handicap_weight: float | None,
     starting_position: Position | None,
     weight: float | None,
-) -> PlayerModel:
+) -> PlayerModel | None:
     """Create a player model based off HKJC."""
     if not pytest_is_running.is_running():
         return _cached_create_hkjc_hkjc_player_model(
