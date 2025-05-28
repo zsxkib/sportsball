@@ -17,8 +17,8 @@ from .hkjc_hkjc_player_model import create_hkjc_hkjc_player_model
 def _create_hkjc_hkjc_team_model(
     session: requests_cache.CachedSession,
     horse_url: str,
-    jockey_url: str,
-    trainer_url: str,
+    jockey_url: str | None,
+    trainer_url: str | None,
     points: float,
     jersey: str,
     handicap_weight: float,
@@ -36,16 +36,22 @@ def _create_hkjc_hkjc_team_model(
         starting_position=starting_position,
         weight=horse_weight,
     )
-    jockey_player = create_hkjc_hkjc_player_model(
-        session=session,
-        url=jockey_url,
-        jersey=jersey,
-        handicap_weight=None,
-        starting_position=starting_position,
-        weight=None,
+    players = [horse_player]
+    if jockey_url is not None:
+        jockey_player = create_hkjc_hkjc_player_model(
+            session=session,
+            url=jockey_url,
+            jersey=jersey,
+            handicap_weight=None,
+            starting_position=starting_position,
+            weight=None,
+        )
+        players.append(jockey_player)
+    coaches = (
+        [create_hkjc_hkjc_coach_model(session=session, url=trainer_url)]
+        if trainer_url is not None
+        else []
     )
-    players = [horse_player, jockey_player]
-    coach = create_hkjc_hkjc_coach_model(session=session, url=trainer_url)
     name = " - ".join([x.name for x in players])
     return TeamModel(
         identifier=name,
@@ -58,7 +64,7 @@ def _create_hkjc_hkjc_team_model(
         news=[],
         social=[],
         field_goals=None,
-        coaches=[coach],
+        coaches=coaches,
         lbw=lbw,
         end_dt=end_dt,
     )
@@ -68,8 +74,8 @@ def _create_hkjc_hkjc_team_model(
 def _cached_create_hkjc_hkjc_team_model(
     session: requests_cache.CachedSession,
     horse_url: str,
-    jockey_url: str,
-    trainer_url: str,
+    jockey_url: str | None,
+    trainer_url: str | None,
     points: float,
     jersey: str,
     handicap_weight: float,
@@ -98,8 +104,8 @@ def _cached_create_hkjc_hkjc_team_model(
 def create_hkjc_hkjc_team_model(
     session: requests_cache.CachedSession,
     horse_url: str,
-    jockey_url: str,
-    trainer_url: str,
+    jockey_url: str | None,
+    trainer_url: str | None,
     points: float,
     jersey: str,
     handicap_weight: float,

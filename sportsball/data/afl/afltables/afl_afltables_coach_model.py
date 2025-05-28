@@ -3,6 +3,7 @@
 # pylint: disable=too-many-locals
 import datetime
 import io
+import logging
 import os
 import urllib.parse
 from urllib.parse import urlparse
@@ -71,13 +72,18 @@ def _create_afl_afltables_coach_model(
     response = session.get(coach_url)
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "lxml")
-    birth_date = parse(soup.get_text().split("Born:")[1].strip().split()[0])
+
+    birth_date = None
+    try:
+        birth_date = parse(soup.get_text().split("Born:")[1].strip().split()[0])
+    except IndexError:
+        logging.warning("Failed to find birth date from %s", response.url)
 
     return CoachModel(
         identifier=identifier,
         name=name,
         birth_date=birth_date,
-        age=relativedelta(birth_date, dt).years,
+        age=relativedelta(birth_date, dt).years if birth_date is not None else None,
     )
 
 

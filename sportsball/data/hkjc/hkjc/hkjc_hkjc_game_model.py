@@ -41,6 +41,8 @@ def _create_hkjc_hkjc_game_model(
         div_text = div.get_text().strip()
         if "this race is declared abandoned" in div_text.lower():
             return None
+        if "this race is declared void" in div_text.lower():
+            return None
 
     o = urlparse(url)
     query = urllib.parse.parse_qs(o.query)
@@ -149,10 +151,6 @@ def _create_hkjc_hkjc_game_model(
 
                 if place is None:
                     continue
-                if trainer_url is None:
-                    raise ValueError("trainer_url is null")
-                if jockey_url is None:
-                    raise ValueError("jockey_url is null")
                 if horse_url is None:
                     raise ValueError("horse_url is null")
 
@@ -179,6 +177,12 @@ def _create_hkjc_hkjc_game_model(
                 dividend_str = str(row_df.iat[2, 0]).strip().lower()
                 if dividend_str == "details":
                     continue
+                if dividend_str == "refund":
+                    continue
+                if dividend_str == "not win":
+                    continue
+                if dividend_str == "detail":
+                    continue
                 dividend_str = dividend_str.split("/", maxsplit=1)[0].replace(",", "")
                 dividend = float(dividend_str)
 
@@ -198,7 +202,7 @@ def _create_hkjc_hkjc_game_model(
                         next_td = False
 
                 if combination is None:
-                    raise ValueError("combination is null")
+                    continue
 
                 dividend_model = create_hkjc_hkjc_dividend_model(
                     pool=pool,
