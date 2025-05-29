@@ -3,6 +3,7 @@
 # pylint: disable=duplicate-code,too-many-locals
 import datetime
 from typing import Any
+import logging
 
 import pytest_is_running
 import requests_cache
@@ -44,7 +45,14 @@ def _create_espn_player_model(
     position_response.raise_for_status()
     position_dict = position_response.json()
     name = athlete_dict["fullName"]
-    birth_date = parse(athlete_dict["dateOfBirth"]).date()
+
+    birth_date = None
+    try:
+        birth_date = parse(athlete_dict["dateOfBirth"]).date()
+    except KeyError:
+        logging.error(athlete_response.url)
+        raise
+
     birth_place = athlete_dict["birthPlace"]
     return PlayerModel(
         identifier=identifier,

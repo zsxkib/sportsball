@@ -40,7 +40,7 @@ def create_espn_coach_model(
     """Create coach model from ESPN."""
     if (
         not pytest_is_running.is_running()
-        and dt < datetime.datetime.now() - datetime.timedelta(days=7)
+        and dt.date() < datetime.datetime.today().date() - datetime.timedelta(days=7)
     ):
         return _cached_create_espn_coach_model(session, url)
     with session.cache_disabled():

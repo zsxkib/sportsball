@@ -23,6 +23,8 @@ def create_combined_venue_model(
     address_models = []
     is_grass = None
     is_indoor = None
+    is_turf = None
+    is_dirt = None
     for venue_model in venue_models:
         venue_model_address = venue_model.address
         if not is_null(venue_model_address):
@@ -33,10 +35,18 @@ def create_combined_venue_model(
         venue_model_is_indoor = venue_model.is_indoor
         if not is_null(venue_model_is_indoor):
             is_indoor = venue_model_is_indoor
+        venue_model_is_turf = venue_model.is_turf
+        if not is_null(venue_model_is_turf):
+            is_turf = venue_model_is_turf
+        venue_model_is_dirt = venue_model.is_dirt
+        if not is_null(venue_model_is_dirt):
+            is_dirt = venue_model_is_dirt
     return VenueModel(
         identifier=identifier,
         name=venue_models[0].name,
         address=create_combined_address_model(address_models),  # type: ignore
         is_grass=is_grass,
         is_indoor=is_indoor,
+        is_turf=is_turf,
+        is_dirt=is_dirt,
     )

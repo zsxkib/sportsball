@@ -15533,6 +15533,16 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Centre Bell - Montreal, Quebec, Canada - Canada": BELL_CENTRE,
     "Yankee Stadium - Bronx, New York, USA - United States": YANKEE_STADIUM,
     "Allegiant Stadium, Paradise, NV, USA": ALLEGIANT_STADIUM,
+    "Arrowhead Stadium, Kansas City, MO, USA": ARROWHEAD_STADIUM,
+    "SPA": SportsballGeocodeTuple(
+        city="",
+        state="",
+        postal="",
+        lat=40.0,
+        lng=-4.0,
+        housenumber="",
+        country="Spain",
+    ),
 }
 
 
