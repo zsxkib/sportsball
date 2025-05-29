@@ -261,6 +261,8 @@ AFL_VENUE_IDENTITY_MAP = {
     "Gabba, Brisbane": GABBA,
     "Optus Stadium, Perth": PERTH,
     "GMHBA Stadium, Geelong": KARDINIA_PARK,
+    "People First Stadium, Gold Coast": CARRARA,
+    "TIO Traeger Park, Alice Springs": TRAEGER,
 }
 
 

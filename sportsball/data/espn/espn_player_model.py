@@ -2,8 +2,8 @@
 
 # pylint: disable=duplicate-code,too-many-locals
 import datetime
-from typing import Any
 import logging
+from typing import Any
 
 import pytest_is_running
 import requests_cache
