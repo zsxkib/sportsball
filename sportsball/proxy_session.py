@@ -5,7 +5,9 @@ import datetime
 import logging
 import os
 import random
+import re
 import sqlite3
+import urllib.parse
 from contextlib import contextmanager
 from io import BytesIO
 from typing import Any, MutableMapping, Optional
@@ -42,6 +44,18 @@ def _is_fast_fail_url(url: str | None) -> bool:
         if url.startswith(fast_fail_domain):
             return True
     return False
+
+
+def _redirect_to(response: requests.Response) -> str | None:
+    redirect_url = None
+    for line in response.text.splitlines():
+        if "window.location.href" in line and "==" not in line:
+            match = re.search(r'window\.location\.href\s*=\s*["\'](.*?)["\']', line)
+            if match:
+                redirect_url = match.group(1)
+                redirect_url = urllib.parse.urljoin(response.url, redirect_url)
+                break
+    return redirect_url
 
 
 class ProxySession(requests_cache.CachedSession):
@@ -253,7 +267,7 @@ class ProxySession(requests_cache.CachedSession):
                     "https": proxy,
                 },
             )
-        return super().request(
+        response = super().request(
             method,
             url,
             *args,
@@ -264,6 +278,24 @@ class ProxySession(requests_cache.CachedSession):
             force_refresh=force_refresh,
             **kwargs,
         )
+        redirects = 0
+        while (redirect_url := _redirect_to(response)) is not None:
+            response = super().request(
+                method,
+                redirect_url,
+                *args,
+                headers=headers,
+                expire_after=expire_after,
+                only_if_cached=only_if_cached,
+                refresh=refresh,
+                force_refresh=force_refresh,
+                **kwargs,
+            )
+            redirects += 1
+            if redirects >= 10:
+                break
+
+        return response
 
     @contextmanager
     def wayback_disabled(self):
