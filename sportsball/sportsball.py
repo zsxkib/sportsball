@@ -4,7 +4,6 @@ from typing import Dict
 from warnings import simplefilter
 
 import pandas as pd
-import requests_cache
 from dotenv import load_dotenv
 
 from .data.afl import AFLLeagueModel
@@ -15,7 +14,7 @@ from .data.nba import NBALeagueModel
 from .data.ncaab import NCAABLeagueModel
 from .data.ncaaf import NCAAFLeagueModel
 from .data.nfl import NFLLeagueModel
-from .proxy_session import create_proxy_session
+from .proxy_session import ProxySession, create_proxy_session
 
 
 class SportsBall:
@@ -24,7 +23,7 @@ class SportsBall:
     # pylint: disable=too-few-public-methods
 
     _leagues: Dict[str, LeagueModel]
-    _session: requests_cache.CachedSession
+    _session: ProxySession
 
     def __init__(self) -> None:
         self._session = create_proxy_session()

@@ -11,12 +11,11 @@ import dateutil
 import pandas as pd
 import pytest_is_running
 import requests
-import requests_cache
 from bs4 import BeautifulSoup, Tag
 from dateutil.parser import parse
 
 from ...cache import MEMORY
-from ...proxy_session import X_NO_WAYBACK
+from ...proxy_session import ProxySession
 from ..game_model import GameModel
 from ..league import League
 from ..season_type import SeasonType
@@ -43,7 +42,7 @@ _NUMBER_PARENTHESIS_PATTERN = r"\(\d+\)"
 
 def _find_old_dt(
     dfs: list[pd.DataFrame],
-    session: requests_cache.CachedSession,
+    session: ProxySession,
     soup: BeautifulSoup,
     url: str,
     league: League,
@@ -244,7 +243,7 @@ def _find_new_dt(
     soup: BeautifulSoup,
     scorebox_meta_div: Tag,
     url: str,
-    session: requests_cache.CachedSession,
+    session: ProxySession,
     league: League,
     player_urls: set[str],
     scores: list[float],
@@ -300,7 +299,7 @@ def _find_new_dt(
 
 
 def _create_sportsreference_game_model(
-    session: requests_cache.CachedSession,
+    session: ProxySession,
     url: str,
     league: League,
     positions_validator: dict[str, str],
@@ -315,7 +314,8 @@ def _create_sportsreference_game_model(
     if page_title is not None:
         if "file not found" in page_title.get_text().strip().lower():
             session.cache.delete(urls=[url, response.url])
-            response = session.get(url, headers={X_NO_WAYBACK: "1"})
+            with session.wayback_disabled():
+                response = session.get(url)
             response.raise_for_status()
             soup = BeautifulSoup(response.text, "lxml")
 
@@ -518,7 +518,7 @@ def _create_sportsreference_game_model(
 
 @MEMORY.cache(ignore=["session"])
 def _cached_create_sportsreference_game_model(
-    session: requests_cache.CachedSession,
+    session: ProxySession,
     url: str,
     league: League,
     positions_validator: dict[str, str],
@@ -527,7 +527,7 @@ def _cached_create_sportsreference_game_model(
 
 
 def create_sportsreference_game_model(
-    session: requests_cache.CachedSession,
+    session: ProxySession,
     url: str,
     league: League,
     positions_validator: dict[str, str],

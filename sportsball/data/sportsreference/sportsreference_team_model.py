@@ -11,12 +11,11 @@ from urllib.parse import urlparse
 import extruct  # type: ignore
 import pytest_is_running
 import requests
-import requests_cache
 from bs4 import BeautifulSoup, Tag
 from w3lib.html import get_base_url
 
 from ...cache import MEMORY
-from ...proxy_session import X_NO_WAYBACK
+from ...proxy_session import ProxySession
 from ..google.google_news_model import create_google_news_models
 from ..league import League
 from ..sex import Sex
@@ -92,7 +91,7 @@ def _find_name(response: requests.Response, soup: BeautifulSoup, url: str) -> st
 
 
 def _create_sportsreference_team_model(
-    session: requests_cache.CachedSession,
+    session: ProxySession,
     url: str,
     dt: datetime.datetime,
     league: League,
@@ -106,9 +105,6 @@ def _create_sportsreference_team_model(
     team_name: str,
     positions_validator: dict[str, str],
 ) -> TeamModel:
-    headers = {}
-    if url in _NON_WAYBACK_URLS:
-        headers = {X_NO_WAYBACK: "1"}
     if url in _BAD_TEAM_URLS:
         return TeamModel(
             identifier=team_name,
@@ -124,7 +120,13 @@ def _create_sportsreference_team_model(
             lbw=None,
             end_dt=None,
         )
-    response = session.get(url, headers=headers)
+
+    if url in _NON_WAYBACK_URLS:
+        with session.wayback_disabled():
+            response = session.get(url)
+    else:
+        response = session.get(url)
+
     if response.status_code == http.HTTPStatus.NOT_FOUND:
         logging.warning("Could not find team %s at url %s", team_name, url)
         return TeamModel(
@@ -233,7 +235,7 @@ def _create_sportsreference_team_model(
 
 @MEMORY.cache(ignore=["session"])
 def _cached_create_sportsreference_team_model(
-    session: requests_cache.CachedSession,
+    session: ProxySession,
     url: str,
     dt: datetime.datetime,
     league: League,
@@ -265,7 +267,7 @@ def _cached_create_sportsreference_team_model(
 
 
 def create_sportsreference_team_model(
-    session: requests_cache.CachedSession,
+    session: ProxySession,
     url: str,
     dt: datetime.datetime,
     league: League,

@@ -4,19 +4,18 @@ import io
 
 import pandas as pd
 import pytest_is_running
-import requests_cache
 
 from ....cache import MEMORY
-from ....proxy_session import X_NO_WAYBACK
+from ....proxy_session import ProxySession
 from ...coach_model import CoachModel
 
 
 def _create_hkjc_hkjc_coach_model(
-    session: requests_cache.CachedSession,
+    session: ProxySession,
     url: str,
 ) -> CoachModel:
-    headers = {X_NO_WAYBACK: "1"}
-    response = session.get(url, headers=headers)
+    with session.wayback_disabled():
+        response = session.get(url)
     response.raise_for_status()
 
     handle = io.StringIO()
@@ -49,14 +48,14 @@ def _create_hkjc_hkjc_coach_model(
 
 @MEMORY.cache(ignore=["session"])
 def _cached_create_hkjc_hkjc_coach_model(
-    session: requests_cache.CachedSession,
+    session: ProxySession,
     url: str,
 ) -> CoachModel:
     return _create_hkjc_hkjc_coach_model(session=session, url=url)
 
 
 def create_hkjc_hkjc_coach_model(
-    session: requests_cache.CachedSession,
+    session: ProxySession,
     url: str,
 ) -> CoachModel:
     """Create a coach model based off HKJC."""

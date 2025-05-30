@@ -4,11 +4,11 @@
 from io import BytesIO
 from typing import Any, Iterator
 
-import requests_cache
 import tqdm
 from dateutil.parser import parse
 from openpyxl import load_workbook
 
+from ...proxy_session import ProxySession
 from ..game_model import GameModel
 from ..league import League
 from ..league_model import LeagueModel
@@ -21,7 +21,7 @@ class AusSportsBettingLeagueModel(LeagueModel):
     def __init__(
         self,
         league: League,
-        session: requests_cache.CachedSession,
+        session: ProxySession,
         position: int | None = None,
     ) -> None:
         super().__init__(league, session, position=position)

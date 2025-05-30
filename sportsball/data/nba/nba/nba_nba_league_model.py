@@ -4,13 +4,13 @@ import datetime
 from typing import Iterator, TypedDict
 
 import pandas as pd
-import requests_cache
 import tqdm
 from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta
 from nba_api.library.http import NBAHTTP  # type: ignore
 from nba_api.stats.endpoints import leaguegamefinder  # type: ignore
 
+from ....proxy_session import ProxySession
 from ...game_model import GameModel
 from ...league import League
 from ...league_model import LeagueModel
@@ -67,9 +67,7 @@ class NBANBALeagueModel(LeagueModel):
         start: datetime.datetime
         games: int
 
-    def __init__(
-        self, session: requests_cache.CachedSession, position: int | None = None
-    ) -> None:
+    def __init__(self, session: ProxySession, position: int | None = None) -> None:
         super().__init__(League.NBA, session, position=position)
         self._league_id = "00"
         NBAHTTP.set_session(session)

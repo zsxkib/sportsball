@@ -4,15 +4,16 @@ import os
 import unittest
 
 import requests_mock
-import requests_cache
 from sportsball.data.sportsreference.sportsreference_team_model import create_sportsreference_team_model
 from sportsball.data.league import League
+from sportsball.proxy_session import ProxySession
 
 
 class TestSportsReferenceTeamModel(unittest.TestCase):
 
     def setUp(self):
-        self.session = requests_cache.CachedSession(backend="memory")
+        self.session = ProxySession(backend="memory")
+        self.session._wayback_disabled = True
         self.dir = os.path.dirname(__file__)
 
     def test_identifier(self):

@@ -5,11 +5,11 @@ import datetime
 from typing import Iterator, get_args, get_origin
 
 import pandas as pd
-import requests_cache
 import tqdm
 from flatten_json import flatten  # type: ignore
 from pydantic import BaseModel
 
+from ..proxy_session import ProxySession
 from .address_model import ADDRESS_TIMEZONE_COLUMN
 from .field_type import FieldType
 from .game_model import GAME_DT_COLUMN, VENUE_COLUMN_PREFIX, GameModel
@@ -76,7 +76,7 @@ class LeagueModel(Model):
     def __init__(
         self,
         league: League,
-        session: requests_cache.CachedSession,
+        session: ProxySession,
         position: int | None = None,
     ) -> None:
         super().__init__(session)

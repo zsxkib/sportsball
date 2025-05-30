@@ -3,14 +3,15 @@ import os
 import unittest
 
 import requests_mock
-import requests_cache
 from sportsball.data.hkjc.hkjc.hkjc_hkjc_player_model import create_hkjc_hkjc_player_model
+from sportsball.proxy_session import ProxySession
 
 
 class TestHKJCHKJCPlayerModel(unittest.TestCase):
 
     def setUp(self):
-        self._session = requests_cache.CachedSession(backend="memory")
+        self._session = ProxySession(backend="memory")
+        self._session._wayback_disabled = True
         self.dir = os.path.dirname(__file__)
 
     def test_no_table_for_sire(self):

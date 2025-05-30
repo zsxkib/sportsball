@@ -4,9 +4,9 @@
 import datetime
 from typing import Iterator
 
-import requests_cache
 import tqdm
 
+from ...proxy_session import ProxySession
 from ..game_model import GameModel
 from ..league import League
 from ..league_model import LeagueModel
@@ -21,7 +21,7 @@ class SportsDBLeagueModel(LeagueModel):
 
     def __init__(
         self,
-        session: requests_cache.CachedSession,
+        session: ProxySession,
         league_id: str,
         league: League,
         position: int | None = None,

@@ -8,11 +8,10 @@ from urllib.parse import urlparse
 
 import pandas as pd
 import pytest_is_running
-import requests_cache
 from bs4 import BeautifulSoup
 
 from ....cache import MEMORY
-from ....proxy_session import X_NO_WAYBACK
+from ....proxy_session import ProxySession
 from ...google.google_address_model import create_google_address_model
 from ...player_model import PlayerModel
 from ...sex import sex_from_str
@@ -22,15 +21,15 @@ from .hkjc_hkjc_owner_model import create_hkjc_hkjc_owner_model
 
 
 def _create_hkjc_hkjc_player_model(
-    session: requests_cache.CachedSession,
+    session: ProxySession,
     url: str,
     jersey: str | None,
     handicap_weight: float | None,
     starting_position: Position | None,
     weight: float | None,
 ) -> PlayerModel | None:
-    headers = {X_NO_WAYBACK: "1"}
-    response = session.get(url, headers=headers)
+    with session.wayback_disabled():
+        response = session.get(url)
     response.raise_for_status()
 
     o = urlparse(url)
@@ -177,7 +176,7 @@ def _create_hkjc_hkjc_player_model(
 
 @MEMORY.cache(ignore=["session"])
 def _cached_create_hkjc_hkjc_player_model(
-    session: requests_cache.CachedSession,
+    session: ProxySession,
     url: str,
     jersey: str | None,
     handicap_weight: float | None,
@@ -195,7 +194,7 @@ def _cached_create_hkjc_hkjc_player_model(
 
 
 def create_hkjc_hkjc_player_model(
-    session: requests_cache.CachedSession,
+    session: ProxySession,
     url: str,
     jersey: str | None,
     handicap_weight: float | None,

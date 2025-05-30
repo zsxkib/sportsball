@@ -7,13 +7,12 @@ import os
 from urllib.parse import urlparse
 
 import pytest_is_running
-import requests_cache
 from bs4 import BeautifulSoup
 from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta
 
 from ...cache import MEMORY
-from ...proxy_session import X_NO_WAYBACK
+from ...proxy_session import ProxySession
 from ..coach_model import CoachModel
 
 _NON_WAYBACK_URLS: set[str] = {
@@ -24,17 +23,19 @@ _NON_WAYBACK_URLS: set[str] = {
     "https://www.sports-reference.com/cbb/coaches/leon-rice-1.html",
     "https://www.sports-reference.com/cbb/coaches/wes-miller-1.html",
     "https://www.sports-reference.com/cbb/coaches/dan-earl-1.html",
+    "https://www.sports-reference.com/cbb/coaches/mike-morell-1.html",
 }
 
 
 def _create_sportsreference_coach_model(
-    session: requests_cache.CachedSession, coach_url: str, dt: datetime.datetime
+    session: ProxySession, coach_url: str, dt: datetime.datetime
 ) -> CoachModel:
     """Create a coach model from sports reference."""
-    headers = {}
     if coach_url in _NON_WAYBACK_URLS:
-        headers = {X_NO_WAYBACK: "1"}
-    response = session.get(coach_url, headers=headers)
+        with session.wayback_disabled():
+            response = session.get(coach_url)
+    else:
+        response = session.get(coach_url)
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "lxml")
 
@@ -72,7 +73,7 @@ def _create_sportsreference_coach_model(
 
 @MEMORY.cache(ignore=["session"])
 def _cached_create_sportsreference_coach_mode(
-    session: requests_cache.CachedSession, coach_url: str, dt: datetime.datetime
+    session: ProxySession, coach_url: str, dt: datetime.datetime
 ) -> CoachModel:
     return _create_sportsreference_coach_model(
         session=session, coach_url=coach_url, dt=dt
@@ -80,7 +81,7 @@ def _cached_create_sportsreference_coach_mode(
 
 
 def create_sportsreference_coach_model(
-    session: requests_cache.CachedSession, coach_url: str, dt: datetime.datetime
+    session: ProxySession, coach_url: str, dt: datetime.datetime
 ) -> CoachModel:
     """Create a coach model from sports reference."""
     if not pytest_is_running.is_running():

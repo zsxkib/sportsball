@@ -1,7 +1,6 @@
 """NBA ESPN league model."""
 
-import requests_cache
-
+from ....proxy_session import ProxySession
 from ...espn.espn_league_model import ESPNLeagueModel
 from ...league import League
 from ..position import Position
@@ -14,9 +13,7 @@ _SEASON_URL = (
 class NBAESPNLeagueModel(ESPNLeagueModel):
     """NBA ESPN implementation of the league model."""
 
-    def __init__(
-        self, session: requests_cache.CachedSession, position: int | None = None
-    ) -> None:
+    def __init__(self, session: ProxySession, position: int | None = None) -> None:
         super().__init__(_SEASON_URL, League.NBA, session, position=position)
 
     @classmethod

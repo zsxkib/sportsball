@@ -6,6 +6,7 @@ import logging
 import os
 import random
 import sqlite3
+from contextlib import contextmanager
 from io import BytesIO
 from typing import Any, MutableMapping, Optional
 
@@ -32,7 +33,6 @@ FAST_FAIL_DOMAINS = [
     "https://news.google.com/",
     "https://historical-forecast-api.open-meteo.com/",
 ]
-X_NO_WAYBACK = "x-no-wayback"
 
 
 def _is_fast_fail_url(url: str | None) -> bool:
@@ -58,6 +58,7 @@ class ProxySession(requests_cache.CachedSession):
             software_names=software_names, operating_systems=operating_systems
         )
         self._wayback_client = wayback.WaybackClient()
+        self._wayback_disabled = False
 
     def _suggest_proxy(self) -> str:
         proxies = self._proxies
@@ -209,12 +210,9 @@ class ProxySession(requests_cache.CachedSession):
             self.cache.save_response(response)
             return response
 
-        no_wayback = request.headers.get(X_NO_WAYBACK) == "1"
-        if request.headers.get(X_NO_WAYBACK) is not None:
-            del request.headers[X_NO_WAYBACK]
         return self._perform_retry_send(
             request,
-            no_wayback,
+            self._wayback_disabled,
             expire_after=expire_after,
             only_if_cached=only_if_cached,
             refresh=refresh,
@@ -266,6 +264,16 @@ class ProxySession(requests_cache.CachedSession):
             force_refresh=force_refresh,
             **kwargs,
         )
+
+    @contextmanager
+    def wayback_disabled(self):
+        """Disable lookups on the wayback machine."""
+        old_state = self._wayback_disabled
+        self._wayback_disabled = True
+        try:
+            yield
+        finally:
+            self._wayback_disabled = old_state
 
 
 def create_proxy_session() -> ProxySession:

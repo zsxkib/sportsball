@@ -1,7 +1,6 @@
 """AFL combined league model."""
 
-import requests_cache
-
+from ....proxy_session import ProxySession
 from ...combined.combined_league_model import CombinedLeagueModel
 from ...league import League
 from ..afl.afl_afl_league_model import AFLAFLLeagueModel
@@ -269,9 +268,7 @@ AFL_VENUE_IDENTITY_MAP = {
 class AFLCombinedLeagueModel(CombinedLeagueModel):
     """AFL combined implementation of the league model."""
 
-    def __init__(
-        self, session: requests_cache.CachedSession, league_filter: str | None
-    ) -> None:
+    def __init__(self, session: ProxySession, league_filter: str | None) -> None:
         super().__init__(
             session,
             League.AFL,

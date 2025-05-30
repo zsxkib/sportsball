@@ -8,11 +8,11 @@ import urllib.parse
 from typing import Iterator
 from urllib.parse import urlparse
 
-import requests_cache
 import tqdm
 from bs4 import BeautifulSoup
 from dateutil import parser
 
+from ....proxy_session import ProxySession
 from ...game_model import GameModel
 from ...league import League
 from ...league_model import LeagueModel
@@ -42,9 +42,7 @@ def _find_dt(td_text: str, season_url: str) -> datetime.datetime:
 class AFLAFLTablesLeagueModel(LeagueModel):
     """AFL AFLTables implementation of the league model."""
 
-    def __init__(
-        self, session: requests_cache.CachedSession, position: int | None = None
-    ) -> None:
+    def __init__(self, session: ProxySession, position: int | None = None) -> None:
         super().__init__(League.AFL, session)
 
     @classmethod

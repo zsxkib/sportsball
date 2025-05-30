@@ -1,7 +1,6 @@
 """NCAAB combined league model."""
 
-import requests_cache
-
+from ....proxy_session import ProxySession
 from ...combined.combined_league_model import CombinedLeagueModel
 from ...league import League
 from ..espn.ncaab_espn_league_model import NCAABESPNLeagueModel
@@ -747,9 +746,7 @@ NCAAB_PLAYER_IDENTITY_MAP: dict[str, str] = {}
 class NCAABCombinedLeagueModel(CombinedLeagueModel):
     """NCAAB combined implementation of the league model."""
 
-    def __init__(
-        self, session: requests_cache.CachedSession, league_filter: str | None
-    ) -> None:
+    def __init__(self, session: ProxySession, league_filter: str | None) -> None:
         super().__init__(
             session,
             League.NCAAB,

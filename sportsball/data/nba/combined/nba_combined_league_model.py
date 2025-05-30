@@ -2,8 +2,7 @@
 
 # pylint: disable=line-too-long
 
-import requests_cache
-
+from ....proxy_session import ProxySession
 from ...combined.combined_league_model import CombinedLeagueModel
 from ...league import League
 from ..espn.nba_espn_league_model import NBAESPNLeagueModel
@@ -897,9 +896,7 @@ NBA_PLAYER_IDENTITY_MAP: dict[str, str] = {}
 class NBACombinedLeagueModel(CombinedLeagueModel):
     """NBA combined implementation of the league model."""
 
-    def __init__(
-        self, session: requests_cache.CachedSession, league_filter: str | None
-    ) -> None:
+    def __init__(self, session: ProxySession, league_filter: str | None) -> None:
         super().__init__(
             session,
             League.NBA,

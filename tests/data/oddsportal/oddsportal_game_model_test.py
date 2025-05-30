@@ -7,12 +7,13 @@ import requests_mock
 import requests_cache
 from sportsball.data.oddsportal.oddsportal_game_model import create_oddsportal_game_model
 from sportsball.data.league import League
+from sportsball.proxy_session import ProxySession
 
 
 class TestOddsPortalGameModel(unittest.TestCase):
 
     def setUp(self):
-        self.session = requests_cache.CachedSession(backend="memory")
+        self.session = ProxySession(backend="memory")
         self.dir = os.path.dirname(__file__)
 
     def test_dt(self):

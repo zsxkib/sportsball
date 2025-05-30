@@ -8,18 +8,17 @@ import urllib.parse
 from typing import Any
 
 import requests
-import requests_cache
 from bs4 import BeautifulSoup
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.primitives.hashes import SHA256
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 
-from ...proxy_session import X_NO_WAYBACK
+from ...proxy_session import ProxySession
 
 
 def _find_decryption_data(
-    session: requests_cache.CachedSession,
+    session: ProxySession,
     soup: BeautifulSoup,
     referer_url: str,
     user_agent: str | None = None,
@@ -32,10 +31,11 @@ def _find_decryption_data(
             continue
         if ("/app-" in src and src.endswith(".js")) or "/app.js" in src:
             src_url = urllib.parse.urljoin(referer_url, src)
-            headers = {X_NO_WAYBACK: "1"}
+            headers = {}
             if user_agent is not None:
                 headers["User-Agent"] = user_agent
-            src_response = session.get(src_url, headers=headers)
+            with session.wayback_disabled():
+                src_response = session.get(src_url, headers=headers)
             src_response.raise_for_status()
             variables = src_response.text
             sentinel = 'break}return e.next=9,g(r.data,"'
@@ -63,7 +63,7 @@ def _find_decryption_data(
 
 def fetch_data(
     url: str,
-    session: requests_cache.CachedSession,
+    session: ProxySession,
     referer_url: str,
     soup: BeautifulSoup,
     user_agent: str | None = None,

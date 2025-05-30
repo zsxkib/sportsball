@@ -5,8 +5,7 @@ import datetime
 import logging
 from typing import Iterator
 
-import requests_cache
-
+from ....proxy_session import ProxySession
 from ...game_model import GameModel
 from ...league import League
 from ...league_model import LeagueModel
@@ -16,9 +15,7 @@ from .nba_nbacom_game_model import create_nba_nbacom_game_model
 class NBANBAComLeagueModel(LeagueModel):
     """NBA NBA.com implementation of the league model."""
 
-    def __init__(
-        self, session: requests_cache.CachedSession, position: int | None = None
-    ) -> None:
+    def __init__(self, session: ProxySession, position: int | None = None) -> None:
         super().__init__(League.AFL, session, position=position)
 
     @classmethod

@@ -6,11 +6,10 @@ import urllib.parse
 from typing import Iterator
 from urllib.parse import urlparse
 
-import requests_cache
 import tqdm
 from bs4 import BeautifulSoup
 
-from ....proxy_session import X_NO_WAYBACK
+from ....proxy_session import ProxySession
 from ...game_model import GameModel
 from ...league import League
 from ...league_model import LeagueModel
@@ -23,9 +22,7 @@ from .hkjc_hkjc_venue_model import HAPPY_VALLEY_VENUE_CODE, SHA_TIN_VENUE_CODE
 class HKJCHKJCLeagueModel(LeagueModel):
     """HKJC HKJC implementation of the league model."""
 
-    def __init__(
-        self, session: requests_cache.CachedSession, position: int | None = None
-    ) -> None:
+    def __init__(self, session: ProxySession, position: int | None = None) -> None:
         super().__init__(League.HKJC, session, position=position)
 
     @classmethod
@@ -37,10 +34,10 @@ class HKJCHKJCLeagueModel(LeagueModel):
         def games_for_date(dt: datetime.date) -> Iterator[GameModel]:
             dt_str = dt.strftime("%Y/%m/%d")
             for course in [SHA_TIN_VENUE_CODE, HAPPY_VALLEY_VENUE_CODE]:
-                response = self.session.get(
-                    f"https://racing.hkjc.com/racing/information/English/Racing/LocalResults.aspx?{RACE_DATE_QUERY_KEY}={dt_str}&{RACE_COURSE_QUERY_KEY}={course}&{RACE_NUMBER_QUERY_KEY}=1",
-                    headers={X_NO_WAYBACK: "1"},
-                )
+                with self.session.wayback_disabled():
+                    response = self.session.get(
+                        f"https://racing.hkjc.com/racing/information/English/Racing/LocalResults.aspx?{RACE_DATE_QUERY_KEY}={dt_str}&{RACE_COURSE_QUERY_KEY}={course}&{RACE_NUMBER_QUERY_KEY}=1",
+                    )
                 response.raise_for_status()
                 game_model = create_hkjc_hkjc_game_model(
                     self.session, response.text, response.url
@@ -61,7 +58,8 @@ class HKJCHKJCLeagueModel(LeagueModel):
                         continue
                     if query[RACE_COURSE_QUERY_KEY][0] != course:
                         continue
-                    response = self.session.get(url, headers={X_NO_WAYBACK: "1"})
+                    with self.session.wayback_disabled():
+                        response = self.session.get(url)
                     response.raise_for_status()
                     game_model = create_hkjc_hkjc_game_model(
                         self.session, response.text, response.url

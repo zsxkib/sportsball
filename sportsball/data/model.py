@@ -2,21 +2,20 @@
 
 # pylint: disable=too-few-public-methods
 import pandas as pd
-import requests_cache
 
-from ..proxy_session import create_proxy_session
+from ..proxy_session import ProxySession, create_proxy_session
 
 
 class Model:
     """The base model class."""
 
-    _session: requests_cache.CachedSession | None
+    _session: ProxySession | None
 
-    def __init__(self, session: requests_cache.CachedSession) -> None:
+    def __init__(self, session: ProxySession) -> None:
         self._session = session
 
     @property
-    def session(self) -> requests_cache.CachedSession:
+    def session(self) -> ProxySession:
         """Fetch a session that can never be null."""
         session = self._session
         if session is None:

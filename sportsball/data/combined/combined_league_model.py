@@ -6,8 +6,7 @@ import multiprocessing
 from concurrent.futures import ThreadPoolExecutor
 from typing import Any, Iterator
 
-import requests_cache
-
+from ...proxy_session import ProxySession
 from ..game_model import GameModel
 from ..league import League
 from ..league_model import LeagueModel
@@ -23,7 +22,7 @@ class CombinedLeagueModel(LeagueModel):
 
     def __init__(
         self,
-        session: requests_cache.CachedSession,
+        session: ProxySession,
         league: League,
         league_models: list[LeagueModel],
         league_filter: str | None,

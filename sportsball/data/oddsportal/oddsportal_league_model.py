@@ -9,11 +9,10 @@ from typing import Iterator
 
 import extruct  # type: ignore
 import requests
-import requests_cache
 import tqdm
 from bs4 import BeautifulSoup
 
-from ...proxy_session import X_NO_WAYBACK
+from ...proxy_session import ProxySession
 from ..game_model import GameModel
 from ..league import League
 from ..league_model import LeagueModel
@@ -44,7 +43,7 @@ def _find_ids(text: str) -> tuple[str, str]:
 
 def _process_results_pages(
     url: str,
-    session: requests_cache.CachedSession,
+    session: ProxySession,
     soup: BeautifulSoup,
     league: League,
     pbar: tqdm.tqdm,
@@ -103,7 +102,8 @@ class OddsPortalLeagueModel(LeagueModel):
     def _find_next(self, pbar: tqdm.tqdm) -> Iterator[GameModel]:
         base_url = "https://www.oddsportal.com/" + self._path
         with self.session.cache_disabled():
-            response = self.session.get(base_url, headers={X_NO_WAYBACK: "1"})
+            with self.session.wayback_disabled():
+                response = self.session.get(base_url)
         response.raise_for_status()
         data = extruct.extract(response.text, base_url=base_url)
         for jsonld in data["json-ld"]:
@@ -140,7 +140,8 @@ class OddsPortalLeagueModel(LeagueModel):
             seen_urls.add(url)
 
             with self.session.cache_disabled():
-                response = self.session.get(url, headers={X_NO_WAYBACK: "1"})
+                with self.session.wayback_disabled():
+                    response = self.session.get(url)
             response.raise_for_status()
 
             soup = BeautifulSoup(response.text, "lxml")
