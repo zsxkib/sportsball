@@ -28,3 +28,18 @@ class TestHKJCHKJCPlayerModel(unittest.TestCase):
                 weight=None,
             )
             self.assertEqual(player_model.name, "Nyquist")
+
+    def test_null_horse(self):
+        with requests_mock.Mocker() as m:
+            url = "https://racing.hkjc.com/racing/information/English/Horse/OtherHorse.aspx?HorseId=HK_2018_C348"
+            with open(os.path.join(self.dir, "horse_HK_2018_C348.html"), "rb") as f:
+                m.get(url, content=f.read())
+            player_model = create_hkjc_hkjc_player_model(
+                session=self._session,
+                url=url,
+                jersey=None,
+                handicap_weight=None,
+                starting_position=None,
+                weight=None,
+            )
+            self.assertIsNone(player_model)

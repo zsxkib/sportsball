@@ -15543,6 +15543,25 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Spain",
     ),
+    "Corinthians Arena - Sao Paulo": SportsballGeocodeTuple(
+        city="Sao Paulo",
+        state="",
+        postal="",
+        lat=-23.54525,
+        lng=-46.474278,
+        housenumber="",
+        country="Brazil",
+    ),
+    "AT&T Stadium, Arlington, TX, USA": ATT_STADIUM,
+    "Brandon, MS, USA": SportsballGeocodeTuple(
+        city="Brandon",
+        state="MS",
+        postal="",
+        lat=32.280278,
+        lng=-89.998333,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 

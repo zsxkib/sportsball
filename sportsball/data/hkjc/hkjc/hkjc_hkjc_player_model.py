@@ -41,13 +41,12 @@ def _create_hkjc_hkjc_player_model(
     dfs = []
     try:
         dfs = pd.read_html(handle)
-    except AttributeError as exc:
-        logging.warning(str(exc))
     except ValueError:
         if not is_sire:
             logging.error(response.text)
             logging.error(url)
-            raise
+            logging.error(response.url)
+            return None
 
     soup = BeautifulSoup(response.text, "lxml")
     for noscript in soup.find_all("noscript"):
@@ -64,7 +63,7 @@ def _create_hkjc_hkjc_player_model(
     age = None
     birth_address = None
     owner = None
-    if o.path.endswith("/Horse/Horse.aspx"):
+    if o.path.endswith("/Horse/Horse.aspx") or o.path.endswith("/Horse/OtherHorse.aspx"):
         species = Species.HORSE
         for count, df in enumerate(dfs):
             if count == 0:
@@ -123,6 +122,7 @@ def _create_hkjc_hkjc_player_model(
         logging.error(dfs)
         logging.error(o.path)
         logging.error(url)
+        logging.error(response.url)
         raise ValueError("name is null")
 
     return PlayerModel(

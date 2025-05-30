@@ -50,8 +50,7 @@ def _create_espn_player_model(
     try:
         birth_date = parse(athlete_dict["dateOfBirth"]).date()
     except KeyError:
-        logging.error(athlete_response.url)
-        raise
+        logging.warning("Failed to get birth date for %s", athlete_response.url)
 
     birth_place = athlete_dict["birthPlace"]
     return PlayerModel(
