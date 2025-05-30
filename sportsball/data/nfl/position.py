@@ -8,3 +8,4 @@ class Position(StrEnum):
 
     LINE_BACKER = "LB"
     DEFENSIVE_TACKLE = "DT"
+    QUARTER_BACK = "QB"

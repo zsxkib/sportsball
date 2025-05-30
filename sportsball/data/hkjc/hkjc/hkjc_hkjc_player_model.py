@@ -63,7 +63,9 @@ def _create_hkjc_hkjc_player_model(
     age = None
     birth_address = None
     owner = None
-    if o.path.endswith("/Horse/Horse.aspx") or o.path.endswith("/Horse/OtherHorse.aspx"):
+    if o.path.endswith("/Horse/Horse.aspx") or o.path.endswith(
+        "/Horse/OtherHorse.aspx"
+    ):
         species = Species.HORSE
         for count, df in enumerate(dfs):
             if count == 0:
