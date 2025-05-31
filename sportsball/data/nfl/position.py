@@ -11,3 +11,4 @@ class Position(StrEnum):
     QUARTER_BACK = "QB"
     DEFENSIVE_LINESMAN = "DL"
     OFFENSIVE_LINESMAN = "OL"
+    SAFETY = "S"

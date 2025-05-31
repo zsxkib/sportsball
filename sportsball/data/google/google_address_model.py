@@ -15600,6 +15600,24 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Santiago Bernabéu - Madrid": SportsballGeocodeTuple(
+        city="Madrid",
+        state="",
+        postal="",
+        lat=40.453056,
+        lng=-3.688333,
+        housenumber="",
+        country="Spain",
+    ),
+    "CAN": SportsballGeocodeTuple(
+        city="",
+        state="",
+        postal="",
+        lat=60.0,
+        lng=-110.0,
+        housenumber="",
+        country="Canada",
+    ),
 }
 
 
