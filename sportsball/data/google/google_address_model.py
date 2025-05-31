@@ -3214,6 +3214,15 @@ BELL_CENTRE = SportsballGeocodeTuple(
     housenumber="1909",
     country="CA",
 )
+CROKE_PARK = SportsballGeocodeTuple(
+    city="Dublin",
+    state="",
+    postal="D03 P6K7",
+    lat=53.3609,
+    lng=-6.2519,
+    housenumber="",
+    country="Ireland",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5076,15 +5085,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="333",
         country="USA",
     ),
-    "Croke Park Stadium - Dublin": SportsballGeocodeTuple(
-        city="Dublin",
-        state="",
-        postal="D03 P6K7",
-        lat=53.3609,
-        lng=-6.2519,
-        housenumber="",
-        country="Ireland",
-    ),
+    "Croke Park Stadium - Dublin": CROKE_PARK,
     "Yale Bowl - New Haven - CT - 06515": YALE_BOWL,
     "Floyd Casey Stadium - Waco - TX - 76798": SportsballGeocodeTuple(
         city="Waco",
@@ -15559,6 +15560,16 @@ _CACHED_GEOCODES: dict[str, Any] = {
         postal="",
         lat=32.280278,
         lng=-89.998333,
+        housenumber="",
+        country="USA",
+    ),
+    "Croke Park - Dublin": CROKE_PARK,
+    "Pittsburg, CA, USA": SportsballGeocodeTuple(
+        city="Pittsburg",
+        state="CA",
+        postal="",
+        lat=38.028056,
+        lng=-121.884722,
         housenumber="",
         country="USA",
     ),
