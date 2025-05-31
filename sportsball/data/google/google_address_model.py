@@ -15573,6 +15573,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Olympic Stadium Berlin - Berlin": SportsballGeocodeTuple(
+        city="Berlin",
+        state="",
+        postal="",
+        lat=52.514722,
+        lng=13.239444,
+        housenumber="",
+        country="Germany",
+    ),
 }
 
 

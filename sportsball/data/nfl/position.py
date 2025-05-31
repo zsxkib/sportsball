@@ -10,3 +10,4 @@ class Position(StrEnum):
     DEFENSIVE_TACKLE = "DT"
     QUARTER_BACK = "QB"
     DEFENSIVE_LINESMAN = "DL"
+    OFFENSIVE_LINESMAN = "OL"
