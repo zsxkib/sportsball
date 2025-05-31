@@ -53,7 +53,14 @@ def _redirect_to(response: requests.Response) -> str | None:
             match = re.search(r'window\.location\.href\s*=\s*["\'](.*?)["\']', line)
             if match:
                 redirect_url = match.group(1)
+                url_split = line.split(redirect_url)
+                if len(url_split) >= 2:
+                    post_url_line = url_split[-1]
+                    if "+" in post_url_line:
+                        redirect_url = None
+                        continue
                 redirect_url = urllib.parse.urljoin(response.url, redirect_url)
+                logging.info("Following %s", redirect_url)
                 break
     return redirect_url
 
