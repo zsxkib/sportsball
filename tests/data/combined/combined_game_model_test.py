@@ -47,5 +47,6 @@ class TestCombinedGameModel(unittest.TestCase):
                 session=self._session,
                 names=names,
                 coach_names=coach_names,
+                last_game_number=None,
             )
             self.assertEqual(combined_game_model.dt, dt)

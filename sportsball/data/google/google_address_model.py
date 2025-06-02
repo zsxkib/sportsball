@@ -15618,6 +15618,33 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Canada",
     ),
+    "Camarillo, CA, USA": SportsballGeocodeTuple(
+        city="Camarillo",
+        state="CA",
+        postal="",
+        lat=34.233333,
+        lng=-119.033333,
+        housenumber="",
+        country="USA",
+    ),
+    "GR": SportsballGeocodeTuple(
+        city="",
+        state="",
+        postal="",
+        lat=39.0,
+        lng=22.0,
+        housenumber="",
+        country="Greece",
+    ),
+    "Camden, New Jersey, United States": SportsballGeocodeTuple(
+        city="Camden",
+        state="NJ",
+        postal="",
+        lat=39.94,
+        lng=-75.105,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 

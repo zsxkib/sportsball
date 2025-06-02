@@ -67,6 +67,7 @@ def create_combined_game_model(
     session: requests.Session,
     names: dict[str, str],
     coach_names: dict[str, str],
+    last_game_number: int | None,
 ) -> GameModel:
     """Create a game model by combining many game models."""
     venue_models, full_venue_identity = _venue_models(game_models, venue_identity_map)
@@ -126,6 +127,9 @@ def create_combined_game_model(
             venue_model_identifier = venue_model.identifier
             if venue_model_identifier is not None:
                 full_venue_identity = venue_model_identifier
+
+    if game_number is None and last_game_number is not None:
+        game_number = last_game_number + 1
 
     return GameModel(
         dt=dt,

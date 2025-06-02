@@ -91,8 +91,9 @@ class CombinedLeagueModel(LeagueModel):
                 games[key] = games.get(key, []) + [game_model]
         names: dict[str, str] = {}
         coach_names: dict[str, str] = {}
+        last_game_number = None
         for game_models in games.values():
-            yield create_combined_game_model(  # type: ignore
+            game_model = create_combined_game_model(  # type: ignore
                 game_models,
                 self.venue_identity_map(),
                 team_identity_map,
@@ -100,4 +101,7 @@ class CombinedLeagueModel(LeagueModel):
                 self.session,
                 names,
                 coach_names,
+                last_game_number,
             )
+            last_game_number = game_model.game_number
+            yield game_model

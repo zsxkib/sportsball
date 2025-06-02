@@ -137,6 +137,8 @@ def _create_hkjc_hkjc_game_model(
                     lbw = None
                 elif lbw_str == "TO":
                     lbw = 100.0
+                elif lbw_str in {"+NOSE", "+N"}:
+                    lbw = 2.4 * 0.07
                 elif lbw_str and lbw_str != "-" and lbw_str != "---":
                     if lbw is not None:
                         if "-" in lbw_str:
