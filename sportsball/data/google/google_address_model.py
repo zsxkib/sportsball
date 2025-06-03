@@ -15675,6 +15675,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="Zimbabwe",
     ),
     "Corroboree Group Oval Manuka, Canberra": MANUKA_OVAL,
+    "Hands Oval, Bunbury": SportsballGeocodeTuple(
+        city="Bunbury",
+        state="WA",
+        postal="",
+        lat=-33.346111,
+        lng=115.642778,
+        housenumber="",
+        country="Australia",
+    ),
 }
 
 
