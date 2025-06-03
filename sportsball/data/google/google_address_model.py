@@ -15674,6 +15674,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Zimbabwe",
     ),
+    "Corroboree Group Oval Manuka, Canberra": MANUKA_OVAL,
 }
 
 
