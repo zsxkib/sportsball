@@ -51,6 +51,18 @@ def create_combined_player_model(
     weight = None
     birth_address = None
     owner = None
+    seconds_played = None
+    three_point_field_goals = None
+    three_point_field_goals_attempted = None
+    free_throws = None
+    free_throws_attempted = None
+    defensive_rebounds = None
+    steals = None
+    blocks = None
+    personal_fouls = None
+    points = None
+    game_score = None
+    point_differential = None
     for player_model in player_models:
         player_model_jersey = player_model.jersey
         if not is_null(player_model_jersey):
@@ -178,6 +190,46 @@ def create_combined_player_model(
         player_model_owner = player_model.owner
         if not is_null(player_model_owner):
             owner = player_model_owner
+        player_model_seconds_played = player_model.seconds_played
+        if not is_null(player_model_seconds_played):
+            seconds_played = player_model_seconds_played
+        player_model_three_point_field_goals = player_model.three_point_field_goals
+        if not is_null(player_model_three_point_field_goals):
+            three_point_field_goals = player_model_three_point_field_goals
+        player_model_three_point_field_goals_attempted = (
+            player_model.three_point_field_goals_attempted
+        )
+        if not is_null(player_model_three_point_field_goals_attempted):
+            three_point_field_goals_attempted = (
+                player_model_three_point_field_goals_attempted
+            )
+        player_model_free_throws = player_model.free_throws
+        if not is_null(player_model_free_throws):
+            free_throws = player_model_free_throws
+        player_model_free_throws_attempted = player_model.free_throws_attempted
+        if not is_null(player_model_free_throws_attempted):
+            free_throws_attempted = player_model_free_throws_attempted
+        player_model_defensive_rebounds = player_model.defensive_rebounds
+        if not is_null(player_model_defensive_rebounds):
+            defensive_rebounds = player_model_defensive_rebounds
+        player_model_steals = player_model.steals
+        if not is_null(player_model_steals):
+            steals = player_model_steals
+        player_model_blocks = player_model.blocks
+        if not is_null(player_model_blocks):
+            blocks = player_model_blocks
+        player_model_personal_fouls = player_model.personal_fouls
+        if not is_null(player_model_personal_fouls):
+            personal_fouls = player_model_personal_fouls
+        player_model_points = player_model.points
+        if not is_null(player_model_points):
+            points = player_model_points
+        player_model_game_score = player_model.game_score
+        if not is_null(player_model_game_score):
+            game_score = player_model_game_score
+        player_model_point_differential = player_model.point_differential
+        if not is_null(player_model_point_differential):
+            point_differential = player_model_point_differential
     if name is None:
         raise ValueError("name is null")
     if species is None:
@@ -226,4 +278,16 @@ def create_combined_player_model(
         weight=weight,
         birth_address=birth_address,
         owner=owner,
+        seconds_played=seconds_played,
+        three_point_field_goals=three_point_field_goals,
+        three_point_field_goals_attempted=three_point_field_goals_attempted,
+        free_throws=free_throws,
+        free_throws_attempted=free_throws_attempted,
+        defensive_rebounds=defensive_rebounds,
+        steals=steals,
+        blocks=blocks,
+        personal_fouls=personal_fouls,
+        points=points,
+        game_score=game_score,
+        point_differential=point_differential,
     )

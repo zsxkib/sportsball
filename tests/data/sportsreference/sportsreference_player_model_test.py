@@ -32,5 +32,17 @@ class TestSportsReferencePlayerModel(unittest.TestCase):
                 positions_validator={},
                 sex=Sex.MALE,
                 dt=datetime.datetime(2022, 10, 10),
+                minutes_played={},
+                three_point_field_goals={},
+                three_point_field_goals_attempted={},
+                free_throws={},
+                free_throws_attempted={},
+                defensive_rebounds={},
+                steals={},
+                blocks={},
+                personal_fouls={},
+                points={},
+                game_scores={},
+                point_differentials={},
             )
             self.assertEqual(player_model.field_goals, 8)

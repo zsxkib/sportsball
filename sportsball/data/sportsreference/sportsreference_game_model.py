@@ -54,6 +54,18 @@ def _find_old_dt(
     turnovers: dict[str, int],
     response: requests.Response,
     positions_validator: dict[str, str],
+    minutes_played: dict[str, datetime.timedelta],
+    three_point_field_goals: dict[str, int],
+    three_point_field_goals_attempted: dict[str, int],
+    free_throws: dict[str, int],
+    free_throws_attempted: dict[str, int],
+    defensive_rebounds: dict[str, int],
+    steals: dict[str, int],
+    blocks: dict[str, int],
+    personal_fouls: dict[str, int],
+    player_points: dict[str, int],
+    game_scores: dict[str, float],
+    point_differentials: dict[str, int],
 ) -> tuple[datetime.datetime, list[TeamModel], str | None]:
     teams: list[TeamModel] = []
 
@@ -154,19 +166,31 @@ def _find_old_dt(
                 raise ValueError("dt is null.")
             teams.append(
                 create_sportsreference_team_model(
-                    session,
-                    team_url,
-                    dt,
-                    league,
-                    player_urls,
-                    points,
-                    fg,
-                    fga,
-                    offensive_rebounds,
-                    assists,
-                    turnovers,
-                    team_name,
-                    positions_validator,
+                    session=session,
+                    url=team_url,
+                    dt=dt,
+                    league=league,
+                    player_urls=player_urls,
+                    points=points,
+                    fg=fg,
+                    fga=fga,
+                    offensive_rebounds=offensive_rebounds,
+                    assists=assists,
+                    turnovers=turnovers,
+                    team_name=team_name,
+                    positions_validator=positions_validator,
+                    minutes_played=minutes_played,
+                    three_point_field_goals=three_point_field_goals,
+                    three_point_field_goals_attempted=three_point_field_goals_attempted,
+                    free_throws=free_throws,
+                    free_throws_attempted=free_throws_attempted,
+                    defensive_rebounds=defensive_rebounds,
+                    steals=steals,
+                    blocks=blocks,
+                    personal_fouls=personal_fouls,
+                    player_points=player_points,
+                    game_scores=game_scores,
+                    point_differentials=point_differentials,
                 )
             )
 
@@ -253,6 +277,18 @@ def _find_new_dt(
     assists: dict[str, int],
     turnovers: dict[str, int],
     positions_validator: dict[str, str],
+    minutes_played: dict[str, datetime.timedelta],
+    three_point_field_goals: dict[str, int],
+    three_point_field_goals_attempted: dict[str, int],
+    free_throws: dict[str, int],
+    free_throws_attempted: dict[str, int],
+    defensive_rebounds: dict[str, int],
+    steals: dict[str, int],
+    blocks: dict[str, int],
+    personal_fouls: dict[str, int],
+    player_points: dict[str, int],
+    game_scores: dict[str, float],
+    point_differentials: dict[str, int],
 ) -> tuple[datetime.datetime, list[TeamModel], str]:
     in_divs = scorebox_meta_div.find_all("div")
     current_in_div_idx = 0
@@ -279,19 +315,31 @@ def _find_new_dt(
         if "/schools/" in team_url:
             teams.append(
                 create_sportsreference_team_model(
-                    session,
-                    team_url,
-                    dt,
-                    league,
-                    player_urls,
-                    scores[len(teams)],
-                    fg,
-                    fga,
-                    offensive_rebounds,
-                    assists,
-                    turnovers,
-                    a.get_text().strip(),
-                    positions_validator,
+                    session=session,
+                    url=team_url,
+                    dt=dt,
+                    league=league,
+                    player_urls=player_urls,
+                    points=scores[len(teams)],
+                    fg=fg,
+                    fga=fga,
+                    offensive_rebounds=offensive_rebounds,
+                    assists=assists,
+                    turnovers=turnovers,
+                    team_name=a.get_text().strip(),
+                    positions_validator=positions_validator,
+                    minutes_played=minutes_played,
+                    three_point_field_goals=three_point_field_goals,
+                    three_point_field_goals_attempted=three_point_field_goals_attempted,
+                    free_throws=free_throws,
+                    free_throws_attempted=free_throws_attempted,
+                    defensive_rebounds=defensive_rebounds,
+                    steals=steals,
+                    blocks=blocks,
+                    personal_fouls=personal_fouls,
+                    player_points=player_points,
+                    game_scores=game_scores,
+                    point_differentials=point_differentials,
                 )
             )
 
@@ -341,6 +389,18 @@ def _create_sportsreference_game_model(
     offensive_rebounds = {}
     assists = {}
     turnovers = {}
+    minutes_played = {}
+    three_point_field_goals = {}
+    three_point_field_goals_attempted = {}
+    free_throws = {}
+    free_throws_attempted = {}
+    defensive_rebounds = {}
+    steals = {}
+    blocks = {}
+    personal_fouls = {}
+    player_points = {}
+    game_scores = {}
+    point_differentials = {}
     try:
         dfs = pd.read_html(handle)
         for df in dfs:
@@ -368,6 +428,60 @@ def _create_sportsreference_game_model(
                     tovs = df["TOV"].tolist()
                     for idx, player in enumerate(players):
                         turnovers[player] = tovs[idx]
+                if "MP" in df.columns.values.tolist():
+                    mps = df["MP"].tolist()
+                    for idx, player in enumerate(players):
+                        mp = mps[idx]
+                        mp_minutes, mp_seconds = mp.split(":")
+                        minutes_played[player] = datetime.timedelta(
+                            minutes=int(mp_minutes), seconds=int(mp_seconds)
+                        )
+                if "3P" in df.columns.values.tolist():
+                    threeps = df["3P"].tolist()
+                    for idx, player in enumerate(players):
+                        three_point_field_goals[player] = threeps[idx]
+                if "3PA" in df.columns.values.tolist():
+                    threepsattempted = df["3PA"].tolist()
+                    for idx, player in enumerate(players):
+                        three_point_field_goals_attempted[player] = threepsattempted[
+                            idx
+                        ]
+                if "FT" in df.columns.values.tolist():
+                    fts = df["FT"].tolist()
+                    for idx, player in enumerate(players):
+                        free_throws[player] = fts[idx]
+                if "FTA" in df.columns.values.tolist():
+                    ftas = df["FTA"].tolist()
+                    for idx, player in enumerate(players):
+                        free_throws_attempted[player] = ftas[idx]
+                if "DRB" in df.columns.values.tolist():
+                    drbs = df["DRB"].tolist()
+                    for idx, player in enumerate(players):
+                        defensive_rebounds[player] = drbs[idx]
+                if "STL" in df.columns.values.tolist():
+                    stls = df["STL"].tolist()
+                    for idx, player in enumerate(players):
+                        steals[player] = stls[idx]
+                if "BLK" in df.columns.values.tolist():
+                    blks = df["BLK"].tolist()
+                    for idx, player in enumerate(players):
+                        blocks[player] = blks[idx]
+                if "PF" in df.columns.values.tolist():
+                    pfs = df["PF"].tolist()
+                    for idx, player in enumerate(players):
+                        personal_fouls[player] = pfs[idx]
+                if "PTS" in df.columns.values.tolist():
+                    ptss = df["PTS"].tolist()
+                    for idx, player in enumerate(players):
+                        player_points[player] = ptss[idx]
+                if "GmSc" in df.columns.values.tolist():
+                    gmscs = df["GmSc"].tolist()
+                    for idx, player in enumerate(players):
+                        game_scores[player] = gmscs[idx]
+                if "+/-" in df.columns.values.tolist():
+                    plusminuses = df["GmSc"].tolist()
+                    for idx, player in enumerate(players):
+                        point_differentials[player] = plusminuses[idx]
     except ValueError as exc:
         logging.error(url)
         logging.error(response.text)
@@ -376,35 +490,59 @@ def _create_sportsreference_game_model(
     scorebox_meta_div = soup.find("div", class_="scorebox_meta")
     if not isinstance(scorebox_meta_div, Tag):
         dt, teams, venue_name = _find_old_dt(
-            dfs,
-            session,
-            soup,
-            url,
-            league,
-            player_urls,
-            fg,
-            fga,
-            offensive_rebounds,
-            assists,
-            turnovers,
-            response,
-            positions_validator,
+            dfs=dfs,
+            session=session,
+            soup=soup,
+            url=url,
+            league=league,
+            player_urls=player_urls,
+            fg=fg,
+            fga=fga,
+            offensive_rebounds=offensive_rebounds,
+            assists=assists,
+            turnovers=turnovers,
+            response=response,
+            positions_validator=positions_validator,
+            minutes_played=minutes_played,
+            three_point_field_goals=three_point_field_goals,
+            three_point_field_goals_attempted=three_point_field_goals_attempted,
+            free_throws=free_throws,
+            free_throws_attempted=free_throws_attempted,
+            defensive_rebounds=defensive_rebounds,
+            steals=steals,
+            blocks=blocks,
+            personal_fouls=personal_fouls,
+            player_points=player_points,
+            game_scores=game_scores,
+            point_differentials=point_differentials,
         )
     else:
         dt, teams, venue_name = _find_new_dt(
-            soup,
-            scorebox_meta_div,
-            url,
-            session,
-            league,
-            player_urls,
-            scores,
-            fg,
-            fga,
-            offensive_rebounds,
-            assists,
-            turnovers,
-            positions_validator,
+            soup=soup,
+            scorebox_meta_div=scorebox_meta_div,
+            url=url,
+            session=session,
+            league=league,
+            player_urls=player_urls,
+            scores=scores,
+            fg=fg,
+            fga=fga,
+            offensive_rebounds=offensive_rebounds,
+            assists=assists,
+            turnovers=turnovers,
+            positions_validator=positions_validator,
+            minutes_played=minutes_played,
+            three_point_field_goals=three_point_field_goals,
+            three_point_field_goals_attempted=three_point_field_goals_attempted,
+            free_throws=free_throws,
+            free_throws_attempted=free_throws_attempted,
+            defensive_rebounds=defensive_rebounds,
+            steals=steals,
+            blocks=blocks,
+            personal_fouls=personal_fouls,
+            player_points=player_points,
+            game_scores=game_scores,
+            point_differentials=point_differentials,
         )
     for team in teams:
         if team.name == "File Not Found":

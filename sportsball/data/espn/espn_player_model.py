@@ -103,6 +103,18 @@ def _create_espn_player_model(
             dt=None,
         ),
         owner=None,
+        seconds_played=None,
+        three_point_field_goals=None,
+        three_point_field_goals_attempted=None,
+        free_throws=None,
+        free_throws_attempted=None,
+        defensive_rebounds=None,
+        steals=None,
+        blocks=None,
+        personal_fouls=None,
+        points=None,
+        game_score=None,
+        point_differential=None,
     )
 
 

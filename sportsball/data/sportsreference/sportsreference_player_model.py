@@ -61,6 +61,18 @@ def _create_sportsreference_player_model(
     positions_validator: dict[str, str],
     sex: Sex,
     dt: datetime.datetime,
+    minutes_played: dict[str, datetime.timedelta],
+    three_point_field_goals: dict[str, int],
+    three_point_field_goals_attempted: dict[str, int],
+    free_throws: dict[str, int],
+    free_throws_attempted: dict[str, int],
+    defensive_rebounds: dict[str, int],
+    steals: dict[str, int],
+    blocks: dict[str, int],
+    personal_fouls: dict[str, int],
+    points: dict[str, int],
+    game_scores: dict[str, float],
+    point_differentials: dict[str, int],
 ) -> PlayerModel | None:
     """Create a player model from sports reference."""
     player_url = _fix_url(player_url)
@@ -91,6 +103,9 @@ def _create_sportsreference_player_model(
             dt=None,
         )
     position = positions.get(name)
+    seconds_played = None
+    if name in minutes_played:
+        seconds_played = int(minutes_played[name].total_seconds())
     return PlayerModel(
         identifier=name,
         jersey=None,
@@ -137,6 +152,18 @@ def _create_sportsreference_player_model(
         weight=weight,
         birth_address=birth_address,
         owner=None,
+        seconds_played=seconds_played,
+        three_point_field_goals=three_point_field_goals.get(name),
+        three_point_field_goals_attempted=three_point_field_goals_attempted.get(name),
+        free_throws=free_throws.get(name),
+        free_throws_attempted=free_throws_attempted.get(name),
+        defensive_rebounds=defensive_rebounds.get(name),
+        steals=steals.get(name),
+        blocks=blocks.get(name),
+        personal_fouls=personal_fouls.get(name),
+        points=points.get(name),
+        game_score=game_scores.get(name),
+        point_differential=point_differentials.get(name),
     )
 
 
@@ -153,6 +180,18 @@ def _cached_create_sportsreference_player_model(
     positions_validator: dict[str, str],
     sex: Sex,
     dt: datetime.datetime,
+    minutes_played: dict[str, datetime.timedelta],
+    three_point_field_goals: dict[str, int],
+    three_point_field_goals_attempted: dict[str, int],
+    free_throws: dict[str, int],
+    free_throws_attempted: dict[str, int],
+    defensive_rebounds: dict[str, int],
+    steals: dict[str, int],
+    blocks: dict[str, int],
+    personal_fouls: dict[str, int],
+    points: dict[str, int],
+    game_scores: dict[str, float],
+    point_differentials: dict[str, int],
 ) -> PlayerModel | None:
     return _create_sportsreference_player_model(
         session=session,
@@ -166,6 +205,18 @@ def _cached_create_sportsreference_player_model(
         positions_validator=positions_validator,
         sex=sex,
         dt=dt,
+        minutes_played=minutes_played,
+        three_point_field_goals=three_point_field_goals,
+        three_point_field_goals_attempted=three_point_field_goals_attempted,
+        free_throws=free_throws,
+        free_throws_attempted=free_throws_attempted,
+        defensive_rebounds=defensive_rebounds,
+        steals=steals,
+        blocks=blocks,
+        personal_fouls=personal_fouls,
+        points=points,
+        game_scores=game_scores,
+        point_differentials=point_differentials,
     )
 
 
@@ -181,6 +232,18 @@ def create_sportsreference_player_model(
     positions_validator: dict[str, str],
     sex: Sex,
     dt: datetime.datetime,
+    minutes_played: dict[str, datetime.timedelta],
+    three_point_field_goals: dict[str, int],
+    three_point_field_goals_attempted: dict[str, int],
+    free_throws: dict[str, int],
+    free_throws_attempted: dict[str, int],
+    defensive_rebounds: dict[str, int],
+    steals: dict[str, int],
+    blocks: dict[str, int],
+    personal_fouls: dict[str, int],
+    points: dict[str, int],
+    game_scores: dict[str, float],
+    point_differentials: dict[str, int],
 ) -> PlayerModel | None:
     """Create a player model from sports reference."""
     if not pytest_is_running.is_running():
@@ -196,6 +259,18 @@ def create_sportsreference_player_model(
             positions_validator=positions_validator,
             sex=sex,
             dt=dt,
+            minutes_played=minutes_played,
+            three_point_field_goals=three_point_field_goals,
+            three_point_field_goals_attempted=three_point_field_goals_attempted,
+            free_throws=free_throws,
+            free_throws_attempted=free_throws_attempted,
+            defensive_rebounds=defensive_rebounds,
+            steals=steals,
+            blocks=blocks,
+            personal_fouls=personal_fouls,
+            points=points,
+            game_scores=game_scores,
+            point_differentials=point_differentials,
         )
     with session.cache_disabled():
         return _create_sportsreference_player_model(
@@ -210,4 +285,16 @@ def create_sportsreference_player_model(
             positions_validator=positions_validator,
             sex=sex,
             dt=dt,
+            minutes_played=minutes_played,
+            three_point_field_goals=three_point_field_goals,
+            three_point_field_goals_attempted=three_point_field_goals_attempted,
+            free_throws=free_throws,
+            free_throws_attempted=free_throws_attempted,
+            defensive_rebounds=defensive_rebounds,
+            steals=steals,
+            blocks=blocks,
+            personal_fouls=personal_fouls,
+            points=points,
+            game_scores=game_scores,
+            point_differentials=point_differentials,
         )

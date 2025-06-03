@@ -19,6 +19,8 @@ from ..x.x_social_model import create_x_social_model
 from .espn_coach_model import create_espn_coach_model
 from .espn_player_model import create_espn_player_model
 
+ID_KEY = "id"
+
 
 def _create_espn_team_model(
     session: requests_cache.CachedSession,
@@ -30,7 +32,7 @@ def _create_espn_team_model(
     league: League,
     positions_validator: dict[str, str],
 ) -> TeamModel:
-    identifier = team["id"]
+    identifier = team[ID_KEY]
     name = team.get("name", team.get("fullName", team.get("displayName")))
     if name is None:
         raise ValueError("name is null")

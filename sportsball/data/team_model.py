@@ -53,6 +53,30 @@ TEAM_NEWS_COLUMN: Literal["news"] = "news"
 TEAM_COACHES_COLUMN: Literal["coaches"] = "coaches"
 TEAM_LENGTH_BEHIND_WINNER_COLUMN: Literal["lbw"] = "lbw"
 TEAM_END_DT_COLUMN: Literal["end_dt"] = "end_dt"
+TEAM_FIELD_GOALS_PERCENTAGE_COLUMN: Literal["field_goals_percentage"] = (
+    "field_goals_percentage"
+)
+TEAM_THREE_POINT_FIELD_GOALS_COLUMN: Literal["three_point_field_goals"] = (
+    "three_point_field_goals"
+)
+TEAM_THREE_POINT_FIELD_GOALS_ATTEMPTED_COLUMN: Literal[
+    "three_point_field_goals_attempted"
+] = "three_point_field_goals_attempted"
+TEAM_THREE_POINT_FIELD_GOALS_PERCENTAGE_COLUMN: Literal[
+    "three_point_field_goals_percentage"
+] = "three_point_field_goals_percentage"
+TEAM_FREE_THROWS_COLUMN: Literal["free_throws"] = "free_throws"
+TEAM_FREE_THROWS_ATTEMPTED_COLUMN: Literal["free_throws_attempted"] = (
+    "free_throws_attempted"
+)
+TEAM_FREE_THROWS_PERCENTAGE_COLUMN: Literal["free_throws_percentage"] = (
+    "free_throws_percentage"
+)
+TEAM_DEFENSIVE_REBOUNDS_COLUMN: Literal["defensive_rebounds"] = "defensive_rebounds"
+TEAM_TOTAL_REBOUNDS_COLUMN: Literal["total_rebounds"] = "total_rebounds"
+TEAM_STEALS_COLUMN: Literal["steals"] = "steals"
+TEAM_BLOCKS_COLUMN: Literal["blocks"] = "blocks"
+TEAM_PERSONAL_FOULS_COLUMN: Literal["personal_fouls"] = "personal_fouls"
 
 
 def _calculate_kicks(data: dict[str, Any]) -> int | None:
@@ -433,6 +457,162 @@ def _calculate_goal_assists(data: dict[str, Any]) -> int | None:
     return goal_assists
 
 
+def _calcualte_field_goals_percentage(data: dict[str, Any]) -> float | None:
+    field_goals = data.get(FIELD_GOALS_COLUMN)
+    if field_goals is None:
+        return None
+    field_goals_attempted = data.get(FIELD_GOALS_ATTEMPTED_COLUMN)
+    if field_goals_attempted is None:
+        return None
+    return float(field_goals) / float(field_goals_attempted)  # type: ignore
+
+
+def _calculate_three_point_field_goals(data: dict[str, Any]) -> int | None:
+    three_point_field_goals = 0
+    found_three_point_field_goals = False
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
+        player_three_point_field_goals = player.three_point_field_goals
+        if player_three_point_field_goals is None:
+            continue
+        found_three_point_field_goals = True
+        three_point_field_goals += player_three_point_field_goals
+    if not found_three_point_field_goals:
+        return None
+    return three_point_field_goals
+
+
+def _calculate_three_point_field_goals_attempted(data: dict[str, Any]) -> int | None:
+    three_point_field_goals_attempted = 0
+    found_three_point_field_goals_attempted = False
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
+        player_three_point_field_goals_attempted = (
+            player.three_point_field_goals_attempted
+        )
+        if player_three_point_field_goals_attempted is None:
+            continue
+        found_three_point_field_goals_attempted = True
+        three_point_field_goals_attempted += player_three_point_field_goals_attempted
+    if not found_three_point_field_goals_attempted:
+        return None
+    return three_point_field_goals_attempted
+
+
+def _calculate_three_point_field_goals_percentage(data: dict[str, Any]) -> float | None:
+    three_point_field_goals = data.get(TEAM_THREE_POINT_FIELD_GOALS_COLUMN)
+    if three_point_field_goals is None:
+        return None
+    three_point_field_goals_attempted = data.get(
+        TEAM_THREE_POINT_FIELD_GOALS_ATTEMPTED_COLUMN
+    )
+    if three_point_field_goals_attempted is None:
+        return None
+    return float(three_point_field_goals) / float(three_point_field_goals_attempted)  # type: ignore
+
+
+def _calculate_free_throws(data: dict[str, Any]) -> int | None:
+    free_throws = 0
+    found_free_throws = False
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
+        player_free_throws = player.free_throws
+        if player_free_throws is None:
+            continue
+        found_free_throws = True
+        free_throws += player_free_throws
+    if not found_free_throws:
+        return None
+    return free_throws
+
+
+def _calculate_free_throws_attempted(data: dict[str, Any]) -> int | None:
+    free_throws_attempted = 0
+    found_free_throws_attempted = False
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
+        player_free_throws_attempted = player.free_throws_attempted
+        if player_free_throws_attempted is None:
+            continue
+        found_free_throws_attempted = True
+        free_throws_attempted += player_free_throws_attempted
+    if not found_free_throws_attempted:
+        return None
+    return free_throws_attempted
+
+
+def _calculate_free_throws_percentage(data: dict[str, Any]) -> float | None:
+    free_throws = data.get(TEAM_FREE_THROWS_COLUMN)
+    if free_throws is None:
+        return None
+    free_throws_attempted = data.get(TEAM_FREE_THROWS_ATTEMPTED_COLUMN)
+    if free_throws_attempted is None:
+        return None
+    return float(free_throws) / float(free_throws_attempted)  # type: ignore
+
+
+def _calculate_defensive_rebounds(data: dict[str, Any]) -> int | None:
+    defensive_rebounds = 0
+    found_defensive_rebounds = False
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
+        player_defensive_rebounds = player.defensive_rebounds
+        if player_defensive_rebounds is None:
+            continue
+        found_defensive_rebounds = True
+        defensive_rebounds += player_defensive_rebounds
+    if not found_defensive_rebounds:
+        return None
+    return defensive_rebounds
+
+
+def _calculate_total_rebounds(data: dict[str, Any]) -> int | None:
+    offensive_rebounds = data.get(OFFENSIVE_REBOUNDS_COLUMN)
+    if offensive_rebounds is None:
+        return None
+    defensive_rebounds = data.get(TEAM_DEFENSIVE_REBOUNDS_COLUMN)
+    if defensive_rebounds is None:
+        return None
+    return offensive_rebounds + defensive_rebounds
+
+
+def _calculate_steals(data: dict[str, Any]) -> int | None:
+    steals = 0
+    found_steals = False
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
+        player_steals = player.steals
+        if player_steals is None:
+            continue
+        found_steals = True
+        steals += player_steals
+    if not found_steals:
+        return None
+    return steals
+
+
+def _calculate_blocks(data: dict[str, Any]) -> int | None:
+    blocks = 0
+    found_blocks = False
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
+        player_blocks = player.blocks
+        if player_blocks is None:
+            continue
+        found_blocks = True
+        blocks += player_blocks
+    if not found_blocks:
+        return None
+    return blocks
+
+
+def _calculate_personal_fouls(data: dict[str, Any]) -> int | None:
+    personal_fouls = 0
+    found_personal_fouls = False
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
+        player_personal_fouls = player.personal_fouls
+        if player_personal_fouls is None:
+            continue
+        found_personal_fouls = True
+        personal_fouls += player_personal_fouls
+    if not found_personal_fouls:
+        return None
+    return personal_fouls
+
+
 class TeamModel(BaseModel):
     """The serialisable team class."""
 
@@ -598,4 +778,64 @@ class TeamModel(BaseModel):
     )
     end_dt: datetime.datetime | None = Field(
         ..., json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD}, alias=TEAM_END_DT_COLUMN
+    )
+    field_goals_percentage: float | None = Field(
+        default_factory=_calcualte_field_goals_percentage,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_FIELD_GOALS_PERCENTAGE_COLUMN,
+    )
+    three_point_field_goals: int | None = Field(
+        default_factory=_calculate_three_point_field_goals,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_THREE_POINT_FIELD_GOALS_COLUMN,
+    )
+    three_point_field_goals_attempted: int | None = Field(
+        default_factory=_calculate_three_point_field_goals_attempted,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_THREE_POINT_FIELD_GOALS_ATTEMPTED_COLUMN,
+    )
+    three_point_field_goals_percentage: float | None = Field(
+        default_factory=_calculate_three_point_field_goals_percentage,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_THREE_POINT_FIELD_GOALS_PERCENTAGE_COLUMN,
+    )
+    free_throws: int | None = Field(
+        default_factory=_calculate_free_throws,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_FREE_THROWS_COLUMN,
+    )
+    free_throws_attempted: int | None = Field(
+        default_factory=_calculate_free_throws_attempted,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_FREE_THROWS_ATTEMPTED_COLUMN,
+    )
+    free_throws_percentage: float | None = Field(
+        default_factory=_calculate_free_throws_percentage,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_FREE_THROWS_PERCENTAGE_COLUMN,
+    )
+    defensive_rebounds: int | None = Field(
+        default_factory=_calculate_defensive_rebounds,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_DEFENSIVE_REBOUNDS_COLUMN,
+    )
+    total_rebounds: int | None = Field(
+        default_factory=_calculate_total_rebounds,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_TOTAL_REBOUNDS_COLUMN,
+    )
+    steals: int | None = Field(
+        default_factory=_calculate_steals,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_STEALS_COLUMN,
+    )
+    blocks: int | None = Field(
+        default_factory=_calculate_blocks,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_BLOCKS_COLUMN,
+    )
+    personal_fouls: int | None = Field(
+        default_factory=_calculate_personal_fouls,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_PERSONAL_FOULS_COLUMN,
     )

@@ -173,6 +173,18 @@ def _create_hkjc_hkjc_player_model(
         weight=weight,
         birth_address=birth_address,
         owner=owner,
+        seconds_played=None,
+        three_point_field_goals=None,
+        three_point_field_goals_attempted=None,
+        free_throws=None,
+        free_throws_attempted=None,
+        defensive_rebounds=None,
+        steals=None,
+        blocks=None,
+        personal_fouls=None,
+        points=None,
+        game_score=None,
+        point_differential=None,
     )
 
 

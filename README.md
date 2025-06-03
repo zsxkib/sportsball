@@ -150,6 +150,18 @@ A representation of a team within a game.
 * **coaches**: The coaches on the team during the game.
 * **lbw**: Length behind winner, expressed in metres.
 * **dividends**: The dividends the game pays out.
+* **field_goals_percentage**: The ratio of field goals scored by field goals attempted by the players on the team in the game.
+* **three_point_field_goals**: The number of three point field goals scored by the players on the team in the game.
+* **three_point_field_goals_attempted**: The number of three point field goals attempted by the players on the team in the game.
+* **three_point_field_goals_percentage**: The ratio of three point field goals scored by the three point field goals attempted by the players on the team in the game.
+* **free_throws**: The number of free throws scored by the players on the team in the game.
+* **free_throws_attempted**: The number of free throws attempted by the players on the team in the game.
+* **free_throws_percentage**: The ratio of free throws scored by the free throws attempted by the players on the team in the game.
+* **defensive_rebounds**: The number of defensive rebounds made by the players on the team in the game.
+* **total_rebounds**: The number of offensive and defensive rebounds made by the players on the team in the game.
+* **steals**: The number of steals made by the players on the team in the game.
+* **blocks**: The number of blocks made by the players on the team in the game.
+* **personal_fouls**: The number of personal fouls made by the players on the team in the game.
 
 #### Player
 
@@ -197,6 +209,22 @@ A representation of a player within a team within a game.
 * **starting_position**: The starting position of the player.
 * **weight**: The weight of the player in (in KGs).
 * **birth_address**: The address model for the players birth location.
+* **seconds_played**: The amount of seconds the player played the game for.
+* **field_goals_percentage**: The ratio of field goals scored by field goals attempted for the player during the game.
+* **three_point_field_goals**: The number of three point field goals scored by the player during the game.
+* **three_point_field_goals_attempted**: The number of three point field goals attempted by the player during the game.
+* **three_point_field_goals_percentage**: The ratio of three point field goals scored by three point field goals attempted by the player during the game.
+* **free_throws**: The number of free throws scored by the player during the game.
+* **free_throws_attempted**: The number of free throws attempted by the player during the game.
+* **free_throws_percentage**: The ratio of free throws scored by free throws attempted by the player during the game.
+* **defensive_rebounds**: The number of defensive rebounds made by the player during the game.
+* **total_rebounds**: The number of rebounds (both offensive and defensive) made by the player during the game.
+* **steals**: The number of steals made by the player during the game.
+* **blocks**: The number of blocks made by the player during the game.
+* **personal_fouls**: The number of personal fouls made by the player during the game.
+* **points**: The points made by the player during the game.
+* **game_score**: The [John Hollinger game score](https://www.nbastuffer.com/analytics101/game-score/) of the player during the game.
+* **point_differential**: The points scored by the players team while the player was on the court minus the points scored by the opposing team when the player is off the court.
 
 #### Odds
 

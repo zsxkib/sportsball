@@ -17,7 +17,7 @@ from ..team_model import TeamModel
 from ..venue_model import VenueModel
 from .espn_bookie_model import create_espn_bookie_model
 from .espn_odds_model import MONEYLINE_KEY, create_espn_odds_model
-from .espn_team_model import create_espn_team_model
+from .espn_team_model import ID_KEY, create_espn_team_model
 from .espn_venue_model import create_espn_venue_model
 
 
@@ -103,6 +103,8 @@ def _create_teams(
             odds_dict = odds_response.json()
 
         for competitor in competition["competitors"]:
+            if competitor[ID_KEY] == "-1":
+                continue
             teams.append(
                 _create_espn_team(
                     competitor, odds_dict, session, dt, league, positions_validator

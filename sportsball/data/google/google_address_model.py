@@ -3223,6 +3223,15 @@ CROKE_PARK = SportsballGeocodeTuple(
     housenumber="",
     country="Ireland",
 )
+MADISON = SportsballGeocodeTuple(
+    city="Madison",
+    state="WI",
+    postal="",
+    lat=43.074722,
+    lng=-89.384167,
+    housenumber="",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -11169,15 +11178,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Madison, Wisconsin": SportsballGeocodeTuple(
-        city="Madison",
-        state="WI",
-        postal="",
-        lat=43.074722,
-        lng=-89.384167,
-        housenumber="",
-        country="USA",
-    ),
+    "Madison, Wisconsin": MADISON,
     "College Park, Maryland": SportsballGeocodeTuple(
         city="College Park",
         state="MD",
@@ -15644,6 +15645,34 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lng=-75.105,
         housenumber="",
         country="USA",
+    ),
+    "Madison, Wisconsin, United States": MADISON,
+    "Schenectady, New York, United States": SportsballGeocodeTuple(
+        city="Schenectady",
+        state="NY",
+        postal="",
+        lat=42.814167,
+        lng=-73.937222,
+        housenumber="",
+        country="USA",
+    ),
+    "Bellevue, WA, USA": SportsballGeocodeTuple(
+        city="Bellevue",
+        state="WA",
+        postal="",
+        lat=47.614444,
+        lng=-122.153611,
+        housenumber="",
+        country="USA",
+    ),
+    "ZIM": SportsballGeocodeTuple(
+        city="",
+        state="",
+        postal="",
+        lat=-19.0,
+        lng=30.0,
+        housenumber="",
+        country="Zimbabwe",
     ),
 }
 

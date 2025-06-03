@@ -62,6 +62,18 @@ class TestCombinedPlayerModel(unittest.TestCase):
                 weight=None,
                 birth_address=None,
                 owner=None,
+                seconds_played=None,
+                three_point_field_goals=None,
+                three_point_field_goals_attempted=None,
+                free_throws=None,
+                free_throws_attempted=None,
+                defensive_rebounds=None,
+                steals=None,
+                blocks=None,
+                personal_fouls=None,
+                points=None,
+                game_score=None,
+                point_differential=None,
             )
             combined_player_model = create_combined_player_model(
                 [player_model],
