@@ -153,6 +153,7 @@ SPOTLAND_STADIUM = "Spotland Stadium"
 GIANTS_STADIUM = "Giants Stadium"
 TIPOS_ARENA = "Ondrej Nepela Arena"
 BAROSSA_PARK = "Barossa Park"
+HANDS_OVAL = "Hands Oval, Bunbury"
 AFL_VENUE_IDENTITY_MAP = {
     "brunswick_st": BRUNSWICK_ST,
     "victoria_park": VICTORIA_PARK,
@@ -262,6 +263,8 @@ AFL_VENUE_IDENTITY_MAP = {
     "GMHBA Stadium, Geelong": KARDINIA_PARK,
     "People First Stadium, Gold Coast": CARRARA,
     "TIO Traeger Park, Alice Springs": TRAEGER,
+    "Corroboree Group Oval Manuka, Canberra": MANUKA_OVAL,
+    "Hands Oval, Bunbury": HANDS_OVAL,
 }
 
 

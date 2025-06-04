@@ -81,6 +81,8 @@ WIKIPEDIA_VENUE_ID_MAP: dict[str, str | None] = {
     "Barossa Park": None,
     # SportsReference
     "UW–Milwaukee Panther Arena, Milwaukee, Wisconsin": "UW–Milwaukee_Panther_Arena",
+    # AFL.com
+    "Hands Oval, Bunbury": "Hands_Oval",
 }
 
 

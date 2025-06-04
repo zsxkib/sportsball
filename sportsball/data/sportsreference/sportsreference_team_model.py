@@ -46,6 +46,7 @@ _BAD_TEAM_URLS = {
     "https://www.sports-reference.com/cbb/schools/mid-atlantic-christian/2016.html",
     "https://www.sports-reference.com/cbb/schools/claflin/2013.html",
     "https://www.sports-reference.com/cbb/schools/chaminade/2011.html",
+    "https://www.sports-reference.com/cbb/schools/alaska-anchorage/2016.html",
 }
 
 

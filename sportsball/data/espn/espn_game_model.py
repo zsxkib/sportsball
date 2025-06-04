@@ -103,7 +103,7 @@ def _create_teams(
             odds_dict = odds_response.json()
 
         for competitor in competition["competitors"]:
-            if competitor[ID_KEY] == "-1":
+            if competitor[ID_KEY] in {"-1", "-2"}:
                 continue
             teams.append(
                 _create_espn_team(

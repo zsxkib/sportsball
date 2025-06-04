@@ -92,7 +92,7 @@ def _create_espn_player_model(
         handicap_weight=None,
         father=None,
         sex=str(Sex.MALE),
-        age=None if birth_date is None else relativedelta(birth_date, dt).years,
+        age=None if birth_date is None else relativedelta(birth_date, dt.date()).years,
         starting_position=positions_validator[position_dict["abbreviation"]],
         weight=athlete_dict["weight"] * 0.453592,
         birth_address=create_google_address_model(
