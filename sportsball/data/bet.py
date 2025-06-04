@@ -37,6 +37,7 @@ class Bet(StrEnum):
     FIFTH_DOUBLE_TRIO = auto()
     SIX_UP = auto()
     TREBLE = auto()
+    TWELTH_DOUBLE_TRIO = auto()
 
 
 _BETS = {str(x).lower(): x for x in Bet}
@@ -91,5 +92,7 @@ def bet_from_str(bet_str: str) -> Bet:
             return Bet.FIFTH_DOUBLE_TRIO
         if bet_str == "six up":
             return Bet.SIX_UP
+        if bet_str == "12th double trio":
+            return Bet.TWELTH_DOUBLE_TRIO
         raise ValueError(f"Unrecognised bet: {bet_str}")
     return bet

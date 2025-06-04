@@ -89,7 +89,7 @@ def _create_hkjc_hkjc_game_model(
                     horse_name = row["Horse"].split("(")[0].strip()
                 except KeyError:
                     logging.error(url)
-                    raise
+                    continue
 
                 jockey_name = row["Jockey"].split("(")[0].strip()
 

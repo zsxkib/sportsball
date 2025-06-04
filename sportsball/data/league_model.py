@@ -54,7 +54,7 @@ def _normalize_tz(df: pd.DataFrame) -> pd.DataFrame:
         datetime_cols.add(GAME_DT_COLUMN)
         for col in datetime_cols:
             dt = row[col]  # type: ignore
-            if isinstance(dt, datetime.datetime):
+            if isinstance(dt, (datetime.date, datetime.datetime)):
                 dt = pd.to_datetime(dt)
             if dt.tz is None:
                 row[col] = dt.tz_localize(

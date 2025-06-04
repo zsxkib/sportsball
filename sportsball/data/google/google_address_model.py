@@ -15684,6 +15684,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Australia",
     ),
+    "Inkster, Michigan, United States": SportsballGeocodeTuple(
+        city="Inkster",
+        state="MI",
+        postal="",
+        lat=42.2925,
+        lng=-83.314167,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 

@@ -172,3 +172,4 @@ ret.parquet
 .DS_Store
 .sportsball_cache*
 *.parquet.gzip
+.testmondata*
