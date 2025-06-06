@@ -52,7 +52,11 @@ def _create_hkjc_hkjc_game_model(
 
     o = urlparse(url)
     query = urllib.parse.parse_qs(o.query)
-    dt = parse(query[RACE_DATE_QUERY_KEY][0])
+    try:
+        dt = parse(query[RACE_DATE_QUERY_KEY][0])
+    except KeyError:
+        logging.error(url)
+        return None
     game_number = int(query[RACE_NUMBER_QUERY_KEY][0])
     venue_code = query[RACE_COURSE_QUERY_KEY][0]
 
@@ -69,7 +73,7 @@ def _create_hkjc_hkjc_game_model(
         if count == 1:
             race_track = ""
             try:
-                race_track = df.iat[2, 2].split("-")[0].strip()
+                race_track = str(df.iat[2, 2]).split("-", maxsplit=1)[0].strip()
             except IndexError:
                 logging.error(url)
                 raise
@@ -86,7 +90,7 @@ def _create_hkjc_hkjc_game_model(
             for _, row in df.iterrows():
                 horse_name = None
                 try:
-                    horse_name = row["Horse"].split("(")[0].strip()
+                    horse_name = "(".join(row["Horse"].split("(")[:-1]).strip()
                 except KeyError:
                     logging.error(url)
                     continue
@@ -141,6 +145,8 @@ def _create_hkjc_hkjc_game_model(
                     lbw = 2.4 * 0.07
                 elif lbw_str == "+SH":
                     lbw = 2.4 * 0.2 * 0.5
+                elif lbw_str in {"HD+", "+HD"}:
+                    lbw = 2.4 * 0.2 * 1.5
                 elif lbw_str and lbw_str != "-" and lbw_str != "---":
                     if lbw is not None:
                         if "-" in lbw_str:
@@ -190,6 +196,8 @@ def _create_hkjc_hkjc_game_model(
                 if place is None:
                     continue
                 if horse_url is None:
+                    logging.error(url)
+                    logging.error(row)
                     raise ValueError("horse_url is null")
 
                 team_model = create_hkjc_hkjc_team_model(
@@ -221,7 +229,15 @@ def _create_hkjc_hkjc_game_model(
                     continue
                 if dividend_str == "detail":
                     continue
-                dividend_str = dividend_str.split("/", maxsplit=1)[0].replace(",", "")
+                dividend_str = (
+                    dividend_str.split("/", maxsplit=1)[0]
+                    .replace(",", "")
+                    .replace("$", "")
+                    .replace("(", "")
+                    .replace(")", "")
+                )
+                if dividend_str == "win":
+                    continue
                 dividend = float(dividend_str)
 
                 combination = None

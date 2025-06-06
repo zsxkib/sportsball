@@ -5,7 +5,7 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
-from .field_type import TYPE_KEY, FieldType
+from .field_type import FFILL_KEY, TYPE_KEY, FieldType
 
 COACH_IDENTIFIER_COLUMN: Literal["identifier"] = "identifier"
 COACH_NAME_COLUMN: Literal["name"] = "name"
@@ -22,5 +22,7 @@ class CoachModel(BaseModel):
         alias=COACH_IDENTIFIER_COLUMN,
     )
     name: str = Field(..., alias=COACH_NAME_COLUMN)
-    birth_date: datetime.date | None = Field(..., alias=COACH_BIRTH_DATE_COLUMN)
+    birth_date: datetime.date | None = Field(
+        ..., json_schema_extra={FFILL_KEY: True}, alias=COACH_BIRTH_DATE_COLUMN
+    )
     age: int | None = Field(..., alias=COACH_AGE_COLUMN)

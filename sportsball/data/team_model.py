@@ -7,7 +7,7 @@ from typing import Any, Literal
 from pydantic import BaseModel, Field
 
 from .coach_model import CoachModel
-from .field_type import TYPE_KEY, FieldType
+from .field_type import FFILL_KEY, TYPE_KEY, FieldType
 from .news_model import NewsModel
 from .odds_model import OddsModel
 from .player_model import PlayerModel
@@ -464,6 +464,8 @@ def _calcualte_field_goals_percentage(data: dict[str, Any]) -> float | None:
     field_goals_attempted = data.get(FIELD_GOALS_ATTEMPTED_COLUMN)
     if field_goals_attempted is None:
         return None
+    if field_goals_attempted == 0:
+        return 0.0
     return float(field_goals) / float(field_goals_attempted)  # type: ignore
 
 
@@ -506,6 +508,8 @@ def _calculate_three_point_field_goals_percentage(data: dict[str, Any]) -> float
     )
     if three_point_field_goals_attempted is None:
         return None
+    if three_point_field_goals_attempted == 0:
+        return 0.0
     return float(three_point_field_goals) / float(three_point_field_goals_attempted)  # type: ignore
 
 
@@ -544,6 +548,8 @@ def _calculate_free_throws_percentage(data: dict[str, Any]) -> float | None:
     free_throws_attempted = data.get(TEAM_FREE_THROWS_ATTEMPTED_COLUMN)
     if free_throws_attempted is None:
         return None
+    if free_throws_attempted == 0:
+        return 0.0
     return float(free_throws) / float(free_throws_attempted)  # type: ignore
 
 
@@ -770,7 +776,9 @@ class TeamModel(BaseModel):
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=TEAM_GOAL_ASSISTS_COLUMN,
     )
-    coaches: list[CoachModel] = Field(..., alias=TEAM_COACHES_COLUMN)
+    coaches: list[CoachModel] = Field(
+        ..., json_schema_extra={FFILL_KEY: True}, alias=TEAM_COACHES_COLUMN
+    )
     lbw: float | None = Field(
         ...,
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},

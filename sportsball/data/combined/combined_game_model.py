@@ -2,6 +2,7 @@
 
 # pylint: disable=too-many-locals,line-too-long,too-many-arguments,too-many-branches,too-many-statements
 import logging
+from typing import Any
 
 import requests
 
@@ -38,6 +39,9 @@ def _team_models(
     player_identity_map: dict[str, str],
     names: dict[str, str],
     coach_names: dict[str, str],
+    player_ffill: dict[str, dict[str, Any]],
+    team_ffill: dict[str, dict[str, Any]],
+    coach_ffill: dict[str, dict[str, Any]],
 ) -> list[TeamModel]:
     team_models: dict[str, list[TeamModel]] = {}
     for game_model in game_models:
@@ -54,7 +58,16 @@ def _team_models(
                     team_model
                 ]
     return [
-        create_combined_team_model(v, k, player_identity_map, names, coach_names)  # pyright: ignore
+        create_combined_team_model(
+            v,
+            k,
+            player_identity_map,
+            names,
+            coach_names,
+            player_ffill,
+            team_ffill,
+            coach_ffill,
+        )  # pyright: ignore
         for k, v in team_models.items()
     ]
 
@@ -68,11 +81,21 @@ def create_combined_game_model(
     names: dict[str, str],
     coach_names: dict[str, str],
     last_game_number: int | None,
+    player_ffill: dict[str, dict[str, Any]],
+    team_ffill: dict[str, dict[str, Any]],
+    coach_ffill: dict[str, dict[str, Any]],
 ) -> GameModel:
     """Create a game model by combining many game models."""
     venue_models, full_venue_identity = _venue_models(game_models, venue_identity_map)
     full_team_models = _team_models(
-        game_models, team_identity_map, player_identity_map, names, coach_names
+        game_models,
+        team_identity_map,
+        player_identity_map,
+        names,
+        coach_names,
+        player_ffill,
+        team_ffill,
+        coach_ffill,
     )
     attendance = None
     end_dt = None

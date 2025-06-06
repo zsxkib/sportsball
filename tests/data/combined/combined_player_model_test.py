@@ -75,8 +75,10 @@ class TestCombinedPlayerModel(unittest.TestCase):
                 game_score=None,
                 point_differential=None,
             )
+            players_ffill = {}
             combined_player_model = create_combined_player_model(
-                [player_model],
-                identifier,
+                player_models=[player_model],
+                identifier=identifier,
+                player_ffill=players_ffill,
             )
             self.assertEqual(combined_player_model.field_goals_attempted, field_goals_attempted)

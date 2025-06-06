@@ -91,17 +91,23 @@ class CombinedLeagueModel(LeagueModel):
                 games[key] = games.get(key, []) + [game_model]
         names: dict[str, str] = {}
         coach_names: dict[str, str] = {}
+        player_ffill: dict[str, dict[str, Any]] = {}
+        team_ffill: dict[str, dict[str, Any]] = {}
+        coach_ffill: dict[str, dict[str, Any]] = {}
         last_game_number = None
         for game_models in games.values():
             game_model = create_combined_game_model(  # type: ignore
-                game_models,
-                self.venue_identity_map(),
-                team_identity_map,
-                self.player_identity_map(),
-                self.session,
-                names,
-                coach_names,
-                last_game_number,
+                game_models=game_models,
+                venue_identity_map=self.venue_identity_map(),
+                team_identity_map=team_identity_map,
+                player_identity_map=self.player_identity_map(),
+                session=self.session,
+                names=names,
+                coach_names=coach_names,
+                last_game_number=last_game_number,
+                player_ffill=player_ffill,
+                team_ffill=team_ffill,
+                coach_ffill=coach_ffill,
             )
             last_game_number = game_model.game_number
             yield game_model

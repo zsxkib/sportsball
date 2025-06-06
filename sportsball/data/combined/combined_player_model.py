@@ -1,12 +1,17 @@
 """Combined player model."""
 
 # pylint: disable=too-many-locals,too-many-branches,too-many-statements,duplicate-code
+from typing import Any
+
+from ..field_type import FFILL_KEY
 from ..player_model import PlayerModel
 from .null_check import is_null
 
 
 def create_combined_player_model(
-    player_models: list[PlayerModel], identifier: str
+    player_models: list[PlayerModel],
+    identifier: str,
+    player_ffill: dict[str, dict[str, Any]],
 ) -> PlayerModel:
     """Create a player model by combining many player models."""
     jersey = None
@@ -234,7 +239,8 @@ def create_combined_player_model(
         raise ValueError("name is null")
     if species is None:
         raise ValueError("species is null")
-    return PlayerModel(
+
+    player_model = PlayerModel(
         identifier=identifier,
         jersey=jersey,
         kicks=kicks,
@@ -291,3 +297,16 @@ def create_combined_player_model(
         game_score=game_score,
         point_differential=point_differential,
     )
+
+    player_instance_ffill = player_ffill.get(identifier, {})
+    for field_name, field in player_model.model_fields.items():
+        extra = field.json_schema_extra or {}
+        if extra.get(FFILL_KEY, False):  # type: ignore
+            current_value = getattr(player_model, field_name)
+            if current_value is None:
+                setattr(player_model, field_name, player_instance_ffill.get(field_name))
+            else:
+                player_instance_ffill[field_name] = current_value
+    player_ffill[identifier] = player_instance_ffill
+
+    return player_model

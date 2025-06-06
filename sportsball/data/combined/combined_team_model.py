@@ -1,10 +1,12 @@
 """Combined team model."""
 
-# pylint: disable=too-many-locals,too-many-branches,too-many-statements
+# pylint: disable=too-many-locals,too-many-branches,too-many-statements,too-many-arguments
 import re
 import unicodedata
+from typing import Any
 
 from ..coach_model import CoachModel
+from ..field_type import FFILL_KEY
 from ..news_model import NewsModel
 from ..odds_model import OddsModel
 from ..player_model import PlayerModel
@@ -30,6 +32,9 @@ def create_combined_team_model(
     player_identity_map: dict[str, str],
     names: dict[str, str],
     coach_names: dict[str, str],
+    player_ffill: dict[str, dict[str, Any]],
+    team_ffill: dict[str, dict[str, Any]],
+    coach_ffill: dict[str, dict[str, Any]],
 ) -> TeamModel:
     """Create a team model by combining many team models."""
     location = None
@@ -99,12 +104,12 @@ def create_combined_team_model(
         if not is_null(team_model_end_dt):
             end_dt = team_model_end_dt
 
-    return TeamModel(
+    team_model = TeamModel(
         identifier=identifier,
         name=team_models[0].name,
         location=location,
         players=[  # pyright: ignore
-            create_combined_player_model(v, k) for k, v in players.items()
+            create_combined_player_model(v, k, player_ffill) for k, v in players.items()
         ],
         odds=[x[0] for x in odds.values()],
         points=points,
@@ -112,7 +117,22 @@ def create_combined_team_model(
         news=sorted(news.values(), key=lambda x: x.published),
         social=sorted(social.values(), key=lambda x: x.published),
         field_goals=field_goals,
-        coaches=[create_combined_coach_model(v, k) for k, v in coaches.items()],
+        coaches=[
+            create_combined_coach_model(v, k, coach_ffill) for k, v in coaches.items()
+        ],
         lbw=lbw,
         end_dt=end_dt,
     )
+
+    team_instance_ffill = team_ffill.get(identifier, {})
+    for field_name, field in team_model.model_fields.items():
+        extra = field.json_schema_extra or {}
+        if extra.get(FFILL_KEY, False):  # type: ignore
+            current_value = getattr(team_model, field_name)
+            if current_value is None:
+                setattr(team_model, field_name, team_instance_ffill.get(field_name))
+            else:
+                team_instance_ffill[field_name] = current_value
+    team_ffill[identifier] = team_instance_ffill
+
+    return team_model

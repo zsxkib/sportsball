@@ -3232,6 +3232,33 @@ MADISON = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
+SAN_JOSE = SportsballGeocodeTuple(
+    city="San Jose",
+    state="CA",
+    postal="",
+    lat=37.336111,
+    lng=-121.890556,
+    housenumber="",
+    country="USA",
+)
+MIAMI_ARENA = SportsballGeocodeTuple(
+    city="Miami",
+    state="FL",
+    postal="",
+    lat=25.781111,
+    lng=-80.194722,
+    housenumber="721",
+    country="USA",
+)
+SILVIO_O_CONTE_FORUM = SportsballGeocodeTuple(
+    city="Chestnut Hill",
+    state="MA",
+    postal="",
+    lat=42.335,
+    lng=-71.1675,
+    housenumber="",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -6788,15 +6815,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="2168",
         country="USA",
     ),
-    "Silvio O. Conte Forum, Chestnut Hill, Massachusetts": SportsballGeocodeTuple(
-        city="Chestnut Hill",
-        state="MA",
-        postal="",
-        lat=42.335,
-        lng=-71.1675,
-        housenumber="",
-        country="USA",
-    ),
+    "Silvio O. Conte Forum, Chestnut Hill, Massachusetts": SILVIO_O_CONTE_FORUM,
     "Millett Hall, Oxford, Ohio": SportsballGeocodeTuple(
         city="Oxford",
         state="OH",
@@ -7987,15 +8006,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Charlotte Coliseum": CHARLOTTE_COLISEUM,
     "Toyota Center, Houston, Texas": TOYOTA_CENTRE,
     "American Airlines Center, Dallas, Texas": AMERICAN_AIRLINES_ARENA,
-    "Miami Arena": SportsballGeocodeTuple(
-        city="Miami",
-        state="FL",
-        postal="",
-        lat=25.781111,
-        lng=-80.194722,
-        housenumber="721",
-        country="USA",
-    ),
+    "Miami Arena": MIAMI_ARENA,
     "Al McGuire Center, Milwaukee, Wisconsin": SportsballGeocodeTuple(
         city="Milwaukee",
         state="WI",
@@ -10350,15 +10361,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "San Jose, California": SportsballGeocodeTuple(
-        city="San Jose",
-        state="CA",
-        postal="",
-        lat=37.336111,
-        lng=-121.890556,
-        housenumber="",
-        country="USA",
-    ),
+    "San Jose, California": SAN_JOSE,
     "Columbia, South Carolina": SportsballGeocodeTuple(
         city="Columbia",
         state="SC",
@@ -15692,6 +15695,45 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lng=-83.314167,
         housenumber="",
         country="USA",
+    ),
+    "Danville, Virginia, United States": SportsballGeocodeTuple(
+        city="Danville",
+        state="VA",
+        postal="",
+        lat=36.587222,
+        lng=-79.404444,
+        housenumber="",
+        country="USA",
+    ),
+    "Antioch, CA, USA": SportsballGeocodeTuple(
+        city="Antioch",
+        state="CA",
+        postal="",
+        lat=38.005,
+        lng=-121.805833,
+        housenumber="",
+        country="USA",
+    ),
+    "San Jose, CA, USA": SAN_JOSE,
+    "Miami Arena, Miami, Florida": MIAMI_ARENA,
+    "Silvio O. Conte Forum, Boston, Massachusetts": SILVIO_O_CONTE_FORUM,
+    "IND": SportsballGeocodeTuple(
+        city="",
+        state="",
+        postal="",
+        lat=21.0,
+        lng=78.0,
+        housenumber="",
+        country="India",
+    ),
+    "Tokyo Dome, Tokyo, Japan": SportsballGeocodeTuple(
+        city="Tokyo",
+        state="",
+        postal="",
+        lat=35.705556,
+        lng=139.751944,
+        housenumber="3",
+        country="Japan",
     ),
 }
 

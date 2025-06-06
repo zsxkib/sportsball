@@ -21,6 +21,9 @@ class TestCombinedTeamModel(unittest.TestCase):
         with requests_mock.Mocker() as m:
             names = {}
             coach_names = {}
+            player_ffill = {}
+            team_ffill = {}
+            coach_ffill = {}
             player_models = [PlayerModel(
                 identifier="1",
                 jersey=None,
@@ -97,6 +100,9 @@ class TestCombinedTeamModel(unittest.TestCase):
                 player_identity_map={},
                 names=names,
                 coach_names=coach_names,
+                player_ffill=player_ffill,
+                team_ffill=team_ffill,
+                coach_ffill=coach_ffill,
             )
             player_models_2 = [PlayerModel(
                 identifier="1a",
@@ -174,6 +180,9 @@ class TestCombinedTeamModel(unittest.TestCase):
                 player_identity_map={},
                 names=names,
                 coach_names=coach_names,
+                player_ffill=player_ffill,
+                team_ffill=team_ffill,
+                coach_ffill=coach_ffill,
             )
             self.assertEqual(team_model.players[0].identifier, team_model_2.players[0].identifier)
 
@@ -181,6 +190,9 @@ class TestCombinedTeamModel(unittest.TestCase):
         with requests_mock.Mocker() as m:
             names = {}
             coach_names = {}
+            player_ffill = {}
+            team_ffill = {}
+            coach_ffill = {}
             player_models = [PlayerModel(
                 identifier="1",
                 jersey=None,
@@ -257,6 +269,9 @@ class TestCombinedTeamModel(unittest.TestCase):
                 player_identity_map={},
                 names=names,
                 coach_names=coach_names,
+                player_ffill=player_ffill,
+                team_ffill=team_ffill,
+                coach_ffill=coach_ffill,
             )
             player_models_2 = [PlayerModel(
                 identifier="1a",
@@ -334,5 +349,8 @@ class TestCombinedTeamModel(unittest.TestCase):
                 player_identity_map={},
                 names=names,
                 coach_names=coach_names,
+                player_ffill=player_ffill,
+                team_ffill=team_ffill,
+                coach_ffill=coach_ffill,
             )
             self.assertEqual(team_model.players[0].identifier, team_model_2.players[0].identifier)

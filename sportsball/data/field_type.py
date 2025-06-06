@@ -3,6 +3,7 @@
 from enum import StrEnum
 
 TYPE_KEY = "type"
+FFILL_KEY = "ffill"
 
 
 class FieldType(StrEnum):

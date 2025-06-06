@@ -9,7 +9,7 @@ import gender_guesser.detector as gender  # type: ignore
 from pydantic import BaseModel, Field
 
 from .address_model import AddressModel
-from .field_type import TYPE_KEY, FieldType
+from .field_type import FFILL_KEY, TYPE_KEY, FieldType
 from .owner_model import OwnerModel
 from .sex import Sex
 
@@ -113,6 +113,8 @@ def _calculate_field_goals_percentage(data: dict[str, Any]) -> float | None:
     field_goals_attempted = data.get(FIELD_GOALS_ATTEMPTED_COLUMN)
     if field_goals_attempted is None:
         return None
+    if field_goals_attempted == 0:
+        return 0.0
     return float(field_goals) / float(field_goals_attempted)  # type: ignore
 
 
@@ -125,6 +127,8 @@ def _calculate_three_point_field_goals_percentage(data: dict[str, Any]) -> float
     )
     if three_point_field_goals_attempted is None:
         return None
+    if three_point_field_goals_attempted == 0:
+        return 0.0
     return float(three_point_field_goals) / float(three_point_field_goals_attempted)  # type: ignore
 
 
@@ -135,6 +139,8 @@ def _calculate_free_throws_percentage(data: dict[str, Any]) -> float | None:
     free_throws_attempted = data.get(PLAYER_FREE_THROWS_ATTEMPTED_COLUMN)
     if free_throws_attempted is None:
         return None
+    if free_throws_attempted == 0:
+        return 0.0
     return float(free_throws) / float(free_throws_attempted)  # type: ignore
 
 
@@ -308,17 +314,21 @@ class PlayerModel(BaseModel):
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=PLAYER_PERCENTAGE_PLAYED_COLUMN,
     )
-    birth_date: datetime.date | None = Field(..., alias=PLAYER_BIRTH_DATE_COLUMN)
+    birth_date: datetime.date | None = Field(
+        ..., json_schema_extra={FFILL_KEY: True}, alias=PLAYER_BIRTH_DATE_COLUMN
+    )
     species: str = Field(
         ...,
-        json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL},
+        json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL, FFILL_KEY: True},
         alias=PLAYER_SPECIES_COLUMN,
     )
     handicap_weight: float | None = Field(..., alias=PLAYER_HANDICAP_WEIGHT_COLUMN)
-    father: PlayerModel | None = Field(..., alias=PLAYER_FATHER_COLUMN)
+    father: PlayerModel | None = Field(
+        ..., json_schema_extra={FFILL_KEY: True}, alias=PLAYER_FATHER_COLUMN
+    )
     sex: str | None = Field(
         default_factory=_guess_sex,
-        json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL},
+        json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL, FFILL_KEY: True},
         alias=PLAYER_SEX_COLUMN,
     )
     age: int | None = Field(..., alias=PLAYER_AGE_COLUMN)
@@ -327,9 +337,15 @@ class PlayerModel(BaseModel):
         json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL},
         alias=PLAYER_STARTING_POSITION_COLUMN,
     )
-    weight: float | None = Field(..., alias=PLAYER_WEIGHT_COLUMN)
-    birth_address: AddressModel | None = Field(..., alias=PLAYER_BIRTH_ADDRESS_COLUMN)
-    owner: OwnerModel | None = Field(..., alias=PLAYER_OWNER_COLUMN)
+    weight: float | None = Field(
+        ..., json_schema_extra={FFILL_KEY: True}, alias=PLAYER_WEIGHT_COLUMN
+    )
+    birth_address: AddressModel | None = Field(
+        ..., json_schema_extra={FFILL_KEY: True}, alias=PLAYER_BIRTH_ADDRESS_COLUMN
+    )
+    owner: OwnerModel | None = Field(
+        ..., json_schema_extra={FFILL_KEY: True}, alias=PLAYER_OWNER_COLUMN
+    )
     seconds_played: int | None = Field(
         ...,
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
