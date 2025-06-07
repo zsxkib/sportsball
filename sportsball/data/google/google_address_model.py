@@ -3277,6 +3277,15 @@ BIRMINGHAM_JEFFERSON_CIVIC_CENTER = SportsballGeocodeTuple(
     housenumber="2100",
     country="USA",
 )
+FRESNO = SportsballGeocodeTuple(
+    city="Fresno",
+    state="CA",
+    postal="",
+    lat=36.75,
+    lng=-119.766667,
+    housenumber="",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -10491,15 +10500,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Fresno, California": SportsballGeocodeTuple(
-        city="Fresno",
-        state="CA",
-        postal="",
-        lat=36.75,
-        lng=-119.766667,
-        housenumber="",
-        country="USA",
-    ),
+    "Fresno, California": FRESNO,
     "War Memorial Coliseum, Fort Wayne, Indiana": ALLEN_COUNTY_WAR_MEMORIAL_COLISEUM,
     "Peterson Gym, San Diego, California": SportsballGeocodeTuple(
         city="San Diego",
@@ -15792,6 +15793,16 @@ _CACHED_GEOCODES: dict[str, Any] = {
         postal="",
         lat=33.917222,
         lng=-118.348611,
+        housenumber="",
+        country="USA",
+    ),
+    "Fresno, CA, USA": FRESNO,
+    "Jamestown, NY, USA": SportsballGeocodeTuple(
+        city="Jamestown",
+        state="NY",
+        postal="",
+        lat=42.095556,
+        lng=-79.238611,
         housenumber="",
         country="USA",
     ),
