@@ -15759,6 +15759,24 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "CoreStates Center, Philadelphia, Pennsylvania": SPECTRUM,
     "BJCC Arena, Birmingham, Alabama": BIRMINGHAM_JEFFERSON_CIVIC_CENTER,
     "Long Beach, CA, USA": LONG_BEACH,
+    "Kirkland, WA, USA": SportsballGeocodeTuple(
+        city="Kirkland",
+        state="WA",
+        postal="",
+        lat=47.7,
+        lng=-122.225,
+        housenumber="",
+        country="USA",
+    ),
+    "Seffner, FL, USA": SportsballGeocodeTuple(
+        city="Seffner",
+        state="FL",
+        postal="",
+        lat=27.992222,
+        lng=-82.276667,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
