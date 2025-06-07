@@ -239,8 +239,9 @@ def _create_hkjc_hkjc_game_model(
                     )
                     if dividend_str == "win":
                         continue
-                except IndexError:
-                    logging.error(url)
+                except IndexError as exc:
+                    logging.warning(url)
+                    logging.warning(str(exc))
                     continue
                 dividend = float(dividend_str)
 

@@ -14,3 +14,4 @@ class Position(StrEnum):
     SAFETY = "S"
     WIDE_RECEIVER = "WR"
     GUARD = "G"
+    RUNNING_BACK = "RB"

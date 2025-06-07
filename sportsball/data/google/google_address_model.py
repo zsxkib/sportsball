@@ -15758,6 +15758,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "SkyDome, Toronto, Canada": ROGERS_CENTER,
     "CoreStates Center, Philadelphia, Pennsylvania": SPECTRUM,
     "BJCC Arena, Birmingham, Alabama": BIRMINGHAM_JEFFERSON_CIVIC_CENTER,
+    "Long Beach, CA, USA": LONG_BEACH,
 }
 
 
