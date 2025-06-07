@@ -54,8 +54,9 @@ def _create_hkjc_hkjc_game_model(
     query = urllib.parse.parse_qs(o.query)
     try:
         dt = parse(query[RACE_DATE_QUERY_KEY][0])
-    except KeyError:
-        logging.error(url)
+    except KeyError as exc:
+        logging.warning(url)
+        logging.warning(str(exc))
         return None
     game_number = int(query[RACE_NUMBER_QUERY_KEY][0])
     venue_code = query[RACE_COURSE_QUERY_KEY][0]
