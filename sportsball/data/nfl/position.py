@@ -13,3 +13,4 @@ class Position(StrEnum):
     OFFENSIVE_LINESMAN = "OL"
     SAFETY = "S"
     WIDE_RECEIVER = "WR"
+    GUARD = "G"

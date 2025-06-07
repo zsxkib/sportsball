@@ -218,25 +218,29 @@ def _create_hkjc_hkjc_game_model(
         elif count == 3:
             for _, row in df.iterrows():
                 row_df = row.to_frame()
-                pool = row_df.iat[0, 0].strip()
+                pool = str(row_df.iat[0, 0]).strip()
 
-                dividend_str = str(row_df.iat[2, 0]).strip().lower()
-                if dividend_str == "details":
-                    continue
-                if dividend_str == "refund":
-                    continue
-                if dividend_str == "not win":
-                    continue
-                if dividend_str == "detail":
-                    continue
-                dividend_str = (
-                    dividend_str.split("/", maxsplit=1)[0]
-                    .replace(",", "")
-                    .replace("$", "")
-                    .replace("(", "")
-                    .replace(")", "")
-                )
-                if dividend_str == "win":
+                try:
+                    dividend_str = str(row_df.iat[2, 0]).strip().lower()
+                    if dividend_str == "details":
+                        continue
+                    if dividend_str == "refund":
+                        continue
+                    if dividend_str == "not win":
+                        continue
+                    if dividend_str == "detail":
+                        continue
+                    dividend_str = (
+                        dividend_str.split("/", maxsplit=1)[0]
+                        .replace(",", "")
+                        .replace("$", "")
+                        .replace("(", "")
+                        .replace(")", "")
+                    )
+                    if dividend_str == "win":
+                        continue
+                except IndexError:
+                    logging.error(url)
                     continue
                 dividend = float(dividend_str)
 

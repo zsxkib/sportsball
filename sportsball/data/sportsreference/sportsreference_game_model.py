@@ -482,7 +482,7 @@ def _create_sportsreference_game_model(
                     plusminuses = df["GmSc"].tolist()
                     for idx, player in enumerate(players):
                         point_differentials[player] = plusminuses[idx]
-    except ValueError as exc:
+    except Exception as exc:
         logging.error(url)
         logging.error(response.text)
         raise exc

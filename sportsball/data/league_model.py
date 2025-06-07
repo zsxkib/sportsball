@@ -41,6 +41,8 @@ def _normalize_tz(df: pd.DataFrame) -> pd.DataFrame:
     tqdm.tqdm.pandas(desc="Timezone Conversions")
 
     # Check each row to see if they have the correct timezone
+    dt_cols = set()
+
     def apply_tz(row: pd.Series) -> pd.Series:
         if tz_column not in row:
             return row
@@ -53,6 +55,7 @@ def _normalize_tz(df: pd.DataFrame) -> pd.DataFrame:
         }
         datetime_cols.add(GAME_DT_COLUMN)
         for col in datetime_cols:
+            dt_cols.add(col)
             dt = row[col]  # type: ignore
             if isinstance(dt, (datetime.date, datetime.datetime)):
                 dt = pd.to_datetime(dt)
@@ -64,6 +67,9 @@ def _normalize_tz(df: pd.DataFrame) -> pd.DataFrame:
                 row[col] = dt.tz_convert(tz)
 
         return row
+
+    for dt_col in dt_cols:
+        df[dt_col] = pd.to_datetime(df[dt_col])
 
     return df.progress_apply(apply_tz, axis=1)  # type: ignore
 

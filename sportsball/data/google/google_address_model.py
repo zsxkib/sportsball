@@ -3259,6 +3259,24 @@ SILVIO_O_CONTE_FORUM = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
+ROGERS_CENTER = SportsballGeocodeTuple(
+    city="Toronto",
+    state="ON",
+    postal="M5V 1J1",
+    lat=43.6415757,
+    lng=-79.3942991,
+    housenumber="580",
+    country="Canada",
+)
+BIRMINGHAM_JEFFERSON_CIVIC_CENTER = SportsballGeocodeTuple(
+    city="Birmingham",
+    state="AL",
+    postal="35203",
+    lat=33.524,
+    lng=-86.812,
+    housenumber="2100",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -3529,15 +3547,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="580",
         country="Australia",
     ),
-    "Rogers Centre - Toronto - ON": SportsballGeocodeTuple(
-        city="Toronto",
-        state="ON",
-        postal="M5V 1J1",
-        lat=43.6415757,
-        lng=-79.3942991,
-        housenumber="580",
-        country="Canada",
-    ),
+    "Rogers Centre - Toronto - ON": ROGERS_CENTER,
     "Euroa - Australia": SportsballGeocodeTuple(
         city="Euroa",
         state="VIC",
@@ -13500,15 +13510,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="6400",
         country="USA",
     ),
-    "Birmingham-Jefferson Civic Center, Birmingham, Alabama": SportsballGeocodeTuple(
-        city="Birmingham",
-        state="AL",
-        postal="35203",
-        lat=33.524,
-        lng=-86.812,
-        housenumber="2100",
-        country="USA",
-    ),
+    "Birmingham-Jefferson Civic Center, Birmingham, Alabama": BIRMINGHAM_JEFFERSON_CIVIC_CENTER,
     "War Memorial Gymnasium, Maui, Hawaii": SportsballGeocodeTuple(
         city="Maui",
         state="HI",
@@ -15735,12 +15737,34 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="3",
         country="Japan",
     ),
+    "NH": SportsballGeocodeTuple(
+        city="",
+        state="",
+        postal="",
+        lat=52.0,
+        lng=6.0,
+        housenumber="",
+        country="Netherlands",
+    ),
+    "Federal Way, WA, USA": SportsballGeocodeTuple(
+        city="Federal Way",
+        state="WA",
+        postal="",
+        lat=47.313333,
+        lng=-122.372222,
+        housenumber="",
+        country="USA",
+    ),
+    "SkyDome, Toronto, Canada": ROGERS_CENTER,
+    "CoreStates Center, Philadelphia, Pennsylvania": SPECTRUM,
+    "BJCC Arena, Birmingham, Alabama": BIRMINGHAM_JEFFERSON_CIVIC_CENTER,
 }
 
 
 def _create_google_address_model(
     query: str, session: requests_cache.CachedSession, dt: datetime.datetime | None
 ) -> AddressModel:
+    query = query.replace("\n", "")
     g = _CACHED_GEOCODES.get(query)
     if g is None:
         logging.warning("Failed to find query: %s", query)
