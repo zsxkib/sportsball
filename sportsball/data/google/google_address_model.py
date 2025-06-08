@@ -15806,6 +15806,24 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "The Summit, Houston, Texas": SportsballGeocodeTuple(
+        city="Houston",
+        state="TX",
+        postal="",
+        lat=29.730278,
+        lng=-95.435,
+        housenumber="3700",
+        country="USA",
+    ),
+    "Folsom, CA, USA": SportsballGeocodeTuple(
+        city="Folsom",
+        state="CA",
+        postal="",
+        lat=38.672222,
+        lng=-121.157778,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
