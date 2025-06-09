@@ -131,8 +131,8 @@ def _create_hkjc_hkjc_game_model(
                     starting_position = position_from_str(starting_position_str.strip())
 
                 lbw: float | None = 0.0
-                lbw_str = row["LBW"].strip()
-                if lbw_str == "HD":
+                lbw_str = str(row["LBW"]).strip()
+                if lbw_str in {"HD", "H"}:
                     lbw = 2.4 * 0.2
                 elif lbw_str == "SH":
                     lbw = 2.4 * 0.2 * 0.5
@@ -148,7 +148,11 @@ def _create_hkjc_hkjc_game_model(
                     lbw = 2.4 * 0.2 * 0.5
                 elif lbw_str in {"HD+", "+HD"}:
                     lbw = 2.4 * 0.2 * 1.5
-                elif lbw_str and lbw_str != "-" and lbw_str != "---":
+                elif lbw_str == "NK":
+                    lbw = 2.4 * 0.4
+                elif (
+                    lbw_str and lbw_str != "-" and lbw_str != "---" and lbw_str != "nan"
+                ):
                     if lbw is not None:
                         if "-" in lbw_str:
                             lbw_horses, lbw_str = lbw_str.split("-")

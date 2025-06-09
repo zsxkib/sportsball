@@ -41,6 +41,7 @@ _NON_WAYBACK_URLS: set[str] = {
     "https://www.sports-reference.com/cbb/schools/north-carolina/women/2018.html",
     "https://www.sports-reference.com/cbb/schools/minnesota/women/2009.html",
     "https://www.basketball-reference.com/teams/GSW/2016.html",
+    "https://www.sports-reference.com/cbb/schools/cal-state-fullerton/men/2007.html",
 }
 _BAD_TEAM_URLS = {
     "https://www.sports-reference.com/cbb/schools/mid-atlantic-christian/2016.html",

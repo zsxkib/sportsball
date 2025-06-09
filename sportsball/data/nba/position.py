@@ -7,6 +7,7 @@ class Position(StrEnum):
     """An enumeration over the different positions."""
 
     POWER_FORWARD = "PF"
+    SHORT_GUARD = "SG"
 
 
 _POSITIONS = {str(x): x for x in Position}
