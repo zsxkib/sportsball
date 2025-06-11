@@ -34,6 +34,7 @@ from .session import DEFAULT_TIMEOUT
 FAST_FAIL_DOMAINS = [
     "https://news.google.com/",
     "https://historical-forecast-api.open-meteo.com/",
+    "https://api.open-meteo.com/",
 ]
 
 
