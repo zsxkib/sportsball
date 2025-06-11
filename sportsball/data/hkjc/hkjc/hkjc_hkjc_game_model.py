@@ -158,6 +158,9 @@ def _create_hkjc_hkjc_game_model(
                     and lbw_str != "DNF"
                     and lbw_str != "M.L."
                     and lbw_str != "T.O."
+                    and lbw_str != "U/R"
+                    and lbw_str != "M. L."
+                    and lbw_str != "TNP"
                 ):
                     if lbw is not None:
                         if "-" in lbw_str:
@@ -250,9 +253,7 @@ def _create_hkjc_hkjc_game_model(
                     )
                     if dividend_str == "win":
                         continue
-                except IndexError as exc:
-                    logging.warning(url)
-                    logging.warning(str(exc))
+                except IndexError:
                     continue
                 dividend = float(dividend_str)
 

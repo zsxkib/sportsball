@@ -3322,6 +3322,15 @@ CHATTANOOGA = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
+HANDS_OVAL = SportsballGeocodeTuple(
+    city="Bunbury",
+    state="WA",
+    postal="",
+    lat=-33.346111,
+    lng=115.642778,
+    housenumber="",
+    country="Australia",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -15693,15 +15702,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="Zimbabwe",
     ),
     "Corroboree Group Oval Manuka, Canberra": MANUKA_OVAL,
-    "Hands Oval, Bunbury": SportsballGeocodeTuple(
-        city="Bunbury",
-        state="WA",
-        postal="",
-        lat=-33.346111,
-        lng=115.642778,
-        housenumber="",
-        country="Australia",
-    ),
+    "Hands Oval, Bunbury": HANDS_OVAL,
     "Inkster, Michigan, United States": SportsballGeocodeTuple(
         city="Inkster",
         state="MI",
@@ -15945,6 +15946,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Canada",
     ),
+    "Hands Oval - Australia": HANDS_OVAL,
 }
 
 

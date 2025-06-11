@@ -16,8 +16,8 @@ def create_hkjc_hkjc_owner_model(
     try:
         name = query["HorseOwner"][0]
     except KeyError as exc:
-        logging.warning(url)
-        logging.warning(str(exc))
+        logging.debug(url)
+        logging.debug(str(exc))
         return None
     return OwnerModel(
         identifier=name,
