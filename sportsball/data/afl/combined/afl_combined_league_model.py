@@ -265,6 +265,9 @@ AFL_VENUE_IDENTITY_MAP = {
     "TIO Traeger Park, Alice Springs": TRAEGER,
     "Corroboree Group Oval Manuka, Canberra": MANUKA_OVAL,
     "Hands Oval, Bunbury": HANDS_OVAL,
+    "Hands Oval - Australia": HANDS_OVAL,
+    "UTAS Stadium, Launceston": YORK_PARK,
+    "Hands Oval": HANDS_OVAL,
 }
 
 
