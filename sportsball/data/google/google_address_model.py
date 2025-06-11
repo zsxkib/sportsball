@@ -15926,6 +15926,25 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Joe L. Reed Acadome, Montgomery, Alabama": DUNN_OLIVER_ACADOME,
     "Seattle Center Coliseum, Seattle, Washington": CLIMATE_PLEDGE_ARENA,
+    "Omni Coliseum, Atlanta, Georgia": OMNI_COLISEUM,
+    "Caldwell, ID, USA": SportsballGeocodeTuple(
+        city="Caldwell",
+        state="ID",
+        postal="",
+        lat=43.644444,
+        lng=-116.646944,
+        housenumber="",
+        country="USA",
+    ),
+    "Calgary, AB, Canada": SportsballGeocodeTuple(
+        city="Calgary",
+        state="AB",
+        postal="",
+        lat=51.05,
+        lng=-114.066667,
+        housenumber="",
+        country="Canada",
+    ),
 }
 
 

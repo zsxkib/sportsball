@@ -1,6 +1,6 @@
 """HKJC HKJC game model."""
 
-# pylint: disable=too-many-nested-blocks,too-many-statements,too-many-branches,too-many-locals,too-many-return-statements
+# pylint: disable=too-many-nested-blocks,too-many-statements,too-many-branches,too-many-locals,too-many-return-statements,too-many-boolean-expressions
 import datetime
 import io
 import logging
@@ -132,7 +132,7 @@ def _create_hkjc_hkjc_game_model(
 
                 lbw: float | None = 0.0
                 lbw_str = str(row["LBW"]).strip()
-                if lbw_str in {"HD", "H"}:
+                if lbw_str in {"HD", "H", "HDS"}:
                     lbw = 2.4 * 0.2
                 elif lbw_str == "SH":
                     lbw = 2.4 * 0.2 * 0.5
@@ -151,7 +151,13 @@ def _create_hkjc_hkjc_game_model(
                 elif lbw_str == "NK":
                     lbw = 2.4 * 0.4
                 elif (
-                    lbw_str and lbw_str != "-" and lbw_str != "---" and lbw_str != "nan"
+                    lbw_str
+                    and lbw_str != "-"
+                    and lbw_str != "---"
+                    and lbw_str != "nan"
+                    and lbw_str != "DNF"
+                    and lbw_str != "M.L."
+                    and lbw_str != "T.O."
                 ):
                     if lbw is not None:
                         if "-" in lbw_str:

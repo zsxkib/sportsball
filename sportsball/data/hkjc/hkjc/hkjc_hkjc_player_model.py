@@ -80,7 +80,10 @@ def _create_hkjc_hkjc_player_model(
                     elif "origin" in row_name:
                         origin_row = i
 
-                sex = sex_from_str(df.iat[sex_row, 2].strip().split("/")[-1].strip())
+                sex_str = df.iat[sex_row, 2].strip().split("/")[-1].strip()
+                sex = None
+                if sex_str:
+                    sex = sex_from_str(sex_str)
 
                 origin_str = df.iat[origin_row, 2].strip()
                 origin = None
