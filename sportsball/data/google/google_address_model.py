@@ -15947,6 +15947,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="Canada",
     ),
     "Hands Oval - Australia": HANDS_OVAL,
+    "UTAS Stadium, Launceston": UTAS_STADIUM,
 }
 
 
