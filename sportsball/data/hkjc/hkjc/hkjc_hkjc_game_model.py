@@ -113,7 +113,9 @@ def _create_hkjc_hkjc_game_model(
 
                 handicap_weight = None
                 try:
-                    handicap_weight = float(row["Act. Wt."]) * 0.453592
+                    act_wt = str(row["Act. Wt."])
+                    if act_wt != "---":
+                        handicap_weight = float(act_wt) * 0.453592
                 except KeyError:
                     logging.warning("Failed to find handicap weight for %s", url)
 
@@ -161,6 +163,8 @@ def _create_hkjc_hkjc_game_model(
                     and lbw_str != "U/R"
                     and lbw_str != "M. L."
                     and lbw_str != "TNP"
+                    and lbw_str != "T.0."
+                    and lbw_str != "D.N.F."
                 ):
                     if lbw is not None:
                         if "-" in lbw_str:

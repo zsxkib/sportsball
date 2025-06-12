@@ -268,6 +268,7 @@ AFL_VENUE_IDENTITY_MAP = {
     "Hands Oval - Australia": HANDS_OVAL,
     "UTAS Stadium, Launceston": YORK_PARK,
     "Hands Oval": HANDS_OVAL,
+    "University of Tasmania Stadium, Launceston": YORK_PARK,
 }
 
 
