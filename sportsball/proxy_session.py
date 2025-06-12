@@ -154,6 +154,51 @@ class ProxySession(requests_cache.CachedSession):
             pass
         return None
 
+    def _create_fixed_response(self, original_response: Response) -> Response:
+        """Create a new response with corrected Content-Length header to fix server gzip/header mismatch."""
+        from requests.models import Response as RequestsResponse
+        from requests import PreparedRequest
+        from urllib3.response import HTTPResponse
+        from io import BytesIO
+        
+        # Create a new response object
+        fixed_response = RequestsResponse()
+        
+        # Copy basic attributes
+        fixed_response.status_code = original_response.status_code
+        fixed_response.reason = getattr(original_response, 'reason', 'OK')
+        fixed_response.url = original_response.url
+        fixed_response.headers = original_response.headers.copy()
+        fixed_response.cookies = original_response.cookies
+        fixed_response.encoding = original_response.encoding
+        fixed_response.history = getattr(original_response, 'history', [])
+        
+        # Fix the Content-Length header to match actual content
+        content = original_response.content
+        fixed_response.headers['Content-Length'] = str(len(content))
+        fixed_response._content = content
+        
+        # Create a proper request object if missing
+        if original_response.request is None:
+            prepared_request = PreparedRequest()
+            prepared_request.method = 'GET'
+            prepared_request.url = original_response.url
+            prepared_request.headers = {}
+            fixed_response.request = prepared_request
+        else:
+            fixed_response.request = original_response.request
+        
+        # Create a proper raw response for caching
+        fixed_response.raw = HTTPResponse(
+            body=BytesIO(content),
+            status=original_response.status_code,
+            headers=fixed_response.headers,
+            preload_content=False,
+            original_response=getattr(original_response.raw, 'original_response', None)
+        )
+        
+        return fixed_response
+
     @func_set_timeout(DEFAULT_TIMEOUT)
     def _perform_timeout_send(
         self, request: requests.PreparedRequest, no_wayback: bool, **kwargs
@@ -181,12 +226,45 @@ class ProxySession(requests_cache.CachedSession):
                     logging.info(
                         "Found wayback machine memento for URL: %s", request.url
                     )
-                    self.cache.save_response(response=response, cache_key=key)
+                    try:
+                        self.cache.save_response(response=response, cache_key=key)
+                    except urllib3.exceptions.IncompleteRead as e:
+                        logging.warning(
+                            "Failed to cache wayback response for %s due to server Content-Length/gzip mismatch: %s. "
+                            "Content retrieved successfully (%d bytes), but caching skipped due to server bug.",
+                            request.url,
+                            str(e),
+                            len(response.content)
+                        )
+                        # Try to cache by creating a properly constructed response with fixed headers
+                        try:
+                            fixed_response = self._create_fixed_response(response)
+                            self.cache.save_response(response=fixed_response, cache_key=key)
+                            logging.info("Successfully cached wayback response with corrected Content-Length header.")
+                        except Exception as cache_fix_error:
+                            logging.warning("Could not cache wayback response even with header fix: %s", cache_fix_error)
                     return response
         else:
             logging.info("Request for %s caching disabled.", request.url)
 
-        response = super().send(request, **kwargs)
+        try:
+            response = super().send(request, **kwargs)
+        except urllib3.exceptions.IncompleteRead as e:
+            logging.warning(
+                "IncompleteRead during request for %s due to server Content-Length/gzip mismatch: %s. "
+                "Retrying request without caching to get content.",
+                request.url,
+                str(e)
+            )
+            # Disable caching and retry
+            old_disabled = self.settings.disabled
+            self.settings.disabled = True
+            try:
+                response = super().send(request, **kwargs)
+                logging.info("Successfully retrieved content (%d bytes) without caching.", len(response.content))
+            finally:
+                self.settings.disabled = old_disabled
+        
         if not _is_fast_fail_url(response.url):
             response.raise_for_status()
         return response
@@ -229,7 +307,23 @@ class ProxySession(requests_cache.CachedSession):
                 force_refresh=force_refresh,
                 **kwargs,
             )
-            self.cache.save_response(response)
+            try:
+                self.cache.save_response(response)
+            except urllib3.exceptions.IncompleteRead as e:
+                logging.warning(
+                    "Failed to cache fast-fail response for %s due to server Content-Length/gzip mismatch: %s. "
+                    "Content retrieved successfully (%d bytes), but caching skipped due to server bug.",
+                    request.url,
+                    str(e),
+                    len(response.content)
+                )
+                # Try to cache by creating a properly constructed response with fixed headers
+                try:
+                    fixed_response = self._create_fixed_response(response)
+                    self.cache.save_response(fixed_response)
+                    logging.info("Successfully cached fast-fail response with corrected Content-Length header.")
+                except Exception as cache_fix_error:
+                    logging.warning("Could not cache fast-fail response even with header fix: %s", cache_fix_error)
             return response
 
         return self._perform_retry_send(
