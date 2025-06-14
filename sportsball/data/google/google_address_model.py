@@ -15950,6 +15950,24 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "UTAS Stadium, Launceston": UTAS_STADIUM,
     "Hands Oval": HANDS_OVAL,
     "University of Tasmania Stadium, Launceston": UTAS_STADIUM,
+    "Auburn, WA, USA": SportsballGeocodeTuple(
+        city="Auburn",
+        state="WA",
+        postal="",
+        lat=47.303889,
+        lng=-122.227222,
+        housenumber="",
+        country="USA",
+    ),
+    "Quitman, MS, USA": SportsballGeocodeTuple(
+        city="Quitman",
+        state="MS",
+        postal="",
+        lat=32.043056,
+        lng=-88.720833,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 

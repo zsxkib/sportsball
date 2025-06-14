@@ -1,6 +1,6 @@
 """HKJC HKJC game model."""
 
-# pylint: disable=too-many-nested-blocks,too-many-statements,too-many-branches,too-many-locals,too-many-return-statements,too-many-boolean-expressions
+# pylint: disable=too-many-nested-blocks,too-many-statements,too-many-branches,too-many-locals,too-many-return-statements,too-many-boolean-expressions,use-maxsplit-arg
 import datetime
 import io
 import logging
@@ -134,11 +134,27 @@ def _create_hkjc_hkjc_game_model(
 
                 lbw: float | None = 0.0
                 lbw_str = str(row["LBW"]).strip()
+                lbw_str = lbw_str.split(" /")[0].strip()
+                lbw_str = (
+                    lbw_str.replace("/SHS", "")
+                    .replace("5/H", "")
+                    .replace("/HS", "")
+                    .replace("/HD", "")
+                    .replace("/NS", "")
+                    .replace("/NK", "")
+                    .replace("/H", "")
+                    .replace("/SH", "")
+                    .replace("/N", "")
+                    .replace(" N", "")
+                    .strip()
+                )
+                if lbw_str.endswith("/"):
+                    lbw_str = lbw_str[:-1]
                 if lbw_str in {"HD", "H", "HDS"}:
                     lbw = 2.4 * 0.2
-                elif lbw_str == "SH":
+                elif lbw_str in {"SH", "SHS", "SHSS", "HS", "S"}:
                     lbw = 2.4 * 0.2 * 0.5
-                elif lbw_str in {"NOSE", "N"}:
+                elif lbw_str in {"NOSE", "N", "NS"}:
                     lbw = 2.4 * 0.05
                 elif lbw_str == "ML":
                     lbw = None
@@ -165,6 +181,14 @@ def _create_hkjc_hkjc_game_model(
                     and lbw_str != "TNP"
                     and lbw_str != "T.0."
                     and lbw_str != "D.N.F."
+                    and lbw_str != "P.U."
+                    and lbw_str != "U.R."
+                    and lbw_str != "P U."
+                    and lbw_str != "T 0."
+                    and lbw_str != "3N"
+                    and lbw_str != "4H"
+                    and lbw_str != "SHDH"
+                    and lbw_str != "NDH"
                 ):
                     if lbw is not None:
                         if "-" in lbw_str:
@@ -173,7 +197,7 @@ def _create_hkjc_hkjc_game_model(
                         if "/" in lbw_str:
                             lbw += 2.4 * (1.0 / int(lbw_str.split("/")[-1]))
                         else:
-                            lbw += 2.4 * int(lbw_str)
+                            lbw += 2.4 * int(lbw_str.split()[0].strip())
 
                 finish_time_str = row["Finish Time"].strip()
                 end_dt = None
