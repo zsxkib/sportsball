@@ -210,7 +210,7 @@ class LeagueModel(Model):
             df = _clear_column_list(df)
             df = df.reset_index()
 
-            df = df[sorted(df.columns.values.tolist())]
+            df = df[sorted(df.columns.values.tolist())].dropna(axis=1, how="all")
 
             self._df = df
         return df
