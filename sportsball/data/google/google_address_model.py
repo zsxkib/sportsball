@@ -15968,6 +15968,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Rancho Cucamonga, CA, USA": SportsballGeocodeTuple(
+        city="Rancho Cucamonga",
+        state="CA",
+        postal="",
+        lat=34.123333,
+        lng=-117.579444,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
