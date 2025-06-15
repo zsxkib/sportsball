@@ -12,9 +12,9 @@ import requests_cache
 from bs4 import BeautifulSoup
 from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta
+from scrapesession.session import DEFAULT_TIMEOUT  # type: ignore
 
 from ...cache import MEMORY
-from ...session import DEFAULT_TIMEOUT
 from ..google.google_address_model import create_google_address_model
 from ..player_model import PlayerModel
 from ..sex import Sex

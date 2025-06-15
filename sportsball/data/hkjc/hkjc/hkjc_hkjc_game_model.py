@@ -11,9 +11,9 @@ import pandas as pd
 import pytest_is_running
 from bs4 import BeautifulSoup
 from dateutil.parser import parse
+from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ....cache import MEMORY
-from ....proxy_session import ProxySession
 from ...game_model import GameModel
 from ...league import League
 from ..position import position_from_str
@@ -28,7 +28,7 @@ RACE_COURSE_QUERY_KEY = "Racecourse"
 
 
 def _create_hkjc_hkjc_game_model(
-    session: ProxySession,
+    session: ScrapeSession,
     html: str,
     url: str,
 ) -> GameModel | None:
@@ -344,7 +344,7 @@ def _create_hkjc_hkjc_game_model(
 
 @MEMORY.cache(ignore=["session"])
 def _cached_create_hkjc_hkjc_game_model(
-    session: ProxySession,
+    session: ScrapeSession,
     html: str,
     url: str,
 ) -> GameModel | None:
@@ -353,7 +353,7 @@ def _cached_create_hkjc_hkjc_game_model(
 
 
 def create_hkjc_hkjc_game_model(
-    session: ProxySession,
+    session: ScrapeSession,
     html: str,
     url: str,
 ) -> GameModel | None:

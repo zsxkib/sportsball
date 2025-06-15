@@ -11,8 +11,8 @@ from urllib.parse import urlparse
 import tqdm
 from bs4 import BeautifulSoup
 from dateutil import parser
+from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
-from ....proxy_session import ProxySession
 from ...game_model import GameModel
 from ...league import League
 from ...league_model import LeagueModel
@@ -42,8 +42,8 @@ def _find_dt(td_text: str, season_url: str) -> datetime.datetime:
 class AFLAFLTablesLeagueModel(LeagueModel):
     """AFL AFLTables implementation of the league model."""
 
-    def __init__(self, session: ProxySession, position: int | None = None) -> None:
-        super().__init__(League.AFL, session)
+    def __init__(self, session: ScrapeSession, position: int | None = None) -> None:
+        super().__init__(League.AFL, session, position=position)
 
     @classmethod
     def name(cls) -> str:

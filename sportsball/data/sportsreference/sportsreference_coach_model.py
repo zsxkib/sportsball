@@ -10,9 +10,9 @@ import pytest_is_running
 from bs4 import BeautifulSoup
 from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta
+from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ...cache import MEMORY
-from ...proxy_session import ProxySession
 from ..coach_model import CoachModel
 
 _NON_WAYBACK_URLS: set[str] = {
@@ -28,7 +28,7 @@ _NON_WAYBACK_URLS: set[str] = {
 
 
 def _create_sportsreference_coach_model(
-    session: ProxySession, coach_url: str, dt: datetime.datetime
+    session: ScrapeSession, coach_url: str, dt: datetime.datetime
 ) -> CoachModel:
     """Create a coach model from sports reference."""
     if coach_url in _NON_WAYBACK_URLS:
@@ -73,7 +73,7 @@ def _create_sportsreference_coach_model(
 
 @MEMORY.cache(ignore=["session"])
 def _cached_create_sportsreference_coach_mode(
-    session: ProxySession, coach_url: str, dt: datetime.datetime
+    session: ScrapeSession, coach_url: str, dt: datetime.datetime
 ) -> CoachModel:
     return _create_sportsreference_coach_model(
         session=session, coach_url=coach_url, dt=dt
@@ -81,7 +81,7 @@ def _cached_create_sportsreference_coach_mode(
 
 
 def create_sportsreference_coach_model(
-    session: ProxySession, coach_url: str, dt: datetime.datetime
+    session: ScrapeSession, coach_url: str, dt: datetime.datetime
 ) -> CoachModel:
     """Create a coach model from sports reference."""
     if not pytest_is_running.is_running():

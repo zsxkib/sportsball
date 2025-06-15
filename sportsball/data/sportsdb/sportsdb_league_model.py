@@ -5,8 +5,8 @@ import datetime
 from typing import Iterator
 
 import tqdm
+from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
-from ...proxy_session import ProxySession
 from ..game_model import GameModel
 from ..league import League
 from ..league_model import LeagueModel
@@ -21,7 +21,7 @@ class SportsDBLeagueModel(LeagueModel):
 
     def __init__(
         self,
-        session: ProxySession,
+        session: ScrapeSession,
         league_id: str,
         league: League,
         position: int | None = None,

@@ -9,9 +9,9 @@ from urllib.parse import urlparse
 import pandas as pd
 import pytest_is_running
 from bs4 import BeautifulSoup
+from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ....cache import MEMORY
-from ....proxy_session import ProxySession
 from ...google.google_address_model import create_google_address_model
 from ...player_model import PlayerModel
 from ...sex import sex_from_str
@@ -21,7 +21,7 @@ from .hkjc_hkjc_owner_model import create_hkjc_hkjc_owner_model
 
 
 def _create_hkjc_hkjc_player_model(
-    session: ProxySession,
+    session: ScrapeSession,
     url: str,
     jersey: str | None,
     handicap_weight: float | None,
@@ -193,7 +193,7 @@ def _create_hkjc_hkjc_player_model(
 
 @MEMORY.cache(ignore=["session"])
 def _cached_create_hkjc_hkjc_player_model(
-    session: ProxySession,
+    session: ScrapeSession,
     url: str,
     jersey: str | None,
     handicap_weight: float | None,
@@ -211,7 +211,7 @@ def _cached_create_hkjc_hkjc_player_model(
 
 
 def create_hkjc_hkjc_player_model(
-    session: ProxySession,
+    session: ScrapeSession,
     url: str,
     jersey: str | None,
     handicap_weight: float | None,

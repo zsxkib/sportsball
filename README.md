@@ -49,6 +49,7 @@ Python 3.11.6:
 - [cchardet](https://github.com/PyYoshi/cChardet)
 - [lxml](https://lxml.de/)
 - [gender-guesser](https://github.com/lead-ratings/gender-guesser)
+- [scrapesession](https://github.com/8W9aG/scrapesession)
 
 ## Raison D'être :thought_balloon:
 

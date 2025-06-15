@@ -8,9 +8,9 @@ import urllib.parse
 
 import pytest_is_running
 from bs4 import BeautifulSoup, Tag
+from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ...cache import MEMORY
-from ...proxy_session import ProxySession
 from ..game_model import GameModel
 from ..league import League
 from .decrypt import fetch_data
@@ -19,7 +19,7 @@ from .oddsportal_venue_model import create_oddsportal_venue_model
 
 
 def _create_oddsportal_game_model(
-    session: ProxySession,
+    session: ScrapeSession,
     url: str,
     league: League,
 ) -> GameModel | None:
@@ -128,7 +128,7 @@ def _create_oddsportal_game_model(
 
 @MEMORY.cache(ignore=["session"])
 def _cached_create_oddsportal_game_model(
-    session: ProxySession,
+    session: ScrapeSession,
     url: str,
     league: League,
 ) -> GameModel | None:
@@ -136,7 +136,7 @@ def _cached_create_oddsportal_game_model(
 
 
 def create_oddsportal_game_model(
-    session: ProxySession,
+    session: ScrapeSession,
     url: str,
     league: League,
     is_next: bool,

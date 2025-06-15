@@ -4,8 +4,8 @@
 from typing import Any, Iterator
 
 import tqdm
+from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
-from ...proxy_session import ProxySession
 from ..game_model import GameModel
 from ..league import League
 from ..league_model import LeagueModel
@@ -32,7 +32,7 @@ class ESPNLeagueModel(LeagueModel):
         self,
         start_url: str,
         league: League,
-        session: ProxySession,
+        session: ScrapeSession,
         position: int | None = None,
     ) -> None:
         super().__init__(league, session, position=position)

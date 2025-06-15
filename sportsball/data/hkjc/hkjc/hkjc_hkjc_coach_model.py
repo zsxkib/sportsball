@@ -4,14 +4,14 @@ import io
 
 import pandas as pd
 import pytest_is_running
+from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ....cache import MEMORY
-from ....proxy_session import ProxySession
 from ...coach_model import CoachModel
 
 
 def _create_hkjc_hkjc_coach_model(
-    session: ProxySession,
+    session: ScrapeSession,
     url: str,
 ) -> CoachModel:
     with session.wayback_disabled():
@@ -48,14 +48,14 @@ def _create_hkjc_hkjc_coach_model(
 
 @MEMORY.cache(ignore=["session"])
 def _cached_create_hkjc_hkjc_coach_model(
-    session: ProxySession,
+    session: ScrapeSession,
     url: str,
 ) -> CoachModel:
     return _create_hkjc_hkjc_coach_model(session=session, url=url)
 
 
 def create_hkjc_hkjc_coach_model(
-    session: ProxySession,
+    session: ScrapeSession,
     url: str,
 ) -> CoachModel:
     """Create a coach model based off HKJC."""

@@ -6,13 +6,13 @@ import unittest
 import requests_mock
 from sportsball.data.sportsreference.sportsreference_team_model import create_sportsreference_team_model
 from sportsball.data.league import League
-from sportsball.proxy_session import ProxySession
+from scrapesession.scrapesession import ScrapeSession
 
 
 class TestSportsReferenceTeamModel(unittest.TestCase):
 
     def setUp(self):
-        self.session = ProxySession(backend="memory")
+        self.session = ScrapeSession(backend="memory")
         self.session._wayback_disabled = True
         self.dir = os.path.dirname(__file__)
 

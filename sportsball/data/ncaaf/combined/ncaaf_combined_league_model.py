@@ -1,6 +1,7 @@
 """NCAAF combined league model."""
 
-from ....proxy_session import ProxySession
+from scrapesession.scrapesession import ScrapeSession  # type: ignore
+
 from ...combined.combined_league_model import CombinedLeagueModel
 from ...league import League
 from ..espn.ncaaf_espn_league_model import NCAAFESPNLeagueModel
@@ -15,7 +16,7 @@ NCAAF_PLAYER_IDENTITY_MAP: dict[str, str] = {}
 class NCAAFCombinedLeagueModel(CombinedLeagueModel):
     """NCAAF combined implementation of the league model."""
 
-    def __init__(self, session: ProxySession, league_filter: str | None) -> None:
+    def __init__(self, session: ScrapeSession, league_filter: str | None) -> None:
         super().__init__(
             session,
             League.NCAAF,

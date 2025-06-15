@@ -2,7 +2,8 @@
 
 # pylint: disable=line-too-long
 
-from ....proxy_session import ProxySession
+from scrapesession.scrapesession import ScrapeSession  # type: ignore
+
 from ...league import League
 from ...nba.position import Position
 from ...sportsreference.sportsreference_league_model import \
@@ -12,7 +13,7 @@ from ...sportsreference.sportsreference_league_model import \
 class NCAABSportsReferenceLeagueModel(SportsReferenceLeagueModel):
     """NCAAB Sports Reference implementation of the league model."""
 
-    def __init__(self, session: ProxySession, position: int | None = None) -> None:
+    def __init__(self, session: ScrapeSession, position: int | None = None) -> None:
         super().__init__(
             session,
             League.NCAAB,

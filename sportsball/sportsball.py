@@ -5,6 +5,8 @@ from warnings import simplefilter
 
 import pandas as pd
 from dotenv import load_dotenv
+from scrapesession.scrapesession import ScrapeSession  # type: ignore
+from scrapesession.scrapesession import create_scrape_session
 
 from .data.afl import AFLLeagueModel
 from .data.hkjc import HKJCLeagueModel
@@ -14,7 +16,6 @@ from .data.nba import NBALeagueModel
 from .data.ncaab import NCAABLeagueModel
 from .data.ncaaf import NCAAFLeagueModel
 from .data.nfl import NFLLeagueModel
-from .proxy_session import ProxySession, create_proxy_session
 
 
 class SportsBall:
@@ -23,10 +24,17 @@ class SportsBall:
     # pylint: disable=too-few-public-methods
 
     _leagues: Dict[str, LeagueModel]
-    _session: ProxySession
+    _session: ScrapeSession
 
     def __init__(self) -> None:
-        self._session = create_proxy_session()
+        self._session = create_scrape_session(
+            "sportsball",
+            {
+                "https://news.google.com/",
+                "https://historical-forecast-api.open-meteo.com/",
+                "https://api.open-meteo.com/",
+            },
+        )
         self._leagues = {}
         simplefilter(action="ignore", category=pd.errors.PerformanceWarning)
         load_dotenv()

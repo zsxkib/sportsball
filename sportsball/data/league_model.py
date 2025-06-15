@@ -8,8 +8,8 @@ import pandas as pd
 import tqdm
 from flatten_json import flatten  # type: ignore
 from pydantic import BaseModel
+from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
-from ..proxy_session import ProxySession
 from .address_model import ADDRESS_TIMEZONE_COLUMN
 from .field_type import FieldType
 from .game_model import GAME_DT_COLUMN, VENUE_COLUMN_PREFIX, GameModel
@@ -82,7 +82,7 @@ class LeagueModel(Model):
     def __init__(
         self,
         league: League,
-        session: ProxySession,
+        session: ScrapeSession,
         position: int | None = None,
     ) -> None:
         super().__init__(session)

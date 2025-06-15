@@ -10,9 +10,9 @@ from typing import Iterator
 from bs4 import BeautifulSoup, Tag
 from dateutil.parser import parse
 from playwright.sync_api import Playwright, sync_playwright
+from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ....playwright import ensure_install
-from ....proxy_session import ProxySession
 from ...game_model import GameModel
 from ...league import League
 from ...league_model import LeagueModel
@@ -22,7 +22,7 @@ from .afl_afl_game_model import create_afl_afl_game_model, parse_players_v1
 
 def _parse_v1(
     soup: BeautifulSoup,
-    session: ProxySession,
+    session: ScrapeSession,
     ladder: list[str],
     html_url: str,
     playwright: Playwright,
@@ -143,7 +143,7 @@ def _parse_v2_soup(
 
 def _parse_v2(
     soup: BeautifulSoup,
-    session: ProxySession,
+    session: ScrapeSession,
     ladder: list[str],
     html_url: str,
     playwright: Playwright,
@@ -163,7 +163,7 @@ def _parse_v2(
 
 def _parse_game_info(
     html: str,
-    session: ProxySession,
+    session: ScrapeSession,
     ladder: list[str],
     html_url: str,
     playwright: Playwright,
@@ -180,7 +180,7 @@ def _parse_game_info(
 class AFLAFLLeagueModel(LeagueModel):
     """AFL AFL implementation of the league model."""
 
-    def __init__(self, session: ProxySession, position: int | None = None) -> None:
+    def __init__(self, session: ScrapeSession, position: int | None = None) -> None:
         super().__init__(League.AFL, session, position=position)
 
     @classmethod

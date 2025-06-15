@@ -3,15 +3,14 @@ import os
 import unittest
 
 import requests_mock
-import requests_cache
 from sportsball.data.hkjc.hkjc.hkjc_hkjc_game_model import create_hkjc_hkjc_game_model
-from sportsball.proxy_session import ProxySession
+from scrapesession.scrapesession import ScrapeSession
 
 
 class TestHKJCHKJCGameModel(unittest.TestCase):
 
     def setUp(self):
-        self._session = ProxySession(backend="memory")
+        self._session = ScrapeSession(backend="memory")
         self._session._wayback_disabled = True
         self.dir = os.path.dirname(__file__)
 

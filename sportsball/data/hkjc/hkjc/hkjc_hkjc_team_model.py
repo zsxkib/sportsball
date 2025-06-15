@@ -4,9 +4,9 @@
 import datetime
 
 import pytest_is_running
+from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ....cache import MEMORY
-from ....proxy_session import ProxySession
 from ...odds_model import OddsModel
 from ...team_model import TeamModel
 from ..position import Position
@@ -15,7 +15,7 @@ from .hkjc_hkjc_player_model import create_hkjc_hkjc_player_model
 
 
 def _create_hkjc_hkjc_team_model(
-    session: ProxySession,
+    session: ScrapeSession,
     horse_url: str,
     jockey_url: str | None,
     trainer_url: str | None,
@@ -75,7 +75,7 @@ def _create_hkjc_hkjc_team_model(
 
 @MEMORY.cache(ignore=["session"])
 def _cached_create_hkjc_hkjc_team_model(
-    session: ProxySession,
+    session: ScrapeSession,
     horse_url: str,
     jockey_url: str | None,
     trainer_url: str | None,
@@ -105,7 +105,7 @@ def _cached_create_hkjc_hkjc_team_model(
 
 
 def create_hkjc_hkjc_team_model(
-    session: ProxySession,
+    session: ScrapeSession,
     horse_url: str,
     jockey_url: str | None,
     trainer_url: str | None,

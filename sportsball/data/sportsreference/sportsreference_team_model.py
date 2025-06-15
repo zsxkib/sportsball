@@ -12,10 +12,10 @@ import extruct  # type: ignore
 import pytest_is_running
 import requests
 from bs4 import BeautifulSoup, Tag
+from scrapesession.scrapesession import ScrapeSession  # type: ignore
 from w3lib.html import get_base_url
 
 from ...cache import MEMORY
-from ...proxy_session import ProxySession
 from ..google.google_news_model import create_google_news_models
 from ..league import League
 from ..sex import Sex
@@ -93,7 +93,7 @@ def _find_name(response: requests.Response, soup: BeautifulSoup, url: str) -> st
 
 
 def _create_sportsreference_team_model(
-    session: ProxySession,
+    session: ScrapeSession,
     url: str,
     dt: datetime.datetime,
     league: League,
@@ -261,7 +261,7 @@ def _create_sportsreference_team_model(
 
 @MEMORY.cache(ignore=["session"])
 def _cached_create_sportsreference_team_model(
-    session: ProxySession,
+    session: ScrapeSession,
     url: str,
     dt: datetime.datetime,
     league: League,
@@ -317,7 +317,7 @@ def _cached_create_sportsreference_team_model(
 
 
 def create_sportsreference_team_model(
-    session: ProxySession,
+    session: ScrapeSession,
     url: str,
     dt: datetime.datetime,
     league: League,

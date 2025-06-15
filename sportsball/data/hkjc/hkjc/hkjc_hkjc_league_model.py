@@ -8,8 +8,8 @@ from urllib.parse import urlparse
 
 import tqdm
 from bs4 import BeautifulSoup
+from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
-from ....proxy_session import ProxySession
 from ...game_model import GameModel
 from ...league import League
 from ...league_model import LeagueModel
@@ -22,7 +22,7 @@ from .hkjc_hkjc_venue_model import HAPPY_VALLEY_VENUE_CODE, SHA_TIN_VENUE_CODE
 class HKJCHKJCLeagueModel(LeagueModel):
     """HKJC HKJC implementation of the league model."""
 
-    def __init__(self, session: ProxySession, position: int | None = None) -> None:
+    def __init__(self, session: ScrapeSession, position: int | None = None) -> None:
         super().__init__(League.HKJC, session, position=position)
 
     @classmethod

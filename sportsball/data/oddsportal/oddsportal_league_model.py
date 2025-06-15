@@ -11,8 +11,8 @@ import extruct  # type: ignore
 import requests
 import tqdm
 from bs4 import BeautifulSoup
+from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
-from ...proxy_session import ProxySession
 from ..game_model import GameModel
 from ..league import League
 from ..league_model import LeagueModel
@@ -43,7 +43,7 @@ def _find_ids(text: str) -> tuple[str, str]:
 
 def _process_results_pages(
     url: str,
-    session: ProxySession,
+    session: ScrapeSession,
     soup: BeautifulSoup,
     league: League,
     pbar: tqdm.tqdm,

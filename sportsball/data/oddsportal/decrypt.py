@@ -14,12 +14,11 @@ from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.primitives.hashes import SHA256
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
-
-from ...proxy_session import ProxySession
+from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 
 def _find_decryption_data(
-    session: ProxySession,
+    session: ScrapeSession,
     soup: BeautifulSoup,
     referer_url: str,
     user_agent: str | None = None,
@@ -64,7 +63,7 @@ def _find_decryption_data(
 
 def fetch_data(
     url: str,
-    session: ProxySession,
+    session: ScrapeSession,
     referer_url: str,
     soup: BeautifulSoup,
     user_agent: str | None = None,

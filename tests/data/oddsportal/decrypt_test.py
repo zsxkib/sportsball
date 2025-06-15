@@ -5,13 +5,13 @@ import unittest
 import requests_mock
 from bs4 import BeautifulSoup
 from sportsball.data.oddsportal.decrypt import fetch_data
-from sportsball.proxy_session import ProxySession
+from scrapesession.scrapesession import ScrapeSession
 
 
 class TestDecrypt(unittest.TestCase):
 
     def setUp(self):
-        self.session = ProxySession(backend="memory")
+        self.session = ScrapeSession(backend="memory")
         self.dir = os.path.dirname(__file__)
 
     def test_decrypt(self):
