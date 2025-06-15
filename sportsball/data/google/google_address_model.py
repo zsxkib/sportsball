@@ -15978,6 +15978,24 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "The Spectrum, Philadelphia, Pennsylvania": SPECTRUM,
+    "Carson, CA, USA": SportsballGeocodeTuple(
+        city="Carson",
+        state="CA",
+        postal="",
+        lat=33.839722,
+        lng=-118.259722,
+        housenumber="",
+        country="USA",
+    ),
+    "Allen, TX, USA": SportsballGeocodeTuple(
+        city="Allen",
+        state="TX",
+        postal="",
+        lat=33.126944,
+        lng=-96.663056,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
