@@ -30,6 +30,22 @@ def _clear_column_list(df: pd.DataFrame) -> pd.DataFrame:
     return df.drop(columns=cols)
 
 
+def _reduce_memory_usage(df: pd.DataFrame) -> pd.DataFrame:
+    for col in df.columns:
+        if df[col].dtype == "int64":
+            df[col] = pd.to_numeric(df[col], downcast="integer")
+        elif df[col].dtype == "float64":
+            df[col] = pd.to_numeric(df[col], downcast="float")
+        elif df[col].dtype == "object":
+            num_unique_values = len(df[col].unique())
+            num_total_values = len(df[col])
+            if num_unique_values / num_total_values < 0.5:
+                df[col] = df[col].astype("category")
+            else:
+                df[col] = df[col].astype("string")
+    return df
+
+
 def _normalize_tz(df: pd.DataFrame) -> pd.DataFrame:
     tz_column = DELIMITER.join(
         [VENUE_COLUMN_PREFIX, VENUE_ADDRESS_COLUMN, ADDRESS_TIMEZONE_COLUMN]
@@ -210,7 +226,9 @@ class LeagueModel(Model):
             df = _clear_column_list(df)
             df = df.reset_index()
 
-            df = df[sorted(df.columns.values.tolist())].dropna(axis=1, how="all")
+            df = _reduce_memory_usage(
+                df[sorted(df.columns.values.tolist())].dropna(axis=1, how="all")
+            )
 
             self._df = df
         return df

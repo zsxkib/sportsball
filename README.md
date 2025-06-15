@@ -267,6 +267,69 @@ The forecasted weather one day out at the address of the game start time.
 
 * **temperature**: The temperature at the address at the game start time.
 * **relative_humidity**: The relative humidity at the address at the game start time.
+* **dew_point**: The temperature at the address at the game start time.
+* **apparent_temperature**: The apparent temperature at the address at the game start time.
+* **precipitation_probability**: The precipitation probability at the address at the game start time.
+* **precipitation**: The precipitation at the address at the game start time.
+* **rain**: The rain at the address at the game start time.
+* **showers**: The showers at the address at the game start time.
+* **snowfall**: The snowfall at the address at the game start time.
+* **snow_depth**: The snow depth at the address at the game start time.
+* **weather_code**: The weather code at the address at the game start time.
+* **sealevel_pressure**: The sealevel pressure at the address at the game start time.
+* **surface_pressure**: The surface pressure at the address at the game start time.
+* **cloud_cover_total**: The total cloud cover at the address at the game start time.
+* **cloud_cover_low**: The low cloud cover at the address at the game start time.
+* **cloud_cover_mid**: The mid cloud cover at the address at the game start time.
+* **cloud_cover_high**: The high cloud cover at the address at the game start time.
+* **visibility**: The visibility at the address at the game start time.
+* **evapotranspiration**: The evapotranspiration at the address at the game start time.
+* **reference_evapotranspiration**: The reference evapotranspiration at the address at the game start time.
+* **vapour_pressure_deficit**: The vapour pressure deficit at the address at the game start time.
+* **wind_speed_10m**: The wind speed at 10m at the address at the game start time.
+* **wind_speed_80m**: The wind speed at 80m at the address at the game start time.
+* **wind_speed_120m**: The wind speed at 120m at the address at the game start time.
+* **wind_speed_180m**: The wind speed at 180m at the address at the game start time.
+* **wind_direction_10m**: The wind direction at 10m at the address at the game start time.
+* **wind_direction_80m**: The wind direction at 80m at the address at the game start time.
+* **wind_direction_120m**: The wind direction at 120m at the address at the game start time.
+* **wind_direction_180m**: The wind direction at 180m at the address at the game start time.
+* **wind_gusts**: The wind gusts at the address at the game start time.
+* **temperature_80m**: The temperature at 80m at the address at the game start time.
+* **temperature_120m**: The temperature at 120m at the address at the game start time.
+* **temperature_180m**: The temperature at 180m at the address at the game start time.
+* **soil_temperature_0cm**: The soil temperature at the address at the game start time.
+* **soil_temperature_6cm**: The soil temperature at 6cm at the address at the game start time.
+* **soil_temperature_18cm**: The soil temperature at 18cm at the address at the game start time.
+* **soil_temperature_54cm**: The soil temperature at 54cm at the address at the game start time.
+* **soil_moisture_0cm**: The soil moisture at the address at the game start time.
+* **soil_moisture_1cm**: The soil moisture at 1cm at the address at the game start time.
+* **soil_moisture_3cm**: The soil moisture at 3cm at the address at the game start time.
+* **soil_moisture_9cm**: The soil moisture at 9cm at the address at the game start time.
+* **soil_moisture_27cm**: The soil moisture at 27cm at the address at the game start time.
+* **daily_weather_code**: The daily weather code at the address at the game start time.
+* **daily_maximum_temperature_2m**: The daily maximum temperature at 2m at the address at the game start time.
+* **daily_minimum_temperature_2m**: The daily minimum temperature at 2m at the address at the game start time.
+* **daily_maximum_apparent_temperature_2m**: The daily maximum apparent temperature at 2m at the address at the game start time.
+* **daily_minimum_apparent_temperature_2m**: The daily minimum apparent temperature at 2m at the address at the game start time.
+* **sunrise**: The sunrise at the address at the game start time.
+* **sunset**: The sunset at the address at the game start time.
+* **daylight_duration**: The daylight duration at the address at the game start time.
+* **sunshine_duration**: The sunshine duration at the address at the game start time.
+* **uv_index**: The UV index at the address at the game start time.
+* **uv_index_clear_sky**: The UV index for clear sky at the address at the game start time.
+* **rain_sum**: The rain sum at the address at the game start time.
+* **showers_sum**: The showers sum at the address at the game start time.
+* **snowfall_sum**: The snowfall sum at the address at the game start time.
+* **precipitation_sum**: The precipitation sum at the address at the game start time.
+* **precipitation_hours**: The precipitation hours at the address at the game start time.
+* **precipitation_probability_max**: The maximum precipitation probability at the address at the game start time.
+* **maximum_wind_speed_10m**: The maximum wind speed at 10m at the address at the game start time.
+* **maximum_wind_gusts_10m**: The maximum wind gusts at 10m at the address at the game start time.
+* **dominant_wind_direction**: The dominant wind direction at the address at the game start time.
+* **shortwave_radiation_sum**: The shortwave radiation sum at the address at the game start time.
+* **daily_reference_evapotranspiration**: The daily reference evapotranspiration at the address at the game start time.
+* **version**: The version of the weather model.
 
 #### News
 

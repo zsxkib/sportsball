@@ -13,7 +13,7 @@ import requests
 import requests_cache
 
 from ....cache import MEMORY
-from ...weather_model import WeatherModel
+from ...weather_model import VERSION, WeatherModel
 
 
 def _create_gribstream_weather_model(
@@ -21,6 +21,7 @@ def _create_gribstream_weather_model(
     latitude: float,
     longitude: float,
     dt: datetime.datetime,
+    version: str,
 ) -> WeatherModel | None:
     api_key = os.environ.get("GRIBSTREAM_API_KEY")
     if api_key is None:
@@ -57,7 +58,73 @@ def _create_gribstream_weather_model(
     idx = df.index.get_indexer([dt], method="nearest")[0]
     temperature = df.iloc[idx]["TMP|2 m above ground|"]  # type: ignore
     relative_humidity = df.iloc[idx]["RH|2 m above ground|"]  # type: ignore
-    return WeatherModel(temperature=temperature, relative_humidity=relative_humidity)
+    return WeatherModel(
+        temperature=temperature,
+        relative_humidity=relative_humidity,
+        dew_point=None,
+        apparent_temperature=None,
+        precipitation_probability=None,
+        precipitation=None,
+        rain=None,
+        showers=None,
+        snowfall=None,
+        snow_depth=None,
+        weather_code=None,
+        sealevel_pressure=None,
+        surface_pressure=None,
+        cloud_cover_total=None,
+        cloud_cover_low=None,
+        cloud_cover_mid=None,
+        cloud_cover_high=None,
+        visibility=None,
+        evapotranspiration=None,
+        reference_evapotranspiration=None,
+        vapour_pressure_deficit=None,
+        wind_speed_10m=None,
+        wind_speed_80m=None,
+        wind_speed_120m=None,
+        wind_speed_180m=None,
+        wind_direction_10m=None,
+        wind_direction_80m=None,
+        wind_direction_120m=None,
+        wind_direction_180m=None,
+        wind_gusts=None,
+        temperature_80m=None,
+        temperature_120m=None,
+        temperature_180m=None,
+        soil_temperature_0cm=None,
+        soil_temperature_6cm=None,
+        soil_temperature_18cm=None,
+        soil_temperature_54cm=None,
+        soil_moisture_0cm=None,
+        soil_moisture_1cm=None,
+        soil_moisture_3cm=None,
+        soil_moisture_9cm=None,
+        soil_moisture_27cm=None,
+        daily_weather_code=None,
+        daily_maximum_temperature_2m=None,
+        daily_minimum_temperature_2m=None,
+        daily_maximum_apparent_temperature_2m=None,
+        daily_minimum_apparent_temperature_2m=None,
+        sunrise=None,
+        sunset=None,
+        daylight_duration=None,
+        sunshine_duration=None,
+        uv_index=None,
+        uv_index_clear_sky=None,
+        rain_sum=None,
+        showers_sum=None,
+        snowfall_sum=None,
+        precipitation_sum=None,
+        precipitation_hours=None,
+        precipitation_probability_max=None,
+        maximum_wind_speed_10m=None,
+        maximum_wind_gusts_10m=None,
+        dominant_wind_direction=None,
+        shortwave_radiation_sum=None,
+        daily_reference_evapotranspiration=None,
+        version=version,
+    )
 
 
 @MEMORY.cache(ignore=["session"])
@@ -66,8 +133,11 @@ def _cached_create_gribstream_weather_model(
     latitude: float,
     longitude: float,
     dt: datetime.datetime,
+    version: str,
 ) -> WeatherModel | None:
-    return _create_gribstream_weather_model(session, latitude, longitude, dt)
+    return _create_gribstream_weather_model(
+        session, latitude, longitude, dt, version=version
+    )
 
 
 def create_gribstream_weather_model(
@@ -80,6 +150,10 @@ def create_gribstream_weather_model(
     if not pytest_is_running.is_running() and dt < datetime.datetime.now().replace(
         tzinfo=dt.tzinfo
     ) - datetime.timedelta(days=3):
-        return _cached_create_gribstream_weather_model(session, latitude, longitude, dt)
+        return _cached_create_gribstream_weather_model(
+            session, latitude, longitude, dt, version=VERSION
+        )
     with session.cache_disabled():
-        return _create_gribstream_weather_model(session, latitude, longitude, dt)
+        return _create_gribstream_weather_model(
+            session, latitude, longitude, dt, version=VERSION
+        )

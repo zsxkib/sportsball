@@ -15977,6 +15977,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "The Spectrum, Philadelphia, Pennsylvania": SPECTRUM,
 }
 
 

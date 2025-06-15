@@ -207,6 +207,7 @@ AFL_VENUE_IDENTITY_MAP = {
     "norwood": NORWOOD,
     "summit": SUMMIT,
     "barossa": BAROSSA_PARK,
+    "hands": HANDS_OVAL,
     # Aus Sports Betting
     "MCG": MCG,
     "SCG": SCG,

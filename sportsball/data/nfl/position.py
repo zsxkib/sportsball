@@ -17,3 +17,4 @@ class Position(StrEnum):
     RUNNING_BACK = "RB"
     TIGHT_END = "TE"
     OFFENSIVE_TACKLE = "OT"
+    CORNER_BACK = "CB"
