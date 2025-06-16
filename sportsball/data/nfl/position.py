@@ -18,3 +18,4 @@ class Position(StrEnum):
     TIGHT_END = "TE"
     OFFENSIVE_TACKLE = "OT"
     CORNER_BACK = "CB"
+    DEFENSIVE_BACK = "DB"

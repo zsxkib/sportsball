@@ -15996,6 +15996,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Detroit, MI, USA": DETROIT,
 }
 
 

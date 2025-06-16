@@ -36,13 +36,6 @@ def _reduce_memory_usage(df: pd.DataFrame) -> pd.DataFrame:
             df[col] = pd.to_numeric(df[col], downcast="integer")
         elif df[col].dtype == "float64":
             df[col] = pd.to_numeric(df[col], downcast="float")
-        elif df[col].dtype == "object":
-            num_unique_values = len(df[col].unique())
-            num_total_values = len(df[col])
-            if num_unique_values / num_total_values < 0.5:
-                df[col] = df[col].astype("category")
-            else:
-                df[col] = df[col].astype("string")
     return df
 
 

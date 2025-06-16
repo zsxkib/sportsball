@@ -70,7 +70,7 @@ def _create_afl_afltables_player_model(
     try:
         weight = float(player_page_text.split("Weight:")[1].strip().split()[0].strip())
     except IndexError:
-        logging.warning("Couldn't find weight from %s", response.url)
+        logging.debug("Couldn't find weight from %s", response.url)
 
     return PlayerModel(
         identifier=identifier,
