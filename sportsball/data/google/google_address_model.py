@@ -15997,6 +15997,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Detroit, MI, USA": DETROIT,
+    "Claremont, CA, USA": SportsballGeocodeTuple(
+        city="Claremont",
+        state="CA",
+        postal="",
+        lat=34.11,
+        lng=-117.719722,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 

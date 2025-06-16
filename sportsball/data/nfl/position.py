@@ -19,3 +19,4 @@ class Position(StrEnum):
     OFFENSIVE_TACKLE = "OT"
     CORNER_BACK = "CB"
     DEFENSIVE_BACK = "DB"
+    DEFENSIVE_END = "DE"
