@@ -16008,6 +16008,24 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Canton, OH, USA": CANTON,
+    "South Jordan, UT, USA": SportsballGeocodeTuple(
+        city="South Jordan",
+        state="UT",
+        postal="",
+        lat=40.561667,
+        lng=-111.960833,
+        housenumber="",
+        country="USA",
+    ),
+    "Snellville, GA, USA": SportsballGeocodeTuple(
+        city="Snellville",
+        state="GA",
+        postal="",
+        lat=40.561667,
+        lng=-111.960833,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
