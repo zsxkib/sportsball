@@ -16045,6 +16045,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="50",
         country="USA",
     ),
+    "Beaverton, OR, USA": SportsballGeocodeTuple(
+        city="Beaverton",
+        state="OR",
+        postal="",
+        lat=45.477778,
+        lng=-122.816667,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
