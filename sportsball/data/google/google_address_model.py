@@ -3331,6 +3331,15 @@ HANDS_OVAL = SportsballGeocodeTuple(
     housenumber="",
     country="Australia",
 )
+CANTON = SportsballGeocodeTuple(
+    city="Canton",
+    state="OH",
+    postal="",
+    lat=40.807778,
+    lng=-81.395556,
+    housenumber="",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -14384,15 +14393,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Hempstead, New York, United States": HEMPSTEAD,
-    "Canton, Ohio, United States": SportsballGeocodeTuple(
-        city="Canton",
-        state="OH",
-        postal="",
-        lat=40.807778,
-        lng=-81.395556,
-        housenumber="",
-        country="USA",
-    ),
+    "Canton, Ohio, United States": CANTON,
     "Harlem, New York, United States": SportsballGeocodeTuple(
         city="Harlem",
         state="NY",
@@ -16006,6 +16007,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Canton, OH, USA": CANTON,
 }
 
 

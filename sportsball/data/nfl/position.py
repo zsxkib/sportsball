@@ -20,3 +20,4 @@ class Position(StrEnum):
     CORNER_BACK = "CB"
     DEFENSIVE_BACK = "DB"
     DEFENSIVE_END = "DE"
+    EDGE_RUSHER = "EDGE"
