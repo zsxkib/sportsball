@@ -16026,6 +16026,25 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Spring Valley, CA, USA": SportsballGeocodeTuple(
+        city="Spring Valley",
+        state="CA",
+        postal="",
+        lat=32.734444,
+        lng=-116.981389,
+        housenumber="",
+        country="USA",
+    ),
+    "Shreveport, LA, USA": SHREVEPORT,
+    "Brendan Byrne Arena, East Rutherford, New Jersey": SportsballGeocodeTuple(
+        city="East Rutherford",
+        state="NJ",
+        postal="",
+        lat=40.811667,
+        lng=-74.0675,
+        housenumber="50",
+        country="USA",
+    ),
 }
 
 
