@@ -16156,6 +16156,33 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Lehi, UT, USA": SportsballGeocodeTuple(
+        city="Lehi",
+        state="UT",
+        postal="",
+        lat=40.387778,
+        lng=-111.871667,
+        housenumber="",
+        country="USA",
+    ),
+    "Ontario, CA, USA": SportsballGeocodeTuple(
+        city="Ontario",
+        state="CA",
+        postal="",
+        lat=34.052778,
+        lng=-117.627778,
+        housenumber="",
+        country="USA",
+    ),
+    "Brentwood, CA, USA": SportsballGeocodeTuple(
+        city="Brentwood",
+        state="CA",
+        postal="",
+        lat=37.931944,
+        lng=-121.695833,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 

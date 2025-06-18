@@ -23,3 +23,4 @@ class Position(StrEnum):
     EDGE_RUSHER = "EDGE"
     PUNTER = "P"
     LONG_SNAPPER = "LS"
+    PLACE_KICKER = "PK"
