@@ -3340,6 +3340,15 @@ CANTON = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
+CAPITAL_CENTER = SportsballGeocodeTuple(
+    city="Landover",
+    state="MD",
+    postal="",
+    lat=38.9025,
+    lng=-76.846944,
+    housenumber="1",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -15848,15 +15857,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "San Jose Arena, San Jose, California": SAP_CENTER,
-    "US Airways Arena, Landover, Maryland": SportsballGeocodeTuple(
-        city="Landover",
-        state="MD",
-        postal="",
-        lat=38.9025,
-        lng=-76.846944,
-        housenumber="1",
-        country="USA",
-    ),
+    "US Airways Arena, Landover, Maryland": CAPITAL_CENTER,
     "Orlando Arena, Orlando, Florida": ORLANDO_ARENA,
     "Reno, NV, USA": RENO,
     "Larkspur, CA, USA": SportsballGeocodeTuple(
@@ -16064,6 +16065,25 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="Germany",
     ),
     "Memphis, TN, USA": MEMPHIS,
+    "Sumner, WA, USA": SportsballGeocodeTuple(
+        city="Sumner",
+        state="WA",
+        postal="",
+        lat=47.225,
+        lng=-122.246667,
+        housenumber="",
+        country="USA",
+    ),
+    "White Castle, LA, USA": SportsballGeocodeTuple(
+        city="White Castle",
+        state="LA",
+        postal="",
+        lat=30.161111,
+        lng=-91.149444,
+        housenumber="",
+        country="USA",
+    ),
+    "Capital Centre, Landover, Maryland": CAPITAL_CENTER,
 }
 
 
