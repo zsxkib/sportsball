@@ -16147,6 +16147,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Martinsburg, WV, USA": SportsballGeocodeTuple(
+        city="Martinsburg",
+        state="WV",
+        postal="",
+        lat=39.453611,
+        lng=-77.995556,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 

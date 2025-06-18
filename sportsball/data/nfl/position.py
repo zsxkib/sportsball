@@ -21,3 +21,5 @@ class Position(StrEnum):
     DEFENSIVE_BACK = "DB"
     DEFENSIVE_END = "DE"
     EDGE_RUSHER = "EDGE"
+    PUNTER = "P"
+    LONG_SNAPPER = "LS"
