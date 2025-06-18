@@ -16120,6 +16120,33 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Canyon Country, CA, USA": SportsballGeocodeTuple(
+        city="Canyon Country",
+        state="CA",
+        postal="",
+        lat=34.42,
+        lng=-118.45,
+        housenumber="",
+        country="USA",
+    ),
+    "Port Neches, TX, USA": SportsballGeocodeTuple(
+        city="Port Neches",
+        state="TX",
+        postal="",
+        lat=29.988889,
+        lng=-93.961667,
+        housenumber="",
+        country="USA",
+    ),
+    "Seibert Hall, Birmingham, Alabama": SportsballGeocodeTuple(
+        city="Birmingham",
+        state="AL",
+        postal="",
+        lat=33.4643,
+        lng=-86.7959,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
