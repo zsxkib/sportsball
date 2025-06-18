@@ -16102,6 +16102,24 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Tumwater, WA, USA": SportsballGeocodeTuple(
+        city="Tumwater",
+        state="WA",
+        postal="",
+        lat=47.007778,
+        lng=-122.911111,
+        housenumber="",
+        country="USA",
+    ),
+    "Anderson, SC, USA": SportsballGeocodeTuple(
+        city="Anderson",
+        state="SC",
+        postal="",
+        lat=34.503333,
+        lng=-82.650278,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 

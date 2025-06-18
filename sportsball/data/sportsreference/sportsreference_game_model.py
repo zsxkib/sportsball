@@ -1,6 +1,6 @@
 """Sports Reference game model."""
 
-# pylint: disable=too-many-locals,too-many-statements,unused-argument,protected-access,too-many-arguments,use-maxsplit-arg,too-many-branches,duplicate-code
+# pylint: disable=too-many-locals,too-many-statements,unused-argument,protected-access,too-many-arguments,use-maxsplit-arg,too-many-branches,duplicate-code,broad-exception-caught
 import datetime
 import io
 import logging
@@ -351,7 +351,7 @@ def _create_sportsreference_game_model(
     url: str,
     league: League,
     positions_validator: dict[str, str],
-) -> GameModel:
+) -> GameModel | None:
     # pylint: disable=too-many-branches
     response = session.get(url)
     response.raise_for_status()
@@ -485,7 +485,8 @@ def _create_sportsreference_game_model(
     except Exception as exc:
         logging.error(url)
         logging.error(response.text)
-        raise exc
+        logging.error(str(exc))
+        return None
 
     scorebox_meta_div = soup.find("div", class_="scorebox_meta")
     if not isinstance(scorebox_meta_div, Tag):
@@ -660,7 +661,7 @@ def _cached_create_sportsreference_game_model(
     url: str,
     league: League,
     positions_validator: dict[str, str],
-) -> GameModel:
+) -> GameModel | None:
     return _create_sportsreference_game_model(session, url, league, positions_validator)
 
 
@@ -669,7 +670,7 @@ def create_sportsreference_game_model(
     url: str,
     league: League,
     positions_validator: dict[str, str],
-) -> GameModel:
+) -> GameModel | None:
     """Create a sports reference game model."""
     if not pytest_is_running.is_running():
         return _cached_create_sportsreference_game_model(

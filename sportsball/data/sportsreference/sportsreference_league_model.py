@@ -100,6 +100,8 @@ class SportsReferenceLeagueModel(LeagueModel):
             game_model = create_sportsreference_game_model(
                 self.session, game_url, self.league, self.position_validator()
             )
+            if game_model is None:
+                continue
             pbar.set_description(
                 f"SportsReference {game_model.year} - {game_model.season_type} - {game_model.dt}"
             )
