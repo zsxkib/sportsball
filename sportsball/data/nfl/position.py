@@ -25,3 +25,4 @@ class Position(StrEnum):
     LONG_SNAPPER = "LS"
     PLACE_KICKER = "PK"
     CENTER = "C"
+    FULL_BACK = "FB"
