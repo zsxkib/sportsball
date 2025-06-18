@@ -16183,6 +16183,42 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Scottsdale, AZ, USA": SportsballGeocodeTuple(
+        city="Scottsdale",
+        state="AZ",
+        postal="",
+        lat=33.493056,
+        lng=-111.926111,
+        housenumber="",
+        country="USA",
+    ),
+    "Moorhead, MN, USA": SportsballGeocodeTuple(
+        city="Moorhead",
+        state="MN",
+        postal="",
+        lat=46.873889,
+        lng=-96.767222,
+        housenumber="",
+        country="USA",
+    ),
+    "Orange, CA, USA": SportsballGeocodeTuple(
+        city="Orange",
+        state="CA",
+        postal="",
+        lat=33.803056,
+        lng=-117.8325,
+        housenumber="",
+        country="USA",
+    ),
+    "Puyallup, WA, USA": SportsballGeocodeTuple(
+        city="Puyallup",
+        state="WA",
+        postal="",
+        lat=47.175556,
+        lng=-122.272222,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 

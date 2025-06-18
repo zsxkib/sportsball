@@ -71,6 +71,8 @@ def _create_espn_player_model(
             "Failed to get birth address for: %s", ", ".join(birth_address_components)
         )
 
+    position_abbreviation = position_dict["abbreviation"]
+
     return PlayerModel(
         identifier=identifier,
         jersey=jersey,
@@ -111,7 +113,9 @@ def _create_espn_player_model(
         father=None,
         sex=str(Sex.MALE),
         age=None if birth_date is None else relativedelta(birth_date, dt.date()).years,
-        starting_position=positions_validator[position_dict["abbreviation"]],
+        starting_position=positions_validator[position_abbreviation]
+        if position_abbreviation != "-"
+        else None,
         weight=athlete_dict["weight"] * 0.453592,
         birth_address=birth_address,
         owner=None,

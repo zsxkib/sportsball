@@ -24,3 +24,4 @@ class Position(StrEnum):
     PUNTER = "P"
     LONG_SNAPPER = "LS"
     PLACE_KICKER = "PK"
+    CENTER = "C"
