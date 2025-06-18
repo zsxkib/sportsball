@@ -16084,6 +16084,24 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Capital Centre, Landover, Maryland": CAPITAL_CENTER,
+    "Mission Hills, CA, USA": SportsballGeocodeTuple(
+        city="Mission Hills",
+        state="CA",
+        postal="",
+        lat=34.257222,
+        lng=-118.467222,
+        housenumber="",
+        country="USA",
+    ),
+    "Mishawaka, IN, USA": SportsballGeocodeTuple(
+        city="Mishawaka",
+        state="IN",
+        postal="",
+        lat=41.654167,
+        lng=-86.163333,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
