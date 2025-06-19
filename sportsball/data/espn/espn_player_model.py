@@ -60,19 +60,21 @@ def _create_espn_player_model(
     state = birth_place.get("state")
     if state is not None:
         birth_address_components.append(state)
-    birth_address_components.append(birth_place["country"])
+    country = birth_place.get("country")
+    if country is not None:
+        birth_address_components.append(country)
 
     birth_address = None
-    try:
-        birth_address = create_google_address_model(
-            query=", ".join(birth_address_components),
-            session=session,
-            dt=None,
-        )
-    except ValueError:
-        logging.warning(
-            "Failed to get birth address for: %s", ", ".join(birth_address_components)
-        )
+    if not birth_address_components:
+        query = ", ".join(birth_address_components)
+        try:
+            birth_address = create_google_address_model(
+                query=query,
+                session=session,
+                dt=None,
+            )
+        except ValueError:
+            logging.warning("Failed to get birth address for: %s", query)
 
     position_abbreviation = position_dict["abbreviation"]
 

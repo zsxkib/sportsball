@@ -42,13 +42,15 @@ def _create_espn_team_model(
         player = create_espn_player_model(session, entity, dt, positions_validator)
         players.append(player)
     points = score_dict["value"]
-    try:
-        coaches_response = session.get(team["coaches"]["$ref"])
-    except KeyError:
-        logging.error("coaches missing for team %s", json.dumps(team))
-        raise
-    coaches_response.raise_for_status()
-    coaches_urls = [x["$ref"] for x in coaches_response.json()["items"]]
+    coaches_urls = []
+    if "coaches" in team:
+        try:
+            coaches_response = session.get(team["coaches"]["$ref"])
+        except KeyError:
+            logging.warning("coaches missing for team %s", json.dumps(team))
+            raise
+        coaches_response.raise_for_status()
+        coaches_urls = [x["$ref"] for x in coaches_response.json()["items"]]
     return TeamModel(
         identifier=identifier,
         name=name,
