@@ -26,3 +26,4 @@ class Position(StrEnum):
     PLACE_KICKER = "PK"
     CENTER = "C"
     FULL_BACK = "FB"
+    NOSE_TACKLE = "NT"

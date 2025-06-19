@@ -1,6 +1,6 @@
 """ESPN player model."""
 
-# pylint: disable=duplicate-code,too-many-locals
+# pylint: disable=duplicate-code,too-many-locals,too-many-branches
 import datetime
 import logging
 from typing import Any
@@ -66,15 +66,16 @@ def _create_espn_player_model(
 
     birth_address = None
     if not birth_address_components:
-        query = ", ".join(birth_address_components)
-        try:
-            birth_address = create_google_address_model(
-                query=query,
-                session=session,
-                dt=None,
-            )
-        except ValueError:
-            logging.warning("Failed to get birth address for: %s", query)
+        query = ", ".join(birth_address_components).strip()
+        if query:
+            try:
+                birth_address = create_google_address_model(
+                    query=query,
+                    session=session,
+                    dt=None,
+                )
+            except ValueError:
+                logging.warning("Failed to get birth address for: %s", query)
 
     position_abbreviation = position_dict["abbreviation"]
 
