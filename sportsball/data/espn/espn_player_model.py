@@ -53,7 +53,10 @@ def _create_espn_player_model(
         logging.warning("Failed to get birth date for %s", athlete_response.url)
 
     birth_place = athlete_dict["birthPlace"]
-    birth_address_components = [birth_place["city"]]
+    birth_address_components = []
+    city = birth_place.get("city")
+    if city is not None:
+        birth_address_components.append(city)
     state = birth_place.get("state")
     if state is not None:
         birth_address_components.append(state)
@@ -116,7 +119,7 @@ def _create_espn_player_model(
         starting_position=positions_validator[position_abbreviation]
         if position_abbreviation != "-"
         else None,
-        weight=athlete_dict["weight"] * 0.453592,
+        weight=athlete_dict["weight"] * 0.453592 if "weight" in athlete_dict else None,
         birth_address=birth_address,
         owner=None,
         seconds_played=None,
