@@ -3502,6 +3502,15 @@ ST_GEORGE = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
+MVP_ARENA = SportsballGeocodeTuple(
+    city="Albany",
+    state="NY",
+    postal="",
+    lat=42.648611,
+    lng=-73.754722,
+    housenumber="51",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5721,15 +5730,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "MVP Arena, Albany, New York": SportsballGeocodeTuple(
-        city="Albany",
-        state="NY",
-        postal="",
-        lat=42.648611,
-        lng=-73.754722,
-        housenumber="51",
-        country="USA",
-    ),
+    "MVP Arena, Albany, New York": MVP_ARENA,
     "SECU Arena, Towson, Maryland": SportsballGeocodeTuple(
         city="Towson",
         state="MD",
@@ -17309,6 +17310,9 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "ARCO Arena (I), Sacramento, California": ARCO_ARENA,
+    "Pepsi Arena, Albany, New York": MVP_ARENA,
+    "Martin Stadium - Evanston - IL - 60208": LANNY_AND_SHARON_MARTIN_STADIUM,
 }
 
 

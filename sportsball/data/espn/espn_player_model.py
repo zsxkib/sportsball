@@ -1,6 +1,6 @@
 """ESPN player model."""
 
-# pylint: disable=duplicate-code,too-many-locals,too-many-branches
+# pylint: disable=duplicate-code,too-many-locals,too-many-branches,line-too-long
 import datetime
 import logging
 from typing import Any
@@ -15,6 +15,10 @@ from ..google.google_address_model import create_google_address_model
 from ..player_model import PlayerModel
 from ..sex import Sex
 from ..species import Species
+
+_BAD_URLS = {
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/athletes/4689686?lang=en&region=us",
+}
 
 
 def _create_espn_player_model(
@@ -38,21 +42,25 @@ def _create_espn_player_model(
                         fumbles = stat["value"]
                     if stat["name"] == "fumblesLost":
                         fumbles_lost = stat["value"]
-    athlete_response = session.get(player["athlete"]["$ref"])
-    athlete_response.raise_for_status()
-    athlete_dict = athlete_response.json()
+    athlete_dict = {}
+    athelete_url = player["athlete"]["$ref"]
+    if athelete_url in _BAD_URLS:
+        athlete_response = session.get(athelete_url)
+        athlete_response.raise_for_status()
+        athelete_url = athlete_response.url
+        athlete_dict = athlete_response.json()
     position_response = session.get(player["position"]["$ref"])
     position_response.raise_for_status()
     position_dict = position_response.json()
-    name = athlete_dict["fullName"]
+    name = athlete_dict.get("fullName", identifier)
 
     birth_date = None
     try:
         birth_date = parse(athlete_dict["dateOfBirth"]).date()
     except KeyError:
-        logging.warning("Failed to get birth date for %s", athlete_response.url)
+        logging.debug("Failed to get birth date for %s", athelete_url)
 
-    birth_place = athlete_dict["birthPlace"]
+    birth_place = athlete_dict.get("birthPlace", {})
     birth_address_components = []
     city = birth_place.get("city")
     if city is not None:
