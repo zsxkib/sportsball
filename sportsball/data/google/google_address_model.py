@@ -17322,6 +17322,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1826",
         country="USA",
     ),
+    "Pontiac Silverdome, Pontiac, Michigan": SILVERDOME,
 }
 
 

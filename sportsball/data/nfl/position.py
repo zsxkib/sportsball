@@ -28,3 +28,4 @@ class Position(StrEnum):
     FULL_BACK = "FB"
     NOSE_TACKLE = "NT"
     ATHLETE = "ATH"
+    KICK_RETURNER = "KR"
