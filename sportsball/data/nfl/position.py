@@ -27,3 +27,4 @@ class Position(StrEnum):
     CENTER = "C"
     FULL_BACK = "FB"
     NOSE_TACKLE = "NT"
+    ATHLETE = "ATH"

@@ -44,7 +44,7 @@ def _create_espn_player_model(
                         fumbles_lost = stat["value"]
     athlete_dict = {}
     athelete_url = player["athlete"]["$ref"]
-    if athelete_url in _BAD_URLS:
+    if athelete_url not in _BAD_URLS:
         athlete_response = session.get(athelete_url)
         athlete_response.raise_for_status()
         athelete_url = athlete_response.url

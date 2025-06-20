@@ -17313,6 +17313,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "ARCO Arena (I), Sacramento, California": ARCO_ARENA,
     "Pepsi Arena, Albany, New York": MVP_ARENA,
     "Martin Stadium - Evanston - IL - 60208": LANNY_AND_SHARON_MARTIN_STADIUM,
+    "Arizona Veterans Memorial Coliseum, Phoenix, Arizona": SportsballGeocodeTuple(
+        city="Phoenix",
+        state="AZ",
+        postal="",
+        lat=33.469444,
+        lng=-112.096667,
+        housenumber="1826",
+        country="USA",
+    ),
 }
 
 
