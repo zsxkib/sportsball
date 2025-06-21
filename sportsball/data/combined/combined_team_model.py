@@ -129,7 +129,9 @@ def create_combined_team_model(
         extra = field.json_schema_extra or {}
         if extra.get(FFILL_KEY, False):  # type: ignore
             current_value = getattr(team_model, field_name)
-            if current_value is None:
+            if current_value is None or (
+                isinstance(current_value, list) and not current_value
+            ):
                 setattr(team_model, field_name, team_instance_ffill.get(field_name))
             else:
                 team_instance_ffill[field_name] = current_value

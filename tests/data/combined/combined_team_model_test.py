@@ -9,6 +9,7 @@ from sportsball.data.combined.combined_team_model import create_combined_team_mo
 from sportsball.data.team_model import TeamModel
 from sportsball.data.player_model import PlayerModel
 from sportsball.data.species import Species
+from sportsball.data.coach_model import CoachModel
 
 
 class TestCombinedTeamModel(unittest.TestCase):
@@ -354,3 +355,66 @@ class TestCombinedTeamModel(unittest.TestCase):
                 coach_ffill=coach_ffill,
             )
             self.assertEqual(team_model.players[0].identifier, team_model_2.players[0].identifier)
+
+    def test_coach_ffill(self):
+        names = {}
+        coach_names = {}
+        player_ffill = {}
+        team_ffill = {}
+        coach_ffill = {}
+        coach_model = CoachModel(
+            identifier="c",
+            name="Wayne Johnson",
+            birth_date=None,
+            age=None,
+        )
+        team_models = [TeamModel(
+            identifier="a",
+            name="Team A",
+            location=None,
+            players=[],
+            odds=[],
+            points=None,
+            ladder_rank=None,
+            news=[],
+            social=[],
+            coaches=[coach_model],
+            lbw=None,
+            end_dt=None,
+        )]
+        team_model = create_combined_team_model(
+            team_models=team_models,
+            identifier="a",
+            player_identity_map={},
+            names=names,
+            coach_names=coach_names,
+            player_ffill=player_ffill,
+            team_ffill=team_ffill,
+            coach_ffill=coach_ffill,
+        )
+        next_team_models = [TeamModel(
+            identifier="a",
+            name="Team A",
+            location=None,
+            players=[],
+            odds=[],
+            points=None,
+            ladder_rank=None,
+            news=[],
+            social=[],
+            coaches=[],
+            lbw=None,
+            end_dt=None,
+        )]
+        next_team_model = create_combined_team_model(
+            team_models=next_team_models,
+            identifier="a",
+            player_identity_map={},
+            names=names,
+            coach_names=coach_names,
+            player_ffill=player_ffill,
+            team_ffill=team_ffill,
+            coach_ffill=coach_ffill,
+        )
+        self.assertTrue(bool(next_team_model.coaches))
+        self.assertEqual(team_model.coaches[0].identifier, next_team_model.coaches[0].identifier)

@@ -17323,6 +17323,16 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Pontiac Silverdome, Pontiac, Michigan": SILVERDOME,
+    "Tylertown, Mississippi, United States": SportsballGeocodeTuple(
+        city="Tylertown",
+        state="MS",
+        postal="",
+        lat=31.116111,
+        lng=-90.142778,
+        housenumber="",
+        country="USA",
+    ),
+    "MECCA Arena, Milwaukee, Wisconsin": MILWAUKEE_ARENA,
 }
 
 

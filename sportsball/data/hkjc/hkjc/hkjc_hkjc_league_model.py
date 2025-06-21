@@ -2,6 +2,7 @@
 
 # pylint: disable=line-too-long
 import datetime
+import http
 import urllib.parse
 from typing import Iterator
 from urllib.parse import urlparse
@@ -60,6 +61,8 @@ class HKJCHKJCLeagueModel(LeagueModel):
                         continue
                     with self.session.wayback_disabled():
                         response = self.session.get(url)
+                    if response.status_code == http.HTTPStatus.NOT_FOUND:
+                        continue
                     response.raise_for_status()
                     game_model = create_hkjc_hkjc_game_model(
                         self.session, response.text, response.url
