@@ -17336,6 +17336,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "MECCA Arena, Milwaukee, Wisconsin": MILWAUKEE_ARENA,
     "Seattle Kingdome, Seattle, Washington": LUMEN_FIELD,
+    "Martin Stadium - Pullman - WA - 99164": SportsballGeocodeTuple(
+        city="Pullman",
+        state="WA",
+        postal="99164",
+        lat=46.732,
+        lng=-117.16,
+        housenumber="720",
+        country="USA",
+    ),
 }
 
 

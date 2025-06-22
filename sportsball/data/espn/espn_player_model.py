@@ -18,6 +18,7 @@ from ..species import Species
 
 _BAD_URLS = {
     "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/athletes/4689686?lang=en&region=us",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/athletes/2333612?lang=en&region=us",
 }
 
 

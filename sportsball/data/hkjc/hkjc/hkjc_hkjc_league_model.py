@@ -19,6 +19,10 @@ from .hkjc_hkjc_game_model import (RACE_COURSE_QUERY_KEY, RACE_DATE_QUERY_KEY,
                                    create_hkjc_hkjc_game_model)
 from .hkjc_hkjc_venue_model import HAPPY_VALLEY_VENUE_CODE, SHA_TIN_VENUE_CODE
 
+_BAD_URLS = {
+    "https://common.hkjc.com/racing/information/English/Racing/LocalResults.aspx?RaceDate=2025/03/05&Racecourse=HV&RaceNo=9"
+}
+
 
 class HKJCHKJCLeagueModel(LeagueModel):
     """HKJC HKJC implementation of the league model."""
@@ -53,6 +57,8 @@ class HKJCHKJCLeagueModel(LeagueModel):
                         continue
                     o = urlparse(url)
                     if not o.path.endswith("/LocalResults.aspx"):
+                        continue
+                    if url in _BAD_URLS:
                         continue
                     query = urllib.parse.parse_qs(o.query)
                     if RACE_NUMBER_QUERY_KEY not in query:
