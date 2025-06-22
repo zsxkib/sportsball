@@ -17374,7 +17374,7 @@ def _create_google_address_model(
                 r = session.get(url)
                 r.raise_for_status()
                 data = r.json()
-                altitude = data[0]["elevation"]
+                altitude = data["results"][0]["elevation"]
     try:
         return AddressModel(
             city=g.city,
