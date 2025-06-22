@@ -6,6 +6,7 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, Field
 
+from .coach_model import VERSION as COACH_VERSION
 from .coach_model import CoachModel
 from .delimiter import DELIMITER
 from .field_type import FFILL_KEY, TYPE_KEY, FieldType
@@ -79,7 +80,7 @@ TEAM_TOTAL_REBOUNDS_COLUMN: Literal["total_rebounds"] = "total_rebounds"
 TEAM_STEALS_COLUMN: Literal["steals"] = "steals"
 TEAM_BLOCKS_COLUMN: Literal["blocks"] = "blocks"
 TEAM_PERSONAL_FOULS_COLUMN: Literal["personal_fouls"] = "personal_fouls"
-VERSION = DELIMITER.join(["0.0.1", PLAYER_VERSION])
+VERSION = DELIMITER.join(["0.0.1", PLAYER_VERSION, COACH_VERSION])
 
 
 def _calculate_kicks(data: dict[str, Any]) -> int | None:

@@ -1,11 +1,11 @@
 """The prototype class for a player."""
 
+# pylint: disable=duplicate-code
 from __future__ import annotations
 
 import datetime
 from typing import Any, Literal
 
-import gender_guesser.detector as gender  # type: ignore
 from pydantic import BaseModel, Field
 
 from .address_model import VERSION as ADDRESS_VERSION
@@ -13,7 +13,8 @@ from .address_model import AddressModel
 from .delimiter import DELIMITER
 from .field_type import FFILL_KEY, TYPE_KEY, FieldType
 from .owner_model import OwnerModel
-from .sex import Sex
+from .sex import (FEMALE_GENDERS, GENDER_DETECTOR, MALE_GENDERS,
+                  UNCERTAIN_GENDERS, Sex)
 
 PLAYER_KICKS_COLUMN: Literal["kicks"] = "kicks"
 PLAYER_IDENTIFIER_COLUMN: Literal["identifier"] = "identifier"
@@ -91,20 +92,15 @@ PLAYER_GAME_SCORE_COLUMN: Literal["game_score"] = "game_score"
 PLAYER_POINT_DIFFERENTIAL_COLUMN: Literal["point_differential"] = "point_differential"
 VERSION = DELIMITER.join(["0.0.1", ADDRESS_VERSION])
 
-_GENDER_DETECTOR = gender.Detector()
-_MALE_GENDERS = {"male", "mostly_male"}
-_FEMALE_GENDERS = {"female", "mostly_female"}
-_UNCERTAIN_GENDERS = {"andy", "unknown"}
-
 
 def _guess_sex(data: dict[str, Any]) -> str | None:
     name = data[PLAYER_NAME_COLUMN]
-    gender_tag = _GENDER_DETECTOR.get_gender(name)
-    if gender_tag in _MALE_GENDERS:
+    gender_tag = GENDER_DETECTOR.get_gender(name)
+    if gender_tag in MALE_GENDERS:
         return str(Sex.MALE)
-    if gender_tag in _FEMALE_GENDERS:
+    if gender_tag in FEMALE_GENDERS:
         return str(Sex.FEMALE)
-    if gender_tag in _UNCERTAIN_GENDERS:
+    if gender_tag in UNCERTAIN_GENDERS:
         return None
     return None
 

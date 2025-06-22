@@ -108,6 +108,7 @@ A representation of the game within a season.
 * **postponed**: Whether the game was postponed.
 * **playoff**: Whether the game was a playoff game.
 * **distance**: The distance the game was played over.
+* **version**: The version of the game model.
 
 #### Team
 
@@ -164,6 +165,7 @@ A representation of a team within a game.
 * **steals**: The number of steals made by the players on the team in the game.
 * **blocks**: The number of blocks made by the players on the team in the game.
 * **personal_fouls**: The number of personal fouls made by the players on the team in the game.
+* **version**: The version of the team model.
 
 #### Player
 
@@ -227,6 +229,7 @@ A representation of a player within a team within a game.
 * **points**: The points made by the player during the game.
 * **game_score**: The [John Hollinger game score](https://www.nbastuffer.com/analytics101/game-score/) of the player during the game.
 * **point_differential**: The points scored by the players team while the player was on the court minus the points scored by the opposing team when the player is off the court.
+* **version**: The version of the player model.
 
 #### Odds
 
@@ -247,6 +250,9 @@ The venue the game is played at.
 * **address**: The address of the venue.
 * **is_grass**: Whether the venue has a grass field.
 * **is_indoor**: Whether the venue is indoors.
+* **is_turf**: Whether the venue is turf.
+* **is_dirt**: Whether the venue is dirt.
+* **version**: The version of the game model.
 
 #### Address
 
@@ -261,6 +267,8 @@ The address of the venue.
 * **weather**: The weather at the address at the game start time.
 * **timezone**: The time zone at the address.
 * **country**: The country of the address.
+* **altitude**: The altitude of the address.
+* **version**: The version of the address model.
 
 #### Weather
 
@@ -361,6 +369,8 @@ The coach on the team at the time of the game.
 * **name**: The name of the coach.
 * **birth_date**: The birth date of the coach.
 * **age**: The age of the coach.
+* **sex**: The sex of the coach.
+* **version**: The version of the coach model.
 
 #### Dividend
 

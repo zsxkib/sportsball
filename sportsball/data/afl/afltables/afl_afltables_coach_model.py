@@ -16,13 +16,17 @@ from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta
 
 from ....cache import MEMORY
-from ...coach_model import CoachModel
+from ...coach_model import VERSION, CoachModel
 
 _COACH_URL_CACHE: dict[str, str] = {}
 
 
 def _create_afl_afltables_coach_model(
-    url: str, session: requests_cache.CachedSession, year: int, dt: datetime.datetime
+    url: str,
+    session: requests_cache.CachedSession,
+    year: int,
+    dt: datetime.datetime,
+    version: str,
 ) -> CoachModel | None:
     html = _COACH_URL_CACHE.get(url)
     if html is None:
@@ -84,14 +88,21 @@ def _create_afl_afltables_coach_model(
         name=name,
         birth_date=birth_date,
         age=relativedelta(birth_date, dt).years if birth_date is not None else None,
+        version=version,
     )
 
 
 @MEMORY.cache(ignore=["session"])
 def _cached_create_afl_afltables_coach_model(
-    url: str, session: requests_cache.CachedSession, year: int, dt: datetime.datetime
+    url: str,
+    session: requests_cache.CachedSession,
+    year: int,
+    dt: datetime.datetime,
+    version: str,
 ) -> CoachModel | None:
-    return _create_afl_afltables_coach_model(url=url, session=session, year=year, dt=dt)
+    return _create_afl_afltables_coach_model(
+        url=url, session=session, year=year, dt=dt, version=version
+    )
 
 
 def create_afl_afltables_coach_model(
@@ -100,9 +111,9 @@ def create_afl_afltables_coach_model(
     """Create a coach model from AFL tables."""
     if not pytest_is_running.is_running():
         return _cached_create_afl_afltables_coach_model(
-            url=url, session=session, year=year, dt=dt
+            url=url, session=session, year=year, dt=dt, version=VERSION
         )
     with session.cache_disabled():
         return _create_afl_afltables_coach_model(
-            url=url, session=session, year=year, dt=dt
+            url=url, session=session, year=year, dt=dt, version=VERSION
         )

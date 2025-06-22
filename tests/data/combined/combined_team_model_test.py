@@ -9,7 +9,7 @@ from sportsball.data.combined.combined_team_model import create_combined_team_mo
 from sportsball.data.team_model import TeamModel, VERSION
 from sportsball.data.player_model import PlayerModel, VERSION as PLAYER_VERSION
 from sportsball.data.species import Species
-from sportsball.data.coach_model import CoachModel
+from sportsball.data.coach_model import CoachModel, VERSION as COACH_VERSION
 
 
 class TestCombinedTeamModel(unittest.TestCase):
@@ -375,6 +375,7 @@ class TestCombinedTeamModel(unittest.TestCase):
             name="Wayne Johnson",
             birth_date=None,
             age=None,
+            version=COACH_VERSION,
         )
         team_models = [TeamModel(
             identifier="a",

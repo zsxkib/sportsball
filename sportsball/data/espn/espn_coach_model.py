@@ -6,12 +6,13 @@ import pytest_is_running
 import requests_cache
 
 from ...cache import MEMORY
-from ..coach_model import CoachModel
+from ..coach_model import VERSION, CoachModel
 
 
 def _create_espn_coach_model(
     session: requests_cache.CachedSession,
     url: str,
+    version: str,
 ) -> CoachModel:
     response = session.get(url)
     response.raise_for_status()
@@ -21,6 +22,7 @@ def _create_espn_coach_model(
         name=" ".join([data["firstName"], data["lastName"]]),
         birth_date=None,
         age=None,
+        version=version,
     )
 
 
@@ -28,8 +30,9 @@ def _create_espn_coach_model(
 def _cached_create_espn_coach_model(
     session: requests_cache.CachedSession,
     url: str,
+    version: str,
 ) -> CoachModel:
-    return _create_espn_coach_model(session, url)
+    return _create_espn_coach_model(session=session, url=url, version=version)
 
 
 def create_espn_coach_model(
@@ -42,6 +45,8 @@ def create_espn_coach_model(
         not pytest_is_running.is_running()
         and dt.date() < datetime.datetime.today().date() - datetime.timedelta(days=7)
     ):
-        return _cached_create_espn_coach_model(session, url)
+        return _cached_create_espn_coach_model(
+            session=session, url=url, version=VERSION
+        )
     with session.cache_disabled():
-        return _create_espn_coach_model(session, url)
+        return _create_espn_coach_model(session=session, url=url, version=VERSION)

@@ -7,12 +7,13 @@ import pytest_is_running
 from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ....cache import MEMORY
-from ...coach_model import CoachModel
+from ...coach_model import VERSION, CoachModel
 
 
 def _create_hkjc_hkjc_coach_model(
     session: ScrapeSession,
     url: str,
+    version: str,
 ) -> CoachModel:
     with session.wayback_disabled():
         response = session.get(url)
@@ -43,6 +44,7 @@ def _create_hkjc_hkjc_coach_model(
         name=name,
         birth_date=None,
         age=age,
+        version=version,
     )
 
 
@@ -50,8 +52,9 @@ def _create_hkjc_hkjc_coach_model(
 def _cached_create_hkjc_hkjc_coach_model(
     session: ScrapeSession,
     url: str,
+    version: str,
 ) -> CoachModel:
-    return _create_hkjc_hkjc_coach_model(session=session, url=url)
+    return _create_hkjc_hkjc_coach_model(session=session, url=url, version=version)
 
 
 def create_hkjc_hkjc_coach_model(
@@ -60,5 +63,7 @@ def create_hkjc_hkjc_coach_model(
 ) -> CoachModel:
     """Create a coach model based off HKJC."""
     if not pytest_is_running.is_running():
-        return _cached_create_hkjc_hkjc_coach_model(session=session, url=url)
-    return _create_hkjc_hkjc_coach_model(session=session, url=url)
+        return _cached_create_hkjc_hkjc_coach_model(
+            session=session, url=url, version=VERSION
+        )
+    return _create_hkjc_hkjc_coach_model(session=session, url=url, version=VERSION)

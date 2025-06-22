@@ -13,7 +13,7 @@ from dateutil.relativedelta import relativedelta
 from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ...cache import MEMORY
-from ..coach_model import CoachModel
+from ..coach_model import VERSION, CoachModel
 
 _NON_WAYBACK_URLS: set[str] = {
     "https://www.sports-reference.com/cbb/coaches/kelvin-sampson-1.html",
@@ -28,7 +28,7 @@ _NON_WAYBACK_URLS: set[str] = {
 
 
 def _create_sportsreference_coach_model(
-    session: ScrapeSession, coach_url: str, dt: datetime.datetime
+    session: ScrapeSession, coach_url: str, dt: datetime.datetime, version: str
 ) -> CoachModel:
     """Create a coach model from sports reference."""
     if coach_url in _NON_WAYBACK_URLS:
@@ -68,15 +68,16 @@ def _create_sportsreference_coach_model(
         name=name,
         birth_date=birth_date,
         age=None if birth_date is None else relativedelta(birth_date, dt).years,
+        version=version,
     )
 
 
 @MEMORY.cache(ignore=["session"])
 def _cached_create_sportsreference_coach_mode(
-    session: ScrapeSession, coach_url: str, dt: datetime.datetime
+    session: ScrapeSession, coach_url: str, dt: datetime.datetime, version: str
 ) -> CoachModel:
     return _create_sportsreference_coach_model(
-        session=session, coach_url=coach_url, dt=dt
+        session=session, coach_url=coach_url, dt=dt, version=version
     )
 
 
@@ -86,9 +87,9 @@ def create_sportsreference_coach_model(
     """Create a coach model from sports reference."""
     if not pytest_is_running.is_running():
         return _cached_create_sportsreference_coach_mode(
-            session=session, coach_url=coach_url, dt=dt
+            session=session, coach_url=coach_url, dt=dt, version=VERSION
         )
     with session.cache_disabled():
         return _create_sportsreference_coach_model(
-            session=session, coach_url=coach_url, dt=dt
+            session=session, coach_url=coach_url, dt=dt, version=VERSION
         )
