@@ -3,6 +3,7 @@
 # pylint: disable=too-many-lines,line-too-long
 import datetime
 import logging
+import zipfile
 from collections import namedtuple
 from typing import Any
 
@@ -17334,6 +17335,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "MECCA Arena, Milwaukee, Wisconsin": MILWAUKEE_ARENA,
+    "Seattle Kingdome, Seattle, Washington": LUMEN_FIELD,
 }
 
 
@@ -17365,7 +17367,14 @@ def _create_google_address_model(
                 tz,
             )
         if not pytest_is_running.is_running():
-            altitude = get_elevation(lat=latitude, lon=longitude)
+            try:
+                altitude = get_elevation(lat=latitude, lon=longitude)
+            except zipfile.BadZipFile:
+                url = f"https://api.opentopodata.org/v1/aster30m?locations={latitude},{longitude}"
+                r = session.get(url)
+                r.raise_for_status()
+                data = r.json()
+                altitude = data[0]["elevation"]
     try:
         return AddressModel(
             city=g.city,
