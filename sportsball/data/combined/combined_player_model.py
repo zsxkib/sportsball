@@ -3,8 +3,8 @@
 # pylint: disable=too-many-locals,too-many-branches,too-many-statements,duplicate-code
 from typing import Any
 
-from ..field_type import FFILL_KEY
 from ..player_model import VERSION, PlayerModel
+from .ffill import ffill
 from .null_check import is_null
 
 
@@ -299,15 +299,6 @@ def create_combined_player_model(
         version=VERSION,
     )
 
-    player_instance_ffill = player_ffill.get(identifier, {})
-    for field_name, field in player_model.model_fields.items():
-        extra = field.json_schema_extra or {}
-        if extra.get(FFILL_KEY, False):  # type: ignore
-            current_value = getattr(player_model, field_name)
-            if current_value is None:
-                setattr(player_model, field_name, player_instance_ffill.get(field_name))
-            else:
-                player_instance_ffill[field_name] = current_value
-    player_ffill[identifier] = player_instance_ffill
+    ffill(player_ffill, identifier, player_model)
 
     return player_model

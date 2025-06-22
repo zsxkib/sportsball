@@ -3,7 +3,7 @@
 from typing import Any
 
 from ..coach_model import CoachModel
-from ..field_type import FFILL_KEY
+from .ffill import ffill
 from .null_check import is_null
 
 
@@ -35,15 +35,6 @@ def create_combined_coach_model(
         age=age,
     )
 
-    coach_instance_ffill = coach_ffill.get(identifier, {})
-    for field_name, field in coach_model.model_fields.items():
-        extra = field.json_schema_extra or {}
-        if extra.get(FFILL_KEY, False):  # type: ignore
-            current_value = getattr(coach_model, field_name)
-            if current_value is None:
-                setattr(coach_model, field_name, coach_instance_ffill.get(field_name))
-            else:
-                coach_instance_ffill[field_name] = current_value
-    coach_ffill[identifier] = coach_instance_ffill
+    ffill(coach_ffill, identifier, coach_model)
 
     return coach_model

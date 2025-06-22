@@ -6,7 +6,6 @@ import unicodedata
 from typing import Any
 
 from ..coach_model import CoachModel
-from ..field_type import FFILL_KEY
 from ..news_model import NewsModel
 from ..odds_model import OddsModel
 from ..player_model import PlayerModel
@@ -14,6 +13,7 @@ from ..social_model import SocialModel
 from ..team_model import VERSION, TeamModel
 from .combined_coach_model import create_combined_coach_model
 from .combined_player_model import create_combined_player_model
+from .ffill import ffill
 from .null_check import is_null
 
 REGEX = re.compile("[^a-zA-Z]")
@@ -125,17 +125,6 @@ def create_combined_team_model(
         version=VERSION,
     )
 
-    team_instance_ffill = team_ffill.get(identifier, {})
-    for field_name, field in team_model.model_fields.items():
-        extra = field.json_schema_extra or {}
-        if extra.get(FFILL_KEY, False):  # type: ignore
-            current_value = getattr(team_model, field_name)
-            if current_value is None or (
-                isinstance(current_value, list) and not current_value
-            ):
-                setattr(team_model, field_name, team_instance_ffill.get(field_name))
-            else:
-                team_instance_ffill[field_name] = current_value
-    team_ffill[identifier] = team_instance_ffill
+    ffill(team_ffill, identifier, team_model)
 
     return team_model
