@@ -1,7 +1,7 @@
 """Tests for the team model class."""
 import unittest
 
-from sportsball.data.team_model import TeamModel
+from sportsball.data.team_model import TeamModel, VERSION
 
 
 class TestTeamModel(unittest.TestCase):
@@ -22,6 +22,7 @@ class TestTeamModel(unittest.TestCase):
             coaches=[],
             lbw=None,
             end_dt=None,
+            version=VERSION,
         )
 
     def test_notnull(self):

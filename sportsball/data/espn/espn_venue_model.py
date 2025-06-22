@@ -12,7 +12,10 @@ from ..venue_model import VenueModel
 
 @MEMORY.cache(ignore=["session"])
 def create_espn_venue_model(
-    venue: dict[str, Any], session: requests_cache.CachedSession, dt: datetime.datetime
+    venue: dict[str, Any],
+    session: requests_cache.CachedSession,
+    dt: datetime.datetime,
+    version: str,
 ) -> VenueModel:
     """Create a venue model from an ESPN result."""
     identifier = venue["id"]
@@ -36,4 +39,5 @@ def create_espn_venue_model(
         is_indoor=indoor,
         is_turf=None,
         is_dirt=None,
+        version=version,
     )

@@ -16,7 +16,7 @@ from scrapesession.session import DEFAULT_TIMEOUT  # type: ignore
 
 from ...cache import MEMORY
 from ..google.google_address_model import create_google_address_model
-from ..player_model import PlayerModel
+from ..player_model import VERSION, PlayerModel
 from ..sex import Sex
 from ..species import Species
 
@@ -73,6 +73,7 @@ def _create_sportsreference_player_model(
     points: dict[str, int],
     game_scores: dict[str, float],
     point_differentials: dict[str, int],
+    version: str,
 ) -> PlayerModel | None:
     """Create a player model from sports reference."""
     player_url = _fix_url(player_url)
@@ -164,6 +165,7 @@ def _create_sportsreference_player_model(
         points=points.get(name),
         game_score=game_scores.get(name),
         point_differential=point_differentials.get(name),
+        version=version,
     )
 
 
@@ -192,6 +194,7 @@ def _cached_create_sportsreference_player_model(
     points: dict[str, int],
     game_scores: dict[str, float],
     point_differentials: dict[str, int],
+    version: str,
 ) -> PlayerModel | None:
     return _create_sportsreference_player_model(
         session=session,
@@ -217,6 +220,7 @@ def _cached_create_sportsreference_player_model(
         points=points,
         game_scores=game_scores,
         point_differentials=point_differentials,
+        version=version,
     )
 
 
@@ -271,6 +275,7 @@ def create_sportsreference_player_model(
             points=points,
             game_scores=game_scores,
             point_differentials=point_differentials,
+            version=VERSION,
         )
     with session.cache_disabled():
         return _create_sportsreference_player_model(
@@ -297,4 +302,5 @@ def create_sportsreference_player_model(
             points=points,
             game_scores=game_scores,
             point_differentials=point_differentials,
+            version=VERSION,
         )

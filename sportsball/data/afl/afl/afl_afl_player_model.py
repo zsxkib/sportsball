@@ -1,7 +1,7 @@
 """AFL AFL player model."""
 
 # pylint: disable=duplicate-code
-from ...player_model import PlayerModel
+from ...player_model import VERSION, PlayerModel
 from ...sex import Sex
 from ...species import Species
 from ..position import Position
@@ -70,4 +70,5 @@ def create_afl_afl_player_model(
         points=None,
         game_score=None,
         point_differential=None,
+        version=VERSION,
     )

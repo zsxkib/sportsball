@@ -7,6 +7,7 @@ import requests_cache
 import requests_mock
 from sportsball.data.afl.afltables.afl_afltables_game_model import _create_afl_afltables_game_model
 from sportsball.data.league import League
+from sportsball.data.game_model import VERSION
 
 
 class TestAFLTablesGameModel(unittest.TestCase):
@@ -139,8 +140,9 @@ class TestAFLTablesGameModel(unittest.TestCase):
                 2,
                 {},
                 League.AFL,
-                2025,
+                season_year=2025,
                 season_type=None,
+                version=VERSION,
             )
             self.assertIsNotNone(game_model.teams[0].players[0].identifier)
             self.assertEqual(game_model.dt, datetime.datetime(2025, 3, 30, 15, 10))

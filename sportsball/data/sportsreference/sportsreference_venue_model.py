@@ -8,11 +8,14 @@ import requests_cache
 
 from ...cache import MEMORY
 from ..google.google_address_model import create_google_address_model
-from ..venue_model import VenueModel
+from ..venue_model import VERSION, VenueModel
 
 
 def _create_sportsreference_venue_model(
-    venue_name: str | None, session: requests_cache.CachedSession, dt: datetime.datetime
+    venue_name: str | None,
+    session: requests_cache.CachedSession,
+    dt: datetime.datetime,
+    version: str,
 ) -> VenueModel | None:
     if not venue_name:
         return None
@@ -25,14 +28,20 @@ def _create_sportsreference_venue_model(
         is_indoor=None,
         is_turf=None,
         is_dirt=None,
+        version=version,
     )
 
 
 @MEMORY.cache(ignore=["session"])
 def _cached_create_sportsreference_venue_model(
-    venue_name: str | None, session: requests_cache.CachedSession, dt: datetime.datetime
+    venue_name: str | None,
+    session: requests_cache.CachedSession,
+    dt: datetime.datetime,
+    version: str,
 ) -> VenueModel | None:
-    return _create_sportsreference_venue_model(venue_name, session, dt)
+    return _create_sportsreference_venue_model(
+        venue_name=venue_name, session=session, dt=dt, version=version
+    )
 
 
 def create_sportsreference_venue_model(
@@ -40,6 +49,10 @@ def create_sportsreference_venue_model(
 ) -> VenueModel | None:
     """Create a sports reference venue model."""
     if not pytest_is_running.is_running():
-        return _cached_create_sportsreference_venue_model(venue_name, session, dt)
+        return _cached_create_sportsreference_venue_model(
+            venue_name=venue_name, session=session, dt=dt, version=VERSION
+        )
     with session.cache_disabled():
-        return _create_sportsreference_venue_model(venue_name, session, dt)
+        return _create_sportsreference_venue_model(
+            venue_name=venue_name, session=session, dt=dt, version=VERSION
+        )

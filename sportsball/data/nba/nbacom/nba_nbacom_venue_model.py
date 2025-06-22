@@ -13,6 +13,7 @@ def create_nba_nbacom_venue_model(
     venue_name: str,
     session: requests_cache.CachedSession,
     dt: datetime.datetime,
+    version: str,
 ) -> VenueModel:
     """Create a game model from AFL Tables."""
     address_model = create_google_address_model(venue_name, session, dt)
@@ -24,4 +25,5 @@ def create_nba_nbacom_venue_model(
         is_indoor=None,
         is_turf=None,
         is_dirt=None,
+        version=version,
     )

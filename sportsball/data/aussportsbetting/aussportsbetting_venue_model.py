@@ -1,5 +1,6 @@
 """Aussportsbetting venue model."""
 
+# pylint: disable=duplicate-code
 import datetime
 
 import requests_cache
@@ -11,7 +12,10 @@ from ..venue_model import VenueModel
 
 @MEMORY.cache(ignore=["session"])
 def create_aussportsbetting_venue_model(
-    venue: str, session: requests_cache.CachedSession, dt: datetime.datetime
+    venue: str,
+    session: requests_cache.CachedSession,
+    dt: datetime.datetime,
+    version: str,
 ) -> VenueModel:
     """Create a venue model based off aus sports betting."""
     address_model = create_google_address_model(venue, session, dt)
@@ -23,4 +27,5 @@ def create_aussportsbetting_venue_model(
         is_indoor=None,
         is_turf=None,
         is_dirt=None,
+        version=version,
     )

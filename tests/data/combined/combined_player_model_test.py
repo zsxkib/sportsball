@@ -5,7 +5,7 @@ import unittest
 import requests_mock
 import requests_cache
 from sportsball.data.combined.combined_player_model import create_combined_player_model
-from sportsball.data.player_model import PlayerModel
+from sportsball.data.player_model import PlayerModel, VERSION
 from sportsball.data.species import Species
 
 
@@ -74,6 +74,7 @@ class TestCombinedPlayerModel(unittest.TestCase):
                 points=None,
                 game_score=None,
                 point_differential=None,
+                version=VERSION,
             )
             players_ffill = {}
             combined_player_model = create_combined_player_model(

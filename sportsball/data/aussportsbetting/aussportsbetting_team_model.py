@@ -21,6 +21,7 @@ def create_aussportsbetting_team_model(
     session: requests_cache.CachedSession,
     dt: datetime.datetime,
     league: League,
+    version: str,
 ) -> TeamModel:
     """Create a team model based off aus sports betting."""
     odds_model = create_aussportsbetting_odds_model(odds)
@@ -38,4 +39,5 @@ def create_aussportsbetting_team_model(
         coaches=[],
         lbw=None,
         end_dt=None,
+        version=version,
     )

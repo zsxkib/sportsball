@@ -8,7 +8,7 @@ import requests_cache
 from sportsball.data.combined.combined_game_model import create_combined_game_model
 from sportsball.data.league import League
 from sportsball.data.season_type import SeasonType
-from sportsball.data.game_model import GameModel
+from sportsball.data.game_model import GameModel, VERSION
 
 
 class TestCombinedGameModel(unittest.TestCase):
@@ -36,6 +36,7 @@ class TestCombinedGameModel(unittest.TestCase):
                 distance=None,
                 dividends=[],
                 pot=None,
+                version=VERSION,
             )
             names = {}
             coach_names = {}

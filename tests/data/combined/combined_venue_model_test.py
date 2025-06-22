@@ -5,7 +5,7 @@ import unittest
 import requests_mock
 import requests_cache
 from sportsball.data.combined.combined_venue_model import create_combined_venue_model
-from sportsball.data.venue_model import VenueModel
+from sportsball.data.venue_model import VenueModel, VERSION
 
 
 class TestCombinedVenueModel(unittest.TestCase):
@@ -25,6 +25,7 @@ class TestCombinedVenueModel(unittest.TestCase):
                 is_indoor=None,
                 is_turf=is_turf,
                 is_dirt=None,
+                version=VERSION,
             )
             venue_model_2 = VenueModel(
                 identifier="b",
@@ -34,6 +35,7 @@ class TestCombinedVenueModel(unittest.TestCase):
                 is_indoor=None,
                 is_turf=None,
                 is_dirt=None,
+                version=VERSION,
             )
             combined_venue_model = create_combined_venue_model(
                 [venue_model, venue_model_2],

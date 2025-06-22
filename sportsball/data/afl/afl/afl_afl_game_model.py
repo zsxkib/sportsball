@@ -12,6 +12,8 @@ from playwright.sync_api import Playwright
 from ....playwright import ensure_install
 from ...game_model import GameModel
 from ...league import League
+from ...team_model import VERSION
+from ...venue_model import VERSION as VENUE_VERSION
 from ..position import Position, position_from_str
 from .afl_afl_team_model import create_afl_afl_team_model
 from .afl_afl_venue_model import create_afl_afl_venue_model
@@ -121,6 +123,7 @@ def create_afl_afl_game_model(
     ladder: list[str],
     url: str | None,
     playwright: Playwright,
+    version: str,
 ) -> GameModel:
     """Create a game model from AFL Tables."""
     odds: list[float] = []
@@ -137,15 +140,18 @@ def create_afl_afl_game_model(
     if dt is None:
         raise ValueError("dt is null")
 
-    venue_model = create_afl_afl_venue_model(venue_name, session, dt)
+    venue_model = create_afl_afl_venue_model(
+        venue_name=venue_name, session=session, dt=dt, version=VENUE_VERSION
+    )
     teams = [
         create_afl_afl_team_model(
-            x,
-            players[count],
-            session,
-            dt,
-            ladder,
-            odds[count] if count < len(odds) else None,
+            team_name=x,
+            players=players[count],
+            session=session,
+            dt=dt,
+            ladder=ladder,
+            odds=odds[count] if count < len(odds) else None,
+            version=VERSION,
         )
         for count, x in enumerate(team_names)
     ]
@@ -165,4 +171,5 @@ def create_afl_afl_game_model(
         distance=None,
         dividends=[],
         pot=None,
+        version=version,
     )

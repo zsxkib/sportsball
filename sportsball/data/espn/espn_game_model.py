@@ -9,11 +9,13 @@ import requests_cache
 from dateutil.parser import parse
 
 from ...cache import MEMORY
+from ..game_model import VERSION as GAME_VERSION
 from ..game_model import GameModel, localize
 from ..league import League
 from ..odds_model import OddsModel
 from ..season_type import SeasonType
 from ..team_model import TeamModel
+from ..venue_model import VERSION as VENUE_VERSION
 from ..venue_model import VenueModel
 from .espn_bookie_model import create_espn_bookie_model
 from .espn_odds_model import MONEYLINE_KEY, create_espn_odds_model
@@ -68,18 +70,25 @@ def _create_espn_team(
 
 
 def _create_venue(
-    event: dict[str, Any], session: requests_cache.CachedSession, dt: datetime.datetime
+    event: dict[str, Any],
+    session: requests_cache.CachedSession,
+    dt: datetime.datetime,
+    version: str,
 ) -> VenueModel | None:
     venue = None
     if "venue" in event:
-        venue = create_espn_venue_model(event["venue"], session, dt)
+        venue = create_espn_venue_model(
+            venue=event["venue"], session=session, dt=dt, version=version
+        )
     if venue is None and "venues" in event:
         venues = event["venues"]
         if venues:
             venue_url = event["venues"][0]["$ref"]
             venue_response = session.get(venue_url)
             venue_response.raise_for_status()
-            venue = create_espn_venue_model(venue_response.json(), session, dt)
+            venue = create_espn_venue_model(
+                venue=venue_response.json(), session=session, dt=dt, version=version
+            )
     return venue  # pyright: ignore
 
 
@@ -136,9 +145,10 @@ def _create_espn_game_model(
     year: int | None,
     season_type: SeasonType | None,
     positions_validator: dict[str, str],
+    version: str,
 ) -> GameModel:
     dt = parse(event["date"])
-    venue = _create_venue(event, session, dt)
+    venue = _create_venue(event, session, dt, VENUE_VERSION)
     if venue is not None:
         dt = localize(venue, dt)
     teams, attendance, end_dt = _create_teams(
@@ -160,6 +170,7 @@ def _create_espn_game_model(
         distance=None,
         dividends=[],
         pot=None,
+        version=version,
     )
 
 
@@ -173,16 +184,18 @@ def _cached_create_espn_game_model(
     year: int | None,
     season_type: SeasonType | None,
     positions_validator: dict[str, str],
+    version: str,
 ) -> GameModel:
     return _create_espn_game_model(
-        event,
-        week,
-        game_number,
-        session,
-        league,
-        year,
-        season_type,
-        positions_validator,
+        event=event,
+        week=week,
+        game_number=game_number,
+        session=session,
+        league=league,
+        year=year,
+        season_type=season_type,
+        positions_validator=positions_validator,
+        version=version,
     )
 
 
@@ -203,23 +216,25 @@ def create_espn_game_model(
         and dt.date() < datetime.datetime.now().date() - datetime.timedelta(days=7)
     ):
         return _cached_create_espn_game_model(
-            event,
-            week,
-            game_number,
-            session,
-            league,
-            year,
-            season_type,
-            positions_validator,
+            event=event,
+            week=week,
+            game_number=game_number,
+            session=session,
+            league=league,
+            year=year,
+            season_type=season_type,
+            positions_validator=positions_validator,
+            version=GAME_VERSION,
         )
     with session.cache_disabled():
         return _create_espn_game_model(
-            event,
-            week,
-            game_number,
-            session,
-            league,
-            year,
-            season_type,
-            positions_validator,
+            event=event,
+            week=week,
+            game_number=game_number,
+            session=session,
+            league=league,
+            year=year,
+            season_type=season_type,
+            positions_validator=positions_validator,
+            version=GAME_VERSION,
         )

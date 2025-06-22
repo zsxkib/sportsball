@@ -14,7 +14,7 @@ from ...cache import MEMORY
 from ..google.google_news_model import create_google_news_models
 from ..league import League
 from ..odds_model import OddsModel
-from ..team_model import TeamModel
+from ..team_model import VERSION, TeamModel
 from ..x.x_social_model import create_x_social_model
 from .espn_coach_model import create_espn_coach_model
 from .espn_player_model import create_espn_player_model
@@ -31,6 +31,7 @@ def _create_espn_team_model(
     dt: datetime.datetime,
     league: League,
     positions_validator: dict[str, str],
+    version: str,
 ) -> TeamModel:
     identifier = team[ID_KEY]
     name = team.get("name", team.get("fullName", team.get("displayName")))
@@ -65,6 +66,7 @@ def _create_espn_team_model(
         coaches=[create_espn_coach_model(session, dt, x) for x in coaches_urls],
         lbw=None,
         end_dt=None,
+        version=version,
     )
 
 
@@ -78,9 +80,18 @@ def _cached_create_espn_team_model(
     dt: datetime.datetime,
     league: League,
     positions_validator: dict[str, str],
+    version: str,
 ) -> TeamModel:
     return _create_espn_team_model(
-        session, team, roster_dict, odds, score_dict, dt, league, positions_validator
+        session=session,
+        team=team,
+        roster_dict=roster_dict,
+        odds=odds,
+        score_dict=score_dict,
+        dt=dt,
+        league=league,
+        positions_validator=positions_validator,
+        version=version,
     )
 
 
@@ -100,23 +111,25 @@ def create_espn_team_model(
         and dt.date() < datetime.datetime.today().date() - datetime.timedelta(days=7)
     ):
         return _cached_create_espn_team_model(
-            session,
-            team,
-            roster_dict,
-            odds,
-            score_dict,
-            dt,
-            league,
-            positions_validator,
+            session=session,
+            team=team,
+            roster_dict=roster_dict,
+            odds=odds,
+            score_dict=score_dict,
+            dt=dt,
+            league=league,
+            positions_validator=positions_validator,
+            version=VERSION,
         )
     with session.cache_disabled():
         return _create_espn_team_model(
-            session,
-            team,
-            roster_dict,
-            odds,
-            score_dict,
-            dt,
-            league,
-            positions_validator,
+            session=session,
+            team=team,
+            roster_dict=roster_dict,
+            odds=odds,
+            score_dict=score_dict,
+            dt=dt,
+            league=league,
+            positions_validator=positions_validator,
+            version=VERSION,
         )

@@ -1,6 +1,6 @@
 """SportsDB game model."""
 
-# pylint: disable=too-many-arguments
+# pylint: disable=too-many-arguments,duplicate-code
 import datetime
 from typing import Any
 
@@ -9,7 +9,7 @@ import requests_cache
 from dateutil import parser
 
 from ...cache import MEMORY
-from ..game_model import GameModel
+from ..game_model import VERSION, GameModel
 from ..league import League
 from ..season_type import SeasonType
 from .sportsdb_team_model import create_sportsdb_team_model
@@ -25,6 +25,7 @@ def _create_sportsdb_game_model(
     year: int | None,
     season_type: SeasonType | None,
     dt: datetime.datetime,
+    version: str,
 ) -> GameModel:
     venue = create_sportsdb_venue_model(session, game["idVenue"], dt)
     home_score = float(game["intHomeScore"] if game["intHomeScore"] is not None else 0)
@@ -69,6 +70,7 @@ def _create_sportsdb_game_model(
         distance=None,
         dividends=[],
         pot=None,
+        version=version,
     )
 
 
@@ -82,9 +84,18 @@ def _cached_create_sportsdb_game_model(
     year: int | None,
     season_type: SeasonType | None,
     dt: datetime.datetime,
+    version: str,
 ) -> GameModel:
     return _create_sportsdb_game_model(
-        session, game, week_number, game_number, league, year, season_type, dt
+        session=session,
+        game=game,
+        week_number=week_number,
+        game_number=game_number,
+        league=league,
+        year=year,
+        season_type=season_type,
+        dt=dt,
+        version=version,
     )
 
 
@@ -106,9 +117,25 @@ def create_sportsdb_game_model(
         tzinfo=dt.tzinfo
     ) - datetime.timedelta(days=7):
         return _cached_create_sportsdb_game_model(
-            session, game, week_number, game_number, league, year, season_type, dt
+            session=session,
+            game=game,
+            week_number=week_number,
+            game_number=game_number,
+            league=league,
+            year=year,
+            season_type=season_type,
+            dt=dt,
+            version=VERSION,
         )
     with session.cache_disabled():
         return _create_sportsdb_game_model(
-            session, game, week_number, game_number, league, year, season_type, dt
+            session=session,
+            game=game,
+            week_number=week_number,
+            game_number=game_number,
+            league=league,
+            year=year,
+            season_type=season_type,
+            dt=dt,
+            version=VERSION,
         )

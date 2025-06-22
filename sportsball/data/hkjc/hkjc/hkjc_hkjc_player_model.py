@@ -13,7 +13,7 @@ from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ....cache import MEMORY
 from ...google.google_address_model import create_google_address_model
-from ...player_model import PlayerModel
+from ...player_model import VERSION, PlayerModel
 from ...sex import sex_from_str
 from ...species import Species
 from ..position import Position
@@ -27,6 +27,7 @@ def _create_hkjc_hkjc_player_model(
     handicap_weight: float | None,
     starting_position: Position | None,
     weight: float | None,
+    version: str,
 ) -> PlayerModel | None:
     with session.wayback_disabled():
         response = session.get(url)
@@ -188,6 +189,7 @@ def _create_hkjc_hkjc_player_model(
         points=None,
         game_score=None,
         point_differential=None,
+        version=version,
     )
 
 
@@ -199,6 +201,7 @@ def _cached_create_hkjc_hkjc_player_model(
     handicap_weight: float | None,
     starting_position: Position | None,
     weight: float | None,
+    version: str,
 ) -> PlayerModel | None:
     return _create_hkjc_hkjc_player_model(
         session=session,
@@ -207,6 +210,7 @@ def _cached_create_hkjc_hkjc_player_model(
         handicap_weight=handicap_weight,
         starting_position=starting_position,
         weight=weight,
+        version=version,
     )
 
 
@@ -227,6 +231,7 @@ def create_hkjc_hkjc_player_model(
             handicap_weight=handicap_weight,
             starting_position=starting_position,
             weight=weight,
+            version=VERSION,
         )
     return _create_hkjc_hkjc_player_model(
         session=session,
@@ -235,4 +240,5 @@ def create_hkjc_hkjc_player_model(
         handicap_weight=handicap_weight,
         starting_position=starting_position,
         weight=weight,
+        version=VERSION,
     )

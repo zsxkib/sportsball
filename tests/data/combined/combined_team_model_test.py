@@ -6,8 +6,8 @@ import unittest
 import requests_mock
 import requests_cache
 from sportsball.data.combined.combined_team_model import create_combined_team_model
-from sportsball.data.team_model import TeamModel
-from sportsball.data.player_model import PlayerModel
+from sportsball.data.team_model import TeamModel, VERSION
+from sportsball.data.player_model import PlayerModel, VERSION as PLAYER_VERSION
 from sportsball.data.species import Species
 from sportsball.data.coach_model import CoachModel
 
@@ -80,6 +80,7 @@ class TestCombinedTeamModel(unittest.TestCase):
                 points=None,
                 game_score=None,
                 point_differential=None,
+                version=PLAYER_VERSION,
             )]
             team_models = [TeamModel(
                 identifier="a",
@@ -94,6 +95,7 @@ class TestCombinedTeamModel(unittest.TestCase):
                 coaches=[],
                 lbw=None,
                 end_dt=None,
+                version=VERSION,
             )]
             team_model = create_combined_team_model(
                 team_models=team_models,
@@ -160,6 +162,7 @@ class TestCombinedTeamModel(unittest.TestCase):
                 points=None,
                 game_score=None,
                 point_differential=None,
+                version=PLAYER_VERSION,
             )]
             team_models_2 = [TeamModel(
                 identifier="a",
@@ -174,6 +177,7 @@ class TestCombinedTeamModel(unittest.TestCase):
                 coaches=[],
                 lbw=None,
                 end_dt=None,
+                version=VERSION,
             )]
             team_model_2 = create_combined_team_model(
                 team_models=team_models_2,
@@ -249,6 +253,7 @@ class TestCombinedTeamModel(unittest.TestCase):
                 points=None,
                 game_score=None,
                 point_differential=None,
+                version=PLAYER_VERSION,
             )]
             team_models = [TeamModel(
                 identifier="a",
@@ -263,6 +268,7 @@ class TestCombinedTeamModel(unittest.TestCase):
                 coaches=[],
                 lbw=None,
                 end_dt=None,
+                version=VERSION,
             )]
             team_model = create_combined_team_model(
                 team_models=team_models,
@@ -329,6 +335,7 @@ class TestCombinedTeamModel(unittest.TestCase):
                 points=None,
                 game_score=None,
                 point_differential=None,
+                version=PLAYER_VERSION,
             )]
             team_models_2 = [TeamModel(
                 identifier="a",
@@ -343,6 +350,7 @@ class TestCombinedTeamModel(unittest.TestCase):
                 coaches=[],
                 lbw=None,
                 end_dt=None,
+                version=VERSION,
             )]
             team_model_2 = create_combined_team_model(
                 team_models=team_models_2,
@@ -381,6 +389,7 @@ class TestCombinedTeamModel(unittest.TestCase):
             coaches=[coach_model],
             lbw=None,
             end_dt=None,
+            version=VERSION,
         )]
         team_model = create_combined_team_model(
             team_models=team_models,
@@ -405,6 +414,7 @@ class TestCombinedTeamModel(unittest.TestCase):
             coaches=[],
             lbw=None,
             end_dt=None,
+            version=VERSION,
         )]
         next_team_model = create_combined_team_model(
             team_models=next_team_models,

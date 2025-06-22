@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup, Tag
 from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ...cache import MEMORY
-from ..game_model import GameModel
+from ..game_model import VERSION, GameModel
 from ..league import League
 from .decrypt import fetch_data
 from .oddsportal_team_model import create_oddsportal_team_model
@@ -22,6 +22,7 @@ def _create_oddsportal_game_model(
     session: ScrapeSession,
     url: str,
     league: League,
+    version: str,
 ) -> GameModel | None:
     with session.wayback_disabled():
         response = session.get(
@@ -123,6 +124,7 @@ def _create_oddsportal_game_model(
         distance=None,
         dividends=[],
         pot=None,
+        version=version,
     )
 
 
@@ -131,8 +133,11 @@ def _cached_create_oddsportal_game_model(
     session: ScrapeSession,
     url: str,
     league: League,
+    version: str,
 ) -> GameModel | None:
-    return _create_oddsportal_game_model(session, url, league)
+    return _create_oddsportal_game_model(
+        session=session, url=url, league=league, version=version
+    )
 
 
 def create_oddsportal_game_model(
@@ -143,6 +148,10 @@ def create_oddsportal_game_model(
 ) -> GameModel | None:
     """Create a OddsPortal game model."""
     if not pytest_is_running.is_running() and not is_next:
-        return _cached_create_oddsportal_game_model(session, url, league)
+        return _cached_create_oddsportal_game_model(
+            session=session, url=url, league=league, version=VERSION
+        )
     with session.cache_disabled():
-        return _create_oddsportal_game_model(session, url, league)
+        return _create_oddsportal_game_model(
+            session=session, url=url, league=league, version=VERSION
+        )

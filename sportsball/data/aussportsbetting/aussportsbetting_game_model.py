@@ -7,8 +7,11 @@ import pytest_is_running
 import requests_cache
 
 from ...cache import MEMORY
+from ..game_model import VERSION as GAME_VERSION
 from ..game_model import GameModel
 from ..league import League
+from ..team_model import VERSION as TEAM_VERSION
+from ..venue_model import VERSION
 from .aussportsbetting_team_model import create_aussportsbetting_team_model
 from .aussportsbetting_venue_model import create_aussportsbetting_venue_model
 
@@ -25,15 +28,30 @@ def _create_aussportsbetting_game_model(
     away_odds: float,
     league: League,
     play_off: bool,
+    version: str,
 ) -> GameModel:
     venue_model = None
     if venue is not None:
-        venue_model = create_aussportsbetting_venue_model(venue, session, dt)
+        venue_model = create_aussportsbetting_venue_model(
+            venue=venue, session=session, dt=dt, version=VERSION
+        )
     home_team_model = create_aussportsbetting_team_model(
-        home_team, home_points, home_odds, session, dt, league
+        name=home_team,
+        points=home_points,
+        odds=home_odds,
+        session=session,
+        dt=dt,
+        league=league,
+        version=TEAM_VERSION,
     )
     away_team_model = create_aussportsbetting_team_model(
-        away_team, away_points, away_odds, session, dt, league
+        name=away_team,
+        points=away_points,
+        odds=away_odds,
+        session=session,
+        dt=dt,
+        league=league,
+        version=TEAM_VERSION,
     )
     return GameModel(
         dt=dt,
@@ -51,6 +69,7 @@ def _create_aussportsbetting_game_model(
         distance=None,
         dividends=[],
         pot=None,
+        version=version,
     )
 
 
@@ -67,6 +86,7 @@ def _cached_create_aussportsbetting_game_model(
     away_odds: float,
     league: League,
     play_off: bool,
+    version: str,
 ) -> GameModel:
     return _create_aussportsbetting_game_model(
         dt,
@@ -80,6 +100,7 @@ def _cached_create_aussportsbetting_game_model(
         away_odds,
         league,
         play_off,
+        version=version,
     )
 
 
@@ -101,29 +122,31 @@ def create_aussportsbetting_game_model(
         tzinfo=dt.tzinfo
     ) - datetime.timedelta(days=7):
         return _cached_create_aussportsbetting_game_model(
-            dt,
-            home_team,
-            away_team,
-            venue,
-            session,
-            home_points,
-            away_points,
-            home_odds,
-            away_odds,
-            league,
-            play_off,
+            dt=dt,
+            home_team=home_team,
+            away_team=away_team,
+            venue=venue,
+            session=session,
+            home_points=home_points,
+            away_points=away_points,
+            home_odds=home_odds,
+            away_odds=away_odds,
+            league=league,
+            play_off=play_off,
+            version=GAME_VERSION,
         )
     with session.cache_disabled():
         return _create_aussportsbetting_game_model(
-            dt,
-            home_team,
-            away_team,
-            venue,
-            session,
-            home_points,
-            away_points,
-            home_odds,
-            away_odds,
-            league,
-            play_off,
+            dt=dt,
+            home_team=home_team,
+            away_team=away_team,
+            venue=venue,
+            session=session,
+            home_points=home_points,
+            away_points=away_points,
+            home_odds=home_odds,
+            away_odds=away_odds,
+            league=league,
+            play_off=play_off,
+            version=GAME_VERSION,
         )

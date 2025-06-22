@@ -12,7 +12,7 @@ from dateutil.relativedelta import relativedelta
 
 from ...cache import MEMORY
 from ..google.google_address_model import create_google_address_model
-from ..player_model import PlayerModel
+from ..player_model import VERSION, PlayerModel
 from ..sex import Sex
 from ..species import Species
 
@@ -26,6 +26,7 @@ def _create_espn_player_model(
     player: dict[str, Any],
     positions_validator: dict[str, str],
     dt: datetime.datetime,
+    version: str,
 ) -> PlayerModel:
     identifier = str(player["playerId"])
     jersey = player.get("jersey")
@@ -145,6 +146,7 @@ def _create_espn_player_model(
         points=None,
         game_score=None,
         point_differential=None,
+        version=version,
     )
 
 
@@ -154,9 +156,14 @@ def _cached_create_espn_player_model(
     player: dict[str, Any],
     positions_validator: dict[str, str],
     dt: datetime.datetime,
+    version: str,
 ) -> PlayerModel:
     return _create_espn_player_model(
-        session=session, player=player, positions_validator=positions_validator, dt=dt
+        session=session,
+        player=player,
+        positions_validator=positions_validator,
+        dt=dt,
+        version=version,
     )
 
 
@@ -176,6 +183,7 @@ def create_espn_player_model(
             player=player,
             positions_validator=positions_validator,
             dt=dt,
+            version=VERSION,
         )
     with session.cache_disabled():
         return _create_espn_player_model(
@@ -183,4 +191,5 @@ def create_espn_player_model(
             player=player,
             positions_validator=positions_validator,
             dt=dt,
+            version=VERSION,
         )

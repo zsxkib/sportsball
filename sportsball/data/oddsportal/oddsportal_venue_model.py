@@ -1,5 +1,6 @@
 """Odds Portal venue model."""
 
+# pylint: disable=duplicate-code,too-many-arguments
 import datetime
 
 import pytest_is_running
@@ -7,7 +8,7 @@ import requests_cache
 
 from ...cache import MEMORY
 from ..google.google_address_model import create_google_address_model
-from ..venue_model import VenueModel
+from ..venue_model import VERSION, VenueModel
 
 
 def _create_oddsportal_venue_model(
@@ -16,17 +17,19 @@ def _create_oddsportal_venue_model(
     venue: str,
     venue_town: str,
     venue_country: str,
+    version: str,
 ) -> VenueModel | None:
     return VenueModel(
         identifier=venue,
         name=venue,
         address=create_google_address_model(
-            ", ".join([venue, venue_town, venue_country]), session, dt
+            query=", ".join([venue, venue_town, venue_country]), session=session, dt=dt
         ),
         is_grass=None,
         is_indoor=None,
         is_turf=None,
         is_dirt=None,
+        version=version,
     )
 
 
@@ -37,8 +40,16 @@ def _cached_create_oddsportal_venue_model(
     venue: str,
     venue_town: str,
     venue_country: str,
+    version: str,
 ) -> VenueModel | None:
-    return _create_oddsportal_venue_model(session, dt, venue, venue_town, venue_country)
+    return _create_oddsportal_venue_model(
+        session=session,
+        dt=dt,
+        venue=venue,
+        venue_town=venue_town,
+        venue_country=venue_country,
+        version=version,
+    )
 
 
 def create_oddsportal_venue_model(
@@ -53,9 +64,19 @@ def create_oddsportal_venue_model(
         tzinfo=dt.tzinfo
     ) - datetime.timedelta(days=7):
         return _cached_create_oddsportal_venue_model(
-            session, dt, venue, venue_town, venue_country
+            session=session,
+            dt=dt,
+            venue=venue,
+            venue_town=venue_town,
+            venue_country=venue_country,
+            version=VERSION,
         )
     with session.cache_disabled():
         return _create_oddsportal_venue_model(
-            session, dt, venue, venue_town, venue_country
+            session=session,
+            dt=dt,
+            venue=venue,
+            venue_town=venue_town,
+            venue_country=venue_country,
+            version=VERSION,
         )

@@ -2,7 +2,7 @@
 
 import requests
 
-from ..venue_model import VenueModel
+from ..venue_model import VERSION, VenueModel
 from ..wikipedia.wikipedia_venue_model import create_wikipedia_venue_model
 from .combined_address_model import create_combined_address_model
 from .null_check import is_null
@@ -16,7 +16,9 @@ def create_combined_venue_model(
     """Create a venue model by combining many venue models."""
     if not venue_models or identifier is None:
         return None
-    wikipedia_venue_model = create_wikipedia_venue_model(session, identifier)
+    wikipedia_venue_model = create_wikipedia_venue_model(
+        session, identifier, version=VERSION
+    )
     if wikipedia_venue_model is not None:
         venue_models.append(wikipedia_venue_model)
 
@@ -49,4 +51,5 @@ def create_combined_venue_model(
         is_indoor=is_indoor,
         is_turf=is_turf,
         is_dirt=is_dirt,
+        version=VERSION,
     )

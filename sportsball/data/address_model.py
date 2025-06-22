@@ -4,12 +4,16 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
+from .delimiter import DELIMITER
 from .field_type import TYPE_KEY, FieldType
+from .weather_model import VERSION as WEATHER_VERSION
 from .weather_model import WeatherModel
 
 ADDRESS_LATITUDE_COLUMN: Literal["latitude"] = "latitude"
 ADDRESS_LONGITUDE_COLUMN: Literal["longitude"] = "longitude"
 ADDRESS_TIMEZONE_COLUMN: Literal["timezone"] = "timezone"
+ADDRESS_ALTITUDE_COLUMN: Literal["altitude"] = "altitude"
+VERSION = DELIMITER.join(["0.0.1", WEATHER_VERSION])
 
 
 class AddressModel(BaseModel):
@@ -32,3 +36,5 @@ class AddressModel(BaseModel):
         alias=ADDRESS_TIMEZONE_COLUMN,
     )
     country: str = Field(..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL})
+    altitude: float | None = Field(..., alias=ADDRESS_ALTITUDE_COLUMN)
+    version: str = VERSION

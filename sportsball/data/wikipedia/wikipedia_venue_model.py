@@ -1,5 +1,6 @@
 """Venue model from wikipedia information."""
 
+# pylint: disable=duplicate-code
 import logging
 
 import requests
@@ -88,7 +89,7 @@ WIKIPEDIA_VENUE_ID_MAP: dict[str, str | None] = {
 
 @MEMORY.cache(ignore=["session"])
 def create_wikipedia_venue_model(
-    session: requests.Session, identifier: str
+    session: requests.Session, identifier: str, version: str
 ) -> VenueModel | None:
     """Create a venue model by looking up the venue on wikipedia."""
     # pylint: disable=protected-access
@@ -112,4 +113,5 @@ def create_wikipedia_venue_model(
         is_indoor=None,
         is_turf=None,
         is_dirt=None,
+        version=version,
     )

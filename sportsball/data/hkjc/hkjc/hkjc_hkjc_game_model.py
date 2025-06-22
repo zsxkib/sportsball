@@ -14,8 +14,9 @@ from dateutil.parser import parse
 from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ....cache import MEMORY
-from ...game_model import GameModel
+from ...game_model import VERSION, GameModel
 from ...league import League
+from ...venue_model import VERSION as VENUE_VERSION
 from ..position import position_from_str
 from .hkjc_hkjc_dividend_model import create_hkjc_hkjc_dividend_model
 from .hkjc_hkjc_odds_model import create_hkjc_hkjc_odds_model
@@ -31,6 +32,7 @@ def _create_hkjc_hkjc_game_model(
     session: ScrapeSession,
     html: str,
     url: str,
+    version: str,
 ) -> GameModel | None:
     soup = BeautifulSoup(html, "lxml")
     for div in soup.find_all("div", {"id": "errorContainer"}):
@@ -327,6 +329,7 @@ def _create_hkjc_hkjc_game_model(
             dt=dt,
             venue_code=venue_code,
             race_track=race_track,
+            version=VENUE_VERSION,
         ),
         teams=teams,
         end_dt=end_dt,
@@ -339,6 +342,7 @@ def _create_hkjc_hkjc_game_model(
         distance=distance,
         dividends=dividends,
         pot=pot,
+        version=version,
     )
 
 
@@ -347,9 +351,12 @@ def _cached_create_hkjc_hkjc_game_model(
     session: ScrapeSession,
     html: str,
     url: str,
+    version: str,
 ) -> GameModel | None:
     """Create a game model from NBA API."""
-    return _create_hkjc_hkjc_game_model(session=session, html=html, url=url)
+    return _create_hkjc_hkjc_game_model(
+        session=session, html=html, url=url, version=version
+    )
 
 
 def create_hkjc_hkjc_game_model(
@@ -359,6 +366,10 @@ def create_hkjc_hkjc_game_model(
 ) -> GameModel | None:
     """Create a game model from NBA API."""
     if not pytest_is_running.is_running():
-        return _cached_create_hkjc_hkjc_game_model(session=session, html=html, url=url)
+        return _cached_create_hkjc_hkjc_game_model(
+            session=session, html=html, url=url, version=VERSION
+        )
     with session.cache_disabled():
-        return _cached_create_hkjc_hkjc_game_model(session=session, html=html, url=url)
+        return _cached_create_hkjc_hkjc_game_model(
+            session=session, html=html, url=url, version=VERSION
+        )

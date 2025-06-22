@@ -19,7 +19,7 @@ from ...cache import MEMORY
 from ..google.google_news_model import create_google_news_models
 from ..league import League
 from ..sex import Sex
-from ..team_model import TeamModel
+from ..team_model import VERSION, TeamModel
 from ..x.x_social_model import create_x_social_model
 from .sportsreference_coach_model import create_sportsreference_coach_model
 from .sportsreference_player_model import create_sportsreference_player_model
@@ -118,6 +118,7 @@ def _create_sportsreference_team_model(
     player_points: dict[str, int],
     game_scores: dict[str, float],
     point_differentials: dict[str, int],
+    version: str,
 ) -> TeamModel:
     if url in _BAD_TEAM_URLS:
         return TeamModel(
@@ -133,6 +134,7 @@ def _create_sportsreference_team_model(
             coaches=[],
             lbw=None,
             end_dt=None,
+            version=version,
         )
 
     if url in _NON_WAYBACK_URLS:
@@ -156,6 +158,7 @@ def _create_sportsreference_team_model(
             coaches=[],
             lbw=None,
             end_dt=None,
+            version=version,
         )
     response.raise_for_status()
 
@@ -256,6 +259,7 @@ def _create_sportsreference_team_model(
         else [],
         lbw=None,
         end_dt=None,
+        version=version,
     )
 
 
@@ -286,6 +290,7 @@ def _cached_create_sportsreference_team_model(
     player_points: dict[str, int],
     game_scores: dict[str, float],
     point_differentials: dict[str, int],
+    version: str,
 ) -> TeamModel:
     return _create_sportsreference_team_model(
         session=session,
@@ -313,6 +318,7 @@ def _cached_create_sportsreference_team_model(
         player_points=player_points,
         game_scores=game_scores,
         point_differentials=point_differentials,
+        version=version,
     )
 
 
@@ -371,6 +377,7 @@ def create_sportsreference_team_model(
             player_points=player_points,
             game_scores=game_scores,
             point_differentials=point_differentials,
+            version=VERSION,
         )
     with session.cache_disabled():
         return _create_sportsreference_team_model(
@@ -399,4 +406,5 @@ def create_sportsreference_team_model(
             player_points=player_points,
             game_scores=game_scores,
             point_differentials=point_differentials,
+            version=VERSION,
         )

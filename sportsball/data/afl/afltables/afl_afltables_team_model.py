@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 from ....cache import MEMORY
 from ...google.google_news_model import create_google_news_models
 from ...league import League
-from ...team_model import TeamModel
+from ...team_model import VERSION, TeamModel
 from ...x.x_social_model import create_x_social_model
 from .afl_afltables_coach_model import create_afl_afltables_coach_model
 from .afl_afltables_player_model import create_afl_afltables_player_model
@@ -81,6 +81,7 @@ def _create_afl_afltables_team_model(
     last_ladder_ranks: dict[str, int] | None,
     dt: datetime.datetime,
     league: League,
+    version: str,
 ) -> TeamModel:
     response = session.get(team_url)
     soup = BeautifulSoup(response.text, "lxml")
@@ -157,6 +158,7 @@ def _create_afl_afltables_team_model(
         coaches=[coach_model] if coach_model is not None else [],
         lbw=None,
         end_dt=None,
+        version=version,
     )
 
 
@@ -198,15 +200,17 @@ def _cached_create_afl_afltables_team_model(
     last_ladder_ranks: dict[str, int] | None,
     dt: datetime.datetime,
     league: League,
+    version: str,
 ) -> TeamModel:
     return _create_afl_afltables_team_model(
-        team_url,
-        players,
-        points,
-        session,
-        last_ladder_ranks,
-        dt,
-        league,
+        team_url=team_url,
+        players=players,
+        points=points,
+        session=session,
+        last_ladder_ranks=last_ladder_ranks,
+        dt=dt,
+        league=league,
+        version=version,
     )
 
 
@@ -251,9 +255,23 @@ def create_afl_afltables_team_model(
     """Create a team model from AFL Tables."""
     if not pytest_is_running.is_running():
         return _cached_create_afl_afltables_team_model(
-            team_url, players, points, session, last_ladder_ranks, dt, league
+            team_url=team_url,
+            players=players,
+            points=points,
+            session=session,
+            last_ladder_ranks=last_ladder_ranks,
+            dt=dt,
+            league=league,
+            version=VERSION,
         )
     with session.cache_disabled():
         return _create_afl_afltables_team_model(
-            team_url, players, points, session, last_ladder_ranks, dt, league
+            team_url=team_url,
+            players=players,
+            points=points,
+            session=session,
+            last_ladder_ranks=last_ladder_ranks,
+            dt=dt,
+            league=league,
+            version=VERSION,
         )

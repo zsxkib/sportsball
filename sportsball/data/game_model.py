@@ -6,10 +6,13 @@ from typing import Literal
 import pytz
 from pydantic import BaseModel, Field
 
+from .delimiter import DELIMITER
 from .dividend_model import DividendModel
 from .field_type import TYPE_KEY, FieldType
 from .season_type import SeasonType
+from .team_model import VERSION as TEAM_VERSION
 from .team_model import TeamModel
+from .venue_model import VERSION as VENUE_VERSION
 from .venue_model import VenueModel
 
 GAME_DT_COLUMN = "dt"
@@ -26,6 +29,7 @@ PLAY_OFF_COLUMN: Literal["play_off"] = "play_off"
 GAME_DISTANCE_COLUMN: Literal["distance"] = "distance"
 GAME_DIVIDENDS_COLUMN: Literal["dividends"] = "dividends"
 GAME_POT_COLUMN: Literal["pot"] = "pot"
+VERSION = DELIMITER.join(["0.0.1", VENUE_VERSION, TEAM_VERSION])
 
 
 def localize(venue: VenueModel | None, dt: datetime.datetime) -> datetime.datetime:
@@ -77,3 +81,4 @@ class GameModel(BaseModel):
     pot: float | None = Field(
         ..., json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD}, alias=GAME_POT_COLUMN
     )
+    version: str

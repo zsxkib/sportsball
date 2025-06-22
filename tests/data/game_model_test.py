@@ -2,7 +2,7 @@
 import datetime
 import unittest
 
-from sportsball.data.game_model import GameModel
+from sportsball.data.game_model import GameModel, VERSION
 from sportsball.data.league import League
 
 
@@ -25,6 +25,7 @@ class TestGameModel(unittest.TestCase):
             distance=None,
             dividends=[],
             pot=None,
+            version=VERSION,
         )
 
     def test_postponed(self):

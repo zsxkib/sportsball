@@ -24,6 +24,7 @@ def create_hkjc_hkjc_venue_model(
     dt: datetime.datetime,
     venue_code: str,
     race_track: str,
+    version: str,
 ) -> VenueModel:
     """Create a venue model from an HKJC result."""
     address = create_google_address_model(
@@ -40,4 +41,5 @@ def create_hkjc_hkjc_venue_model(
         is_indoor=None,
         is_turf=race_track.lower() == "turf",
         is_dirt=race_track.lower() == "dirt",
+        version=version,
     )

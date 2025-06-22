@@ -6,7 +6,7 @@ from typing import Any
 
 import requests
 
-from ..game_model import GameModel
+from ..game_model import VERSION, GameModel
 from ..team_model import TeamModel
 from ..venue_model import VenueModel
 from .combined_team_model import create_combined_team_model
@@ -170,4 +170,5 @@ def create_combined_game_model(
         distance=distance,
         dividends=dividends,
         pot=pot,
+        version=VERSION,
     )

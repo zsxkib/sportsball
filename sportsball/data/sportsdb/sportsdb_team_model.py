@@ -1,6 +1,6 @@
 """NFL SportsDB team model."""
 
-# pylint: disable=too-many-arguments
+# pylint: disable=too-many-arguments,duplicate-code
 import datetime
 
 import pytest_is_running
@@ -9,7 +9,7 @@ import requests_cache
 from ...cache import MEMORY
 from ..google.google_news_model import create_google_news_models
 from ..league import League
-from ..team_model import TeamModel
+from ..team_model import VERSION, TeamModel
 from ..x.x_social_model import create_x_social_model
 
 
@@ -20,6 +20,7 @@ def _create_sportsdb_team_model(
     session: requests_cache.CachedSession,
     dt: datetime.datetime,
     league: League,
+    version: str,
 ) -> TeamModel:
     return TeamModel(
         identifier=team_id,
@@ -35,6 +36,7 @@ def _create_sportsdb_team_model(
         coaches=[],
         lbw=None,
         end_dt=None,
+        version=version,
     )
 
 
@@ -46,8 +48,17 @@ def _cached_create_sportsdb_team_model(
     session: requests_cache.CachedSession,
     dt: datetime.datetime,
     league: League,
+    version: str,
 ) -> TeamModel:
-    return _create_sportsdb_team_model(team_id, name, points, session, dt, league)
+    return _create_sportsdb_team_model(
+        team_id=team_id,
+        name=name,
+        points=points,
+        session=session,
+        dt=dt,
+        league=league,
+        version=version,
+    )
 
 
 def create_sportsdb_team_model(
@@ -63,7 +74,21 @@ def create_sportsdb_team_model(
         tzinfo=dt.tzinfo
     ) - datetime.timedelta(days=7):
         return _cached_create_sportsdb_team_model(
-            team_id, name, points, session, dt, league
+            team_id=team_id,
+            name=name,
+            points=points,
+            session=session,
+            dt=dt,
+            league=league,
+            version=VERSION,
         )
     with session.cache_disabled():
-        return _create_sportsdb_team_model(team_id, name, points, session, dt, league)
+        return _create_sportsdb_team_model(
+            team_id=team_id,
+            name=name,
+            points=points,
+            session=session,
+            dt=dt,
+            league=league,
+            version=VERSION,
+        )

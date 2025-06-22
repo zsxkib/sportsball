@@ -16,7 +16,7 @@ from dateutil.parser import parse
 from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ...cache import MEMORY
-from ..game_model import GameModel
+from ..game_model import VERSION, GameModel
 from ..league import League
 from ..season_type import SeasonType
 from ..team_model import TeamModel
@@ -351,6 +351,7 @@ def _create_sportsreference_game_model(
     url: str,
     league: League,
     positions_validator: dict[str, str],
+    version: str,
 ) -> GameModel | None:
     # pylint: disable=too-many-branches
     response = session.get(url)
@@ -652,6 +653,7 @@ def _create_sportsreference_game_model(
         distance=None,
         dividends=[],
         pot=None,
+        version=version,
     )
 
 
@@ -661,8 +663,15 @@ def _cached_create_sportsreference_game_model(
     url: str,
     league: League,
     positions_validator: dict[str, str],
+    version: str,
 ) -> GameModel | None:
-    return _create_sportsreference_game_model(session, url, league, positions_validator)
+    return _create_sportsreference_game_model(
+        session=session,
+        url=url,
+        league=league,
+        positions_validator=positions_validator,
+        version=version,
+    )
 
 
 def create_sportsreference_game_model(
@@ -674,9 +683,17 @@ def create_sportsreference_game_model(
     """Create a sports reference game model."""
     if not pytest_is_running.is_running():
         return _cached_create_sportsreference_game_model(
-            session, url, league, positions_validator
+            session=session,
+            url=url,
+            league=league,
+            positions_validator=positions_validator,
+            version=VERSION,
         )
     with session.cache_disabled():
         return _create_sportsreference_game_model(
-            session, url, league, positions_validator
+            session=session,
+            url=url,
+            league=league,
+            positions_validator=positions_validator,
+            version=VERSION,
         )

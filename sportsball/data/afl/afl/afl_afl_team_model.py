@@ -20,6 +20,7 @@ def create_afl_afl_team_model(
     dt: datetime.datetime,
     ladder: list[str],
     odds: float | None,
+    version: str,
 ) -> TeamModel:
     """Create a team model from AFL AFL."""
     player_models = [
@@ -52,4 +53,5 @@ def create_afl_afl_team_model(
         coaches=[],
         lbw=None,
         end_dt=None,
+        version=version,
     )

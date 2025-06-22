@@ -8,7 +8,7 @@ from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ....cache import MEMORY
 from ...odds_model import OddsModel
-from ...team_model import TeamModel
+from ...team_model import VERSION, TeamModel
 from ..position import Position
 from .hkjc_hkjc_coach_model import create_hkjc_hkjc_coach_model
 from .hkjc_hkjc_player_model import create_hkjc_hkjc_player_model
@@ -27,6 +27,7 @@ def _create_hkjc_hkjc_team_model(
     lbw: float | None,
     end_dt: datetime.datetime | None,
     odds: list[OddsModel],
+    version: str,
 ) -> TeamModel:
     players = []
     horse_player = create_hkjc_hkjc_player_model(
@@ -70,6 +71,7 @@ def _create_hkjc_hkjc_team_model(
         coaches=coaches,
         lbw=lbw,
         end_dt=end_dt,
+        version=version,
     )
 
 
@@ -87,6 +89,7 @@ def _cached_create_hkjc_hkjc_team_model(
     lbw: float | None,
     end_dt: datetime.datetime | None,
     odds: list[OddsModel],
+    version: str,
 ) -> TeamModel:
     return _create_hkjc_hkjc_team_model(
         session=session,
@@ -101,6 +104,7 @@ def _cached_create_hkjc_hkjc_team_model(
         lbw=lbw,
         end_dt=end_dt,
         odds=odds,
+        version=version,
     )
 
 
@@ -133,6 +137,7 @@ def create_hkjc_hkjc_team_model(
             lbw=lbw,
             end_dt=end_dt,
             odds=odds,
+            version=VERSION,
         )
     return _create_hkjc_hkjc_team_model(
         session=session,
@@ -147,4 +152,5 @@ def create_hkjc_hkjc_team_model(
         lbw=lbw,
         end_dt=end_dt,
         odds=odds,
+        version=VERSION,
     )

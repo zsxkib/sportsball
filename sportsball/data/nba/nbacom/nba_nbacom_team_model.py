@@ -16,6 +16,7 @@ def create_nba_nbacom_team_model(
     team: dict[str, Any],
     session: requests_cache.CachedSession,
     dt: datetime.datetime,
+    version: str,
 ) -> TeamModel:
     """Create a team model from AFL AFL."""
     team_name = team["teamAbbreviation"]
@@ -38,4 +39,5 @@ def create_nba_nbacom_team_model(
         coaches=[],
         lbw=None,
         end_dt=None,
+        version=version,
     )

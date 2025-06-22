@@ -11,7 +11,7 @@ import requests_cache
 from ...cache import MEMORY
 from ..google.google_news_model import create_google_news_models
 from ..league import League
-from ..team_model import TeamModel
+from ..team_model import VERSION, TeamModel
 from ..x.x_social_model import create_x_social_model
 from .oddsportal_odds_model import create_oddsportal_odds_model
 
@@ -27,6 +27,7 @@ def _create_oddsportal_team_model(
     bookie_names: dict[str, str],
     team_idx: int,
     parsed_data: dict[str, Any],
+    version: str,
 ) -> TeamModel:
     back = parsed_data["d"]["oddsdata"]["back"]
     odds_models = []
@@ -73,6 +74,7 @@ def _create_oddsportal_team_model(
         coaches=[],
         lbw=None,
         end_dt=None,
+        version=version,
     )
 
 
@@ -88,18 +90,20 @@ def _cached_create_oddsportal_team_model(
     bookie_names: dict[str, str],
     team_idx: int,
     parsed_data: dict[str, Any],
+    version: str,
 ) -> TeamModel:
     return _create_oddsportal_team_model(
-        session,
-        dt,
-        team_name,
-        league,
-        points,
-        default_bet_id,
-        default_scope_id,
-        bookie_names,
-        team_idx,
-        parsed_data,
+        session=session,
+        dt=dt,
+        team_name=team_name,
+        league=league,
+        points=points,
+        default_bet_id=default_bet_id,
+        default_scope_id=default_scope_id,
+        bookie_names=bookie_names,
+        team_idx=team_idx,
+        parsed_data=parsed_data,
+        version=version,
     )
 
 
@@ -120,27 +124,29 @@ def create_oddsportal_team_model(
         tzinfo=dt.tzinfo
     ) - datetime.timedelta(days=7):
         return _cached_create_oddsportal_team_model(
-            session,
-            dt,
-            team_name,
-            league,
-            points,
-            default_bet_id,
-            default_scope_id,
-            bookie_names,
-            team_idx,
-            parsed_data,
+            session=session,
+            dt=dt,
+            team_name=team_name,
+            league=league,
+            points=points,
+            default_bet_id=default_bet_id,
+            default_scope_id=default_scope_id,
+            bookie_names=bookie_names,
+            team_idx=team_idx,
+            parsed_data=parsed_data,
+            version=VERSION,
         )
     with session.cache_disabled():
         return _create_oddsportal_team_model(
-            session,
-            dt,
-            team_name,
-            league,
-            points,
-            default_bet_id,
-            default_scope_id,
-            bookie_names,
-            team_idx,
-            parsed_data,
+            session=session,
+            dt=dt,
+            team_name=team_name,
+            league=league,
+            points=points,
+            default_bet_id=default_bet_id,
+            default_scope_id=default_scope_id,
+            bookie_names=bookie_names,
+            team_idx=team_idx,
+            parsed_data=parsed_data,
+            version=VERSION,
         )

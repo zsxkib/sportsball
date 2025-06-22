@@ -9,6 +9,7 @@ from typing import Any
 import geocoder  # type: ignore
 import pytest_is_running
 import requests_cache
+from pyhigh import get_elevation  # type: ignore
 from timezonefinder import TimezoneFinder  # type: ignore
 
 from ...cache import MEMORY
@@ -17349,6 +17350,7 @@ def _create_google_address_model(
     longitude = g.lng
     weather_model = None
     tz = "UTC"
+    altitude = None
     if latitude is not None and longitude is not None:
         tf = TimezoneFinder()
         timezone = tf.timezone_at(lng=longitude, lat=latitude)
@@ -17362,6 +17364,8 @@ def _create_google_address_model(
                 dt,  # pyright: ignore
                 tz,
             )
+        if not pytest_is_running.is_running():
+            altitude = get_elevation(lat=latitude, lon=longitude)
     try:
         return AddressModel(
             city=g.city,
@@ -17373,6 +17377,7 @@ def _create_google_address_model(
             weather=weather_model,  # pyright: ignore
             timezone=tz,
             country=g.country,
+            altitude=altitude,
         )
     except Exception as exc:
         logging.warning('Failed to retrieve address model for query "%s"', query)

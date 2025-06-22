@@ -1,7 +1,7 @@
 """Tests for the player model class."""
 import unittest
 
-from sportsball.data.player_model import PlayerModel
+from sportsball.data.player_model import PlayerModel, VERSION
 from sportsball.data.species import Species
 
 
@@ -63,6 +63,7 @@ class TestPlayerModel(unittest.TestCase):
             points=None,
             game_score=None,
             point_differential=None,
+            version=VERSION,
         )
 
     def test_field_goals_attempted(self):

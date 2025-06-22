@@ -11,6 +11,7 @@ from pydantic import BaseModel
 from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from .address_model import ADDRESS_TIMEZONE_COLUMN
+from .delimiter import DELIMITER
 from .field_type import FieldType
 from .game_model import GAME_DT_COLUMN, VENUE_COLUMN_PREFIX, GameModel
 from .league import League
@@ -18,7 +19,6 @@ from .model import Model
 from .venue_model import VENUE_ADDRESS_COLUMN
 
 LEAGUE_COLUMN = "league"
-DELIMITER = "/"
 
 
 def _clear_column_list(df: pd.DataFrame) -> pd.DataFrame:

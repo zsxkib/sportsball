@@ -9,12 +9,16 @@ import requests_cache
 
 from ...game_model import GameModel
 from ...league import League
+from ...team_model import VERSION as TEAM_VERSION
+from ...venue_model import VERSION
 from .nba_nbacom_team_model import create_nba_nbacom_team_model
 from .nba_nbacom_venue_model import create_nba_nbacom_venue_model
 
 
 def create_nba_nbacom_game_model(
-    game: dict[str, Any], session: requests_cache.CachedSession
+    game: dict[str, Any],
+    session: requests_cache.CachedSession,
+    version: str,
 ) -> GameModel:
     """Create a game model from AFL Tables."""
     game_id = game["gameId"]
@@ -36,15 +40,21 @@ def create_nba_nbacom_game_model(
         raise ValueError("venue_name is null")
     if dt is None:
         raise ValueError("dt is null")
-    venue_model = create_nba_nbacom_venue_model(venue_name, session, dt)
+    venue_model = create_nba_nbacom_venue_model(
+        venue_name=venue_name, session=session, dt=dt, version=VERSION
+    )
     return GameModel(
         dt=dt,
         week=None,
         game_number=None,
         venue=venue_model,
         teams=[
-            create_nba_nbacom_team_model(game["homeTeam"], session, dt),
-            create_nba_nbacom_team_model(game["awayTeam"], session, dt),
+            create_nba_nbacom_team_model(
+                team=game["homeTeam"], session=session, dt=dt, version=TEAM_VERSION
+            ),
+            create_nba_nbacom_team_model(
+                team=game["awayTeam"], session=session, dt=dt, version=TEAM_VERSION
+            ),
         ],
         end_dt=None,
         attendance=None,
@@ -56,4 +66,5 @@ def create_nba_nbacom_game_model(
         distance=None,
         dividends=[],
         pot=None,
+        version=version,
     )

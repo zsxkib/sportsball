@@ -8,7 +8,9 @@ from typing import Any, Literal
 import gender_guesser.detector as gender  # type: ignore
 from pydantic import BaseModel, Field
 
+from .address_model import VERSION as ADDRESS_VERSION
 from .address_model import AddressModel
+from .delimiter import DELIMITER
 from .field_type import FFILL_KEY, TYPE_KEY, FieldType
 from .owner_model import OwnerModel
 from .sex import Sex
@@ -87,6 +89,7 @@ PLAYER_PERSONAL_FOULS_COLUMN: Literal["personal_fouls"] = "personal_fouls"
 PLAYER_POINTS_COLUMN: Literal["points"] = "points"
 PLAYER_GAME_SCORE_COLUMN: Literal["game_score"] = "game_score"
 PLAYER_POINT_DIFFERENTIAL_COLUMN: Literal["point_differential"] = "point_differential"
+VERSION = DELIMITER.join(["0.0.1", ADDRESS_VERSION])
 
 _GENDER_DETECTOR = gender.Detector()
 _MALE_GENDERS = {"male", "mostly_male"}
@@ -426,3 +429,4 @@ class PlayerModel(BaseModel):
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=PLAYER_POINT_DIFFERENTIAL_COLUMN,
     )
+    version: str

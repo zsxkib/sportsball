@@ -11,7 +11,7 @@ import requests_cache
 from ....cache import MEMORY
 from ...google.google_news_model import create_google_news_models
 from ...league import League
-from ...team_model import TeamModel
+from ...team_model import VERSION, TeamModel
 from ...x.x_social_model import create_x_social_model
 
 
@@ -22,6 +22,7 @@ def _create_nba_nba_team_model(
     dt: datetime.datetime,
     league: League,
     league_id: str,
+    version: str,
 ) -> TeamModel | None:
     """Create a team model from NBA API."""
     suffix = "_A" if home else "_B"
@@ -52,6 +53,7 @@ def _create_nba_nba_team_model(
         coaches=[],
         lbw=None,
         end_dt=None,
+        version=version,
     )
 
 
@@ -63,8 +65,17 @@ def _cached_create_nba_nba_team_model(
     dt: datetime.datetime,
     league: League,
     league_id: str,
+    version: str,
 ) -> TeamModel | None:
-    return _create_nba_nba_team_model(row, home, session, dt, league, league_id)
+    return _create_nba_nba_team_model(
+        row=row,
+        home=home,
+        session=session,
+        dt=dt,
+        league=league,
+        league_id=league_id,
+        version=version,
+    )
 
 
 def create_nba_nba_team_model(
@@ -80,7 +91,21 @@ def create_nba_nba_team_model(
         tzinfo=dt.tzinfo
     ) - datetime.timedelta(days=7):
         return _cached_create_nba_nba_team_model(
-            row, home, session, dt, league, league_id
+            row=row,
+            home=home,
+            session=session,
+            dt=dt,
+            league=league,
+            league_id=league_id,
+            version=VERSION,
         )
     with session.cache_disabled():
-        return _create_nba_nba_team_model(row, home, session, dt, league, league_id)
+        return _create_nba_nba_team_model(
+            row=row,
+            home=home,
+            session=session,
+            dt=dt,
+            league=league,
+            league_id=league_id,
+            version=VERSION,
+        )

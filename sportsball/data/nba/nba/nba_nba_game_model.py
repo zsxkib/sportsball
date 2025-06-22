@@ -10,7 +10,7 @@ import requests_cache
 from dateutil.parser import parse
 
 from ....cache import MEMORY
-from ...game_model import GameModel
+from ...game_model import VERSION, GameModel
 from ...league import League
 from ...season_type import SeasonType
 from .nba_nba_team_model import create_nba_nba_team_model
@@ -32,6 +32,7 @@ def _create_nba_nba_game_model(
     game_number: int,
     session: requests_cache.CachedSession,
     league_id: str,
+    version: str,
 ) -> GameModel:
     season_id = row["SEASON_ID"]
     dt = pytz.timezone("EST").localize(parse(row["GAME_DATE"]))
@@ -58,6 +59,7 @@ def _create_nba_nba_game_model(
         distance=None,
         dividends=[],
         pot=None,
+        version=version,
     )
 
 
@@ -69,10 +71,17 @@ def _cached_create_nba_nba_game_model(
     game_number: int,
     session: requests_cache.CachedSession,
     league_id: str,
+    version: str,
 ) -> GameModel:
     """Create a game model from NBA API."""
     return _create_nba_nba_game_model(
-        row, league, week, game_number, session, league_id
+        row,
+        league,
+        week,
+        game_number,
+        session,
+        league_id,
+        version=version,
     )
 
 
@@ -91,9 +100,21 @@ def create_nba_nba_game_model(
         and dt < datetime.datetime.now() - datetime.timedelta(days=7)
     ):
         return _cached_create_nba_nba_game_model(
-            row, league, week, game_number, session, league_id
+            row,
+            league,
+            week,
+            game_number,
+            session,
+            league_id,
+            version=VERSION,
         )
     with session.cache_disabled():
         return _create_nba_nba_game_model(
-            row, league, week, game_number, session, league_id
+            row,
+            league,
+            week,
+            game_number,
+            session,
+            league_id,
+            version=VERSION,
         )

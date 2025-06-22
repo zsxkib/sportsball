@@ -4,7 +4,7 @@
 from typing import Any
 
 from ..field_type import FFILL_KEY
-from ..player_model import PlayerModel
+from ..player_model import VERSION, PlayerModel
 from .null_check import is_null
 
 
@@ -296,6 +296,7 @@ def create_combined_player_model(
         points=points,
         game_score=game_score,
         point_differential=point_differential,
+        version=VERSION,
     )
 
     player_instance_ffill = player_ffill.get(identifier, {})

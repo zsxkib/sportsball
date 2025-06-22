@@ -7,9 +7,11 @@ from typing import Any, Literal
 from pydantic import BaseModel, Field
 
 from .coach_model import CoachModel
+from .delimiter import DELIMITER
 from .field_type import FFILL_KEY, TYPE_KEY, FieldType
 from .news_model import NewsModel
 from .odds_model import OddsModel
+from .player_model import VERSION as PLAYER_VERSION
 from .player_model import PlayerModel
 from .social_model import SocialModel
 
@@ -77,6 +79,7 @@ TEAM_TOTAL_REBOUNDS_COLUMN: Literal["total_rebounds"] = "total_rebounds"
 TEAM_STEALS_COLUMN: Literal["steals"] = "steals"
 TEAM_BLOCKS_COLUMN: Literal["blocks"] = "blocks"
 TEAM_PERSONAL_FOULS_COLUMN: Literal["personal_fouls"] = "personal_fouls"
+VERSION = DELIMITER.join(["0.0.1", PLAYER_VERSION])
 
 
 def _calculate_kicks(data: dict[str, Any]) -> int | None:
@@ -847,3 +850,4 @@ class TeamModel(BaseModel):
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=TEAM_PERSONAL_FOULS_COLUMN,
     )
+    version: str

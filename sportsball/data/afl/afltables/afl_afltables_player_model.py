@@ -13,7 +13,7 @@ from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta
 
 from ....cache import MEMORY
-from ...player_model import PlayerModel
+from ...player_model import VERSION, PlayerModel
 from ...sex import Sex
 from ...species import Species
 
@@ -47,6 +47,7 @@ def _create_afl_afltables_player_model(
     percentage_played: float | None,
     session: requests_cache.CachedSession,
     dt: datetime.datetime,
+    version: str,
 ) -> PlayerModel:
     o = urlparse(player_url)
     last_component = o.path.split("/")[-1]
@@ -128,6 +129,7 @@ def _create_afl_afltables_player_model(
         points=None,
         game_score=None,
         point_differential=None,
+        version=version,
     )
 
 
@@ -161,6 +163,7 @@ def _cached_create_afl_afltables_player_model(
     percentage_played: float | None,
     session: requests_cache.CachedSession,
     dt: datetime.datetime,
+    version: str,
 ) -> PlayerModel:
     return _create_afl_afltables_player_model(
         player_url=player_url,
@@ -191,6 +194,7 @@ def _cached_create_afl_afltables_player_model(
         percentage_played=percentage_played,
         session=session,
         dt=dt,
+        version=version,
     )
 
 
@@ -255,6 +259,7 @@ def create_afl_afltables_player_model(
             percentage_played=percentage_played,
             session=session,
             dt=dt,
+            version=VERSION,
         )
     with session.cache_disabled():
         return _create_afl_afltables_player_model(
@@ -286,4 +291,5 @@ def create_afl_afltables_player_model(
             percentage_played=percentage_played,
             session=session,
             dt=dt,
+            version=VERSION,
         )

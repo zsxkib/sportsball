@@ -3,7 +3,7 @@
 # pylint: disable=duplicate-code
 from typing import Any
 
-from ...player_model import PlayerModel
+from ...player_model import VERSION, PlayerModel
 from ...sex import Sex
 from ...species import Species
 from ..position import position_from_str
@@ -67,4 +67,5 @@ def create_nba_nbacom_player_model(player_dict: dict[str, Any]) -> PlayerModel:
         points=None,
         game_score=None,
         point_differential=None,
+        version=VERSION,
     )

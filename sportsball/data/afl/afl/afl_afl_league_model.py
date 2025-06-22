@@ -13,7 +13,7 @@ from playwright.sync_api import Playwright, sync_playwright
 from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ....playwright import ensure_install
-from ...game_model import GameModel
+from ...game_model import VERSION, GameModel
 from ...league import League
 from ...league_model import LeagueModel
 from ..position import Position, position_from_str
@@ -59,14 +59,15 @@ def _parse_v1(
         ):
             url = urllib.parse.urljoin(html_url, a.get("href"))
         yield create_afl_afl_game_model(
-            team_names,
-            teams_players,
-            dt,
-            venue_name,
-            session,
-            ladder,
-            url,
-            playwright,
+            team_names=team_names,
+            players=teams_players,
+            dt=dt,
+            venue_name=venue_name,
+            session=session,
+            ladder=ladder,
+            url=url,
+            playwright=playwright,
+            version=VERSION,
         )
 
 
@@ -150,14 +151,15 @@ def _parse_v2(
 ) -> Iterator[GameModel]:
     for team_names, team_players, venue_name, url in _parse_v2_soup(soup, html_url):
         yield create_afl_afl_game_model(
-            team_names,
-            team_players,
-            None,
-            venue_name,
-            session,
-            ladder,
-            url,
-            playwright,
+            team_names=team_names,
+            players=team_players,
+            dt=None,
+            venue_name=venue_name,
+            session=session,
+            ladder=ladder,
+            url=url,
+            playwright=playwright,
+            version=VERSION,
         )
 
 

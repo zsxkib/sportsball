@@ -11,7 +11,7 @@ from ..news_model import NewsModel
 from ..odds_model import OddsModel
 from ..player_model import PlayerModel
 from ..social_model import SocialModel
-from ..team_model import TeamModel
+from ..team_model import VERSION, TeamModel
 from .combined_coach_model import create_combined_coach_model
 from .combined_player_model import create_combined_player_model
 from .null_check import is_null
@@ -122,6 +122,7 @@ def create_combined_team_model(
         ],
         lbw=lbw,
         end_dt=end_dt,
+        version=VERSION,
     )
 
     team_instance_ffill = team_ffill.get(identifier, {})
