@@ -60,7 +60,8 @@ class AFLAFLTablesLeagueModel(LeagueModel):
 
         if year >= datetime.datetime.now().year - 1:
             with self.session.cache_disabled():
-                response = self.session.get(season_url)
+                with self.session.wayback_disabled():
+                    response = self.session.get(season_url)
         else:
             response = self.session.get(season_url)
 
