@@ -79,7 +79,7 @@ WIKIPEDIA_VENUE_ID_MAP: dict[str, str | None] = {
     "Spotland Stadium": "Spotland_Stadium",
     "Giants Stadium": "Giants_Stadium",
     "Accor Arena": "Accor_Arena",
-    "Barossa Park": None,
+    "Barossa Park": "Lyndoch_Recreation_Park",
     # SportsReference
     "UW–Milwaukee Panther Arena, Milwaukee, Wisconsin": "UW–Milwaukee_Panther_Arena",
     # AFL.com
