@@ -15,6 +15,7 @@ def create_combined_address_model(
     longitude = None
     housenumber = None
     weather_models = []
+    altitude = None
     for address_model in address_models:
         address_model_latitude = address_model.latitude
         if not is_null(address_model_latitude):
@@ -28,6 +29,9 @@ def create_combined_address_model(
         address_model_weather = address_model.weather
         if not is_null(address_model_weather):
             weather_models.append(address_model_weather)
+        address_model_altitude = address_model.altitude
+        if not is_null(address_model_altitude):
+            altitude = address_model_altitude
     return AddressModel(
         city=address_models[0].city,
         state=address_models[0].state,
@@ -38,4 +42,5 @@ def create_combined_address_model(
         weather=create_combined_weather_model(weather_models),  # type: ignore
         timezone=address_models[0].timezone,
         country=address_models[0].country,
+        altitude=altitude,
     )
