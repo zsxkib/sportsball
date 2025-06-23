@@ -58,12 +58,12 @@ class AFLAFLTablesLeagueModel(LeagueModel):
         filename, _ = os.path.splitext(last_component)
         year = int(filename)
 
-        if year >= datetime.datetime.now().year - 1:
-            with self.session.cache_disabled():
-                with self.session.wayback_disabled():
-                    response = self.session.get(season_url)
-        else:
-            response = self.session.get(season_url)
+        with self.session.wayback_disabled():
+            if year >= datetime.datetime.now().year - 1:
+                with self.session.cache_disabled():
+                        response = self.session.get(season_url)
+            else:
+                response = self.session.get(season_url)
 
         soup = BeautifulSoup(response.text, "lxml")
         in_finals = False
