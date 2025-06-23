@@ -3513,6 +3513,15 @@ MVP_ARENA = SportsballGeocodeTuple(
     housenumber="51",
     country="USA",
 )
+FAU_STADIUM = SportsballGeocodeTuple(
+    city="Boca Raton",
+    state="FL",
+    postal="33431",
+    lat=26.375278,
+    lng=-80.100278,
+    housenumber="777",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5005,15 +5014,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1251",
         country="USA",
     ),
-    "FAU Stadium - Boca Raton - FL - 33431": SportsballGeocodeTuple(
-        city="Boca Raton",
-        state="FL",
-        postal="33431",
-        lat=26.375278,
-        lng=-80.100278,
-        housenumber="777",
-        country="USA",
-    ),
+    "FAU Stadium - Boca Raton - FL - 33431": FAU_STADIUM,
     "Kenan Stadium - Chapel Hill - NC - 27514": SportsballGeocodeTuple(
         city="Chapel Hill",
         state="NC",
@@ -6574,15 +6575,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Crisler Arena, Ann Arbor, Michigan": CRISLER_CENTER,
-    "FAU Arena, Boca Raton, Florida": SportsballGeocodeTuple(
-        city="Boca Raton",
-        state="FL",
-        postal="33431",
-        lat=26.372222,
-        lng=-80.109167,
-        housenumber="777",
-        country="USA",
-    ),
+    "FAU Arena, Boca Raton, Florida": FAU_STADIUM,
     "Hammel Court, North Andover, Massachusetts": SportsballGeocodeTuple(
         city="North Andover",
         state="MA",
@@ -17345,6 +17338,8 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="720",
         country="USA",
     ),
+    "Northwest Stadium - Landover, Maryland, USA - United States": FEDEX_FIELD,
+    "Flagler Credit Union Stadium - Boca Raton - FL - 33431": FAU_STADIUM,
 }
 
 
