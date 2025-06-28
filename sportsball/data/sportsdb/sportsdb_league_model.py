@@ -2,9 +2,12 @@
 
 # pylint: disable=line-too-long
 import datetime
+import io
 from typing import Iterator
 
+import pandas as pd
 import tqdm
+from bs4 import BeautifulSoup
 from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ..game_model import GameModel
@@ -54,6 +57,8 @@ class SportsDBLeagueModel(LeagueModel):
             events = games["events"]
             if events is None:
                 return
+            event_ids = set()
+            current_count = 0
             for count, game in enumerate(events):
                 pbar.update(1)
                 game_model = create_sportsdb_game_model(
@@ -69,6 +74,47 @@ class SportsDBLeagueModel(LeagueModel):
                     f"SportsDB {season_year} - {season_type} - {game_model.dt}"
                 )
                 yield game_model
+                event_ids.add(game["idEvent"])
+                current_count = count
+            response = self.session.get(
+                f"https://www.thesportsdb.com/season/{league_id}/{season_year}?csv=1&all=1",
+            )
+            response.raise_for_status()
+            soup = BeautifulSoup(response.text, "lxml")
+            for textarea in soup.find_all("textarea"):
+                df = pd.read_csv(
+                    io.BytesIO(textarea.get_text().strip().encode()),
+                    parse_dates=[1],
+                    header=None,
+                ).rename(
+                    columns={
+                        0: "idEvent",
+                        1: "dateEvent",
+                    }
+                )
+                for game_id in df["idEvent"].tolist():
+                    if game_id in event_ids:
+                        continue
+                    game_response = self.session.get(
+                        f"https://www.thesportsdb.com/api/v1/json/123/lookupevent.php?id={game_id}"
+                    )
+                    game_response.raise_for_status()
+                    game = game_response.json()["events"][0]
+                    pbar.update(1)
+                    game_model = create_sportsdb_game_model(
+                        self.session,
+                        game,
+                        week,
+                        current_count,
+                        self.league,
+                        year,
+                        season_type,
+                    )
+                    pbar.set_description(
+                        f"SportsDB {season_year} - {season_type} - {game_model.dt}"
+                    )
+                    yield game_model
+                    current_count += 1
 
         if year < datetime.datetime.now().year - 1:
             yield from internal_produce_games()

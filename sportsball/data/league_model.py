@@ -208,10 +208,6 @@ class LeagueModel(Model):
             df = _normalize_tz(df)
 
             if GAME_DT_COLUMN in df.columns.values:
-                # df[GAME_DT_COLUMN] = pd.to_datetime(df[GAME_DT_COLUMN])
-                # naive_times = df[df[GAME_DT_COLUMN].dt.tz.isna()]
-                # print("naive_times:")
-                # print(naive_times)
                 df = df.sort_values(
                     by=GAME_DT_COLUMN,
                     ascending=True,
