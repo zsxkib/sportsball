@@ -12,6 +12,7 @@ from .address_model import VERSION as ADDRESS_VERSION
 from .address_model import AddressModel
 from .delimiter import DELIMITER
 from .field_type import FFILL_KEY, TYPE_KEY, FieldType
+from .owner_model import VERSION as OWNER_VERSION
 from .owner_model import OwnerModel
 from .sex import (FEMALE_GENDERS, GENDER_DETECTOR, MALE_GENDERS,
                   UNCERTAIN_GENDERS, Sex)
@@ -90,7 +91,7 @@ PLAYER_PERSONAL_FOULS_COLUMN: Literal["personal_fouls"] = "personal_fouls"
 PLAYER_POINTS_COLUMN: Literal["points"] = "points"
 PLAYER_GAME_SCORE_COLUMN: Literal["game_score"] = "game_score"
 PLAYER_POINT_DIFFERENTIAL_COLUMN: Literal["point_differential"] = "point_differential"
-VERSION = DELIMITER.join(["0.0.1", ADDRESS_VERSION])
+VERSION = DELIMITER.join(["0.0.1", ADDRESS_VERSION, OWNER_VERSION])
 
 
 def _guess_sex(data: dict[str, Any]) -> str | None:

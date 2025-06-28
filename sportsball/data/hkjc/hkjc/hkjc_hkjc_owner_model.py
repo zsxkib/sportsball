@@ -4,7 +4,7 @@ import logging
 import urllib.parse
 from urllib.parse import urlparse
 
-from ...owner_model import OwnerModel
+from ...owner_model import VERSION, OwnerModel
 
 
 def create_hkjc_hkjc_owner_model(
@@ -22,4 +22,5 @@ def create_hkjc_hkjc_owner_model(
     return OwnerModel(
         identifier=name,
         name=name,
+        version=VERSION,
     )
