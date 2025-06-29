@@ -29,3 +29,4 @@ class Position(StrEnum):
     NOSE_TACKLE = "NT"
     ATHLETE = "ATH"
     KICK_RETURNER = "KR"
+    PUNT_RETURNER = "PR"

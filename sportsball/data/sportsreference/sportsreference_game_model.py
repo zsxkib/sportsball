@@ -258,7 +258,7 @@ def _find_old_dt(
     if dt is None:
         raise ValueError("dt is null.")
     if venue_name is None:
-        logging.warning("venue_name is null.")
+        logging.warning("venue_name is null for %s.", url)
 
     return (dt, teams, venue_name)
 
