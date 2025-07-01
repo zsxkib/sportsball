@@ -65,7 +65,7 @@ def _create_afl_afltables_player_model(
             player_page_text.split("Born:")[1].strip().split()[0].strip()
         )
     except IndexError:
-        logging.warning("Couldn't find birth date from %s", response.url)
+        logging.debug("Couldn't find birth date from %s", response.url)
 
     weight = None
     try:

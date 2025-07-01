@@ -3522,6 +3522,15 @@ FAU_STADIUM = SportsballGeocodeTuple(
     housenumber="777",
     country="USA",
 )
+FREEDOM_HALL = SportsballGeocodeTuple(
+    city="Louisville",
+    state="KY",
+    postal="",
+    lat=38.200294,
+    lng=-85.741886,
+    housenumber="937",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -10150,15 +10159,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Merrell Center, Katy, Texas": MERRELL_CENTER,
     "Nassau Veterans Memorial Coliseum, Uniondale, New York": NASSAU_COLISEUM,
     "McNichols Sports Arena, Denver, Colorado": MCNICHOLS_SPORTS_ARENA,
-    "Freedom Hall, Louisville, Kentucky": SportsballGeocodeTuple(
-        city="Louisville",
-        state="KY",
-        postal="",
-        lat=38.200294,
-        lng=-85.741886,
-        housenumber="937",
-        country="USA",
-    ),
+    "Freedom Hall, Louisville, Kentucky": FREEDOM_HALL,
     "HemisFair Arena, San Antonio, Texas": SportsballGeocodeTuple(
         city="San Antonio",
         state="TX",
@@ -17340,6 +17341,8 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Northwest Stadium - Landover, Maryland, USA - United States": FEDEX_FIELD,
     "Flagler Credit Union Stadium - Boca Raton - FL - 33431": FAU_STADIUM,
+    "Freedom Hall - Louisville, Kentucky - United States": FREEDOM_HALL,
+    "Finneran Pavilion - Villanova, Pennsylvania - United States": FINNERAN_PAVILION,
 }
 
 
