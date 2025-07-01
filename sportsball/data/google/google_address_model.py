@@ -3531,6 +3531,15 @@ FREEDOM_HALL = SportsballGeocodeTuple(
     housenumber="937",
     country="USA",
 )
+PRUDENTIAL_CENTER = SportsballGeocodeTuple(
+    city="Newark",
+    state="NJ",
+    postal="",
+    lat=40.733611,
+    lng=-74.171111,
+    housenumber="25",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -7409,15 +7418,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Thomas M. Ryan Center, Kingston, Rhode Island": RYAN_CENTER,
-    "Prudential Center, Newark, New Jersey": SportsballGeocodeTuple(
-        city="Newark",
-        state="NJ",
-        postal="",
-        lat=40.733611,
-        lng=-74.171111,
-        housenumber="25",
-        country="USA",
-    ),
+    "Prudential Center, Newark, New Jersey": PRUDENTIAL_CENTER,
     "Ford Center, Evansville, Indiana": SportsballGeocodeTuple(
         city="Evansville",
         state="IN",
@@ -17343,6 +17344,9 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Flagler Credit Union Stadium - Boca Raton - FL - 33431": FAU_STADIUM,
     "Freedom Hall - Louisville, Kentucky - United States": FREEDOM_HALL,
     "Finneran Pavilion - Villanova, Pennsylvania - United States": FINNERAN_PAVILION,
+    "University of Phoenix Stadium": STATE_FARM_STADIUM,
+    "Alamodome - San Antonio, Texas, USA - United States": ALAMODOME,
+    "Prudential Center - Newark, New Jersey, USA - United States": PRUDENTIAL_CENTER,
 }
 
 
