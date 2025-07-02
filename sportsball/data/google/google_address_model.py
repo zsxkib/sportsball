@@ -3540,6 +3540,15 @@ PRUDENTIAL_CENTER = SportsballGeocodeTuple(
     housenumber="25",
     country="USA",
 )
+ROBERTS_STADIUM = SportsballGeocodeTuple(
+    city="Evansville",
+    state="IN",
+    postal="47711",
+    lat=37.97903,
+    lng=-87.515926,
+    housenumber="2600",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -13666,15 +13675,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Mexico",
     ),
-    "Roberts Stadium, Evansville, Indiana": SportsballGeocodeTuple(
-        city="Evansville",
-        state="IN",
-        postal="47711",
-        lat=37.97903,
-        lng=-87.515926,
-        housenumber="2600",
-        country="USA",
-    ),
+    "Roberts Stadium, Evansville, Indiana": ROBERTS_STADIUM,
     "Mullett Arena, Tempe, Arizona": SportsballGeocodeTuple(
         city="Tempe",
         state="AZ",
@@ -17347,6 +17348,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "University of Phoenix Stadium": STATE_FARM_STADIUM,
     "Alamodome - San Antonio, Texas, USA - United States": ALAMODOME,
     "Prudential Center - Newark, New Jersey, USA - United States": PRUDENTIAL_CENTER,
+    "Roberts Stadium": ROBERTS_STADIUM,
 }
 
 
