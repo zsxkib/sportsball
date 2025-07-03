@@ -17349,6 +17349,16 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Alamodome - San Antonio, Texas, USA - United States": ALAMODOME,
     "Prudential Center - Newark, New Jersey, USA - United States": PRUDENTIAL_CENTER,
     "Roberts Stadium": ROBERTS_STADIUM,
+    "Sports Arena": ARCO_ARENA,
+    "Veterans Memorial Auditorium": SportsballGeocodeTuple(
+        city="Providence",
+        state="RI",
+        postal="",
+        lat=41.829847,
+        lng=-71.417425,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
