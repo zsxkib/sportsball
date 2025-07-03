@@ -17359,6 +17359,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Pittsburgh Civic Arena": CIVIC_ARENA,
 }
 
 
