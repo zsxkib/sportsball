@@ -3549,6 +3549,15 @@ ROBERTS_STADIUM = SportsballGeocodeTuple(
     housenumber="2600",
     country="USA",
 )
+LONG_BEACH_ARENA = SportsballGeocodeTuple(
+    city="Long Beach",
+    state="CA",
+    postal="",
+    lat=33.763889,
+    lng=-118.188333,
+    housenumber="",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -11585,15 +11594,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Long Beach Arena, Long Beach, California": SportsballGeocodeTuple(
-        city="Long Beach",
-        state="CA",
-        postal="",
-        lat=33.763889,
-        lng=-118.188333,
-        housenumber="",
-        country="USA",
-    ),
+    "Long Beach Arena, Long Beach, California": LONG_BEACH_ARENA,
     "Uline Arena, Washington, District of Columbia": SportsballGeocodeTuple(
         city="Washington",
         state="DC",
@@ -17360,6 +17361,8 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Pittsburgh Civic Arena": CIVIC_ARENA,
+    "University Arena, Albuquerque, New Mexico": THE_PIT,
+    "Long Beach Arena": LONG_BEACH_ARENA,
 }
 
 
