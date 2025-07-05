@@ -3558,6 +3558,42 @@ LONG_BEACH_ARENA = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
+MID_SOUTH_COLISEUM = SportsballGeocodeTuple(
+    city="Memphis",
+    state="TN",
+    postal="38104",
+    lat=35.118395,
+    lng=-89.980366,
+    housenumber="996",
+    country="USA",
+)
+DEAN_SMITH_CENTER = SportsballGeocodeTuple(
+    city="Chapel Hill",
+    state="NC",
+    postal="",
+    lat=35.899722,
+    lng=-79.043889,
+    housenumber="300",
+    country="USA",
+)
+CHARLESTON_CIVIC_CENTER = SportsballGeocodeTuple(
+    city="Charleston",
+    state="WV",
+    postal="25301",
+    lat=38.35519,
+    lng=-81.64152,
+    housenumber="200",
+    country="USA",
+)
+GREENSBORO_COLISEUM = SportsballGeocodeTuple(
+    city="Greensboro",
+    state="NC",
+    postal="",
+    lat=36.059722,
+    lng=-79.825556,
+    housenumber="1921",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -6126,24 +6162,8 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="461",
         country="USA",
     ),
-    "Dean Smith Center, Chapel Hill, North Carolina": SportsballGeocodeTuple(
-        city="Chapel Hill",
-        state="NC",
-        postal="",
-        lat=35.899722,
-        lng=-79.043889,
-        housenumber="300",
-        country="USA",
-    ),
-    "Greensboro Coliseum, Greensboro, North Carolina": SportsballGeocodeTuple(
-        city="Greensboro",
-        state="NC",
-        postal="",
-        lat=36.059722,
-        lng=-79.825556,
-        housenumber="1921",
-        country="USA",
-    ),
+    "Dean Smith Center, Chapel Hill, North Carolina": DEAN_SMITH_CENTER,
+    "Greensboro Coliseum, Greensboro, North Carolina": GREENSBORO_COLISEUM,
     "Athletics Center O'rena, Rochester, Michigan": ATHELTICS_CENTER_ORENA,
     "Yuengling Center, Tampa, Florida": YUENGLING_CENTER,
     "Reilly Center, St. Bonaventure, New York": SportsballGeocodeTuple(
@@ -10229,15 +10249,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1323",
         country="USA",
     ),
-    "Mid-South Coliseum, Memphis, Tennessee": SportsballGeocodeTuple(
-        city="Memphis",
-        state="TN",
-        postal="38104",
-        lat=35.118395,
-        lng=-89.980366,
-        housenumber="996",
-        country="USA",
-    ),
+    "Mid-South Coliseum, Memphis, Tennessee": MID_SOUTH_COLISEUM,
     "Memorial Coliseum, Lexington, Kentucky": SportsballGeocodeTuple(
         city="Lexington",
         state="KT",
@@ -12885,15 +12897,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="224",
         country="USA",
     ),
-    "Charleston Civic Center, Charleston, West Virginia": SportsballGeocodeTuple(
-        city="Charleston",
-        state="WV",
-        postal="25301",
-        lat=38.35519,
-        lng=-81.64152,
-        housenumber="200",
-        country="USA",
-    ),
+    "Charleston Civic Center, Charleston, West Virginia": CHARLESTON_CIVIC_CENTER,
     "Kezar Pavillion, San Francisco, California": KEZAR_STADIUM,
     "H.E.B. Center at Cedar Park, Cedar Park, Texas": SportsballGeocodeTuple(
         city="Cedar Park",
@@ -17363,6 +17367,19 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Pittsburgh Civic Arena": CIVIC_ARENA,
     "University Arena, Albuquerque, New Mexico": THE_PIT,
     "Long Beach Arena": LONG_BEACH_ARENA,
+    "Las Vegas Convention Center": SportsballGeocodeTuple(
+        city="Las Vegas",
+        state="NV",
+        postal="",
+        lat=36.131516,
+        lng=-115.151507,
+        housenumber="3150",
+        country="USA",
+    ),
+    "Mid-South Coliseum": MID_SOUTH_COLISEUM,
+    "Dean Smith Center - Chapel Hill, North Carolina, USA - United States": DEAN_SMITH_CENTER,
+    "Charleston Civic Center": CHARLESTON_CIVIC_CENTER,
+    "Greensboro Coliseum": GREENSBORO_COLISEUM,
 }
 
 
