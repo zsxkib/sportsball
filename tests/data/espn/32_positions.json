@@ -1,1 +1,12 @@
-{"$ref":"http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/positions/32?lang=en&region=us","id":"32","name":"Defensive Tackle","displayName":"Defensive Tackle","abbreviation":"DT","leaf":false,"parent":{"$ref":"http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/positions/71?lang=en&region=us"}}
+{
+    "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/positions/32?lang=en&region=us",
+    "id": "32",
+    "name": "Defensive Tackle",
+    "displayName": "Defensive Tackle",
+    "abbreviation": "DT",
+    "leaf": false,
+    "parent":
+    {
+        "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/positions/71?lang=en&region=us"
+    }
+}

@@ -75,6 +75,7 @@ The supported leagues are:
         * **Player**: A player within the team.
             * **Address**: The address information of a players birth.
             * **Owner**: The owner of the player.
+            * **Venue**: The college of the player.
         * **Odds**: The odds for the team to win the game.
             * **Bookie**: The bookie publishing the odds.
         * **News**: News about the team the day before the game.
@@ -211,7 +212,7 @@ A representation of a player within a team within a game.
 * **sex**: The sex of the player.
 * **age**: The age of the player in years.
 * **starting_position**: The starting position of the player.
-* **weight**: The weight of the player in (in KGs).
+* **weight**: The weight of the player (in KGs).
 * **birth_address**: The address model for the players birth location.
 * **seconds_played**: The amount of seconds the player played the game for.
 * **field_goals_percentage**: The ratio of field goals scored by field goals attempted for the player during the game.
@@ -230,6 +231,213 @@ A representation of a player within a team within a game.
 * **game_score**: The [John Hollinger game score](https://www.nbastuffer.com/analytics101/game-score/) of the player during the game.
 * **point_differential**: The points scored by the players team while the player was on the court minus the points scored by the opposing team when the player is off the court.
 * **version**: The version of the player model.
+* **height**: The height of the player in (in CMs).
+* **college**: The college the player went to.
+* **headshot**: An image URL representing the headshot of the player.
+* **forced_fumbles**: The number of forced fumbles made by the player during the game.
+* **fumbles_recovered**: The number of fumbles recovered made by the player during the game.
+* **fumbles_recovered_yards**: The yards gained during fumbles recovered by the player during the game.
+* **fumbles_touchdowns**: The number of fumble touchdowns made by the player during the game.
+* **offensive_two_point_returns**: The number of offensive two point returns made by the player during the game.
+* **offensive_fumbles_touchdowns**: The number of offensive fumbles touchdowns made by the player during the game.
+* **defensive_fumbles_touchdowns**: The number of defensive fumbles touchdowns made by the player during the game.
+* **average_gain**: The average number of yards gained by the player during the game.
+* **completion_percentage**: The completion percentage of the player during the game.
+* **completions**: The number of completions made by the player during the game.
+* **espn_quarterback_rating**: The number of ESPN quarterback rating of the player.
+* **interception_percentage**: The interception percentage of the player during the game.
+* **interceptions**: The number of interceptions made by the player during the game.
+* **long_passing**: The number of long passes made by the player during the game.
+* **misc_yards**: The miscellaneous yards gained by the player during the game.
+* **net_passing_yards**: The total passing yards gained by the player during the game.
+* **net_total_yards**: The net total yards gained by the player during the game.
+* **passing_attempts**: The number of attempted passes made by the player during the game.
+* **passing_big_plays**: The number of passes that led to big plays made by the player during the game.
+* **passing_first_downs**: The number of passes first downs made by the player during the game.
+* **passing_fumbles**: The number of passing fumbles made by the player during the game.
+* **passing_fumbles_lost**: The number of passing fumbles lost by the player during the game.
+* **passing_touchdown_percentage**: The percentage of passing touchdowns by the player during the game.
+* **passing_touchdowns**: The number of passing touchdowns made by the player during the game.
+* **passing_yards**: The yards gained by the player during passing during the game.
+* **passing_yards_after_catch**: The yards gained by the player after passing after a catch during the game.
+* **passing_yards_at_catch**: The yards gained by the player after passing before a catch during the game.
+* **quarterback_rating**: The quarterback rating of the player.
+* **sacks**: The number of sacks made by the player during the game.
+* **sacks_yards_lost**: The yards lost by the player performing a sack during the game.
+* **net_passing_attempts**: The number of passing attempts made by the player during the game.
+* **total_offensive_plays**: The number of offensive plays made by the player during the game.
+* **total_points**: The number of points made by the player during the game.
+* **total_touchdowns**: The number of touchdowns made by the player during the game.
+* **total_yards**: The total yards gained by the player during the game.
+* **total_yards_from_scrimmage**: The total yards gained by the player from scrimmage during the game.
+* **two_point_pass**: The two point passes made by the player during the game.
+* **two_point_pass_attempt**: The attempts at two point passes made by the player during the game.
+* **yards_per_completion**: The yards gained per completion by the player during the game.
+* **yards_per_pass_attempt**: The yards gained per pass attempt by the player during the game.
+* **net_yards_per_pass_attempt**: The net number of yards gained per pass attempt by the player during the game.
+* **long_rushing**: The long rushes made by the player during the game.
+* **rushing_attempts**: The attempted rushes made by the player during the game.
+* **rushing_big_plays**: The rushes resulting in big plays made by the player during the game.
+* **rushing_first_downs**: The rushing first downs made by the player during the game.
+* **rushing_fumbles**: The rushing fumbles made by the player during the game.
+* **rushing_fumbles_lost**: The rushing fumbles lost by the player during the game.
+* **rushing_touchdowns**: The rushing touchdowns made by the player during the game.
+* **rushing_yards**: The yards made by rushing by the player during the game.
+* **stuffs**: The stuffs made by the player during the game.
+* **stuff_yards_lost**: The yards lost while stuffing by the player during the game.
+* **two_point_rush**: The number of two point rushes made by the player during the game.
+* **two_point_rush_attempts**: The number of attempted two point rushes made by the player during the game.
+* **yards_per_rush_attempt**: The number of yards per rush attempt made by the player during the game.
+* **espn_widereceiver**: The ESPN rating for the wide receiver.
+* **long_reception**: The number of long receptions made by the player during the game.
+* **receiving_big_plays**: The number of receives that resulted in big plays made by the player during the game.
+* **receiving_first_downs**: The number of first down receives made by the player during the game.
+* **receiving_fumbles**: The number of fumble receives made by the player during the game.
+* **receiving_fumbles_lost**: The number of fumble receives lost by the player during the game.
+* **receiving_targets**: The number of target receives made by the player during the game.
+* **receiving_yards**: The number of yards gained by receives by the player during the game.
+* **receiving_yards_after_catch**: The number of yards gained by receives by the player during the game after a catch.
+* **receiving_yards_at_catch**: The number of yards gained by the receives by the player during the game at a catch.
+* **receptions**: The number of receptions made by the player during the game.
+* **two_point_receptions**: The number of two point receptions made by the player during the game.
+* **two_point_reception_attempts**: The number of two point reception attempts made by the player during the game.
+* **yards_per_reception**: The yards gained on average per reception by the player during the game.
+* **assist_tackles**: The number of assist tackles made by the player during the game.
+* **average_interception_yards**: The average number of yards gained by an interception made by the player during the game.
+* **average_sack_yards**: The average number of yards gained by a sack made by the player during the game.
+* **average_stuff_yards**: The average number of yards gained by a stuff made by the player during the game.
+* **blocked_field_goal_touchdowns**: The number of blocked field goal touchdowns made by the player during the game.
+* **blocked_punt_touchdowns**: The number of blocked punt touchdowns made by the player during the game.
+* **defensive_touchdowns**: The number of defensive touchdowns made by the player during the game.
+* **hurries**: The number of hurries made by the player during the game.
+* **kicks_blocked**: The number of kicks blocked by the player during the game.
+* **long_interception**: The number of long interceptions made by the player during the game.
+* **misc_touchdowns**: The number of miscellaneous touchdowns made by the player during the game.
+* **passes_batted_down**: The number of passes batted down by the player during the game.
+* **passes_defended**: The number of passes defended by the player during the game.
+* **quarterback_hits**: The number of quarterback hits made by the player during the game.
+* **sacks_assisted**: The number of sacks the player assisted with during the game.
+* **sacks_unassisted**: The number of sacks the player made unassisted during the game.
+* **sacks_yards**: The number of yards gained by the player making a sack during the game.
+* **safeties**: The safeties made by the player during the game.
+* **solo_tackles**: The number of solo tackles made by the player during the game.
+* **stuff_yards**: The yards gained by the stuffs made by the player during the game.
+* **tackles_for_loss**: The tackles for losses made by the player during the game.
+* **tackles_yards_lost**: The yards lost by tackles made by the player during the game.
+* **yards_allowed**: The yards allowed to be gained by the player during the game.
+* **points_allowed**: The points allowed to be gained by the player during the game.
+* **one_point_safeties_made**: The one point safeties made by the player during the game.
+* **missed_field_goal_return_td**: The missed field goal return TD made by the player during the game.
+* **blocked_punt_ez_rec_td**: The blocked punt EZ rec TD of the player during the game.
+* **interception_touchdowns**: The number of interception touchdowns made by the player during the game.
+* **interception_yards**: The number of yards gained by interceptions made by the player during the game.
+* **average_kickoff_return_yards**: The average number of kickoff return yards made by the player during the game.
+* **average_kickoff_yards**: The average number of kickoff yards made by the player during the game.
+* **extra_point_attempts**: The number of extra point attempts made by the player during the game.
+* **extra_point_percentage**: The number of extra point percentages made by the player during the game.
+* **extra_point_blocked**: The number of extra points blocked by the player during the game.
+* **extra_points_blocked_percentage**: The percentage of extra points blocked by the player during the game.
+* **extra_points_made**: The number of extra points made by the player during the game.
+* **fair_catches**: The number of fair catches made by the player during the game.
+* **fair_catch_percentage**: The percentage of fair catches made by the player during the game.
+* **field_goal_attempts_max_19_yards**: The field goal attempts between 0-19 yards made by the player during the game.
+* **field_goal_attempts_max_29_yards**: The field goal attempts between 19-29 yards made by the player during the game.
+* **field_goal_attempts_max_39_yards**: The field goal attempts between 29-39 yards made by the player during the game.
+* **field_goal_attempts_max_49_yards**: The field goal attempts between 39-49 yards made by the player during the game.
+* **field_goal_attempts_max_59_yards**: The field goal attempts between 49-59 yards made by the player during the game.
+* **field_goal_attempts_max_99_yards**: The field goal attempts between 59-99 yards made by the player during the game.
+* **field_goal_attempts_above_50_yards**: The field goal attempts above 50 yards made by the player during the game.
+* **field_goal_attempt_yards**: The yards gained by field goal attempts made by the player during the game.
+* **field_goals_blocked**: The field goals blocked by the player during the game.
+* **field_goals_blocked_percentage**: The percentage of field goals made by the player during the game.
+* **field_goals_made**: The number of field goals made by the player during the game.
+* **field_goals_made_max_19_yards**: The number of field goals made between 0-19 yards by the player during the game.
+* **field_goals_made_max_29_yards**: The number of field goals made between 19-29 yards by the player during the game.
+* **field_goals_made_max_39_yards**: The number of field goals made between 29-39 yards by the player during the game.
+* **field_goals_made_max_49_yards**: The number of field goals made between 39-49 yards by the player during the game.
+* **field_goals_made_max_59_yards**: The number of field goals made between 49-59 yards by the player during the game.
+* **field_goals_made_max_99_yards**: The number of field goals made between 59-99 yards by the player during the game.
+* **field_goals_made_above_50_yards**: The number of field goals made over 50 yards by the player during the game.
+* **field_goals_made_yards**: The number of yards gained by field goals made by the player during the game.
+* **field_goals_missed_yards**: The number of yards gained by missed field goals made by the player during the game.
+* **kickoff_out_of_bounds**: The number of out of bounds kickoffs made by the player during the game.
+* **kickoff_returns**: The number of kickoff returns made by the player during the game.
+* **kickoff_returns_touchdowns**: The number of kickoff returns touchdowns made by the player during the game.
+* **kickoff_return_yards**: The yards gained by kickoff returns made by the player during the game.
+* **long_field_goal_attempt**: The number of long field goal attempts made by the player during the game.
+* **long_field_goal_made**: The number of long field goals made by the player during the game.
+* **long_kickoff**: The number of long kickoffs made by the player during the game.
+* **total_kicking_points**: The number of kicking points made by the player during the game.
+* **touchback_percentage**: The percentage of touchbacks made by the player during the game.
+* **touchbacks**: The touchbacks made by the player during the game.
+* **defensive_fumble_returns**: The number of defensive fumble returns made by the player during the game.
+* **defensive_fumble_return_yards**: The yards gained by defensive fumble returns made by the player during the game.
+* **fumble_recoveries**: The fumble recoveries made by the player during the game.
+* **fumble_recovery_yards**: The yards gained by fumble recoveries made by the player during the game.
+* **kick_return_fair_catches**: The kick return fair catches made by the player during the game.
+* **kick_return_fair_catch_percentage**: The percentage of kick return fair catches made by the player during the game.
+* **kick_return_fumbles**: The kick return fumbles made by the player during the game.
+* **kick_return_fumbles_lost**: The kick return fumbles lost by the player during the game.
+* **kick_returns**: The kick returns made by the player during the game.
+* **kick_return_touchdowns**: The kick return touchdowns made by the player during the game.
+* **kick_return_yards**: The yards gained by kick returns made by the player during the game.
+* **long_kick_return**: The long kick returns made by the player during the game.
+* **long_punt_return**: The long punt returns made by the player during the game.
+* **misc_fumble_returns**: The miscellaneous fumble returns made by the player during the game.
+* **misc_fumble_return_yards**: The yards gained by miscellaneous fumble returns made by the player during the game.
+* **opposition_fumble_recoveries**: The opposition fumble recoveries made by the player during the game.
+* **opposition_fumble_recovery_yards**: The yards gained by opposition fumble recoveries made by the player during the game.
+* **opposition_special_team_fumble_returns**: The opposition special team fumble returns made by the player during the game.
+* **opposition_special_team_fumble_return_yards**: The opposition special team fumble return yards made by the player during the game.
+* **punt_return_fair_catches**: The number of punt return fair catches made by the player during the game.
+* **punt_return_fair_catch_percentage**: The percentage of punt return fair catches made by the player during the game.
+* **punt_return_fumbles**: The number of punt return fumbles made by the player during the game.
+* **punt_return_fumbles_lost**: The number of punt return fumbles lost by the player during the game.
+* **punt_returns**: The number of punt returns made by the player during the game.
+* **punt_returns_started_inside_the_10**: The number of punt returns started inside the 10 yard line by the player during the game.
+* **punt_returns_started_inside_the_20**: The number of punt returns started inside the 20 yard line by the player during the game.
+* **punt_return_touchdowns**: The number of punt return touchdowns made by the player during the game.
+* **punt_return_yards**: The yards gained by the player during the game.
+* **special_team_fumble_returns**: The special team fumble returns made by the player during the game.
+* **yards_per_kick_return**: The yards gained per kick return made by the player during the game.
+* **yards_per_punt_return**: The yards gained per punt return made by the player during the game.
+* **yards_per_return**: The yards gained per return made by the player during the game.
+* **average_punt_return_yards**: The average yards gained per punt return made by the player during the game.
+* **fair_catches**: The number of fair catches made by the player during the game.
+* **gross_average_punt_yards**: The gross average punt yards made by the player during the game.
+* **long_punt**: The long punts made by the player during the game.
+* **net_average_punt_yards**: The net average punt yards made by the player during the game.
+* **punts**: The punts made by the player during the game.
+* **punts_blocked**: The punts blocked made by the player during the game.
+* **punts_blocked_percentage**: The percentage of punts blocked by the player during the game.
+* **punts_inside_10**: The punts made by the player inside the 10 yard line during the game.
+* **punts_inside_10_percentage**: The percentage of punts made by the player inside the 10 yard line during the game.
+* **punts_inside_20**: The punts made by the player inside the 20 yard line during the game.
+* **punts_inside_20_percentage**: The percentage of punts made by the player inside the 20 yard line during the game.
+* **punts_over_50**: The punts over the 50 yard line made by the player during the game.
+* **punt_yards**: The punt yards made by the player during the game.
+* **defensive_points**: The points scored defensively by the player during the game.
+* **misc_points**: The miscellaneous points made by the player during the game.
+* **return_touchdowns**: The return touchdowns made by the player during the game.
+* **total_two_point_conversions**: The total two point conversions made by the player during the game.
+* **passing_touchdowns_9_yards**: The passing touchdowns made by the player during the game from 9 yards.
+* **passing_touchdowns_19_yards**: The passing touchdowns made by the player during the game from 19 yards.
+* **passing_touchdowns_29_yards**: The passing touchdowns made by the player during the game from 29 yards.
+* **passing_touchdowns_39_yards**: The passing touchdowns made by the player during the game from 39 yards.
+* **passing_touchdowns_49_yards**: The passing touchdowns made by the player during the game from 49 yards.
+* **passing_touchdowns_above_50_yards**: The passing touchdowns made by the player during the game above 50 yards.
+* **receiving_touchdowns_9_yards**: The receiving touchdowns made by the player during the game from 9 yards.
+* **receiving_touchdowns_19_yards**: The receiving touchdowns made by the player during the game from 19 yards.
+* **receiving_touchdowns_29_yards**: The receiving touchdowns made by the player during the game from 29 yards.
+* **receiving_touchdowns_39_yards**: The receiving touchdowns made by the player during the game from 39 yards.
+* **receiving_touchdowns_49_yards**: The receiving touchdowns made by the player during the game from 49 yards.
+* **receiving_touchdowns_above_50_yards**: The receiving touchdowns made by the player during the game above 50 yards.
+* **rushing_touchdowns_9_yards**: The rushing touchdowns made by the player during the game from 9 yards.
+* **rushing_touchdowns_19_yards**: The rushing touchdowns made by the player during the game from 19 yards.
+* **rushing_touchdowns_29_yards**: The rushing touchdowns made by the player during the game from 29 yards.
+* **rushing_touchdowns_39_yards**: The rushing touchdowns made by the player during the game from 39 yards.
+* **rushing_touchdowns_49_yards**: The rushing touchdowns made by the player during the game from 49 yards.
+* **rushing_touchdowns_above_50_yards**: The rushing touchdowns made by the player during the game above 50 yards.
 
 #### Odds
 

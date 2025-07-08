@@ -19,18 +19,26 @@ def create_espn_venue_model(
 ) -> VenueModel:
     """Create a venue model from an ESPN result."""
     identifier = venue["id"]
-    name = venue["fullName"]
-    venue_address = venue["address"]
-    city = venue_address.get("city", "")
-    state = venue_address.get("state", "")
-    zipcode = venue_address.get("zipCode", "")
-    address = create_google_address_model(
-        " - ".join([x for x in [name, city, state, zipcode] if x]),
-        session,
-        dt,
-    )
-    grass = venue["grass"]
-    indoor = venue["indoor"]
+    name = venue.get("fullName", venue.get("name"))
+    venue_address = venue.get("address")
+    address = None
+    if venue_address is not None:
+        city = venue_address.get("city", "")
+        state = venue_address.get("state", "")
+        zipcode = venue_address.get("zipCode", "")
+        address = create_google_address_model(
+            " - ".join([x for x in [name, city, state, zipcode] if x]),
+            session,
+            dt,
+        )
+    else:
+        address = create_google_address_model(
+            name + " College",
+            session,
+            dt,
+        )
+    grass = venue.get("grass")
+    indoor = venue.get("indoor")
     return VenueModel(
         identifier=identifier,
         name=name,

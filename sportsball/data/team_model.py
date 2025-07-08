@@ -80,7 +80,10 @@ TEAM_TOTAL_REBOUNDS_COLUMN: Literal["total_rebounds"] = "total_rebounds"
 TEAM_STEALS_COLUMN: Literal["steals"] = "steals"
 TEAM_BLOCKS_COLUMN: Literal["blocks"] = "blocks"
 TEAM_PERSONAL_FOULS_COLUMN: Literal["personal_fouls"] = "personal_fouls"
-VERSION = DELIMITER.join(["0.0.1", PLAYER_VERSION, COACH_VERSION])
+TEAM_FORCED_FUMBLES_COLUMN: Literal["forced_fumbles"] = "forced_fumbles"
+TEAM_FUMBLES_RECOVERED_COLUMN: Literal["fumbles_recovered"] = "fumbles_recovered"
+TEAM_FUMBLES_TOUCHDOWNS_COLUMN: Literal["fumbles_touchdowns"] = "fumbles_touchdowns"
+VERSION = DELIMITER.join(["0.0.2", PLAYER_VERSION, COACH_VERSION])
 
 
 def _calculate_kicks(data: dict[str, Any]) -> int | None:
@@ -623,6 +626,48 @@ def _calculate_personal_fouls(data: dict[str, Any]) -> int | None:
     return personal_fouls
 
 
+def _calculate_forced_fumbles(data: dict[str, Any]) -> float | None:
+    forced_fumbles = 0.0
+    found_forced_fumbles = False
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
+        player_forced_fumbles = player.forced_fumbles
+        if player_forced_fumbles is None:
+            continue
+        found_forced_fumbles = True
+        forced_fumbles += player_forced_fumbles
+    if not found_forced_fumbles:
+        return None
+    return forced_fumbles
+
+
+def _calculate_fumbles_recovered(data: dict[str, Any]) -> float | None:
+    fumbles_recovered = 0.0
+    found_fumbles_recovered = False
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
+        player_fumbles_recovered = player.fumbles_recovered
+        if player_fumbles_recovered is None:
+            continue
+        found_fumbles_recovered = True
+        fumbles_recovered += player_fumbles_recovered
+    if not found_fumbles_recovered:
+        return None
+    return fumbles_recovered
+
+
+def _calculate_fumbles_touchdowns(data: dict[str, Any]) -> float | None:
+    fumbles_touchdowns = 0.0
+    found_fumbles_touchdowns = False
+    for player in data.get(PLAYER_COLUMN_PREFIX, []):
+        player_fumbles_touchdowns = player.fumbles_touchdowns
+        if player_fumbles_touchdowns is None:
+            continue
+        found_fumbles_touchdowns = True
+        fumbles_touchdowns += player_fumbles_touchdowns
+    if not found_fumbles_touchdowns:
+        return None
+    return fumbles_touchdowns
+
+
 class TeamModel(BaseModel):
     """The serialisable team class."""
 
@@ -850,5 +895,20 @@ class TeamModel(BaseModel):
         default_factory=_calculate_personal_fouls,
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=TEAM_PERSONAL_FOULS_COLUMN,
+    )
+    forced_fumbles: float | None = Field(
+        default_factory=_calculate_forced_fumbles,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_FORCED_FUMBLES_COLUMN,
+    )
+    fumbles_recovered: float | None = Field(
+        default_factory=_calculate_fumbles_recovered,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_FUMBLES_RECOVERED_COLUMN,
+    )
+    fumbles_touchdowns: float | None = Field(
+        default_factory=_calculate_fumbles_touchdowns,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_FUMBLES_TOUCHDOWNS_COLUMN,
     )
     version: str

@@ -3594,6 +3594,15 @@ GREENSBORO_COLISEUM = SportsballGeocodeTuple(
     housenumber="1921",
     country="USA",
 )
+SELLAND_ARENA = SportsballGeocodeTuple(
+    city="Fresno",
+    state="CA",
+    postal="",
+    lat=36.733093,
+    lng=-119.78271,
+    housenumber="700",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -11616,15 +11625,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Selland Arena, Fresno, California": SportsballGeocodeTuple(
-        city="Fresno",
-        state="CA",
-        postal="",
-        lat=36.733093,
-        lng=-119.78271,
-        housenumber="700",
-        country="USA",
-    ),
+    "Selland Arena, Fresno, California": SELLAND_ARENA,
     "Reid Gymnasium, Cullowhee, North Carolina": SportsballGeocodeTuple(
         city="Cullowhee",
         state="NC",
@@ -17380,6 +17381,52 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Dean Smith Center - Chapel Hill, North Carolina, USA - United States": DEAN_SMITH_CENTER,
     "Charleston Civic Center": CHARLESTON_CIVIC_CENTER,
     "Greensboro Coliseum": GREENSBORO_COLISEUM,
+    "Montreal Forum": SportsballGeocodeTuple(
+        city="Montreal",
+        state="QC",
+        postal="",
+        lat=45.490278,
+        lng=-73.584722,
+        housenumber="2313",
+        country="Canada",
+    ),
+    "Roberts Municipal Stadium": SportsballGeocodeTuple(
+        city="Evansville",
+        state="IN",
+        postal="47711",
+        lat=37.97903,
+        lng=-87.515926,
+        housenumber="2600",
+        country="USA",
+    ),
+    "Selland Arena": SELLAND_ARENA,
+    "Carolina Coliseum": SportsballGeocodeTuple(
+        city="Columbia",
+        state="SC",
+        postal="29201",
+        lat=37.97903,
+        lng=-87.515926,
+        housenumber="701",
+        country="USA",
+    ),
+    "Washington College": SportsballGeocodeTuple(
+        city="Chestertown",
+        state="MD",
+        postal="",
+        lat=39.218056,
+        lng=-76.069444,
+        housenumber="",
+        country="USA",
+    ),
+    "Illinois State College": SportsballGeocodeTuple(
+        city="Normal",
+        state="IL",
+        postal="",
+        lat=40.511,
+        lng=-88.993,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
