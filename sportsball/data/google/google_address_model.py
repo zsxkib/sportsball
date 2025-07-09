@@ -3603,6 +3603,24 @@ SELLAND_ARENA = SportsballGeocodeTuple(
     housenumber="700",
     country="USA",
 )
+MAPLE_LEAF_GARDENS = SportsballGeocodeTuple(
+    city="Toronto",
+    state="ON",
+    postal="",
+    lat=43.662222,
+    lng=-79.380278,
+    housenumber="60",
+    country="CA",
+)
+AMICA_MUTUAL_PAVILION = SportsballGeocodeTuple(
+    city="Providence",
+    state="RI",
+    postal="",
+    lat=41.823611,
+    lng=-71.418333,
+    housenumber="1",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -8682,15 +8700,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1964",
         country="USA",
     ),
-    "Amica Mutual Pavilion, Providence, Rhode Island": SportsballGeocodeTuple(
-        city="Providence",
-        state="RI",
-        postal="",
-        lat=41.823611,
-        lng=-71.418333,
-        housenumber="1",
-        country="USA",
-    ),
+    "Amica Mutual Pavilion, Providence, Rhode Island": AMICA_MUTUAL_PAVILION,
     "George Gervin GameAbove Center, Ypsilanti, Michigan": SportsballGeocodeTuple(
         city="Ypsilanti",
         state="MI",
@@ -11163,15 +11173,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="710",
         country="USA",
     ),
-    "Maple Leaf Gardens, Toronto, Canada": SportsballGeocodeTuple(
-        city="Toronto",
-        state="ON",
-        postal="",
-        lat=43.662222,
-        lng=-79.380278,
-        housenumber="60",
-        country="CA",
-    ),
+    "Maple Leaf Gardens, Toronto, Canada": MAPLE_LEAF_GARDENS,
     "Utah State Spectrum, Logan, Utah": SMITH_SPECTRUM,
     "Bayfront Arena, St. Petersburg, Florida": SportsballGeocodeTuple(
         city="St. Petersburg",
@@ -17427,6 +17429,18 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "BankUnited Center": WATSO_CENTER,
+    "Maple Leaf Gardens - Toronto, Ontario - United States": MAPLE_LEAF_GARDENS,
+    "El Paso County Coliseum": SportsballGeocodeTuple(
+        city="El Paso",
+        state="TX",
+        postal="79905",
+        lat=31.766389,
+        lng=-106.443056,
+        housenumber="4100",
+        country="USA",
+    ),
+    "Providence Civic Center": AMICA_MUTUAL_PAVILION,
 }
 
 

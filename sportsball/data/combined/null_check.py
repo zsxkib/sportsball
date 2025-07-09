@@ -12,7 +12,7 @@ def is_null(obj: Any) -> bool:
     try:
         if np.isnan(obj):
             return True
-    except TypeError:
+    except (TypeError, ValueError):
         pass
     try:
         if np.isnat(obj):
