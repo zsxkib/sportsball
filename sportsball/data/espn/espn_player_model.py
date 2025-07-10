@@ -714,6 +714,9 @@ def _create_espn_player_model(
     college = create_espn_venue_model(
         venue=college_dict, session=session, dt=dt, version=VENUE_VERSION
     )
+    headshot = None
+    if "headshot" in athlete_dict:
+        headshot = athlete_dict["headshot"]["href"]
 
     return PlayerModel(
         identifier=identifier,
@@ -776,7 +779,7 @@ def _create_espn_player_model(
         version=version,
         height=athlete_dict["height"] * 2.54 if "height" in athlete_dict else None,
         colleges=[college],
-        headshot=athlete_dict["headshot"]["href"],
+        headshot=headshot,
         forced_fumbles=forced_fumbles,
         fumbles_recovered=fumbles_recovered,
         fumbles_recovered_yards=fumbles_recovered_yards,
