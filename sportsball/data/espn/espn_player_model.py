@@ -711,9 +711,14 @@ def _create_espn_player_model(
                 logging.warning("Failed to get birth address for: %s", query)
 
     position_abbreviation = position_dict["abbreviation"]
-    college = create_espn_venue_model(
-        venue=college_dict, session=session, dt=dt, version=VENUE_VERSION
-    )
+    college = None
+    try:
+        college = create_espn_venue_model(
+            venue=college_dict, session=session, dt=dt, version=VENUE_VERSION
+        )
+    except ValueError as exc:
+        logging.warning("Failed to get college: %s", str(exc))
+
     headshot = None
     if "headshot" in athlete_dict:
         headshot = athlete_dict["headshot"]["href"]
@@ -778,7 +783,7 @@ def _create_espn_player_model(
         point_differential=None,
         version=version,
         height=athlete_dict["height"] * 2.54 if "height" in athlete_dict else None,
-        colleges=[college],
+        colleges=[college] if college is not None else [],
         headshot=headshot,
         forced_fumbles=forced_fumbles,
         fumbles_recovered=fumbles_recovered,

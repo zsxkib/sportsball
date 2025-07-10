@@ -20,7 +20,8 @@ from .hkjc_hkjc_game_model import (RACE_COURSE_QUERY_KEY, RACE_DATE_QUERY_KEY,
 from .hkjc_hkjc_venue_model import HAPPY_VALLEY_VENUE_CODE, SHA_TIN_VENUE_CODE
 
 _BAD_URLS = {
-    "https://common.hkjc.com/racing/information/English/Racing/LocalResults.aspx?RaceDate=2025/03/05&Racecourse=HV&RaceNo=9"
+    "https://common.hkjc.com/racing/information/English/Racing/LocalResults.aspx?RaceDate=2025/03/05&Racecourse=HV&RaceNo=9",
+    "https://common.hkjc.com/racing/information/English/Racing/LocalResults.aspx?RaceDate=1992/04/22&Racecourse=HV&RaceNo=4",
 }
 
 

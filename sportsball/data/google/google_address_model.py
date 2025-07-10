@@ -3630,6 +3630,15 @@ PEOPLESBANK_ARENA = SportsballGeocodeTuple(
     housenumber="1",
     country="USA",
 )
+MISSISSIPPI_COAST_COLISEUM = SportsballGeocodeTuple(
+    city="Biloxi",
+    state="MS",
+    postal="39531",
+    lat=30.3935,
+    lng=-88.9746,
+    housenumber="2350",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -8020,15 +8029,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "State Farm Arena, Atlanta, Georgia": STATE_FARM_ARENA,
     "Gainbridge Fieldhouse, Indianapolis, Indiana": GAINBRIDGE_FIELDHOUSE,
-    "Mississippi Coast Coliseum, Biloxi, Mississippi": SportsballGeocodeTuple(
-        city="Biloxi",
-        state="MS",
-        postal="39531",
-        lat=30.3935,
-        lng=-88.9746,
-        housenumber="2350",
-        country="USA",
-    ),
+    "Mississippi Coast Coliseum, Biloxi, Mississippi": MISSISSIPPI_COAST_COLISEUM,
     "Footprint Center, Phoenix, Arizona": AMERICA_WEST_ARENA,
     "Simmons Bank Arena, North Little Rock, Arkansas": SIMMONS_BANK_ARENA,
     "FLA Live Arena, Sunrise, Florida": SportsballGeocodeTuple(
@@ -17453,6 +17454,16 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Weber State College": SportsballGeocodeTuple(
+        city="Ogden",
+        state="UT",
+        postal="",
+        lat=41.193,
+        lng=-111.944,
+        housenumber="",
+        country="USA",
+    ),
+    "Mississippi Coast Coliseum": MISSISSIPPI_COAST_COLISEUM,
 }
 
 
