@@ -126,9 +126,13 @@ def _create_sportsreference_player_model(
         title = a.get("title")
         if title in colleges:
             continue
-        college = create_sportsreference_venue_model(
-            venue_name=title, session=session, dt=dt
-        )
+        college = None
+        try:
+            college = create_sportsreference_venue_model(
+                venue_name=title, session=session, dt=dt
+            )
+        except ValueError as exc:
+            logging.warning("Failed to find college: %s", str(exc))
         if college is None:
             continue
         colleges[title] = college

@@ -17464,6 +17464,33 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Mississippi Coast Coliseum": MISSISSIPPI_COAST_COLISEUM,
+    "University of Arizona": SportsballGeocodeTuple(
+        city="Tucson",
+        state="AZ",
+        postal="",
+        lat=32.2319,
+        lng=-110.9527,
+        housenumber="",
+        country="USA",
+    ),
+    "Riverside Centroplex": SportsballGeocodeTuple(
+        city="Baton Rouge",
+        state="LA",
+        postal="",
+        lat=30.4448,
+        lng=-91.1894,
+        housenumber="",
+        country="USA",
+    ),
+    "Duke University": SportsballGeocodeTuple(
+        city="Durham",
+        state="NC",
+        postal="",
+        lat=36.001389,
+        lng=-78.938333,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
