@@ -718,7 +718,7 @@ def _create_espn_player_model(
         college = create_espn_venue_model(
             venue=college_dict, session=session, dt=dt, version=VENUE_VERSION
         )
-    except ValueError as exc:
+    except (ValueError, KeyError) as exc:
         logging.warning("Failed to get college: %s", str(exc))
 
     headshot = None

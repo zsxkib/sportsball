@@ -17581,6 +17581,24 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Bowling Green State University": SportsballGeocodeTuple(
+        city="Bowling Green",
+        state="OH",
+        postal="",
+        lat=41.38,
+        lng=-83.63,
+        housenumber="",
+        country="USA",
+    ),
+    "University of Florida": SportsballGeocodeTuple(
+        city="Gainesville",
+        state="FL",
+        postal="",
+        lat=29.6475,
+        lng=-82.345,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 

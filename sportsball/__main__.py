@@ -3,6 +3,7 @@
 import io
 import logging
 import sys
+from contextlib import redirect_stdout
 
 from . import __VERSION__
 from .args import parse_args
@@ -15,17 +16,18 @@ _STDOUT_FILE = "-"
 
 def main() -> None:
     """The main CLI function."""
-    args = parse_args()
-    setup_logger()
+    with redirect_stdout(sys.stderr):
+        args = parse_args()
+        setup_logger()
 
-    logging.info("--- sportsball %s ---", __VERSION__)
+        logging.info("--- sportsball %s ---", __VERSION__)
 
-    ball = SportsBall()
-    league = ball.league(league_from_str(args.league), args.leaguemodel)
-    df = league.to_frame()
-    handle = io.BytesIO()
-    df.to_parquet(handle, compression="gzip")
-    handle.seek(0)
+        ball = SportsBall()
+        league = ball.league(league_from_str(args.league), args.leaguemodel)
+        df = league.to_frame()
+        handle = io.BytesIO()
+        df.to_parquet(handle, compression="gzip")
+        handle.seek(0)
     if args.file == _STDOUT_FILE:
         sys.stdout.buffer.write(handle.getbuffer())
     else:
