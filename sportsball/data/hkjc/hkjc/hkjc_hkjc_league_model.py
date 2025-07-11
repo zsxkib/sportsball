@@ -23,6 +23,7 @@ _BAD_URLS = {
     "https://common.hkjc.com/racing/information/English/Racing/LocalResults.aspx?RaceDate=2025/03/05&Racecourse=HV&RaceNo=9",
     "https://common.hkjc.com/racing/information/English/Racing/LocalResults.aspx?RaceDate=1992/04/22&Racecourse=HV&RaceNo=4",
     "https://common.hkjc.com/racing/information/English/Racing/LocalResults.aspx?RaceDate=1992/04/22&Racecourse=HV&RaceNo=5",
+    "https://common.hkjc.com/racing/information/English/Racing/LocalResults.aspx?RaceDate=1992/04/22&Racecourse=HV&RaceNo=6",
 }
 
 
