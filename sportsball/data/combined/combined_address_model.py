@@ -2,6 +2,7 @@
 
 from ..address_model import AddressModel
 from .combined_weather_model import create_combined_weather_model
+from .most_interesting import more_interesting
 from .null_check import is_null
 
 
@@ -17,21 +18,13 @@ def create_combined_address_model(
     weather_models = []
     altitude = None
     for address_model in address_models:
-        address_model_latitude = address_model.latitude
-        if not is_null(address_model_latitude):
-            latitude = address_model_latitude
-        address_model_longitude = address_model.longitude
-        if not is_null(address_model_longitude):
-            longitude = address_model_longitude
-        address_model_housenumber = address_model.housenumber
-        if not is_null(address_model_housenumber):
-            housenumber = address_model_housenumber
+        latitude = more_interesting(latitude, address_model.latitude)
+        longitude = more_interesting(longitude, address_model.longitude)
+        housenumber = more_interesting(housenumber, address_model.housenumber)
         address_model_weather = address_model.weather
         if not is_null(address_model_weather):
             weather_models.append(address_model_weather)
-        address_model_altitude = address_model.altitude
-        if not is_null(address_model_altitude):
-            altitude = address_model_altitude
+        altitude = more_interesting(altitude, address_model.altitude)
     return AddressModel(
         city=address_models[0].city,
         state=address_models[0].state,

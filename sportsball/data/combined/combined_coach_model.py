@@ -4,7 +4,7 @@ from typing import Any
 
 from ..coach_model import VERSION, CoachModel
 from .ffill import ffill
-from .null_check import is_null
+from .most_interesting import more_interesting
 
 
 def create_combined_coach_model(
@@ -18,18 +18,10 @@ def create_combined_coach_model(
     age = None
     sex = None
     for coach_model in coach_models:
-        coach_model_name = coach_model.name
-        if not is_null(coach_model_name):
-            name = coach_model_name
-        coach_model_birthdate = coach_model.birth_date
-        if not is_null(coach_model_birthdate):
-            birth_date = coach_model_birthdate
-        coach_model_age = coach_model.age
-        if not is_null(coach_model_age):
-            age = coach_model_age
-        coach_model_sex = coach_model.sex
-        if not is_null(coach_model_sex):
-            sex = coach_model_sex
+        name = more_interesting(name, coach_model.name)
+        birth_date = more_interesting(birth_date, coach_model.birth_date)
+        age = more_interesting(age, coach_model.age)
+        sex = more_interesting(sex, coach_model.sex)
     if name is None:
         raise ValueError("name is null.")
     coach_model = CoachModel(

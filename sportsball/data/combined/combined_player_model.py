@@ -5,7 +5,7 @@ from typing import Any
 
 from ..player_model import VERSION, PlayerModel
 from .ffill import ffill
-from .null_check import is_null
+from .most_interesting import more_interesting
 
 
 def create_combined_player_model(
@@ -278,957 +278,649 @@ def create_combined_player_model(
     rushing_touchdowns_49_yards = None
     rushing_touchdowns_above_50_yards = None
     for player_model in player_models:
-        player_model_jersey = player_model.jersey
-        if not is_null(player_model_jersey):
-            jersey = player_model_jersey
-        player_model_kicks = player_model.kicks
-        if not is_null(player_model_kicks):
-            kicks = player_model_kicks
-        player_model_fumbles = player_model.fumbles
-        if not is_null(player_model_fumbles):
-            fumbles = player_model_fumbles
-        player_model_fumbles_lost = player_model.fumbles_lost
-        if not is_null(player_model_fumbles_lost):
-            fumbles_lost = player_model_fumbles_lost
-        player_model_field_goals = player_model.field_goals
-        if not is_null(player_model_field_goals):
-            field_goals = player_model_field_goals
-        player_model_field_goals_attempted = player_model.field_goals_attempted
-        if not is_null(player_model_field_goals_attempted):
-            field_goals_attempted = player_model_field_goals_attempted
-        player_model_offensive_rebounds = player_model.offensive_rebounds
-        if not is_null(player_model_offensive_rebounds):
-            offensive_rebounds = player_model_offensive_rebounds
-        player_model_assists = player_model.assists
-        if not is_null(player_model_assists):
-            assists = player_model_assists
-        player_model_turnovers = player_model.turnovers
-        if not is_null(player_model_turnovers):
-            turnovers = player_model_turnovers
-        player_model_name = player_model.name
-        if not is_null(player_model_name):
-            name = player_model_name
-        player_model_marks = player_model.marks
-        if not is_null(player_model_marks):
-            marks = player_model_marks
-        player_model_handballs = player_model.handballs
-        if not is_null(player_model_handballs):
-            handballs = player_model_handballs
-        player_model_disposals = player_model.disposals
-        if not is_null(player_model_disposals):
-            disposals = player_model_disposals
-        player_model_goals = player_model.goals
-        if not is_null(player_model_goals):
-            goals = player_model_goals
-        player_model_behinds = player_model.behinds
-        if not is_null(player_model_behinds):
-            behinds = player_model_behinds
-        player_model_hit_outs = player_model.hit_outs
-        if not is_null(player_model_hit_outs):
-            hit_outs = player_model_hit_outs
-        player_model_tackles = player_model.tackles
-        if not is_null(player_model_tackles):
-            tackles = player_model_tackles
-        player_model_rebounds = player_model.rebounds
-        if not is_null(player_model_rebounds):
-            rebounds = player_model_rebounds
-        player_model_insides = player_model.insides
-        if not is_null(player_model_insides):
-            insides = player_model_insides
-        player_model_clearances = player_model.clearances
-        if not is_null(player_model_clearances):
-            clearances = player_model_clearances
-        player_model_clangers = player_model.clangers
-        if not is_null(player_model_clangers):
-            clangers = player_model_clangers
-        player_model_free_kicks_for = player_model.free_kicks_for
-        if not is_null(player_model_free_kicks_for):
-            free_kicks_for = player_model_free_kicks_for
-        player_model_free_kicks_against = player_model.free_kicks_against
-        if not is_null(player_model_free_kicks_against):
-            free_kicks_against = player_model_free_kicks_against
-        player_model_brownlow_votes = player_model.brownlow_votes
-        if not is_null(player_model_brownlow_votes):
-            brownlow_votes = player_model_brownlow_votes
-        player_model_contested_possessions = player_model.contested_possessions
-        if not is_null(player_model_contested_possessions):
-            contested_possessions = player_model_contested_possessions
-        player_model_uncontested_possessions = player_model.uncontested_possessions
-        if not is_null(player_model_uncontested_possessions):
-            uncontested_possessions = player_model_uncontested_possessions
-        player_model_contested_marks = player_model.contested_marks
-        if not is_null(player_model_contested_marks):
-            contested_marks = player_model_contested_marks
-        player_model_marks_inside = player_model.marks_inside
-        if not is_null(player_model_marks_inside):
-            marks_inside = player_model_marks_inside
-        player_model_one_percenters = player_model.one_percenters
-        if not is_null(player_model_one_percenters):
-            one_percenters = player_model_one_percenters
-        player_model_bounces = player_model.bounces
-        if not is_null(player_model_bounces):
-            bounces = player_model_bounces
-        player_model_goal_assists = player_model.goal_assists
-        if not is_null(player_model_goal_assists):
-            goal_assists = player_model_goal_assists
-        player_model_percentage_played = player_model.percentage_played
-        if not is_null(player_model_percentage_played):
-            percentage_played = player_model_percentage_played
-        player_model_birth_date = player_model.birth_date
-        if not is_null(player_model_birth_date):
-            birth_date = player_model_birth_date
-        player_model_species = player_model.species
-        if not is_null(player_model_species):
-            species = player_model_species
-        player_model_handicap_weight = player_model.handicap_weight
-        if not is_null(player_model_handicap_weight):
-            handicap_weight = player_model_handicap_weight
-        player_model_father = player_model.father
-        if not is_null(player_model_father):
-            father = player_model_father
-        player_model_sex = player_model.sex
-        if not is_null(player_model_sex):
-            sex = player_model_sex
-        player_model_age = player_model.age
-        if not is_null(player_model_age):
-            age = player_model_age
-        player_model_starting_position = player_model.starting_position
-        if not is_null(player_model_starting_position):
-            starting_position = player_model_starting_position
-        player_model_weight = player_model.weight
-        if not is_null(player_model_weight):
-            weight = player_model_weight
-        player_model_birth_address = player_model.birth_address
-        if not is_null(player_model_birth_address):
-            birth_address = player_model_birth_address
-        player_model_owner = player_model.owner
-        if not is_null(player_model_owner):
-            owner = player_model_owner
-        player_model_seconds_played = player_model.seconds_played
-        if not is_null(player_model_seconds_played):
-            seconds_played = player_model_seconds_played
-        player_model_three_point_field_goals = player_model.three_point_field_goals
-        if not is_null(player_model_three_point_field_goals):
-            three_point_field_goals = player_model_three_point_field_goals
-        player_model_three_point_field_goals_attempted = (
-            player_model.three_point_field_goals_attempted
+        jersey = more_interesting(jersey, player_model.jersey)
+        kicks = more_interesting(kicks, player_model.kicks)
+        fumbles = more_interesting(fumbles, player_model.fumbles)
+        fumbles_lost = more_interesting(fumbles_lost, player_model.fumbles_lost)
+        field_goals = more_interesting(field_goals, player_model.field_goals)
+        field_goals_attempted = more_interesting(
+            field_goals_attempted, player_model.field_goals_attempted
         )
-        if not is_null(player_model_three_point_field_goals_attempted):
-            three_point_field_goals_attempted = (
-                player_model_three_point_field_goals_attempted
-            )
-        player_model_free_throws = player_model.free_throws
-        if not is_null(player_model_free_throws):
-            free_throws = player_model_free_throws
-        player_model_free_throws_attempted = player_model.free_throws_attempted
-        if not is_null(player_model_free_throws_attempted):
-            free_throws_attempted = player_model_free_throws_attempted
-        player_model_defensive_rebounds = player_model.defensive_rebounds
-        if not is_null(player_model_defensive_rebounds):
-            defensive_rebounds = player_model_defensive_rebounds
-        player_model_steals = player_model.steals
-        if not is_null(player_model_steals):
-            steals = player_model_steals
-        player_model_blocks = player_model.blocks
-        if not is_null(player_model_blocks):
-            blocks = player_model_blocks
-        player_model_personal_fouls = player_model.personal_fouls
-        if not is_null(player_model_personal_fouls):
-            personal_fouls = player_model_personal_fouls
-        player_model_points = player_model.points
-        if not is_null(player_model_points):
-            points = player_model_points
-        player_model_game_score = player_model.game_score
-        if not is_null(player_model_game_score):
-            game_score = player_model_game_score
-        player_model_point_differential = player_model.point_differential
-        if not is_null(player_model_point_differential):
-            point_differential = player_model_point_differential
-        player_model_height = player_model.height
-        if not is_null(player_model_height):
-            height = player_model_height
-        player_model_colleges = player_model.colleges
-        if not is_null(player_model_colleges):
-            colleges = player_model_colleges
-        player_model_headshot = player_model.headshot
-        if not is_null(player_model_headshot):
-            headshot = player_model_headshot
-        player_model_forced_fumbles = player_model.forced_fumbles
-        if not is_null(player_model_forced_fumbles):
-            forced_fumbles = player_model_forced_fumbles
-        player_model_fumbles_recovered = player_model.fumbles_recovered
-        if not is_null(player_model_fumbles_recovered):
-            fumbles_recovered = player_model_fumbles_recovered
-        player_model_fumbles_recovered_yards = player_model.fumbles_recovered_yards
-        if not is_null(player_model_fumbles_recovered_yards):
-            fumbles_recovered_yards = player_model_fumbles_recovered_yards
-        player_model_fumbles_touchdowns = player_model.fumbles_touchdowns
-        if not is_null(player_model_fumbles_touchdowns):
-            fumbles_touchdowns = player_model_fumbles_touchdowns
-        player_model_offensive_two_point_returns = (
-            player_model.offensive_two_point_returns
+        offensive_rebounds = more_interesting(
+            offensive_rebounds, player_model.offensive_rebounds
         )
-        if not is_null(player_model_offensive_two_point_returns):
-            offensive_two_point_returns = player_model_offensive_two_point_returns
-        player_model_offensive_fumbles_touchdowns = (
-            player_model.offensive_fumbles_touchdowns
+        assists = more_interesting(assists, player_model.assists)
+        turnovers = more_interesting(turnovers, player_model.turnovers)
+        name = more_interesting(name, player_model.name)
+        marks = more_interesting(marks, player_model.marks)
+        handballs = more_interesting(handballs, player_model.handballs)
+        disposals = more_interesting(disposals, player_model.disposals)
+        goals = more_interesting(goals, player_model.goals)
+        behinds = more_interesting(behinds, player_model.behinds)
+        hit_outs = more_interesting(hit_outs, player_model.hit_outs)
+        tackles = more_interesting(tackles, player_model.tackles)
+        rebounds = more_interesting(rebounds, player_model.rebounds)
+        insides = more_interesting(insides, player_model.insides)
+        clearances = more_interesting(clearances, player_model.clearances)
+        clangers = more_interesting(clangers, player_model.clangers)
+        free_kicks_for = more_interesting(free_kicks_for, player_model.free_kicks_for)
+        free_kicks_against = more_interesting(
+            free_kicks_against, player_model.free_kicks_against
         )
-        if not is_null(player_model_offensive_fumbles_touchdowns):
-            offensive_fumbles_touchdowns = player_model_offensive_fumbles_touchdowns
-        player_model_defensive_fumbles_touchdowns = (
-            player_model.defensive_fumbles_touchdowns
+        brownlow_votes = more_interesting(brownlow_votes, player_model.brownlow_votes)
+        contested_possessions = more_interesting(
+            contested_possessions, player_model.contested_possessions
         )
-        if not is_null(player_model_defensive_fumbles_touchdowns):
-            defensive_fumbles_touchdowns = player_model_defensive_fumbles_touchdowns
-        player_model_average_gain = player_model.average_gain
-        if not is_null(player_model_average_gain):
-            average_gain = player_model_average_gain
-        player_model_completion_percentage = player_model.completion_percentage
-        if not is_null(player_model_completion_percentage):
-            completion_percentage = player_model_completion_percentage
-        player_model_completions = player_model.completions
-        if not is_null(player_model_completions):
-            completions = player_model_completions
-        player_model_espn_quarterback_rating = player_model.espn_quarterback_rating
-        if not is_null(player_model_espn_quarterback_rating):
-            espn_quarterback_rating = player_model_espn_quarterback_rating
-        player_model_interception_percentage = player_model.interception_percentage
-        if not is_null(player_model_interception_percentage):
-            interception_percentage = player_model_interception_percentage
-        player_model_interceptions = player_model.interceptions
-        if not is_null(player_model_interceptions):
-            interceptions = player_model_interceptions
-        player_model_long_passing = player_model.long_passing
-        if not is_null(player_model_long_passing):
-            long_passing = player_model_long_passing
-        player_model_misc_yards = player_model.misc_yards
-        if not is_null(player_model_misc_yards):
-            misc_yards = player_model_misc_yards
-        player_model_net_passing_yards = player_model.net_passing_yards
-        if not is_null(player_model_net_passing_yards):
-            net_passing_yards = player_model_net_passing_yards
-        player_model_net_total_yards = player_model.net_total_yards
-        if not is_null(player_model_net_total_yards):
-            net_total_yards = player_model_net_total_yards
-        player_model_passing_attempts = player_model.passing_attempts
-        if not is_null(player_model_passing_attempts):
-            passing_attempts = player_model_passing_attempts
-        player_model_passing_big_plays = player_model.passing_big_plays
-        if not is_null(player_model_passing_big_plays):
-            passing_big_plays = player_model_passing_big_plays
-        player_model_passing_first_downs = player_model.passing_first_downs
-        if not is_null(player_model_passing_first_downs):
-            passing_first_downs = player_model_passing_first_downs
-        player_model_passing_fumbles = player_model.passing_fumbles
-        if not is_null(player_model_passing_fumbles):
-            passing_fumbles = player_model_passing_fumbles
-        player_model_passing_fumbles_lost = player_model.passing_fumbles_lost
-        if not is_null(player_model_passing_fumbles_lost):
-            passing_fumbles_lost = player_model_passing_fumbles_lost
-        player_model_passing_touchdown_percentage = (
-            player_model.passing_touchdown_percentage
+        uncontested_possessions = more_interesting(
+            uncontested_possessions, player_model.uncontested_possessions
         )
-        if not is_null(player_model_passing_touchdown_percentage):
-            passing_touchdown_percentage = player_model_passing_touchdown_percentage
-        player_model_passing_touchdowns = player_model.passing_touchdowns
-        if not is_null(player_model_passing_touchdowns):
-            passing_touchdowns = player_model_passing_touchdowns
-        player_model_passing_yards = player_model.passing_yards
-        if not is_null(player_model_passing_yards):
-            passing_yards = player_model_passing_yards
-        player_model_passing_yards_after_catch = player_model.passing_yards_after_catch
-        if not is_null(player_model_passing_yards_after_catch):
-            passing_yards_after_catch = player_model_passing_yards_after_catch
-        player_model_passing_yards_at_catch = player_model.passing_yards_at_catch
-        if not is_null(player_model_passing_yards_at_catch):
-            passing_yards_at_catch = player_model_passing_yards_at_catch
-        player_model_quarterback_rating = player_model.quarterback_rating
-        if not is_null(player_model_quarterback_rating):
-            quarterback_rating = player_model_quarterback_rating
-        player_model_sacks = player_model.sacks
-        if not is_null(player_model_sacks):
-            sacks = player_model_sacks
-        player_model_sacks_yards_lost = player_model.sacks_yards_lost
-        if not is_null(player_model_sacks_yards_lost):
-            sacks_yards_lost = player_model_sacks_yards_lost
-        player_model_net_passing_attempts = player_model.net_passing_attempts
-        if not is_null(player_model_net_passing_attempts):
-            net_passing_attempts = player_model_net_passing_attempts
-        player_model_total_offensive_plays = player_model.total_offensive_plays
-        if not is_null(player_model_total_offensive_plays):
-            total_offensive_plays = player_model_total_offensive_plays
-        player_model_total_points = player_model.total_points
-        if not is_null(player_model_total_points):
-            total_points = player_model_total_points
-        player_model_total_touchdowns = player_model.total_touchdowns
-        if not is_null(player_model_total_touchdowns):
-            total_touchdowns = player_model_total_touchdowns
-        player_model_total_yards = player_model.total_yards
-        if not is_null(player_model_total_yards):
-            total_yards = player_model_total_yards
-        player_model_total_yards_from_scrimmage = (
-            player_model.total_yards_from_scrimmage
+        contested_marks = more_interesting(
+            contested_marks, player_model.contested_marks
         )
-        if not is_null(player_model_total_yards_from_scrimmage):
-            total_yards_from_scrimmage = player_model_total_yards_from_scrimmage
-        player_model_two_point_pass = player_model.two_point_pass
-        if not is_null(player_model_two_point_pass):
-            two_point_pass = player_model_two_point_pass
-        player_model_two_point_pass_attempt = player_model.two_point_pass_attempt
-        if not is_null(player_model_two_point_pass_attempt):
-            two_point_pass_attempt = player_model_two_point_pass_attempt
-        player_model_yards_per_completion = player_model.yards_per_completion
-        if not is_null(player_model_yards_per_completion):
-            yards_per_completion = player_model_yards_per_completion
-        player_model_yards_per_pass_attempt = player_model.yards_per_pass_attempt
-        if not is_null(player_model_yards_per_pass_attempt):
-            yards_per_pass_attempt = player_model_yards_per_pass_attempt
-        player_model_net_yards_per_pass_attempt = (
-            player_model.net_yards_per_pass_attempt
+        marks_inside = more_interesting(marks_inside, player_model.marks_inside)
+        one_percenters = more_interesting(one_percenters, player_model.one_percenters)
+        bounces = more_interesting(bounces, player_model.bounces)
+        goal_assists = more_interesting(goal_assists, player_model.goal_assists)
+        percentage_played = more_interesting(
+            percentage_played, player_model.percentage_played
         )
-        if not is_null(player_model_net_yards_per_pass_attempt):
-            net_yards_per_pass_attempt = player_model_net_yards_per_pass_attempt
-        player_model_long_rushing = player_model.long_rushing
-        if not is_null(player_model_long_rushing):
-            long_rushing = player_model_long_rushing
-        player_model_rushing_attempts = player_model.rushing_attempts
-        if not is_null(player_model_rushing_attempts):
-            rushing_attempts = player_model_rushing_attempts
-        player_model_rushing_big_plays = player_model.rushing_big_plays
-        if not is_null(player_model_rushing_big_plays):
-            rushing_big_plays = player_model_rushing_big_plays
-        player_model_rushing_first_downs = player_model.rushing_first_downs
-        if not is_null(player_model_rushing_first_downs):
-            rushing_first_downs = player_model_rushing_first_downs
-        player_model_rushing_fumbles = player_model.rushing_fumbles
-        if not is_null(player_model_rushing_fumbles):
-            rushing_fumbles = player_model_rushing_fumbles
-        player_model_rushing_fumbles_lost = player_model.rushing_fumbles_lost
-        if not is_null(player_model_rushing_fumbles_lost):
-            rushing_fumbles_lost = player_model_rushing_fumbles_lost
-        player_model_rushing_touchdowns = player_model.rushing_touchdowns
-        if not is_null(player_model_rushing_touchdowns):
-            rushing_touchdowns = player_model_rushing_touchdowns
-        player_model_rushing_yards = player_model.rushing_yards
-        if not is_null(player_model_rushing_yards):
-            rushing_yards = player_model_rushing_yards
-        player_model_stuffs = player_model.stuffs
-        if not is_null(player_model_stuffs):
-            stuffs = player_model_stuffs
-        player_model_stuff_yards_lost = player_model.stuff_yards_lost
-        if not is_null(player_model_stuff_yards_lost):
-            stuff_yards_lost = player_model_stuff_yards_lost
-        player_model_two_point_rush = player_model.two_point_rush
-        if not is_null(player_model_two_point_rush):
-            two_point_rush = player_model_two_point_rush
-        player_model_two_point_rush_attempts = player_model.two_point_rush_attempts
-        if not is_null(player_model_two_point_rush_attempts):
-            two_point_rush_attempts = player_model_two_point_rush_attempts
-        player_model_yards_per_rush_attempt = player_model.yards_per_rush_attempt
-        if not is_null(player_model_yards_per_rush_attempt):
-            yards_per_rush_attempt = player_model_yards_per_rush_attempt
-        player_model_espn_widereceiver = player_model.espn_widereceiver
-        if not is_null(player_model_espn_widereceiver):
-            espn_widereceiver = player_model_espn_widereceiver
-        player_model_long_reception = player_model.long_reception
-        if not is_null(player_model_long_reception):
-            long_reception = player_model_long_reception
-        player_model_receiving_big_plays = player_model.receiving_big_plays
-        if not is_null(player_model_receiving_big_plays):
-            receiving_big_plays = player_model_receiving_big_plays
-        player_model_receiving_first_downs = player_model.receiving_first_downs
-        if not is_null(player_model_receiving_first_downs):
-            receiving_first_downs = player_model_receiving_first_downs
-        player_model_receiving_fumbles = player_model.receiving_fumbles
-        if not is_null(player_model_receiving_fumbles):
-            receiving_fumbles = player_model_receiving_fumbles
-        player_model_receiving_fumbles_lost = player_model.receiving_fumbles_lost
-        if not is_null(player_model_receiving_fumbles_lost):
-            receiving_fumbles_lost = player_model_receiving_fumbles_lost
-        player_model_receiving_targets = player_model.receiving_targets
-        if not is_null(player_model_receiving_targets):
-            receiving_targets = player_model_receiving_targets
-        player_model_receiving_touchdowns = player_model.receiving_touchdowns
-        if not is_null(player_model_receiving_touchdowns):
-            receiving_touchdowns = player_model_receiving_touchdowns
-        player_model_receiving_yards = player_model.receiving_yards
-        if not is_null(player_model_receiving_yards):
-            receiving_yards = player_model_receiving_yards
-        player_model_receiving_yards_after_catch = (
-            player_model.receiving_yards_after_catch
+        birth_date = more_interesting(birth_date, player_model.birth_date)
+        species = more_interesting(species, player_model.species)
+        handicap_weight = more_interesting(
+            handicap_weight, player_model.handicap_weight
         )
-        if not is_null(player_model_receiving_yards_after_catch):
-            receiving_yards_after_catch = player_model_receiving_yards_after_catch
-        player_model_receiving_yards_at_catch = player_model.receiving_yards_at_catch
-        if not is_null(player_model_receiving_yards_at_catch):
-            receiving_yards_at_catch = player_model_receiving_yards_at_catch
-        player_model_receptions = player_model.receptions
-        if not is_null(player_model_receptions):
-            receptions = player_model_receptions
-        player_model_two_point_receptions = player_model.two_point_receptions
-        if not is_null(player_model_two_point_receptions):
-            two_point_receptions = player_model_two_point_receptions
-        player_model_two_point_reception_attempts = (
-            player_model.two_point_reception_attempts
+        father = more_interesting(father, player_model.father)
+        sex = more_interesting(sex, player_model.sex)
+        age = more_interesting(age, player_model.age)
+        starting_position = more_interesting(
+            starting_position, player_model.starting_position
         )
-        if not is_null(player_model_two_point_reception_attempts):
-            two_point_reception_attempts = player_model_two_point_reception_attempts
-        player_model_yards_per_reception = player_model.yards_per_reception
-        if not is_null(player_model_yards_per_reception):
-            yards_per_reception = player_model_yards_per_reception
-        player_model_assist_tackles = player_model.assist_tackles
-        if not is_null(player_model_assist_tackles):
-            assist_tackles = player_model_assist_tackles
-        player_model_average_interception_yards = (
-            player_model.average_interception_yards
+        weight = more_interesting(weight, player_model.weight)
+        birth_address = more_interesting(birth_address, player_model.birth_address)
+        owner = more_interesting(owner, player_model.owner)
+        seconds_played = more_interesting(seconds_played, player_model.seconds_played)
+        three_point_field_goals = more_interesting(
+            three_point_field_goals, player_model.three_point_field_goals
         )
-        if not is_null(player_model_average_interception_yards):
-            average_interception_yards = player_model_average_interception_yards
-        player_model_average_sack_yards = player_model.average_sack_yards
-        if not is_null(player_model_average_sack_yards):
-            average_sack_yards = player_model_average_sack_yards
-        player_model_average_stuff_yards = player_model.average_stuff_yards
-        if not is_null(player_model_average_stuff_yards):
-            average_stuff_yards = player_model_average_stuff_yards
-        player_model_blocked_field_goal_touchdowns = (
-            player_model.blocked_field_goal_touchdowns
+        three_point_field_goals_attempted = more_interesting(
+            three_point_field_goals_attempted,
+            player_model.three_point_field_goals_attempted,
         )
-        if not is_null(player_model_blocked_field_goal_touchdowns):
-            blocked_field_goal_touchdowns = player_model_blocked_field_goal_touchdowns
-        player_model_blocked_punt_touchdowns = player_model.blocked_punt_touchdowns
-        if not is_null(player_model_blocked_punt_touchdowns):
-            blocked_punt_touchdowns = player_model_blocked_punt_touchdowns
-        player_model_defensive_touchdowns = player_model.defensive_touchdowns
-        if not is_null(player_model_defensive_touchdowns):
-            defensive_touchdowns = player_model_defensive_touchdowns
-        player_model_hurries = player_model.hurries
-        if not is_null(player_model_hurries):
-            hurries = player_model_hurries
-        player_model_kicks_blocked = player_model.kicks_blocked
-        if not is_null(player_model_kicks_blocked):
-            kicks_blocked = player_model_kicks_blocked
-        player_model_long_interception = player_model.long_interception
-        if not is_null(player_model_long_interception):
-            long_interception = player_model_long_interception
-        player_model_misc_touchdowns = player_model.misc_touchdowns
-        if not is_null(player_model_misc_touchdowns):
-            misc_touchdowns = player_model_misc_touchdowns
-        player_model_passes_batted_down = player_model.passes_batted_down
-        if not is_null(player_model_passes_batted_down):
-            passes_batted_down = player_model_passes_batted_down
-        player_model_passes_defended = player_model.passes_defended
-        if not is_null(player_model_passes_defended):
-            passes_defended = player_model_passes_defended
-        player_model_quarterback_hits = player_model.quarterback_hits
-        if not is_null(player_model_quarterback_hits):
-            quarterback_hits = player_model_quarterback_hits
-        player_model_sacks_assisted = player_model.sacks_assisted
-        if not is_null(player_model_sacks_assisted):
-            sacks_assisted = player_model_sacks_assisted
-        player_model_sacks_unassisted = player_model.sacks_unassisted
-        if not is_null(player_model_sacks_unassisted):
-            sacks_unassisted = player_model_sacks_unassisted
-        player_model_sacks_yards = player_model.sacks_yards
-        if not is_null(player_model_sacks_yards):
-            sacks_yards = player_model_sacks_yards
-        player_model_safeties = player_model.safeties
-        if not is_null(player_model_safeties):
-            safeties = player_model_safeties
-        player_model_solo_tackles = player_model.solo_tackles
-        if not is_null(player_model_solo_tackles):
-            solo_tackles = player_model_solo_tackles
-        player_model_stuff_yards = player_model.stuff_yards
-        if not is_null(player_model_stuff_yards):
-            stuff_yards = player_model_stuff_yards
-        player_model_tackles_for_loss = player_model.tackles_for_loss
-        if not is_null(player_model_tackles_for_loss):
-            tackles_for_loss = player_model_tackles_for_loss
-        player_model_tackles_yards_lost = player_model.tackles_yards_lost
-        if not is_null(player_model_tackles_yards_lost):
-            tackles_yards_lost = player_model_tackles_yards_lost
-        player_model_yards_allowed = player_model.yards_allowed
-        if not is_null(player_model_yards_allowed):
-            yards_allowed = player_model_yards_allowed
-        player_model_points_allowed = player_model.points_allowed
-        if not is_null(player_model_points_allowed):
-            points_allowed = player_model_points_allowed
-        player_model_one_point_safeties_made = player_model.one_point_safeties_made
-        if not is_null(player_model_one_point_safeties_made):
-            one_point_safeties_made = player_model_one_point_safeties_made
-        player_model_missed_field_goal_return_td = (
-            player_model.missed_field_goal_return_td
+        free_throws = more_interesting(free_throws, player_model.free_throws)
+        free_throws_attempted = more_interesting(
+            free_throws_attempted, player_model.free_throws_attempted
         )
-        if not is_null(player_model_missed_field_goal_return_td):
-            missed_field_goal_return_td = player_model_missed_field_goal_return_td
-        player_model_blocked_punt_ez_rec_td = player_model.blocked_punt_ez_rec_td
-        if not is_null(player_model_blocked_punt_ez_rec_td):
-            blocked_punt_ez_rec_td = player_model_blocked_punt_ez_rec_td
-        player_model_interception_touchdowns = player_model.interception_touchdowns
-        if not is_null(player_model_interception_touchdowns):
-            interception_touchdowns = player_model_interception_touchdowns
-        player_model_interception_yards = player_model.interception_yards
-        if not is_null(player_model_interception_yards):
-            interception_yards = player_model_interception_yards
-        player_model_average_kickoff_return_yards = (
-            player_model.average_kickoff_return_yards
+        defensive_rebounds = more_interesting(
+            defensive_rebounds, player_model.defensive_rebounds
         )
-        if not is_null(player_model_average_kickoff_return_yards):
-            average_kickoff_return_yards = player_model_average_kickoff_return_yards
-        player_model_average_kickoff_yards = player_model.average_kickoff_yards
-        if not is_null(player_model_average_kickoff_yards):
-            average_kickoff_yards = player_model_average_kickoff_yards
-        player_model_extra_point_attempts = player_model.extra_point_attempts
-        if not is_null(player_model_extra_point_attempts):
-            extra_point_attempts = player_model_extra_point_attempts
-        player_model_extra_point_percentage = player_model.extra_point_percentage
-        if not is_null(player_model_extra_point_percentage):
-            extra_point_percentage = player_model_extra_point_percentage
-        player_model_extra_point_blocked = player_model.extra_point_blocked
-        if not is_null(player_model_extra_point_blocked):
-            extra_point_blocked = player_model_extra_point_blocked
-        player_model_extra_points_blocked_percentage = (
-            player_model.extra_points_blocked_percentage
+        steals = more_interesting(steals, player_model.steals)
+        blocks = more_interesting(blocks, player_model.blocks)
+        personal_fouls = more_interesting(personal_fouls, player_model.personal_fouls)
+        points = more_interesting(points, player_model.points)
+        game_score = more_interesting(game_score, player_model.game_score)
+        point_differential = more_interesting(
+            point_differential, player_model.point_differential
         )
-        if not is_null(player_model_extra_points_blocked_percentage):
-            extra_points_blocked_percentage = (
-                player_model_extra_points_blocked_percentage
-            )
-        player_model_extra_points_made = player_model.extra_points_made
-        if not is_null(player_model_extra_points_made):
-            extra_points_made = player_model_extra_points_made
-        player_model_fair_catches = player_model.fair_catches
-        if not is_null(player_model_fair_catches):
-            fair_catches = player_model_fair_catches
-        player_model_fair_catch_percentage = player_model.fair_catch_percentage
-        if not is_null(player_model_fair_catch_percentage):
-            fair_catch_percentage = player_model_fair_catch_percentage
-        player_model_field_goal_attempts_max_19_yards = (
-            player_model.field_goal_attempts_max_19_yards
+        height = more_interesting(height, player_model.height)
+        colleges = more_interesting(colleges, player_model.colleges)
+        headshot = more_interesting(headshot, player_model.headshot)
+        forced_fumbles = more_interesting(forced_fumbles, player_model.forced_fumbles)
+        fumbles_recovered = more_interesting(
+            fumbles_recovered, player_model.fumbles_recovered
         )
-        if not is_null(player_model_field_goal_attempts_max_19_yards):
-            field_goal_attempts_max_19_yards = (
-                player_model_field_goal_attempts_max_19_yards
-            )
-        player_model_field_goal_attempts_max_29_yards = (
-            player_model.field_goal_attempts_max_29_yards
+        fumbles_recovered_yards = more_interesting(
+            fumbles_recovered_yards, player_model.fumbles_recovered_yards
         )
-        if not is_null(player_model_field_goal_attempts_max_29_yards):
-            field_goal_attempts_max_29_yards = (
-                player_model_field_goal_attempts_max_29_yards
-            )
-        player_model_field_goal_attempts_max_39_yards = (
-            player_model.field_goal_attempts_max_39_yards
+        fumbles_touchdowns = more_interesting(
+            fumbles_touchdowns, player_model.fumbles_touchdowns
         )
-        if not is_null(player_model_field_goal_attempts_max_39_yards):
-            field_goal_attempts_max_39_yards = (
-                player_model_field_goal_attempts_max_39_yards
-            )
-        player_model_field_goal_attempts_max_49_yards = (
-            player_model.field_goal_attempts_max_49_yards
+        offensive_two_point_returns = more_interesting(
+            offensive_two_point_returns, player_model.offensive_two_point_returns
         )
-        if not is_null(player_model_field_goal_attempts_max_49_yards):
-            field_goal_attempts_max_49_yards = (
-                player_model_field_goal_attempts_max_49_yards
-            )
-        player_model_field_goal_attempts_max_59_yards = (
-            player_model.field_goal_attempts_max_59_yards
+        offensive_fumbles_touchdowns = more_interesting(
+            offensive_fumbles_touchdowns, player_model.offensive_fumbles_touchdowns
         )
-        if not is_null(player_model_field_goal_attempts_max_59_yards):
-            field_goal_attempts_max_59_yards = (
-                player_model_field_goal_attempts_max_59_yards
-            )
-        player_model_field_goal_attempts_max_99_yards = (
-            player_model.field_goal_attempts_max_99_yards
+        defensive_fumbles_touchdowns = more_interesting(
+            defensive_fumbles_touchdowns, player_model.defensive_fumbles_touchdowns
         )
-        if not is_null(player_model_field_goal_attempts_max_99_yards):
-            field_goal_attempts_max_99_yards = (
-                player_model_field_goal_attempts_max_99_yards
-            )
-        player_model_field_goal_attempts_above_50_yards = (
-            player_model.field_goal_attempts_above_50_yards
+        average_gain = more_interesting(average_gain, player_model.average_gain)
+        completion_percentage = more_interesting(
+            completion_percentage, player_model.completion_percentage
         )
-        if not is_null(player_model_field_goal_attempts_above_50_yards):
-            field_goal_attempts_above_50_yards = (
-                player_model_field_goal_attempts_above_50_yards
-            )
-        player_model_field_goal_attempt_yards = player_model.field_goal_attempt_yards
-        if not is_null(player_model_field_goal_attempt_yards):
-            field_goal_attempt_yards = player_model_field_goal_attempt_yards
-        player_model_field_goals_blocked = player_model.field_goals_blocked
-        if not is_null(player_model_field_goals_blocked):
-            field_goals_blocked = player_model_field_goals_blocked
-        player_model_field_goals_blocked_percentage = (
-            player_model.field_goals_blocked_percentage
+        completions = more_interesting(completions, player_model.completions)
+        espn_quarterback_rating = more_interesting(
+            espn_quarterback_rating, player_model.espn_quarterback_rating
         )
-        if not is_null(player_model_field_goals_blocked_percentage):
-            field_goals_blocked_percentage = player_model_field_goals_blocked_percentage
-        player_model_field_goals_made = player_model.field_goals_made
-        if not is_null(player_model_field_goals_made):
-            field_goals_made = player_model_field_goals_made
-        player_model_field_goals_made_max_19_yards = (
-            player_model.field_goals_made_max_19_yards
+        interception_percentage = more_interesting(
+            interception_percentage, player_model.interception_percentage
         )
-        if not is_null(player_model_field_goals_made_max_19_yards):
-            field_goals_made_max_19_yards = player_model_field_goals_made_max_19_yards
-        player_model_field_goals_made_max_29_yards = (
-            player_model.field_goals_made_max_29_yards
+        interceptions = more_interesting(interceptions, player_model.interceptions)
+        long_passing = more_interesting(long_passing, player_model.long_passing)
+        misc_yards = more_interesting(misc_yards, player_model.misc_yards)
+        net_passing_yards = more_interesting(
+            net_passing_yards, player_model.net_passing_yards
         )
-        if not is_null(player_model_field_goals_made_max_29_yards):
-            field_goals_made_max_29_yards = player_model_field_goals_made_max_29_yards
-        player_model_field_goals_made_max_39_yards = (
-            player_model.field_goals_made_max_39_yards
+        net_total_yards = more_interesting(
+            net_total_yards, player_model.net_total_yards
         )
-        if not is_null(player_model_field_goals_made_max_39_yards):
-            field_goals_made_max_39_yards = player_model_field_goals_made_max_39_yards
-        player_model_field_goals_made_max_49_yards = (
-            player_model.field_goals_made_max_49_yards
+        passing_attempts = more_interesting(
+            passing_attempts, player_model.passing_attempts
         )
-        if not is_null(player_model_field_goals_made_max_49_yards):
-            field_goals_made_max_49_yards = player_model_field_goals_made_max_49_yards
-        player_model_field_goals_made_max_59_yards = (
-            player_model.field_goals_made_max_59_yards
+        passing_big_plays = more_interesting(
+            passing_big_plays, player_model.passing_big_plays
         )
-        if not is_null(player_model_field_goals_made_max_59_yards):
-            field_goals_made_max_59_yards = player_model_field_goals_made_max_59_yards
-        player_model_field_goals_made_max_99_yards = (
-            player_model.field_goals_made_max_99_yards
+        passing_first_downs = more_interesting(
+            passing_first_downs, player_model.passing_first_downs
         )
-        if not is_null(player_model_field_goals_made_max_99_yards):
-            field_goals_made_max_99_yards = player_model_field_goals_made_max_99_yards
-        player_model_field_goals_made_above_50_yards = (
-            player_model.field_goals_made_above_50_yards
+        passing_fumbles = more_interesting(
+            passing_fumbles, player_model.passing_fumbles
         )
-        if not is_null(player_model_field_goals_made_above_50_yards):
-            field_goals_made_above_50_yards = (
-                player_model_field_goals_made_above_50_yards
-            )
-        player_model_field_goals_made_yards = player_model.field_goals_made_yards
-        if not is_null(player_model_field_goals_made_yards):
-            field_goals_made_yards = player_model_field_goals_made_yards
-        player_model_field_goals_missed_yards = player_model.field_goals_missed_yards
-        if not is_null(player_model_field_goals_missed_yards):
-            field_goals_missed_yards = player_model_field_goals_missed_yards
-        player_model_kickoff_out_of_bounds = player_model.kickoff_out_of_bounds
-        if not is_null(player_model_kickoff_out_of_bounds):
-            kickoff_out_of_bounds = player_model_kickoff_out_of_bounds
-        player_model_kickoff_returns = player_model.kickoff_returns
-        if not is_null(player_model_kickoff_returns):
-            kickoff_returns = player_model_kickoff_returns
-        player_model_kickoff_returns_touchdowns = (
-            player_model.kickoff_returns_touchdowns
+        passing_fumbles_lost = more_interesting(
+            passing_fumbles_lost, player_model.passing_fumbles_lost
         )
-        if not is_null(player_model_kickoff_returns_touchdowns):
-            kickoff_returns_touchdowns = player_model_kickoff_returns_touchdowns
-        player_model_kickoff_return_yards = player_model.kickoff_return_yards
-        if not is_null(player_model_kickoff_return_yards):
-            kickoff_return_yards = player_model_kickoff_return_yards
-        player_model_kickoffs = player_model.kickoffs
-        if not is_null(player_model_kickoffs):
-            kickoffs = player_model_kickoffs
-        player_model_kickoff_yards = player_model.kickoff_yards
-        if not is_null(player_model_kickoff_yards):
-            kickoff_yards = player_model_kickoff_yards
-        player_model_long_field_goal_attempt = player_model.long_field_goal_attempt
-        if not is_null(player_model_long_field_goal_attempt):
-            long_field_goal_attempt = player_model_long_field_goal_attempt
-        player_model_long_field_goal_made = player_model.long_field_goal_made
-        if not is_null(player_model_long_field_goal_made):
-            long_field_goal_made = player_model_long_field_goal_made
-        player_model_long_kickoff = player_model.long_kickoff
-        if not is_null(player_model_long_kickoff):
-            long_kickoff = player_model_long_kickoff
-        player_model_total_kicking_points = player_model.total_kicking_points
-        if not is_null(player_model_total_kicking_points):
-            total_kicking_points = player_model_total_kicking_points
-        player_model_touchback_percentage = player_model.touchback_percentage
-        if not is_null(player_model_touchback_percentage):
-            touchback_percentage = player_model_touchback_percentage
-        player_model_touchbacks = player_model.touchbacks
-        if not is_null(player_model_touchbacks):
-            touchbacks = player_model_touchbacks
-        player_model_defensive_fumble_returns = player_model.defensive_fumble_returns
-        if not is_null(player_model_defensive_fumble_returns):
-            defensive_fumble_returns = player_model_defensive_fumble_returns
-        player_model_defensive_fumble_return_yards = (
-            player_model.defensive_fumble_return_yards
+        passing_touchdown_percentage = more_interesting(
+            passing_touchdown_percentage, player_model.passing_touchdown_percentage
         )
-        if not is_null(player_model_defensive_fumble_return_yards):
-            defensive_fumble_return_yards = player_model_defensive_fumble_return_yards
-        player_model_fumble_recoveries = player_model.fumble_recoveries
-        if not is_null(player_model_fumble_recoveries):
-            fumble_recoveries = player_model_fumble_recoveries
-        player_model_fumble_recovery_yards = player_model.fumble_recovery_yards
-        if not is_null(player_model_fumble_recovery_yards):
-            fumble_recovery_yards = player_model_fumble_recovery_yards
-        player_model_kick_return_fair_catches = player_model.kick_return_fair_catches
-        if not is_null(player_model_kick_return_fair_catches):
-            kick_return_fair_catches = player_model_kick_return_fair_catches
-        player_model_kick_return_fair_catch_percentage = (
-            player_model.kick_return_fair_catch_percentage
+        passing_touchdowns = more_interesting(
+            passing_touchdowns, player_model.passing_touchdowns
         )
-        if not is_null(player_model_kick_return_fair_catch_percentage):
-            kick_return_fair_catch_percentage = (
-                player_model_kick_return_fair_catch_percentage
-            )
-        player_model_kick_return_fumbles = player_model.kick_return_fumbles
-        if not is_null(player_model_kick_return_fumbles):
-            kick_return_fumbles = player_model_kick_return_fumbles
-        player_model_kick_return_fumbles_lost = player_model.kick_return_fumbles_lost
-        if not is_null(player_model_kick_return_fumbles_lost):
-            kick_return_fumbles_lost = player_model_kick_return_fumbles_lost
-        player_model_kick_returns = player_model.kick_returns
-        if not is_null(player_model_kick_returns):
-            kick_returns = player_model_kick_returns
-        player_model_kick_return_touchdowns = player_model.kick_return_touchdowns
-        if not is_null(player_model_kick_return_touchdowns):
-            kick_return_touchdowns = player_model_kick_return_touchdowns
-        player_model_kick_return_yards = player_model.kick_return_yards
-        if not is_null(player_model_kick_return_yards):
-            kick_return_yards = player_model_kick_return_yards
-        player_model_long_kick_return = player_model.long_kick_return
-        if not is_null(player_model_long_kick_return):
-            long_kick_return = player_model_long_kick_return
-        player_model_long_punt_return = player_model.long_punt_return
-        if not is_null(player_model_long_punt_return):
-            long_punt_return = player_model_long_punt_return
-        player_model_misc_fumble_returns = player_model.misc_fumble_returns
-        if not is_null(player_model_misc_fumble_returns):
-            misc_fumble_returns = player_model_misc_fumble_returns
-        player_model_misc_fumble_return_yards = player_model.misc_fumble_return_yards
-        if not is_null(player_model_misc_fumble_return_yards):
-            misc_fumble_return_yards = player_model_misc_fumble_return_yards
-        player_model_opposition_fumble_recoveries = (
-            player_model.opposition_fumble_recoveries
+        passing_yards = more_interesting(passing_yards, player_model.passing_yards)
+        passing_yards_after_catch = more_interesting(
+            passing_yards_after_catch, player_model.passing_yards_after_catch
         )
-        if not is_null(player_model_opposition_fumble_recoveries):
-            opposition_fumble_recoveries = player_model_opposition_fumble_recoveries
-        player_model_opposition_fumble_recovery_yards = (
-            player_model.opposition_fumble_recovery_yards
+        passing_yards_at_catch = more_interesting(
+            passing_yards_at_catch, player_model.passing_yards_at_catch
         )
-        if not is_null(player_model_opposition_fumble_recovery_yards):
-            opposition_fumble_recovery_yards = (
-                player_model_opposition_fumble_recovery_yards
-            )
-        player_model_opposition_special_team_fumble_returns = (
-            player_model.opposition_special_team_fumble_returns
+        quarterback_rating = more_interesting(
+            quarterback_rating, player_model.quarterback_rating
         )
-        if not is_null(player_model_opposition_special_team_fumble_returns):
-            opposition_special_team_fumble_returns = (
-                player_model_opposition_special_team_fumble_returns
-            )
-        player_model_opposition_special_team_fumble_return_yards = (
-            player_model.opposition_special_team_fumble_return_yards
+        sacks = more_interesting(sacks, player_model.sacks)
+        sacks_yards_lost = more_interesting(
+            sacks_yards_lost, player_model.sacks_yards_lost
         )
-        if not is_null(player_model_opposition_special_team_fumble_return_yards):
-            opposition_special_team_fumble_return_yards = (
-                player_model_opposition_special_team_fumble_return_yards
-            )
-        player_model_punt_return_fair_catches = player_model.punt_return_fair_catches
-        if not is_null(player_model_punt_return_fair_catches):
-            punt_return_fair_catches = player_model_punt_return_fair_catches
-        player_model_punt_return_fair_catch_percentage = (
-            player_model.punt_return_fair_catch_percentage
+        net_passing_attempts = more_interesting(
+            net_passing_attempts, player_model.net_passing_attempts
         )
-        if not is_null(player_model_punt_return_fair_catch_percentage):
-            punt_return_fair_catch_percentage = (
-                player_model_punt_return_fair_catch_percentage
-            )
-        player_model_punt_return_fumbles = player_model.punt_return_fumbles
-        if not is_null(player_model_punt_return_fumbles):
-            punt_return_fumbles = player_model_punt_return_fumbles
-        player_model_punt_return_fumbles_lost = player_model.punt_return_fumbles_lost
-        if not is_null(player_model_punt_return_fumbles_lost):
-            punt_return_fumbles_lost = player_model_punt_return_fumbles_lost
-        player_model_punt_returns = player_model.punt_returns
-        if not is_null(player_model_punt_returns):
-            punt_returns = player_model_punt_returns
-        player_model_punt_returns_started_inside_the_10 = (
-            player_model.punt_returns_started_inside_the_10
+        total_offensive_plays = more_interesting(
+            total_offensive_plays, player_model.total_offensive_plays
         )
-        if not is_null(player_model_punt_returns_started_inside_the_10):
-            punt_returns_started_inside_the_10 = (
-                player_model_punt_returns_started_inside_the_10
-            )
-        player_model_punt_returns_started_inside_the_20 = (
-            player_model.punt_returns_started_inside_the_20
+        total_points = more_interesting(total_points, player_model.total_points)
+        total_touchdowns = more_interesting(
+            total_touchdowns, player_model.total_touchdowns
         )
-        if not is_null(player_model_punt_returns_started_inside_the_20):
-            punt_returns_started_inside_the_20 = (
-                player_model_punt_returns_started_inside_the_20
-            )
-        player_model_punt_return_touchdowns = player_model.punt_return_touchdowns
-        if not is_null(player_model_punt_return_touchdowns):
-            punt_return_touchdowns = player_model_punt_return_touchdowns
-        player_model_punt_return_yards = player_model.punt_return_yards
-        if not is_null(player_model_punt_return_yards):
-            punt_return_yards = player_model_punt_return_yards
-        player_model_special_team_fumble_returns = (
-            player_model.special_team_fumble_returns
+        total_yards = more_interesting(total_yards, player_model.total_yards)
+        total_yards_from_scrimmage = more_interesting(
+            total_yards_from_scrimmage, player_model.total_yards_from_scrimmage
         )
-        if not is_null(player_model_special_team_fumble_returns):
-            special_team_fumble_returns = player_model_special_team_fumble_returns
-        player_model_yards_per_kick_return = player_model.yards_per_kick_return
-        if not is_null(player_model_yards_per_kick_return):
-            yards_per_kick_return = player_model_yards_per_kick_return
-        player_model_yards_per_punt_return = player_model.yards_per_punt_return
-        if not is_null(player_model_yards_per_punt_return):
-            yards_per_punt_return = player_model_yards_per_punt_return
-        player_model_yards_per_return = player_model.yards_per_return
-        if not is_null(player_model_yards_per_return):
-            yards_per_return = player_model_yards_per_return
-        player_model_average_punt_return_yards = player_model.average_punt_return_yards
-        if not is_null(player_model_average_punt_return_yards):
-            average_punt_return_yards = player_model_average_punt_return_yards
-        player_model_gross_average_punt_yards = player_model.gross_average_punt_yards
-        if not is_null(player_model_gross_average_punt_yards):
-            gross_average_punt_yards = player_model_gross_average_punt_yards
-        player_model_long_punt = player_model.long_punt
-        if not is_null(player_model_long_punt):
-            long_punt = player_model_long_punt
-        player_model_net_average_punt_yards = player_model.net_average_punt_yards
-        if not is_null(player_model_net_average_punt_yards):
-            net_average_punt_yards = player_model_net_average_punt_yards
-        player_model_punts = player_model.punts
-        if not is_null(player_model_punts):
-            punts = player_model_punts
-        player_model_punts_blocked = player_model.punts_blocked
-        if not is_null(player_model_punts_blocked):
-            punts_blocked = player_model_punts_blocked
-        player_model_punts_blocked_percentage = player_model.punts_blocked_percentage
-        if not is_null(player_model_punts_blocked_percentage):
-            punts_blocked_percentage = player_model_punts_blocked_percentage
-        player_model_punts_inside_10 = player_model.punts_inside_10
-        if not is_null(player_model_punts_inside_10):
-            punts_inside_10 = player_model_punts_inside_10
-        player_model_punts_inside_10_percentage = (
-            player_model.punts_inside_10_percentage
+        two_point_pass = more_interesting(two_point_pass, player_model.two_point_pass)
+        two_point_pass_attempt = more_interesting(
+            two_point_pass_attempt, player_model.two_point_pass_attempt
         )
-        if not is_null(player_model_punts_inside_10_percentage):
-            punts_inside_10_percentage = player_model_punts_inside_10_percentage
-        player_model_punts_inside_20 = player_model.punts_inside_20
-        if not is_null(player_model_punts_inside_20):
-            punts_inside_20 = player_model_punts_inside_20
-        player_model_punts_inside_20_percentage = (
-            player_model.punts_inside_20_percentage
+        yards_per_completion = more_interesting(
+            yards_per_completion, player_model.yards_per_completion
         )
-        if not is_null(player_model_punts_inside_20_percentage):
-            punts_inside_20_percentage = player_model_punts_inside_20_percentage
-        player_model_punts_over_50 = player_model.punts_over_50
-        if not is_null(player_model_punts_over_50):
-            punts_over_50 = player_model_punts_over_50
-        player_model_punt_yards = player_model.punt_yards
-        if not is_null(player_model_punt_yards):
-            punt_yards = player_model_punt_yards
-        player_model_defensive_points = player_model.defensive_points
-        if not is_null(player_model_defensive_points):
-            defensive_points = player_model_defensive_points
-        player_model_misc_points = player_model.misc_points
-        if not is_null(player_model_misc_points):
-            misc_points = player_model_misc_points
-        player_model_return_touchdowns = player_model.return_touchdowns
-        if not is_null(player_model_return_touchdowns):
-            return_touchdowns = player_model_return_touchdowns
-        player_model_total_two_point_conversions = (
-            player_model.total_two_point_conversions
+        yards_per_pass_attempt = more_interesting(
+            yards_per_pass_attempt, player_model.yards_per_pass_attempt
         )
-        if not is_null(player_model_total_two_point_conversions):
-            total_two_point_conversions = player_model_total_two_point_conversions
-        player_model_passing_touchdowns_9_yards = (
-            player_model.passing_touchdowns_9_yards
+        net_yards_per_pass_attempt = more_interesting(
+            net_yards_per_pass_attempt, player_model.net_yards_per_pass_attempt
         )
-        if not is_null(player_model_passing_touchdowns_9_yards):
-            passing_touchdowns_9_yards = player_model_passing_touchdowns_9_yards
-        player_model_passing_touchdowns_19_yards = (
-            player_model.passing_touchdowns_19_yards
+        long_rushing = more_interesting(long_rushing, player_model.long_rushing)
+        rushing_attempts = more_interesting(
+            rushing_attempts, player_model.rushing_attempts
         )
-        if not is_null(player_model_passing_touchdowns_19_yards):
-            passing_touchdowns_19_yards = player_model_passing_touchdowns_19_yards
-        player_model_passing_touchdowns_29_yards = (
-            player_model.passing_touchdowns_29_yards
+        rushing_big_plays = more_interesting(
+            rushing_big_plays, player_model.rushing_big_plays
         )
-        if not is_null(player_model_passing_touchdowns_29_yards):
-            passing_touchdowns_29_yards = player_model_passing_touchdowns_29_yards
-        player_model_passing_touchdowns_39_yards = (
-            player_model.passing_touchdowns_39_yards
+        rushing_first_downs = more_interesting(
+            rushing_first_downs, player_model.rushing_first_downs
         )
-        if not is_null(player_model_passing_touchdowns_39_yards):
-            passing_touchdowns_39_yards = player_model_passing_touchdowns_39_yards
-        player_model_passing_touchdowns_49_yards = (
-            player_model.passing_touchdowns_49_yards
+        rushing_fumbles = more_interesting(
+            rushing_fumbles, player_model.rushing_fumbles
         )
-        if not is_null(player_model_passing_touchdowns_49_yards):
-            passing_touchdowns_49_yards = player_model_passing_touchdowns_49_yards
-        player_model_passing_touchdowns_above_50_yards = (
-            player_model.passing_touchdowns_above_50_yards
+        rushing_fumbles_lost = more_interesting(
+            rushing_fumbles_lost, player_model.rushing_fumbles_lost
         )
-        if not is_null(player_model_passing_touchdowns_above_50_yards):
-            passing_touchdowns_above_50_yards = (
-                player_model_passing_touchdowns_above_50_yards
-            )
-        player_model_receiving_touchdowns_9_yards = (
-            player_model.receiving_touchdowns_9_yards
+        rushing_touchdowns = more_interesting(
+            rushing_touchdowns, player_model.rushing_touchdowns
         )
-        if not is_null(player_model_receiving_touchdowns_9_yards):
-            receiving_touchdowns_9_yards = player_model_receiving_touchdowns_9_yards
-        player_model_receiving_touchdowns_19_yards = (
-            player_model.receiving_touchdowns_19_yards
+        rushing_yards = more_interesting(rushing_yards, player_model.rushing_yards)
+        stuffs = more_interesting(stuffs, player_model.stuffs)
+        stuff_yards_lost = more_interesting(
+            stuff_yards_lost, player_model.stuff_yards_lost
         )
-        if not is_null(player_model_receiving_touchdowns_19_yards):
-            receiving_touchdowns_19_yards = player_model_receiving_touchdowns_19_yards
-        player_model_receiving_touchdowns_29_yards = (
-            player_model.receiving_touchdowns_29_yards
+        two_point_rush = more_interesting(two_point_rush, player_model.two_point_rush)
+        two_point_rush_attempts = more_interesting(
+            two_point_rush_attempts, player_model.two_point_rush_attempts
         )
-        if not is_null(player_model_receiving_touchdowns_29_yards):
-            receiving_touchdowns_29_yards = player_model_receiving_touchdowns_29_yards
-        player_model_receiving_touchdowns_39_yards = (
-            player_model.receiving_touchdowns_39_yards
+        yards_per_rush_attempt = more_interesting(
+            yards_per_rush_attempt, player_model.yards_per_rush_attempt
         )
-        if not is_null(player_model_receiving_touchdowns_39_yards):
-            receiving_touchdowns_39_yards = player_model_receiving_touchdowns_39_yards
-        player_model_receiving_touchdowns_49_yards = (
-            player_model.receiving_touchdowns_49_yards
+        espn_widereceiver = more_interesting(
+            espn_widereceiver, player_model.espn_widereceiver
         )
-        if not is_null(player_model_receiving_touchdowns_49_yards):
-            receiving_touchdowns_49_yards = player_model_receiving_touchdowns_49_yards
-        player_model_receiving_touchdowns_above_50_yards = (
-            player_model.receiving_touchdowns_above_50_yards
+        long_reception = more_interesting(long_reception, player_model.long_reception)
+        receiving_big_plays = more_interesting(
+            receiving_big_plays, player_model.receiving_big_plays
         )
-        if not is_null(player_model_receiving_touchdowns_above_50_yards):
-            receiving_touchdowns_above_50_yards = (
-                player_model_receiving_touchdowns_above_50_yards
-            )
-        player_model_rushing_touchdowns_9_yards = (
-            player_model.rushing_touchdowns_9_yards
+        receiving_first_downs = more_interesting(
+            receiving_first_downs, player_model.receiving_first_downs
         )
-        if not is_null(player_model_rushing_touchdowns_9_yards):
-            rushing_touchdowns_9_yards = player_model_rushing_touchdowns_9_yards
-        player_model_rushing_touchdowns_19_yards = (
-            player_model.rushing_touchdowns_19_yards
+        receiving_fumbles = more_interesting(
+            receiving_fumbles, player_model.receiving_fumbles
         )
-        if not is_null(player_model_rushing_touchdowns_19_yards):
-            rushing_touchdowns_19_yards = player_model_rushing_touchdowns_19_yards
-        player_model_rushing_touchdowns_29_yards = (
-            player_model.rushing_touchdowns_29_yards
+        receiving_fumbles_lost = more_interesting(
+            receiving_fumbles_lost, player_model.receiving_fumbles_lost
         )
-        if not is_null(player_model_rushing_touchdowns_29_yards):
-            rushing_touchdowns_29_yards = player_model_rushing_touchdowns_29_yards
-        player_model_rushing_touchdowns_39_yards = (
-            player_model.rushing_touchdowns_39_yards
+        receiving_targets = more_interesting(
+            receiving_targets, player_model.receiving_targets
         )
-        if not is_null(player_model_rushing_touchdowns_39_yards):
-            rushing_touchdowns_39_yards = player_model_rushing_touchdowns_39_yards
-        player_model_rushing_touchdowns_49_yards = (
-            player_model.rushing_touchdowns_49_yards
+        receiving_touchdowns = more_interesting(
+            receiving_touchdowns, player_model.receiving_touchdowns
         )
-        if not is_null(player_model_rushing_touchdowns_49_yards):
-            rushing_touchdowns_49_yards = player_model_rushing_touchdowns_49_yards
-        player_model_rushing_touchdowns_above_50_yards = (
-            player_model.rushing_touchdowns_above_50_yards
+        receiving_yards = more_interesting(
+            receiving_yards, player_model.receiving_yards
         )
-        if not is_null(player_model_rushing_touchdowns_above_50_yards):
-            rushing_touchdowns_above_50_yards = (
-                player_model_rushing_touchdowns_above_50_yards
-            )
+        receiving_yards_after_catch = more_interesting(
+            receiving_yards_after_catch, player_model.receiving_yards_after_catch
+        )
+        receiving_yards_at_catch = more_interesting(
+            receiving_yards_at_catch, player_model.receiving_yards_at_catch
+        )
+        receptions = more_interesting(receptions, player_model.receptions)
+        two_point_receptions = more_interesting(
+            two_point_receptions, player_model.two_point_receptions
+        )
+        two_point_reception_attempts = more_interesting(
+            two_point_reception_attempts, player_model.two_point_reception_attempts
+        )
+        yards_per_reception = more_interesting(
+            yards_per_reception, player_model.yards_per_reception
+        )
+        assist_tackles = more_interesting(assist_tackles, player_model.assist_tackles)
+        average_interception_yards = more_interesting(
+            average_interception_yards, player_model.average_interception_yards
+        )
+        average_sack_yards = more_interesting(
+            average_sack_yards, player_model.average_sack_yards
+        )
+        average_stuff_yards = more_interesting(
+            average_stuff_yards, player_model.average_stuff_yards
+        )
+        blocked_field_goal_touchdowns = more_interesting(
+            blocked_field_goal_touchdowns, player_model.blocked_field_goal_touchdowns
+        )
+        blocked_punt_touchdowns = more_interesting(
+            blocked_punt_touchdowns, player_model.blocked_punt_touchdowns
+        )
+        defensive_touchdowns = more_interesting(
+            defensive_touchdowns, player_model.defensive_touchdowns
+        )
+        hurries = more_interesting(hurries, player_model.hurries)
+        kicks_blocked = more_interesting(kicks_blocked, player_model.kicks_blocked)
+        long_interception = more_interesting(
+            long_interception, player_model.long_interception
+        )
+        misc_touchdowns = more_interesting(
+            misc_touchdowns, player_model.misc_touchdowns
+        )
+        passes_batted_down = more_interesting(
+            passes_batted_down, player_model.passes_batted_down
+        )
+        passes_defended = more_interesting(
+            passes_defended, player_model.passes_defended
+        )
+        quarterback_hits = more_interesting(
+            quarterback_hits, player_model.quarterback_hits
+        )
+        sacks_assisted = more_interesting(sacks_assisted, player_model.sacks_assisted)
+        sacks_unassisted = more_interesting(
+            sacks_unassisted, player_model.sacks_unassisted
+        )
+        sacks_yards = more_interesting(sacks_yards, player_model.sacks_yards)
+        safeties = more_interesting(safeties, player_model.safeties)
+        solo_tackles = more_interesting(solo_tackles, player_model.solo_tackles)
+        stuff_yards = more_interesting(stuff_yards, player_model.stuff_yards)
+        tackles_for_loss = more_interesting(
+            tackles_for_loss, player_model.tackles_for_loss
+        )
+        tackles_yards_lost = more_interesting(
+            tackles_yards_lost, player_model.tackles_yards_lost
+        )
+        yards_allowed = more_interesting(yards_allowed, player_model.yards_allowed)
+        points_allowed = more_interesting(points_allowed, player_model.points_allowed)
+        one_point_safeties_made = more_interesting(
+            one_point_safeties_made, player_model.one_point_safeties_made
+        )
+        missed_field_goal_return_td = more_interesting(
+            missed_field_goal_return_td, player_model.missed_field_goal_return_td
+        )
+        blocked_punt_ez_rec_td = more_interesting(
+            blocked_punt_ez_rec_td, player_model.blocked_punt_ez_rec_td
+        )
+        interception_touchdowns = more_interesting(
+            interception_touchdowns, player_model.interception_touchdowns
+        )
+        interception_yards = more_interesting(
+            interception_yards, player_model.interception_yards
+        )
+        average_kickoff_return_yards = more_interesting(
+            average_kickoff_return_yards, player_model.average_kickoff_return_yards
+        )
+        average_kickoff_yards = more_interesting(
+            average_kickoff_yards, player_model.average_kickoff_yards
+        )
+        extra_point_attempts = more_interesting(
+            extra_point_attempts, player_model.extra_point_attempts
+        )
+        extra_point_percentage = more_interesting(
+            extra_point_percentage, player_model.extra_point_percentage
+        )
+        extra_point_blocked = more_interesting(
+            extra_point_blocked, player_model.extra_point_blocked
+        )
+        extra_points_blocked_percentage = more_interesting(
+            extra_points_blocked_percentage,
+            player_model.extra_points_blocked_percentage,
+        )
+        extra_points_made = more_interesting(
+            extra_points_made, player_model.extra_points_made
+        )
+        fair_catches = more_interesting(fair_catches, player_model.fair_catches)
+        fair_catch_percentage = more_interesting(
+            fair_catch_percentage, player_model.fair_catch_percentage
+        )
+        field_goal_attempts_max_19_yards = more_interesting(
+            field_goal_attempts_max_19_yards,
+            player_model.field_goal_attempts_max_19_yards,
+        )
+        field_goal_attempts_max_29_yards = more_interesting(
+            field_goal_attempts_max_29_yards,
+            player_model.field_goal_attempts_max_29_yards,
+        )
+        field_goal_attempts_max_39_yards = more_interesting(
+            field_goal_attempts_max_39_yards,
+            player_model.field_goal_attempts_max_39_yards,
+        )
+        field_goal_attempts_max_49_yards = more_interesting(
+            field_goal_attempts_max_49_yards,
+            player_model.field_goal_attempts_max_49_yards,
+        )
+        field_goal_attempts_max_59_yards = more_interesting(
+            field_goal_attempts_max_59_yards,
+            player_model.field_goal_attempts_max_59_yards,
+        )
+        field_goal_attempts_max_99_yards = more_interesting(
+            field_goal_attempts_max_99_yards,
+            player_model.field_goal_attempts_max_99_yards,
+        )
+        field_goal_attempts_above_50_yards = more_interesting(
+            field_goal_attempts_above_50_yards,
+            player_model.field_goal_attempts_above_50_yards,
+        )
+        field_goal_attempt_yards = more_interesting(
+            field_goal_attempt_yards, player_model.field_goal_attempt_yards
+        )
+        field_goals_blocked = more_interesting(
+            field_goals_blocked, player_model.field_goals_blocked
+        )
+        field_goals_blocked_percentage = more_interesting(
+            field_goals_blocked_percentage, player_model.field_goals_blocked_percentage
+        )
+        field_goals_made = more_interesting(
+            field_goals_made, player_model.field_goals_made
+        )
+        field_goals_made_max_19_yards = more_interesting(
+            field_goals_made_max_19_yards, player_model.field_goals_made_max_19_yards
+        )
+        field_goals_made_max_29_yards = more_interesting(
+            field_goals_made_max_29_yards, player_model.field_goals_made_max_29_yards
+        )
+        field_goals_made_max_39_yards = more_interesting(
+            field_goals_made_max_39_yards, player_model.field_goals_made_max_39_yards
+        )
+        field_goals_made_max_49_yards = more_interesting(
+            field_goals_made_max_49_yards, player_model.field_goals_made_max_49_yards
+        )
+        field_goals_made_max_59_yards = more_interesting(
+            field_goals_made_max_59_yards, player_model.field_goals_made_max_59_yards
+        )
+        field_goals_made_max_99_yards = more_interesting(
+            field_goals_made_max_99_yards, player_model.field_goals_made_max_99_yards
+        )
+        field_goals_made_above_50_yards = more_interesting(
+            field_goals_made_above_50_yards,
+            player_model.field_goals_made_above_50_yards,
+        )
+        field_goals_made_yards = more_interesting(
+            field_goals_made_yards, player_model.field_goals_made_yards
+        )
+        field_goals_missed_yards = more_interesting(
+            field_goals_missed_yards, player_model.field_goals_missed_yards
+        )
+        kickoff_out_of_bounds = more_interesting(
+            kickoff_out_of_bounds, player_model.kickoff_out_of_bounds
+        )
+        kickoff_returns = more_interesting(
+            kickoff_returns, player_model.kickoff_returns
+        )
+        kickoff_returns_touchdowns = more_interesting(
+            kickoff_returns_touchdowns, player_model.kickoff_returns_touchdowns
+        )
+        kickoff_return_yards = more_interesting(
+            kickoff_return_yards, player_model.kickoff_return_yards
+        )
+        kickoffs = more_interesting(kickoffs, player_model.kickoffs)
+        kickoff_yards = more_interesting(kickoff_yards, player_model.kickoff_yards)
+        long_field_goal_attempt = more_interesting(
+            long_field_goal_attempt, player_model.long_field_goal_attempt
+        )
+        long_field_goal_made = more_interesting(
+            long_field_goal_made, player_model.long_field_goal_made
+        )
+        long_kickoff = more_interesting(long_kickoff, player_model.long_kickoff)
+        total_kicking_points = more_interesting(
+            total_kicking_points, player_model.total_kicking_points
+        )
+        touchback_percentage = more_interesting(
+            touchback_percentage, player_model.touchback_percentage
+        )
+        touchbacks = more_interesting(touchbacks, player_model.touchbacks)
+        defensive_fumble_returns = more_interesting(
+            defensive_fumble_returns, player_model.defensive_fumble_returns
+        )
+        defensive_fumble_return_yards = more_interesting(
+            defensive_fumble_return_yards, player_model.defensive_fumble_return_yards
+        )
+        fumble_recoveries = more_interesting(
+            fumble_recoveries, player_model.fumble_recoveries
+        )
+        fumble_recovery_yards = more_interesting(
+            fumble_recovery_yards, player_model.fumble_recovery_yards
+        )
+        kick_return_fair_catches = more_interesting(
+            kick_return_fair_catches, player_model.kick_return_fair_catches
+        )
+        kick_return_fair_catch_percentage = more_interesting(
+            kick_return_fair_catch_percentage,
+            player_model.kick_return_fair_catch_percentage,
+        )
+        kick_return_fumbles = more_interesting(
+            kick_return_fumbles, player_model.kick_return_fumbles
+        )
+        kick_return_fumbles_lost = more_interesting(
+            kick_return_fumbles_lost, player_model.kick_return_fumbles_lost
+        )
+        kick_returns = more_interesting(kick_returns, player_model.kick_returns)
+        kick_return_touchdowns = more_interesting(
+            kick_return_touchdowns, player_model.kick_return_touchdowns
+        )
+        kick_return_yards = more_interesting(
+            kick_return_yards, player_model.kick_return_yards
+        )
+        long_kick_return = more_interesting(
+            long_kick_return, player_model.long_kick_return
+        )
+        long_punt_return = more_interesting(
+            long_punt_return, player_model.long_punt_return
+        )
+        misc_fumble_returns = more_interesting(
+            misc_fumble_returns, player_model.misc_fumble_returns
+        )
+        misc_fumble_return_yards = more_interesting(
+            misc_fumble_return_yards, player_model.misc_fumble_return_yards
+        )
+        opposition_fumble_recoveries = more_interesting(
+            opposition_fumble_recoveries, player_model.opposition_fumble_recoveries
+        )
+        opposition_fumble_recovery_yards = more_interesting(
+            opposition_fumble_recovery_yards,
+            player_model.opposition_fumble_recovery_yards,
+        )
+        opposition_special_team_fumble_returns = more_interesting(
+            opposition_special_team_fumble_returns,
+            player_model.opposition_special_team_fumble_returns,
+        )
+        opposition_special_team_fumble_return_yards = more_interesting(
+            opposition_special_team_fumble_return_yards,
+            player_model.opposition_special_team_fumble_return_yards,
+        )
+        punt_return_fair_catches = more_interesting(
+            punt_return_fair_catches, player_model.punt_return_fair_catches
+        )
+        punt_return_fair_catch_percentage = more_interesting(
+            punt_return_fair_catch_percentage,
+            player_model.punt_return_fair_catch_percentage,
+        )
+        punt_return_fumbles = more_interesting(
+            punt_return_fumbles, player_model.punt_return_fumbles
+        )
+        punt_return_fumbles_lost = more_interesting(
+            punt_return_fumbles_lost, player_model.punt_return_fumbles_lost
+        )
+        punt_returns = more_interesting(punt_returns, player_model.punt_returns)
+        punt_returns_started_inside_the_10 = more_interesting(
+            punt_returns_started_inside_the_10,
+            player_model.punt_returns_started_inside_the_10,
+        )
+        punt_returns_started_inside_the_20 = more_interesting(
+            punt_returns_started_inside_the_20,
+            player_model.punt_returns_started_inside_the_20,
+        )
+        punt_return_touchdowns = more_interesting(
+            punt_return_touchdowns, player_model.punt_return_touchdowns
+        )
+        punt_return_yards = more_interesting(
+            punt_return_yards, player_model.punt_return_yards
+        )
+        special_team_fumble_returns = more_interesting(
+            special_team_fumble_returns, player_model.special_team_fumble_returns
+        )
+        yards_per_kick_return = more_interesting(
+            yards_per_kick_return, player_model.yards_per_kick_return
+        )
+        yards_per_punt_return = more_interesting(
+            yards_per_punt_return, player_model.yards_per_punt_return
+        )
+        yards_per_return = more_interesting(
+            yards_per_return, player_model.yards_per_return
+        )
+        average_punt_return_yards = more_interesting(
+            average_punt_return_yards, player_model.average_punt_return_yards
+        )
+        gross_average_punt_yards = more_interesting(
+            gross_average_punt_yards, player_model.gross_average_punt_yards
+        )
+        long_punt = more_interesting(long_punt, player_model.long_punt)
+        net_average_punt_yards = more_interesting(
+            net_average_punt_yards, player_model.net_average_punt_yards
+        )
+        punts = more_interesting(punts, player_model.punts)
+        punts_blocked = more_interesting(punts_blocked, player_model.punts_blocked)
+        punts_blocked_percentage = more_interesting(
+            punts_blocked_percentage, player_model.punts_blocked_percentage
+        )
+        punts_inside_10 = more_interesting(
+            punts_inside_10, player_model.punts_inside_10
+        )
+        punts_inside_10_percentage = more_interesting(
+            punts_inside_10_percentage, player_model.punts_inside_10_percentage
+        )
+        punts_inside_20 = more_interesting(
+            punts_inside_20, player_model.punts_inside_20
+        )
+        punts_inside_20_percentage = more_interesting(
+            punts_inside_20_percentage, player_model.punts_inside_20_percentage
+        )
+        punts_over_50 = more_interesting(punts_over_50, player_model.punts_over_50)
+        punt_yards = more_interesting(punt_yards, player_model.punt_yards)
+        defensive_points = more_interesting(
+            defensive_points, player_model.defensive_points
+        )
+        misc_points = more_interesting(misc_points, player_model.misc_points)
+        return_touchdowns = more_interesting(
+            return_touchdowns, player_model.return_touchdowns
+        )
+        total_two_point_conversions = more_interesting(
+            total_two_point_conversions, player_model.total_two_point_conversions
+        )
+        passing_touchdowns_9_yards = more_interesting(
+            passing_touchdowns_9_yards, player_model.passing_touchdowns_9_yards
+        )
+        passing_touchdowns_19_yards = more_interesting(
+            passing_touchdowns_19_yards, player_model.passing_touchdowns_19_yards
+        )
+        passing_touchdowns_29_yards = more_interesting(
+            passing_touchdowns_29_yards, player_model.passing_touchdowns_29_yards
+        )
+        passing_touchdowns_39_yards = more_interesting(
+            passing_touchdowns_39_yards, player_model.passing_touchdowns_39_yards
+        )
+        passing_touchdowns_49_yards = more_interesting(
+            passing_touchdowns_49_yards, player_model.passing_touchdowns_49_yards
+        )
+        passing_touchdowns_above_50_yards = more_interesting(
+            passing_touchdowns_above_50_yards,
+            player_model.passing_touchdowns_above_50_yards,
+        )
+        receiving_touchdowns_9_yards = more_interesting(
+            receiving_touchdowns_9_yards, player_model.receiving_touchdowns_9_yards
+        )
+        receiving_touchdowns_19_yards = more_interesting(
+            receiving_touchdowns_19_yards, player_model.receiving_touchdowns_19_yards
+        )
+        receiving_touchdowns_29_yards = more_interesting(
+            receiving_touchdowns_29_yards, player_model.receiving_touchdowns_29_yards
+        )
+        receiving_touchdowns_39_yards = more_interesting(
+            receiving_touchdowns_39_yards, player_model.receiving_touchdowns_39_yards
+        )
+        receiving_touchdowns_49_yards = more_interesting(
+            receiving_touchdowns_49_yards, player_model.receiving_touchdowns_49_yards
+        )
+        receiving_touchdowns_above_50_yards = more_interesting(
+            receiving_touchdowns_above_50_yards,
+            player_model.receiving_touchdowns_above_50_yards,
+        )
+        rushing_touchdowns_9_yards = more_interesting(
+            rushing_touchdowns_9_yards, player_model.rushing_touchdowns_9_yards
+        )
+        rushing_touchdowns_19_yards = more_interesting(
+            rushing_touchdowns_19_yards, player_model.rushing_touchdowns_19_yards
+        )
+        rushing_touchdowns_29_yards = more_interesting(
+            rushing_touchdowns_29_yards, player_model.rushing_touchdowns_29_yards
+        )
+        rushing_touchdowns_39_yards = more_interesting(
+            rushing_touchdowns_39_yards, player_model.rushing_touchdowns_39_yards
+        )
+        rushing_touchdowns_49_yards = more_interesting(
+            rushing_touchdowns_49_yards, player_model.rushing_touchdowns_49_yards
+        )
+        rushing_touchdowns_above_50_yards = more_interesting(
+            rushing_touchdowns_above_50_yards,
+            player_model.rushing_touchdowns_above_50_yards,
+        )
     if name is None:
         raise ValueError("name is null")
     if species is None:

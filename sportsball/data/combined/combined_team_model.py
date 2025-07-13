@@ -14,7 +14,7 @@ from ..team_model import VERSION, TeamModel
 from .combined_coach_model import create_combined_coach_model
 from .combined_player_model import create_combined_player_model
 from .ffill import ffill
-from .null_check import is_null
+from .most_interesting import more_interesting
 
 REGEX = re.compile("[^a-zA-Z]")
 
@@ -49,9 +49,7 @@ def create_combined_team_model(
     lbw = None
     end_dt = None
     for team_model in team_models:
-        team_model_location = team_model.location
-        if team_model_location is not None:
-            location = team_model_location
+        location = more_interesting(location, team_model.location)
         for player_model in team_model.players:
             player_id = player_model.identifier
             player_name_key = _normalise_name(player_model.name)
@@ -65,12 +63,8 @@ def create_combined_team_model(
         for odds_model in team_model.odds:
             key = f"{odds_model.bookie.identifier}-{odds_model.odds}"
             odds[key] = odds.get(key, []) + [odds_model]
-        team_model_points = team_model.points
-        if not is_null(team_model_points):
-            points = team_model_points
-        team_model_ladder_rank = team_model.ladder_rank
-        if not is_null(team_model_ladder_rank):
-            ladder_rank = team_model_ladder_rank
+        points = more_interesting(points, team_model.points)
+        ladder_rank = more_interesting(ladder_rank, team_model.ladder_rank)
         for news_model in team_model.news:
             news_key = "-".join(
                 [
@@ -86,9 +80,7 @@ def create_combined_team_model(
                 [social_model.network, social_model.post, str(social_model.published)]
             )
             social[social_key] = social_model
-        team_model_field_goals = team_model.field_goals
-        if not is_null(team_model_field_goals):
-            field_goals = team_model_field_goals
+        field_goals = more_interesting(field_goals, team_model.field_goals)
         for coach_model in team_model.coaches:
             coach_id = coach_model.identifier
             coach_name_key = _normalise_name(coach_model.name)
@@ -97,12 +89,8 @@ def create_combined_team_model(
             else:
                 coach_names[coach_name_key] = coach_id
             coaches[coach_id] = coaches.get(coach_id, []) + [coach_model]
-        team_model_lbw = team_model.lbw
-        if not is_null(team_model_lbw):
-            lbw = team_model_lbw
-        team_model_end_dt = team_model.end_dt
-        if not is_null(team_model_end_dt):
-            end_dt = team_model_end_dt
+        lbw = more_interesting(lbw, team_model.lbw)
+        end_dt = more_interesting(end_dt, team_model.end_dt)
 
     team_model = TeamModel(
         identifier=identifier,
