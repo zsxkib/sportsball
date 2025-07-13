@@ -21,6 +21,7 @@ from .espn_venue_model import create_espn_venue_model
 _BAD_URLS = {
     "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/athletes/4689686?lang=en&region=us",
     "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/athletes/2333612?lang=en&region=us",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/college-football/seasons/2021/athletes/4426888?lang=en&region=us",
 }
 
 

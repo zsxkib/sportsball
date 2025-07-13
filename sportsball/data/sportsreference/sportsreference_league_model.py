@@ -51,13 +51,15 @@ def _find_game_urls(soup: BeautifulSoup, base_url: str) -> list[str]:
     for td in soup.find_all("td", class_="gamelink"):
         for a in td.find_all("a"):
             game_url = urllib.parse.urljoin(base_url, a.get("href"))
-            if game_url.endswith("."):
+            if game_url.endswith(".html"):
+                pass
+            elif game_url.endswith("."):
                 game_url += "html"
-            if game_url.endswith(".ht"):
+            elif game_url.endswith(".ht"):
                 game_url += "ml"
-            if game_url.endswith(".h"):
+            elif game_url.endswith(".h"):
                 game_url += "tml"
-            if not game_url.endswith(".html"):
+            elif not game_url.endswith(".html"):
                 game_url += ".html"
             game_url = REPLACEMENT_URLS.get(game_url, game_url)
             if game_url in BAD_URLS:

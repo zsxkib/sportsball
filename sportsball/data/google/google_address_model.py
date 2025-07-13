@@ -17646,6 +17646,24 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Toledo College": SportsballGeocodeTuple(
+        city="Toledo",
+        state="OH",
+        postal="",
+        lat=41.657716,
+        lng=-83.61366,
+        housenumber="",
+        country="USA",
+    ),
+    "Eastern Illinois College": SportsballGeocodeTuple(
+        city="Charleston",
+        state="IL",
+        postal="",
+        lat=39.484444,
+        lng=-88.175278,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
