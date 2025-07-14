@@ -608,7 +608,7 @@ PLAYER_HITS_COLUMN: Literal["hits"] = "hits"
 PLAYER_TRUE_SHOOTING_PERCENTAGE_COLUMN: Literal["true_shooting_percentage"] = (
     "true_shooting_percentage"
 )
-VERSION = DELIMITER.join(["0.0.2", ADDRESS_VERSION, OWNER_VERSION, VENUE_VERSION])
+VERSION = DELIMITER.join(["0.0.3", ADDRESS_VERSION, OWNER_VERSION, VENUE_VERSION])
 
 
 def _guess_sex(data: dict[str, Any]) -> str | None:
