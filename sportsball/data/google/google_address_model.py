@@ -3648,6 +3648,24 @@ UNIVERSITY_OF_ARIZONA = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
+DETROIT_OLYMPIA = SportsballGeocodeTuple(
+    city="Detroit",
+    state="MI",
+    postal="",
+    lat=42.354444,
+    lng=-83.100556,
+    housenumber="5920",
+    country="USA",
+)
+LAKEFRONT_ARENA = SportsballGeocodeTuple(
+    city="New Orleans",
+    state="LA",
+    postal="",
+    lat=30.03,
+    lng=-90.050556,
+    housenumber="6801",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -7309,15 +7327,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Murphy Athletic Center, Murfreesboro, Tennessee": MURPHY_ATHELTIC_CENTER,
     "Adams Center/Dahlberg Arena, Missoula, Montana": DAHLBERG_ARENA,
-    "Kiefer Lakefront Arena, New Orleans , Louisiana": SportsballGeocodeTuple(
-        city="New Orleans",
-        state="LA",
-        postal="",
-        lat=30.03,
-        lng=-90.050556,
-        housenumber="6801",
-        country="USA",
-    ),
+    "Kiefer Lakefront Arena, New Orleans , Louisiana": LAKEFRONT_ARENA,
     "Bank of Kentucky Center, Highland Heights, Kentucky": BANK_OF_KENTUCKY_CENTER,
     "Robins Center, Richmond, Virginia": SportsballGeocodeTuple(
         city="Richmond",
@@ -11781,15 +11791,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Marvel Stadium, Melbourne, Austrália": MARVEL_STADIUM,
     "Adelaide Oval, Adelaide, Austrália": ADELAIDE_OVAL,
     "The Gabba, Brisbane, Austrália": GABBA,
-    "Detroit Olympia, Detroit, Michigan": SportsballGeocodeTuple(
-        city="Detroit",
-        state="MI",
-        postal="",
-        lat=42.354444,
-        lng=-83.100556,
-        housenumber="5920",
-        country="USA",
-    ),
+    "Detroit Olympia, Detroit, Michigan": DETROIT_OLYMPIA,
     "Convention Hall, Philadelphia, Pennsylvania": SportsballGeocodeTuple(
         city="Philadelphia",
         state="PA",
@@ -17688,6 +17690,27 @@ _CACHED_GEOCODES: dict[str, Any] = {
         postal="",
         lat=36.10779,
         lng=-115.14376,
+        housenumber="",
+        country="USA",
+    ),
+    "Amerant Bank Arena, Sunrise, FL, USA": AMERANT_BANK_ARENA,
+    "Olympia Stadium": DETROIT_OLYMPIA,
+    "Lakefront Arena - New Orleans, Louisiana - United States": LAKEFRONT_ARENA,
+    "Michigan College": SportsballGeocodeTuple(
+        city="Ann Arbor",
+        state="MI",
+        postal="",
+        lat=42.276944,
+        lng=-83.738056,
+        housenumber="",
+        country="USA",
+    ),
+    "Mary Hardin-Baylor College": SportsballGeocodeTuple(
+        city="Belton",
+        state="TX",
+        postal="",
+        lat=31.0665,
+        lng=-97.464,
         housenumber="",
         country="USA",
     ),
