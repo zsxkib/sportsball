@@ -1,6 +1,6 @@
 """Sports Reference game model."""
 
-# pylint: disable=too-many-locals,too-many-statements,unused-argument,protected-access,too-many-arguments,use-maxsplit-arg,too-many-branches,duplicate-code,broad-exception-caught
+# pylint: disable=too-many-locals,too-many-statements,unused-argument,protected-access,too-many-arguments,use-maxsplit-arg,too-many-branches,duplicate-code,broad-exception-caught,too-many-lines
 import datetime
 import io
 import logging
@@ -66,6 +66,35 @@ def _find_old_dt(
     player_points: dict[str, int],
     game_scores: dict[str, float],
     point_differentials: dict[str, int],
+    goals: dict[str, int],
+    penalties_in_minutes: dict[str, datetime.timedelta],
+    even_strength_goals: dict[str, int],
+    power_play_goals: dict[str, int],
+    short_handed_goals: dict[str, int],
+    game_winning_goals: dict[str, int],
+    even_strength_assists: dict[str, int],
+    power_play_assists: dict[str, int],
+    short_handed_assists: dict[str, int],
+    shots_on_goal: dict[str, int],
+    shooting_percentage: dict[str, float],
+    shifts: dict[str, int],
+    time_on_ice: dict[str, datetime.timedelta],
+    decision: dict[str, str],
+    goals_against: dict[str, int],
+    shots_against: dict[str, int],
+    saves: dict[str, int],
+    save_percentage: dict[str, float],
+    shutouts: dict[str, int],
+    individual_corsi_for_events: dict[str, int],
+    on_shot_ice_for_events: dict[str, int],
+    on_shot_ice_against_events: dict[str, int],
+    corsi_for_percentage: dict[str, float],
+    relative_corsi_for_percentage: dict[str, float],
+    offensive_zone_starts: dict[str, int],
+    defensive_zone_starts: dict[str, int],
+    offensive_zone_start_percentage: dict[str, float],
+    hits: dict[str, int],
+    true_shooting_percentage: dict[str, float],
 ) -> tuple[datetime.datetime, list[TeamModel], str | None]:
     teams: list[TeamModel] = []
 
@@ -191,6 +220,35 @@ def _find_old_dt(
                     player_points=player_points,
                     game_scores=game_scores,
                     point_differentials=point_differentials,
+                    goals=goals,
+                    penalties_in_minutes=penalties_in_minutes,
+                    even_strength_goals=even_strength_goals,
+                    power_play_goals=power_play_goals,
+                    short_handed_goals=short_handed_goals,
+                    game_winning_goals=game_winning_goals,
+                    even_strength_assists=even_strength_assists,
+                    power_play_assists=power_play_assists,
+                    short_handed_assists=short_handed_assists,
+                    shots_on_goal=shots_on_goal,
+                    shooting_percentage=shooting_percentage,
+                    shifts=shifts,
+                    time_on_ice=time_on_ice,
+                    decision=decision,
+                    goals_against=goals_against,
+                    shots_against=shots_against,
+                    saves=saves,
+                    save_percentage=save_percentage,
+                    shutouts=shutouts,
+                    individual_corsi_for_events=individual_corsi_for_events,
+                    on_shot_ice_for_events=on_shot_ice_for_events,
+                    on_shot_ice_against_events=on_shot_ice_against_events,
+                    corsi_for_percentage=corsi_for_percentage,
+                    relative_corsi_for_percentage=relative_corsi_for_percentage,
+                    offensive_zone_starts=offensive_zone_starts,
+                    defensive_zone_starts=defensive_zone_starts,
+                    offensive_zone_start_percentage=offensive_zone_start_percentage,
+                    hits=hits,
+                    true_shooting_percentage=true_shooting_percentage,
                 )
             )
 
@@ -289,6 +347,35 @@ def _find_new_dt(
     player_points: dict[str, int],
     game_scores: dict[str, float],
     point_differentials: dict[str, int],
+    goals: dict[str, int],
+    penalties_in_minutes: dict[str, datetime.timedelta],
+    even_strength_goals: dict[str, int],
+    power_play_goals: dict[str, int],
+    short_handed_goals: dict[str, int],
+    game_winning_goals: dict[str, int],
+    even_strength_assists: dict[str, int],
+    power_play_assists: dict[str, int],
+    short_handed_assists: dict[str, int],
+    shots_on_goal: dict[str, int],
+    shooting_percentage: dict[str, float],
+    shifts: dict[str, int],
+    time_on_ice: dict[str, datetime.timedelta],
+    decision: dict[str, str],
+    goals_against: dict[str, int],
+    shots_against: dict[str, int],
+    saves: dict[str, int],
+    save_percentage: dict[str, float],
+    shutouts: dict[str, int],
+    individual_corsi_for_events: dict[str, int],
+    on_shot_ice_for_events: dict[str, int],
+    on_shot_ice_against_events: dict[str, int],
+    corsi_for_percentage: dict[str, float],
+    relative_corsi_for_percentage: dict[str, float],
+    offensive_zone_starts: dict[str, int],
+    defensive_zone_starts: dict[str, int],
+    offensive_zone_start_percentage: dict[str, float],
+    hits: dict[str, int],
+    true_shooting_percentage: dict[str, float],
 ) -> tuple[datetime.datetime, list[TeamModel], str]:
     in_divs = scorebox_meta_div.find_all("div")
     current_in_div_idx = 0
@@ -340,6 +427,35 @@ def _find_new_dt(
                     player_points=player_points,
                     game_scores=game_scores,
                     point_differentials=point_differentials,
+                    goals=goals,
+                    penalties_in_minutes=penalties_in_minutes,
+                    even_strength_goals=even_strength_goals,
+                    power_play_goals=power_play_goals,
+                    short_handed_goals=short_handed_goals,
+                    game_winning_goals=game_winning_goals,
+                    even_strength_assists=even_strength_assists,
+                    power_play_assists=power_play_assists,
+                    short_handed_assists=short_handed_assists,
+                    shots_on_goal=shots_on_goal,
+                    shooting_percentage=shooting_percentage,
+                    shifts=shifts,
+                    time_on_ice=time_on_ice,
+                    decision=decision,
+                    goals_against=goals_against,
+                    shots_against=shots_against,
+                    saves=saves,
+                    save_percentage=save_percentage,
+                    shutouts=shutouts,
+                    individual_corsi_for_events=individual_corsi_for_events,
+                    on_shot_ice_for_events=on_shot_ice_for_events,
+                    on_shot_ice_against_events=on_shot_ice_against_events,
+                    corsi_for_percentage=corsi_for_percentage,
+                    relative_corsi_for_percentage=relative_corsi_for_percentage,
+                    offensive_zone_starts=offensive_zone_starts,
+                    defensive_zone_starts=defensive_zone_starts,
+                    offensive_zone_start_percentage=offensive_zone_start_percentage,
+                    hits=hits,
+                    true_shooting_percentage=true_shooting_percentage,
                 )
             )
 
@@ -402,6 +518,35 @@ def _create_sportsreference_game_model(
     player_points = {}
     game_scores = {}
     point_differentials = {}
+    goals = {}
+    penalties_in_minutes: dict[str, datetime.timedelta] = {}
+    even_strength_goals = {}
+    power_play_goals = {}
+    short_handed_goals = {}
+    game_winning_goals = {}
+    even_strength_assists: dict[str, int] = {}
+    power_play_assists: dict[str, int] = {}
+    short_handed_assists: dict[str, int] = {}
+    shots_on_goal = {}
+    shooting_percentage = {}
+    shifts = {}
+    time_on_ice = {}
+    decision = {}
+    goals_against = {}
+    shots_against = {}
+    saves = {}
+    save_percentage = {}
+    shutouts = {}
+    individual_corsi_for_events = {}
+    on_shot_ice_for_events = {}
+    on_shot_ice_against_events = {}
+    corsi_for_percentage = {}
+    relative_corsi_for_percentage = {}
+    offensive_zone_starts = {}
+    defensive_zone_starts = {}
+    offensive_zone_start_percentage = {}
+    hits = {}
+    true_shooting_percentage = {}
     try:
         dfs = pd.read_html(handle)
         for df in dfs:
@@ -483,6 +628,122 @@ def _create_sportsreference_game_model(
                     plusminuses = df["GmSc"].tolist()
                     for idx, player in enumerate(players):
                         point_differentials[player] = plusminuses[idx]
+                if "G" in df.columns.values.tolist():
+                    gs = df["G"].tolist()
+                    for idx, player in enumerate(players):
+                        goals[player] = gs[idx]
+                if "A" in df.columns.values.tolist():
+                    ass = df["A"].tolist()
+                    for idx, player in enumerate(players):
+                        assists[player] = ass[idx]
+                if "PIM" in df.columns.values.tolist():
+                    pims = df["PIM"].tolist()
+                    for idx, player in enumerate(players):
+                        pim = pims[idx]
+                        pim_minutes, pim_seconds = pim.split(":")
+                        penalties_in_minutes[player] = datetime.timedelta(
+                            minutes=int(pim_minutes), seconds=int(pim_seconds)
+                        )
+                if "EV" in df.columns.values.tolist():
+                    evs = df["EV"].tolist()
+                    for idx, player in enumerate(players):
+                        even_strength_goals[player] = evs[idx]
+                if "PP" in df.columns.values.tolist():
+                    pps = df["PP"].tolist()
+                    for idx, player in enumerate(players):
+                        power_play_goals[player] = pps[idx]
+                if "SH" in df.columns.values.tolist():
+                    shs = df["SH"].tolist()
+                    for idx, player in enumerate(players):
+                        short_handed_goals[player] = shs[idx]
+                if "GW" in df.columns.values.tolist():
+                    gws = df["GW"].tolist()
+                    for idx, player in enumerate(players):
+                        game_winning_goals[player] = gws[idx]
+                if "S" in df.columns.values.tolist():
+                    ss = df["S"].tolist()
+                    for idx, player in enumerate(players):
+                        shots_on_goal[player] = ss[idx]
+                if "S%" in df.columns.values.tolist():
+                    sps = df["S%"].tolist()
+                    for idx, player in enumerate(players):
+                        shooting_percentage[player] = sps[idx]
+                if "SHFT" in df.columns.values.tolist():
+                    shfts = df["SHFT"].tolist()
+                    for idx, player in enumerate(players):
+                        shifts[player] = shfts[idx]
+                if "TOI" in df.columns.values.tolist():
+                    tois = df["TOI"].tolist()
+                    for idx, player in enumerate(players):
+                        toi = tois[idx]
+                        toi_minutes, toi_seconds = toi.split(":")
+                        time_on_ice[player] = datetime.timedelta(
+                            minutes=int(toi_minutes), seconds=int(toi_seconds)
+                        )
+                if "DEC" in df.columns.values.tolist():
+                    decs = df["DEC"].tolist()
+                    for idx, player in enumerate(players):
+                        decision[player] = decs[idx]
+                if "GA" in df.columns.values.tolist():
+                    gas = df["GA"].tolist()
+                    for idx, player in enumerate(players):
+                        goals_against[player] = gas[idx]
+                if "SA" in df.columns.values.tolist():
+                    sas = df["SA"].tolist()
+                    for idx, player in enumerate(players):
+                        shots_against[player] = sas[idx]
+                if "SV" in df.columns.values.tolist():
+                    svs = df["SV"].tolist()
+                    for idx, player in enumerate(players):
+                        saves[player] = svs[idx]
+                if "SV%" in df.columns.values.tolist():
+                    svps = df["SV%"].tolist()
+                    for idx, player in enumerate(players):
+                        save_percentage[player] = svps[idx]
+                if "SO" in df.columns.values.tolist():
+                    sos = df["SO"].tolist()
+                    for idx, player in enumerate(players):
+                        shutouts[player] = sos[idx]
+                if "iCF" in df.columns.values.tolist():
+                    icfs = df["iCF"].tolist()
+                    for idx, player in enumerate(players):
+                        individual_corsi_for_events[player] = icfs[idx]
+                if "SAT-F" in df.columns.values.tolist():
+                    satfs = df["SAT-F"].tolist()
+                    for idx, player in enumerate(players):
+                        on_shot_ice_for_events[player] = satfs[idx]
+                if "SAT-A" in df.columns.values.tolist():
+                    satas = df["SAT-A"].tolist()
+                    for idx, player in enumerate(players):
+                        on_shot_ice_against_events[player] = satas[idx]
+                if "CF%" in df.columns.values.tolist():
+                    cfps = df["CF%"].tolist()
+                    for idx, player in enumerate(players):
+                        corsi_for_percentage[player] = cfps[idx]
+                if "CRel%" in df.columns.values.tolist():
+                    crelps = df["CRel%"].tolist()
+                    for idx, player in enumerate(players):
+                        relative_corsi_for_percentage[player] = crelps[idx]
+                if "ZSO" in df.columns.values.tolist():
+                    zsos = df["ZSO"].tolist()
+                    for idx, player in enumerate(players):
+                        offensive_zone_starts[player] = zsos[idx]
+                if "ZSD" in df.columns.values.tolist():
+                    zsds = df["ZSD"].tolist()
+                    for idx, player in enumerate(players):
+                        defensive_zone_starts[player] = zsds[idx]
+                if "oZS%" in df.columns.values.tolist():
+                    ozsps = df["oZS%"].tolist()
+                    for idx, player in enumerate(players):
+                        offensive_zone_start_percentage[player] = ozsps[idx]
+                if "HIT" in df.columns.values.tolist():
+                    hitss = df["HIT"].tolist()
+                    for idx, player in enumerate(players):
+                        hits[player] = hitss[idx]
+                if "TS%" in df.columns.values.tolist():
+                    tsps = df["TS%"].tolist()
+                    for idx, player in enumerate(players):
+                        true_shooting_percentage[player] = tsps[idx]
     except Exception as exc:
         logging.error(url)
         logging.error(response.text)
@@ -517,6 +778,35 @@ def _create_sportsreference_game_model(
             player_points=player_points,
             game_scores=game_scores,
             point_differentials=point_differentials,
+            goals=goals,
+            penalties_in_minutes=penalties_in_minutes,
+            even_strength_goals=even_strength_goals,
+            power_play_goals=power_play_goals,
+            short_handed_goals=short_handed_goals,
+            game_winning_goals=game_winning_goals,
+            even_strength_assists=even_strength_assists,
+            power_play_assists=power_play_assists,
+            short_handed_assists=short_handed_assists,
+            shots_on_goal=shots_on_goal,
+            shooting_percentage=shooting_percentage,
+            shifts=shifts,
+            time_on_ice=time_on_ice,
+            decision=decision,
+            goals_against=goals_against,
+            shots_against=shots_against,
+            saves=saves,
+            save_percentage=save_percentage,
+            shutouts=shutouts,
+            individual_corsi_for_events=individual_corsi_for_events,
+            on_shot_ice_for_events=on_shot_ice_for_events,
+            on_shot_ice_against_events=on_shot_ice_against_events,
+            corsi_for_percentage=corsi_for_percentage,
+            relative_corsi_for_percentage=relative_corsi_for_percentage,
+            offensive_zone_starts=offensive_zone_starts,
+            defensive_zone_starts=defensive_zone_starts,
+            offensive_zone_start_percentage=offensive_zone_start_percentage,
+            hits=hits,
+            true_shooting_percentage=true_shooting_percentage,
         )
     else:
         dt, teams, venue_name = _find_new_dt(
@@ -545,6 +835,35 @@ def _create_sportsreference_game_model(
             player_points=player_points,
             game_scores=game_scores,
             point_differentials=point_differentials,
+            goals=goals,
+            penalties_in_minutes=penalties_in_minutes,
+            even_strength_goals=even_strength_goals,
+            power_play_goals=power_play_goals,
+            short_handed_goals=short_handed_goals,
+            game_winning_goals=game_winning_goals,
+            even_strength_assists=even_strength_assists,
+            power_play_assists=power_play_assists,
+            short_handed_assists=short_handed_assists,
+            shots_on_goal=shots_on_goal,
+            shooting_percentage=shooting_percentage,
+            shifts=shifts,
+            time_on_ice=time_on_ice,
+            decision=decision,
+            goals_against=goals_against,
+            shots_against=shots_against,
+            saves=saves,
+            save_percentage=save_percentage,
+            shutouts=shutouts,
+            individual_corsi_for_events=individual_corsi_for_events,
+            on_shot_ice_for_events=on_shot_ice_for_events,
+            on_shot_ice_against_events=on_shot_ice_against_events,
+            corsi_for_percentage=corsi_for_percentage,
+            relative_corsi_for_percentage=relative_corsi_for_percentage,
+            offensive_zone_starts=offensive_zone_starts,
+            defensive_zone_starts=defensive_zone_starts,
+            offensive_zone_start_percentage=offensive_zone_start_percentage,
+            hits=hits,
+            true_shooting_percentage=true_shooting_percentage,
         )
     for team in teams:
         if team.name == "File Not Found":
@@ -637,6 +956,19 @@ def _create_sportsreference_game_model(
                 logging.warning("Unrecognised Season Text: %s", season_text)
         break
 
+    game_text = soup.get_text().replace("\n", "")
+    attendance = None
+    if "Attendance:" in game_text:
+        attendance = int(
+            game_text.split("Attendance:")[1]
+            .strip()
+            .split()[0]
+            .strip()
+            .replace(",", "")
+            .replace("Time", "")
+            .replace("Show/Hide", "")
+        )
+
     return GameModel(
         dt=dt,
         week=None,
@@ -647,7 +979,7 @@ def _create_sportsreference_game_model(
         year=dt.year,
         season_type=season_type,
         end_dt=None,
-        attendance=None,
+        attendance=attendance,
         postponed=None,
         play_off=None,
         distance=None,

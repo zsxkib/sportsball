@@ -277,6 +277,34 @@ def create_combined_player_model(
     rushing_touchdowns_39_yards = None
     rushing_touchdowns_49_yards = None
     rushing_touchdowns_above_50_yards = None
+    penalties_in_minutes = None
+    even_strength_goals = None
+    power_play_goals = None
+    short_handed_goals = None
+    game_winning_goals = None
+    even_strength_assists = None
+    power_play_assists = None
+    short_handed_assists = None
+    shots_on_goal = None
+    shooting_percentage = None
+    shifts = None
+    time_on_ice = None
+    decision = None
+    goals_against = None
+    shots_against = None
+    saves = None
+    save_percentage = None
+    shutouts = None
+    individual_corsi_for_events = None
+    on_shot_ice_for_events = None
+    on_shot_ice_against_events = None
+    corsi_for_percentage = None
+    relative_corsi_for_percentage = None
+    offensive_zone_starts = None
+    defensive_zone_starts = None
+    offensive_zone_start_percentage = None
+    hits = None
+    true_shooting_percentage = None
     for player_model in player_models:
         jersey = more_interesting(jersey, player_model.jersey)
         kicks = more_interesting(kicks, player_model.kicks)
@@ -921,6 +949,73 @@ def create_combined_player_model(
             rushing_touchdowns_above_50_yards,
             player_model.rushing_touchdowns_above_50_yards,
         )
+        penalties_in_minutes = more_interesting(
+            penalties_in_minutes, player_model.penalties_in_minutes
+        )
+        even_strength_goals = more_interesting(
+            even_strength_goals, player_model.even_strength_goals
+        )
+        power_play_goals = more_interesting(
+            power_play_goals, player_model.power_play_goals
+        )
+        short_handed_goals = more_interesting(
+            short_handed_goals, player_model.short_handed_goals
+        )
+        game_winning_goals = more_interesting(
+            game_winning_goals, player_model.game_winning_goals
+        )
+        even_strength_assists = more_interesting(
+            even_strength_assists, player_model.even_strength_assists
+        )
+        power_play_assists = more_interesting(
+            power_play_assists, player_model.power_play_assists
+        )
+        short_handed_assists = more_interesting(
+            short_handed_assists, player_model.short_handed_assists
+        )
+        shots_on_goal = more_interesting(shots_on_goal, player_model.shots_on_goal)
+        shooting_percentage = more_interesting(
+            shooting_percentage, player_model.shooting_percentage
+        )
+        shifts = more_interesting(shifts, player_model.shifts)
+        time_on_ice = more_interesting(time_on_ice, player_model.time_on_ice)
+        decision = more_interesting(decision, player_model.decision)
+        goals_against = more_interesting(goals_against, player_model.goals_against)
+        shots_against = more_interesting(shots_against, player_model.shots_against)
+        saves = more_interesting(saves, player_model.saves)
+        save_percentage = more_interesting(
+            save_percentage, player_model.save_percentage
+        )
+        shutouts = more_interesting(shutouts, player_model.shutouts)
+        individual_corsi_for_events = more_interesting(
+            individual_corsi_for_events, player_model.individual_corsi_for_events
+        )
+        on_shot_ice_for_events = more_interesting(
+            on_shot_ice_for_events, player_model.on_shot_ice_for_events
+        )
+        on_shot_ice_against_events = more_interesting(
+            on_shot_ice_against_events, player_model.on_shot_ice_against_events
+        )
+        corsi_for_percentage = more_interesting(
+            corsi_for_percentage, player_model.corsi_for_percentage
+        )
+        relative_corsi_for_percentage = more_interesting(
+            relative_corsi_for_percentage, player_model.relative_corsi_for_percentage
+        )
+        offensive_zone_starts = more_interesting(
+            offensive_zone_starts, player_model.offensive_zone_starts
+        )
+        defensive_zone_starts = more_interesting(
+            defensive_zone_starts, player_model.defensive_zone_starts
+        )
+        offensive_zone_start_percentage = more_interesting(
+            offensive_zone_start_percentage,
+            player_model.offensive_zone_start_percentage,
+        )
+        hits = more_interesting(hits, player_model.hits)
+        true_shooting_percentage = more_interesting(
+            true_shooting_percentage, player_model.true_shooting_percentage
+        )
     if name is None:
         raise ValueError("name is null")
     if species is None:
@@ -1192,6 +1287,34 @@ def create_combined_player_model(
         rushing_touchdowns_39_yards=rushing_touchdowns_39_yards,
         rushing_touchdowns_49_yards=rushing_touchdowns_49_yards,
         rushing_touchdowns_above_50_yards=rushing_touchdowns_above_50_yards,
+        penalties_in_minutes=penalties_in_minutes,
+        even_strength_goals=even_strength_goals,
+        power_play_goals=power_play_goals,
+        short_handed_goals=short_handed_goals,
+        game_winning_goals=game_winning_goals,
+        even_strength_assists=even_strength_assists,
+        power_play_assists=power_play_assists,
+        short_handed_assists=short_handed_assists,
+        shots_on_goal=shots_on_goal,
+        shooting_percentage=shooting_percentage,
+        shifts=shifts,
+        time_on_ice=time_on_ice,
+        decision=decision,
+        goals_against=goals_against,
+        shots_against=shots_against,
+        saves=saves,
+        save_percentage=save_percentage,
+        shutouts=shutouts,
+        individual_corsi_for_events=individual_corsi_for_events,
+        on_shot_ice_for_events=on_shot_ice_for_events,
+        on_shot_ice_against_events=on_shot_ice_against_events,
+        corsi_for_percentage=corsi_for_percentage,
+        relative_corsi_for_percentage=relative_corsi_for_percentage,
+        offensive_zone_starts=offensive_zone_starts,
+        defensive_zone_starts=defensive_zone_starts,
+        offensive_zone_start_percentage=offensive_zone_start_percentage,
+        hits=hits,
+        true_shooting_percentage=true_shooting_percentage,
     )
 
     ffill(player_ffill, identifier, player_model)

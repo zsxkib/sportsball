@@ -65,6 +65,7 @@ The supported leagues are:
 * 🏀 [NCAAB](https://www.ncaa.com/sports/basketball-men/d1)
 * 🏈 [NCAAF](https://www.ncaa.com/sports/football/fbs)
 * 🏈 [NFL](https://www.nfl.com/)
+* 🏒 [NHL](https://www.nhl.com/)
 
 ## Architecture :triangular_ruler:
 
@@ -438,6 +439,34 @@ A representation of a player within a team within a game.
 * **rushing_touchdowns_39_yards**: The rushing touchdowns made by the player during the game from 39 yards.
 * **rushing_touchdowns_49_yards**: The rushing touchdowns made by the player during the game from 49 yards.
 * **rushing_touchdowns_above_50_yards**: The rushing touchdowns made by the player during the game above 50 yards.
+* **penalties_in_minutes**: The penalties in minutes for the player during the game (in seconds).
+* **even_strength_goals**: The even strength goals by the player during the game.
+* **power_play_goals**: The power play goals by the player during the game.
+* **short_handed_goals**: The short handed goals by the player during the game.
+* **game_winning_goals**: The game winning goals by the player during the game.
+* **even_strength_assists**: The even strength assists by the player during the game.
+* **power_play_assists**: The power play assists by the player during the game.
+* **short_handed_assists**: The short handed assists by the player during the game.
+* **shots_on_goal**: The shots on goal by the player during the game.
+* **shooting_percentage**: The shooting percentage by the player during the game.
+* **shifts**: The shifts by the player during the game.
+* **time_on_ice**: The time on the ice by the player during the game in seconds.
+* **decision**: The goalie decision by the player during the game.
+* **goals_against**: The goals against the player during the game.
+* **shots_against**: The shots against the player during the game.
+* **saves**: The saves by the player during the game.
+* **save_percentage**: The save percentage of the player during the game.
+* **shutouts**: The shutouts by the player during the game.
+* **individual_corsi_for_events**: Individual Corsi refers to the number of shot attempts (including shots on goal, blocked shots, and missed shots) taken by a player's team while that player is on the ice, compared to the number of shot attempts taken by the opposing team.
+* **on_shot_ice_for_events**: : The total number of shot attempts (shots on goal, missed shots, and blocked shots) a player is on the ice for, both for and against their team, during a specific game or time period.
+* **on_shot_ice_against_events**: The number of shot attempts the opposing team makes while that same player is on the ice.
+* **corsi_for_percentage**: Measures a player's or team's shot attempt differential while on the ice.
+* **relative_corsi_for_percentage**: Measures how much a player's on-ice Corsi For Percentage (CF%) differs from their team's overall CF% when the player is not on the ice.
+* **offensive_zone_starts**: Indicates how frequently a player begins a shift in the offensive zone compared to the defensive zone.
+* **defensive_zone_starts**: Indicates how frequently a player begins a shift in the defensive zone compared to the offensize zone.
+* **offensive_zone_start_percentage**: The percentage a player begins a shift in the offensize zone to the defensize zone compared to the defensize zone to the offensize zone.
+* **hits**: The hits made by the player during the game.
+* **true_shooting_percentage**: The true shooting percentage of the player during the game.
 
 #### Odds
 

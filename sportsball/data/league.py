@@ -1,5 +1,6 @@
 """The enumeration of the different supported leagues."""
 
+# pylint: disable=too-many-return-statements
 from enum import StrEnum
 
 
@@ -12,6 +13,7 @@ class League(StrEnum):
     NCAAB = "ncaab"
     NCAAF = "ncaaf"
     NFL = "nfl"
+    NHL = "nhl"
 
 
 def long_name(league: League) -> str:
@@ -29,6 +31,8 @@ def long_name(league: League) -> str:
             return "NCAA Division I Football"
         case League.NFL:
             return "National Football League"
+        case League.NHL:
+            return "National Hockey League"
 
 
 def league_from_str(league_str: str) -> League:
@@ -47,5 +51,7 @@ def league_from_str(league_str: str) -> League:
             return League.NCAAF
         case str(League.NFL):
             return League.NFL
+        case str(League.NHL):
+            return League.NHL
         case _:
             raise ValueError(f"Unrecognised League: {league_str}")

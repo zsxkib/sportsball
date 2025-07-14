@@ -16,6 +16,7 @@ from .data.nba import NBALeagueModel
 from .data.ncaab import NCAABLeagueModel
 from .data.ncaaf import NCAAFLeagueModel
 from .data.nfl import NFLLeagueModel
+from .data.nhl import NHLLeagueModel
 
 
 class SportsBall:
@@ -54,6 +55,8 @@ class SportsBall:
                 self._leagues[league] = NCAABLeagueModel(self._session, league_filter)
             elif league == League.HKJC:
                 self._leagues[league] = HKJCLeagueModel(self._session)
+            elif league == League.NHL:
+                self._leagues[league] = NHLLeagueModel(self._session, league_filter)
             else:
                 raise ValueError(f"Unrecognised league: {league}")
         return self._leagues[league]

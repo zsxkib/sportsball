@@ -96,6 +96,8 @@ class OddsPortalLeagueModel(LeagueModel):
                 return "/".join([AMERICAN_FOOTBALL, USA, NCAA, ""])
             case League.NFL:
                 return "/".join([AMERICAN_FOOTBALL, USA, "nfl", ""])
+            case League.NHL:
+                return "/".join(["hockey", USA, "nhl", ""])
             case _:
                 raise ValueError(f"Unsupported league: {self.league}")
 
