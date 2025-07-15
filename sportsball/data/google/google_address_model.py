@@ -3675,6 +3675,15 @@ ROGERS_PLACE = SportsballGeocodeTuple(
     housenumber="10220",
     country="Canada",
 )
+LN_FEDERAL_CREDIT_UNION_STADIUM = SportsballGeocodeTuple(
+    city="Louisville",
+    state="KY",
+    postal="40208",
+    lat=38.205833,
+    lng=-85.758889,
+    housenumber="2800",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -4252,15 +4261,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="3800",
         country="USA",
     ),
-    "L&N Federal Credit Union Stadium - Louisville - KY - 40208": SportsballGeocodeTuple(
-        city="Louisville",
-        state="KY",
-        postal="40208",
-        lat=38.205833,
-        lng=-85.758889,
-        housenumber="2800",
-        country="USA",
-    ),
+    "L&N Federal Credit Union Stadium - Louisville - KY - 40208": LN_FEDERAL_CREDIT_UNION_STADIUM,
     "Bobcat Stadium (TX) - San Marcos - TX - 78666": SportsballGeocodeTuple(
         city="San Marcos",
         state="TX",
@@ -17749,6 +17750,26 @@ _CACHED_GEOCODES: dict[str, Any] = {
         postal="",
         lat=29.2103,
         lng=-81.0306,
+        housenumber="",
+        country="USA",
+    ),
+    "Lenovo Center, Raleigh, NC, USA": LENOVO_CENTER,
+    "Papa John's Cardinal Stadium": LN_FEDERAL_CREDIT_UNION_STADIUM,
+    "Nevada College": SportsballGeocodeTuple(
+        city="Reno",
+        state="NV",
+        postal="",
+        lat=39.537778,
+        lng=-119.813889,
+        housenumber="",
+        country="USA",
+    ),
+    "Wisconsin College": SportsballGeocodeTuple(
+        city="Madison",
+        state="WI",
+        postal="",
+        lat=43.075278,
+        lng=-89.404167,
         housenumber="",
         country="USA",
     ),

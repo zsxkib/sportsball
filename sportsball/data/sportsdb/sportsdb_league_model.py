@@ -157,7 +157,7 @@ class SportsDBLeagueModel(LeagueModel):
                             except ValueError:
                                 pass
                         case SeasonType.REGULAR:
-                            if self.league != League.NBA:
+                            if self.league not in {League.NBA, League.NHL}:
                                 try:
                                     for count, round_str in enumerate(range(1, 125)):
                                         yield from self._produce_games(
