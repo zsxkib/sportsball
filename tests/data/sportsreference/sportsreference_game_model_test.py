@@ -20,6 +20,114 @@ class TestSportsReferenceGameModel(unittest.TestCase):
         with requests_mock.Mocker() as m:
             with open(os.path.join(self.dir, "202501230ATL.html"), "rb") as f:
                 m.get(url, content=f.read())
+            with open(os.path.join(self.dir, "TOR_2025.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/teams/TOR/2025.html", content=f.read())
+            with open(os.path.join(self.dir, "jamesle01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/j/jamesle01.html", content=f.read())
+            with open(os.path.join(self.dir, "barrerj01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/b/barrerj01.html", content=f.read())
+            with open(os.path.join(self.dir, "battlja01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/b/battlja01.html", content=f.read())
+            with open(os.path.join(self.dir, "hardeja01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/h/hardeja01.html", content=f.read())
+            with open(os.path.join(self.dir, "barnesc01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/b/barnesc01.html", content=f.read())
+            with open(os.path.join(self.dir, "wembavi01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/w/wembavi01.html", content=f.read())
+            with open(os.path.join(self.dir, "walteja01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/w/walteja01.html", content=f.read())
+            with open(os.path.join(self.dir, "olajuha01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/o/olajuha01.html", content=f.read())
+            with open(os.path.join(self.dir, "stockjo01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/s/stockjo01.html", content=f.read())
+            with open(os.path.join(self.dir, "templga01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/t/templga01.html", content=f.read())
+            with open(os.path.join(self.dir, "mitchda01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/m/mitchda01.html", content=f.read())
+            with open(os.path.join(self.dir, "olynyke01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/o/olynyke01.html", content=f.read())
+            with open(os.path.join(self.dir, "chomcul01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/c/chomcul01.html", content=f.read())
+            with open(os.path.join(self.dir, "dickgr01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/d/dickgr01.html", content=f.read())
+            with open(os.path.join(self.dir, "antetgi01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/a/antetgi01.html", content=f.read())
+            with open(os.path.join(self.dir, "bouchch01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/b/bouchch01.html", content=f.read())
+            with open(os.path.join(self.dir, "sheadja01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/s/sheadja01.html", content=f.read())
+            with open(os.path.join(self.dir, "quickim01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/q/quickim01.html", content=f.read())
+            with open(os.path.join(self.dir, "havlijo01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/h/havlijo01.html", content=f.read())
+            with open(os.path.join(self.dir, "doncilu01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/d/doncilu01.html", content=f.read())
+            with open(os.path.join(self.dir, "poeltja01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/p/poeltja01.html", content=f.read())
+            with open(os.path.join(self.dir, "curryst01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/c/curryst01.html", content=f.read())
+            with open(os.path.join(self.dir, "paulch01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/p/paulch01.html", content=f.read())
+            with open(os.path.join(self.dir, "brownbr01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/b/brownbr01.html", content=f.read())
+            with open(os.path.join(self.dir, "lawsoaj01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/l/lawsoaj01.html", content=f.read())
+            with open(os.path.join(self.dir, "hayesel01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/h/hayesel01.html", content=f.read())
+            with open(os.path.join(self.dir, "embiijo01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/e/embiijo01.html", content=f.read())
+            with open(os.path.join(self.dir, "schaydo01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/s/schaydo01.html", content=f.read())
+            with open(os.path.join(self.dir, "duranke01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/d/duranke01.html", content=f.read())
+            with open(os.path.join(self.dir, "agbajoc01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/a/agbajoc01.html", content=f.read())
+            with open(os.path.join(self.dir, "robinor01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/r/robinor01.html", content=f.read())
+            with open(os.path.join(self.dir, "chambwi01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/c/chambwi01.html", content=f.read())
+            with open(os.path.join(self.dir, "mogbojo01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/m/mogbojo01.html", content=f.read())
+            with open(os.path.join(self.dir, "rajakda01c.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/coaches/rajakda01c.html", content=f.read())
+            with open(os.path.join(self.dir, "ATL_2025.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/teams/ATL/2025.html", content=f.read())
+            with open(os.path.join(self.dir, "bogdabo01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/b/bogdabo01.html", content=f.read())
+            with open(os.path.join(self.dir, "johnsja05.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/j/johnsja05.html", content=f.read())
+            with open(os.path.join(self.dir, "okongon01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/o/okongon01.html", content=f.read())
+            with open(os.path.join(self.dir, "mathega01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/m/mathega01.html", content=f.read())
+            with open(os.path.join(self.dir, "daniedy01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/d/daniedy01.html", content=f.read())
+            with open(os.path.join(self.dir, "roddyda01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/r/roddyda01.html", content=f.read())
+            with open(os.path.join(self.dir, "capelca01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/c/capelca01.html", content=f.read())
+            with open(os.path.join(self.dir, "youngtr01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/y/youngtr01.html", content=f.read())
+            with open(os.path.join(self.dir, "barlodo01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/b/barlodo01.html", content=f.read())
+            with open(os.path.join(self.dir, "bufkiko01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/b/bufkiko01.html", content=f.read())
+            with open(os.path.join(self.dir, "huntede01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/h/huntede01.html", content=f.read())
+            with open(os.path.join(self.dir, "wallake01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/w/wallake01.html", content=f.read())
+            with open(os.path.join(self.dir, "nancela02.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/n/nancela02.html", content=f.read())
+            with open(os.path.join(self.dir, "krejcvi01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/k/krejcvi01.html", content=f.read())
+            with open(os.path.join(self.dir, "gueyemo02.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/g/gueyemo02.html", content=f.read())
+            with open(os.path.join(self.dir, "risacza01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/r/risacza01.html", content=f.read())
+            with open(os.path.join(self.dir, "plowdda01.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/players/p/plowdda01.html", content=f.read())
+            with open(os.path.join(self.dir, "snydequ01c.html"), "rb") as f:
+                m.get("https://www.basketball-reference.com/coaches/snydequ01c.html", content=f.read())
             m.get("https://historical-forecast-api.open-meteo.com/v1/forecast?latitude=33.757222&longitude=-84.396389&start_date=2025-01-22&end_date=2025-01-23&hourly=temperature_2m&hourly=relative_humidity_2m&hourly=dew_point_2m&hourly=apparent_temperature&hourly=precipitation&hourly=rain&hourly=snowfall&hourly=snow_depth&hourly=weather_code&hourly=pressure_msl&hourly=surface_pressure&hourly=cloud_cover&hourly=cloud_cover_low&hourly=cloud_cover_mid&hourly=cloud_cover_high&hourly=et0_fao_evapotranspiration&hourly=vapour_pressure_deficit&hourly=wind_speed_10m&hourly=wind_speed_100m&hourly=wind_direction_10m&hourly=wind_direction_100m&hourly=wind_gusts_10m&hourly=soil_temperature_0_to_7cm&hourly=soil_temperature_7_to_28cm&hourly=soil_temperature_28_to_100cm&hourly=soil_temperature_100_to_255cm&hourly=soil_moisture_0_to_7cm&hourly=soil_moisture_7_to_28cm&hourly=soil_moisture_28_to_100cm&hourly=soil_moisture_100_to_255cm&daily=weather_code&daily=temperature_2m_max&daily=temperature_2m_min&daily=temperature_2m_mean&daily=apparent_temperature_max&daily=apparent_temperature_min&daily=apparent_temperature_mean&daily=sunrise&daily=sunset&daily=daylight_duration&daily=sunshine_duration&daily=precipitation_sum&daily=rain_sum&daily=snowfall_sum&daily=precipitation_hours&daily=wind_speed_10m_max&daily=wind_gusts_10m_max&daily=wind_direction_10m_dominant&daily=shortwave_radiation_sum&daily=et0_fao_evapotranspiration&timezone=America%2FNew_York&format=flatbuffers")
             game_model = create_sportsreference_game_model(
                 self.session,
@@ -1109,3 +1217,134 @@ class TestSportsReferenceGameModel(unittest.TestCase):
                 datetime.datetime(2010, 10, 10, 10, 10, 0),
             )
             self.assertEqual(game_model.dt, datetime.datetime(2015, 11, 23, 0, 0))
+
+    def test_arena(self):
+        url = "https://www.hockey-reference.com/boxscores/202506170FLA.html"
+        with requests_mock.Mocker() as m:
+            with open(os.path.join(self.dir, "202506170FLA.html"), "rb") as f:
+                m.get(url, content=f.read())
+            with open(os.path.join(self.dir, "EDM_2025.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/teams/EDM/2025.html", content=f.read())
+            with open(os.path.join(self.dir, "kucheni01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/k/kucheni01.html", content=f.read())
+            with open(os.path.join(self.dir, "keithdu01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/k/keithdu01.html", content=f.read())
+            with open(os.path.join(self.dir, "henriad01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/h/henriad01.html", content=f.read())
+            with open(os.path.join(self.dir, "nugenry01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/n/nugenry01.html", content=f.read())
+            with open(os.path.join(self.dir, "lidstni01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/l/lidstni01.html", content=f.read())
+            with open(os.path.join(self.dir, "crosbsi01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/c/crosbsi01.html", content=f.read())
+            with open(os.path.join(self.dir, "kapanka01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/k/kapanka01.html", content=f.read())
+            with open(os.path.join(self.dir, "ekholma01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/e/ekholma01.html", content=f.read())
+            with open(os.path.join(self.dir, "priceca01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/p/priceca01.html", content=f.read())
+            with open(os.path.join(self.dir, "getzlry01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/g/getzlry01.html", content=f.read())
+            with open(os.path.join(self.dir, "ovechal01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/o/ovechal01.html", content=f.read())
+            with open(os.path.join(self.dir, "brodema01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/b/brodema01.html", content=f.read())
+            with open(os.path.join(self.dir, "bennja01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/b/bennja01.html", content=f.read())
+            with open(os.path.join(self.dir, "jagrja01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/j/jagrja01.html", content=f.read())
+            with open(os.path.join(self.dir, "kaneev01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/k/kaneev01.html", content=f.read())
+            with open(os.path.join(self.dir, "fredetr01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/f/fredetr01.html", content=f.read())
+            with open(os.path.join(self.dir, "klingjo01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/k/klingjo01.html", content=f.read())
+            with open(os.path.join(self.dir, "perryco01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/p/perryco01.html", content=f.read())
+            with open(os.path.join(self.dir, "mcdavco01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/m/mcdavco01.html", content=f.read())
+            with open(os.path.join(self.dir, "bouchev01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/b/bouchev01.html", content=f.read())
+            with open(os.path.join(self.dir, "howego01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/h/howego01.html", content=f.read())
+            with open(os.path.join(self.dir, "skinnje01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/s/skinnje01.html", content=f.read())
+            with open(os.path.join(self.dir, "kulakbr01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/k/kulakbr01.html", content=f.read())
+            with open(os.path.join(self.dir, "janmama02.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/j/janmama02.html", content=f.read())
+            with open(os.path.join(self.dir, "toewsjo01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/t/toewsjo01.html", content=f.read())
+            with open(os.path.join(self.dir, "gretzwa01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/g/gretzwa01.html", content=f.read())
+            with open(os.path.join(self.dir, "draisle01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/d/draisle01.html", content=f.read())
+            with open(os.path.join(self.dir, "walmaja01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/w/walmaja01.html", content=f.read())
+            with open(os.path.join(self.dir, "thornjo01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/t/thornjo01.html", content=f.read())
+            with open(os.path.join(self.dir, "podkova01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/p/podkova01.html", content=f.read())
+            with open(os.path.join(self.dir, "nurseda01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/n/nurseda01.html", content=f.read())
+            with open(os.path.join(self.dir, "skinnst01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/s/skinnst01.html", content=f.read())
+            with open(os.path.join(self.dir, "bourqra01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/b/bourqra01.html", content=f.read())
+            with open(os.path.join(self.dir, "brownco02.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/b/brownco02.html", content=f.read())
+            with open(os.path.join(self.dir, "mackina01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/m/mackina01.html", content=f.read())
+            with open(os.path.join(self.dir, "knoblkr01c.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/coaches/knoblkr01c.html", content=f.read())
+            with open(os.path.join(self.dir, "FLA_2025.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/teams/FLA/2025.html", content=f.read())
+            with open(os.path.join(self.dir, "lundean01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/l/lundean01.html", content=f.read())
+            with open(os.path.join(self.dir, "nosekto01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/n/nosekto01.html", content=f.read())
+            with open(os.path.join(self.dir, "greeraj01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/g/greeraj01.html", content=f.read())
+            with open(os.path.join(self.dir, "kulikdm01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/k/kulikdm01.html", content=f.read())
+            with open(os.path.join(self.dir, "rodriev01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/r/rodriev01.html", content=f.read())
+            with open(os.path.join(self.dir, "tkachma01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/t/tkachma01.html", content=f.read())
+            with open(os.path.join(self.dir, "mikkoni01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/m/mikkoni01.html", content=f.read())
+            with open(os.path.join(self.dir, "bobrose01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/b/bobrose01.html", content=f.read())
+            with open(os.path.join(self.dir, "reinhsa01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/r/reinhsa01.html", content=f.read())
+            with open(os.path.join(self.dir, "marchbr03.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/m/marchbr03.html", content=f.read())
+            with open(os.path.join(self.dir, "ekblaaa01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/e/ekblaaa01.html", content=f.read())
+            with open(os.path.join(self.dir, "bennesa01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/b/bennesa01.html", content=f.read())
+            with open(os.path.join(self.dir, "forslgu02.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/f/forslgu02.html", content=f.read())
+            with open(os.path.join(self.dir, "gadjojo01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/g/gadjojo01.html", content=f.read())
+            with open(os.path.join(self.dir, "schmina01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/s/schmina01.html", content=f.read())
+            with open(os.path.join(self.dir, "jonesse01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/j/jonesse01.html", content=f.read())
+            with open(os.path.join(self.dir, "verhaca01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/v/verhaca01.html", content=f.read())
+            with open(os.path.join(self.dir, "luostee01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/l/luostee01.html", content=f.read())
+            with open(os.path.join(self.dir, "barkoal01.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/players/b/barkoal01.html", content=f.read())
+            with open(os.path.join(self.dir, "mauripa99c.html"), "rb") as f:
+                m.get("https://www.hockey-reference.com/coaches/mauripa99c.html", content=f.read())
+            m.get("https://historical-forecast-api.open-meteo.com/v1/forecast?latitude=26.158333&longitude=-80.325556&hourly=temperature_2m&hourly=relative_humidity_2m&hourly=dew_point_2m&hourly=apparent_temperature&hourly=precipitation&hourly=rain&hourly=snowfall&hourly=snow_depth&hourly=weather_code&hourly=pressure_msl&hourly=surface_pressure&hourly=cloud_cover&hourly=cloud_cover_low&hourly=cloud_cover_mid&hourly=cloud_cover_high&hourly=et0_fao_evapotranspiration&hourly=vapour_pressure_deficit&hourly=wind_speed_10m&hourly=wind_speed_100m&hourly=wind_direction_10m&hourly=wind_direction_100m&hourly=wind_gusts_10m&hourly=soil_temperature_0_to_7cm&hourly=soil_temperature_7_to_28cm&hourly=soil_temperature_28_to_100cm&hourly=soil_temperature_100_to_255cm&hourly=soil_moisture_0_to_7cm&hourly=soil_moisture_7_to_28cm&hourly=soil_moisture_28_to_100cm&hourly=soil_moisture_100_to_255cm&daily=weather_code&daily=temperature_2m_max&daily=temperature_2m_min&daily=temperature_2m_mean&daily=apparent_temperature_max&daily=apparent_temperature_min&daily=apparent_temperature_mean&daily=sunrise&daily=sunset&daily=daylight_duration&daily=sunshine_duration&daily=precipitation_sum&daily=rain_sum&daily=snowfall_sum&daily=precipitation_hours&daily=wind_speed_10m_max&daily=wind_gusts_10m_max&daily=wind_direction_10m_dominant&daily=shortwave_radiation_sum&daily=et0_fao_evapotranspiration&timezone=America%2FNew_York&start_date=2025-06-16&end_date=2025-06-17&format=flatbuffers")
+
+            game_model = create_sportsreference_game_model(
+                self.session,
+                url,
+                League.NHL,
+                datetime.datetime(2010, 10, 10, 10, 10, 0),
+            )
+            self.assertEqual(game_model.venue.name, "Amerant Bank Arena")

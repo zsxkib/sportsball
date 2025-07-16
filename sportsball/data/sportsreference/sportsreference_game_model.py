@@ -392,6 +392,11 @@ def _find_new_dt(
         raise exc
     venue_div = in_divs[current_in_div_idx]
     venue_name = venue_div.get_text().strip()
+    for in_div in in_divs:
+        in_div_text = in_div.get_text()
+        if "Arena:" in in_div_text:
+            venue_name = in_div_text.replace("Arena: ", "")
+
     scorebox_div = soup.find("div", class_="scorebox")
     if not isinstance(scorebox_div, Tag):
         raise ValueError("scorebox_div is not a Tag.")
@@ -399,7 +404,7 @@ def _find_new_dt(
     teams: list[TeamModel] = []
     for a in scorebox_div.find_all("a"):
         team_url = urllib.parse.urljoin(url, a.get("href"))
-        if "/schools/" in team_url:
+        if "/schools/" in team_url or "/teams/" in team_url:
             teams.append(
                 create_sportsreference_team_model(
                     session=session,
