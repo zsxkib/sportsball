@@ -967,6 +967,8 @@ def _create_sportsreference_game_model(
             .replace(",", "")
             .replace("Time", "")
             .replace("Show/Hide", "")
+            .replace("Team", "")
+            .replace("Arena:", "")
         )
 
     return GameModel(

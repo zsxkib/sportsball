@@ -17773,6 +17773,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "BYU College": SportsballGeocodeTuple(
+        city="Provo",
+        state="UT",
+        postal="",
+        lat=40.25,
+        lng=-111.649,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
