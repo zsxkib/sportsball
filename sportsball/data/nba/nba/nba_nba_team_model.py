@@ -30,6 +30,8 @@ def _create_nba_nba_team_model(
     if identifier is None:
         return None
     name = row["TEAM_NAME" + suffix]
+    if name is None:
+        return None
 
     offensive_rebounds = row["OREB" + suffix]
     if not np.isfinite(offensive_rebounds):

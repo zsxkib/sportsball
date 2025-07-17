@@ -3747,6 +3747,15 @@ CFG_BANK_ARENA = SportsballGeocodeTuple(
     housenumber="201",
     country="USA",
 )
+DUKE_UNIVERSITY = SportsballGeocodeTuple(
+    city="Durham",
+    state="NC",
+    postal="",
+    lat=36.001389,
+    lng=-78.938333,
+    housenumber="",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -17502,15 +17511,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Duke University": SportsballGeocodeTuple(
-        city="Durham",
-        state="NC",
-        postal="",
-        lat=36.001389,
-        lng=-78.938333,
-        housenumber="",
-        country="USA",
-    ),
+    "Duke University": DUKE_UNIVERSITY,
     "Bowling Green College": SportsballGeocodeTuple(
         city="Bowling Green",
         state="OH",
@@ -18367,6 +18368,44 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "University of Houston": SportsballGeocodeTuple(
+        city="Houston",
+        state="TX",
+        postal="",
+        lat=29.7189,
+        lng=-95.3392,
+        housenumber="",
+        country="USA",
+    ),
+    "Canada Life Centre, Winnipeg, MB, Canada": SportsballGeocodeTuple(
+        city="Winnipeg",
+        state="MB",
+        postal="",
+        lat=49.892778,
+        lng=-97.143611,
+        housenumber="300",
+        country="Canada",
+    ),
+    "Duke College": DUKE_UNIVERSITY,
+    "University of Connecticut": SportsballGeocodeTuple(
+        city="Storrs",
+        state="CT",
+        postal="",
+        lat=41.807222,
+        lng=-72.2525,
+        housenumber="",
+        country="USA",
+    ),
+    "Idaho State College": SportsballGeocodeTuple(
+        city="Pocatello",
+        state="ID",
+        postal="",
+        lat=42.861,
+        lng=-112.434,
+        housenumber="",
+        country="USA",
+    ),
+    "Rogers Place": ROGERS_PLACE,
 }
 
 
