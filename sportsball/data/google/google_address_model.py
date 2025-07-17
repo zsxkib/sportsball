@@ -3756,6 +3756,15 @@ DUKE_UNIVERSITY = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
+T_MOBILE_ARENA = SportsballGeocodeTuple(
+    city="Las Vegas",
+    state="NV",
+    postal="",
+    lat=36.102778,
+    lng=-115.178333,
+    housenumber="3780",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -8314,15 +8323,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Mexico",
     ),
-    "T-Mobile Arena, Las Vegas, Nevada": SportsballGeocodeTuple(
-        city="Las Vegas",
-        state="NV",
-        postal="",
-        lat=36.102778,
-        lng=-115.178333,
-        housenumber="3780",
-        country="USA",
-    ),
+    "T-Mobile Arena, Las Vegas, Nevada": T_MOBILE_ARENA,
     "Ocean Center, Daytona Beach, Florida": SportsballGeocodeTuple(
         city="Daytona Beach",
         state="FL",
@@ -18406,6 +18407,25 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Rogers Place": ROGERS_PLACE,
+    "T-Mobile Arena, Las Vegas, NV, USA": T_MOBILE_ARENA,
+    "Southern Miss College": SportsballGeocodeTuple(
+        city="Hattiesburg",
+        state="MS",
+        postal="",
+        lat=31.329638,
+        lng=-89.333847,
+        housenumber="",
+        country="USA",
+    ),
+    "Rice College": SportsballGeocodeTuple(
+        city="Houston",
+        state="TX",
+        postal="",
+        lat=29.716944,
+        lng=-95.402778,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
