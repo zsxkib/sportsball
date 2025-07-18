@@ -19,6 +19,7 @@ REPLACEMENT_URLS = {
     "https://www.sports-reference.com/cbb/boxscores/2022-11-07-20-southeastern-louisian.html": "https://www.sports-reference.com/cbb/boxscores/2022-11-07-20-southeastern-louisiana.html",
     "https://www.sports-reference.com/cbb/boxscores/2022-11-07-18-appalachian-state.htm": "https://www.sports-reference.com/cbb/boxscores/2022-11-07-18-appalachian-state.html",
     "https://www.sports-reference.com/cbb/boxscores/2022-11-07-19-boston-university.htm": "https://www.sports-reference.com/cbb/boxscores/2022-11-07-19-boston-university.html",
+    "https://www.sports-reference.com/cbb/boxscores/2022-11-07-19-george-washington.htm": "https://www.sports-reference.com/cbb/boxscores/2022-11-07-19-george-washington.html",
 }
 BAD_URLS = {
     "https://www.sports-reference.com/cbb/boxscores/2024-12-28-01-austin-peay_w.html",

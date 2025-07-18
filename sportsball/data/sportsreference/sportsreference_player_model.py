@@ -1,6 +1,6 @@
 """Sports reference player model."""
 
-# pylint: disable=too-many-arguments,unused-argument,line-too-long,duplicate-code,too-many-locals,too-many-statements
+# pylint: disable=too-many-arguments,unused-argument,line-too-long,duplicate-code,too-many-locals,too-many-statements,too-many-branches
 import datetime
 import http
 import logging
@@ -130,11 +130,14 @@ def _create_sportsreference_player_model(
             continue
         birth_date = parse(jsonld["birthDate"])
         weight = float(jsonld["weight"]["value"].split()[0]) * 0.453592
-        birth_address = create_google_address_model(
-            query=jsonld["birthPlace"],
-            session=session,
-            dt=None,
-        )
+        try:
+            birth_address = create_google_address_model(
+                query=jsonld["birthPlace"],
+                session=session,
+                dt=None,
+            )
+        except ValueError as exc:
+            logging.warning("Failed to find birth address: %s", str(exc))
         height_ft_inches = jsonld["height"]["value"].split()[0].split("-")
         height = (float(height_ft_inches[0]) * 30.48) + (
             float(height_ft_inches[1]) * 2.54
