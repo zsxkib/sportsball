@@ -3,7 +3,7 @@
 # pylint: disable=raise-missing-from,too-many-locals
 import logging
 import multiprocessing
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Any, Iterator
 
 from scrapesession.scrapesession import ScrapeSession  # type: ignore
@@ -65,12 +65,21 @@ class CombinedLeagueModel(LeagueModel):
         ) as p:
             # We want to terminate immediately if any of our runners runs into trouble.
 
-            results = list(
-                p.map(
-                    _produce_league_games,
-                    self._league_models,
-                )
-            )
+            futures = {
+                p.submit(_produce_league_games, model): model
+                for model in self._league_models
+            }
+
+            results = []
+            try:
+                for future in as_completed(futures):
+                    result = future.result()  # Raises if an exception occurred
+                    results.append(result)
+            except Exception:
+                # Cancel all pending futures
+                for f in futures:
+                    f.cancel()
+                raise  # Optionally re-raise the exception
         game_lists = [[GameModel.model_validate(y) for y in x] for x in results]
 
         for game_list in game_lists:

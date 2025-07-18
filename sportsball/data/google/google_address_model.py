@@ -18535,6 +18535,15 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Villanova College": SportsballGeocodeTuple(
+        city="Villanova",
+        state="PA",
+        postal="",
+        lat=40.03771,
+        lng=-75.33755,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
