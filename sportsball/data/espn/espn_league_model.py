@@ -153,32 +153,35 @@ class ESPNLeagueModel(LeagueModel):
 
     @property
     def games(self) -> Iterator[GameModel]:
-        page = 1
-        first = True
-        with tqdm.tqdm(position=self.position) as pbar:
-            while True:
-                if page == 1:
-                    with self.session.cache_disabled():
+        with self.session.wayback_disabled():
+            page = 1
+            first = True
+            with tqdm.tqdm(position=self.position) as pbar:
+                while True:
+                    if page == 1:
+                        with self.session.cache_disabled():
+                            response = self.session.get(
+                                self._start_url + f"&page={page}"
+                            )
+                    else:
                         response = self.session.get(self._start_url + f"&page={page}")
-                else:
-                    response = self.session.get(self._start_url + f"&page={page}")
-                response.raise_for_status()
-                seasons = response.json()
-                for item in seasons.get("items", []):
-                    season_response = self.session.get(item["$ref"])
-                    season_response.raise_for_status()
-                    season_json = season_response.json()
+                    response.raise_for_status()
+                    seasons = response.json()
+                    for item in seasons.get("items", []):
+                        season_response = self.session.get(item["$ref"])
+                        season_response.raise_for_status()
+                        season_json = season_response.json()
 
-                    for season_item in season_json["types"]["items"]:
-                        season_type_response = self.session.get(season_item["$ref"])
-                        season_type_response.raise_for_status()
-                        season_type_json = season_type_response.json()
+                        for season_item in season_json["types"]["items"]:
+                            season_type_response = self.session.get(season_item["$ref"])
+                            season_type_response.raise_for_status()
+                            season_type_json = season_type_response.json()
 
-                        yield from self._produce_week_games(
-                            season_type_json, page, pbar, first
-                        )
-                    first = False
+                            yield from self._produce_week_games(
+                                season_type_json, page, pbar, first
+                            )
+                        first = False
 
-                if page >= seasons.get("pageCount", 0):
-                    break
-                page += 1
+                    if page >= seasons.get("pageCount", 0):
+                        break
+                    page += 1

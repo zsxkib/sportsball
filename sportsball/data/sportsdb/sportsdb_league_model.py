@@ -124,60 +124,32 @@ class SportsDBLeagueModel(LeagueModel):
 
     @property
     def games(self) -> Iterator[GameModel]:
-        with self.session.cache_disabled():
-            response = self.session.get(
-                f"https://www.thesportsdb.com/api/v1/json/3/search_all_seasons.php?id={self._league_id}"
-            )
-            response.raise_for_status()
-            seasons = response.json()
-        with tqdm.tqdm(position=self.position) as pbar:
-            for season in seasons["seasons"]:
-                season_year = season["strSeason"]
-                for season_type in SeasonType:
-                    match season_type:
-                        case SeasonType.OFFSEASON:
-                            yield from self._produce_games(
-                                str(0),
-                                0,
-                                self._league_id,
-                                season_year,
-                                season_type,
-                                pbar,
-                            )
-                        case SeasonType.PRESEASON:
-                            try:
+        with self.session.wayback_disabled():
+            with self.session.cache_disabled():
+                response = self.session.get(
+                    f"https://www.thesportsdb.com/api/v1/json/3/search_all_seasons.php?id={self._league_id}"
+                )
+                response.raise_for_status()
+                seasons = response.json()
+            with tqdm.tqdm(position=self.position) as pbar:
+                for season in seasons["seasons"]:
+                    season_year = season["strSeason"]
+                    for season_type in SeasonType:
+                        match season_type:
+                            case SeasonType.OFFSEASON:
                                 yield from self._produce_games(
-                                    str(500),
+                                    str(0),
                                     0,
                                     self._league_id,
                                     season_year,
                                     season_type,
                                     pbar,
                                 )
-                            except ValueError:
-                                pass
-                        case SeasonType.REGULAR:
-                            if self.league not in {League.NBA, League.NHL}:
-                                try:
-                                    for count, round_str in enumerate(range(1, 125)):
-                                        yield from self._produce_games(
-                                            str(round_str),
-                                            count,
-                                            self._league_id,
-                                            season_year,
-                                            season_type,
-                                            pbar,
-                                        )
-                                except ValueError:
-                                    pass
-                        case SeasonType.POSTSEASON:
-                            for count, round_str in enumerate(
-                                [125, 150, 160, 170, 180, 200]
-                            ):
+                            case SeasonType.PRESEASON:
                                 try:
                                     yield from self._produce_games(
-                                        str(round_str),
-                                        21 + count,
+                                        str(500),
+                                        0,
                                         self._league_id,
                                         season_year,
                                         season_type,
@@ -185,3 +157,34 @@ class SportsDBLeagueModel(LeagueModel):
                                     )
                                 except ValueError:
                                     pass
+                            case SeasonType.REGULAR:
+                                if self.league not in {League.NBA, League.NHL}:
+                                    try:
+                                        for count, round_str in enumerate(
+                                            range(1, 125)
+                                        ):
+                                            yield from self._produce_games(
+                                                str(round_str),
+                                                count,
+                                                self._league_id,
+                                                season_year,
+                                                season_type,
+                                                pbar,
+                                            )
+                                    except ValueError:
+                                        pass
+                            case SeasonType.POSTSEASON:
+                                for count, round_str in enumerate(
+                                    [125, 150, 160, 170, 180, 200]
+                                ):
+                                    try:
+                                        yield from self._produce_games(
+                                            str(round_str),
+                                            21 + count,
+                                            self._league_id,
+                                            season_year,
+                                            season_type,
+                                            pbar,
+                                        )
+                                    except ValueError:
+                                        pass

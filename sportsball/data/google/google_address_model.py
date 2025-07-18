@@ -18426,6 +18426,34 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Olten, Switzerland": SportsballGeocodeTuple(
+        city="Olten",
+        state="",
+        postal="",
+        lat=47.35,
+        lng=7.9,
+        housenumber="",
+        country="Switzerland",
+    ),
+    "Enterprise Center, St. Louis, MO, USA": ENTERPRISE_CENTER,
+    "Penn State College": SportsballGeocodeTuple(
+        city="University Park",
+        state="PA",
+        postal="",
+        lat=40.798333,
+        lng=-77.86,
+        housenumber="",
+        country="USA",
+    ),
+    "California College": SportsballGeocodeTuple(
+        city="Berkeley",
+        state="CA",
+        postal="",
+        lat=37.871944,
+        lng=-122.258333,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
