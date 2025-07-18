@@ -15,7 +15,7 @@ from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ..game_model import GameModel
 from ..league import League
-from ..league_model import LeagueModel
+from ..league_model import SHUTDOWN_FLAG, LeagueModel
 from .decrypt import fetch_data
 from .oddsportal_game_model import create_oddsportal_game_model
 
@@ -63,6 +63,8 @@ def _process_results_pages(
         if d.get("total") == 0:
             return
         for row in d.get("rows", []):
+            if SHUTDOWN_FLAG.is_set():
+                return
             game_model = create_oddsportal_game_model(
                 session, urllib.parse.urljoin(url, row["url"]), league, False
             )
@@ -165,6 +167,10 @@ class OddsPortalLeagueModel(LeagueModel):
 
     @property
     def games(self) -> Iterator[GameModel]:
-        with tqdm.tqdm(position=self.position) as pbar:
-            yield from self._find_next(pbar)
-            yield from self._find_previous(pbar)
+        try:
+            with tqdm.tqdm(position=self.position) as pbar:
+                yield from self._find_next(pbar)
+                yield from self._find_previous(pbar)
+        except Exception as exc:
+            SHUTDOWN_FLAG.set()
+            raise exc

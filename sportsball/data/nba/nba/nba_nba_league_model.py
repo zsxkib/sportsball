@@ -13,7 +13,7 @@ from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ...game_model import GameModel
 from ...league import League
-from ...league_model import LeagueModel
+from ...league_model import SHUTDOWN_FLAG, LeagueModel
 from .nba_nba_game_model import create_nba_nba_game_model
 
 
@@ -83,6 +83,8 @@ class NBANBALeagueModel(LeagueModel):
         pbar: tqdm.tqdm,
     ) -> Iterator[GameModel]:
         for _, row in all_games.iterrows():
+            if SHUTDOWN_FLAG.is_set():
+                return
             season_id = row["SEASON_ID"]
             dt = parse(row["GAME_DATE"])
             season_info = seasons.get(
@@ -112,30 +114,34 @@ class NBANBALeagueModel(LeagueModel):
 
     @property
     def games(self) -> Iterator[GameModel]:
-        to_date = datetime.datetime.today().date()
-        seasons: dict[str, NBANBALeagueModel._SeasonInfo] = {}
-        first_call = False
-        with tqdm.tqdm(position=self.position) as pbar:
-            while True:
-                next_date = to_date - relativedelta(years=1)
-                if not first_call:
-                    with self.session.cache_disabled():
+        try:
+            to_date = datetime.datetime.today().date()
+            seasons: dict[str, NBANBALeagueModel._SeasonInfo] = {}
+            first_call = False
+            with tqdm.tqdm(position=self.position) as pbar:
+                while True:
+                    next_date = to_date - relativedelta(years=1)
+                    if not first_call:
+                        with self.session.cache_disabled():
+                            result = leaguegamefinder.LeagueGameFinder(
+                                league_id_nullable=self._league_id,
+                                date_from_nullable=next_date.strftime("%m/%d/%Y"),
+                                date_to_nullable=to_date.strftime("%m/%d/%Y"),
+                            )
+                        first_call = True
+                    else:
                         result = leaguegamefinder.LeagueGameFinder(
                             league_id_nullable=self._league_id,
                             date_from_nullable=next_date.strftime("%m/%d/%Y"),
                             date_to_nullable=to_date.strftime("%m/%d/%Y"),
                         )
-                    first_call = True
-                else:
-                    result = leaguegamefinder.LeagueGameFinder(
-                        league_id_nullable=self._league_id,
-                        date_from_nullable=next_date.strftime("%m/%d/%Y"),
-                        date_to_nullable=to_date.strftime("%m/%d/%Y"),
-                    )
 
-                all_games = _combine_team_games(result.get_data_frames()[0])
-                all_games = all_games.sort_values(by="GAME_DATE", ascending=True)
-                if all_games.empty:
-                    break
-                yield from self._produce_games(all_games, seasons, pbar)
-                to_date = next_date
+                    all_games = _combine_team_games(result.get_data_frames()[0])
+                    all_games = all_games.sort_values(by="GAME_DATE", ascending=True)
+                    if all_games.empty:
+                        break
+                    yield from self._produce_games(all_games, seasons, pbar)
+                    to_date = next_date
+        except Exception as exc:
+            SHUTDOWN_FLAG.set()
+            raise exc

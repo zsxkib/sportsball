@@ -18544,6 +18544,16 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Canadian Tire Centre, Ottawa, ON, Canada": SportsballGeocodeTuple(
+        city="Ottawa",
+        state="ON",
+        postal="",
+        lat=45.296944,
+        lng=-75.927222,
+        housenumber="",
+        country="Canada",
+    ),
+    "American Airlines Center": AMERICAN_AIRLINES_ARENA,
 }
 
 

@@ -15,7 +15,7 @@ from scrapesession.scrapesession import ScrapeSession  # type: ignore
 from ....playwright import ensure_install
 from ...game_model import VERSION, GameModel
 from ...league import League
-from ...league_model import LeagueModel
+from ...league_model import SHUTDOWN_FLAG, LeagueModel
 from ..position import Position, position_from_str
 from .afl_afl_game_model import create_afl_afl_game_model, parse_players_v1
 
@@ -28,6 +28,8 @@ def _parse_v1(
     playwright: Playwright,
 ) -> Iterator[GameModel]:
     for div in soup.find_all("div", {"class": re.compile(".*js-match-list-item.*")}):
+        if SHUTDOWN_FLAG.is_set():
+            return
         team_names = []
         for span in div.find_all(
             "span", {"class": re.compile(".*team-lineups__team-name.*")}
@@ -77,6 +79,8 @@ def _parse_v2_soup(
     tuple[list[str], list[list[tuple[str, str, str, str, Position]]], str, str]
 ]:
     for div in soup.find_all("div", {"class": "team-lineups__item"}):
+        if SHUTDOWN_FLAG.is_set():
+            return
         team_names = []
         for span in div.find_all(
             "span", {"class": re.compile(".*team-lineups-header__name.*")}
@@ -218,12 +222,18 @@ class AFLAFLLeagueModel(LeagueModel):
 
     @property
     def games(self) -> Iterator[GameModel]:
-        ladder = self._ladder
-        ensure_install()
-        with sync_playwright() as p:
-            browser = p.chromium.launch()
-            context = browser.new_context()
-            page = context.new_page()
-            url = "https://www.afl.com.au/matches/team-lineups"
-            page.goto(url, wait_until="networkidle")
-            yield from _parse_game_info(page.content(), self.session, ladder, url, p)
+        try:
+            ladder = self._ladder
+            ensure_install()
+            with sync_playwright() as p:
+                browser = p.chromium.launch()
+                context = browser.new_context()
+                page = context.new_page()
+                url = "https://www.afl.com.au/matches/team-lineups"
+                page.goto(url, wait_until="networkidle")
+                yield from _parse_game_info(
+                    page.content(), self.session, ladder, url, p
+                )
+        except Exception as exc:
+            SHUTDOWN_FLAG.set()
+            raise exc

@@ -2,6 +2,7 @@
 
 # pylint: disable=line-too-long
 import datetime
+import threading
 from typing import Iterator, get_args, get_origin
 
 import pandas as pd
@@ -19,6 +20,7 @@ from .model import Model
 from .venue_model import VENUE_ADDRESS_COLUMN
 
 LEAGUE_COLUMN = "league"
+SHUTDOWN_FLAG = threading.Event()
 
 
 def _clear_column_list(df: pd.DataFrame) -> pd.DataFrame:

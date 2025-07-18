@@ -12,7 +12,7 @@ from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ..game_model import GameModel
 from ..league import League
-from ..league_model import LeagueModel
+from ..league_model import SHUTDOWN_FLAG, LeagueModel
 from .sportsreference_game_model import create_sportsreference_game_model
 
 REPLACEMENT_URLS = {
@@ -100,6 +100,8 @@ class SportsReferenceLeagueModel(LeagueModel):
         self, soup: BeautifulSoup, pbar: tqdm.tqdm, url: str
     ) -> Iterator[GameModel]:
         for game_url in _find_game_urls(soup, url):
+            if SHUTDOWN_FLAG.is_set():
+                return
             pbar.update(1)
             game_model = create_sportsreference_game_model(
                 self.session, game_url, self.league, self.position_validator()
@@ -114,36 +116,40 @@ class SportsReferenceLeagueModel(LeagueModel):
     @property
     def games(self) -> Iterator[GameModel]:
         # pylint: disable=too-many-locals
-        final_path: str | None = ""
-        with tqdm.tqdm(position=self.position) as pbar:
-            while final_path is not None:
-                url = self._base_url + final_path
-                if final_path:
-                    response = self.session.get(url)
-                else:
-                    with self.session.cache_disabled():
+        try:
+            final_path: str | None = ""
+            with tqdm.tqdm(position=self.position) as pbar:
+                while final_path is not None:
+                    url = self._base_url + final_path
+                    if final_path:
                         response = self.session.get(url)
-                response.raise_for_status()
-                dt = datetime.datetime.now()
-                if final_path:
-                    parsed_url = urlparse(url)
-                    query = parse_qs(parsed_url.query)
-                    dt = datetime.datetime(
-                        int(query["year"][0]),
-                        int(query["month"][0]),
-                        int(query["day"][0]),
-                    )
-                    if dt.year <= 1945:
-                        break
-                soup = BeautifulSoup(response.text, "lxml")
-                yield from self._produce_games(soup, pbar, url)
-                prev_a = soup.find("a", class_="prev")
-                if isinstance(prev_a, Tag):
-                    href = prev_a.get("href")
-                    if isinstance(href, str):
-                        prev_url = urllib.parse.urljoin(url, href)
-                        final_path = prev_url.split("/")[-1]
+                    else:
+                        with self.session.cache_disabled():
+                            response = self.session.get(url)
+                    response.raise_for_status()
+                    dt = datetime.datetime.now()
+                    if final_path:
+                        parsed_url = urlparse(url)
+                        query = parse_qs(parsed_url.query)
+                        dt = datetime.datetime(
+                            int(query["year"][0]),
+                            int(query["month"][0]),
+                            int(query["day"][0]),
+                        )
+                        if dt.year <= 1945:
+                            break
+                    soup = BeautifulSoup(response.text, "lxml")
+                    yield from self._produce_games(soup, pbar, url)
+                    prev_a = soup.find("a", class_="prev")
+                    if isinstance(prev_a, Tag):
+                        href = prev_a.get("href")
+                        if isinstance(href, str):
+                            prev_url = urllib.parse.urljoin(url, href)
+                            final_path = prev_url.split("/")[-1]
+                        else:
+                            final_path = None
                     else:
                         final_path = None
-                else:
-                    final_path = None
+        except Exception as exc:
+            SHUTDOWN_FLAG.set()
+            raise exc

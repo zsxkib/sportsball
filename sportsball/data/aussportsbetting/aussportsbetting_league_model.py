@@ -11,7 +11,7 @@ from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ..game_model import GameModel
 from ..league import League
-from ..league_model import LeagueModel
+from ..league_model import SHUTDOWN_FLAG, LeagueModel
 from .aussportsbetting_game_model import create_aussportsbetting_game_model
 
 
@@ -98,17 +98,23 @@ class AusSportsBettingLeagueModel(LeagueModel):
 
     @property
     def games(self) -> Iterator[GameModel]:
-        with self.session.cache_disabled():
-            response = self.session.get(self._spreadsheet_url)
-        response.raise_for_status()
-        workbook = load_workbook(filename=BytesIO(response.content))
-        ws = workbook.active
-        if ws is None:
-            raise ValueError("ws is null.")
-        with tqdm.tqdm(position=self.position) as pbar:
-            for row in ws.iter_rows():
-                game_model = self._row_to_game(row)
-                if game_model is not None:
-                    pbar.update(1)
-                    pbar.set_description(f"AusSportsBetting - {game_model.dt}")
-                    yield game_model
+        try:
+            with self.session.cache_disabled():
+                response = self.session.get(self._spreadsheet_url)
+            response.raise_for_status()
+            workbook = load_workbook(filename=BytesIO(response.content))
+            ws = workbook.active
+            if ws is None:
+                raise ValueError("ws is null.")
+            with tqdm.tqdm(position=self.position) as pbar:
+                for row in ws.iter_rows():
+                    if SHUTDOWN_FLAG.is_set():
+                        return
+                    game_model = self._row_to_game(row)
+                    if game_model is not None:
+                        pbar.update(1)
+                        pbar.set_description(f"AusSportsBetting - {game_model.dt}")
+                        yield game_model
+        except Exception as exc:
+            SHUTDOWN_FLAG.set()
+            raise exc

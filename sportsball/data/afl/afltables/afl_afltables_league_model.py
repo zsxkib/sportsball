@@ -15,7 +15,7 @@ from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ...game_model import GameModel
 from ...league import League
-from ...league_model import LeagueModel
+from ...league_model import SHUTDOWN_FLAG, LeagueModel
 from ...season_type import SeasonType
 from .afl_afltables_game_model import create_afl_afltables_game_model
 
@@ -82,6 +82,8 @@ class AFLAFLTablesLeagueModel(LeagueModel):
                 if "Venue:" in td_text:
                     current_dt = _find_dt(td_text, season_url)
             for a in table.find_all("a", href=True):
+                if SHUTDOWN_FLAG.is_set():
+                    return
                 if a.get_text().strip().lower() == "match stats":
                     url = urllib.parse.urljoin(season_url, a.get("href"))
                     if url in urls_duplicates:
@@ -149,20 +151,24 @@ class AFLAFLTablesLeagueModel(LeagueModel):
 
     @property
     def games(self) -> Iterator[GameModel]:
-        with self.session.cache_disabled():
-            with self.session.wayback_disabled():
-                response = self.session.get(_SEASON_URL)
-        response.raise_for_status()
-        soup = BeautifulSoup(response.text, "lxml")
-        with tqdm.tqdm(position=self.position) as pbar:
-            for table in soup.find_all("table"):
-                for tr in table.find_all("tr"):
-                    for td in tr.find_all("td"):
-                        for a in td.find_all("a"):
-                            url = urllib.parse.urljoin(_SEASON_URL, a.get("href"))
-                            yield from self._produce_games(
-                                url, SeasonType.REGULAR, pbar
-                            )
-                            yield from self._produce_games(
-                                url, SeasonType.POSTSEASON, pbar
-                            )
+        try:
+            with self.session.cache_disabled():
+                with self.session.wayback_disabled():
+                    response = self.session.get(_SEASON_URL)
+            response.raise_for_status()
+            soup = BeautifulSoup(response.text, "lxml")
+            with tqdm.tqdm(position=self.position) as pbar:
+                for table in soup.find_all("table"):
+                    for tr in table.find_all("tr"):
+                        for td in tr.find_all("td"):
+                            for a in td.find_all("a"):
+                                url = urllib.parse.urljoin(_SEASON_URL, a.get("href"))
+                                yield from self._produce_games(
+                                    url, SeasonType.REGULAR, pbar
+                                )
+                                yield from self._produce_games(
+                                    url, SeasonType.POSTSEASON, pbar
+                                )
+        except Exception as exc:
+            SHUTDOWN_FLAG.set()
+            raise exc
