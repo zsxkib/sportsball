@@ -18508,6 +18508,33 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "New York University": SportsballGeocodeTuple(
+        city="New York",
+        state="NY",
+        postal="",
+        lat=40.73,
+        lng=-73.995,
+        housenumber="",
+        country="USA",
+    ),
+    "Stanford College": SportsballGeocodeTuple(
+        city="Stanford",
+        state="CA",
+        postal="",
+        lat=37.4275,
+        lng=-122.17,
+        housenumber="",
+        country="USA",
+    ),
+    "Pittsburgh College": SportsballGeocodeTuple(
+        city="Pittsburgh",
+        state="PA",
+        postal="",
+        lat=40.4446,
+        lng=-79.9533,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 

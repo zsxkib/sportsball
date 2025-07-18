@@ -55,7 +55,8 @@ def _find_game_urls(soup: BeautifulSoup, base_url: str) -> list[str]:
         for a in td.find_all("a"):
             game_url = urllib.parse.urljoin(base_url, a.get("href"))
             if game_url.endswith(".htm"):
-                pass
+                if game_url.startswith("https://www.sports-reference.com/"):
+                    game_url += "l"
             elif game_url.endswith("."):
                 game_url += "html"
             elif game_url.endswith(".ht"):
