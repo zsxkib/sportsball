@@ -3774,6 +3774,15 @@ NOTRE_DAME_STADIUM = SportsballGeocodeTuple(
     housenumber="2010",
     country="USA",
 )
+CAMP_RANDALL_STADIUM = SportsballGeocodeTuple(
+    city="Madison",
+    state="WI",
+    postal="53711",
+    lat=43.07,
+    lng=-89.412778,
+    housenumber="",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -4587,15 +4596,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="251",
         country="USA",
     ),
-    "Camp Randall Stadium - Madison - WI - 53711": SportsballGeocodeTuple(
-        city="Madison",
-        state="WI",
-        postal="53711",
-        lat=43.07,
-        lng=-89.412778,
-        housenumber="",
-        country="USA",
-    ),
+    "Camp Randall Stadium - Madison - WI - 53711": CAMP_RANDALL_STADIUM,
     "War Memorial Stadium (AR) - Little Rock - AR - 72205": SportsballGeocodeTuple(
         city="Little Rock",
         state="AR",
@@ -18556,6 +18557,17 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "American Airlines Center": AMERICAN_AIRLINES_ARENA,
     "notre-dame": NOTRE_DAME_STADIUM,
+    "Camp Randall Stadium - Madison, Wisconsin, USA - United States": CAMP_RANDALL_STADIUM,
+    "Lenovo Center": LENOVO_CENTER,
+    "Namur, Belgium": SportsballGeocodeTuple(
+        city="Namur",
+        state="",
+        postal="",
+        lat=50.466667,
+        lng=4.866667,
+        housenumber="",
+        country="Belgium",
+    ),
 }
 
 
