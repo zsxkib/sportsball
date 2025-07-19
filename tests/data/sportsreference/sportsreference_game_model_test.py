@@ -1349,7 +1349,7 @@ class TestSportsReferenceGameModel(unittest.TestCase):
             )
             self.assertEqual(game_model.venue.name, "Amerant Bank Arena")
 
-    def test_score(self):
+    def test_ncaaf_venue(self):
         url = "https://www.sports-reference.com/cfb/boxscores/2025-01-20-notre-dame.html"
         with requests_mock.Mocker() as m:
             with open(os.path.join(self.dir, "2025-01-20-notre-dame.html"), "rb") as f:

@@ -40,6 +40,9 @@ _MONTHS = [
     "December",
 ]
 _NUMBER_PARENTHESIS_PATTERN = r"\(\d+\)"
+_NON_WAYBACK_URLS: set[str] = {
+    "https://www.sports-reference.com/cfb/boxscores/2025-01-20-notre-dame.html",
+}
 
 
 def _find_old_dt(
@@ -489,7 +492,11 @@ def _create_sportsreference_game_model(
     version: str,
 ) -> GameModel | None:
     # pylint: disable=too-many-branches
-    response = session.get(url)
+    if url in _NON_WAYBACK_URLS:
+        with session.wayback_disabled():
+            response = session.get(url)
+    else:
+        response = session.get(url)
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "lxml")
     page_title = soup.find("h1", class_="page_title")
