@@ -3783,6 +3783,15 @@ CAMP_RANDALL_STADIUM = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
+LAVELL_EDWARDS_STADIUM = SportsballGeocodeTuple(
+    city="Provo",
+    state="UT",
+    postal="84604",
+    lat=40.258,
+    lng=-111.655,
+    housenumber="1700",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5042,15 +5051,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Snapdragon Stadium - San Diego - CA - 92108": SDCCU_STADIUM,
-    "LaVell Edwards Stadium - Provo - UT - 84604": SportsballGeocodeTuple(
-        city="Provo",
-        state="UT",
-        postal="84604",
-        lat=40.258,
-        lng=-111.655,
-        housenumber="1700",
-        country="USA",
-    ),
+    "LaVell Edwards Stadium - Provo - UT - 84604": LAVELL_EDWARDS_STADIUM,
     "Joe Aillet Stadium - Ruston - LA - 71270": SportsballGeocodeTuple(
         city="Ruston",
         state="LA",
@@ -18568,6 +18569,8 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Belgium",
     ),
+    "Mercedes-Benz Stadium, Atlanta, GA, USA": MERCEDES_BANZ_STADIUM,
+    "LaVell Edwards Stadium - Provo, Utah, USA - United States": LAVELL_EDWARDS_STADIUM,
 }
 
 
