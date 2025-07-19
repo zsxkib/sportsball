@@ -1,6 +1,6 @@
 """Sports reference player model."""
 
-# pylint: disable=too-many-arguments,unused-argument,line-too-long,duplicate-code,too-many-locals,too-many-statements,too-many-branches
+# pylint: disable=too-many-arguments,unused-argument,line-too-long,duplicate-code,too-many-locals,too-many-statements,too-many-branches,broad-exception-caught
 import datetime
 import http
 import logging
@@ -128,7 +128,10 @@ def _create_sportsreference_player_model(
     for jsonld in data["json-ld"]:
         if jsonld["@type"] != "Person":
             continue
-        birth_date = parse(jsonld["birthDate"])
+        try:
+            birth_date = parse(jsonld["birthDate"])
+        except Exception as exc:
+            logging.warning(str(exc))
         if "weight" in jsonld:
             weight = float(jsonld["weight"]["value"].split()[0]) * 0.453592
         try:
