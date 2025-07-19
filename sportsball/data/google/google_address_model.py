@@ -3765,6 +3765,15 @@ T_MOBILE_ARENA = SportsballGeocodeTuple(
     housenumber="3780",
     country="USA",
 )
+NOTRE_DAME_STADIUM = SportsballGeocodeTuple(
+    city="Notre Dame",
+    state="IN",
+    postal="46556",
+    lat=41.69833,
+    lng=-86.23389,
+    housenumber="2010",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5194,15 +5203,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="200",
         country="USA",
     ),
-    "Notre Dame Stadium - Notre Dame - IN - 46556": SportsballGeocodeTuple(
-        city="Notre Dame",
-        state="IN",
-        postal="46556",
-        lat=41.69833,
-        lng=-86.23389,
-        housenumber="2010",
-        country="USA",
-    ),
+    "Notre Dame Stadium - Notre Dame - IN - 46556": NOTRE_DAME_STADIUM,
     "Lane Stadium - Blacksburg - VA - 24060": SportsballGeocodeTuple(
         city="Blacksburg",
         state="VA",
@@ -18554,6 +18555,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="Canada",
     ),
     "American Airlines Center": AMERICAN_AIRLINES_ARENA,
+    "notre-dame": NOTRE_DAME_STADIUM,
 }
 
 

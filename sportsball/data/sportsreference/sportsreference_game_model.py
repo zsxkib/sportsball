@@ -4,9 +4,11 @@
 import datetime
 import io
 import logging
+import os
 import re
 import urllib.parse
 
+import datefinder  # type: ignore
 import dateutil
 import pandas as pd
 import pytest_is_running
@@ -385,17 +387,29 @@ def _find_new_dt(
     if "Tournament" in in_div_text:
         in_div_text = in_divs[1].get_text().strip()
         current_in_div_idx += 1
+    dt = None
     try:
         dt = parse(in_div_text)
     except dateutil.parser._parser.ParserError as exc:  # type: ignore
-        logging.error("Failed to parse date for URL: %s", url)
-        raise exc
+        matches = datefinder.find_dates(scorebox_meta_div.get_text(separator="\n"))
+        for match in matches:
+            if isinstance(match, datetime.datetime):
+                dt = match
+                break
+        if dt is None:
+            logging.error("Failed to parse date for URL: %s", url)
+            raise exc
     venue_div = in_divs[current_in_div_idx]
     venue_name = venue_div.get_text().strip()
-    for in_div in in_divs:
-        in_div_text = in_div.get_text()
-        if "Arena:" in in_div_text:
-            venue_name = in_div_text.replace("Arena: ", "")
+    if league == League.NCAAF:
+        filepath = url.split("/")[-1]
+        filename, _ = os.path.splitext(filepath)
+        venue_name = "-".join(filename.split("-")[3:])
+    else:
+        for in_div in in_divs:
+            in_div_text = in_div.get_text()
+            if "Arena:" in in_div_text:
+                venue_name = in_div_text.replace("Arena: ", "")
 
     scorebox_div = soup.find("div", class_="scorebox")
     if not isinstance(scorebox_div, Tag):
@@ -974,6 +988,7 @@ def _create_sportsreference_game_model(
             .replace("Show/Hide", "")
             .replace("Team", "")
             .replace("Arena:", "")
+            .replace("Copyright", "")
         )
 
     return GameModel(

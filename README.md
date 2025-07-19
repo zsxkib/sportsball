@@ -51,6 +51,7 @@ Python 3.11.6:
 - [gender-guesser](https://github.com/lead-ratings/gender-guesser)
 - [scrapesession](https://github.com/8W9aG/scrapesession)
 - [pyhigh](https://github.com/sgherbst/pyhigh)
+- [datefinder](https://github.com/akoumjian/datefinder)
 
 ## Raison D'être :thought_balloon:
 
