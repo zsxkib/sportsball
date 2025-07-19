@@ -3792,6 +3792,15 @@ LAVELL_EDWARDS_STADIUM = SportsballGeocodeTuple(
     housenumber="1700",
     country="USA",
 )
+COMPAQ_CENTER = SportsballGeocodeTuple(
+    city="Houston",
+    state="TX",
+    postal="",
+    lat=29.730278,
+    lng=-95.435,
+    housenumber="3700",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -10302,15 +10311,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "First Union Center, Philadelphia, Pennsylvania": SPECTRUM,
-    "Compaq Center, Houston, Texas": SportsballGeocodeTuple(
-        city="Houston",
-        state="TX",
-        postal="",
-        lat=29.730278,
-        lng=-95.435,
-        housenumber="3700",
-        country="USA",
-    ),
+    "Compaq Center, Houston, Texas": COMPAQ_CENTER,
     "Reunion Arena, Dallas, Texas": REUNION_ARENA,
     "General Motors Place, Vancouver, Canada": ROGERS_ARENA,
     "Merrell Center, Katy, Texas": MERRELL_CENTER,
@@ -18571,6 +18572,16 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Mercedes-Benz Stadium, Atlanta, GA, USA": MERCEDES_BANZ_STADIUM,
     "LaVell Edwards Stadium - Provo, Utah, USA - United States": LAVELL_EDWARDS_STADIUM,
+    "Gaylord Family Oklahoma Memorial Stadium": SportsballGeocodeTuple(
+        city="Norman",
+        state="OK",
+        postal="",
+        lat=35.205833,
+        lng=-97.4425,
+        housenumber="",
+        country="USA",
+    ),
+    "Compaq Center": COMPAQ_CENTER,
 }
 
 

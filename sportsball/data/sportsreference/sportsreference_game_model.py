@@ -42,6 +42,7 @@ _MONTHS = [
 _NUMBER_PARENTHESIS_PATTERN = r"\(\d+\)"
 _NON_WAYBACK_URLS: set[str] = {
     "https://www.sports-reference.com/cfb/boxscores/2025-01-20-notre-dame.html",
+    "https://www.pro-football-reference.com/boxscores/202502090phi.htm",
 }
 
 
@@ -521,6 +522,7 @@ def _create_sportsreference_game_model(
         try:
             scores.append(float(score_div.get_text().strip()))
         except ValueError as exc:
+            session.cache.delete(urls=[url, response.url])
             logging.error(response.text)
             raise exc
 
