@@ -12,6 +12,7 @@ from .data.afl import AFLLeagueModel
 from .data.hkjc import HKJCLeagueModel
 from .data.league import League
 from .data.league_model import LeagueModel
+from .data.mlb import MLBLeagueModel
 from .data.nba import NBALeagueModel
 from .data.ncaab import NCAABLeagueModel
 from .data.ncaaf import NCAAFLeagueModel
@@ -57,6 +58,8 @@ class SportsBall:
                 self._leagues[league] = HKJCLeagueModel(self._session)
             elif league == League.NHL:
                 self._leagues[league] = NHLLeagueModel(self._session, league_filter)
+            elif league == League.MLB:
+                self._leagues[league] = MLBLeagueModel(self._session, league_filter)
             else:
                 raise ValueError(f"Unrecognised league: {league}")
         return self._leagues[league]

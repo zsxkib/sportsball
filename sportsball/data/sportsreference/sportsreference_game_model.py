@@ -101,6 +101,40 @@ def _find_old_dt(
     offensive_zone_start_percentage: dict[str, float],
     hits: dict[str, int],
     true_shooting_percentage: dict[str, float],
+    at_bats: dict[str, int],
+    runs_scored: dict[str, int],
+    runs_batted_in: dict[str, int],
+    bases_on_balls: dict[str, int],
+    strikeouts: dict[str, int],
+    plate_appearances: dict[str, int],
+    hits_at_bats: dict[str, float],
+    obp: dict[str, float],
+    slg: dict[str, float],
+    ops: dict[str, float],
+    pitches: dict[str, int],
+    strikes: dict[str, int],
+    win_probability_added: dict[str, float],
+    average_leverage_index: dict[str, float],
+    wpa_plus: dict[str, float],
+    wpa_minus: dict[str, float],
+    cwpa: dict[str, float],
+    acli: dict[str, float],
+    re24: dict[str, float],
+    putouts: dict[str, int],
+    innings_pitched: dict[str, int],
+    earned_runs: dict[str, int],
+    home_runs: dict[str, int],
+    era: dict[str, float],
+    batters_faced: dict[str, int],
+    strikes_by_contact: dict[str, int],
+    strikes_swinging: dict[str, int],
+    strikes_looking: dict[str, int],
+    ground_balls: dict[str, int],
+    fly_balls: dict[str, int],
+    line_drives: dict[str, int],
+    inherited_runners: dict[str, int],
+    inherited_scores: dict[str, int],
+    effective_field_goal_percentage: dict[str, float],
 ) -> tuple[datetime.datetime, list[TeamModel], str | None]:
     teams: list[TeamModel] = []
 
@@ -255,6 +289,40 @@ def _find_old_dt(
                     offensive_zone_start_percentage=offensive_zone_start_percentage,
                     hits=hits,
                     true_shooting_percentage=true_shooting_percentage,
+                    at_bats=at_bats,
+                    runs_scored=runs_scored,
+                    runs_batted_in=runs_batted_in,
+                    bases_on_balls=bases_on_balls,
+                    strikeouts=strikeouts,
+                    plate_appearances=plate_appearances,
+                    hits_at_bats=hits_at_bats,
+                    obp=obp,
+                    slg=slg,
+                    ops=ops,
+                    pitches=pitches,
+                    strikes=strikes,
+                    win_probability_added=win_probability_added,
+                    average_leverage_index=average_leverage_index,
+                    wpa_plus=wpa_plus,
+                    wpa_minus=wpa_minus,
+                    cwpa=cwpa,
+                    acli=acli,
+                    re24=re24,
+                    putouts=putouts,
+                    innings_pitched=innings_pitched,
+                    earned_runs=earned_runs,
+                    home_runs=home_runs,
+                    era=era,
+                    batters_faced=batters_faced,
+                    strikes_by_contact=strikes_by_contact,
+                    strikes_swinging=strikes_swinging,
+                    strikes_looking=strikes_looking,
+                    ground_balls=ground_balls,
+                    fly_balls=fly_balls,
+                    line_drives=line_drives,
+                    inherited_runners=inherited_runners,
+                    inherited_scores=inherited_scores,
+                    effective_field_goal_percentage=effective_field_goal_percentage,
                 )
             )
 
@@ -382,6 +450,40 @@ def _find_new_dt(
     offensive_zone_start_percentage: dict[str, float],
     hits: dict[str, int],
     true_shooting_percentage: dict[str, float],
+    at_bats: dict[str, int],
+    runs_scored: dict[str, int],
+    runs_batted_in: dict[str, int],
+    bases_on_balls: dict[str, int],
+    strikeouts: dict[str, int],
+    plate_appearances: dict[str, int],
+    hits_at_bats: dict[str, float],
+    obp: dict[str, float],
+    slg: dict[str, float],
+    ops: dict[str, float],
+    pitches: dict[str, int],
+    strikes: dict[str, int],
+    win_probability_added: dict[str, float],
+    average_leverage_index: dict[str, float],
+    wpa_plus: dict[str, float],
+    wpa_minus: dict[str, float],
+    cwpa: dict[str, float],
+    acli: dict[str, float],
+    re24: dict[str, float],
+    putouts: dict[str, int],
+    innings_pitched: dict[str, int],
+    earned_runs: dict[str, int],
+    home_runs: dict[str, int],
+    era: dict[str, float],
+    batters_faced: dict[str, int],
+    strikes_by_contact: dict[str, int],
+    strikes_swinging: dict[str, int],
+    strikes_looking: dict[str, int],
+    ground_balls: dict[str, int],
+    fly_balls: dict[str, int],
+    line_drives: dict[str, int],
+    inherited_runners: dict[str, int],
+    inherited_scores: dict[str, int],
+    effective_field_goal_percentage: dict[str, float],
 ) -> tuple[datetime.datetime, list[TeamModel], str]:
     in_divs = scorebox_meta_div.find_all("div")
     current_in_div_idx = 0
@@ -479,6 +581,40 @@ def _find_new_dt(
                     offensive_zone_start_percentage=offensive_zone_start_percentage,
                     hits=hits,
                     true_shooting_percentage=true_shooting_percentage,
+                    at_bats=at_bats,
+                    runs_scored=runs_scored,
+                    runs_batted_in=runs_batted_in,
+                    bases_on_balls=bases_on_balls,
+                    strikeouts=strikeouts,
+                    plate_appearances=plate_appearances,
+                    hits_at_bats=hits_at_bats,
+                    obp=obp,
+                    slg=slg,
+                    ops=ops,
+                    pitches=pitches,
+                    strikes=strikes,
+                    win_probability_added=win_probability_added,
+                    average_leverage_index=average_leverage_index,
+                    wpa_plus=wpa_plus,
+                    wpa_minus=wpa_minus,
+                    cwpa=cwpa,
+                    acli=acli,
+                    re24=re24,
+                    putouts=putouts,
+                    innings_pitched=innings_pitched,
+                    earned_runs=earned_runs,
+                    home_runs=home_runs,
+                    era=era,
+                    batters_faced=batters_faced,
+                    strikes_by_contact=strikes_by_contact,
+                    strikes_swinging=strikes_swinging,
+                    strikes_looking=strikes_looking,
+                    ground_balls=ground_balls,
+                    fly_balls=fly_balls,
+                    line_drives=line_drives,
+                    inherited_runners=inherited_runners,
+                    inherited_scores=inherited_scores,
+                    effective_field_goal_percentage=effective_field_goal_percentage,
                 )
             )
 
@@ -575,34 +711,80 @@ def _create_sportsreference_game_model(
     offensive_zone_start_percentage = {}
     hits = {}
     true_shooting_percentage = {}
+    at_bats = {}
+    runs_scored = {}
+    runs_batted_in = {}
+    bases_on_balls = {}
+    strikeouts = {}
+    plate_appearances = {}
+    hits_at_bats = {}
+    obp = {}
+    slg = {}
+    ops = {}
+    pitches = {}
+    strikes = {}
+    win_probability_added = {}
+    average_leverage_index = {}
+    wpa_plus = {}
+    wpa_minus = {}
+    cwpa = {}
+    acli = {}
+    re24 = {}
+    putouts = {}
+    innings_pitched = {}
+    earned_runs = {}
+    home_runs = {}
+    era = {}
+    batters_faced = {}
+    strikes_by_contact = {}
+    strikes_swinging = {}
+    strikes_looking = {}
+    ground_balls = {}
+    fly_balls = {}
+    line_drives = {}
+    inherited_runners = {}
+    inherited_scores = {}
+    effective_field_goal_percentage = {}
     try:
         dfs = pd.read_html(handle)
         for df in dfs:
             if df.index.nlevels > 1:
                 df.columns = df.columns.get_level_values(1)
-            if "Starters" in df.columns.values:
+            cols = set(df.columns.values.tolist())
+            players = []
+            if "Starters" in cols:
                 players = df["Starters"].tolist()
-                if "FG" in df.columns.values:
+            elif "Batting" in cols:
+                players = df["Batting"].tolist()
+            elif "Pitching" in cols:
+                players = df["Pitching"].tolist()
+            elif "Player" in cols:
+                players = df["Player"].tolist()
+            elif "Reserves" in cols:
+                players = df["Reserves"].tolist()
+
+            if players:
+                if "FG" in cols:
                     fgs = df["FG"].tolist()
                     for idx, player in enumerate(players):
                         fg[player] = fgs[idx]
-                if "FGA" in df.columns.values:
+                if "FGA" in cols:
                     fgas = df["FGA"].tolist()
                     for idx, player in enumerate(players):
                         fga[player] = fgas[idx]
-                if "OREB" in df.columns.values:
+                if "OREB" in cols:
                     orebs = df["OREB"].tolist()
                     for idx, player in enumerate(players):
                         offensive_rebounds[player] = orebs[idx]
-                if "AST" in df.columns.values:
+                if "AST" in cols:
                     asts = df["AST"].tolist()
                     for idx, player in enumerate(players):
                         assists[player] = asts[idx]
-                if "TOV" in df.columns.values:
+                if "TOV" in cols:
                     tovs = df["TOV"].tolist()
                     for idx, player in enumerate(players):
                         turnovers[player] = tovs[idx]
-                if "MP" in df.columns.values.tolist():
+                if "MP" in cols:
                     mps = df["MP"].tolist()
                     for idx, player in enumerate(players):
                         mp = mps[idx]
@@ -610,61 +792,61 @@ def _create_sportsreference_game_model(
                         minutes_played[player] = datetime.timedelta(
                             minutes=int(mp_minutes), seconds=int(mp_seconds)
                         )
-                if "3P" in df.columns.values.tolist():
+                if "3P" in cols:
                     threeps = df["3P"].tolist()
                     for idx, player in enumerate(players):
                         three_point_field_goals[player] = threeps[idx]
-                if "3PA" in df.columns.values.tolist():
+                if "3PA" in cols:
                     threepsattempted = df["3PA"].tolist()
                     for idx, player in enumerate(players):
                         three_point_field_goals_attempted[player] = threepsattempted[
                             idx
                         ]
-                if "FT" in df.columns.values.tolist():
+                if "FT" in cols:
                     fts = df["FT"].tolist()
                     for idx, player in enumerate(players):
                         free_throws[player] = fts[idx]
-                if "FTA" in df.columns.values.tolist():
+                if "FTA" in cols:
                     ftas = df["FTA"].tolist()
                     for idx, player in enumerate(players):
                         free_throws_attempted[player] = ftas[idx]
-                if "DRB" in df.columns.values.tolist():
+                if "DRB" in cols:
                     drbs = df["DRB"].tolist()
                     for idx, player in enumerate(players):
                         defensive_rebounds[player] = drbs[idx]
-                if "STL" in df.columns.values.tolist():
+                if "STL" in cols:
                     stls = df["STL"].tolist()
                     for idx, player in enumerate(players):
                         steals[player] = stls[idx]
-                if "BLK" in df.columns.values.tolist():
+                if "BLK" in cols:
                     blks = df["BLK"].tolist()
                     for idx, player in enumerate(players):
                         blocks[player] = blks[idx]
-                if "PF" in df.columns.values.tolist():
+                if "PF" in cols:
                     pfs = df["PF"].tolist()
                     for idx, player in enumerate(players):
                         personal_fouls[player] = pfs[idx]
-                if "PTS" in df.columns.values.tolist():
+                if "PTS" in cols:
                     ptss = df["PTS"].tolist()
                     for idx, player in enumerate(players):
                         player_points[player] = ptss[idx]
-                if "GmSc" in df.columns.values.tolist():
+                if "GmSc" in cols:
                     gmscs = df["GmSc"].tolist()
                     for idx, player in enumerate(players):
                         game_scores[player] = gmscs[idx]
-                if "+/-" in df.columns.values.tolist():
+                if "+/-" in cols:
                     plusminuses = df["GmSc"].tolist()
                     for idx, player in enumerate(players):
                         point_differentials[player] = plusminuses[idx]
-                if "G" in df.columns.values.tolist():
+                if "G" in cols:
                     gs = df["G"].tolist()
                     for idx, player in enumerate(players):
                         goals[player] = gs[idx]
-                if "A" in df.columns.values.tolist():
+                if "A" in cols:
                     ass = df["A"].tolist()
                     for idx, player in enumerate(players):
                         assists[player] = ass[idx]
-                if "PIM" in df.columns.values.tolist():
+                if "PIM" in cols:
                     pims = df["PIM"].tolist()
                     for idx, player in enumerate(players):
                         pim = pims[idx]
@@ -672,35 +854,35 @@ def _create_sportsreference_game_model(
                         penalties_in_minutes[player] = datetime.timedelta(
                             minutes=int(pim_minutes), seconds=int(pim_seconds)
                         )
-                if "EV" in df.columns.values.tolist():
+                if "EV" in cols:
                     evs = df["EV"].tolist()
                     for idx, player in enumerate(players):
                         even_strength_goals[player] = evs[idx]
-                if "PP" in df.columns.values.tolist():
+                if "PP" in cols:
                     pps = df["PP"].tolist()
                     for idx, player in enumerate(players):
                         power_play_goals[player] = pps[idx]
-                if "SH" in df.columns.values.tolist():
+                if "SH" in cols:
                     shs = df["SH"].tolist()
                     for idx, player in enumerate(players):
                         short_handed_goals[player] = shs[idx]
-                if "GW" in df.columns.values.tolist():
+                if "GW" in cols:
                     gws = df["GW"].tolist()
                     for idx, player in enumerate(players):
                         game_winning_goals[player] = gws[idx]
-                if "S" in df.columns.values.tolist():
+                if "S" in cols:
                     ss = df["S"].tolist()
                     for idx, player in enumerate(players):
                         shots_on_goal[player] = ss[idx]
-                if "S%" in df.columns.values.tolist():
+                if "S%" in cols:
                     sps = df["S%"].tolist()
                     for idx, player in enumerate(players):
                         shooting_percentage[player] = sps[idx]
-                if "SHFT" in df.columns.values.tolist():
+                if "SHFT" in cols:
                     shfts = df["SHFT"].tolist()
                     for idx, player in enumerate(players):
                         shifts[player] = shfts[idx]
-                if "TOI" in df.columns.values.tolist():
+                if "TOI" in cols:
                     tois = df["TOI"].tolist()
                     for idx, player in enumerate(players):
                         toi = tois[idx]
@@ -708,70 +890,210 @@ def _create_sportsreference_game_model(
                         time_on_ice[player] = datetime.timedelta(
                             minutes=int(toi_minutes), seconds=int(toi_seconds)
                         )
-                if "DEC" in df.columns.values.tolist():
+                if "DEC" in cols:
                     decs = df["DEC"].tolist()
                     for idx, player in enumerate(players):
                         decision[player] = decs[idx]
-                if "GA" in df.columns.values.tolist():
+                if "GA" in cols:
                     gas = df["GA"].tolist()
                     for idx, player in enumerate(players):
                         goals_against[player] = gas[idx]
-                if "SA" in df.columns.values.tolist():
+                if "SA" in cols:
                     sas = df["SA"].tolist()
                     for idx, player in enumerate(players):
                         shots_against[player] = sas[idx]
-                if "SV" in df.columns.values.tolist():
+                if "SV" in cols:
                     svs = df["SV"].tolist()
                     for idx, player in enumerate(players):
                         saves[player] = svs[idx]
-                if "SV%" in df.columns.values.tolist():
+                if "SV%" in cols:
                     svps = df["SV%"].tolist()
                     for idx, player in enumerate(players):
                         save_percentage[player] = svps[idx]
-                if "SO" in df.columns.values.tolist():
+                if "SO" in cols:
                     sos = df["SO"].tolist()
                     for idx, player in enumerate(players):
                         shutouts[player] = sos[idx]
-                if "iCF" in df.columns.values.tolist():
+                if "iCF" in cols:
                     icfs = df["iCF"].tolist()
                     for idx, player in enumerate(players):
                         individual_corsi_for_events[player] = icfs[idx]
-                if "SAT-F" in df.columns.values.tolist():
+                if "SAT-F" in cols:
                     satfs = df["SAT-F"].tolist()
                     for idx, player in enumerate(players):
                         on_shot_ice_for_events[player] = satfs[idx]
-                if "SAT-A" in df.columns.values.tolist():
+                if "SAT-A" in cols:
                     satas = df["SAT-A"].tolist()
                     for idx, player in enumerate(players):
                         on_shot_ice_against_events[player] = satas[idx]
-                if "CF%" in df.columns.values.tolist():
+                if "CF%" in cols:
                     cfps = df["CF%"].tolist()
                     for idx, player in enumerate(players):
                         corsi_for_percentage[player] = cfps[idx]
-                if "CRel%" in df.columns.values.tolist():
+                if "CRel%" in cols:
                     crelps = df["CRel%"].tolist()
                     for idx, player in enumerate(players):
                         relative_corsi_for_percentage[player] = crelps[idx]
-                if "ZSO" in df.columns.values.tolist():
+                if "ZSO" in cols:
                     zsos = df["ZSO"].tolist()
                     for idx, player in enumerate(players):
                         offensive_zone_starts[player] = zsos[idx]
-                if "ZSD" in df.columns.values.tolist():
+                if "ZSD" in cols:
                     zsds = df["ZSD"].tolist()
                     for idx, player in enumerate(players):
                         defensive_zone_starts[player] = zsds[idx]
-                if "oZS%" in df.columns.values.tolist():
+                if "oZS%" in cols:
                     ozsps = df["oZS%"].tolist()
                     for idx, player in enumerate(players):
                         offensive_zone_start_percentage[player] = ozsps[idx]
-                if "HIT" in df.columns.values.tolist():
+                if "HIT" in cols:
                     hitss = df["HIT"].tolist()
                     for idx, player in enumerate(players):
                         hits[player] = hitss[idx]
-                if "TS%" in df.columns.values.tolist():
+                if "TS%" in cols:
                     tsps = df["TS%"].tolist()
                     for idx, player in enumerate(players):
                         true_shooting_percentage[player] = tsps[idx]
+                if "AB" in cols:
+                    abss = df["AB"].tolist()
+                    for idx, player in enumerate(players):
+                        at_bats[player] = abss[idx]
+                if "R" in cols:
+                    rs = df["R"].tolist()
+                    for idx, player in enumerate(players):
+                        runs_scored[player] = rs[idx]
+                if "RBI" in cols:
+                    rbis = df["RBI"].tolist()
+                    for idx, player in enumerate(players):
+                        runs_batted_in[player] = rbis[idx]
+                if "BB" in cols:
+                    bbs = df["BB"].tolist()
+                    for idx, player in enumerate(players):
+                        bases_on_balls[player] = bbs[idx]
+                if "SO" in cols:
+                    sos = df["SO"].tolist()
+                    for idx, player in enumerate(players):
+                        strikeouts[player] = sos[idx]
+                if "PA" in cols:
+                    pas = df["PA"].tolist()
+                    for idx, player in enumerate(players):
+                        plate_appearances[player] = pas[idx]
+                if "PA" in cols:
+                    pas = df["PA"].tolist()
+                    for idx, player in enumerate(players):
+                        plate_appearances[player] = pas[idx]
+                if "BA" in cols:
+                    bas = df["BA"].tolist()
+                    for idx, player in enumerate(players):
+                        hits_at_bats[player] = bas[idx]
+                if "OBP" in cols:
+                    obps = df["OBP"].tolist()
+                    for idx, player in enumerate(players):
+                        obp[player] = obps[idx]
+                if "SLG" in cols:
+                    slgs = df["SLG"].tolist()
+                    for idx, player in enumerate(players):
+                        slg[player] = slgs[idx]
+                if "OPS" in cols:
+                    opss = df["OPS"].tolist()
+                    for idx, player in enumerate(players):
+                        ops[player] = opss[idx]
+                if "Pit" in cols:
+                    pits = df["Pit"].tolist()
+                    for idx, player in enumerate(players):
+                        pitches[player] = pits[idx]
+                if "Str" in cols:
+                    strs = df["Str"].tolist()
+                    for idx, player in enumerate(players):
+                        strikes[player] = strs[idx]
+                if "WPA" in cols:
+                    wpas = df["WPA"].tolist()
+                    for idx, player in enumerate(players):
+                        win_probability_added[player] = wpas[idx]
+                if "aLI" in cols:
+                    alis = df["aLI"].tolist()
+                    for idx, player in enumerate(players):
+                        average_leverage_index[player] = alis[idx]
+                if "WPA+" in cols:
+                    wpapluss = df["WPA+"].tolist()
+                    for idx, player in enumerate(players):
+                        wpa_plus[player] = wpapluss[idx]
+                if "WPA-" in cols:
+                    wpaminuss = df["WPA-"].tolist()
+                    for idx, player in enumerate(players):
+                        wpa_minus[player] = wpaminuss[idx]
+                if "cWPA" in cols:
+                    cwpas = df["cWPA"].tolist()
+                    for idx, player in enumerate(players):
+                        cwpa[player] = cwpas[idx]
+                if "acLI" in cols:
+                    aclis = df["acLI"].tolist()
+                    for idx, player in enumerate(players):
+                        acli[player] = aclis[idx]
+                if "RE24" in cols:
+                    re24s = df["RE24"].tolist()
+                    for idx, player in enumerate(players):
+                        re24[player] = re24s[idx]
+                if "PO" in cols:
+                    pos = df["PO"].tolist()
+                    for idx, player in enumerate(players):
+                        putouts[player] = pos[idx]
+                if "IP" in cols:
+                    ips = df["IP"].tolist()
+                    for idx, player in enumerate(players):
+                        innings_pitched[player] = ips[idx]
+                if "ER" in cols:
+                    ers = df["ER"].tolist()
+                    for idx, player in enumerate(players):
+                        earned_runs[player] = ers[idx]
+                if "HR" in cols:
+                    hrs = df["HR"].tolist()
+                    for idx, player in enumerate(players):
+                        home_runs[player] = hrs[idx]
+                if "ERA" in cols:
+                    eras = df["ERA"].tolist()
+                    for idx, player in enumerate(players):
+                        era[player] = eras[idx]
+                if "BF" in cols:
+                    bfs = df["BF"].tolist()
+                    for idx, player in enumerate(players):
+                        batters_faced[player] = bfs[idx]
+                if "Ctct" in cols:
+                    ctcts = df["Ctct"].tolist()
+                    for idx, player in enumerate(players):
+                        strikes_by_contact[player] = ctcts[idx]
+                if "StS" in cols:
+                    stss = df["StS"].tolist()
+                    for idx, player in enumerate(players):
+                        strikes_swinging[player] = stss[idx]
+                if "StL" in cols:
+                    stls = df["StL"].tolist()
+                    for idx, player in enumerate(players):
+                        strikes_looking[player] = stls[idx]
+                if "GB" in cols:
+                    gbs = df["GB"].tolist()
+                    for idx, player in enumerate(players):
+                        ground_balls[player] = gbs[idx]
+                if "FB" in cols:
+                    fbs = df["FB"].tolist()
+                    for idx, player in enumerate(players):
+                        fly_balls[player] = fbs[idx]
+                if "LD" in cols:
+                    lds = df["LD"].tolist()
+                    for idx, player in enumerate(players):
+                        line_drives[player] = lds[idx]
+                if "IR" in cols:
+                    irs = df["IR"].tolist()
+                    for idx, player in enumerate(players):
+                        inherited_runners[player] = irs[idx]
+                if "IS" in cols:
+                    iss = df["IS"].tolist()
+                    for idx, player in enumerate(players):
+                        inherited_scores[player] = iss[idx]
+                if "eFG%" in cols:
+                    efgps = df["eFG%"].tolist()
+                    for idx, player in enumerate(players):
+                        effective_field_goal_percentage[player] = efgps[idx]
     except Exception as exc:
         logging.error(url)
         logging.error(response.text)
@@ -835,6 +1157,40 @@ def _create_sportsreference_game_model(
             offensive_zone_start_percentage=offensive_zone_start_percentage,
             hits=hits,
             true_shooting_percentage=true_shooting_percentage,
+            at_bats=at_bats,
+            runs_scored=runs_scored,
+            runs_batted_in=runs_batted_in,
+            bases_on_balls=bases_on_balls,
+            strikeouts=strikeouts,
+            plate_appearances=plate_appearances,
+            hits_at_bats=hits_at_bats,
+            obp=obp,
+            slg=slg,
+            ops=ops,
+            pitches=pitches,
+            strikes=strikes,
+            win_probability_added=win_probability_added,
+            average_leverage_index=average_leverage_index,
+            wpa_plus=wpa_plus,
+            wpa_minus=wpa_minus,
+            cwpa=cwpa,
+            acli=acli,
+            re24=re24,
+            putouts=putouts,
+            innings_pitched=innings_pitched,
+            earned_runs=earned_runs,
+            home_runs=home_runs,
+            era=era,
+            batters_faced=batters_faced,
+            strikes_by_contact=strikes_by_contact,
+            strikes_swinging=strikes_swinging,
+            strikes_looking=strikes_looking,
+            ground_balls=ground_balls,
+            fly_balls=fly_balls,
+            line_drives=line_drives,
+            inherited_runners=inherited_runners,
+            inherited_scores=inherited_scores,
+            effective_field_goal_percentage=effective_field_goal_percentage,
         )
     else:
         dt, teams, venue_name = _find_new_dt(
@@ -892,6 +1248,40 @@ def _create_sportsreference_game_model(
             offensive_zone_start_percentage=offensive_zone_start_percentage,
             hits=hits,
             true_shooting_percentage=true_shooting_percentage,
+            at_bats=at_bats,
+            runs_scored=runs_scored,
+            runs_batted_in=runs_batted_in,
+            bases_on_balls=bases_on_balls,
+            strikeouts=strikeouts,
+            plate_appearances=plate_appearances,
+            hits_at_bats=hits_at_bats,
+            obp=obp,
+            slg=slg,
+            ops=ops,
+            pitches=pitches,
+            strikes=strikes,
+            win_probability_added=win_probability_added,
+            average_leverage_index=average_leverage_index,
+            wpa_plus=wpa_plus,
+            wpa_minus=wpa_minus,
+            cwpa=cwpa,
+            acli=acli,
+            re24=re24,
+            putouts=putouts,
+            innings_pitched=innings_pitched,
+            earned_runs=earned_runs,
+            home_runs=home_runs,
+            era=era,
+            batters_faced=batters_faced,
+            strikes_by_contact=strikes_by_contact,
+            strikes_swinging=strikes_swinging,
+            strikes_looking=strikes_looking,
+            ground_balls=ground_balls,
+            fly_balls=fly_balls,
+            line_drives=line_drives,
+            inherited_runners=inherited_runners,
+            inherited_scores=inherited_scores,
+            effective_field_goal_percentage=effective_field_goal_percentage,
         )
     for team in teams:
         if team.name == "File Not Found":

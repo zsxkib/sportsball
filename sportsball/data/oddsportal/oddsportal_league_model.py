@@ -1,6 +1,6 @@
 """Odds Portal league model."""
 
-# pylint: disable=too-many-locals,too-many-branches,too-many-statements,protected-access,too-many-arguments,line-too-long
+# pylint: disable=too-many-locals,too-many-branches,too-many-statements,protected-access,too-many-arguments,line-too-long,too-many-return-statements
 import http
 import json
 import logging
@@ -100,6 +100,8 @@ class OddsPortalLeagueModel(LeagueModel):
                 return "/".join([AMERICAN_FOOTBALL, USA, "nfl", ""])
             case League.NHL:
                 return "/".join(["hockey", USA, "nhl", ""])
+            case League.MLB:
+                return "/".join(["baseball", USA, "mlb", ""])
             case _:
                 raise ValueError(f"Unsupported league: {self.league}")
 

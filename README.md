@@ -62,6 +62,7 @@ The supported leagues are:
 
 * 🏉 [AFL](https://www.afl.com.au/)
 * 🐎 [HKJC](https://www.hkjc.com/home/english/index.aspx)
+* ⚾ [MLB](https://www.mlb.com/)
 * 🏀 [NBA](https://www.nba.com/)
 * 🏀 [NCAAB](https://www.ncaa.com/sports/basketball-men/d1)
 * 🏈 [NCAAF](https://www.ncaa.com/sports/football/fbs)
@@ -468,6 +469,39 @@ A representation of a player within a team within a game.
 * **offensive_zone_start_percentage**: The percentage a player begins a shift in the offensize zone to the defensize zone compared to the defensize zone to the offensize zone.
 * **hits**: The hits made by the player during the game.
 * **true_shooting_percentage**: The true shooting percentage of the player during the game.
+* **at_bats**: An at-bat (AB) is a statistic that counts how many times a batter faces the pitcher, excluding instances where the batter reaches base on a walk, is hit by a pitch, or reaches base via sacrifice.
+* **runs_scored**: A run is scored when a player legally advances around all four bases (first, second, third, and home) and safely crosses home plate.
+* **runs_batted_in**: A run batted in (RBI) is a statistic that credits a batter for actions that lead to a runner scoring a run, with a few exceptions.
+* **bases_on_balls**: A "base on balls" (often abbreviated as "BB" and commonly referred to as a "walk") occurs when a batter receives four pitches that the umpire deems outside of the strike zone.
+* **strikeouts**: A strikeout (K or SO) occurs when a batter accumulates three strikes against them during their at-bat.
+* **plate_appearances**: A plate appearance refers to each time a batter steps up to the plate to face the pitcher.
+* **hits_at_bats**: Hits at bats refers to the number of times a player gets a hit divided by their number of official at-bats, representing their batting average.
+* **obp**: On-base percentage (OBP) in baseball measures how often a player reaches base per plate appearance, calculated as (hits + walks + hit by pitch) ÷ (at-bats + walks + hit by pitch + sacrifice flies).
+* **slg**: Slugging percentage (SLG) in baseball measures the power of a hitter by calculating the total number of bases they earn per at-bat, using the formula: (singles + 2×doubles + 3×triples + 4×home runs) ÷ at-bats.
+* **ops**: On-base plus slugging (OPS) is a baseball statistic that combines a player's ability to get on base and hit for power, calculated as OPS = OBP + SLG.
+* **pitches**: In baseball, pitches refer to the individual throws made by the pitcher to the batter, each counted as part of the game’s progression and used to assess the pitcher's workload and performance.
+* **strikes**: In baseball, strikes are pitches that either are swung at and missed, hit foul (with less than two strikes), or land in the strike zone without being swung at, and three strikes result in a strikeout.
+* **win_probability_added**: Win Probability Added (WPA) is a baseball statistic that measures how much a player's actions increase or decrease their team’s chances of winning, based on the change in win probability before and after each play.
+* **average_leverage_index**: Average Leverage Index (aLI) measures the pressure of the game situations a player faces, showing how important their plate appearances or pitching moments are relative to the average, where 1.0 is average pressure, and higher values indicate higher-stakes situations.
+* **wpa_plus**: WPA+ (Win Probability Added Plus) is a metric that measures the total positive contributions a player makes to their team’s win probability over the course of a game or season, summing only the plays that increased the team’s chances of winning.
+* **wpa_minus**: WPA– (Win Probability Added Minus) measures the total negative impact a player has on their team’s win probability, summing only the plays that decreased the team's chances of winning.
+* **cwpa**: cWPA (Championship Win Probability Added) is a baseball statistic that measures how much a player's actions increase or decrease their team’s chances of winning the championship, rather than just a single game—essentially applying WPA to postseason and championship context.
+* **acli**: aCLI (Average Championship Leverage Index) measures the average pressure or importance of the situations a player faces in terms of their impact on winning the championship, where 1.0 is average and higher values indicate higher championship-impact moments—similar to aLI but scaled for postseason stakes.
+* **re24**: RE24 (Run Expectancy 24) is a baseball statistic that measures a player's total impact on run expectancy over all 24 base-out states, calculating how much each play increased or decreased the expected number of runs scored in that inning.
+* **putouts**: Putouts are credited to a defensive player in baseball when they record an out by actions such as catching a fly ball, tagging a runner, being the receiver on a force out, or stepping on a base for an unassisted out.
+* **innings_pitched**: Innings Pitched (IP) is a baseball statistic that measures the number of innings a pitcher has completed, with each out recorded counting as one-third of an inning (e.g., 5.2 IP means 5 innings and 2 outs).
+* **earned_runs**: Earned runs are the runs a pitcher allows that result from hits, walks, or other offensive actions not involving errors or passed balls, and are used to evaluate the pitcher’s performance in preventing scoring.
+* **home_runs**: Home runs are hits in baseball where the batter rounds all the bases and scores without being put out, typically by hitting the ball over the outfield fence in fair territory.
+* **era**: ERA (Earned Run Average) is a pitching statistic in baseball that measures the average number of earned runs a pitcher allows per nine innings pitched, calculated as: ERA = (Earned Runs × 9) ÷ Innings Pitched.
+* **batters_faced**: Batters Faced (BF) is a baseball statistic that counts the total number of individual hitters a pitcher has pitched to, regardless of the outcome (hit, walk, strikeout, etc.).
+* **strikes_by_contact**: Strikes by Contact refers to pitches that result in a strike because the batter made contact with the ball—typically including foul balls (except with two strikes) and weak contact within the strike zone that doesn't result in a hit. This stat helps evaluate how often pitchers induce contact that still counts as a strike.
+* **strikes_swinging**: Strikes Swinging are pitches where the batter swings and misses entirely, resulting in a strike; they’re a key indicator of a pitcher’s dominance and ability to deceive hitters.
+* **strikes_looking**: Strikes Looking are pitches that are called strikes by the umpire when the batter does not swing, typically because the pitch lands within the strike zone.
+* **ground_balls**: Ground balls are batted balls that hit the ground and roll or bounce in the infield, typically resulting in ground outs, double plays, or base hits depending on placement and defense.
+* **fly_balls**: Fly balls are batted balls hit high into the air, usually into the outfield, that can result in outs (like flyouts), extra-base hits, or home runs depending on distance and placement.
+* **line_drives**: Line drives are batted balls hit hard and relatively level, traveling in a straight or slightly rising trajectory, often resulting in base hits due to their speed and low arc.
+* **inherited_runners**: Inherited runners are baserunners a relief pitcher takes over when entering the game, meaning they were already on base due to the previous pitcher, and if they score, the runs are charged to the previous pitcher, not the reliever.
+* **inherited_scores**: Inherited Scores refers to the number of inherited runners that a relief pitcher allows to score after entering the game; although the runs count against the previous pitcher, this stat reflects how well the reliever manages pressure situations.
 
 #### Odds
 

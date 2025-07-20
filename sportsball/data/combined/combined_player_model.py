@@ -305,6 +305,40 @@ def create_combined_player_model(
     offensive_zone_start_percentage = None
     hits = None
     true_shooting_percentage = None
+    at_bats = None
+    runs_scored = None
+    runs_batted_in = None
+    bases_on_balls = None
+    strikeouts = None
+    plate_appearances = None
+    hits_at_bats = None
+    obp = None
+    slg = None
+    ops = None
+    pitches = None
+    strikes = None
+    win_probability_added = None
+    average_leverage_index = None
+    wpa_plus = None
+    wpa_minus = None
+    cwpa = None
+    acli = None
+    re24 = None
+    putouts = None
+    innings_pitched = None
+    earned_runs = None
+    home_runs = None
+    era = None
+    batters_faced = None
+    strikes_by_contact = None
+    strikes_swinging = None
+    strikes_looking = None
+    ground_balls = None
+    fly_balls = None
+    line_drives = None
+    inherited_runners = None
+    inherited_scores = None
+    effective_field_goal_percentage = None
     for player_model in player_models:
         jersey = more_interesting(jersey, player_model.jersey)
         kicks = more_interesting(kicks, player_model.kicks)
@@ -1016,6 +1050,61 @@ def create_combined_player_model(
         true_shooting_percentage = more_interesting(
             true_shooting_percentage, player_model.true_shooting_percentage
         )
+        at_bats = more_interesting(at_bats, player_model.at_bats)
+        runs_scored = more_interesting(runs_scored, player_model.runs_scored)
+        runs_batted_in = more_interesting(runs_batted_in, player_model.runs_batted_in)
+        bases_on_balls = more_interesting(bases_on_balls, player_model.bases_on_balls)
+        strikeouts = more_interesting(strikeouts, player_model.strikeouts)
+        plate_appearances = more_interesting(
+            plate_appearances, player_model.plate_appearances
+        )
+        hits_at_bats = more_interesting(hits_at_bats, player_model.hits_at_bats)
+        obp = more_interesting(obp, player_model.obp)
+        slg = more_interesting(slg, player_model.slg)
+        ops = more_interesting(ops, player_model.ops)
+        pitches = more_interesting(pitches, player_model.pitches)
+        strikes = more_interesting(strikes, player_model.strikes)
+        win_probability_added = more_interesting(
+            win_probability_added, player_model.win_probability_added
+        )
+        average_leverage_index = more_interesting(
+            average_leverage_index, player_model.average_leverage_index
+        )
+        wpa_plus = more_interesting(wpa_plus, player_model.wpa_plus)
+        wpa_minus = more_interesting(wpa_minus, player_model.wpa_minus)
+        cwpa = more_interesting(cwpa, player_model.cwpa)
+        acli = more_interesting(acli, player_model.acli)
+        re24 = more_interesting(re24, player_model.re24)
+        putouts = more_interesting(putouts, player_model.putouts)
+        innings_pitched = more_interesting(
+            innings_pitched, player_model.innings_pitched
+        )
+        earned_runs = more_interesting(earned_runs, player_model.earned_runs)
+        home_runs = more_interesting(home_runs, player_model.home_runs)
+        era = more_interesting(era, player_model.era)
+        batters_faced = more_interesting(batters_faced, player_model.batters_faced)
+        strikes_by_contact = more_interesting(
+            strikes_by_contact, player_model.strikes_by_contact
+        )
+        strikes_swinging = more_interesting(
+            strikes_swinging, player_model.strikes_swinging
+        )
+        strikes_looking = more_interesting(
+            strikes_looking, player_model.strikes_looking
+        )
+        ground_balls = more_interesting(ground_balls, player_model.ground_balls)
+        fly_balls = more_interesting(fly_balls, player_model.fly_balls)
+        line_drives = more_interesting(line_drives, player_model.line_drives)
+        inherited_runners = more_interesting(
+            inherited_runners, player_model.inherited_runners
+        )
+        inherited_scores = more_interesting(
+            inherited_scores, player_model.inherited_scores
+        )
+        effective_field_goal_percentage = more_interesting(
+            effective_field_goal_percentage,
+            player_model.effective_field_goal_percentage,
+        )
     if name is None:
         raise ValueError("name is null")
     if species is None:
@@ -1315,6 +1404,40 @@ def create_combined_player_model(
         offensive_zone_start_percentage=offensive_zone_start_percentage,
         hits=hits,
         true_shooting_percentage=true_shooting_percentage,
+        at_bats=at_bats,
+        runs_scored=runs_scored,
+        runs_batted_in=runs_batted_in,
+        bases_on_balls=bases_on_balls,
+        strikeouts=strikeouts,
+        plate_appearances=plate_appearances,
+        hits_at_bats=hits_at_bats,
+        obp=obp,
+        slg=slg,
+        ops=ops,
+        pitches=pitches,
+        strikes=strikes,
+        win_probability_added=win_probability_added,
+        average_leverage_index=average_leverage_index,
+        wpa_plus=wpa_plus,
+        wpa_minus=wpa_minus,
+        cwpa=cwpa,
+        acli=acli,
+        re24=re24,
+        putouts=putouts,
+        innings_pitched=innings_pitched,
+        earned_runs=earned_runs,
+        home_runs=home_runs,
+        era=era,
+        batters_faced=batters_faced,
+        strikes_by_contact=strikes_by_contact,
+        strikes_swinging=strikes_swinging,
+        strikes_looking=strikes_looking,
+        ground_balls=ground_balls,
+        fly_balls=fly_balls,
+        line_drives=line_drives,
+        inherited_runners=inherited_runners,
+        inherited_scores=inherited_scores,
+        effective_field_goal_percentage=effective_field_goal_percentage,
     )
 
     ffill(player_ffill, identifier, player_model)

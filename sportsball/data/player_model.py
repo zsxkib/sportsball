@@ -608,7 +608,47 @@ PLAYER_HITS_COLUMN: Literal["hits"] = "hits"
 PLAYER_TRUE_SHOOTING_PERCENTAGE_COLUMN: Literal["true_shooting_percentage"] = (
     "true_shooting_percentage"
 )
-VERSION = DELIMITER.join(["0.0.3", ADDRESS_VERSION, OWNER_VERSION, VENUE_VERSION])
+PLAYER_AT_BATS_COLUMN: Literal["at_bats"] = "at_bats"
+PLAYER_RUNS_SCORED_COLUMN: Literal["runs_scored"] = "runs_scored"
+PLAYER_RUNS_BATTED_IN_COLUMN: Literal["runs_batted_in"] = "runs_batted_in"
+PLAYER_BASES_ON_BALLS_COLUMN: Literal["bases_on_balls"] = "bases_on_balls"
+PLAYER_STRIKEOUTS_COLUMN: Literal["strikeouts"] = "strikeouts"
+PLAYER_PLATE_APPEARANCES_COLUMN: Literal["plate_appearances"] = "plate_appearances"
+PLAYER_HITS_AT_BATS_COLUMN: Literal["hits_at_bats"] = "hits_at_bats"
+PLAYER_OBP_COLUMN: Literal["obp"] = "obp"
+PLAYER_SLG_COLUMN: Literal["slg"] = "slg"
+PLAYER_OPS_COLUMN: Literal["ops"] = "ops"
+PLAYER_PITCHES_COLUMN: Literal["pitches"] = "pitches"
+PLAYER_STRIKES_COLUMN: Literal["strikes"] = "strikes"
+PLAYER_WIN_PROBABILITY_ADDED_COLUMN: Literal["win_probability_added"] = (
+    "win_probability_added"
+)
+PLAYER_AVERAGE_LEVERAGE_INDEX_COLUMN: Literal["average_leverage_index"] = (
+    "average_leverage_index"
+)
+PLAYER_WPA_PLUS_COLUMN: Literal["wpa_plus"] = "wpa_plus"
+PLAYER_WPA_MINUS_COLUMN: Literal["wpa_minus"] = "wpa_minus"
+PLAYER_CWPA_COLUMN: Literal["cwpa"] = "cwpa"
+PLAYER_ACLI_COLUMN: Literal["acli"] = "acli"
+PLAYER_RE24_COLUMN: Literal["re24"] = "re24"
+PLAYER_PUTOUTS_COLUMN: Literal["putouts"] = "putouts"
+PLAYER_INNINGS_PITCHED_COLUMN: Literal["innings_pitched"] = "innings_pitched"
+PLAYER_EARNED_RUNS_COLUMN: Literal["earned_runs"] = "earned_runs"
+PLAYER_HOME_RUNS_COLUMN: Literal["home_runs"] = "home_runs"
+PLAYER_ERA_COLUMN: Literal["era"] = "era"
+PLAYER_BATTERS_FACED_COLUMN: Literal["batters_faced"] = "batters_faced"
+PLAYER_STRIKES_BY_CONTACT_COLUMN: Literal["strikes_by_contact"] = "strikes_by_contact"
+PLAYER_STRIKES_SWINGING_COLUMN: Literal["strikes_swinging"] = "strikes_swinging"
+PLAYER_STRIKES_LOOKING_COLUMN: Literal["strikes_looking"] = "strikes_looking"
+PLAYER_GROUND_BALLS_COLUMN: Literal["ground_balls"] = "ground_balls"
+PLAYER_FLY_BALLS_COLUMN: Literal["fly_balls"] = "fly_balls"
+PLAYER_LINE_DRIVES_COLUMN: Literal["line_drives"] = "line_drives"
+PLAYER_INHERITED_RUNNERS_COLUMN: Literal["inherited_runners"] = "inherited_runners"
+PLAYER_INHERITED_SCORES_COLUMN: Literal["inherited_scores"] = "inherited_scores"
+PLAYER_EFFECTIVE_FIELD_GOAL_PERCENTAGE_COLUMN: Literal[
+    "effective_field_goal_percentage"
+] = "effective_field_goal_percentage"
+VERSION = DELIMITER.join(["0.0.4", ADDRESS_VERSION, OWNER_VERSION, VENUE_VERSION])
 
 
 def _guess_sex(data: dict[str, Any]) -> str | None:
@@ -2120,4 +2160,174 @@ class PlayerModel(BaseModel):
         ...,
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=PLAYER_TRUE_SHOOTING_PERCENTAGE_COLUMN,
+    )
+    at_bats: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_AT_BATS_COLUMN,
+    )
+    runs_scored: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_RUNS_SCORED_COLUMN,
+    )
+    runs_batted_in: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_RUNS_BATTED_IN_COLUMN,
+    )
+    bases_on_balls: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_BASES_ON_BALLS_COLUMN,
+    )
+    strikeouts: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_STRIKEOUTS_COLUMN,
+    )
+    plate_appearances: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PLATE_APPEARANCES_COLUMN,
+    )
+    hits_at_bats: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_HITS_AT_BATS_COLUMN,
+    )
+    obp: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_OBP_COLUMN,
+    )
+    slg: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SLG_COLUMN,
+    )
+    ops: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_OPS_COLUMN,
+    )
+    pitches: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PITCHES_COLUMN,
+    )
+    strikes: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_STRIKES_COLUMN,
+    )
+    win_probability_added: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_WIN_PROBABILITY_ADDED_COLUMN,
+    )
+    average_leverage_index: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_AVERAGE_LEVERAGE_INDEX_COLUMN,
+    )
+    wpa_plus: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_WPA_PLUS_COLUMN,
+    )
+    wpa_minus: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_WPA_MINUS_COLUMN,
+    )
+    cwpa: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_CWPA_COLUMN,
+    )
+    acli: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_ACLI_COLUMN,
+    )
+    re24: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_RE24_COLUMN,
+    )
+    putouts: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PUTOUTS_COLUMN,
+    )
+    innings_pitched: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_INNINGS_PITCHED_COLUMN,
+    )
+    earned_runs: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_EARNED_RUNS_COLUMN,
+    )
+    home_runs: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_HOME_RUNS_COLUMN,
+    )
+    era: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_ERA_COLUMN,
+    )
+    batters_faced: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_BATTERS_FACED_COLUMN,
+    )
+    strikes_by_contact: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_STRIKES_BY_CONTACT_COLUMN,
+    )
+    strikes_swinging: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_STRIKES_SWINGING_COLUMN,
+    )
+    strikes_looking: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_STRIKES_LOOKING_COLUMN,
+    )
+    ground_balls: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_GROUND_BALLS_COLUMN,
+    )
+    fly_balls: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_FLY_BALLS_COLUMN,
+    )
+    line_drives: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_LINE_DRIVES_COLUMN,
+    )
+    inherited_runners: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_INHERITED_RUNNERS_COLUMN,
+    )
+    inherited_scores: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_INHERITED_SCORES_COLUMN,
+    )
+    effective_field_goal_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_EFFECTIVE_FIELD_GOAL_PERCENTAGE_COLUMN,
     )
