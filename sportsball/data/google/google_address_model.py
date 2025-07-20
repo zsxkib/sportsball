@@ -3837,6 +3837,42 @@ LEGION_FIELD = SportsballGeocodeTuple(
     housenumber="400",
     country="USA",
 )
+TRACK_COLISEUM = SportsballGeocodeTuple(
+    city="Wilmington",
+    state="NC",
+    postal="",
+    lat=34.225,
+    lng=-77.878333,
+    housenumber="",
+    country="USA",
+)
+HUSKIE_STADIUM = SportsballGeocodeTuple(
+    city="Dekalb",
+    state="IL",
+    postal="60115",
+    lat=41.934,
+    lng=-88.778,
+    housenumber="1245",
+    country="USA",
+)
+DIGNITY_HEALTH_SPORTS_PARK = SportsballGeocodeTuple(
+    city="Carson",
+    state="CA",
+    postal="90746",
+    lat=33.8643776,
+    lng=-118.2660135,
+    housenumber="18400",
+    country="USA",
+)
+NEWARK = SportsballGeocodeTuple(
+    city="Newark",
+    state="NJ",
+    postal="",
+    lat=40.735556,
+    lng=-74.172222,
+    housenumber="700",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -4019,15 +4055,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="34",
         country="Australia",
     ),
-    "Dignity Health Sports Park - Carson - CA - 90746": SportsballGeocodeTuple(
-        city="Carson",
-        state="CA",
-        postal="90746",
-        lat=33.8643776,
-        lng=-118.2660135,
-        housenumber="18400",
-        country="USA",
-    ),
+    "Dignity Health Sports Park - Carson - CA - 90746": DIGNITY_HEALTH_SPORTS_PARK,
     "Arden St - Australia": SportsballGeocodeTuple(
         city="North Melbourne",
         state="VIC",
@@ -4771,15 +4799,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="335",
         country="USA",
     ),
-    "Huskie Stadium - Dekalb - IL - 60115": SportsballGeocodeTuple(
-        city="Dekalb",
-        state="IL",
-        postal="60115",
-        lat=41.934,
-        lng=-88.778,
-        housenumber="1245",
-        country="USA",
-    ),
+    "Huskie Stadium - Dekalb - IL - 60115": HUSKIE_STADIUM,
     "FirstBank Stadium - Nashville - TN - 37212": SportsballGeocodeTuple(
         city="Nashville",
         state="TN",
@@ -5446,15 +5466,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Cotton Bowl - Dallas - TX - 75215": COTTON_BOWL,
-    "Wrigley Field - Chicago - IL - 60613": SportsballGeocodeTuple(
-        city="Chicago",
-        state="IL",
-        postal="60613",
-        lat=41.948056,
-        lng=-87.655556,
-        housenumber="1060",
-        country="USA",
-    ),
+    "Wrigley Field - Chicago - IL - 60613": WRIGLEY_FIELD,
     "Yankee Stadium - Bronx - NY - 10451": SportsballGeocodeTuple(
         city="Bronx",
         state="NY",
@@ -5965,15 +5977,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Ellis Corbett Sports Center, Greensboro, North Carolina": CORBETT_SPORTS_CENTER,
-    "Trask Coliseum, Wilmington, North Carolina": SportsballGeocodeTuple(
-        city="Wilmington",
-        state="NC",
-        postal="",
-        lat=34.225,
-        lng=-77.878333,
-        housenumber="",
-        country="USA",
-    ),
+    "Trask Coliseum, Wilmington, North Carolina": TRACK_COLISEUM,
     "UNF Arena , Jacksonville, Florida": SportsballGeocodeTuple(
         city="Jacksonville",
         state="FL",
@@ -10163,15 +10167,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Toyota Center, Kennewick, Washington": TOYOTA_CENTER,
     "Los Angeles, California": LOS_ANGELES,
     "Staples Center, Los Angeles, California": STAPLES_CENTRE,
-    "Newark, New Jersey": SportsballGeocodeTuple(
-        city="Newark",
-        state="NJ",
-        postal="",
-        lat=40.735556,
-        lng=-74.172222,
-        housenumber="700",
-        country="USA",
-    ),
+    "Newark, New Jersey": NEWARK,
     "SSE Arena, Belfast": SportsballGeocodeTuple(
         city="Belfast",
         state="",
@@ -18610,6 +18606,12 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Legion Field - Birmingham, Alabama, USA - United States": LEGION_FIELD,
     "Bell Centre, Montreal, QC, Canada": BELL_CENTRE,
+    "Newark, New Jersey, United States": NEWARK,
+    "Trask Coliseum - Wilmington, North Carolina - United States": TRACK_COLISEUM,
+    "Brigham Field at Huskie Stadium": HUSKIE_STADIUM,
+    "Dignity Health Sports Park, Carson, CA, USA": DIGNITY_HEALTH_SPORTS_PARK,
+    "Prudential Center, Newark, NJ, USA": PRUDENTIAL_CENTER,
+    "Wrigley Field, Chicago, IL, USA": WRIGLEY_FIELD,
 }
 
 
