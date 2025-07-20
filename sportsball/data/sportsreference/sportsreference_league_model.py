@@ -2,6 +2,7 @@
 
 # pylint: disable=line-too-long
 import datetime
+import re
 import urllib.parse
 from typing import Iterator
 from urllib.parse import parse_qs, urlparse
@@ -47,11 +48,12 @@ BAD_URLS = {
     "https://www.sports-reference.com/cbb/boxscores/2008-11-19-alabama-am_w.html",
     "https://www.sports-reference.com/cbb/boxscores/2008-04-04-tulsa.html",
 }
+GAMELINK_REGEX = re.compile(".*gamelink.*")
 
 
 def _find_game_urls(soup: BeautifulSoup, base_url: str) -> list[str]:
     urls = []
-    for td in soup.find_all("td", class_="gamelink"):
+    for td in soup.find_all("td", {"class": GAMELINK_REGEX}):
         for a in td.find_all("a"):
             game_url = urllib.parse.urljoin(base_url, a.get("href"))
             if game_url.endswith(".htm"):

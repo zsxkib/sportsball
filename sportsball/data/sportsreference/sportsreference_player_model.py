@@ -134,14 +134,15 @@ def _create_sportsreference_player_model(
             logging.warning(str(exc))
         if "weight" in jsonld:
             weight = float(jsonld["weight"]["value"].split()[0]) * 0.453592
-        try:
-            birth_address = create_google_address_model(
-                query=jsonld["birthPlace"],
-                session=session,
-                dt=None,
-            )
-        except ValueError as exc:
-            logging.warning("Failed to find birth address: %s", str(exc))
+        if "birthPlace" in jsonld:
+            try:
+                birth_address = create_google_address_model(
+                    query=jsonld["birthPlace"],
+                    session=session,
+                    dt=None,
+                )
+            except ValueError as exc:
+                logging.warning("Failed to find birth address: %s", str(exc))
         if "height" in jsonld:
             height_ft_inches = jsonld["height"]["value"].split()[0].split("-")
             height = (float(height_ft_inches[0]) * 30.48) + (

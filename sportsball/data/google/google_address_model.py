@@ -3801,6 +3801,15 @@ COMPAQ_CENTER = SportsballGeocodeTuple(
     housenumber="3700",
     country="USA",
 )
+FOLSOM_FIELD = SportsballGeocodeTuple(
+    city="Boulder",
+    state="CO",
+    postal="80305",
+    lat=40.009,
+    lng=-105.267,
+    housenumber="2400",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -4669,15 +4678,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1",
         country="USA",
     ),
-    "Folsom Field - Boulder - CO - 80305": SportsballGeocodeTuple(
-        city="Boulder",
-        state="CO",
-        postal="80305",
-        lat=40.009,
-        lng=-105.267,
-        housenumber="2400",
-        country="USA",
-    ),
+    "Folsom Field - Boulder - CO - 80305": FOLSOM_FIELD,
     "Kroger Field - Lexington - KY - 40506": SportsballGeocodeTuple(
         city="Lexington",
         state="KY",
@@ -18582,6 +18583,8 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Compaq Center": COMPAQ_CENTER,
+    "Raymond James Stadium, Tampa, FL, USA": RAYMOND_JAMES_STADIUM,
+    "Folsom Field - Boulder, Colorado, USA - United States": FOLSOM_FIELD,
 }
 
 
