@@ -3873,6 +3873,24 @@ NEWARK = SportsballGeocodeTuple(
     housenumber="700",
     country="USA",
 )
+WALDO_STADIUM = SportsballGeocodeTuple(
+    city="Kalamazoo",
+    state="MI",
+    postal="49008",
+    lat=42.285833,
+    lng=-85.601111,
+    housenumber="1903",
+    country="USA",
+)
+FENWAY_PARK = SportsballGeocodeTuple(
+    city="Boston",
+    state="MA",
+    postal="02297",
+    lat=42.34625,
+    lng=-71.09775,
+    housenumber="4",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5402,15 +5420,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Rose Bowl - Pasadena - CA - 91103": ROSE_BOWL,
-    "Waldo Stadium - Kalamazoo - MI - 49008": SportsballGeocodeTuple(
-        city="Kalamazoo",
-        state="MI",
-        postal="49008",
-        lat=42.285833,
-        lng=-85.601111,
-        housenumber="1903",
-        country="USA",
-    ),
+    "Waldo Stadium - Kalamazoo - MI - 49008": WALDO_STADIUM,
     "InfoCision Stadium - Akron - OH - 44304": SportsballGeocodeTuple(
         city="Akron",
         state="OH",
@@ -5485,15 +5495,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1022",
         country="USA",
     ),
-    "Fenway Park - Boston - MA - 02297": SportsballGeocodeTuple(
-        city="Boston",
-        state="MA",
-        postal="02297",
-        lat=42.34625,
-        lng=-71.09775,
-        housenumber="4",
-        country="USA",
-    ),
+    "Fenway Park - Boston - MA - 02297": FENWAY_PARK,
     "Toyota Stadium - Frisco - TX - 75033": TOYOTA_STADIUM,
     "Chase Field - Phoenix - AZ - 85004": SportsballGeocodeTuple(
         city="Phoenix",
@@ -18612,6 +18614,8 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Dignity Health Sports Park, Carson, CA, USA": DIGNITY_HEALTH_SPORTS_PARK,
     "Prudential Center, Newark, NJ, USA": PRUDENTIAL_CENTER,
     "Wrigley Field, Chicago, IL, USA": WRIGLEY_FIELD,
+    "Waldo Stadium": WALDO_STADIUM,
+    "Fenway Park - Boston, USA - United States": FENWAY_PARK,
 }
 
 

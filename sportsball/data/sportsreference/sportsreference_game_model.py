@@ -1390,24 +1390,29 @@ def _create_sportsreference_game_model(
             .replace("Copyright", "")
         )
 
-    return GameModel(
-        dt=dt,
-        week=None,
-        game_number=None,
-        venue=create_sportsreference_venue_model(venue_name, session, dt),  # pyright: ignore
-        teams=teams,
-        league=str(league),
-        year=dt.year,
-        season_type=season_type,
-        end_dt=None,
-        attendance=attendance,
-        postponed=None,
-        play_off=None,
-        distance=None,
-        dividends=[],
-        pot=None,
-        version=version,
-    )
+    try:
+        return GameModel(
+            dt=dt,
+            week=None,
+            game_number=None,
+            venue=create_sportsreference_venue_model(venue_name, session, dt),  # pyright: ignore
+            teams=teams,
+            league=str(league),
+            year=dt.year,
+            season_type=season_type,
+            end_dt=None,
+            attendance=attendance,
+            postponed=None,
+            play_off=None,
+            distance=None,
+            dividends=[],
+            pot=None,
+            version=version,
+        )
+    except ValueError as exc:
+        logging.error(response.text)
+        logging.error(url)
+        raise exc
 
 
 @MEMORY.cache(ignore=["session"])
