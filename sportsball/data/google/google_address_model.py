@@ -3810,6 +3810,24 @@ FOLSOM_FIELD = SportsballGeocodeTuple(
     housenumber="2400",
     country="USA",
 )
+MARTIN_STADIUM = SportsballGeocodeTuple(
+    city="Pullman",
+    state="WA",
+    postal="99164",
+    lat=46.732,
+    lng=-117.16,
+    housenumber="720",
+    country="USA",
+)
+CAMPING_WORLD_STADIUM = SportsballGeocodeTuple(
+    city="Orlando",
+    state="FL",
+    postal="32805",
+    lat=28.5390192,
+    lng=-81.4033962,
+    housenumber="1",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -3972,15 +3990,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Australia",
     ),
-    "Camping World Stadium - Orlando - FL - 32805": SportsballGeocodeTuple(
-        city="Orlando",
-        state="FL",
-        postal="32805",
-        lat=28.5390192,
-        lng=-81.4033962,
-        housenumber="1",
-        country="USA",
-    ),
+    "Camping World Stadium - Orlando - FL - 32805": CAMPING_WORLD_STADIUM,
     "Allianz Arena - Munich": ALLIANZ_ARENA,
     "Estadio Azteca - Mexico City": SportsballGeocodeTuple(
         city="Ciudad de México",
@@ -17385,15 +17395,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "MECCA Arena, Milwaukee, Wisconsin": MILWAUKEE_ARENA,
     "Seattle Kingdome, Seattle, Washington": LUMEN_FIELD,
-    "Martin Stadium - Pullman - WA - 99164": SportsballGeocodeTuple(
-        city="Pullman",
-        state="WA",
-        postal="99164",
-        lat=46.732,
-        lng=-117.16,
-        housenumber="720",
-        country="USA",
-    ),
+    "Martin Stadium - Pullman - WA - 99164": MARTIN_STADIUM,
     "Northwest Stadium - Landover, Maryland, USA - United States": FEDEX_FIELD,
     "Flagler Credit Union Stadium - Boca Raton - FL - 33431": FAU_STADIUM,
     "Freedom Hall - Louisville, Kentucky - United States": FREEDOM_HALL,
@@ -18585,6 +18587,26 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Compaq Center": COMPAQ_CENTER,
     "Raymond James Stadium, Tampa, FL, USA": RAYMOND_JAMES_STADIUM,
     "Folsom Field - Boulder, Colorado, USA - United States": FOLSOM_FIELD,
+    "University of Virginia": SportsballGeocodeTuple(
+        city="Charlottesville",
+        state="VA",
+        postal="",
+        lat=38.035556,
+        lng=-78.503333,
+        housenumber="",
+        country="USA",
+    ),
+    "Martin Stadium": MARTIN_STADIUM,
+    "Camping World Stadium, Orlando, FL, USA": CAMPING_WORLD_STADIUM,
+    "Fredricksburg, VA, USA": SportsballGeocodeTuple(
+        city="Fredricksburg",
+        state="VA",
+        postal="",
+        lat=38.301829,
+        lng=-77.470778,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
