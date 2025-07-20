@@ -515,7 +515,9 @@ def _find_new_dt(
         for in_div in in_divs:
             in_div_text = in_div.get_text()
             if "Arena:" in in_div_text:
-                venue_name = in_div_text.replace("Arena: ", "")
+                venue_name = in_div_text.replace("Arena: ", "").strip()
+            elif "Stadium:" in in_div_text:
+                venue_name = in_div_text.replace("Stadium: ", "").strip()
 
     scorebox_div = soup.find("div", class_="scorebox")
     if not isinstance(scorebox_div, Tag):

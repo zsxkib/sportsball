@@ -1405,3 +1405,102 @@ class TestSportsReferenceGameModel(unittest.TestCase):
                 datetime.datetime(2010, 10, 10, 10, 10, 0),
             )
             self.assertEqual(game_model.venue.name, "notre-dame")
+
+    def test_nfl_venue(self):
+        url = "https://www.pro-football-reference.com/boxscores/202502090phi.htm"
+        with requests_mock.Mocker() as m:
+            with open(os.path.join(self.dir, "202502090phi.htm"), "rb") as f:
+                m.get(url, content=f.read())
+            with open(os.path.join(self.dir, "kan_2024.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/teams/kan/2024.htm", content=f.read())
+            with open(os.path.join(self.dir, "MahoPa00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/M/MahoPa00.htm", content=f.read())
+            with open(os.path.join(self.dir, "RoetBe00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/R/RoetBe00.htm", content=f.read())
+            with open(os.path.join(self.dir, "PurdBr00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/P/PurdBr00.htm", content=f.read())
+            with open(os.path.join(self.dir, "HopkDe00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/H/HopkDe00.htm", content=f.read())
+            with open(os.path.join(self.dir, "PeriSa00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/P/PeriSa00.htm", content=f.read())
+            with open(os.path.join(self.dir, "NewtCa00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/N/NewtCa00.htm", content=f.read())
+            with open(os.path.join(self.dir, "GrayNo00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/G/GrayNo00.htm", content=f.read())
+            with open(os.path.join(self.dir, "WortXa00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/W/WortXa00.htm", content=f.read())
+            with open(os.path.join(self.dir, "BrowAn04.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/B/BrowAn04.htm", content=f.read())
+            with open(os.path.join(self.dir, "MannPe00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/M/MannPe00.htm", content=f.read())
+            with open(os.path.join(self.dir, "PachIs00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/P/PachIs00.htm", content=f.read())
+            with open(os.path.join(self.dir, "RamsJa00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/R/RamsJa00.htm", content=f.read())
+            with open(os.path.join(self.dir, "WattJ.00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/W/WattJ.00.htm", content=f.read())
+            with open(os.path.join(self.dir, "BradTo00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/B/BradTo00.htm", content=f.read())
+            with open(os.path.join(self.dir, "SmitJu00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/S/SmitJu00.htm", content=f.read())
+            with open(os.path.join(self.dir, "JoneJu02.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/J/JoneJu02.htm", content=f.read())
+            with open(os.path.join(self.dir, "GurlTo01.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/G/GurlTo01.htm", content=f.read())
+            with open(os.path.join(self.dir, "KelcTr00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/K/KelcTr00.htm", content=f.read())
+            with open(os.path.join(self.dir, "AiyuBr00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/A/AiyuBr00.htm", content=f.read())
+            with open(os.path.join(self.dir, "HuntKa00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/H/HuntKa00.htm", content=f.read())
+            with open(os.path.join(self.dir, "BrowMa04.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/B/BrowMa04.htm", content=f.read())
+            with open(os.path.join(self.dir, "BeckOd00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/B/BeckOd00.htm", content=f.read())
+            with open(os.path.join(self.dir, "WatsJu01.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/W/WatsJu01.htm", content=f.read())
+            with open(os.path.join(self.dir, "DonaAa00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/D/DonaAa00.htm", content=f.read())
+            with open(os.path.join(self.dir, "BreeDr00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/B/BreeDr00.htm", content=f.read())
+            with open(os.path.join(self.dir, "KittGe00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/K/KittGe00.htm", content=f.read())
+            with open(os.path.join(self.dir, "WilsRu00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/W/WilsRu00.htm", content=f.read())
+            with open(os.path.join(self.dir, "RodgAa00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/R/RodgAa00.htm", content=f.read())
+            with open(os.path.join(self.dir, "ReidAn0.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/coaches/ReidAn0.htm", content=f.read())
+            with open(os.path.join(self.dir, "phi_2024.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/teams/phi/2024.htm", content=f.read())
+            with open(os.path.join(self.dir, "BrowAJ00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/B/BrowAJ00.htm", content=f.read())
+            with open(os.path.join(self.dir, "GoedDa00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/G/GoedDa00.htm", content=f.read())
+            with open(os.path.join(self.dir, "PickKe00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/P/PickKe00.htm", content=f.read())
+            with open(os.path.join(self.dir, "DotsJa00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/D/DotsJa00.htm", content=f.read())
+            with open(os.path.join(self.dir, "BarkSa00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/B/BarkSa00.htm", content=f.read())
+            with open(os.path.join(self.dir, "WilsJo03.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/W/WilsJo03.htm", content=f.read())
+            with open(os.path.join(self.dir, "HurtJa00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/H/HurtJa00.htm", content=f.read())
+            with open(os.path.join(self.dir, "GainKe00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/G/GainKe00.htm", content=f.read())
+            with open(os.path.join(self.dir, "SmitDe07.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/S/SmitDe07.htm", content=f.read())
+            with open(os.path.join(self.dir, "DeJeCo00.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/players/D/DeJeCo00.htm", content=f.read())
+            with open(os.path.join(self.dir, "SiriNi0.htm"), "rb") as f:
+                m.get("https://www.pro-football-reference.com/coaches/SiriNi0.htm", content=f.read())
+            m.get("https://historical-forecast-api.open-meteo.com/v1/forecast?latitude=29.951061&longitude=-90.0838191&hourly=temperature_2m&hourly=relative_humidity_2m&hourly=dew_point_2m&hourly=apparent_temperature&hourly=precipitation&hourly=rain&hourly=snowfall&hourly=snow_depth&hourly=weather_code&hourly=pressure_msl&hourly=surface_pressure&hourly=cloud_cover&hourly=cloud_cover_low&hourly=cloud_cover_mid&hourly=cloud_cover_high&hourly=et0_fao_evapotranspiration&hourly=vapour_pressure_deficit&hourly=wind_speed_10m&hourly=wind_speed_100m&hourly=wind_direction_10m&hourly=wind_direction_100m&hourly=wind_gusts_10m&hourly=soil_temperature_0_to_7cm&hourly=soil_temperature_7_to_28cm&hourly=soil_temperature_28_to_100cm&hourly=soil_temperature_100_to_255cm&hourly=soil_moisture_0_to_7cm&hourly=soil_moisture_7_to_28cm&hourly=soil_moisture_28_to_100cm&hourly=soil_moisture_100_to_255cm&daily=weather_code&daily=temperature_2m_max&daily=temperature_2m_min&daily=temperature_2m_mean&daily=apparent_temperature_max&daily=apparent_temperature_min&daily=apparent_temperature_mean&daily=sunrise&daily=sunset&daily=daylight_duration&daily=sunshine_duration&daily=precipitation_sum&daily=rain_sum&daily=snowfall_sum&daily=precipitation_hours&daily=wind_speed_10m_max&daily=wind_gusts_10m_max&daily=wind_direction_10m_dominant&daily=shortwave_radiation_sum&daily=et0_fao_evapotranspiration&timezone=America%2FChicago&start_date=2025-02-08&end_date=2025-02-09&format=flatbuffers")
+
+            game_model = create_sportsreference_game_model(
+                self.session,
+                url,
+                League.NFL,
+                datetime.datetime(2010, 10, 10, 10, 10, 0),
+            )
+            self.assertEqual(game_model.venue.name, "Caesars Superdome")

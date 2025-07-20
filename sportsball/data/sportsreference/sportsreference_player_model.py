@@ -1,6 +1,6 @@
 """Sports reference player model."""
 
-# pylint: disable=too-many-arguments,unused-argument,line-too-long,duplicate-code,too-many-locals,too-many-statements,too-many-branches,broad-exception-caught
+# pylint: disable=too-many-arguments,unused-argument,line-too-long,duplicate-code,too-many-locals,too-many-statements,too-many-branches,broad-exception-caught,too-many-lines
 import datetime
 import http
 import logging
@@ -141,6 +141,10 @@ def _create_sportsreference_player_model(
 ) -> PlayerModel | None:
     """Create a player model from sports reference."""
     player_url = _fix_url(player_url)
+
+    if player_url.endswith("uniform.cgi"):
+        return None
+
     response = session.get(player_url, timeout=DEFAULT_TIMEOUT)
     # Some players can't be accessed on sports reference
     if response.status_code == http.HTTPStatus.FORBIDDEN:
