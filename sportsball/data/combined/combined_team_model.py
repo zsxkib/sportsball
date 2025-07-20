@@ -1,6 +1,7 @@
 """Combined team model."""
 
 # pylint: disable=too-many-locals,too-many-branches,too-many-statements,too-many-arguments
+import functools
 import re
 import unicodedata
 from typing import Any
@@ -24,6 +25,19 @@ def _normalise_name(name: str) -> str:
     if "," in name:
         name = " ".join(reversed([x.strip() for x in name.split(",")]))
     return REGEX.sub("", unicodedata.normalize("NFC", name).lower().strip())
+
+
+def _compare_player_models(left: PlayerModel, right: PlayerModel) -> int:
+    if left.jersey is not None and right.jersey is not None:
+        if left.jersey < right.jersey:
+            return -1
+        if left.jersey > right.jersey:
+            return 1
+    if left.name < right.name:
+        return -1
+    if left.name < right.name:
+        return 1
+    return 0
 
 
 def create_combined_team_model(
@@ -92,13 +106,16 @@ def create_combined_team_model(
         lbw = more_interesting(lbw, team_model.lbw)
         end_dt = more_interesting(end_dt, team_model.end_dt)
 
+    player_list = [
+        create_combined_player_model(v, k, player_ffill) for k, v in players.items()
+    ]
+    player_list.sort(key=functools.cmp_to_key(_compare_player_models))
+
     team_model = TeamModel(
         identifier=identifier,
         name=team_models[0].name,
         location=location,
-        players=[  # pyright: ignore
-            create_combined_player_model(v, k, player_ffill) for k, v in players.items()
-        ],
+        players=player_list,
         odds=[x[0] for x in odds.values()],
         points=points,
         ladder_rank=ladder_rank,

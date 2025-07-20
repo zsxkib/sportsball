@@ -3828,6 +3828,15 @@ CAMPING_WORLD_STADIUM = SportsballGeocodeTuple(
     housenumber="1",
     country="USA",
 )
+LEGION_FIELD = SportsballGeocodeTuple(
+    city="Birmingham",
+    state="AL",
+    postal="35204",
+    lat=33.511389,
+    lng=-86.842778,
+    housenumber="400",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5540,15 +5549,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="655",
         country="USA",
     ),
-    "Legion Field (AL) - Birmingham - AL - 35204": SportsballGeocodeTuple(
-        city="Birmingham",
-        state="AL",
-        postal="35204",
-        lat=33.511389,
-        lng=-86.842778,
-        housenumber="400",
-        country="USA",
-    ),
+    "Legion Field (AL) - Birmingham - AL - 35204": LEGION_FIELD,
     "Sam Boyd Stadium - Las Vegas - NV - 89122": SportsballGeocodeTuple(
         city="Las Vegas",
         state="NV",
@@ -18607,6 +18608,8 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Legion Field - Birmingham, Alabama, USA - United States": LEGION_FIELD,
+    "Bell Centre, Montreal, QC, Canada": BELL_CENTRE,
 }
 
 

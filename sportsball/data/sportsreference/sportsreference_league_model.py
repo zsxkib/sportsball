@@ -2,6 +2,7 @@
 
 # pylint: disable=line-too-long
 import datetime
+import logging
 import re
 import urllib.parse
 from typing import Iterator
@@ -105,15 +106,19 @@ class SportsReferenceLeagueModel(LeagueModel):
             if SHUTDOWN_FLAG.is_set():
                 return
             pbar.update(1)
-            game_model = create_sportsreference_game_model(
-                self.session, game_url, self.league, self.position_validator()
-            )
-            if game_model is None:
-                continue
-            pbar.set_description(
-                f"SportsReference {game_model.year} - {game_model.season_type} - {game_model.dt}"
-            )
-            yield game_model
+            try:
+                game_model = create_sportsreference_game_model(
+                    self.session, game_url, self.league, self.position_validator()
+                )
+                if game_model is None:
+                    continue
+                pbar.set_description(
+                    f"SportsReference {game_model.year} - {game_model.season_type} - {game_model.dt}"
+                )
+                yield game_model
+            except Exception as exc:
+                logging.warning(str(exc))
+                raise exc
 
     @property
     def games(self) -> Iterator[GameModel]:
