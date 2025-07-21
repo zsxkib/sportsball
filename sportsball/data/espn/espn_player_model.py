@@ -716,9 +716,10 @@ def _create_espn_player_model(
     position_abbreviation = position_dict["abbreviation"]
     college = None
     try:
-        college = create_espn_venue_model(
-            venue=college_dict, session=session, dt=dt, version=VENUE_VERSION
-        )
+        if "id" in college_dict:
+            college = create_espn_venue_model(
+                venue=college_dict, session=session, dt=dt, version=VENUE_VERSION
+            )
     except (ValueError, KeyError) as exc:
         logging.warning("Failed to get college: %s", str(exc))
 
