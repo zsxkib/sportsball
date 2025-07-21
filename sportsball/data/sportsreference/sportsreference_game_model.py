@@ -7,6 +7,7 @@ import logging
 import os
 import re
 import urllib.parse
+from typing import Any
 
 import datefinder  # type: ignore
 import dateutil
@@ -664,6 +665,12 @@ def _create_sportsreference_game_model(
             logging.error(response.text)
             raise exc
 
+    def _normalize_value(value: Any) -> Any:
+        if isinstance(value, str):
+            if "%" in value:
+                return float(value.replace("%", ""))
+        return value
+
     handle = io.StringIO()
     handle.write(response.text)
     handle.seek(0)
@@ -769,23 +776,23 @@ def _create_sportsreference_game_model(
                 if "FG" in cols:
                     fgs = df["FG"].tolist()
                     for idx, player in enumerate(players):
-                        fg[player] = fgs[idx]
+                        fg[player] = _normalize_value(fgs[idx])
                 if "FGA" in cols:
                     fgas = df["FGA"].tolist()
                     for idx, player in enumerate(players):
-                        fga[player] = fgas[idx]
+                        fga[player] = _normalize_value(fgas[idx])
                 if "OREB" in cols:
                     orebs = df["OREB"].tolist()
                     for idx, player in enumerate(players):
-                        offensive_rebounds[player] = orebs[idx]
+                        offensive_rebounds[player] = _normalize_value(orebs[idx])
                 if "AST" in cols:
                     asts = df["AST"].tolist()
                     for idx, player in enumerate(players):
-                        assists[player] = asts[idx]
+                        assists[player] = _normalize_value(asts[idx])
                 if "TOV" in cols:
                     tovs = df["TOV"].tolist()
                     for idx, player in enumerate(players):
-                        turnovers[player] = tovs[idx]
+                        turnovers[player] = _normalize_value(tovs[idx])
                 if "MP" in cols:
                     mps = df["MP"].tolist()
                     for idx, player in enumerate(players):
@@ -797,57 +804,57 @@ def _create_sportsreference_game_model(
                 if "3P" in cols:
                     threeps = df["3P"].tolist()
                     for idx, player in enumerate(players):
-                        three_point_field_goals[player] = threeps[idx]
+                        three_point_field_goals[player] = _normalize_value(threeps[idx])
                 if "3PA" in cols:
                     threepsattempted = df["3PA"].tolist()
                     for idx, player in enumerate(players):
-                        three_point_field_goals_attempted[player] = threepsattempted[
-                            idx
-                        ]
+                        three_point_field_goals_attempted[player] = _normalize_value(
+                            threepsattempted[idx]
+                        )
                 if "FT" in cols:
                     fts = df["FT"].tolist()
                     for idx, player in enumerate(players):
-                        free_throws[player] = fts[idx]
+                        free_throws[player] = _normalize_value(fts[idx])
                 if "FTA" in cols:
                     ftas = df["FTA"].tolist()
                     for idx, player in enumerate(players):
-                        free_throws_attempted[player] = ftas[idx]
+                        free_throws_attempted[player] = _normalize_value(ftas[idx])
                 if "DRB" in cols:
                     drbs = df["DRB"].tolist()
                     for idx, player in enumerate(players):
-                        defensive_rebounds[player] = drbs[idx]
+                        defensive_rebounds[player] = _normalize_value(drbs[idx])
                 if "STL" in cols:
                     stls = df["STL"].tolist()
                     for idx, player in enumerate(players):
-                        steals[player] = stls[idx]
+                        steals[player] = _normalize_value(stls[idx])
                 if "BLK" in cols:
                     blks = df["BLK"].tolist()
                     for idx, player in enumerate(players):
-                        blocks[player] = blks[idx]
+                        blocks[player] = _normalize_value(blks[idx])
                 if "PF" in cols:
                     pfs = df["PF"].tolist()
                     for idx, player in enumerate(players):
-                        personal_fouls[player] = pfs[idx]
+                        personal_fouls[player] = _normalize_value(pfs[idx])
                 if "PTS" in cols:
                     ptss = df["PTS"].tolist()
                     for idx, player in enumerate(players):
-                        player_points[player] = ptss[idx]
+                        player_points[player] = _normalize_value(ptss[idx])
                 if "GmSc" in cols:
                     gmscs = df["GmSc"].tolist()
                     for idx, player in enumerate(players):
-                        game_scores[player] = gmscs[idx]
+                        game_scores[player] = _normalize_value(gmscs[idx])
                 if "+/-" in cols:
                     plusminuses = df["GmSc"].tolist()
                     for idx, player in enumerate(players):
-                        point_differentials[player] = plusminuses[idx]
+                        point_differentials[player] = _normalize_value(plusminuses[idx])
                 if "G" in cols:
                     gs = df["G"].tolist()
                     for idx, player in enumerate(players):
-                        goals[player] = gs[idx]
+                        goals[player] = _normalize_value(gs[idx])
                 if "A" in cols:
                     ass = df["A"].tolist()
                     for idx, player in enumerate(players):
-                        assists[player] = ass[idx]
+                        assists[player] = _normalize_value(ass[idx])
                 if "PIM" in cols:
                     pims = df["PIM"].tolist()
                     for idx, player in enumerate(players):
@@ -859,31 +866,31 @@ def _create_sportsreference_game_model(
                 if "EV" in cols:
                     evs = df["EV"].tolist()
                     for idx, player in enumerate(players):
-                        even_strength_goals[player] = evs[idx]
+                        even_strength_goals[player] = _normalize_value(evs[idx])
                 if "PP" in cols:
                     pps = df["PP"].tolist()
                     for idx, player in enumerate(players):
-                        power_play_goals[player] = pps[idx]
+                        power_play_goals[player] = _normalize_value(pps[idx])
                 if "SH" in cols:
                     shs = df["SH"].tolist()
                     for idx, player in enumerate(players):
-                        short_handed_goals[player] = shs[idx]
+                        short_handed_goals[player] = _normalize_value(shs[idx])
                 if "GW" in cols:
                     gws = df["GW"].tolist()
                     for idx, player in enumerate(players):
-                        game_winning_goals[player] = gws[idx]
+                        game_winning_goals[player] = _normalize_value(gws[idx])
                 if "S" in cols:
                     ss = df["S"].tolist()
                     for idx, player in enumerate(players):
-                        shots_on_goal[player] = ss[idx]
+                        shots_on_goal[player] = _normalize_value(ss[idx])
                 if "S%" in cols:
                     sps = df["S%"].tolist()
                     for idx, player in enumerate(players):
-                        shooting_percentage[player] = sps[idx]
+                        shooting_percentage[player] = _normalize_value(sps[idx])
                 if "SHFT" in cols:
                     shfts = df["SHFT"].tolist()
                     for idx, player in enumerate(players):
-                        shifts[player] = shfts[idx]
+                        shifts[player] = _normalize_value(shfts[idx])
                 if "TOI" in cols:
                     tois = df["TOI"].tolist()
                     for idx, player in enumerate(players):
@@ -895,207 +902,213 @@ def _create_sportsreference_game_model(
                 if "DEC" in cols:
                     decs = df["DEC"].tolist()
                     for idx, player in enumerate(players):
-                        decision[player] = decs[idx]
+                        decision[player] = _normalize_value(decs[idx])
                 if "GA" in cols:
                     gas = df["GA"].tolist()
                     for idx, player in enumerate(players):
-                        goals_against[player] = gas[idx]
+                        goals_against[player] = _normalize_value(gas[idx])
                 if "SA" in cols:
                     sas = df["SA"].tolist()
                     for idx, player in enumerate(players):
-                        shots_against[player] = sas[idx]
+                        shots_against[player] = _normalize_value(sas[idx])
                 if "SV" in cols:
                     svs = df["SV"].tolist()
                     for idx, player in enumerate(players):
-                        saves[player] = svs[idx]
+                        saves[player] = _normalize_value(svs[idx])
                 if "SV%" in cols:
                     svps = df["SV%"].tolist()
                     for idx, player in enumerate(players):
-                        save_percentage[player] = svps[idx]
+                        save_percentage[player] = _normalize_value(svps[idx])
                 if "SO" in cols:
                     sos = df["SO"].tolist()
                     for idx, player in enumerate(players):
-                        shutouts[player] = sos[idx]
+                        shutouts[player] = _normalize_value(sos[idx])
                 if "iCF" in cols:
                     icfs = df["iCF"].tolist()
                     for idx, player in enumerate(players):
-                        individual_corsi_for_events[player] = icfs[idx]
+                        individual_corsi_for_events[player] = _normalize_value(
+                            icfs[idx]
+                        )
                 if "SAT-F" in cols:
                     satfs = df["SAT-F"].tolist()
                     for idx, player in enumerate(players):
-                        on_shot_ice_for_events[player] = satfs[idx]
+                        on_shot_ice_for_events[player] = _normalize_value(satfs[idx])
                 if "SAT-A" in cols:
                     satas = df["SAT-A"].tolist()
                     for idx, player in enumerate(players):
-                        on_shot_ice_against_events[player] = satas[idx]
+                        on_shot_ice_against_events[player] = _normalize_value(
+                            satas[idx]
+                        )
                 if "CF%" in cols:
                     cfps = df["CF%"].tolist()
                     for idx, player in enumerate(players):
-                        corsi_for_percentage[player] = cfps[idx]
+                        corsi_for_percentage[player] = _normalize_value(cfps[idx])
                 if "CRel%" in cols:
                     crelps = df["CRel%"].tolist()
                     for idx, player in enumerate(players):
-                        relative_corsi_for_percentage[player] = crelps[idx]
+                        relative_corsi_for_percentage[player] = _normalize_value(
+                            crelps[idx]
+                        )
                 if "ZSO" in cols:
                     zsos = df["ZSO"].tolist()
                     for idx, player in enumerate(players):
-                        offensive_zone_starts[player] = zsos[idx]
+                        offensive_zone_starts[player] = _normalize_value(zsos[idx])
                 if "ZSD" in cols:
                     zsds = df["ZSD"].tolist()
                     for idx, player in enumerate(players):
-                        defensive_zone_starts[player] = zsds[idx]
+                        defensive_zone_starts[player] = _normalize_value(zsds[idx])
                 if "oZS%" in cols:
                     ozsps = df["oZS%"].tolist()
                     for idx, player in enumerate(players):
-                        offensive_zone_start_percentage[player] = ozsps[idx]
+                        offensive_zone_start_percentage[player] = _normalize_value(
+                            ozsps[idx]
+                        )
                 if "HIT" in cols:
                     hitss = df["HIT"].tolist()
                     for idx, player in enumerate(players):
-                        hits[player] = hitss[idx]
+                        hits[player] = _normalize_value(hitss[idx])
                 if "TS%" in cols:
                     tsps = df["TS%"].tolist()
                     for idx, player in enumerate(players):
-                        true_shooting_percentage[player] = tsps[idx]
+                        true_shooting_percentage[player] = _normalize_value(tsps[idx])
                 if "AB" in cols:
                     abss = df["AB"].tolist()
                     for idx, player in enumerate(players):
-                        at_bats[player] = abss[idx]
+                        at_bats[player] = _normalize_value(abss[idx])
                 if "R" in cols:
                     rs = df["R"].tolist()
                     for idx, player in enumerate(players):
-                        runs_scored[player] = rs[idx]
+                        runs_scored[player] = _normalize_value(rs[idx])
                 if "RBI" in cols:
                     rbis = df["RBI"].tolist()
                     for idx, player in enumerate(players):
-                        runs_batted_in[player] = rbis[idx]
+                        runs_batted_in[player] = _normalize_value(rbis[idx])
                 if "BB" in cols:
                     bbs = df["BB"].tolist()
                     for idx, player in enumerate(players):
-                        bases_on_balls[player] = bbs[idx]
+                        bases_on_balls[player] = _normalize_value(bbs[idx])
                 if "SO" in cols:
                     sos = df["SO"].tolist()
                     for idx, player in enumerate(players):
-                        strikeouts[player] = sos[idx]
+                        strikeouts[player] = _normalize_value(sos[idx])
                 if "PA" in cols:
                     pas = df["PA"].tolist()
                     for idx, player in enumerate(players):
-                        plate_appearances[player] = pas[idx]
-                if "PA" in cols:
-                    pas = df["PA"].tolist()
-                    for idx, player in enumerate(players):
-                        plate_appearances[player] = pas[idx]
+                        plate_appearances[player] = _normalize_value(pas[idx])
                 if "BA" in cols:
                     bas = df["BA"].tolist()
                     for idx, player in enumerate(players):
-                        hits_at_bats[player] = bas[idx]
+                        hits_at_bats[player] = _normalize_value(bas[idx])
                 if "OBP" in cols:
                     obps = df["OBP"].tolist()
                     for idx, player in enumerate(players):
-                        obp[player] = obps[idx]
+                        obp[player] = _normalize_value(obps[idx])
                 if "SLG" in cols:
                     slgs = df["SLG"].tolist()
                     for idx, player in enumerate(players):
-                        slg[player] = slgs[idx]
+                        slg[player] = _normalize_value(slgs[idx])
                 if "OPS" in cols:
                     opss = df["OPS"].tolist()
                     for idx, player in enumerate(players):
-                        ops[player] = opss[idx]
+                        ops[player] = _normalize_value(opss[idx])
                 if "Pit" in cols:
                     pits = df["Pit"].tolist()
                     for idx, player in enumerate(players):
-                        pitches[player] = pits[idx]
+                        pitches[player] = _normalize_value(pits[idx])
                 if "Str" in cols:
                     strs = df["Str"].tolist()
                     for idx, player in enumerate(players):
-                        strikes[player] = strs[idx]
+                        strikes[player] = _normalize_value(strs[idx])
                 if "WPA" in cols:
                     wpas = df["WPA"].tolist()
                     for idx, player in enumerate(players):
-                        win_probability_added[player] = wpas[idx]
+                        win_probability_added[player] = _normalize_value(wpas[idx])
                 if "aLI" in cols:
                     alis = df["aLI"].tolist()
                     for idx, player in enumerate(players):
-                        average_leverage_index[player] = alis[idx]
+                        average_leverage_index[player] = _normalize_value(alis[idx])
                 if "WPA+" in cols:
                     wpapluss = df["WPA+"].tolist()
                     for idx, player in enumerate(players):
-                        wpa_plus[player] = wpapluss[idx]
+                        wpa_plus[player] = _normalize_value(wpapluss[idx])
                 if "WPA-" in cols:
                     wpaminuss = df["WPA-"].tolist()
                     for idx, player in enumerate(players):
-                        wpa_minus[player] = wpaminuss[idx]
+                        wpa_minus[player] = _normalize_value(wpaminuss[idx])
                 if "cWPA" in cols:
                     cwpas = df["cWPA"].tolist()
                     for idx, player in enumerate(players):
-                        cwpa[player] = cwpas[idx]
+                        cwpa[player] = _normalize_value(cwpas[idx])
                 if "acLI" in cols:
                     aclis = df["acLI"].tolist()
                     for idx, player in enumerate(players):
-                        acli[player] = aclis[idx]
+                        acli[player] = _normalize_value(aclis[idx])
                 if "RE24" in cols:
                     re24s = df["RE24"].tolist()
                     for idx, player in enumerate(players):
-                        re24[player] = re24s[idx]
+                        re24[player] = _normalize_value(re24s[idx])
                 if "PO" in cols:
                     pos = df["PO"].tolist()
                     for idx, player in enumerate(players):
-                        putouts[player] = pos[idx]
+                        putouts[player] = _normalize_value(pos[idx])
                 if "IP" in cols:
                     ips = df["IP"].tolist()
                     for idx, player in enumerate(players):
-                        innings_pitched[player] = ips[idx]
+                        innings_pitched[player] = _normalize_value(ips[idx])
                 if "ER" in cols:
                     ers = df["ER"].tolist()
                     for idx, player in enumerate(players):
-                        earned_runs[player] = ers[idx]
+                        earned_runs[player] = _normalize_value(ers[idx])
                 if "HR" in cols:
                     hrs = df["HR"].tolist()
                     for idx, player in enumerate(players):
-                        home_runs[player] = hrs[idx]
+                        home_runs[player] = _normalize_value(hrs[idx])
                 if "ERA" in cols:
                     eras = df["ERA"].tolist()
                     for idx, player in enumerate(players):
-                        era[player] = eras[idx]
+                        era[player] = _normalize_value(eras[idx])
                 if "BF" in cols:
                     bfs = df["BF"].tolist()
                     for idx, player in enumerate(players):
-                        batters_faced[player] = bfs[idx]
+                        batters_faced[player] = _normalize_value(bfs[idx])
                 if "Ctct" in cols:
                     ctcts = df["Ctct"].tolist()
                     for idx, player in enumerate(players):
-                        strikes_by_contact[player] = ctcts[idx]
+                        strikes_by_contact[player] = _normalize_value(ctcts[idx])
                 if "StS" in cols:
                     stss = df["StS"].tolist()
                     for idx, player in enumerate(players):
-                        strikes_swinging[player] = stss[idx]
+                        strikes_swinging[player] = _normalize_value(stss[idx])
                 if "StL" in cols:
                     stls = df["StL"].tolist()
                     for idx, player in enumerate(players):
-                        strikes_looking[player] = stls[idx]
+                        strikes_looking[player] = _normalize_value(stls[idx])
                 if "GB" in cols:
                     gbs = df["GB"].tolist()
                     for idx, player in enumerate(players):
-                        ground_balls[player] = gbs[idx]
+                        ground_balls[player] = _normalize_value(gbs[idx])
                 if "FB" in cols:
                     fbs = df["FB"].tolist()
                     for idx, player in enumerate(players):
-                        fly_balls[player] = fbs[idx]
+                        fly_balls[player] = _normalize_value(fbs[idx])
                 if "LD" in cols:
                     lds = df["LD"].tolist()
                     for idx, player in enumerate(players):
-                        line_drives[player] = lds[idx]
+                        line_drives[player] = _normalize_value(lds[idx])
                 if "IR" in cols:
                     irs = df["IR"].tolist()
                     for idx, player in enumerate(players):
-                        inherited_runners[player] = irs[idx]
+                        inherited_runners[player] = _normalize_value(irs[idx])
                 if "IS" in cols:
                     iss = df["IS"].tolist()
                     for idx, player in enumerate(players):
-                        inherited_scores[player] = iss[idx]
+                        inherited_scores[player] = _normalize_value(iss[idx])
                 if "eFG%" in cols:
                     efgps = df["eFG%"].tolist()
                     for idx, player in enumerate(players):
-                        effective_field_goal_percentage[player] = efgps[idx]
+                        effective_field_goal_percentage[player] = _normalize_value(
+                            efgps[idx]
+                        )
     except Exception as exc:
         logging.error(url)
         logging.error(response.text)
