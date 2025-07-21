@@ -53,28 +53,42 @@ GAMELINK_REGEX = re.compile(".*gamelink.*")
 
 
 def _find_game_urls(soup: BeautifulSoup, base_url: str) -> list[str]:
+    def validate_url(game_url: str) -> str | None:
+        if game_url.endswith(".shtml"):
+            pass
+        elif game_url.endswith(".htm"):
+            if game_url.startswith("https://www.sports-reference.com/"):
+                game_url += "l"
+        elif game_url.endswith("."):
+            game_url += "html"
+        elif game_url.endswith(".ht"):
+            game_url += "ml"
+        elif game_url.endswith(".h"):
+            game_url += "tml"
+        elif not game_url.endswith(".html"):
+            game_url += ".html"
+        game_url = REPLACEMENT_URLS.get(game_url, game_url)
+        if game_url in BAD_URLS:
+            return None
+        return game_url
+
+    for li in soup.find_all("li", {"id": "header_scores"}):
+        li.decompose()
+
     urls = []
     for td in soup.find_all("td", {"class": GAMELINK_REGEX}):
         for a in td.find_all("a"):
-            game_url = urllib.parse.urljoin(base_url, a.get("href"))
-            if game_url.endswith(".shtml"):
-                pass
-            elif game_url.endswith(".htm"):
-                if game_url.startswith("https://www.sports-reference.com/"):
-                    game_url += "l"
-            elif game_url.endswith("."):
-                game_url += "html"
-            elif game_url.endswith(".ht"):
-                game_url += "ml"
-            elif game_url.endswith(".h"):
-                game_url += "tml"
-            elif not game_url.endswith(".html"):
-                game_url += ".html"
-            game_url = REPLACEMENT_URLS.get(game_url, game_url)
-            if game_url in BAD_URLS:
+            game_url = validate_url(urllib.parse.urljoin(base_url, a.get("href")))
+            if game_url is None:
                 continue
             urls.append(game_url)
-    return urls
+    for p in soup.find_all("p", {"class": "links"}):
+        for a in p.find_all("a"):
+            game_url = validate_url(urllib.parse.urljoin(base_url, a.get("href")))
+            if game_url is None:
+                continue
+            urls.append(game_url)
+    return sorted(list(set(urls)))
 
 
 class SportsReferenceLeagueModel(LeagueModel):
