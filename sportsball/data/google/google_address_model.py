@@ -4197,6 +4197,15 @@ CANADA_LIFE_CENTER = SportsballGeocodeTuple(
     housenumber="300",
     country="Canada",
 )
+ALUMNI_STADIUM = SportsballGeocodeTuple(
+    city="Chestnut Hill",
+    state="MA",
+    postal="02467",
+    lat=42.335,
+    lng=-71.166389,
+    housenumber="",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5715,15 +5724,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="620",
         country="USA",
     ),
-    "Alumni Stadium (Chestnut Hill, MA) - Chestnut Hill - MA - 02467": SportsballGeocodeTuple(
-        city="Chestnut Hill",
-        state="MA",
-        postal="02467",
-        lat=42.335,
-        lng=-71.166389,
-        housenumber="",
-        country="USA",
-    ),
+    "Alumni Stadium (Chestnut Hill, MA) - Chestnut Hill - MA - 02467": ALUMNI_STADIUM,
     "Albertsons Stadium - Boise - ID - 83706": SportsballGeocodeTuple(
         city="Boise",
         state="ID",
@@ -22008,6 +22009,20 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Alumni Stadium": ALUMNI_STADIUM,
+    "Acrisure Stadium, Pittsburgh, PA, USA": ACRISURE_STADIUM,
+    "PPG Paints Arena, Pittsburgh, PA, USA": PPG_PAINTS_ARENA,
+    "Capital One Arena": CAPITAL_ONE_ARENA,
+    "Nevada": SportsballGeocodeTuple(
+        city="",
+        state="NV",
+        postal="",
+        lat=39.0,
+        lng=-117.0,
+        housenumber="",
+        country="USA",
+    ),
+    "Legacy Center": LEGACY_CENTER,
 }
 
 
