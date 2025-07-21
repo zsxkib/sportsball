@@ -70,6 +70,10 @@ def _find_game_urls(soup: BeautifulSoup, base_url: str) -> list[str]:
         game_url = REPLACEMENT_URLS.get(game_url, game_url)
         if game_url in BAD_URLS:
             return None
+        if "/pbp/" in game_url:
+            return None
+        if "/shot-chart/" in game_url:
+            return None
         return game_url
 
     for li in soup.find_all("li", {"id": "header_scores"}):
