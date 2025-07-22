@@ -147,6 +147,8 @@ class SportsReferenceLeagueModel(LeagueModel):
             final_path: str | None = ""
             with tqdm.tqdm(position=self.position) as pbar:
                 while final_path is not None:
+                    if SHUTDOWN_FLAG.is_set():
+                        return
                     url = self._base_url + final_path
                     if final_path:
                         response = self.session.get(url)
