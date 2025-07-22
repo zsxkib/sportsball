@@ -36,8 +36,16 @@ def _find_ids(text: str) -> tuple[str, str]:
     sanitised_text = sanitised_text[: sanitised_text.find("'")]
     try:
         page_outrights = json.loads(sanitised_text)
-    except json.decoder.JSONDecodeError as exc:
-        raise exc
+    except json.decoder.JSONDecodeError:
+        sentinel = "var page = new PageTournament("
+        sanitised_text = text[text.find(sentinel) + len(sentinel) :]
+        sanitised_text = sanitised_text[: sanitised_text.find(");")]
+        try:
+            page_outrights = json.loads(sanitised_text)
+        except json.decoder.JSONDecodeError as exc:
+            logging.error(sanitised_text)
+            logging.error(text)
+            raise exc
     return str(page_outrights["sid"]), page_outrights["id"]
 
 

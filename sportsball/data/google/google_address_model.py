@@ -22276,6 +22276,9 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Soldier Field, Chicago, IL, USA": SOLDIER_FIELD,
+    "Climate Pledge Arena, Seattle, WA, USA": CLIMATE_PLEDGE_ARENA,
+    "Rogers Centre, Toronto, ON, Canada": ROGERS_CENTER,
 }
 
 
