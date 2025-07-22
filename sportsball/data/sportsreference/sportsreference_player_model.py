@@ -185,7 +185,7 @@ def _create_sportsreference_player_model(
             height_ft_inches = jsonld["height"]["value"].split()[0].split("-")
             if len(height_ft_inches) == 1:
                 height_ft_inches = [
-                    x.replace('"', "") for x in height_ft_inches.split("'")
+                    x.replace('"', "") for x in height_ft_inches[0].split("'")
                 ]
             height = (float(height_ft_inches[0]) * 30.48) + (
                 float(height_ft_inches[1]) * 2.54

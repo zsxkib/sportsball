@@ -4224,6 +4224,15 @@ SANFORD_STADIUM = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
+BRIDGESTONE_ARENA = SportsballGeocodeTuple(
+    city="Nashville",
+    state="TN",
+    postal="",
+    lat=36.159167,
+    lng=-86.778611,
+    housenumber="501",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -10037,15 +10046,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Leonard E. Merrell Center, Katy, Texas": MERRELL_CENTER,
-    "Bridgestone Arena, Nashville, Tennessee": SportsballGeocodeTuple(
-        city="Nashville",
-        state="TN",
-        postal="",
-        lat=36.159167,
-        lng=-86.778611,
-        housenumber="501",
-        country="USA",
-    ),
+    "Bridgestone Arena, Nashville, Tennessee": BRIDGESTONE_ARENA,
     "Comerica, Frisco, Texas": SportsballGeocodeTuple(
         city="Frisco",
         state="TX",
@@ -22096,6 +22097,16 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lng=-79.534722,
         housenumber="",
         country="Panama",
+    ),
+    "Bridgestone Arena, Nashville, TN, USA": BRIDGESTONE_ARENA,
+    "George M. Steinbrenner, Tampa, FL, USA": SportsballGeocodeTuple(
+        city="Tampa",
+        state="FL",
+        postal="33614",
+        lat=27.980278,
+        lng=-82.506667,
+        housenumber="1",
+        country="USA",
     ),
 }
 
