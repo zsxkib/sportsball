@@ -22382,6 +22382,17 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Aloha Stadium, Honolulu, HI, USA": ALOHA_STADIUM,
+    "College of the Holy Cross": SportsballGeocodeTuple(
+        city="Worcester",
+        state="MA",
+        postal="",
+        lat=42.239167,
+        lng=-71.808333,
+        housenumber="",
+        country="USA",
+    ),
+    "Amalie Arena": AMALIE_ARENA,
+    "Skydome": ROGERS_CENTER,
 }
 
 
