@@ -22279,6 +22279,43 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Soldier Field, Chicago, IL, USA": SOLDIER_FIELD,
     "Climate Pledge Arena, Seattle, WA, USA": CLIMATE_PLEDGE_ARENA,
     "Rogers Centre, Toronto, ON, Canada": ROGERS_CENTER,
+    "Swisher Gymansium": SportsballGeocodeTuple(
+        city="Jacksonville",
+        state="FL",
+        postal="32211",
+        lat=30.350278,
+        lng=-81.605,
+        housenumber="",
+        country="USA",
+    ),
+    "Paycor Stadium, Cincinnati, OH, USA": PAYCOR_STADIUM,
+    "Berry College College": SportsballGeocodeTuple(
+        city="Rome",
+        state="GA",
+        postal="",
+        lat=34.29,
+        lng=-85.189,
+        housenumber="",
+        country="USA",
+    ),
+    "Scotiabank Saddledome, Calgary, AB, Canada": SportsballGeocodeTuple(
+        city="Jacksonville",
+        state="AB",
+        postal="32211",
+        lat=51.0375,
+        lng=-114.051944,
+        housenumber="555",
+        country="Canada",
+    ),
+    "Busch Stadium (III) - St. Louis, MO - United States": SportsballGeocodeTuple(
+        city="St. Louis",
+        state="MO",
+        postal="",
+        lat=38.6225,
+        lng=-90.193056,
+        housenumber="700",
+        country="USA",
+    ),
 }
 
 
