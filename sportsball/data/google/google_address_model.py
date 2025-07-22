@@ -22069,6 +22069,34 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1500",
         country="USA",
     ),
+    "Ball Arena": PEPSI_CENTRE,
+    "Kauffman Stadium - Kansas City, MO - United States": SportsballGeocodeTuple(
+        city="Kansas City",
+        state="MO",
+        postal="",
+        lat=39.051389,
+        lng=-94.480556,
+        housenumber="1",
+        country="USA",
+    ),
+    "Katy, TX, United States": SportsballGeocodeTuple(
+        city="Katy",
+        state="TX",
+        postal="",
+        lat=29.785786,
+        lng=-95.824394,
+        housenumber="",
+        country="USA",
+    ),
+    "Panama, Panama, Panama": SportsballGeocodeTuple(
+        city="Panama",
+        state="",
+        postal="",
+        lat=8.971111,
+        lng=-79.534722,
+        housenumber="",
+        country="Panama",
+    ),
 }
 
 
