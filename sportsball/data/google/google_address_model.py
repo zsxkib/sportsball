@@ -4215,6 +4215,15 @@ KINNICK_STADIUM = SportsballGeocodeTuple(
     housenumber="886",
     country="USA",
 )
+SANFORD_STADIUM = SportsballGeocodeTuple(
+    city="Athens",
+    state="GA",
+    postal="30602",
+    lat=33.949803,
+    lng=-83.373364,
+    housenumber="",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5475,15 +5484,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="615",
         country="USA",
     ),
-    "Sanford Stadium - Athens - GA - 30602": SportsballGeocodeTuple(
-        city="Athens",
-        state="GA",
-        postal="30602",
-        lat=33.949803,
-        lng=-83.373364,
-        housenumber="",
-        country="USA",
-    ),
+    "Sanford Stadium - Athens - GA - 30602": SANFORD_STADIUM,
     "Gesa Field - Pullman - WA - 99164": SportsballGeocodeTuple(
         city="Pullman",
         state="WA",
@@ -22056,6 +22057,18 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "EverBank Stadium, Jacksonville, FL, USA": EVERBANK_STADIUM,
     "Enterprise Center": ENTERPRISE_CENTER,
+    "Sanford Stadium - Athens, Georgia, USA - United States": SANFORD_STADIUM,
+    "Lumen Field, Seattle, WA, USA": LUMEN_FIELD,
+    "Rogers Arena, Vancouver, BC, Canada": ROGERS_ARENA,
+    "Nationals Park, Washington, DC, USA": SportsballGeocodeTuple(
+        city="Washington",
+        state="DC",
+        postal="",
+        lat=38.872778,
+        lng=-77.0075,
+        housenumber="1500",
+        country="USA",
+    ),
 }
 
 
