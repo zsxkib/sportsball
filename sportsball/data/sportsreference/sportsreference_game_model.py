@@ -665,6 +665,7 @@ def _create_sportsreference_game_model(
         except ValueError as exc:
             session.cache.delete(urls=[url, response.url])
             logging.error(response.text)
+            logging.error(url)
             raise exc
 
     def _normalize_value(value: Any) -> Any:
@@ -1056,7 +1057,7 @@ def _create_sportsreference_game_model(
                 if "IP" in cols:
                     ips = df["IP"].tolist()
                     for idx, player in enumerate(players):
-                        innings_pitched[player] = _normalize_value(ips[idx])
+                        innings_pitched[player] = int(_normalize_value(ips[idx]))
                 if "ER" in cols:
                     ers = df["ER"].tolist()
                     for idx, player in enumerate(players):

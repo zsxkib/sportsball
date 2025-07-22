@@ -9,6 +9,7 @@ from typing import Any
 
 import geocoder  # type: ignore
 import pytest_is_running
+import requests
 import requests_cache
 from pyhigh import get_elevation  # type: ignore
 from timezonefinder import TimezoneFinder  # type: ignore
@@ -22393,6 +22394,62 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Amalie Arena": AMALIE_ARENA,
     "Skydome": ROGERS_CENTER,
+    "Crypto.com Arena": STAPLES_CENTRE,
+    "Seoul, South Korea": SportsballGeocodeTuple(
+        city="Seoul",
+        state="",
+        postal="",
+        lat=37.56,
+        lng=126.99,
+        housenumber="",
+        country="South Korea",
+    ),
+    "Daikin Park, Houston, TX, USA": SportsballGeocodeTuple(
+        city="Houston",
+        state="TX",
+        postal="",
+        lat=29.756944,
+        lng=-95.355556,
+        housenumber="501",
+        country="USA",
+    ),
+    "Coors Field, Denver, CO, USA": SportsballGeocodeTuple(
+        city="Denver",
+        state="CO",
+        postal="",
+        lat=39.756111,
+        lng=-104.994167,
+        housenumber="2001",
+        country="USA",
+    ),
+    "Louisiana State University": SportsballGeocodeTuple(
+        city="Baton Rouge",
+        state="LA",
+        postal="",
+        lat=30.4145,
+        lng=-91.17826,
+        housenumber="",
+        country="USA",
+    ),
+    "Villanova University": VILLANOVA_COLLEGE,
+    "Kansas": SportsballGeocodeTuple(
+        city="",
+        state="KS",
+        postal="",
+        lat=38.0,
+        lng=-98.0,
+        housenumber="",
+        country="USA",
+    ),
+    "Petersburg, Virginia, United States": SportsballGeocodeTuple(
+        city="Petersburg",
+        state="VA",
+        postal="",
+        lat=37.23,
+        lng=-77.405,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
@@ -22426,7 +22483,7 @@ def _create_google_address_model(
         if not pytest_is_running.is_running():
             try:
                 altitude = get_elevation(lat=latitude, lon=longitude)
-            except zipfile.BadZipFile:
+            except (zipfile.BadZipFile, requests.exceptions.SSLError):
                 url = f"https://api.opentopodata.org/v1/aster30m?locations={latitude},{longitude}"
                 r = session.get(url)
                 r.raise_for_status()
