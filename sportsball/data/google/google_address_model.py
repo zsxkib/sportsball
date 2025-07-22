@@ -4206,6 +4206,15 @@ ALUMNI_STADIUM = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
+KINNICK_STADIUM = SportsballGeocodeTuple(
+    city="Iowa City",
+    state="IA",
+    postal="52240",
+    lat=41.658611,
+    lng=-91.551111,
+    housenumber="886",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -4868,15 +4877,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Lanny and Sharon Martin Stadium - Evanston - IL - 60208": LANNY_AND_SHARON_MARTIN_STADIUM,
-    "Kinnick Stadium - Iowa City - IA - 52240": SportsballGeocodeTuple(
-        city="Iowa City",
-        state="IA",
-        postal="52240",
-        lat=41.658611,
-        lng=-91.551111,
-        housenumber="886",
-        country="USA",
-    ),
+    "Kinnick Stadium - Iowa City - IA - 52240": KINNICK_STADIUM,
     "Carter-Finley Stadium - Raleigh - NC - 27607": SportsballGeocodeTuple(
         city="Raleigh",
         state="NC",
@@ -22023,6 +22024,27 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Legacy Center": LEGACY_CENTER,
+    "Kinnick Stadium - Iowa City, Iowa, USA - United States": KINNICK_STADIUM,
+    "Lincoln Financial Field, Philadelphia, PA, USA": LINCOLN_FINANCIAL_FIELD,
+    "Wainwright, Alberta, Canada": SportsballGeocodeTuple(
+        city="Wainwright",
+        state="AL",
+        postal="",
+        lat=52.833333,
+        lng=-110.866667,
+        housenumber="",
+        country="Canada",
+    ),
+    "SAP Center, San Jose, CA, USA": SportsballGeocodeTuple(
+        city="San Jose",
+        state="CA",
+        postal="",
+        lat=37.332778,
+        lng=-121.901111,
+        housenumber="525",
+        country="USA",
+    ),
+    "T-Mobile Arena": T_MOBILE_ARENA,
 }
 
 

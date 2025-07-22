@@ -166,3 +166,26 @@ class TestSportsReferenceLeagueModel(unittest.TestCase):
                 'https://www.basketball-reference.com/boxscores/197403060SDA.html',
                 'https://www.basketball-reference.com/boxscores/197403060UTS.html',
             ])
+
+    def test_baseball_links(self):
+        url = "https://www.baseball-reference.com/boxes/index.fcgi?year=2021&month=8&day=18"
+        with open(os.path.join(self.dir, "baseball_year=2021_month=8_day=18.html")) as handle:
+            soup = BeautifulSoup(handle.read(), "lxml")
+            game_urls = _find_game_urls(soup, url)
+            self.assertListEqual(game_urls, [
+                'https://www.baseball-reference.com/boxes/ARI/ARI202108180.shtml',
+                'https://www.baseball-reference.com/boxes/CHA/CHA202108180.shtml',
+                'https://www.baseball-reference.com/boxes/CIN/CIN202108180.shtml',
+                'https://www.baseball-reference.com/boxes/COL/COL202108180.shtml',
+                'https://www.baseball-reference.com/boxes/DET/DET202108180.shtml',
+                'https://www.baseball-reference.com/boxes/KCA/KCA202108180.shtml',
+                'https://www.baseball-reference.com/boxes/LAN/LAN202108180.shtml',
+                'https://www.baseball-reference.com/boxes/MIA/MIA202108180.shtml',
+                'https://www.baseball-reference.com/boxes/MIN/MIN202108180.shtml',
+                'https://www.baseball-reference.com/boxes/NYA/NYA202108180.shtml',
+                'https://www.baseball-reference.com/boxes/SFN/SFN202108180.shtml',
+                'https://www.baseball-reference.com/boxes/SLN/SLN202108180.shtml',
+                'https://www.baseball-reference.com/boxes/TBA/TBA202108180.shtml',
+                'https://www.baseball-reference.com/boxes/TEX/TEX202108180.shtml',
+                'https://www.baseball-reference.com/boxes/WAS/WAS202108180.shtml'
+            ])
