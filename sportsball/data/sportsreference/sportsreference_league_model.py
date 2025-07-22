@@ -1,6 +1,6 @@
 """Sports reference league model."""
 
-# pylint: disable=line-too-long
+# pylint: disable=line-too-long,too-many-branches,too-many-nested-blocks
 import datetime
 import logging
 import re
@@ -177,6 +177,18 @@ class SportsReferenceLeagueModel(LeagueModel):
                             final_path = None
                     else:
                         final_path = None
+                    if final_path is None and self.league == League.NCAAF:
+                        div = soup.find("div", {"id": "content"})
+                        if isinstance(div, Tag):
+                            p = div.find("p")
+                            if isinstance(p, Tag):
+                                for count, a in enumerate(p.find_all("a")):
+                                    if count == 1:
+                                        href = a.get("href")
+                                        if isinstance(href, str):
+                                            prev_url = urllib.parse.urljoin(url, href)
+                                            final_path = prev_url.split("/")[-1]
+                                            break
         except Exception as exc:
             SHUTDOWN_FLAG.set()
             raise exc

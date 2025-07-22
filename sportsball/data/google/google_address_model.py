@@ -22045,6 +22045,17 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "T-Mobile Arena": T_MOBILE_ARENA,
+    "Commonwealth Stadium - Edmonton, AB - Canada": SportsballGeocodeTuple(
+        city="Edmonton",
+        state="AB",
+        postal="",
+        lat=53.558333,
+        lng=-113.475,
+        housenumber="",
+        country="Canada",
+    ),
+    "EverBank Stadium, Jacksonville, FL, USA": EVERBANK_STADIUM,
+    "Enterprise Center": ENTERPRISE_CENTER,
 }
 
 
