@@ -4233,6 +4233,15 @@ BRIDGESTONE_ARENA = SportsballGeocodeTuple(
     housenumber="501",
     country="USA",
 )
+CHASE_FIELD = SportsballGeocodeTuple(
+    city="Phoenix",
+    state="AZ",
+    postal="85004",
+    lat=33.445278,
+    lng=-112.066944,
+    housenumber="401",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5767,15 +5776,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Fenway Park - Boston - MA - 02297": FENWAY_PARK,
     "Toyota Stadium - Frisco - TX - 75033": TOYOTA_STADIUM,
-    "Chase Field - Phoenix - AZ - 85004": SportsballGeocodeTuple(
-        city="Phoenix",
-        state="AZ",
-        postal="85004",
-        lat=33.445278,
-        lng=-112.066944,
-        housenumber="401",
-        country="USA",
-    ),
+    "Chase Field - Phoenix - AZ - 85004": CHASE_FIELD,
     "Thomas A. Robinson National Stadium - Nassau": SportsballGeocodeTuple(
         city="Nassau",
         state="",
@@ -22316,6 +22317,26 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="700",
         country="USA",
     ),
+    "SDCCU Stadium, San Diego, CA, USA": SDCCU_STADIUM,
+    "Xcel Energy Center": SportsballGeocodeTuple(
+        city="Saint Paul",
+        state="MN",
+        postal="",
+        lat=44.944722,
+        lng=-93.101111,
+        housenumber="199",
+        country="USA",
+    ),
+    "T-Mobile Park, Seattle, WA, USA": SportsballGeocodeTuple(
+        city="Seattle",
+        state="WA",
+        postal="",
+        lat=47.591,
+        lng=-122.333,
+        housenumber="1250",
+        country="USA",
+    ),
+    "Chase Field": CHASE_FIELD,
 }
 
 
