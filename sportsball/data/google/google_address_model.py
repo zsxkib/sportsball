@@ -4242,6 +4242,42 @@ CHASE_FIELD = SportsballGeocodeTuple(
     housenumber="401",
     country="USA",
 )
+CANADIAN_TIRE_CENTER = SportsballGeocodeTuple(
+    city="Ottawa",
+    state="ON",
+    postal="",
+    lat=45.296944,
+    lng=-75.927222,
+    housenumber="",
+    country="Canada",
+)
+DODGER_STADIUM = SportsballGeocodeTuple(
+    city="Los Angeles",
+    state="CA",
+    postal="",
+    lat=34.0736118,
+    lng=-118.24,
+    housenumber="1000",
+    country="USA",
+)
+VIRGINIA_BEACH = SportsballGeocodeTuple(
+    city="Virginia Beach",
+    state="VA",
+    postal="",
+    lat=36.85,
+    lng=-75.977778,
+    housenumber="",
+    country="USA",
+)
+ALOHA_STADIUM = SportsballGeocodeTuple(
+    city="Aiea",
+    state="HI",
+    postal="96701",
+    lat=21.3728016,
+    lng=-157.9348645,
+    housenumber="99-500",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -4506,15 +4542,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Australia",
     ),
-    "Aloha Stadium - Honolulu - HI - 96818": SportsballGeocodeTuple(
-        city="Aiea",
-        state="HI",
-        postal="96701",
-        lat=21.3728016,
-        lng=-157.9348645,
-        housenumber="99-500",
-        country="USA",
-    ),
+    "Aloha Stadium - Honolulu - HI - 96818": ALOHA_STADIUM,
     "Giants Stadium - East Rutherford - NJ": METLIFE_STADIUM,
     "Metrodome - Minneapolis - MN - 55415": US_BANK_STADIUM,
     "North Hobart - Australia": SportsballGeocodeTuple(
@@ -16435,15 +16463,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Virginia Beach, VA, USA": SportsballGeocodeTuple(
-        city="Virginia Beach",
-        state="VA",
-        postal="",
-        lat=36.85,
-        lng=-75.977778,
-        housenumber="",
-        country="USA",
-    ),
+    "Virginia Beach, VA, USA": VIRGINIA_BEACH,
     "Greer, SC, USA": SportsballGeocodeTuple(
         city="Greer",
         state="SC",
@@ -18621,15 +18641,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Villanova College": VILLANOVA_COLLEGE,
-    "Canadian Tire Centre, Ottawa, ON, Canada": SportsballGeocodeTuple(
-        city="Ottawa",
-        state="ON",
-        postal="",
-        lat=45.296944,
-        lng=-75.927222,
-        housenumber="",
-        country="Canada",
-    ),
+    "Canadian Tire Centre, Ottawa, ON, Canada": CANADIAN_TIRE_CENTER,
     "American Airlines Center": AMERICAN_AIRLINES_ARENA,
     "notre-dame": NOTRE_DAME_STADIUM,
     "Camp Randall Stadium - Madison, Wisconsin, USA - United States": CAMP_RANDALL_STADIUM,
@@ -22110,15 +22122,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Ford Field, Detroit, MI, USA": FORD_FIELD,
-    "Dodger Stadium - Los Angeles, CA, USA - United States": SportsballGeocodeTuple(
-        city="Los Angeles",
-        state="CA",
-        postal="",
-        lat=34.0736118,
-        lng=-118.24,
-        housenumber="1000",
-        country="USA",
-    ),
+    "Dodger Stadium - Los Angeles, CA, USA - United States": DODGER_STADIUM,
     "Mississippi State University": SportsballGeocodeTuple(
         city="Mississippi State",
         state="MS",
@@ -22337,6 +22341,47 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Chase Field": CHASE_FIELD,
+    "UBS Arena, Elmont, NY, USA": SportsballGeocodeTuple(
+        city="Elmont",
+        state="NY",
+        postal="",
+        lat=40.71179,
+        lng=-73.72604,
+        housenumber="2400",
+        country="USA",
+    ),
+    "Canadian Tire Centre": CANADIAN_TIRE_CENTER,
+    "Dodger Stadium, Los Angeles, CA, USA": DODGER_STADIUM,
+    "Virginia Beach, VA, United States": VIRGINIA_BEACH,
+    "Johnstown, NY, United States": SportsballGeocodeTuple(
+        city="Johnstown",
+        state="NY",
+        postal="",
+        lat=43.007222,
+        lng=-74.372222,
+        housenumber="",
+        country="USA",
+    ),
+    "Mattoon, IL, United States": SportsballGeocodeTuple(
+        city="Mattoon",
+        state="IL",
+        postal="",
+        lat=39.4775,
+        lng=-88.362222,
+        housenumber="",
+        country="USA",
+    ),
+    "San Diego, CA, United States": SAN_DIEGO,
+    "University of Illinois at Urbana-Champaign": SportsballGeocodeTuple(
+        city="Urbana-Champaign",
+        state="IL",
+        postal="",
+        lat=40.110556,
+        lng=-88.228333,
+        housenumber="",
+        country="USA",
+    ),
+    "Aloha Stadium, Honolulu, HI, USA": ALOHA_STADIUM,
 }
 
 

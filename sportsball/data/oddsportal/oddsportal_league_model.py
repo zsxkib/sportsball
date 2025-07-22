@@ -1,6 +1,6 @@
 """Odds Portal league model."""
 
-# pylint: disable=too-many-locals,too-many-branches,too-many-statements,protected-access,too-many-arguments,line-too-long,too-many-return-statements
+# pylint: disable=too-many-locals,too-many-branches,too-many-statements,protected-access,too-many-arguments,line-too-long,too-many-return-statements,broad-exception-caught
 import http
 import json
 import logging
@@ -66,24 +66,28 @@ def _process_results_pages(
         current_page <= (0 if total_pages is None else total_pages)
     ):
         dat_url = f"https://www.oddsportal.com/ajax-sport-country-tournament-archive_/{sports_id}/{oddsportal_id}/X134529032X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X512X32X0X0X0X0X0X0X131072X0X2048/1/-5/page/{current_page}//"
-        parsed_data = fetch_data(dat_url, session, url, soup)
-        d = parsed_data["d"]
-        if d.get("total") == 0:
-            return
-        for row in d.get("rows", []):
-            if SHUTDOWN_FLAG.is_set():
+        try:
+            parsed_data = fetch_data(dat_url, session, url, soup)
+            d = parsed_data["d"]
+            if d.get("total") == 0:
                 return
-            game_model = create_oddsportal_game_model(
-                session, urllib.parse.urljoin(url, row["url"]), league, False
-            )
-            if game_model is None:
-                continue
-            pbar.update(1)
-            pbar.set_description(f"OddsPortal {game_model.dt}")
-            yield game_model
-        pagination = d["pagination"]
-        total_pages = pagination["pages"]
-        current_page += 1
+            for row in d.get("rows", []):
+                if SHUTDOWN_FLAG.is_set():
+                    return
+                game_model = create_oddsportal_game_model(
+                    session, urllib.parse.urljoin(url, row["url"]), league, False
+                )
+                if game_model is None:
+                    continue
+                pbar.update(1)
+                pbar.set_description(f"OddsPortal {game_model.dt}")
+                yield game_model
+            pagination = d["pagination"]
+            total_pages = pagination["pages"]
+            current_page += 1
+        except Exception as exc:
+            logging.warning(str(exc))
+            break
 
 
 class OddsPortalLeagueModel(LeagueModel):
