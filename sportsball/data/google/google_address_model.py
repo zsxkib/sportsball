@@ -22964,6 +22964,25 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="734",
         country="USA",
     ),
+    "Clemson University": SportsballGeocodeTuple(
+        city="Clemson",
+        state="SC",
+        postal="",
+        lat=34.678333,
+        lng=-82.839167,
+        housenumber="",
+        country="USA",
+    ),
+    "penn-state": SportsballGeocodeTuple(
+        city="University Park",
+        state="PA",
+        postal="",
+        lat=40.798333,
+        lng=-77.86,
+        housenumber="",
+        country="USA",
+    ),
+    "Dodger Stadium": DODGER_STADIUM,
 }
 
 
