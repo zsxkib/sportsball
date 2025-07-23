@@ -4,6 +4,7 @@
 import datetime
 import io
 import logging
+import math
 import os
 import re
 import urllib.parse
@@ -672,6 +673,8 @@ def _create_sportsreference_game_model(
         if isinstance(value, str):
             if "%" in value:
                 return float(value.replace("%", ""))
+        if isinstance(value, float) and math.isnan(value):
+            return None
         return value
 
     handle = io.StringIO()
