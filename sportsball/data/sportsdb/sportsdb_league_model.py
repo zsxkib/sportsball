@@ -49,6 +49,8 @@ class SportsDBLeagueModel(LeagueModel):
         year = int(season_year.split("-")[0])
 
         def internal_produce_games() -> Iterator[GameModel]:
+            if SHUTDOWN_FLAG.is_set():
+                return
             response = self.session.get(
                 f"https://www.thesportsdb.com/api/v1/json/3/eventsround.php?id={league_id}&r={round_str}&s={season_year}"
             )

@@ -22936,6 +22936,34 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "University of California": SportsballGeocodeTuple(
+        city="Oakland",
+        state="CA",
+        postal="",
+        lat=37.802222,
+        lng=-122.271389,
+        housenumber="",
+        country="USA",
+    ),
+    "Madison Square Garden (IV)": MADISON_SQUARE_GARDEN,
+    "Olympic Stadium Zawiya - Zawiya - Libya": SportsballGeocodeTuple(
+        city="Zawiya",
+        state="",
+        postal="",
+        lat=32.753889,
+        lng=12.739167,
+        housenumber="",
+        country="Libya",
+    ),
+    "Globe Life Field, Arlington, TX, USA": SportsballGeocodeTuple(
+        city="Arlington",
+        state="TX",
+        postal="",
+        lat=32.747361,
+        lng=-97.084167,
+        housenumber="734",
+        country="USA",
+    ),
 }
 
 
