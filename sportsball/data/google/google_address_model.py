@@ -22994,6 +22994,17 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "PPG Paints Arena": PPG_PAINTS_ARENA,
     "loanDepot park": MIAMI_ORANGE_BOWL,
+    "University of Oregon": SportsballGeocodeTuple(
+        city="Eugene",
+        state="OR",
+        postal="",
+        lat=44.0443,
+        lng=-123.0758,
+        housenumber="",
+        country="USA",
+    ),
+    "Bridgestone Arena": BRIDGESTONE_ARENA,
+    "Citi Field": SHEA_STADIUM,
 }
 
 
