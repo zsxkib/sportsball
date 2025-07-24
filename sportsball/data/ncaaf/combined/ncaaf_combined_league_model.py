@@ -8,8 +8,9 @@ from ..espn.ncaaf_espn_league_model import NCAAFESPNLeagueModel
 from ..oddsportal.ncaaf_oddsportal_league_model import \
     NCAAFOddsPortalLeagueModel
 from ..sportsdb.ncaaf_sportsdb_league_model import NCAAFSportsDBLeagueModel
-from ..sportsreference.ncaaf_sportsreference_league_model import \
-    NCAAFSportsReferenceLeagueModel
+
+# from ..sportsreference.ncaaf_sportsreference_league_model import \
+#    NCAAFSportsReferenceLeagueModel
 
 NCAAF_TEAM_IDENTITY_MAP: dict[str, str] = {}
 NCAAF_VENUE_IDENTITY_MAP: dict[str, str] = {}
@@ -27,7 +28,7 @@ class NCAAFCombinedLeagueModel(CombinedLeagueModel):
                 NCAAFESPNLeagueModel(session, position=0),
                 NCAAFOddsPortalLeagueModel(session, position=1),
                 NCAAFSportsDBLeagueModel(session, position=2),
-                NCAAFSportsReferenceLeagueModel(session, position=3),
+                # NCAAFSportsReferenceLeagueModel(session, position=3),
             ],
             league_filter,
         )

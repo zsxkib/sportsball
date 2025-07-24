@@ -4333,6 +4333,24 @@ COORS_FIELD = SportsballGeocodeTuple(
     housenumber="2001",
     country="USA",
 )
+SAP_CENTER = SportsballGeocodeTuple(
+    city="San Jose",
+    state="CA",
+    postal="",
+    lat=37.332778,
+    lng=-121.901111,
+    housenumber="525",
+    country="USA",
+)
+CITIZENS_BANK_PARK = SportsballGeocodeTuple(
+    city="Philadelphia",
+    state="PA",
+    postal="",
+    lat=39.905833,
+    lng=-75.166389,
+    housenumber="",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -21826,15 +21844,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "KeyBank Center, Buffalo, NY, USA": KEYBANK_CENTER,
     "Scotiabank Arena": SCOTIABANK_ARENA,
-    "Citizens Bank Park, Philadelphia, PA, USA": SportsballGeocodeTuple(
-        city="Philadelphia",
-        state="PA",
-        postal="",
-        lat=39.905833,
-        lng=-75.166389,
-        housenumber="",
-        country="USA",
-    ),
+    "Citizens Bank Park, Philadelphia, PA, USA": CITIZENS_BANK_PARK,
     "Louisiana Tech University": SportsballGeocodeTuple(
         city="Ruston",
         state="LA",
@@ -22065,15 +22075,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Canada",
     ),
-    "SAP Center, San Jose, CA, USA": SportsballGeocodeTuple(
-        city="San Jose",
-        state="CA",
-        postal="",
-        lat=37.332778,
-        lng=-121.901111,
-        housenumber="525",
-        country="USA",
-    ),
+    "SAP Center, San Jose, CA, USA": SAP_CENTER,
     "T-Mobile Arena": T_MOBILE_ARENA,
     "Commonwealth Stadium - Edmonton, AB - Canada": SportsballGeocodeTuple(
         city="Edmonton",
@@ -23005,6 +23007,17 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Bridgestone Arena": BRIDGESTONE_ARENA,
     "Citi Field": SHEA_STADIUM,
+    "Temple University": SportsballGeocodeTuple(
+        city="Philadelphia",
+        state="PA",
+        postal="",
+        lat=39.981389,
+        lng=-75.154444,
+        housenumber="",
+        country="USA",
+    ),
+    "SAP Center at San Jose": SAP_CENTER,
+    "Citizens Bank Park": CITIZENS_BANK_PARK,
 }
 
 
