@@ -22983,6 +22983,17 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Dodger Stadium": DODGER_STADIUM,
+    "ohio-state": SportsballGeocodeTuple(
+        city="Columbus",
+        state="OH",
+        postal="",
+        lat=40.0,
+        lng=-83.0125,
+        housenumber="",
+        country="USA",
+    ),
+    "PPG Paints Arena": PPG_PAINTS_ARENA,
+    "loanDepot park": MIAMI_ORANGE_BOWL,
 }
 
 
