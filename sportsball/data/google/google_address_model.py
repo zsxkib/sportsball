@@ -4351,6 +4351,24 @@ CITIZENS_BANK_PARK = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
+CAJUN_FIELD = SportsballGeocodeTuple(
+    city="Lafayette",
+    state="LA",
+    postal="70506",
+    lat=30.215833,
+    lng=-92.041944,
+    housenumber="201",
+    country="USA",
+)
+PNC_PARK = SportsballGeocodeTuple(
+    city="Pittsburgh",
+    state="PA",
+    postal="",
+    lat=40.446944,
+    lng=-80.005833,
+    housenumber="115",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -4932,15 +4950,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="700",
         country="USA",
     ),
-    "Cajun Field - Lafayette - LA - 70506": SportsballGeocodeTuple(
-        city="Lafayette",
-        state="LA",
-        postal="70506",
-        lat=30.215833,
-        lng=-92.041944,
-        housenumber="201",
-        country="USA",
-    ),
+    "Cajun Field - Lafayette - LA - 70506": CAJUN_FIELD,
     "Ben Hill Griffin Stadium - Gainesville - FL - 32611": SportsballGeocodeTuple(
         city="Gainesville",
         state="FL",
@@ -21902,15 +21912,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="Switzerland",
     ),
     "Nationwide Arena, Columbus, OH, USA": NATIONWIDE_ARENA,
-    "PNC Park, Pittsburgh, PA, USA": SportsballGeocodeTuple(
-        city="Pittsburgh",
-        state="PA",
-        postal="",
-        lat=40.446944,
-        lng=-80.005833,
-        housenumber="115",
-        country="USA",
-    ),
+    "PNC Park, Pittsburgh, PA, USA": PNC_PARK,
     "Wurzburg, Bavaria, DE": SportsballGeocodeTuple(
         city="Wurzburg",
         state="Bavaria",
@@ -23018,6 +23020,18 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "SAP Center at San Jose": SAP_CENTER,
     "Citizens Bank Park": CITIZENS_BANK_PARK,
+    "DePaul University": SportsballGeocodeTuple(
+        city="Chicago",
+        state="IL",
+        postal="",
+        lat=39.981389,
+        lng=-75.154444,
+        housenumber="",
+        country="USA",
+    ),
+    "Cajun Field - Lafayette, Louisiana, USA - United States": CAJUN_FIELD,
+    "Rogers Arena": ROGERS_ARENA,
+    "PNC Park": PNC_PARK,
 }
 
 
