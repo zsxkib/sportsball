@@ -4369,6 +4369,15 @@ PNC_PARK = SportsballGeocodeTuple(
     housenumber="115",
     country="USA",
 )
+FALCON_STADIUM = SportsballGeocodeTuple(
+    city="",
+    state="CO",
+    postal="80840",
+    lat=38.997,
+    lng=-104.843,
+    housenumber="4900",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5567,15 +5576,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="3112",
         country="USA",
     ),
-    "Falcon Stadium - USAF Academy - CO - 80840": SportsballGeocodeTuple(
-        city="",
-        state="CO",
-        postal="80840",
-        lat=38.997,
-        lng=-104.843,
-        housenumber="4900",
-        country="USA",
-    ),
+    "Falcon Stadium - USAF Academy - CO - 80840": FALCON_STADIUM,
     "Kidd Brewer Stadium - Boone - NC - 28607": SportsballGeocodeTuple(
         city="Boone",
         state="NC",
@@ -23032,6 +23033,8 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Cajun Field - Lafayette, Louisiana, USA - United States": CAJUN_FIELD,
     "Rogers Arena": ROGERS_ARENA,
     "PNC Park": PNC_PARK,
+    "Falcon Stadium - Colorado Springs, CO - United States": FALCON_STADIUM,
+    "TD Garden": TD_GARDEN,
 }
 
 
