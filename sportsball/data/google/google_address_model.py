@@ -4378,6 +4378,33 @@ FALCON_STADIUM = SportsballGeocodeTuple(
     housenumber="4900",
     country="USA",
 )
+CALIFORNIA_MEMORIAL_STADIUM = SportsballGeocodeTuple(
+    city="Berkeley",
+    state="CA",
+    postal="94720",
+    lat=37.871111,
+    lng=-122.250833,
+    housenumber="210",
+    country="USA",
+)
+SCOTIABANK_SADDLEDOME = SportsballGeocodeTuple(
+    city="Jacksonville",
+    state="AB",
+    postal="32211",
+    lat=51.0375,
+    lng=-114.051944,
+    housenumber="555",
+    country="Canada",
+)
+T_MOBILE_PARK = SportsballGeocodeTuple(
+    city="Seattle",
+    state="WA",
+    postal="",
+    lat=47.591,
+    lng=-122.333,
+    housenumber="1250",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5410,15 +5437,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="545",
         country="USA",
     ),
-    "California Memorial Stadium - Berkeley - CA - 94720": SportsballGeocodeTuple(
-        city="Berkeley",
-        state="CA",
-        postal="94720",
-        lat=37.871111,
-        lng=-122.250833,
-        housenumber="210",
-        country="USA",
-    ),
+    "California Memorial Stadium - Berkeley - CA - 94720": CALIFORNIA_MEMORIAL_STADIUM,
     "Memorial Stadium (Norman, OK) - Norman - OK - 73019": SportsballGeocodeTuple(
         city="Norman",
         state="OK",
@@ -22323,15 +22342,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Scotiabank Saddledome, Calgary, AB, Canada": SportsballGeocodeTuple(
-        city="Jacksonville",
-        state="AB",
-        postal="32211",
-        lat=51.0375,
-        lng=-114.051944,
-        housenumber="555",
-        country="Canada",
-    ),
+    "Scotiabank Saddledome, Calgary, AB, Canada": SCOTIABANK_SADDLEDOME,
     "Busch Stadium (III) - St. Louis, MO - United States": SportsballGeocodeTuple(
         city="St. Louis",
         state="MO",
@@ -22351,15 +22362,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="199",
         country="USA",
     ),
-    "T-Mobile Park, Seattle, WA, USA": SportsballGeocodeTuple(
-        city="Seattle",
-        state="WA",
-        postal="",
-        lat=47.591,
-        lng=-122.333,
-        housenumber="1250",
-        country="USA",
-    ),
+    "T-Mobile Park, Seattle, WA, USA": T_MOBILE_PARK,
     "Chase Field": CHASE_FIELD,
     "UBS Arena, Elmont, NY, USA": SportsballGeocodeTuple(
         city="Elmont",
@@ -23035,6 +23038,27 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "PNC Park": PNC_PARK,
     "Falcon Stadium - Colorado Springs, CO - United States": FALCON_STADIUM,
     "TD Garden": TD_GARDEN,
+    "California Memorial Stadium": CALIFORNIA_MEMORIAL_STADIUM,
+    "Scotiabank Saddledome": SCOTIABANK_SADDLEDOME,
+    "T-Mobile Park": T_MOBILE_PARK,
+    "Davidson College": SportsballGeocodeTuple(
+        city="Davidson",
+        state="NC",
+        postal="",
+        lat=35.49999,
+        lng=-80.845296,
+        housenumber="",
+        country="USA",
+    ),
+    "University of Southern Mississippi": SportsballGeocodeTuple(
+        city="Hattiesburg",
+        state="MS",
+        postal="",
+        lat=31.329638,
+        lng=-89.333847,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
