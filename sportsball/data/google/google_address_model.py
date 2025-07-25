@@ -4522,6 +4522,33 @@ WALLACE_WADE_STADIUM = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
+TSONGAS_CENTER = SportsballGeocodeTuple(
+    city="Lowell",
+    state="MA",
+    postal="",
+    lat=42.650228,
+    lng=-71.313248,
+    housenumber="300",
+    country="USA",
+)
+MALONE_STADIUM = SportsballGeocodeTuple(
+    city="Monroe",
+    state="LA",
+    postal="71203",
+    lat=32.530833,
+    lng=-92.065833,
+    housenumber="514",
+    country="USA",
+)
+NATIONALS_PARK = SportsballGeocodeTuple(
+    city="Washington",
+    state="DC",
+    postal="",
+    lat=38.872778,
+    lng=-77.0075,
+    housenumber="1500",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5608,15 +5635,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="550",
         country="USA",
     ),
-    "Malone Stadium - Monroe - LA - 71203": SportsballGeocodeTuple(
-        city="Monroe",
-        state="LA",
-        postal="71203",
-        lat=32.530833,
-        lng=-92.065833,
-        housenumber="514",
-        country="USA",
-    ),
+    "Malone Stadium - Monroe - LA - 71203": MALONE_STADIUM,
     "Gerald J. Ford Stadium - Dallas - TX - 75205": SportsballGeocodeTuple(
         city="Dallas",
         state="TX",
@@ -10459,15 +10478,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "HP Field House, Orlando, Florida": ESPN_WIDE_WORLD_OF_SPORTS_COMPLEX,
-    "Tsongas Center, Lowell, Massachusetts": SportsballGeocodeTuple(
-        city="Lowell",
-        state="MA",
-        postal="",
-        lat=42.650228,
-        lng=-71.313248,
-        housenumber="300",
-        country="USA",
-    ),
+    "Tsongas Center, Lowell, Massachusetts": TSONGAS_CENTER,
     "The Arena, Niceville, Florida": SportsballGeocodeTuple(
         city="Niceville",
         state="FL",
@@ -22166,15 +22177,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Sanford Stadium - Athens, Georgia, USA - United States": SANFORD_STADIUM,
     "Lumen Field, Seattle, WA, USA": LUMEN_FIELD,
     "Rogers Arena, Vancouver, BC, Canada": ROGERS_ARENA,
-    "Nationals Park, Washington, DC, USA": SportsballGeocodeTuple(
-        city="Washington",
-        state="DC",
-        postal="",
-        lat=38.872778,
-        lng=-77.0075,
-        housenumber="1500",
-        country="USA",
-    ),
+    "Nationals Park, Washington, DC, USA": NATIONALS_PARK,
     "Ball Arena": PEPSI_CENTRE,
     "Kauffman Stadium - Kansas City, MO - United States": SportsballGeocodeTuple(
         city="Kansas City",
@@ -23191,6 +23194,27 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Tsongas Center - Lowell, Massachusetts - United States": TSONGAS_CENTER,
+    "University of Detroit Mercy": SportsballGeocodeTuple(
+        city="Detroit",
+        state="MI",
+        postal="",
+        lat=42.41411,
+        lng=-83.137922,
+        housenumber="",
+        country="USA",
+    ),
+    "Malone Stadium": MALONE_STADIUM,
+    "Manchester, New Hampshire, United States": SportsballGeocodeTuple(
+        city="Manchester",
+        state="NH",
+        postal="",
+        lat=42.990833,
+        lng=-71.463611,
+        housenumber="",
+        country="USA",
+    ),
+    "Nationals Park": NATIONALS_PARK,
 }
 
 
