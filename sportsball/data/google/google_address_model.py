@@ -4477,6 +4477,24 @@ BUSCH_STADIUM = SportsballGeocodeTuple(
     housenumber="700",
     country="USA",
 )
+BOBBY_DODD_STADIUM = SportsballGeocodeTuple(
+    city="Atlanta",
+    state="GA",
+    postal="30332",
+    lat=33.7725,
+    lng=-84.392778,
+    housenumber="155",
+    country="USA",
+)
+STEINBRENNER_FIELD = SportsballGeocodeTuple(
+    city="Tampa",
+    state="FL",
+    postal="33614",
+    lat=27.980278,
+    lng=-82.506667,
+    housenumber="1",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5133,15 +5151,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="4600",
         country="USA",
     ),
-    "Bobby Dodd Stadium - Atlanta - GA - 30332": SportsballGeocodeTuple(
-        city="Atlanta",
-        state="GA",
-        postal="30332",
-        lat=33.7725,
-        lng=-84.392778,
-        housenumber="155",
-        country="USA",
-    ),
+    "Bobby Dodd Stadium - Atlanta - GA - 30332": BOBBY_DODD_STADIUM,
     "Aviva Stadium - Dublin": SportsballGeocodeTuple(
         city="Dublin",
         state="",
@@ -22183,15 +22193,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="Panama",
     ),
     "Bridgestone Arena, Nashville, TN, USA": BRIDGESTONE_ARENA,
-    "George M. Steinbrenner, Tampa, FL, USA": SportsballGeocodeTuple(
-        city="Tampa",
-        state="FL",
-        postal="33614",
-        lat=27.980278,
-        lng=-82.506667,
-        housenumber="1",
-        country="USA",
-    ),
+    "George M. Steinbrenner, Tampa, FL, USA": STEINBRENNER_FIELD,
     "Ford Field, Detroit, MI, USA": FORD_FIELD,
     "Dodger Stadium - Los Angeles, CA, USA - United States": DODGER_STADIUM,
     "Mississippi State University": SportsballGeocodeTuple(
@@ -23123,6 +23125,27 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Jordan-Hare Stadium - Auburn, AL - United States": JORDAN_HARE_STADIUM,
     "Busch Stadium III": BUSCH_STADIUM,
     "Little Caesars Arena": LITTLE_CAESARS_ARENA,
+    "Ball State University": SportsballGeocodeTuple(
+        city="Muncie",
+        state="IN",
+        postal="",
+        lat=40.198322,
+        lng=-85.408943,
+        housenumber="",
+        country="USA",
+    ),
+    "Indiana University-Purdue University Indianapolis": SportsballGeocodeTuple(
+        city="Indianapolis",
+        state="IN",
+        postal="",
+        lat=39.773996,
+        lng=-86.176361,
+        housenumber="",
+        country="USA",
+    ),
+    "Bobby Dodd Stadium at Historic Grant Field": BOBBY_DODD_STADIUM,
+    "Honda Center": HONDA_CENTER,
+    "Steinbrenner Field": STEINBRENNER_FIELD,
 }
 
 
