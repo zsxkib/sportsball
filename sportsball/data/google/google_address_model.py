@@ -4432,6 +4432,15 @@ ANGEL_STADIUM_OF_ANAHEIM = SportsballGeocodeTuple(
     housenumber="2000",
     country="USA",
 )
+NEYLAND_STADIUM = SportsballGeocodeTuple(
+    city="Knoxville",
+    state="TN",
+    postal="37996",
+    lat=35.955,
+    lng=-83.925,
+    housenumber="1235",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5466,15 +5475,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1185",
         country="USA",
     ),
-    "Neyland Stadium - Knoxville - TN - 37996": SportsballGeocodeTuple(
-        city="Knoxville",
-        state="TN",
-        postal="37996",
-        lat=35.955,
-        lng=-83.925,
-        housenumber="1235",
-        country="USA",
-    ),
+    "Neyland Stadium - Knoxville - TN - 37996": NEYLAND_STADIUM,
     "Bill Snyder Family Stadium - Manhattan - KS - 66502": SportsballGeocodeTuple(
         city="Manhattan",
         state="KS",
@@ -23074,6 +23075,35 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Michigan Stadium - Ann Arbor, Michigan, USA - United States": MICHIGAN_STADIUM,
     "UBS Arena": UBS_ARENA,
     "Angel Stadium of Anaheim": ANGEL_STADIUM_OF_ANAHEIM,
+    "Kansas State University": SportsballGeocodeTuple(
+        city="Manhattan",
+        state="KS",
+        postal="",
+        lat=39.1914,
+        lng=-96.5809,
+        housenumber="",
+        country="USA",
+    ),
+    "University of Mississippi": SportsballGeocodeTuple(
+        city="Lafayette County",
+        state="MS",
+        postal="38677",
+        lat=34.3662492,
+        lng=-89.5379687,
+        housenumber="",
+        country="USA",
+    ),
+    "Neyland Stadium": NEYLAND_STADIUM,
+    "Wells Fargo Center": SPECTRUM,
+    "Comerica Park": SportsballGeocodeTuple(
+        city="Detroit",
+        state="MI",
+        postal="",
+        lat=42.339167,
+        lng=-83.048611,
+        housenumber="2100",
+        country="USA",
+    ),
 }
 
 
