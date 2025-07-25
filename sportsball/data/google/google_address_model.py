@@ -4405,6 +4405,33 @@ T_MOBILE_PARK = SportsballGeocodeTuple(
     housenumber="1250",
     country="USA",
 )
+MICHIGAN_STADIUM = SportsballGeocodeTuple(
+    city="Ann Arbor",
+    state="MI",
+    postal="48104",
+    lat=42.2661,
+    lng=-83.7508,
+    housenumber="1201",
+    country="USA",
+)
+UBS_ARENA = SportsballGeocodeTuple(
+    city="Elmont",
+    state="NY",
+    postal="",
+    lat=40.71179,
+    lng=-73.72604,
+    housenumber="2400",
+    country="USA",
+)
+ANGEL_STADIUM_OF_ANAHEIM = SportsballGeocodeTuple(
+    city="Anaheim",
+    state="CA",
+    postal="",
+    lat=33.800278,
+    lng=-117.882778,
+    housenumber="2000",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5272,15 +5299,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="90",
         country="USA",
     ),
-    "Michigan Stadium - Ann Arbor - MI - 48104": SportsballGeocodeTuple(
-        city="Ann Arbor",
-        state="MI",
-        postal="48104",
-        lat=42.2661,
-        lng=-83.7508,
-        housenumber="1201",
-        country="USA",
-    ),
+    "Michigan Stadium - Ann Arbor - MI - 48104": MICHIGAN_STADIUM,
     "Memorial Stadium (Champaign, IL) - Champaign - IL - 61820": SportsballGeocodeTuple(
         city="Champaign",
         state="IL",
@@ -9608,15 +9627,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="Thailand",
     ),
     "Norwood Oval, Norwood, Australia": NORWOOD_OVAL,
-    "Angel Stadium of Anaheim, Anaheim, CA, USA": SportsballGeocodeTuple(
-        city="Anaheim",
-        state="CA",
-        postal="",
-        lat=33.800278,
-        lng=-117.882778,
-        housenumber="2000",
-        country="USA",
-    ),
+    "Angel Stadium of Anaheim, Anaheim, CA, USA": ANGEL_STADIUM_OF_ANAHEIM,
     "Riverway Stadium, Townsville, Australia": RIVERWAY_STADIUM,
     "Adelaide Hills, Mount Barker, Australia": ADELAIDE_HILLS,
     "Marrara Oval, Darwin, Australia": TIO_STADIUM,
@@ -22364,15 +22375,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "T-Mobile Park, Seattle, WA, USA": T_MOBILE_PARK,
     "Chase Field": CHASE_FIELD,
-    "UBS Arena, Elmont, NY, USA": SportsballGeocodeTuple(
-        city="Elmont",
-        state="NY",
-        postal="",
-        lat=40.71179,
-        lng=-73.72604,
-        housenumber="2400",
-        country="USA",
-    ),
+    "UBS Arena, Elmont, NY, USA": UBS_ARENA,
     "Canadian Tire Centre": CANADIAN_TIRE_CENTER,
     "Dodger Stadium, Los Angeles, CA, USA": DODGER_STADIUM,
     "Virginia Beach, VA, United States": VIRGINIA_BEACH,
@@ -23059,6 +23062,18 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Valjevo, Serbia": SportsballGeocodeTuple(
+        city="Valjevo",
+        state="",
+        postal="",
+        lat=44.266667,
+        lng=19.883333,
+        housenumber="",
+        country="Serbia",
+    ),
+    "Michigan Stadium - Ann Arbor, Michigan, USA - United States": MICHIGAN_STADIUM,
+    "UBS Arena": UBS_ARENA,
+    "Angel Stadium of Anaheim": ANGEL_STADIUM_OF_ANAHEIM,
 }
 
 
