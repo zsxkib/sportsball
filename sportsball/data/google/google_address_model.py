@@ -4459,6 +4459,24 @@ DAIKIN_PARK = SportsballGeocodeTuple(
     housenumber="501",
     country="USA",
 )
+JORDAN_HARE_STADIUM = SportsballGeocodeTuple(
+    city="Auburn",
+    state="AL",
+    postal="36849",
+    lat=32.602222,
+    lng=-85.489167,
+    housenumber="251",
+    country="USA",
+)
+BUSCH_STADIUM = SportsballGeocodeTuple(
+    city="St. Louis",
+    state="MO",
+    postal="",
+    lat=38.6225,
+    lng=-90.193056,
+    housenumber="700",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5215,15 +5233,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="701",
         country="USA",
     ),
-    "Jordan-Hare Stadium - Auburn - AL - 36849": SportsballGeocodeTuple(
-        city="Auburn",
-        state="AL",
-        postal="36849",
-        lat=32.602222,
-        lng=-85.489167,
-        housenumber="251",
-        country="USA",
-    ),
+    "Jordan-Hare Stadium - Auburn - AL - 36849": JORDAN_HARE_STADIUM,
     "Camp Randall Stadium - Madison - WI - 53711": CAMP_RANDALL_STADIUM,
     "War Memorial Stadium (AR) - Little Rock - AR - 72205": SportsballGeocodeTuple(
         city="Little Rock",
@@ -22365,15 +22375,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Scotiabank Saddledome, Calgary, AB, Canada": SCOTIABANK_SADDLEDOME,
-    "Busch Stadium (III) - St. Louis, MO - United States": SportsballGeocodeTuple(
-        city="St. Louis",
-        state="MO",
-        postal="",
-        lat=38.6225,
-        lng=-90.193056,
-        housenumber="700",
-        country="USA",
-    ),
+    "Busch Stadium (III) - St. Louis, MO - United States": BUSCH_STADIUM,
     "SDCCU Stadium, San Diego, CA, USA": SDCCU_STADIUM,
     "Xcel Energy Center": SportsballGeocodeTuple(
         city="Saint Paul",
@@ -23118,6 +23120,9 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Jordan-Hare Stadium - Auburn, AL - United States": JORDAN_HARE_STADIUM,
+    "Busch Stadium III": BUSCH_STADIUM,
+    "Little Caesars Arena": LITTLE_CAESARS_ARENA,
 }
 
 
