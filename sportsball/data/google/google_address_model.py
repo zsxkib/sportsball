@@ -4441,6 +4441,24 @@ NEYLAND_STADIUM = SportsballGeocodeTuple(
     housenumber="1235",
     country="USA",
 )
+SCOTT_STADIUM = SportsballGeocodeTuple(
+    city="Charlottesville",
+    state="VA",
+    postal="22903",
+    lat=38.031111,
+    lng=-78.513611,
+    housenumber="1815",
+    country="USA",
+)
+DAIKIN_PARK = SportsballGeocodeTuple(
+    city="Houston",
+    state="TX",
+    postal="",
+    lat=29.756944,
+    lng=-95.355556,
+    housenumber="501",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5523,15 +5541,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Rice Stadium - Houston - TX - 77005": RICE_STADIUM,
-    "Scott Stadium - Charlottesville - VA - 22903": SportsballGeocodeTuple(
-        city="Charlottesville",
-        state="VA",
-        postal="22903",
-        lat=38.031111,
-        lng=-78.513611,
-        housenumber="1815",
-        country="USA",
-    ),
+    "Scott Stadium - Charlottesville - VA - 22903": SCOTT_STADIUM,
     "Memorial Stadium (Lincoln, NE) - Lincoln - NE - 68508": SportsballGeocodeTuple(
         city="Lincoln",
         state="NE",
@@ -22430,15 +22440,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="South Korea",
     ),
-    "Daikin Park, Houston, TX, USA": SportsballGeocodeTuple(
-        city="Houston",
-        state="TX",
-        postal="",
-        lat=29.756944,
-        lng=-95.355556,
-        housenumber="501",
-        country="USA",
-    ),
+    "Daikin Park, Houston, TX, USA": DAIKIN_PARK,
     "Coors Field, Denver, CO, USA": COORS_FIELD,
     "Louisiana State University": SportsballGeocodeTuple(
         city="Baton Rouge",
@@ -23102,6 +23104,18 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lat=42.339167,
         lng=-83.048611,
         housenumber="2100",
+        country="USA",
+    ),
+    "Scott Stadium": SCOTT_STADIUM,
+    "Climate Pledge Arena": CLIMATE_PLEDGE_ARENA,
+    "Daikin Park": DAIKIN_PARK,
+    "Western Kentucky University": SportsballGeocodeTuple(
+        city="Bowling Green",
+        state="KY",
+        postal="",
+        lat=36.986111,
+        lng=-86.455556,
+        housenumber="",
         country="USA",
     ),
 }
