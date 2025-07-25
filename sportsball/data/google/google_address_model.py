@@ -4495,6 +4495,24 @@ STEINBRENNER_FIELD = SportsballGeocodeTuple(
     housenumber="1",
     country="USA",
 )
+RYNEARSON_STADIUM = SportsballGeocodeTuple(
+    city="Ypsilanti",
+    state="MI",
+    postal="48197",
+    lat=42.2558889,
+    lng=-83.6499574,
+    housenumber="799",
+    country="USA",
+)
+GLOBE_LIFE_FIELD = SportsballGeocodeTuple(
+    city="Arlington",
+    state="TX",
+    postal="",
+    lat=32.747361,
+    lng=-97.084167,
+    housenumber="734",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5898,15 +5916,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Rynearson Stadium - Ypsilanti - MI - 48197": SportsballGeocodeTuple(
-        city="Ypsilanti",
-        state="MI",
-        postal="48197",
-        lat=42.2558889,
-        lng=-83.6499574,
-        housenumber="799",
-        country="USA",
-    ),
+    "Rynearson Stadium - Ypsilanti - MI - 48197": RYNEARSON_STADIUM,
     "Children's Mercy Park - Kansas City - KS - 66111": SportsballGeocodeTuple(
         city="Kansas City",
         state="KS",
@@ -22973,15 +22983,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Libya",
     ),
-    "Globe Life Field, Arlington, TX, USA": SportsballGeocodeTuple(
-        city="Arlington",
-        state="TX",
-        postal="",
-        lat=32.747361,
-        lng=-97.084167,
-        housenumber="734",
-        country="USA",
-    ),
+    "Globe Life Field, Arlington, TX, USA": GLOBE_LIFE_FIELD,
     "Clemson University": SportsballGeocodeTuple(
         city="Clemson",
         state="SC",
@@ -23146,6 +23148,27 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Bobby Dodd Stadium at Historic Grant Field": BOBBY_DODD_STADIUM,
     "Honda Center": HONDA_CENTER,
     "Steinbrenner Field": STEINBRENNER_FIELD,
+    "Miami University": SportsballGeocodeTuple(
+        city="Oxford",
+        state="OH",
+        postal="",
+        lat=39.511905,
+        lng=-84.734674,
+        housenumber="",
+        country="USA",
+    ),
+    "Rynearson Stadium - Ypsilanti, Michigan, USA - United States": RYNEARSON_STADIUM,
+    "United Center": UNITED_CENTER,
+    "Globe Life Field": GLOBE_LIFE_FIELD,
+    "Seton Hall University": SportsballGeocodeTuple(
+        city="South Orange",
+        state="NJ",
+        postal="",
+        lat=40.7417,
+        lng=-74.2449,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
