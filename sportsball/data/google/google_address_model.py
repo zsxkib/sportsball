@@ -4513,6 +4513,15 @@ GLOBE_LIFE_FIELD = SportsballGeocodeTuple(
     housenumber="734",
     country="USA",
 )
+WALLACE_WADE_STADIUM = SportsballGeocodeTuple(
+    city="Durham",
+    state="NC",
+    postal="27708",
+    lat=35.995278,
+    lng=-78.941667,
+    housenumber="",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5430,15 +5439,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="625",
         country="USA",
     ),
-    "Wallace Wade Stadium - Durham - NC - 27708": SportsballGeocodeTuple(
-        city="Durham",
-        state="NC",
-        postal="27708",
-        lat=35.995278,
-        lng=-78.941667,
-        housenumber="",
-        country="USA",
-    ),
+    "Wallace Wade Stadium - Durham - NC - 27708": WALLACE_WADE_STADIUM,
     "Vaught-Hemingway Stadium - Oxford - MS - 38655": SportsballGeocodeTuple(
         city="Oxford",
         state="MS",
@@ -23166,6 +23167,27 @@ _CACHED_GEOCODES: dict[str, Any] = {
         postal="",
         lat=40.7417,
         lng=-74.2449,
+        housenumber="",
+        country="USA",
+    ),
+    "Saint Joseph's University": SportsballGeocodeTuple(
+        city="Philadelphia-Lower Merion",
+        state="PA",
+        postal="",
+        lat=39.995278,
+        lng=-75.238889,
+        housenumber="",
+        country="USA",
+    ),
+    "Wallace Wade Stadium - Durham, North Carolina, USA - United States": WALLACE_WADE_STADIUM,
+    "Delta Center": DELTA_CENTER,
+    "Rogers Centre": ROGERS_CENTER,
+    "Northeastern University": SportsballGeocodeTuple(
+        city="Boston",
+        state="MA",
+        postal="",
+        lat=42.34,
+        lng=-71.088333,
         housenumber="",
         country="USA",
     ),
