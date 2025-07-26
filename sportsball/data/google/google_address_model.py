@@ -4585,6 +4585,24 @@ ORIOLE_PARK = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
+DOWDY_FICKLEN_STADIUM = SportsballGeocodeTuple(
+    city="Greenville",
+    state="NC",
+    postal="37604",
+    lat=35.596389,
+    lng=-77.365278,
+    housenumber="100",
+    country="USA",
+)
+OHIO_STADIUM = SportsballGeocodeTuple(
+    city="Columbus",
+    state="OH",
+    postal="43210",
+    lat=40.001667,
+    lng=-83.019722,
+    housenumber="411",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5315,15 +5333,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="900",
         country="USA",
     ),
-    "Ohio Stadium - Columbus - OH - 43210": SportsballGeocodeTuple(
-        city="Columbus",
-        state="OH",
-        postal="43210",
-        lat=40.001667,
-        lng=-83.019722,
-        housenumber="411",
-        country="USA",
-    ),
+    "Ohio Stadium - Columbus - OH - 43210": OHIO_STADIUM,
     "Memorial Stadium (Bloomington, IN) - Bloomington - IN - 47408": SportsballGeocodeTuple(
         city="Bloomington",
         state="IN",
@@ -5371,15 +5381,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="920",
         country="USA",
     ),
-    "Dowdy-Ficklen Stadium - Greenville - NC - 37604": SportsballGeocodeTuple(
-        city="Greenville",
-        state="NC",
-        postal="37604",
-        lat=35.596389,
-        lng=-77.365278,
-        housenumber="100",
-        country="USA",
-    ),
+    "Dowdy-Ficklen Stadium - Greenville - NC - 37604": DOWDY_FICKLEN_STADIUM,
     "SHI Stadium - Piscataway - NJ - 08854": SportsballGeocodeTuple(
         city="Piscataway",
         state="NJ",
@@ -23268,6 +23270,18 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Darrell K Royal-Texas Memorial Stadium": DARRELL_K_ROYAL_TEXAS_MEMORIAL_STADIUM,
     "Oriole Park at Camden Yards": ORIOLE_PARK,
+    "Dowdy-Ficklen Stadium": DOWDY_FICKLEN_STADIUM,
+    "Ohio Stadium": OHIO_STADIUM,
+    "Fenway Park": FENWAY_PARK,
+    "Ohio University": SportsballGeocodeTuple(
+        city="Athens",
+        state="OH",
+        postal="",
+        lat=39.324,
+        lng=-82.102,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
