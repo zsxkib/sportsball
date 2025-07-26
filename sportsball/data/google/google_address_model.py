@@ -4567,6 +4567,24 @@ WILLIAMS_BRICE_STADIUM = SportsballGeocodeTuple(
     housenumber="1174",
     country="USA",
 )
+DARRELL_K_ROYAL_TEXAS_MEMORIAL_STADIUM = SportsballGeocodeTuple(
+    city="Austin",
+    state="TX",
+    postal="78712",
+    lat=30.28367,
+    lng=-97.73256,
+    housenumber="405",
+    country="USA",
+)
+ORIOLE_PARK = SportsballGeocodeTuple(
+    city="Baltimore",
+    state="MD",
+    postal="",
+    lat=39.2838194,
+    lng=-76.6242531,
+    housenumber="",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5598,15 +5616,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="700",
         country="USA",
     ),
-    "DKR-Texas Memorial Stadium - Austin - TX - 78712": SportsballGeocodeTuple(
-        city="Austin",
-        state="TX",
-        postal="78712",
-        lat=30.28367,
-        lng=-97.73256,
-        housenumber="405",
-        country="USA",
-    ),
+    "DKR-Texas Memorial Stadium - Austin - TX - 78712": DARRELL_K_ROYAL_TEXAS_MEMORIAL_STADIUM,
     "Nippert Stadium - Cincinnati - OH - 45221": SportsballGeocodeTuple(
         city="Cincinnati",
         state="OH",
@@ -9770,15 +9780,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="China",
     ),
-    "Oriole Park at Camden Yards, Baltimore, MD, USA": SportsballGeocodeTuple(
-        city="Baltimore",
-        state="MD",
-        postal="",
-        lat=39.2838194,
-        lng=-76.6242531,
-        housenumber="",
-        country="USA",
-    ),
+    "Oriole Park at Camden Yards, Baltimore, MD, USA": ORIOLE_PARK,
     "ESPN Wide World of Sports Complex, Bay Lake, FL, USA": ESPN_WIDE_WORLD_OF_SPORTS_COMPLEX,
     "Amalie Arena, Tampa, FL, USA": AMALIE_ARENA,
     "Toyota Stadium, Frisco, TX, USA": TOYOTA_STADIUM,
@@ -23264,6 +23266,8 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="400",
         country="USA",
     ),
+    "Darrell K Royal-Texas Memorial Stadium": DARRELL_K_ROYAL_TEXAS_MEMORIAL_STADIUM,
+    "Oriole Park at Camden Yards": ORIOLE_PARK,
 }
 
 
