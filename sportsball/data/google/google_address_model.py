@@ -4603,6 +4603,24 @@ OHIO_STADIUM = SportsballGeocodeTuple(
     housenumber="411",
     country="USA",
 )
+KYLE_FIELD = SportsballGeocodeTuple(
+    city="College Station",
+    state="TX",
+    postal="77840",
+    lat=30.6099,
+    lng=-96.3405,
+    housenumber="756",
+    country="USA",
+)
+LAWRENCE_JOEL_VETERANS_MEMORIAL_COLISEUM = SportsballGeocodeTuple(
+    city="Winston-Salem",
+    state="NC",
+    postal="27105",
+    lat=36.127866,
+    lng=-80.257628,
+    housenumber="2825",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5477,15 +5495,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Kelly/Shorts Stadium - Mount Pleasant - MI - 48858": KELLY_SHORTS_STADIUM,
-    "Kyle Field - College Station - TX - 77840": SportsballGeocodeTuple(
-        city="College Station",
-        state="TX",
-        postal="77840",
-        lat=30.6099,
-        lng=-96.3405,
-        housenumber="756",
-        country="USA",
-    ),
+    "Kyle Field - College Station - TX - 77840": KYLE_FIELD,
     "Allen E. Paulson Stadium - Statesboro - GA - 30458": SportsballGeocodeTuple(
         city="Statesboro",
         state="GA",
@@ -10325,15 +10335,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="5031",
         country="USA",
     ),
-    "Lawrence Joel Veterans Memorial Coliseum, Winston-Salem, North Carolina": SportsballGeocodeTuple(
-        city="Winston-Salem",
-        state="NC",
-        postal="27105",
-        lat=36.127866,
-        lng=-80.257628,
-        housenumber="2825",
-        country="USA",
-    ),
+    "Lawrence Joel Veterans Memorial Coliseum, Winston-Salem, North Carolina": LAWRENCE_JOEL_VETERANS_MEMORIAL_COLISEUM,
     "Indiana Convention Center, Indianapolis, Indiana": SportsballGeocodeTuple(
         city="Indianapolis",
         state="IN",
@@ -23281,6 +23283,35 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lng=-82.102,
         housenumber="",
         country="USA",
+    ),
+    "Kyle Field": KYLE_FIELD,
+    "Guaranteed Rate Field": SportsballGeocodeTuple(
+        city="Chicago",
+        state="IL",
+        postal="",
+        lat=41.83,
+        lng=-87.633889,
+        housenumber="333",
+        country="USA",
+    ),
+    "California State University, Long Beach": SportsballGeocodeTuple(
+        city="Long Beach",
+        state="CA",
+        postal="",
+        lat=33.783022,
+        lng=-118.112858,
+        housenumber="",
+        country="USA",
+    ),
+    "Lawrence Joel Veterans Memorial Coliseum - Winston-Salem, North Carolina - United States": LAWRENCE_JOEL_VETERANS_MEMORIAL_COLISEUM,
+    "Nokia Arena": SportsballGeocodeTuple(
+        city="Tampere",
+        state="",
+        postal="",
+        lat=61.493952,
+        lng=23.772955,
+        housenumber="",
+        country="Finland",
     ),
 }
 
