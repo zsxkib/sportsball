@@ -4639,6 +4639,15 @@ VAUGHT_HEMINGWAY_STADIUM = SportsballGeocodeTuple(
     housenumber="6",
     country="USA",
 )
+BRYANT_DENNY_STADIUM = SportsballGeocodeTuple(
+    city="Tuscaloosa",
+    state="AL",
+    postal="35401",
+    lat=33.208333,
+    lng=-87.550278,
+    housenumber="920",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5408,15 +5417,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="2526",
         country="USA",
     ),
-    "Bryant-Denny Stadium - Tuscaloosa - AL - 35401": SportsballGeocodeTuple(
-        city="Tuscaloosa",
-        state="AL",
-        postal="35401",
-        lat=33.208333,
-        lng=-87.550278,
-        housenumber="920",
-        country="USA",
-    ),
+    "Bryant-Denny Stadium - Tuscaloosa - AL - 35401": BRYANT_DENNY_STADIUM,
     "Dowdy-Ficklen Stadium - Greenville - NC - 37604": DOWDY_FICKLEN_STADIUM,
     "SHI Stadium - Piscataway - NJ - 08854": SportsballGeocodeTuple(
         city="Piscataway",
@@ -23370,6 +23371,35 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lat=39.0975,
         lng=-84.506667,
         housenumber="",
+        country="USA",
+    ),
+    "Oregon State University": SportsballGeocodeTuple(
+        city="Corvallis",
+        state="OR",
+        postal="",
+        lat=44.5639,
+        lng=-123.2747,
+        housenumber="",
+        country="USA",
+    ),
+    "Texas A&M University": SportsballGeocodeTuple(
+        city="College Station",
+        state="TX",
+        postal="",
+        lat=30.610278,
+        lng=-96.343611,
+        housenumber="",
+        country="USA",
+    ),
+    "Colonial Life Arena - Columbia, South Carolina - United States": COLONIAL_LIFE_ARENA,
+    "Bryant Denny Stadium - Tuscaloosa, AL - United States": BRYANT_DENNY_STADIUM,
+    "American Family Field": SportsballGeocodeTuple(
+        city="Milwaukee",
+        state="WI",
+        postal="",
+        lat=43.028333,
+        lng=-87.971111,
+        housenumber="1",
         country="USA",
     ),
 }
