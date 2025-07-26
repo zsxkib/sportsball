@@ -4621,6 +4621,24 @@ LAWRENCE_JOEL_VETERANS_MEMORIAL_COLISEUM = SportsballGeocodeTuple(
     housenumber="2825",
     country="USA",
 )
+KFC_YUM_CENTER = SportsballGeocodeTuple(
+    city="Louisville",
+    state="KY",
+    postal="",
+    lat=38.2575,
+    lng=-85.753889,
+    housenumber="1",
+    country="USA",
+)
+VAUGHT_HEMINGWAY_STADIUM = SportsballGeocodeTuple(
+    city="Oxford",
+    state="MS",
+    postal="38655",
+    lat=34.361944,
+    lng=-89.534167,
+    housenumber="6",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5515,15 +5533,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Wallace Wade Stadium - Durham - NC - 27708": WALLACE_WADE_STADIUM,
-    "Vaught-Hemingway Stadium - Oxford - MS - 38655": SportsballGeocodeTuple(
-        city="Oxford",
-        state="MS",
-        postal="38655",
-        lat=34.361944,
-        lng=-89.534167,
-        housenumber="6",
-        country="USA",
-    ),
+    "Vaught-Hemingway Stadium - Oxford - MS - 38655": VAUGHT_HEMINGWAY_STADIUM,
     "TDECU Stadium - Houston - TX - 77204": SportsballGeocodeTuple(
         city="Houston",
         state="TX",
@@ -8250,15 +8260,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1928",
         country="USA",
     ),
-    "KFC Yum! Center, Louisville, Kentucky": SportsballGeocodeTuple(
-        city="Louisville",
-        state="KY",
-        postal="",
-        lat=38.2575,
-        lng=-85.753889,
-        housenumber="1",
-        country="USA",
-    ),
+    "KFC Yum! Center, Louisville, Kentucky": KFC_YUM_CENTER,
     "DiSanto Field - Cleveland - OH - 44106": SportsballGeocodeTuple(
         city="Cleveland",
         state="OH",
@@ -23312,6 +23314,26 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lng=23.772955,
         housenumber="",
         country="Finland",
+    ),
+    "KFC YUM! Center - Louisville, Kentucky - United States": KFC_YUM_CENTER,
+    "Vaught-Hemingway Stadium": VAUGHT_HEMINGWAY_STADIUM,
+    "University of Memphis": SportsballGeocodeTuple(
+        city="Memphis",
+        state="TN",
+        postal="",
+        lat=35.118889,
+        lng=-89.937222,
+        housenumber="",
+        country="USA",
+    ),
+    "Eastern Washington University": SportsballGeocodeTuple(
+        city="Cheney",
+        state="WA",
+        postal="",
+        lat=47.491389,
+        lng=-117.583056,
+        housenumber="",
+        country="USA",
     ),
 }
 
