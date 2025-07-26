@@ -23335,6 +23335,43 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "University of Iowa": SportsballGeocodeTuple(
+        city="Iowa City",
+        state="IO",
+        postal="",
+        lat=41.661667,
+        lng=-91.536389,
+        housenumber="",
+        country="USA",
+    ),
+    "Georgia State University": SportsballGeocodeTuple(
+        city="Atlanta",
+        state="GA",
+        postal="",
+        lat=33.753694,
+        lng=-84.385972,
+        housenumber="",
+        country="USA",
+    ),
+    "Greensboro Coliseum Complex - Greensboro, North Carolina - United States": GREENSBORO_COLISEUM,
+    "Faurot Field": SportsballGeocodeTuple(
+        city="Columbia",
+        state="MO",
+        postal="65201",
+        lat=38.935833,
+        lng=-92.333056,
+        housenumber="600",
+        country="USA",
+    ),
+    "Great American Ball Park": SportsballGeocodeTuple(
+        city="Columbia",
+        state="MO",
+        postal="",
+        lat=39.0975,
+        lng=-84.506667,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 

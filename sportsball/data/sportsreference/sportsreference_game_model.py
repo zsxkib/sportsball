@@ -1412,6 +1412,7 @@ def _create_sportsreference_game_model(
             .replace("Arena:", "")
             .replace("Copyright", "")
             .replace("Venue:", "")
+            .replace("Game", "")
         )
 
     try:
