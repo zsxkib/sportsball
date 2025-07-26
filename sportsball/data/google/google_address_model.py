@@ -4549,6 +4549,24 @@ NATIONALS_PARK = SportsballGeocodeTuple(
     housenumber="1500",
     country="USA",
 )
+LIACOURAS_CENTER = SportsballGeocodeTuple(
+    city="Philadelphia",
+    state="PA",
+    postal="",
+    lat=39.979722,
+    lng=-75.158611,
+    housenumber="1776",
+    country="USA",
+)
+WILLIAMS_BRICE_STADIUM = SportsballGeocodeTuple(
+    city="Columbia",
+    state="SC",
+    postal="29201",
+    lat=33.973056,
+    lng=-81.019167,
+    housenumber="1174",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5512,15 +5530,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1000",
         country="USA",
     ),
-    "Williams-Brice Stadium - Columbia - SC - 29201": SportsballGeocodeTuple(
-        city="Columbia",
-        state="SC",
-        postal="29201",
-        lat=33.973056,
-        lng=-81.019167,
-        housenumber="1174",
-        country="USA",
-    ),
+    "Williams-Brice Stadium - Columbia - SC - 29201": WILLIAMS_BRICE_STADIUM,
     "Spartan Stadium - East Lansing - MI - 48824": SportsballGeocodeTuple(
         city="East Lansing",
         state="MI",
@@ -6222,15 +6232,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="660",
         country="USA",
     ),
-    "Liacouras Center, Philadelphia, Pennsylvania": SportsballGeocodeTuple(
-        city="Philadelphia",
-        state="PA",
-        postal="",
-        lat=39.979722,
-        lng=-75.158611,
-        housenumber="1776",
-        country="USA",
-    ),
+    "Liacouras Center, Philadelphia, Pennsylvania": LIACOURAS_CENTER,
     "Williams Arena, Minneapolis, Minnesota": SportsballGeocodeTuple(
         city="Minneapolis",
         state="MN",
@@ -23215,6 +23217,53 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Nationals Park": NATIONALS_PARK,
+    "Liacouras Center - North Philadelphia - United States": LIACOURAS_CENTER,
+    "Fayetteville State University": SportsballGeocodeTuple(
+        city="Fayetteville",
+        state="NC",
+        postal="",
+        lat=35.072,
+        lng=-78.8945,
+        housenumber="",
+        country="USA",
+    ),
+    "Williams-Brice Stadium": WILLIAMS_BRICE_STADIUM,
+    "College of Charleston": SportsballGeocodeTuple(
+        city="Charleston",
+        state="SC",
+        postal="",
+        lat=32.784167,
+        lng=-79.938056,
+        housenumber="",
+        country="USA",
+    ),
+    "Xavier University": SportsballGeocodeTuple(
+        city="Cincinnati",
+        state="OH",
+        postal="",
+        lat=39.14868,
+        lng=-84.47799,
+        housenumber="",
+        country="USA",
+    ),
+    "Pittsburgh, Pennsylvania, United States": SportsballGeocodeTuple(
+        city="Pittsburgh",
+        state="PA",
+        postal="",
+        lat=40.439722,
+        lng=-79.976389,
+        housenumber="",
+        country="USA",
+    ),
+    "Sutter Health Park": SportsballGeocodeTuple(
+        city="West Sacramento",
+        state="CA",
+        postal="",
+        lat=38.580372,
+        lng=-121.5138,
+        housenumber="400",
+        country="USA",
+    ),
 }
 
 
