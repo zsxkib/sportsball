@@ -48,6 +48,7 @@ _NON_WAYBACK_URLS: set[str] = {
     "https://www.sports-reference.com/cfb/boxscores/2025-01-09-penn-state.html",
     "https://www.sports-reference.com/cfb/boxscores/2024-12-31-alabama.html",
     "https://www.hockey-reference.com/boxscores/202410050NJD.html",
+    "https://www.hockey-reference.com/boxscores/202410040BUF.html",
 }
 
 

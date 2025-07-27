@@ -23433,6 +23433,35 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1",
         country="USA",
     ),
+    "Lenovo Center - Raleigh, North Carolina, United States - United States": LENOVO_CENTER,
+    "Purdue University": SportsballGeocodeTuple(
+        city="West Lafayette",
+        state="IN",
+        postal="",
+        lat=40.425,
+        lng=-86.923056,
+        housenumber="",
+        country="USA",
+    ),
+    "University Stadium - Waterloo, Canada - Canada": SportsballGeocodeTuple(
+        city="Waterloo",
+        state="ON",
+        postal="",
+        lat=43.470278,
+        lng=-80.53,
+        housenumber="",
+        country="Canada",
+    ),
+    "Yankee Stadium III": YANKEE_STADIUM,
+    "University of New Orleans": SportsballGeocodeTuple(
+        city="New Orleans",
+        state="LA",
+        postal="",
+        lat=30.0275,
+        lng=-90.0671,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
