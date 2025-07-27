@@ -33,6 +33,7 @@ _BAD_URLS = {
     "https://www.sports-reference.com/cbb/players/akuwovo-ogheneyole-1.html",
     "https://www.sports-reference.com/cbb/players/jevon-lyle-1.html",
     "https://www.sports-reference.com/cbb/players/mike-aaman-1.html",
+    "https://www.hockey-reference.com/players/m/mckinna01.html",
 }
 _NON_WAYBACK_URLS: set[str] = {
     "https://www.sports-reference.com/cbb/schools/stony-brook/women/2021.html",
