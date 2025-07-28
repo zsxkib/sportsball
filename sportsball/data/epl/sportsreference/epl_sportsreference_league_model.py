@@ -17,7 +17,7 @@ class EPLSportsReferenceLeagueModel(SportsReferenceLeagueModel):
         super().__init__(
             session,
             League.EPL,
-            "https://fbref.com/en/matches",
+            "https://fbref.com/en/matches/",
             position=position,
         )
 

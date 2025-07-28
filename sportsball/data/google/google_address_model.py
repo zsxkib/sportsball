@@ -4792,6 +4792,42 @@ MULLETT_ARENA = SportsballGeocodeTuple(
     housenumber="411",
     country="USA",
 )
+PINNACLE_BANK_ARENA = SportsballGeocodeTuple(
+    city="Lincoln",
+    state="NE",
+    postal="",
+    lat=40.817778,
+    lng=-96.713333,
+    housenumber="400",
+    country="USA",
+)
+FERTITTA_CENTER = SportsballGeocodeTuple(
+    city="Houston",
+    state="TX",
+    postal="77004",
+    lat=29.724722,
+    lng=-95.346944,
+    housenumber="3875",
+    country="USA",
+)
+SAM_BOYD_STADIUM = SportsballGeocodeTuple(
+    city="Las Vegas",
+    state="NV",
+    postal="89122",
+    lat=36.086,
+    lng=-115.017,
+    housenumber="7000",
+    country="USA",
+)
+JON_M_HUNTSMAN_CENTER = SportsballGeocodeTuple(
+    city="Salt Lake City",
+    state="UT",
+    postal="",
+    lat=40.762,
+    lng=-111.839,
+    housenumber="1825",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -6201,15 +6237,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Legion Field (AL) - Birmingham - AL - 35204": LEGION_FIELD,
-    "Sam Boyd Stadium - Las Vegas - NV - 89122": SportsballGeocodeTuple(
-        city="Las Vegas",
-        state="NV",
-        postal="89122",
-        lat=36.086,
-        lng=-115.017,
-        housenumber="7000",
-        country="USA",
-    ),
+    "Sam Boyd Stadium - Las Vegas - NV - 89122": SAM_BOYD_STADIUM,
     "HighPoint.com Stadium - Piscataway - NJ - 08854": SportsballGeocodeTuple(
         city="Piscataway",
         state="NJ",
@@ -6442,15 +6470,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="143",
         country="USA",
     ),
-    "Pinnacle Bank Arena, Lincoln, Nebraska": SportsballGeocodeTuple(
-        city="Lincoln",
-        state="NE",
-        postal="",
-        lat=40.817778,
-        lng=-96.713333,
-        housenumber="400",
-        country="USA",
-    ),
+    "Pinnacle Bank Arena, Lincoln, Nebraska": PINNACLE_BANK_ARENA,
     "Welsh-Ryan Arena, Evanston, Illinois": SportsballGeocodeTuple(
         city="Evanston",
         state="IL",
@@ -7726,15 +7746,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="151",
         country="USA",
     ),
-    "Jon M. Huntsman Center, Salt Lake City, Utah": SportsballGeocodeTuple(
-        city="Salt Lake City",
-        state="UT",
-        postal="",
-        lat=40.762,
-        lng=-111.839,
-        housenumber="1825",
-        country="USA",
-    ),
+    "Jon M. Huntsman Center, Salt Lake City, Utah": JON_M_HUNTSMAN_CENTER,
     "The Pavilion, Davis, California": SportsballGeocodeTuple(
         city="Davis",
         state="CA",
@@ -9435,15 +9447,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Crisler Center, Ann Arbor, Michigan": CRISLER_CENTER,
     "Jersey Mike's Arena, New Brunswick, New Jersey": JERSEY_MIKES_ARENA,
-    "Fertitta Center, Houston, Texas": SportsballGeocodeTuple(
-        city="Houston",
-        state="TX",
-        postal="77004",
-        lat=29.724722,
-        lng=-95.346944,
-        housenumber="3875",
-        country="USA",
-    ),
+    "Fertitta Center, Houston, Texas": FERTITTA_CENTER,
     "UMPC Cooper Fieldhouse, Pittsburgh, Pennsylvania": SportsballGeocodeTuple(
         city="Pittsburgh",
         state="PA",
@@ -23599,6 +23603,57 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Dominican Republic",
     ),
+    "Pinnacle Bank Arena - Lincoln, Nebraska - United States": PINNACLE_BANK_ARENA,
+    "Fertitta Center - Houston, Texas - United States": FERTITTA_CENTER,
+    "Sam Boyd Stadium": SAM_BOYD_STADIUM,
+    "State Farm Center - Champaign, Illinois - United States": STATE_FARM_CENTER,
+    "Lubumbashi, Democratic Republic of the Congo": SportsballGeocodeTuple(
+        city="Lubumbashi",
+        state="",
+        postal="",
+        lat=-11.664167,
+        lng=27.482778,
+        housenumber="",
+        country="Democratic Republic of the Congo",
+    ),
+    "Baldwin, New York, United States": SportsballGeocodeTuple(
+        city="Baldwin",
+        state="NY",
+        postal="",
+        lat=40.670222,
+        lng=-73.6125,
+        housenumber="",
+        country="USA",
+    ),
+    "Olympiastadion Berlin - Charlottenburg-Wilmersdorf - Germany": SportsballGeocodeTuple(
+        city="Berlin",
+        state="",
+        postal="",
+        lat=52.514722,
+        lng=13.239444,
+        housenumber="",
+        country="Germany",
+    ),
+    "North Vancouver, British Columbia, Canada": SportsballGeocodeTuple(
+        city="North Vancouver",
+        state="BC",
+        postal="",
+        lat=49.316667,
+        lng=-123.066667,
+        housenumber="",
+        country="Canada",
+    ),
+    "Lumberton, NJ, United States": SportsballGeocodeTuple(
+        city="Lumberton",
+        state="NJ",
+        postal="",
+        lat=39.958855,
+        lng=-74.802478,
+        housenumber="",
+        country="USA",
+    ),
+    "Jon M. Huntsman Center - Salt Lake City, UT - United States": JON_M_HUNTSMAN_CENTER,
+    "Lloyd Noble Center - Norman, Oklahoma, USA - United States": LLOYD_NOBLE_CENTER,
 }
 
 
