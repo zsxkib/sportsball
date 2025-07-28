@@ -160,11 +160,16 @@ class SportsReferenceLeagueModel(LeagueModel):
                     if final_path:
                         parsed_url = urlparse(url)
                         query = parse_qs(parsed_url.query)
-                        dt = datetime.datetime(
-                            int(query["year"][0]),
-                            int(query["month"][0]),
-                            int(query["day"][0]),
-                        )
+                        if "year" in query:
+                            dt = datetime.datetime(
+                                int(query["year"][0]),
+                                int(query["month"][0]),
+                                int(query["day"][0]),
+                            )
+                        else:
+                            dt = datetime.datetime.strptime(
+                                parsed_url.path.split("/")[-1], "%Y-%m-%d"
+                            )
                         if dt.year <= 1945:
                             break
                     soup = BeautifulSoup(response.text, "lxml")
