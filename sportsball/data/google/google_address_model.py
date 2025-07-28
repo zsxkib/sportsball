@@ -4828,6 +4828,42 @@ JON_M_HUNTSMAN_CENTER = SportsballGeocodeTuple(
     housenumber="1825",
     country="USA",
 )
+GALEN_CENTER = SportsballGeocodeTuple(
+    city="Los Angeles",
+    state="CA",
+    postal="",
+    lat=34.021,
+    lng=-118.28,
+    housenumber="3400",
+    country="USA",
+)
+VALUE_CITY_ARENA = SportsballGeocodeTuple(
+    city="Columbus",
+    state="OH",
+    postal="",
+    lat=40.007511,
+    lng=-83.025102,
+    housenumber="555",
+    country="USA",
+)
+JOHN_PAUL_JONES_ARENA = SportsballGeocodeTuple(
+    city="Charlottesville",
+    state="VA",
+    postal="22903",
+    lat=38.046,
+    lng=-78.5068,
+    housenumber="295",
+    country="USA",
+)
+NAVY_MARINE_CORPS_MEMORIAL_STADIUM = SportsballGeocodeTuple(
+    city="Annapolis",
+    state="MD",
+    postal="21401",
+    lat=38.985,
+    lng=-76.507,
+    housenumber="550",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5817,15 +5853,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="2180",
         country="USA",
     ),
-    "Navy-Marine Corps Memorial Stadium - Annapolis - MD - 21401": SportsballGeocodeTuple(
-        city="Annapolis",
-        state="MD",
-        postal="21401",
-        lat=38.985,
-        lng=-76.507,
-        housenumber="550",
-        country="USA",
-    ),
+    "Navy-Marine Corps Memorial Stadium - Annapolis - MD - 21401": NAVY_MARINE_CORPS_MEMORIAL_STADIUM,
     "Malone Stadium - Monroe - LA - 71203": MALONE_STADIUM,
     "Gerald J. Ford Stadium - Dallas - TX - 75205": SportsballGeocodeTuple(
         city="Dallas",
@@ -6347,15 +6375,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Capital One Arena, Washington, District of Columbia": CAPITAL_ONE_ARENA,
     "Stan Sheriff Center, Honolulu, Hawaii": STAN_SHERIFF_CENTER,
-    "Value City Arena, Columbus, Ohio": SportsballGeocodeTuple(
-        city="Columbus",
-        state="OH",
-        postal="",
-        lat=40.007511,
-        lng=-83.025102,
-        housenumber="555",
-        country="USA",
-    ),
+    "Value City Arena, Columbus, Ohio": VALUE_CITY_ARENA,
     "James A. Rhodes Arena, Akron, Ohio": SportsballGeocodeTuple(
         city="Akron",
         state="OH",
@@ -7076,15 +7096,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Donald L. Tucker Center, Tallahassee, Florida": DONALD_L_TUCKER_CENTER,
-    "John Paul Jones Arena, Charlottesville, Virginia": SportsballGeocodeTuple(
-        city="Charlottesville",
-        state="VA",
-        postal="22903",
-        lat=38.046,
-        lng=-78.5068,
-        housenumber="295",
-        country="USA",
-    ),
+    "John Paul Jones Arena, Charlottesville, Virginia": JOHN_PAUL_JONES_ARENA,
     "Lloyd Noble Center, Norman, Oklahoma": LLOYD_NOBLE_CENTER,
     "Brown Stadium (RI) - Providence - RI - 02906": SportsballGeocodeTuple(
         city="Providence",
@@ -7202,15 +7214,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="290",
         country="USA",
     ),
-    "Galen Center, Los Angeles, California": SportsballGeocodeTuple(
-        city="Los Angeles",
-        state="CA",
-        postal="",
-        lat=34.021,
-        lng=-118.28,
-        housenumber="3400",
-        country="USA",
-    ),
+    "Galen Center, Los Angeles, California": GALEN_CENTER,
     "Cintas Center, Cincinnati, Ohio": SportsballGeocodeTuple(
         city="Cincinnati",
         state="OH",
@@ -23654,6 +23658,38 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Jon M. Huntsman Center - Salt Lake City, UT - United States": JON_M_HUNTSMAN_CENTER,
     "Lloyd Noble Center - Norman, Oklahoma, USA - United States": LLOYD_NOBLE_CENTER,
+    "Galen Center - Los Angeles, California, USA - United States": GALEN_CENTER,
+    "Value City Arena - Columbus, Ohio - United States": VALUE_CITY_ARENA,
+    "John Paul Jones Arena - Charlottesville, Virginia - United States": JOHN_PAUL_JONES_ARENA,
+    "Navy-Marine Corps Memorial Stadium": NAVY_MARINE_CORPS_MEMORIAL_STADIUM,
+    "Estadio Santiago Bernabéu - Madrid - Spain": SportsballGeocodeTuple(
+        city="Madrid",
+        state="",
+        postal="",
+        lat=40.453056,
+        lng=-3.688333,
+        housenumber="",
+        country="Spain",
+    ),
+    "Viejas Arena - San Diego, California - United States": VIEJAS_ARENA,
+    "Wildwood, New Jersey, United States": SportsballGeocodeTuple(
+        city="Wildwood",
+        state="NJ",
+        postal="",
+        lat=38.988914,
+        lng=-74.819824,
+        housenumber="",
+        country="USA",
+    ),
+    "Arizona State University": SportsballGeocodeTuple(
+        city="Tempe",
+        state="AZ",
+        postal="",
+        lat=33.4209,
+        lng=-111.934,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 

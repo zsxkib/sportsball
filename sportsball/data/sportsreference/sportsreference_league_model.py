@@ -92,6 +92,12 @@ def _find_game_urls(soup: BeautifulSoup, base_url: str) -> list[str]:
             if game_url is None:
                 continue
             urls.append(game_url)
+    for td in soup.find_all("td", {"data-stat": "match_report"}):
+        for a in td.find_all("a"):
+            game_url = validate_url(urllib.parse.urljoin(base_url, a.get("href")))
+            if game_url is None:
+                continue
+            urls.append(game_url)
     return sorted(list(set(urls)))
 
 
