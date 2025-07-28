@@ -102,6 +102,8 @@ class OddsPortalLeagueModel(LeagueModel):
         match self.league:
             case League.AFL:
                 return "/".join(["aussie-rules", "australia", "afl", ""])
+            case League.EPL:
+                return "/".join(["football", "england", "premier-league", ""])
             case League.NBA:
                 return "/".join([BASKETBALL, USA, "nba", ""])
             case League.NCAAB:

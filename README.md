@@ -61,6 +61,7 @@ The models it uses are designed to be used for many different types of sports.
 The supported leagues are:
 
 * 🏉 [AFL](https://www.afl.com.au/)
+* ⚽ [EPL](https://www.premierleague.com/ens)
 * 🐎 [HKJC](https://www.hkjc.com/home/english/index.aspx)
 * ⚾ [MLB](https://www.mlb.com/)
 * 🏀 [NBA](https://www.nba.com/)
@@ -502,6 +503,109 @@ A representation of a player within a team within a game.
 * **line_drives**: Line drives are batted balls hit hard and relatively level, traveling in a straight or slightly rising trajectory, often resulting in base hits due to their speed and low arc.
 * **inherited_runners**: Inherited runners are baserunners a relief pitcher takes over when entering the game, meaning they were already on base due to the previous pitcher, and if they score, the runs are charged to the previous pitcher, not the reliever.
 * **inherited_scores**: Inherited Scores refers to the number of inherited runners that a relief pitcher allows to score after entering the game; although the runs count against the previous pitcher, this stat reflects how well the reliever manages pressure situations.
+* **penalty_kicks_made**: The number of penalty kicks successfully scored by the player.
+* **penalty_kicks_attempted**: The total number of penalty kicks the player has attempted, regardless of whether they were successful.
+* **shots_total**: The total number of shots taken by the player, including both on-target and off-target attempts.
+* **shots_on_target**: The number of shots that were directed on goal and would have scored if not for a save or block by the goalkeeper.
+* **yellow_cards**: The number of yellow cards a player or team has received as a caution for unsporting behavior or rule violations.
+* **red_cards**: The number of red cards a player or team has received, resulting in immediate ejection from the match.
+* **touches**: The total number of times a player has made contact with the ball during the match.
+* **expected_goals**: The total expected goals (xG) value, estimating how likely a shot is to result in a goal based on factors like shot location, type, and assist.
+* **non_penalty_expected_goals**: The total expected goals (xG) from all shots excluding penalty kicks, providing a measure of scoring chances from open play and non-penalty set pieces.
+* **expected_assisted_goals**: The total expected assisted goals (xAG), estimating the likelihood that a player's passes or crosses will lead to a goal, based on the quality of the resulting shots.
+* **shot_creating_actions**: The number of actions (such as passes, dribbles, or drawing fouls) that directly lead to a shot attempt, credited to the two players most involved before the shot.
+* **goal_creating_actions**: The number of actions (such as passes, dribbles, or drawn fouls) that directly lead to a goal, credited to the two players most involved in the build-up.
+* **passes_completed**: The total number of passes successfully completed by a player or team to a teammate.
+* **passes_attempted**: The total number of pass attempts made by a player or team, regardless of whether they were completed successfully.
+* **pass_completion**: The percentage of attempted passes that were successfully completed by a player or team.
+* **progressive_passes**: The number of completed passes that move the ball significantly forward toward the opponent's goal, typically at least 10 yards closer or into the penalty area.
+* **carries**: The number of times a player controls the ball with their feet and moves it a measurable distance across the field.
+* **progressive_carries**: The number of times a player carries the ball at least 5–10 yards closer to the opponent’s goal or into the penalty area, contributing to forward attacking movement.
+* **take_ons_attempted**: The number of times a player has attempted to dribble past an opponent in a one-on-one situation.
+* **successful_take_ons**: The number of times a player successfully dribbled past an opponent in a one-on-one situation.
+* **total_passing_distance**: The cumulative distance, in yards or meters, that a player's or team's passes have traveled during a match.
+* **progressive_passing_distance**: The total distance, in yards or meters, that completed passes have moved the ball closer to the opponent’s goal.
+* **passes_completed_short**: The number of short passes (typically under 15 yards/meters) successfully completed by a player or team.
+* **passes_attempted_short**: The number of short passes (typically under 15 yards/meters) attempted by a player or team, regardless of success.
+* **pass_completion_short**: The percentage of short passes (typically under 15 yards/meters) that were successfully completed by a player or team.
+* **passes_completed_medium**: The number of medium-range passes (typically 15 to 30 yards/meters) successfully completed by a player or team.
+* **passes_attempted_medium**: The number of medium-range passes (typically 15 to 30 yards/meters) attempted by a player or team, regardless of success.
+* **pass_completion_medium**: The percentage of medium-range passes (typically 15 to 30 yards/meters) that were successfully completed by a player or team.
+* **passes_completed_long**: The number of long passes (typically over 30 yards/meters) successfully completed by a player or team.
+* **passes_attempted_long**: The number of long passes (typically over 30 yards/meters) attempted by a player or team, regardless of success.
+* **pass_completion_long**: The percentage of long passes (typically over 30 yards/meters) that were successfully completed by a player or team.
+* **expected_assists**: The total expected assists (xA), measuring the likelihood that a pass will become a goal based on the quality of the resulting shot.
+* **key_passes**: The number of passes that directly lead to a teammate taking a shot, regardless of whether the shot results in a goal.
+* **passes_into_final_third**: The number of completed passes that move the ball into the attacking third of the pitch.
+* **passes_into_penalty_area**: The number of completed passes that deliver the ball into the opponent’s penalty area.
+* **crosses_into_penalty_area**: The number of crosses that successfully reach the opponent’s penalty area.
+* **live_ball_passes**: The number of passes made while the ball is in play (i.e., not from set pieces like corners, free kicks, or throw-ins).
+* **dead_ball_passes**: The number of passes made from dead-ball situations, such as free kicks, corners, goal kicks, or throw-ins.
+* **passes_from_free_kicks**: The number of passes made directly from free kick situations.
+* **through_balls**: The number of passes that split the defense and send a teammate through on goal, typically between defenders.
+* **switches**: The number of long passes that switch the point of attack by moving the ball across the width of the field to the opposite flank.
+* **crosses**: The number of passes played from wide areas into the penalty box, typically intended to create a scoring opportunity.
+* **throw_ins_taken**: The number of throw-ins a player or team has taken to restart play from the sidelines.
+* **corner_kicks**: The number of corner kicks taken by a player or team to restart play from the corner arc after the ball has gone out over the goal line, last touched by a defender.
+* **inswinging_corner_kicks**: Corner kicks that curve inward toward the goal, typically delivered with the inside of the foot from the opposite side of the kicker’s strong foot.
+* **outswinging_corner_kicks**: Corner kicks that curve away from the goal, typically delivered with the inside of the foot from the same side as the kicker’s strong foot.
+* **straight_corner_kicks**: Corner kicks that are delivered with little or no curve, traveling in a relatively straight path toward the goal area.
+* **passes_offside**: The number of passes that resulted in a teammate being caught in an offside position.
+* **passes_blocked**: The number of passes that were obstructed or deflected by an opposing player before reaching their intended target.
+* **tackles_won**: The number of times a player successfully takes the ball away from an opponent through a tackle and retains possession or directs it to a teammate.
+* **tackles_in_defensive_third**: The number of tackles made by a player or team within their own defensive third of the field.
+* **tackles_in_middle_third**: The number of tackles made by a player or team in the middle third of the field.
+* **tackles_in_attacking_third**: The number of tackles made by a player or team in the attacking third of the field.
+* **dribblers_tackled**: The number of times a player successfully dispossessed an opponent who was attempting to dribble past them.
+* **dribbles_challenged**: The number of times a player attempted to stop an opponent from dribbling past them, regardless of whether the challenge was successful.
+* **percent_of_dribblers_tackled**: The percentage of dribble challenges in which a player successfully tackled the opponent attempting to dribble past them.
+* **challenges_lost**: The number of defensive challenges (such as tackles or duels) a player engaged in but failed to win.
+* **shots_blocked**: The number of opponent shot attempts that were deflected or stopped by a player before reaching the goal.
+* **tackles_plus_interceptions**: The combined total of tackles and interceptions made by a player or team, reflecting overall defensive activity.
+* **errors**: The number of mistakes made by a player that directly lead to an opponent's shot or goal.
+* **touches_in_defensive_penalty_area**: The number of times a player made contact with the ball while inside their own team’s penalty area.
+* **touches_in_defensive_third**: The number of times a player touched the ball within their own defensive third of the pitch.
+* **touches_in_middle_third**: The number of times a player touched the ball in the middle third of the pitch.
+* **touches_in_attacking_third**: The number of times a player touched the ball in the attacking third of the pitch.
+* **touches_in_attacking_penalty_area**: The number of times a player touched the ball inside the opponent’s penalty area.
+* **live_ball_touches**: The number of times a player touched the ball while it was in play, excluding dead-ball situations like set pieces or throw-ins.
+* **successful_take_on_percentage**: The percentage of take-on attempts (dribbles past an opponent) that were successful.
+* **times_tackled_during_take_ons**: The number of times a player was tackled by a defender while attempting to dribble past them.
+* **tackled_during_take_on_percentage**: The percentage of take-on attempts during which the player was tackled by a defender.
+* **total_carrying_distance**: The cumulative distance a player has carried the ball with their feet during a match.
+* **progressive_carrying_distance**: The total distance a player has carried the ball toward the opponent’s goal, significantly advancing it up the field.
+* **carries_into_final_third**: The number of times a player carried the ball into the attacking third of the pitch.
+* **carries_into_penalty_area**: The number of times a player carried the ball into the opponent’s penalty area.
+* **miscontrols**: The number of times a player failed to control the ball properly, leading to a loss of possession.
+* **dispossessed**: The number of times a player lost possession of the ball due to an opponent’s defensive action.
+* **passes_received**: The number of times a player successfully received a pass from a teammate.
+* **progressive_passes_received**: The number of times a player received a pass that moved the ball significantly forward toward the opponent’s goal.
+* **second_yellow_card**: The number of times a player received a second yellow card in a match, resulting in a red card and ejection from the game.
+* **fouls_committed**: The number of times a player has committed a foul by violating the rules against an opponent.
+* **fouls_drawn**: The number of times a player was fouled by an opponent, resulting in a free kick or advantage for their team.
+* **offsides**: The number of times a player was caught in an offside position during an attacking play.
+* **penalty_kicks_won**: The number of times a player or team earned a penalty kick by being fouled or fouled upon inside the opponent’s penalty area.
+* **penalty_kicks_conceded**: The number of times a player or team has caused fouls inside their own penalty area, resulting in a penalty kick awarded to the opponent.
+* **own_goals**: The number of goals a player or team has accidentally scored against themselves.
+* **ball_recoveries**: The number of times a player or team regains possession of the ball after it was lost or loose.
+* **aerials_won**: The number of aerial duels (contests for the ball in the air) that a player has successfully won.
+* **aerials_lost**: The number of aerial duels (contests for the ball in the air) that a player has lost to an opponent.
+* **percentage_of_aerials_won**: The percentage of aerial duels contested by a player that they successfully won.
+* **shots_on_target_against**: The number of shots on target that an opponent has taken against a team or goalkeeper.
+* **post_shot_expected_goals**: The expected goals (xG) value assigned after a shot is taken, considering the actual outcome and quality of the shot, such as placement and goalkeeper reaction.
+* **passes_attempted_minus_goal_kicks**: The number of pass attempts made by a team or player excluding passes originating from goal kicks.
+* **throws_attempted**: The number of throw-ins attempted by a player or team to restart play from the sidelines.
+* **percentage_of_passes_that_were_launched**: The percentage of a player’s or team’s passes that were long or 'launched' passes, typically covering a significant distance forward or across the field.
+* **average_pass_length**: The average distance, in yards or meters, of all passes attempted by a player or team.
+* **goal_kicks_attempted**: The number of goal kicks taken by a team to restart play from their own goal area.
+* **percentage_of_goal_kicks_that_were_launched**: The percentage of goal kicks that were played as long, launched passes covering significant distance downfield.
+* **average_goal_kick_length**: The average distance, in yards or meters, that goal kicks travel from the goal area.
+* **crosses_faced**: The number of crosses directed into the penalty area that a team or goalkeeper has had to defend against.
+* **crosses_stopped**: The number of opponent crosses into the penalty area that a team or goalkeeper successfully intercepted, blocked, or cleared.
+* **percentage_crosses_stopped**: The percentage of opponent crosses into the penalty area that a team or goalkeeper successfully stopped or defended.
+* **defensive_actions_outside_penalty_area**: The number of defensive actions (such as tackles, interceptions, or clearances) made by a player or team outside their own penalty area.
+* **average_distance_of_defensive_actions**: The average distance from a team’s own goal where defensive actions (tackles, interceptions, clearances) occur.
+* **three_point_attempt_rate**: The number of three points attempted by a player.
 
 #### Odds
 

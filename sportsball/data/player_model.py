@@ -26,7 +26,7 @@ PLAYER_FUMBLES_LOST_COLUMN: Literal["fumbles_lost"] = "fumbles_lost"
 FIELD_GOALS_COLUMN: Literal["field_goals"] = "field_goals"
 FIELD_GOALS_ATTEMPTED_COLUMN: Literal["field_goals_attempted"] = "field_goals_attempted"
 OFFENSIVE_REBOUNDS_COLUMN: Literal["offensive_rebounds"] = "offensive_rebounds"
-ASSISTS_COLUMN: Literal["assists"] = "assists"
+PLAYER_ASSISTS_COLUMN: Literal["assists"] = "assists"
 TURNOVERS_COLUMN: Literal["turnovers"] = "turnovers"
 PLAYER_MARKS_COLUMN: Literal["marks"] = "marks"
 PLAYER_HANDBALLS_COLUMN: Literal["handballs"] = "handballs"
@@ -648,7 +648,226 @@ PLAYER_INHERITED_SCORES_COLUMN: Literal["inherited_scores"] = "inherited_scores"
 PLAYER_EFFECTIVE_FIELD_GOAL_PERCENTAGE_COLUMN: Literal[
     "effective_field_goal_percentage"
 ] = "effective_field_goal_percentage"
-VERSION = DELIMITER.join(["0.0.4", ADDRESS_VERSION, OWNER_VERSION, VENUE_VERSION])
+PLAYER_PENALTY_KICKS_MADE_COLUMN: Literal["penalty_kicks_made"] = "penalty_kicks_made"
+PLAYER_PENALTY_KICKS_ATTEMPTED_COLUMN: Literal["penalty_kicks_attempted"] = (
+    "penalty_kicks_attempted"
+)
+PLAYER_SHOTS_TOTAL_COLUMN: Literal["shots_total"] = "shots_total"
+PLAYER_SHOTS_ON_TARGET_COLUMN: Literal["shots_on_target"] = "shots_on_target"
+PLAYER_YELLOW_CARDS_COLUMN: Literal["yellow_cards"] = "yellow_cards"
+PLAYER_RED_CARDS_COLUMN: Literal["red_cards"] = "red_cards"
+PLAYER_TOUCHES_COLUMN: Literal["touches"] = "touches"
+PLAYER_EXPECTED_GOALS_COLUMN: Literal["expected_goals"] = "expected_goals"
+PLAYER_NON_PENALTY_EXPECTED_GOALS_COLUMN: Literal["non_penalty_expected_goals"] = (
+    "non_penalty_expected_goals"
+)
+PLAYER_EXPECTED_ASSISTED_GOALS_COLUMN: Literal["expected_assisted_goals"] = (
+    "expected_assisted_goals"
+)
+PLAYER_SHOT_CREATING_ACTIONS_COLUMN: Literal["shot_creating_actions"] = (
+    "shot_creating_actions"
+)
+PLAYER_GOAL_CREATING_ACTIONS_COLUMN: Literal["goal_creating_actions"] = (
+    "goal_creating_actions"
+)
+PLAYER_PASSES_COMPLETED_COLUMN: Literal["passes_completed"] = "passes_completed"
+PLAYER_PASSES_ATTEMPTED_COLUMN: Literal["passes_attempted"] = "passes_attempted"
+PLAYER_PASS_COMPLETION_COLUMN: Literal["pass_completion"] = "pass_completion"
+PLAYER_PROGRESSIVE_PASSES_COLUMN: Literal["progressive_passes"] = "progressive_passes"
+PLAYER_CARRIES_COLUMN: Literal["carries"] = "carries"
+PLAYER_PROGRESSIVE_CARRIES_COLUMN: Literal["progressive_carries"] = (
+    "progressive_carries"
+)
+PLAYER_TAKE_ONS_ATTEMPTED_COLUMN: Literal["take_ons_attempted"] = "take_ons_attempted"
+PLAYER_SUCCESSFUL_TAKE_ONS_COLUMN: Literal["successful_take_ons"] = (
+    "successful_take_ons"
+)
+PLAYER_TOTAL_PASSING_DISTANCE_COLUMN: Literal["total_passing_distance"] = (
+    "total_passing_distance"
+)
+PLAYER_PROGRESSIVE_PASSING_DISTANCE_COLUMN: Literal["progressive_passing_distance"] = (
+    "progressive_passing_distance"
+)
+PLAYER_PASSES_COMPLETED_SHORT_COLUMN: Literal["passes_completed_short"] = (
+    "passes_completed_short"
+)
+PLAYER_PASSES_ATTEMPTED_SHORT_COLUMN: Literal["passes_attempted_short"] = (
+    "passes_attempted_short"
+)
+PLAYER_PASS_COMPLETION_SHORT_COLUMN: Literal["pass_completion_short"] = (
+    "pass_completion_short"
+)
+PLAYER_PASSES_COMPLETED_MEDIUM_COLUMN: Literal["passes_completed_medium"] = (
+    "passes_completed_medium"
+)
+PLAYER_PASSES_ATTEMPTED_MEDIUM_COLUMN: Literal["passes_attempted_medium"] = (
+    "passes_attempted_medium"
+)
+PLAYER_PASS_COMPLETION_MEDIUM_COLUMN: Literal["pass_completion_medium"] = (
+    "pass_completion_medium"
+)
+PLAYER_PASSES_COMPLETED_LONG_COLUMN: Literal["passes_completed_long"] = (
+    "passes_completed_long"
+)
+PLAYER_PASSES_ATTEMPTED_LONG_COLUMN: Literal["passes_attempted_long"] = (
+    "passes_attempted_long"
+)
+PLAYER_PASS_COMPLETION_LONG_COLUMN: Literal["pass_completion_long"] = (
+    "pass_completion_long"
+)
+PLAYER_EXPECTED_ASSISTS_COLUMN: Literal["expected_assists"] = "expected_assists"
+PLAYER_KEY_PASSES_COLUMN: Literal["key_passes"] = "key_passes"
+PLAYER_PASSES_INTO_FINAL_THIRD_COLUMN: Literal["passes_into_final_third"] = (
+    "passes_into_final_third"
+)
+PLAYER_PASSES_INTO_PENALTY_AREA_COLUMN: Literal["passes_into_penalty_area"] = (
+    "passes_into_penalty_area"
+)
+PLAYER_CROSSES_INTO_PENALTY_AREA_COLUMN: Literal["crosses_into_penalty_area"] = (
+    "crosses_into_penalty_area"
+)
+PLAYER_LIVE_BALL_PASSES_COLUMN: Literal["live_ball_passes"] = "live_ball_passes"
+PLAYER_DEAD_BALL_PASSES_COLUMN: Literal["dead_ball_passes"] = "dead_ball_passes"
+PLAYER_PASSES_FROM_FREE_KICKS_COLUMN: Literal["passes_from_free_kicks"] = (
+    "passes_from_free_kicks"
+)
+PLAYER_THROUGH_BALLS_COLUMN: Literal["through_balls"] = "through_balls"
+PLAYER_SWITCHES_COLUNM: Literal["switches"] = "switches"
+PLAYER_CROSSES_COLUMN: Literal["crosses"] = "crosses"
+PLAYER_THROW_INS_TAKEN_COLUMN: Literal["throw_ins_taken"] = "throw_ins_taken"
+PLAYER_CORNER_KICKS_COLUMN: Literal["corner_kicks"] = "corner_kicks"
+PLAYER_INSWINGING_CORNER_KICKS_COLUMN: Literal["inswinging_corner_kicks"] = (
+    "inswinging_corner_kicks"
+)
+PLAYER_OUTSWINGING_CORNER_KICKS_COLUMN: Literal["outswinging_corner_kicks"] = (
+    "outswinging_corner_kicks"
+)
+PLAYER_STRAIGHT_CORNER_KICKS_COLUMN: Literal["straight_corner_kicks"] = (
+    "straight_corner_kicks"
+)
+PLAYER_PASSES_OFFSIDE_COLUMN: Literal["passes_offside"] = "passes_offside"
+PLAYER_PASSES_BLOCKED_COLUMN: Literal["passes_blocked"] = "passes_blocked"
+PLAYER_TACKLES_WON_COLUMN: Literal["tackles_won"] = "tackles_won"
+PLAYER_TACKLES_IN_DEFENSIVE_THIRD_COLUMN: Literal["tackles_in_defensive_third"] = (
+    "tackles_in_defensive_third"
+)
+PLAYER_TACKLES_IN_MIDDLE_THIRD_COLUMN: Literal["tackles_in_middle_third"] = (
+    "tackles_in_middle_third"
+)
+PLAYER_TACKLES_IN_ATTACKING_THIRD_COLUMN: Literal["tackles_in_attacking_third"] = (
+    "tackles_in_attacking_third"
+)
+PLAYER_DRIBBLERS_TACKLED_COLUMN: Literal["dribblers_tackled"] = "dribblers_tackled"
+PLAYER_DRIBBLES_CHALLENGED_COLUMN: Literal["dribbles_challenged"] = (
+    "dribbles_challenged"
+)
+PLAYER_PERCENT_OF_DRIBBLERS_TACKLED_COLUMN: Literal["percent_of_dribblers_tackled"] = (
+    "percent_of_dribblers_tackled"
+)
+PLAYER_CHALLENGES_LOST_COLUMN: Literal["challenges_lost"] = "challenges_lost"
+PLAYER_SHOTS_BLOCKED_COLUMN: Literal["shots_blocked"] = "shots_blocked"
+PLAYER_TACKLES_PLUS_INTERCEPTIONS_COLUMN: Literal["tackles_plus_interceptions"] = (
+    "tackles_plus_interceptions"
+)
+PLAYER_ERRORS_COLUMN: Literal["errors"] = "errors"
+PLAYER_TOUCHES_IN_DEFENSIVE_PENALTY_AREA_COLUMN: Literal[
+    "touches_in_defensive_penalty_area"
+] = "touches_in_defensive_penalty_area"
+PLAYER_TOUCHES_IN_DEFENSIVE_THIRD_COLUMN: Literal["touches_in_defensive_third"] = (
+    "touches_in_defensive_third"
+)
+PLAYER_TOUCHES_IN_MIDDLE_THIRD_COLUMN: Literal["touches_in_middle_third"] = (
+    "touches_in_middle_third"
+)
+PLAYER_TOUCHES_IN_ATTACKING_THIRD_COLUMN: Literal["touches_in_attacking_third"] = (
+    "touches_in_attacking_third"
+)
+PLAYER_TOUCHES_IN_ATTACKING_PENALTY_AREA_COLUMN: Literal[
+    "touches_in_attacking_penalty_area"
+] = "touches_in_attacking_penalty_area"
+PLAYER_LIVE_BALL_TOUCHES_COLUMN: Literal["live_ball_touches"] = "live_ball_touches"
+PLAYER_SUCCESSFUL_TAKE_ON_PERCENTAGE_COLUMN: Literal[
+    "successful_take_on_percentage"
+] = "successful_take_on_percentage"
+PLAYER_TIMES_TACKLED_DURING_TAKE_ONS_COLUMN: Literal[
+    "times_tackled_during_take_ons"
+] = "times_tackled_during_take_ons"
+PLAYER_TACKLED_DURING_TAKE_ON_PERCENTAGE_COLUMN: Literal[
+    "tackled_during_take_on_percentage"
+] = "tackled_during_take_on_percentage"
+PLAYER_TOTAL_CARRYING_DISTANCE_COLUMN: Literal["total_carrying_distance"] = (
+    "total_carrying_distance"
+)
+PLAYER_PROGRESSIVE_CARRYING_DISTANCE_COLUMN: Literal[
+    "progressive_carrying_distance"
+] = "progressive_carrying_distance"
+PLAYER_CARRIES_INTO_FINAL_THIRD_COLUMN: Literal["carries_into_final_third"] = (
+    "carries_into_final_third"
+)
+PLAYER_CARRIES_INTO_PENALTY_AREA_COLUMN: Literal["carries_into_penalty_area"] = (
+    "carries_into_penalty_area"
+)
+PLAYER_MISCONTROLS_COLUMN: Literal["miscontrols"] = "miscontrols"
+PLAYER_DISPOSSESSED_COLUMN: Literal["dispossessed"] = "dispossessed"
+PLAYER_PASSES_RECEIVED_COLUMN: Literal["passes_received"] = "passes_received"
+PLAYER_PROGRESSIVE_PASSES_RECEIVED_COLUMN: Literal["progressive_passes_received"] = (
+    "progressive_passes_received"
+)
+PLAYER_SECOND_YELLOW_CARD_COLUMN: Literal["second_yellow_card"] = "second_yellow_card"
+PLAYER_FOULS_COMMITTED_COLUMN: Literal["fouls_committed"] = "fouls_committed"
+PLAYER_FOULS_DRAWN_COLUMN: Literal["fouls_drawn"] = "fouls_drawn"
+PLAYER_OFFSIDES_COLUMN: Literal["offsides"] = "offsides"
+PLAYER_PENALTY_KICKS_WON_COLUMN: Literal["penalty_kicks_won"] = "penalty_kicks_won"
+PLAYER_PENALTY_KICKS_CONCEDED_COLUMN: Literal["penalty_kicks_conceded"] = (
+    "penalty_kicks_conceded"
+)
+PLAYER_OWN_GOALS_COLUMN: Literal["own_goals"] = "own_goals"
+PLAYER_BALL_RECOVERIES_COLUMN: Literal["ball_recoveries"] = "ball_recoveries"
+PLAYER_AERIALS_WON_COLUMN: Literal["aerials_won"] = "aerials_won"
+PLAYER_AERIALS_LOST_COLUMN: Literal["aerials_lost"] = "aerials_lost"
+PLAYER_PERCENTAGE_OF_AERIALS_WON_COLUMN: Literal["percentage_of_aerials_won"] = (
+    "percentage_of_aerials_won"
+)
+PLAYER_SHOTS_ON_TARGET_AGAINST_COLUMN: Literal["shots_on_target_against"] = (
+    "shots_on_target_against"
+)
+PLAYER_POST_SHOT_EXPECTED_GOALS_COLUMN: Literal["post_shot_expected_goals"] = (
+    "post_shot_expected_goals"
+)
+PLAYER_PASSES_ATTEMPTED_MINUS_GOAL_KICKS_COLUMN: Literal[
+    "passes_attempted_minus_goal_kicks"
+] = "passes_attempted_minus_goal_kicks"
+PLAYER_THROWS_ATTEMPTED_COLUMN: Literal["throws_attempted"] = "throws_attempted"
+PLAYER_PERCENTAGE_OF_PASSES_THAT_WERE_LAUNCHED_COLUMN: Literal[
+    "percentage_of_passes_that_were_launched"
+] = "percentage_of_passes_that_were_launched"
+PLAYER_AVERAGE_PASS_LENGTH_COLUMN: Literal["average_pass_length"] = (
+    "average_pass_length"
+)
+PLAYER_GOAL_KICKS_ATTEMPTED_COLUMN: Literal["goal_kicks_attempted"] = (
+    "goal_kicks_attempted"
+)
+PLAYER_PERCENTAGE_OF_GOAL_KICKS_THAT_WERE_LAUNCHED_COLUMN: Literal[
+    "percentage_of_goal_kicks_that_were_launched"
+] = "percentage_of_goal_kicks_that_were_launched"
+PLAYER_AVERAGE_GOAL_KICK_LENGTH_COLUMN: Literal["average_goal_kick_length"] = (
+    "average_goal_kick_length"
+)
+PLAYER_CROSSES_FACED_COLUMN: Literal["crosses_faced"] = "crosses_faced"
+PLAYER_CROSSES_STOPPED_COLUMN: Literal["crosses_stopped"] = "crosses_stopped"
+PLAYER_PERCENTAGE_CROSSES_STOPPED_COLUMN: Literal["percentage_crosses_stopped"] = (
+    "percentage_crosses_stopped"
+)
+PLAYER_DEFENSIVE_ACTIONS_OUTSIDE_PENALTY_AREA_COLUMN: Literal[
+    "defensive_actions_outside_penalty_area"
+] = "defensive_actions_outside_penalty_area"
+PLAYER_AVERAGE_DISTANCE_OF_DEFENSIVE_ACTIONS_COLUMN: Literal[
+    "average_distance_of_defensive_actions"
+] = "average_distance_of_defensive_actions"
+PLAYER_THREE_POINT_ATTEMPT_RATE_COLUMN: Literal["three_point_attempt_rate"] = (
+    "three_point_attempt_rate"
+)
+VERSION = DELIMITER.join(["0.0.5", ADDRESS_VERSION, OWNER_VERSION, VENUE_VERSION])
 
 
 def _guess_sex(data: dict[str, Any]) -> str | None:
@@ -753,7 +972,7 @@ class PlayerModel(BaseModel):
     assists: int | None = Field(
         ...,
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
-        alias=ASSISTS_COLUMN,
+        alias=PLAYER_ASSISTS_COLUMN,
     )
     turnovers: int | None = Field(
         ...,
@@ -2330,4 +2549,519 @@ class PlayerModel(BaseModel):
         ...,
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=PLAYER_EFFECTIVE_FIELD_GOAL_PERCENTAGE_COLUMN,
+    )
+    penalty_kicks_made: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PENALTY_KICKS_MADE_COLUMN,
+    )
+    penalty_kicks_attempted: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PENALTY_KICKS_ATTEMPTED_COLUMN,
+    )
+    shots_total: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SHOTS_TOTAL_COLUMN,
+    )
+    shots_on_target: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SHOTS_ON_TARGET_COLUMN,
+    )
+    yellow_cards: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_YELLOW_CARDS_COLUMN,
+    )
+    red_cards: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_RED_CARDS_COLUMN,
+    )
+    touches: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_TOUCHES_COLUMN,
+    )
+    expected_goals: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_EXPECTED_GOALS_COLUMN,
+    )
+    non_penalty_expected_goals: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_NON_PENALTY_EXPECTED_GOALS_COLUMN,
+    )
+    expected_assisted_goals: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_EXPECTED_ASSISTED_GOALS_COLUMN,
+    )
+    shot_creating_actions: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SHOT_CREATING_ACTIONS_COLUMN,
+    )
+    goal_creating_actions: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_GOAL_CREATING_ACTIONS_COLUMN,
+    )
+    passes_completed: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PASSES_COMPLETED_COLUMN,
+    )
+    passes_attempted: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PASSES_ATTEMPTED_COLUMN,
+    )
+    pass_completion: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PASS_COMPLETION_COLUMN,
+    )
+    progressive_passes: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PROGRESSIVE_PASSES_COLUMN,
+    )
+    carries: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_CARRIES_COLUMN,
+    )
+    progressive_carries: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PROGRESSIVE_CARRIES_COLUMN,
+    )
+    take_ons_attempted: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_TAKE_ONS_ATTEMPTED_COLUMN,
+    )
+    successful_take_ons: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SUCCESSFUL_TAKE_ONS_COLUMN,
+    )
+    total_passing_distance: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_TOTAL_PASSING_DISTANCE_COLUMN,
+    )
+    progressive_passing_distance: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PROGRESSIVE_PASSING_DISTANCE_COLUMN,
+    )
+    passes_completed_short: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PASSES_COMPLETED_SHORT_COLUMN,
+    )
+    passes_attempted_short: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PASSES_ATTEMPTED_SHORT_COLUMN,
+    )
+    pass_completion_short: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PASS_COMPLETION_SHORT_COLUMN,
+    )
+    passes_completed_medium: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PASSES_COMPLETED_MEDIUM_COLUMN,
+    )
+    passes_attempted_medium: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PASSES_ATTEMPTED_MEDIUM_COLUMN,
+    )
+    pass_completion_medium: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PASS_COMPLETION_MEDIUM_COLUMN,
+    )
+    passes_completed_long: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PASSES_COMPLETED_LONG_COLUMN,
+    )
+    passes_attempted_long: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PASSES_ATTEMPTED_LONG_COLUMN,
+    )
+    pass_completion_long: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PASS_COMPLETION_LONG_COLUMN,
+    )
+    expected_assists: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_EXPECTED_ASSISTS_COLUMN,
+    )
+    key_passes: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_KEY_PASSES_COLUMN,
+    )
+    passes_into_final_third: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PASSES_INTO_FINAL_THIRD_COLUMN,
+    )
+    passes_into_penalty_area: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PASSES_INTO_PENALTY_AREA_COLUMN,
+    )
+    crosses_into_penalty_area: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_CROSSES_INTO_PENALTY_AREA_COLUMN,
+    )
+    live_ball_passes: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_LIVE_BALL_PASSES_COLUMN,
+    )
+    dead_ball_passes: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_DEAD_BALL_PASSES_COLUMN,
+    )
+    passes_from_free_kicks: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PASSES_FROM_FREE_KICKS_COLUMN,
+    )
+    through_balls: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_THROUGH_BALLS_COLUMN,
+    )
+    switches: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SWITCHES_COLUNM,
+    )
+    crosses: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_CROSSES_COLUMN,
+    )
+    throw_ins_taken: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_THROW_INS_TAKEN_COLUMN,
+    )
+    corner_kicks: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_CORNER_KICKS_COLUMN,
+    )
+    inswinging_corner_kicks: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_INSWINGING_CORNER_KICKS_COLUMN,
+    )
+    outswinging_corner_kicks: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_OUTSWINGING_CORNER_KICKS_COLUMN,
+    )
+    straight_corner_kicks: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_STRAIGHT_CORNER_KICKS_COLUMN,
+    )
+    passes_offside: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PASSES_OFFSIDE_COLUMN,
+    )
+    passes_blocked: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PASSES_BLOCKED_COLUMN,
+    )
+    tackles_won: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_TACKLES_WON_COLUMN,
+    )
+    tackles_in_defensive_third: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_TACKLES_IN_DEFENSIVE_THIRD_COLUMN,
+    )
+    tackles_in_middle_third: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_TACKLES_IN_MIDDLE_THIRD_COLUMN,
+    )
+    tackles_in_attacking_third: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_TACKLES_IN_ATTACKING_THIRD_COLUMN,
+    )
+    dribblers_tackled: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_DRIBBLERS_TACKLED_COLUMN,
+    )
+    dribbles_challenged: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_DRIBBLES_CHALLENGED_COLUMN,
+    )
+    percent_of_dribblers_tackled: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PERCENT_OF_DRIBBLERS_TACKLED_COLUMN,
+    )
+    challenges_lost: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_CHALLENGES_LOST_COLUMN,
+    )
+    shots_blocked: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SHOTS_BLOCKED_COLUMN,
+    )
+    tackles_plus_interceptions: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_TACKLES_PLUS_INTERCEPTIONS_COLUMN,
+    )
+    errors: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_ERRORS_COLUMN,
+    )
+    touches_in_defensive_penalty_area: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_TOUCHES_IN_DEFENSIVE_PENALTY_AREA_COLUMN,
+    )
+    touches_in_defensive_third: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_TOUCHES_IN_DEFENSIVE_THIRD_COLUMN,
+    )
+    touches_in_middle_third: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_TOUCHES_IN_MIDDLE_THIRD_COLUMN,
+    )
+    touches_in_attacking_third: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_TOUCHES_IN_ATTACKING_THIRD_COLUMN,
+    )
+    touches_in_attacking_penalty_area: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_TOUCHES_IN_ATTACKING_PENALTY_AREA_COLUMN,
+    )
+    live_ball_touches: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_LIVE_BALL_TOUCHES_COLUMN,
+    )
+    successful_take_on_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SUCCESSFUL_TAKE_ON_PERCENTAGE_COLUMN,
+    )
+    times_tackled_during_take_ons: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_TIMES_TACKLED_DURING_TAKE_ONS_COLUMN,
+    )
+    tackled_during_take_on_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_TACKLED_DURING_TAKE_ON_PERCENTAGE_COLUMN,
+    )
+    total_carrying_distance: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_TOTAL_CARRYING_DISTANCE_COLUMN,
+    )
+    progressive_carrying_distance: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PROGRESSIVE_CARRYING_DISTANCE_COLUMN,
+    )
+    carries_into_final_third: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_CARRIES_INTO_FINAL_THIRD_COLUMN,
+    )
+    carries_into_penalty_area: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_CARRIES_INTO_PENALTY_AREA_COLUMN,
+    )
+    miscontrols: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_MISCONTROLS_COLUMN,
+    )
+    dispossessed: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_DISPOSSESSED_COLUMN,
+    )
+    passes_received: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PASSES_RECEIVED_COLUMN,
+    )
+    progressive_passes_received: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PROGRESSIVE_PASSES_RECEIVED_COLUMN,
+    )
+    second_yellow_card: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SECOND_YELLOW_CARD_COLUMN,
+    )
+    fouls_committed: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_FOULS_COMMITTED_COLUMN,
+    )
+    fouls_drawn: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_FOULS_DRAWN_COLUMN,
+    )
+    offsides: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_OFFSIDES_COLUMN,
+    )
+    penalty_kicks_won: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PENALTY_KICKS_WON_COLUMN,
+    )
+    penalty_kicks_conceded: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PENALTY_KICKS_CONCEDED_COLUMN,
+    )
+    own_goals: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_OWN_GOALS_COLUMN,
+    )
+    ball_recoveries: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_BALL_RECOVERIES_COLUMN,
+    )
+    aerials_won: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_AERIALS_WON_COLUMN,
+    )
+    aerials_lost: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_AERIALS_LOST_COLUMN,
+    )
+    percentage_of_aerials_won: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PERCENTAGE_OF_AERIALS_WON_COLUMN,
+    )
+    shots_on_target_against: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SHOTS_ON_TARGET_AGAINST_COLUMN,
+    )
+    post_shot_expected_goals: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_POST_SHOT_EXPECTED_GOALS_COLUMN,
+    )
+    passes_attempted_minus_goal_kicks: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PASSES_ATTEMPTED_MINUS_GOAL_KICKS_COLUMN,
+    )
+    throws_attempted: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_THROWS_ATTEMPTED_COLUMN,
+    )
+    percentage_of_passes_that_were_launched: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PERCENTAGE_OF_PASSES_THAT_WERE_LAUNCHED_COLUMN,
+    )
+    average_pass_length: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_AVERAGE_PASS_LENGTH_COLUMN,
+    )
+    goal_kicks_attempted: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_GOAL_KICKS_ATTEMPTED_COLUMN,
+    )
+    percentage_of_goal_kicks_that_were_launched: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PERCENTAGE_OF_GOAL_KICKS_THAT_WERE_LAUNCHED_COLUMN,
+    )
+    average_goal_kick_length: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_AVERAGE_GOAL_KICK_LENGTH_COLUMN,
+    )
+    crosses_faced: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_CROSSES_FACED_COLUMN,
+    )
+    crosses_stopped: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_CROSSES_STOPPED_COLUMN,
+    )
+    percentage_crosses_stopped: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_PERCENTAGE_CROSSES_STOPPED_COLUMN,
+    )
+    defensive_actions_outside_penalty_area: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_DEFENSIVE_ACTIONS_OUTSIDE_PENALTY_AREA_COLUMN,
+    )
+    average_distance_of_defensive_actions: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_AVERAGE_DISTANCE_OF_DEFENSIVE_ACTIONS_COLUMN,
+    )
+    three_point_attempt_rate: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_THREE_POINT_ATTEMPT_RATE_COLUMN,
     )

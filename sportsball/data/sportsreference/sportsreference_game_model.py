@@ -1,6 +1,6 @@
 """Sports Reference game model."""
 
-# pylint: disable=too-many-locals,too-many-statements,unused-argument,protected-access,too-many-arguments,use-maxsplit-arg,too-many-branches,duplicate-code,broad-exception-caught,too-many-lines
+# pylint: disable=too-many-locals,too-many-statements,unused-argument,protected-access,too-many-arguments,use-maxsplit-arg,too-many-branches,duplicate-code,broad-exception-caught,too-many-lines,line-too-long
 import datetime
 import io
 import logging
@@ -8,7 +8,9 @@ import math
 import os
 import re
 import urllib.parse
+from collections import Counter
 from typing import Any
+from urllib.parse import urlparse
 
 import datefinder  # type: ignore
 import dateutil
@@ -141,6 +143,112 @@ def _find_old_dt(
     inherited_runners: dict[str, int],
     inherited_scores: dict[str, int],
     effective_field_goal_percentage: dict[str, float],
+    penalty_kicks_made: dict[str, int],
+    penalty_kicks_attempted: dict[str, int],
+    shots_total: dict[str, int],
+    shots_on_target: dict[str, int],
+    yellow_cards: dict[str, int],
+    red_cards: dict[str, int],
+    touches: dict[str, int],
+    expected_goals: dict[str, float],
+    non_penalty_expected_goals: dict[str, float],
+    expected_assisted_goals: dict[str, float],
+    shot_creating_actions: dict[str, int],
+    goal_creating_actions: dict[str, int],
+    passes_completed: dict[str, int],
+    passes_attempted: dict[str, int],
+    pass_completion: dict[str, int],
+    progressive_passes: dict[str, int],
+    carries: dict[str, int],
+    progressive_carries: dict[str, int],
+    take_ons_attempted: dict[str, int],
+    successful_take_ons: dict[str, int],
+    total_passing_distance: dict[str, int],
+    progressive_passing_distance: dict[str, int],
+    passes_completed_short: dict[str, int],
+    passes_attempted_short: dict[str, int],
+    pass_completion_short: dict[str, int],
+    passes_completed_medium: dict[str, int],
+    passes_attempted_medium: dict[str, int],
+    pass_completion_medium: dict[str, int],
+    passes_completed_long: dict[str, int],
+    passes_attempted_long: dict[str, int],
+    pass_completion_long: dict[str, int],
+    expected_assists: dict[str, float],
+    key_passes: dict[str, int],
+    passes_into_final_third: dict[str, int],
+    passes_into_penalty_area: dict[str, int],
+    crosses_into_penalty_area: dict[str, int],
+    live_ball_passes: dict[str, int],
+    dead_ball_passes: dict[str, int],
+    passes_from_free_kicks: dict[str, int],
+    through_balls: dict[str, int],
+    switches: dict[str, int],
+    crosses: dict[str, int],
+    throw_ins_taken: dict[str, int],
+    corner_kicks: dict[str, int],
+    inswinging_corner_kicks: dict[str, int],
+    outswinging_corner_kicks: dict[str, int],
+    straight_corner_kicks: dict[str, int],
+    passes_offside: dict[str, int],
+    passes_blocked: dict[str, int],
+    tackles_won: dict[str, int],
+    tackles_in_defensive_third: dict[str, int],
+    tackles_in_middle_third: dict[str, int],
+    tackles_in_attacking_third: dict[str, int],
+    dribblers_tackled: dict[str, int],
+    dribbles_challenged: dict[str, int],
+    percent_of_dribblers_tackled: dict[str, float],
+    challenges_lost: dict[str, int],
+    shots_blocked: dict[str, int],
+    tackles_plus_interceptions: dict[str, int],
+    errors: dict[str, int],
+    touches_in_defensive_penalty_area: dict[str, int],
+    touches_in_defensive_third: dict[str, int],
+    touches_in_middle_third: dict[str, int],
+    touches_in_attacking_third: dict[str, int],
+    touches_in_attacking_penalty_area: dict[str, int],
+    live_ball_touches: dict[str, int],
+    successful_take_on_percentage: dict[str, float],
+    times_tackled_during_take_ons: dict[str, int],
+    tackled_during_take_ons_percentage: dict[str, int],
+    total_carrying_distance: dict[str, int],
+    progressive_carrying_distance: dict[str, int],
+    carries_into_final_third: dict[str, int],
+    carries_into_penalty_area: dict[str, int],
+    miscontrols: dict[str, int],
+    dispossessed: dict[str, int],
+    passes_received: dict[str, int],
+    progressive_passes_received: dict[str, int],
+    second_yellow_card: dict[str, int],
+    fouls_committed: dict[str, int],
+    fouls_drawn: dict[str, int],
+    offsides: dict[str, int],
+    penalty_kicks_won: dict[str, int],
+    penalty_kicks_conceded: dict[str, int],
+    own_goals: dict[str, int],
+    ball_recoveries: dict[str, int],
+    aerials_won: dict[str, int],
+    aerials_lost: dict[str, int],
+    percentage_of_aerials_won: dict[str, float],
+    shots_on_target_against: dict[str, int],
+    post_shot_expected_goals: dict[str, int],
+    passes_attempted_minus_goal_kicks: dict[str, int],
+    throws_attempted: dict[str, int],
+    percentage_of_passes_that_were_launched: dict[str, float],
+    average_pass_length: dict[str, float],
+    goal_kicks_attempted: dict[str, int],
+    percentage_of_goal_kicks_that_were_launched: dict[str, float],
+    average_goal_kick_length: dict[str, float],
+    crosses_faced: dict[str, int],
+    crosses_stopped: dict[str, int],
+    percentage_crosses_stopped: dict[str, float],
+    defensive_actions_outside_penalty_area: dict[str, int],
+    average_distance_of_defensive_actions: dict[str, float],
+    three_point_attempt_rate: dict[str, float],
+    tackles: dict[str, int],
+    interceptions: dict[str, int],
+    clearances: dict[str, int],
 ) -> tuple[datetime.datetime, list[TeamModel], str | None]:
     teams: list[TeamModel] = []
 
@@ -329,6 +437,112 @@ def _find_old_dt(
                     inherited_runners=inherited_runners,
                     inherited_scores=inherited_scores,
                     effective_field_goal_percentage=effective_field_goal_percentage,
+                    penalty_kicks_made=penalty_kicks_made,
+                    penalty_kicks_attempted=penalty_kicks_attempted,
+                    shots_total=shots_total,
+                    shots_on_target=shots_on_target,
+                    yellow_cards=yellow_cards,
+                    red_cards=red_cards,
+                    touches=touches,
+                    expected_goals=expected_goals,
+                    non_penalty_expected_goals=non_penalty_expected_goals,
+                    expected_assisted_goals=expected_assisted_goals,
+                    shot_creating_actions=shot_creating_actions,
+                    goal_creating_actions=goal_creating_actions,
+                    passes_completed=passes_completed,
+                    passes_attempted=passes_attempted,
+                    pass_completion=pass_completion,
+                    progressive_passes=progressive_passes,
+                    carries=carries,
+                    progressive_carries=progressive_carries,
+                    take_ons_attempted=take_ons_attempted,
+                    successful_take_ons=successful_take_ons,
+                    total_passing_distance=total_passing_distance,
+                    progressive_passing_distance=progressive_passing_distance,
+                    passes_completed_short=passes_completed_short,
+                    passes_attempted_short=passes_attempted_short,
+                    pass_completion_short=pass_completion_short,
+                    passes_completed_medium=passes_completed_medium,
+                    passes_attempted_medium=passes_attempted_medium,
+                    pass_completion_medium=pass_completion_medium,
+                    passes_completed_long=passes_completed_long,
+                    passes_attempted_long=passes_attempted_long,
+                    pass_completion_long=pass_completion_long,
+                    expected_assists=expected_assists,
+                    key_passes=key_passes,
+                    passes_into_final_third=passes_into_final_third,
+                    passes_into_penalty_area=passes_into_penalty_area,
+                    crosses_into_penalty_area=crosses_into_penalty_area,
+                    live_ball_passes=live_ball_passes,
+                    dead_ball_passes=dead_ball_passes,
+                    passes_from_free_kicks=passes_from_free_kicks,
+                    through_balls=through_balls,
+                    switches=switches,
+                    crosses=crosses,
+                    throw_ins_taken=throw_ins_taken,
+                    corner_kicks=corner_kicks,
+                    inswinging_corner_kicks=inswinging_corner_kicks,
+                    outswinging_corner_kicks=outswinging_corner_kicks,
+                    straight_corner_kicks=straight_corner_kicks,
+                    passes_offside=passes_offside,
+                    passes_blocked=passes_blocked,
+                    tackles_won=tackles_won,
+                    tackles_in_defensive_third=tackles_in_defensive_third,
+                    tackles_in_middle_third=tackles_in_middle_third,
+                    tackles_in_attacking_third=tackles_in_attacking_third,
+                    dribblers_tackled=dribblers_tackled,
+                    dribbles_challenged=dribbles_challenged,
+                    percent_of_dribblers_tackled=percent_of_dribblers_tackled,
+                    challenges_lost=challenges_lost,
+                    shots_blocked=shots_blocked,
+                    tackles_plus_interceptions=tackles_plus_interceptions,
+                    errors=errors,
+                    touches_in_defensive_penalty_area=touches_in_defensive_penalty_area,
+                    touches_in_defensive_third=touches_in_defensive_third,
+                    touches_in_middle_third=touches_in_middle_third,
+                    touches_in_attacking_third=touches_in_attacking_third,
+                    touches_in_attacking_penalty_area=touches_in_attacking_penalty_area,
+                    live_ball_touches=live_ball_touches,
+                    successful_take_on_percentage=successful_take_on_percentage,
+                    times_tackled_during_take_ons=times_tackled_during_take_ons,
+                    tackled_during_take_ons_percentage=tackled_during_take_ons_percentage,
+                    total_carrying_distance=total_carrying_distance,
+                    progressive_carrying_distance=progressive_carrying_distance,
+                    carries_into_final_third=carries_into_final_third,
+                    carries_into_penalty_area=carries_into_penalty_area,
+                    miscontrols=miscontrols,
+                    dispossessed=dispossessed,
+                    passes_received=passes_received,
+                    progressive_passes_received=progressive_passes_received,
+                    second_yellow_card=second_yellow_card,
+                    fouls_committed=fouls_committed,
+                    fouls_drawn=fouls_drawn,
+                    offsides=offsides,
+                    penalty_kicks_won=penalty_kicks_won,
+                    penalty_kicks_conceded=penalty_kicks_conceded,
+                    own_goals=own_goals,
+                    ball_recoveries=ball_recoveries,
+                    aerials_won=aerials_won,
+                    aerials_lost=aerials_lost,
+                    percentage_of_aerials_won=percentage_of_aerials_won,
+                    shots_on_target_against=shots_on_target_against,
+                    post_shot_expected_goals=post_shot_expected_goals,
+                    passes_attempted_minus_goal_kicks=passes_attempted_minus_goal_kicks,
+                    throws_attempted=throws_attempted,
+                    percentage_of_passes_that_were_launched=percentage_of_passes_that_were_launched,
+                    average_pass_length=average_pass_length,
+                    goal_kicks_attempted=goal_kicks_attempted,
+                    percentage_of_goal_kicks_that_were_launched=percentage_of_goal_kicks_that_were_launched,
+                    average_goal_kick_length=average_goal_kick_length,
+                    crosses_faced=crosses_faced,
+                    crosses_stopped=crosses_stopped,
+                    percentage_crosses_stopped=percentage_crosses_stopped,
+                    defensive_actions_outside_penalty_area=defensive_actions_outside_penalty_area,
+                    average_distance_of_defensive_actions=average_distance_of_defensive_actions,
+                    three_point_attempt_rate=three_point_attempt_rate,
+                    tackles=tackles,
+                    interceptions=interceptions,
+                    clearances=clearances,
                 )
             )
 
@@ -490,6 +704,112 @@ def _find_new_dt(
     inherited_runners: dict[str, int],
     inherited_scores: dict[str, int],
     effective_field_goal_percentage: dict[str, float],
+    penalty_kicks_made: dict[str, int],
+    penalty_kicks_attempted: dict[str, int],
+    shots_total: dict[str, int],
+    shots_on_target: dict[str, int],
+    yellow_cards: dict[str, int],
+    red_cards: dict[str, int],
+    touches: dict[str, int],
+    expected_goals: dict[str, float],
+    non_penalty_expected_goals: dict[str, float],
+    expected_assisted_goals: dict[str, float],
+    shot_creating_actions: dict[str, int],
+    goal_creating_actions: dict[str, int],
+    passes_completed: dict[str, int],
+    passes_attempted: dict[str, int],
+    pass_completion: dict[str, int],
+    progressive_passes: dict[str, int],
+    carries: dict[str, int],
+    progressive_carries: dict[str, int],
+    take_ons_attempted: dict[str, int],
+    successful_take_ons: dict[str, int],
+    total_passing_distance: dict[str, int],
+    progressive_passing_distance: dict[str, int],
+    passes_completed_short: dict[str, int],
+    passes_attempted_short: dict[str, int],
+    pass_completion_short: dict[str, int],
+    passes_completed_medium: dict[str, int],
+    passes_attempted_medium: dict[str, int],
+    pass_completion_medium: dict[str, int],
+    passes_completed_long: dict[str, int],
+    passes_attempted_long: dict[str, int],
+    pass_completion_long: dict[str, int],
+    expected_assists: dict[str, float],
+    key_passes: dict[str, int],
+    passes_into_final_third: dict[str, int],
+    passes_into_penalty_area: dict[str, int],
+    crosses_into_penalty_area: dict[str, int],
+    live_ball_passes: dict[str, int],
+    dead_ball_passes: dict[str, int],
+    passes_from_free_kicks: dict[str, int],
+    through_balls: dict[str, int],
+    switches: dict[str, int],
+    crosses: dict[str, int],
+    throw_ins_taken: dict[str, int],
+    corner_kicks: dict[str, int],
+    inswinging_corner_kicks: dict[str, int],
+    outswinging_corner_kicks: dict[str, int],
+    straight_corner_kicks: dict[str, int],
+    passes_offside: dict[str, int],
+    passes_blocked: dict[str, int],
+    tackles_won: dict[str, int],
+    tackles_in_defensive_third: dict[str, int],
+    tackles_in_middle_third: dict[str, int],
+    tackles_in_attacking_third: dict[str, int],
+    dribblers_tackled: dict[str, int],
+    dribbles_challenged: dict[str, int],
+    percent_of_dribblers_tackled: dict[str, float],
+    challenges_lost: dict[str, int],
+    shots_blocked: dict[str, int],
+    tackles_plus_interceptions: dict[str, int],
+    errors: dict[str, int],
+    touches_in_defensive_penalty_area: dict[str, int],
+    touches_in_defensive_third: dict[str, int],
+    touches_in_middle_third: dict[str, int],
+    touches_in_attacking_third: dict[str, int],
+    touches_in_attacking_penalty_area: dict[str, int],
+    live_ball_touches: dict[str, int],
+    successful_take_on_percentage: dict[str, float],
+    times_tackled_during_take_ons: dict[str, int],
+    tackled_during_take_ons_percentage: dict[str, int],
+    total_carrying_distance: dict[str, int],
+    progressive_carrying_distance: dict[str, int],
+    carries_into_final_third: dict[str, int],
+    carries_into_penalty_area: dict[str, int],
+    miscontrols: dict[str, int],
+    dispossessed: dict[str, int],
+    passes_received: dict[str, int],
+    progressive_passes_received: dict[str, int],
+    second_yellow_card: dict[str, int],
+    fouls_committed: dict[str, int],
+    fouls_drawn: dict[str, int],
+    offsides: dict[str, int],
+    penalty_kicks_won: dict[str, int],
+    penalty_kicks_conceded: dict[str, int],
+    own_goals: dict[str, int],
+    ball_recoveries: dict[str, int],
+    aerials_won: dict[str, int],
+    aerials_lost: dict[str, int],
+    percentage_of_aerials_won: dict[str, float],
+    shots_on_target_against: dict[str, int],
+    post_shot_expected_goals: dict[str, int],
+    passes_attempted_minus_goal_kicks: dict[str, int],
+    throws_attempted: dict[str, int],
+    percentage_of_passes_that_were_launched: dict[str, float],
+    average_pass_length: dict[str, float],
+    goal_kicks_attempted: dict[str, int],
+    percentage_of_goal_kicks_that_were_launched: dict[str, float],
+    average_goal_kick_length: dict[str, float],
+    crosses_faced: dict[str, int],
+    crosses_stopped: dict[str, int],
+    percentage_crosses_stopped: dict[str, float],
+    defensive_actions_outside_penalty_area: dict[str, int],
+    average_distance_of_defensive_actions: dict[str, float],
+    three_point_attempt_rate: dict[str, float],
+    tackles: dict[str, int],
+    interceptions: dict[str, int],
+    clearances: dict[str, int],
 ) -> tuple[datetime.datetime, list[TeamModel], str]:
     in_divs = scorebox_meta_div.find_all("div")
     current_in_div_idx = 0
@@ -625,6 +945,112 @@ def _find_new_dt(
                     inherited_runners=inherited_runners,
                     inherited_scores=inherited_scores,
                     effective_field_goal_percentage=effective_field_goal_percentage,
+                    penalty_kicks_made=penalty_kicks_made,
+                    penalty_kicks_attempted=penalty_kicks_attempted,
+                    shots_total=shots_total,
+                    shots_on_target=shots_on_target,
+                    yellow_cards=yellow_cards,
+                    red_cards=red_cards,
+                    touches=touches,
+                    expected_goals=expected_goals,
+                    non_penalty_expected_goals=non_penalty_expected_goals,
+                    expected_assisted_goals=expected_assisted_goals,
+                    shot_creating_actions=shot_creating_actions,
+                    goal_creating_actions=goal_creating_actions,
+                    passes_completed=passes_completed,
+                    passes_attempted=passes_attempted,
+                    pass_completion=pass_completion,
+                    progressive_passes=progressive_passes,
+                    carries=carries,
+                    progressive_carries=progressive_carries,
+                    take_ons_attempted=take_ons_attempted,
+                    successful_take_ons=successful_take_ons,
+                    total_passing_distance=total_passing_distance,
+                    progressive_passing_distance=progressive_passing_distance,
+                    passes_completed_short=passes_completed_short,
+                    passes_attempted_short=passes_attempted_short,
+                    pass_completion_short=pass_completion_short,
+                    passes_completed_medium=passes_completed_medium,
+                    passes_attempted_medium=passes_attempted_medium,
+                    pass_completion_medium=pass_completion_medium,
+                    passes_completed_long=passes_completed_long,
+                    passes_attempted_long=passes_attempted_long,
+                    pass_completion_long=pass_completion_long,
+                    expected_assists=expected_assists,
+                    key_passes=key_passes,
+                    passes_into_final_third=passes_into_final_third,
+                    passes_into_penalty_area=passes_into_penalty_area,
+                    crosses_into_penalty_area=crosses_into_penalty_area,
+                    live_ball_passes=live_ball_passes,
+                    dead_ball_passes=dead_ball_passes,
+                    passes_from_free_kicks=passes_from_free_kicks,
+                    through_balls=through_balls,
+                    switches=switches,
+                    crosses=crosses,
+                    throw_ins_taken=throw_ins_taken,
+                    corner_kicks=corner_kicks,
+                    inswinging_corner_kicks=inswinging_corner_kicks,
+                    outswinging_corner_kicks=outswinging_corner_kicks,
+                    straight_corner_kicks=straight_corner_kicks,
+                    passes_offside=passes_offside,
+                    passes_blocked=passes_blocked,
+                    tackles_won=tackles_won,
+                    tackles_in_defensive_third=tackles_in_defensive_third,
+                    tackles_in_middle_third=tackles_in_middle_third,
+                    tackles_in_attacking_third=tackles_in_attacking_third,
+                    dribblers_tackled=dribblers_tackled,
+                    dribbles_challenged=dribbles_challenged,
+                    percent_of_dribblers_tackled=percent_of_dribblers_tackled,
+                    challenges_lost=challenges_lost,
+                    shots_blocked=shots_blocked,
+                    tackles_plus_interceptions=tackles_plus_interceptions,
+                    errors=errors,
+                    touches_in_defensive_penalty_area=touches_in_defensive_penalty_area,
+                    touches_in_defensive_third=touches_in_defensive_third,
+                    touches_in_middle_third=touches_in_middle_third,
+                    touches_in_attacking_third=touches_in_attacking_third,
+                    touches_in_attacking_penalty_area=touches_in_attacking_penalty_area,
+                    live_ball_touches=live_ball_touches,
+                    successful_take_on_percentage=successful_take_on_percentage,
+                    times_tackled_during_take_ons=times_tackled_during_take_ons,
+                    tackled_during_take_ons_percentage=tackled_during_take_ons_percentage,
+                    total_carrying_distance=total_carrying_distance,
+                    progressive_carrying_distance=progressive_carrying_distance,
+                    carries_into_final_third=carries_into_final_third,
+                    carries_into_penalty_area=carries_into_penalty_area,
+                    miscontrols=miscontrols,
+                    dispossessed=dispossessed,
+                    passes_received=passes_received,
+                    progressive_passes_received=progressive_passes_received,
+                    second_yellow_card=second_yellow_card,
+                    fouls_committed=fouls_committed,
+                    fouls_drawn=fouls_drawn,
+                    offsides=offsides,
+                    penalty_kicks_won=penalty_kicks_won,
+                    penalty_kicks_conceded=penalty_kicks_conceded,
+                    own_goals=own_goals,
+                    ball_recoveries=ball_recoveries,
+                    aerials_won=aerials_won,
+                    aerials_lost=aerials_lost,
+                    percentage_of_aerials_won=percentage_of_aerials_won,
+                    shots_on_target_against=shots_on_target_against,
+                    post_shot_expected_goals=post_shot_expected_goals,
+                    passes_attempted_minus_goal_kicks=passes_attempted_minus_goal_kicks,
+                    throws_attempted=throws_attempted,
+                    percentage_of_passes_that_were_launched=percentage_of_passes_that_were_launched,
+                    average_pass_length=average_pass_length,
+                    goal_kicks_attempted=goal_kicks_attempted,
+                    percentage_of_goal_kicks_that_were_launched=percentage_of_goal_kicks_that_were_launched,
+                    average_goal_kick_length=average_goal_kick_length,
+                    crosses_faced=crosses_faced,
+                    crosses_stopped=crosses_stopped,
+                    percentage_crosses_stopped=percentage_crosses_stopped,
+                    defensive_actions_outside_penalty_area=defensive_actions_outside_penalty_area,
+                    average_distance_of_defensive_actions=average_distance_of_defensive_actions,
+                    three_point_attempt_rate=three_point_attempt_rate,
+                    tackles=tackles,
+                    interceptions=interceptions,
+                    clearances=clearances,
                 )
             )
 
@@ -656,6 +1082,21 @@ def _create_sportsreference_game_model(
                 response = session.get(url)
             response.raise_for_status()
             soup = BeautifulSoup(response.text, "lxml")
+
+    comp_ids = []
+    for a in soup.find_all("a"):
+        comp_url = urllib.parse.urljoin(url, a.get("href"))
+        o = urlparse(comp_url)
+        path_components = o.path.split("/")
+        if len(path_components) >= 3 and path_components[2] == "comps":
+            comp_ids.append(int(path_components[3]))
+    data = Counter(comp_ids)
+    mode_comp_id = data.most_common()
+
+    match league:
+        case League.EPL:
+            if mode_comp_id != 9:
+                return None
 
     player_urls = set()
     for a in soup.find_all("a"):
@@ -764,6 +1205,112 @@ def _create_sportsreference_game_model(
     inherited_runners = {}
     inherited_scores = {}
     effective_field_goal_percentage = {}
+    penalty_kicks_made = {}
+    penalty_kicks_attempted = {}
+    shots_total = {}
+    shots_on_target = {}
+    yellow_cards = {}
+    red_cards = {}
+    touches = {}
+    expected_goals = {}
+    non_penalty_expected_goals = {}
+    expected_assisted_goals = {}
+    shot_creating_actions = {}
+    goal_creating_actions = {}
+    passes_completed = {}
+    passes_attempted = {}
+    pass_completion = {}
+    progressive_passes = {}
+    carries = {}
+    progressive_carries = {}
+    take_ons_attempted = {}
+    successful_take_ons = {}
+    total_passing_distance = {}
+    progressive_passing_distance = {}
+    passes_completed_short = {}
+    passes_attempted_short = {}
+    pass_completion_short = {}
+    passes_completed_medium = {}
+    passes_attempted_medium = {}
+    pass_completion_medium = {}
+    passes_completed_long = {}
+    passes_attempted_long = {}
+    pass_completion_long = {}
+    expected_assists = {}
+    key_passes = {}
+    passes_into_final_third = {}
+    passes_into_penalty_area = {}
+    crosses_into_penalty_area = {}
+    live_ball_passes = {}
+    dead_ball_passes = {}
+    passes_from_free_kicks = {}
+    through_balls = {}
+    switches = {}
+    crosses = {}
+    throw_ins_taken = {}
+    corner_kicks = {}
+    inswinging_corner_kicks = {}
+    outswinging_corner_kicks = {}
+    straight_corner_kicks = {}
+    passes_offside = {}
+    passes_blocked = {}
+    tackles_won = {}
+    tackles_in_defensive_third = {}
+    tackles_in_middle_third = {}
+    tackles_in_attacking_third = {}
+    dribblers_tackled = {}
+    dribbles_challenged = {}
+    percent_of_dribblers_tackled = {}
+    challenges_lost = {}
+    shots_blocked = {}
+    tackles_plus_interceptions = {}
+    errors = {}
+    touches_in_defensive_penalty_area = {}
+    touches_in_defensive_third = {}
+    touches_in_middle_third = {}
+    touches_in_attacking_third = {}
+    touches_in_attacking_penalty_area = {}
+    live_ball_touches = {}
+    successful_take_on_percentage = {}
+    times_tackled_during_take_ons = {}
+    tackled_during_take_ons_percentage = {}
+    total_carrying_distance = {}
+    progressive_carrying_distance = {}
+    carries_into_final_third = {}
+    carries_into_penalty_area = {}
+    miscontrols = {}
+    dispossessed = {}
+    passes_received = {}
+    progressive_passes_received = {}
+    second_yellow_card = {}
+    fouls_committed = {}
+    fouls_drawn = {}
+    offsides = {}
+    penalty_kicks_won = {}
+    penalty_kicks_conceded = {}
+    own_goals = {}
+    ball_recoveries = {}
+    aerials_won = {}
+    aerials_lost = {}
+    percentage_of_aerials_won = {}
+    shots_on_target_against = {}
+    post_shot_expected_goals = {}
+    passes_attempted_minus_goal_kicks = {}
+    throws_attempted = {}
+    percentage_of_passes_that_were_launched = {}
+    average_pass_length = {}
+    goal_kicks_attempted = {}
+    percentage_of_goal_kicks_that_were_launched = {}
+    average_goal_kick_length = {}
+    crosses_faced = {}
+    crosses_stopped = {}
+    percentage_crosses_stopped = {}
+    defensive_actions_outside_penalty_area = {}
+    average_distance_of_defensive_actions = {}
+    three_point_attempt_rate = {}
+    tackles = {}
+    interceptions = {}
+    clearances = {}
     try:
         dfs = pd.read_html(handle)
         for df in dfs:
@@ -1119,6 +1666,509 @@ def _create_sportsreference_game_model(
                         effective_field_goal_percentage[player] = _normalize_value(
                             efgps[idx]
                         )
+                if "Gls" in cols:
+                    glss = df["Gls"].tolist()
+                    for idx, player in enumerate(players):
+                        goals[player] = _normalize_value(glss[idx])
+                if "Ast" in cols:
+                    asts = df["Ast"].tolist()
+                    for idx, player in enumerate(players):
+                        assists[player] = _normalize_value(asts[idx])
+                if "PK" in cols:
+                    pks = df["PK"].tolist()
+                    for idx, player in enumerate(players):
+                        penalty_kicks_made[player] = _normalize_value(pks[idx])
+                if "PKatt" in cols:
+                    pkatts = df["PKatt"].tolist()
+                    for idx, player in enumerate(players):
+                        penalty_kicks_attempted[player] = _normalize_value(pkatts[idx])
+                if "Sh" in cols:
+                    shs = df["Sh"].tolist()
+                    for idx, player in enumerate(players):
+                        shots_total[player] = _normalize_value(shs[idx])
+                if "SoT" in cols:
+                    sots = df["SoT"].tolist()
+                    for idx, player in enumerate(players):
+                        shots_on_target[player] = _normalize_value(sots[idx])
+                if "CrdY" in cols:
+                    crdys = df["CrdY"].tolist()
+                    for idx, player in enumerate(players):
+                        yellow_cards[player] = _normalize_value(crdys[idx])
+                if "CrdR" in cols:
+                    crdrs = df["CrdR"].tolist()
+                    for idx, player in enumerate(players):
+                        red_cards[player] = _normalize_value(crdrs[idx])
+                if "Touches" in cols:
+                    touchess = df["Touches"].tolist()
+                    for idx, player in enumerate(players):
+                        touches[player] = _normalize_value(touchess[idx])
+                if "Tkl" in cols:
+                    tkls = df["Tkl"].tolist()
+                    for idx, player in enumerate(players):
+                        tackles[player] = _normalize_value(tkls[idx])
+                if "Int" in cols:
+                    ints = df["Int"].tolist()
+                    for idx, player in enumerate(players):
+                        interceptions[player] = _normalize_value(ints[idx])
+                if "Blocks" in cols:
+                    blockss = df["Blocks"].tolist()
+                    for idx, player in enumerate(players):
+                        blocks[player] = _normalize_value(blockss[idx])
+                if "xG" in cols:
+                    xgs = df["xG"].tolist()
+                    for idx, player in enumerate(players):
+                        expected_goals[player] = _normalize_value(xgs[idx])
+                if "npxG" in cols:
+                    npxgs = df["npxG"].tolist()
+                    for idx, player in enumerate(players):
+                        non_penalty_expected_goals[player] = _normalize_value(
+                            npxgs[idx]
+                        )
+                if "xAG" in cols:
+                    xags = df["xAG"].tolist()
+                    for idx, player in enumerate(players):
+                        expected_assisted_goals[player] = _normalize_value(xags[idx])
+                if "SCA" in cols:
+                    scas = df["SCA"].tolist()
+                    for idx, player in enumerate(players):
+                        shot_creating_actions[player] = _normalize_value(scas[idx])
+                if "GCA" in cols:
+                    gcas = df["GCA"].tolist()
+                    for idx, player in enumerate(players):
+                        goal_creating_actions[player] = _normalize_value(gcas[idx])
+                if "Cmp" in cols:
+                    cmps = df["Cmp"].tolist()
+                    for idx, player in enumerate(players):
+                        passes_completed[player] = _normalize_value(cmps[idx])
+                if "Att" in cols:
+                    atts = df["Att"].tolist()
+                    for idx, player in enumerate(players):
+                        passes_attempted[player] = _normalize_value(atts[idx])
+                if "Cmp%" in cols:
+                    cmpps = df["Cmp%"].tolist()
+                    for idx, player in enumerate(players):
+                        pass_completion[player] = _normalize_value(cmpps[idx])
+                if "PrgP" in cols:
+                    prgps = df["PrgP"].tolist()
+                    for idx, player in enumerate(players):
+                        progressive_passes[player] = _normalize_value(prgps[idx])
+                if "Carries" in cols:
+                    carriess = df["Carries"].tolist()
+                    for idx, player in enumerate(players):
+                        carries[player] = _normalize_value(carriess[idx])
+                if "PrgC" in cols:
+                    prgcs = df["PrgC"].tolist()
+                    for idx, player in enumerate(players):
+                        progressive_carries[player] = _normalize_value(prgcs[idx])
+                if "Att" in cols:
+                    atts = df["Att"].tolist()
+                    for idx, player in enumerate(players):
+                        take_ons_attempted[player] = _normalize_value(atts[idx])
+                if "Succ" in cols:
+                    succs = df["Succ"].tolist()
+                    for idx, player in enumerate(players):
+                        successful_take_ons[player] = _normalize_value(succs[idx])
+                if "TotDist" in cols:
+                    totdists = df["TotDist"].tolist()
+                    for idx, player in enumerate(players):
+                        total_passing_distance[player] = _normalize_value(totdists[idx])
+                if "PrgDist" in cols:
+                    prgdists = df["PrgDist"].tolist()
+                    for idx, player in enumerate(players):
+                        progressive_passing_distance[player] = _normalize_value(
+                            prgdists[idx]
+                        )
+                if "Cmp" in cols:
+                    cmps = df["Cmp"].tolist()
+                    for idx, player in enumerate(players):
+                        passes_completed_short[player] = _normalize_value(cmps[idx])
+                if "Att" in cols:
+                    atts = df["Att"].tolist()
+                    for idx, player in enumerate(players):
+                        passes_attempted_short[player] = _normalize_value(atts[idx])
+                if "Cmp%" in cols:
+                    cmpps = df["Cmp%"].tolist()
+                    for idx, player in enumerate(players):
+                        pass_completion_short[player] = _normalize_value(cmpps[idx])
+                if "Cmp" in cols:
+                    cmps = df["Cmp"].tolist()
+                    for idx, player in enumerate(players):
+                        passes_completed_medium[player] = _normalize_value(cmps[idx])
+                if "Att" in cols:
+                    atts = df["Att"].tolist()
+                    for idx, player in enumerate(players):
+                        passes_attempted_medium[player] = _normalize_value(atts[idx])
+                if "Cmp%" in cols:
+                    cmpps = df["Cmp%"].tolist()
+                    for idx, player in enumerate(players):
+                        pass_completion_medium[player] = _normalize_value(cmpps[idx])
+                if "Cmp" in cols:
+                    cmps = df["Cmp"].tolist()
+                    for idx, player in enumerate(players):
+                        passes_completed_long[player] = _normalize_value(cmps[idx])
+                if "Att" in cols:
+                    atts = df["Att"].tolist()
+                    for idx, player in enumerate(players):
+                        passes_attempted_long[player] = _normalize_value(atts[idx])
+                if "Cmp%" in cols:
+                    cmpps = df["Cmp%"].tolist()
+                    for idx, player in enumerate(players):
+                        pass_completion_long[player] = _normalize_value(cmpps[idx])
+                if "xA" in cols:
+                    xas = df["xA"].tolist()
+                    for idx, player in enumerate(players):
+                        expected_assists[player] = _normalize_value(xas[idx])
+                if "KP" in cols:
+                    kps = df["KP"].tolist()
+                    for idx, player in enumerate(players):
+                        key_passes[player] = _normalize_value(kps[idx])
+                if "1/3" in cols:
+                    onethrees = df["1/3"].tolist()
+                    for idx, player in enumerate(players):
+                        passes_into_final_third[player] = _normalize_value(
+                            onethrees[idx]
+                        )
+                if "PPA" in cols:
+                    ppas = df["PPA"].tolist()
+                    for idx, player in enumerate(players):
+                        passes_into_penalty_area[player] = _normalize_value(ppas[idx])
+                if "CrsPA" in cols:
+                    crspas = df["CrsPA"].tolist()
+                    for idx, player in enumerate(players):
+                        crosses_into_penalty_area[player] = _normalize_value(
+                            crspas[idx]
+                        )
+                if "Live" in cols:
+                    lives = df["Live"].tolist()
+                    for idx, player in enumerate(players):
+                        live_ball_passes[player] = _normalize_value(lives[idx])
+                if "Dead" in cols:
+                    deads = df["Dead"].tolist()
+                    for idx, player in enumerate(players):
+                        dead_ball_passes[player] = _normalize_value(deads[idx])
+                if "FK" in cols:
+                    fks = df["FK"].tolist()
+                    for idx, player in enumerate(players):
+                        passes_from_free_kicks[player] = _normalize_value(fks[idx])
+                if "TB" in cols:
+                    tbs = df["TB"].tolist()
+                    for idx, player in enumerate(players):
+                        through_balls[player] = _normalize_value(tbs[idx])
+                if "Sw" in cols:
+                    sws = df["Sw"].tolist()
+                    for idx, player in enumerate(players):
+                        switches[player] = _normalize_value(sws[idx])
+                if "Crs" in cols:
+                    crss = df["Crs"].tolist()
+                    for idx, player in enumerate(players):
+                        crosses[player] = _normalize_value(crss[idx])
+                if "TI" in cols:
+                    tis = df["TI"].tolist()
+                    for idx, player in enumerate(players):
+                        throw_ins_taken[player] = _normalize_value(tis[idx])
+                if "CK" in cols:
+                    cks = df["CK"].tolist()
+                    for idx, player in enumerate(players):
+                        corner_kicks[player] = _normalize_value(cks[idx])
+                if "In" in cols:
+                    ins = df["In"].tolist()
+                    for idx, player in enumerate(players):
+                        inswinging_corner_kicks[player] = _normalize_value(ins[idx])
+                if "Out" in cols:
+                    outs = df["Out"].tolist()
+                    for idx, player in enumerate(players):
+                        outswinging_corner_kicks[player] = _normalize_value(outs[idx])
+                if "Str" in cols:
+                    strs = df["Str"].tolist()
+                    for idx, player in enumerate(players):
+                        straight_corner_kicks[player] = _normalize_value(strs[idx])
+                if "Off" in cols:
+                    offs = df["Off"].tolist()
+                    for idx, player in enumerate(players):
+                        passes_offside[player] = _normalize_value(offs[idx])
+                if "Blocks" in cols:
+                    blockss = df["Blocks"].tolist()
+                    for idx, player in enumerate(players):
+                        passes_blocked[player] = _normalize_value(blockss[idx])
+                if "TklW" in cols:
+                    tklws = df["TklW"].tolist()
+                    for idx, player in enumerate(players):
+                        tackles_won[player] = _normalize_value(tklws[idx])
+                if "Def 3rd" in cols:
+                    defthirds = df["Def 3rd"].tolist()
+                    for idx, player in enumerate(players):
+                        tackles_in_defensive_third[player] = _normalize_value(
+                            defthirds[idx]
+                        )
+                if "Mid 3rd" in cols:
+                    midthirds = df["Mid 3rd"].tolist()
+                    for idx, player in enumerate(players):
+                        tackles_in_middle_third[player] = _normalize_value(
+                            midthirds[idx]
+                        )
+                if "Att 3rd" in cols:
+                    attthirds = df["Att 3rd"].tolist()
+                    for idx, player in enumerate(players):
+                        tackles_in_attacking_third[player] = _normalize_value(
+                            attthirds[idx]
+                        )
+                if "Tkl" in cols:
+                    tkls = df["Tkl"].tolist()
+                    for idx, player in enumerate(players):
+                        dribblers_tackled[player] = _normalize_value(tkls[idx])
+                if "Att" in cols:
+                    atts = df["Att"].tolist()
+                    for idx, player in enumerate(players):
+                        dribbles_challenged[player] = _normalize_value(atts[idx])
+                if "Tkl%" in cols:
+                    tklps = df["Tkl%"].tolist()
+                    for idx, player in enumerate(players):
+                        percent_of_dribblers_tackled[player] = _normalize_value(
+                            tklps[idx]
+                        )
+                if "Lost" in cols:
+                    losts = df["Lost"].tolist()
+                    for idx, player in enumerate(players):
+                        challenges_lost[player] = _normalize_value(losts[idx])
+                if "Sh" in cols:
+                    shs = df["Sh"].tolist()
+                    for idx, player in enumerate(players):
+                        shots_blocked[player] = _normalize_value(shs[idx])
+                if "Tkl+Int" in cols:
+                    tklplusints = df["Tkl+Int"].tolist()
+                    for idx, player in enumerate(players):
+                        tackles_plus_interceptions[player] = _normalize_value(
+                            tklplusints[idx]
+                        )
+                if "Clr" in cols:
+                    clrs = df["Clr"].tolist()
+                    for idx, player in enumerate(players):
+                        clearances[player] = _normalize_value(clrs[idx])
+                if "Err" in cols:
+                    errs = df["Err"].tolist()
+                    for idx, player in enumerate(players):
+                        errors[player] = _normalize_value(errs[idx])
+                if "Def Pen" in cols:
+                    defpens = df["Def Pen"].tolist()
+                    for idx, player in enumerate(players):
+                        touches_in_defensive_penalty_area[player] = _normalize_value(
+                            defpens[idx]
+                        )
+                if "Def 3rd" in cols:
+                    defthirds = df["Mid 3rd"].tolist()
+                    for idx, player in enumerate(players):
+                        touches_in_defensive_third[player] = _normalize_value(
+                            defthirds[idx]
+                        )
+                if "Mid 3rd" in cols:
+                    midthirds = df["Mid 3rd"].tolist()
+                    for idx, player in enumerate(players):
+                        touches_in_middle_third[player] = _normalize_value(
+                            midthirds[idx]
+                        )
+                if "Att 3rd" in cols:
+                    attthirds = df["Att 3rd"].tolist()
+                    for idx, player in enumerate(players):
+                        touches_in_attacking_third[player] = _normalize_value(
+                            attthirds[idx]
+                        )
+                if "Att Pen" in cols:
+                    attpens = df["Att Pen"].tolist()
+                    for idx, player in enumerate(players):
+                        touches_in_attacking_penalty_area[player] = _normalize_value(
+                            attpens[idx]
+                        )
+                if "Live" in cols:
+                    lives = df["Live"].tolist()
+                    for idx, player in enumerate(players):
+                        live_ball_touches[player] = _normalize_value(lives[idx])
+                if "Succ%" in cols:
+                    succps = df["Succ%"].tolist()
+                    for idx, player in enumerate(players):
+                        successful_take_on_percentage[player] = _normalize_value(
+                            succps[idx]
+                        )
+                if "Tkld" in cols:
+                    tklds = df["Tkld"].tolist()
+                    for idx, player in enumerate(players):
+                        times_tackled_during_take_ons[player] = _normalize_value(
+                            tklds[idx]
+                        )
+                if "Tkld%" in cols:
+                    tkldps = df["Tkld%"].tolist()
+                    for idx, player in enumerate(players):
+                        tackled_during_take_ons_percentage[player] = _normalize_value(
+                            tkldps[idx]
+                        )
+                if "TotDist" in cols:
+                    totdists = df["TotDist"].tolist()
+                    for idx, player in enumerate(players):
+                        total_carrying_distance[player] = _normalize_value(
+                            totdists[idx]
+                        )
+                if "PrgDist" in cols:
+                    prgdists = df["PrgDist"].tolist()
+                    for idx, player in enumerate(players):
+                        progressive_carrying_distance[player] = _normalize_value(
+                            prgdists[idx]
+                        )
+                if "1/3" in cols:
+                    onethrees = df["1/3"].tolist()
+                    for idx, player in enumerate(players):
+                        carries_into_final_third[player] = _normalize_value(
+                            onethrees[idx]
+                        )
+                if "CPA" in cols:
+                    cpas = df["CPA"].tolist()
+                    for idx, player in enumerate(players):
+                        carries_into_penalty_area[player] = _normalize_value(cpas[idx])
+                if "Mis" in cols:
+                    miss = df["Mis"].tolist()
+                    for idx, player in enumerate(players):
+                        miscontrols[player] = _normalize_value(miss[idx])
+                if "Dis" in cols:
+                    diss = df["Dis"].tolist()
+                    for idx, player in enumerate(players):
+                        dispossessed[player] = _normalize_value(diss[idx])
+                if "Rec" in cols:
+                    recs = df["Rec"].tolist()
+                    for idx, player in enumerate(players):
+                        passes_received[player] = _normalize_value(recs[idx])
+                if "PrgR" in cols:
+                    prgrs = df["PrgR"].tolist()
+                    for idx, player in enumerate(players):
+                        progressive_passes_received[player] = _normalize_value(
+                            prgrs[idx]
+                        )
+                if "2CrdY" in cols:
+                    twocrdys = df["2CrdY"].tolist()
+                    for idx, player in enumerate(players):
+                        second_yellow_card[player] = _normalize_value(twocrdys[idx])
+                if "Fls" in cols:
+                    flss = df["Fls"].tolist()
+                    for idx, player in enumerate(players):
+                        fouls_committed[player] = _normalize_value(flss[idx])
+                if "Fld" in cols:
+                    flds = df["Fld"].tolist()
+                    for idx, player in enumerate(players):
+                        fouls_drawn[player] = _normalize_value(flds[idx])
+                if "Off" in cols:
+                    offs = df["Off"].tolist()
+                    for idx, player in enumerate(players):
+                        offsides[player] = _normalize_value(offs[idx])
+                if "PKwon" in cols:
+                    pkwons = df["PKwon"].tolist()
+                    for idx, player in enumerate(players):
+                        penalty_kicks_won[player] = _normalize_value(pkwons[idx])
+                if "PKcon" in cols:
+                    pkcons = df["PKcon"].tolist()
+                    for idx, player in enumerate(players):
+                        penalty_kicks_conceded[player] = _normalize_value(pkcons[idx])
+                if "OG" in cols:
+                    ogs = df["OG"].tolist()
+                    for idx, player in enumerate(players):
+                        own_goals[player] = _normalize_value(ogs[idx])
+                if "Recov" in cols:
+                    recovs = df["Recov"].tolist()
+                    for idx, player in enumerate(players):
+                        ball_recoveries[player] = _normalize_value(recovs[idx])
+                if "Won" in cols:
+                    wons = df["Won"].tolist()
+                    for idx, player in enumerate(players):
+                        aerials_won[player] = _normalize_value(wons[idx])
+                if "Lost" in cols:
+                    losts = df["Lost"].tolist()
+                    for idx, player in enumerate(players):
+                        aerials_lost[player] = _normalize_value(losts[idx])
+                if "Won%" in cols:
+                    wonps = df["Won%"].tolist()
+                    for idx, player in enumerate(players):
+                        percentage_of_aerials_won[player] = _normalize_value(wonps[idx])
+                if "SoTA" in cols:
+                    sotas = df["SoTA"].tolist()
+                    for idx, player in enumerate(players):
+                        shots_on_target_against[player] = _normalize_value(sotas[idx])
+                if "Saves" in cols:
+                    savess = df["Saves"].tolist()
+                    for idx, player in enumerate(players):
+                        saves[player] = _normalize_value(savess[idx])
+                if "Save%" in cols:
+                    saveps = df["Save%"].tolist()
+                    for idx, player in enumerate(players):
+                        save_percentage[player] = _normalize_value(saveps[idx])
+                if "PSxG" in cols:
+                    psxgs = df["PSxG"].tolist()
+                    for idx, player in enumerate(players):
+                        post_shot_expected_goals[player] = _normalize_value(psxgs[idx])
+                if "Att (GK)" in cols:
+                    attgks = df["Att (GK)"].tolist()
+                    for idx, player in enumerate(players):
+                        passes_attempted_minus_goal_kicks[player] = _normalize_value(
+                            attgks[idx]
+                        )
+                if "Thr" in cols:
+                    thrs = df["Thr"].tolist()
+                    for idx, player in enumerate(players):
+                        throws_attempted[player] = _normalize_value(thrs[idx])
+                if "Launch%" in cols:
+                    launchps = df["Launch%"].tolist()
+                    for idx, player in enumerate(players):
+                        percentage_of_passes_that_were_launched[player] = (
+                            _normalize_value(launchps[idx])
+                        )
+                if "AvgLen" in cols:
+                    avglens = df["AvgLen"].tolist()
+                    for idx, player in enumerate(players):
+                        average_pass_length[player] = _normalize_value(avglens[idx])
+                if "Att" in cols:
+                    atts = df["Att"].tolist()
+                    for idx, player in enumerate(players):
+                        goal_kicks_attempted[player] = _normalize_value(atts[idx])
+                if "Launch%" in cols:
+                    launchps = df["Launch%"].tolist()
+                    for idx, player in enumerate(players):
+                        percentage_of_goal_kicks_that_were_launched[player] = (
+                            _normalize_value(launchps[idx])
+                        )
+                if "AvgLen" in cols:
+                    avglens = df["AvgLen"].tolist()
+                    for idx, player in enumerate(players):
+                        average_goal_kick_length[player] = _normalize_value(
+                            avglens[idx]
+                        )
+                if "Opp" in cols:
+                    opps = df["Opp"].tolist()
+                    for idx, player in enumerate(players):
+                        crosses_faced[player] = _normalize_value(opps[idx])
+                if "Stp" in cols:
+                    stps = df["Stp"].tolist()
+                    for idx, player in enumerate(players):
+                        crosses_stopped[player] = _normalize_value(stps[idx])
+                if "Stp%" in cols:
+                    stpps = df["Stp%"].tolist()
+                    for idx, player in enumerate(players):
+                        percentage_crosses_stopped[player] = _normalize_value(
+                            stpps[idx]
+                        )
+                if "#OPA" in cols:
+                    hopas = df["#OPA"].tolist()
+                    for idx, player in enumerate(players):
+                        defensive_actions_outside_penalty_area[player] = (
+                            _normalize_value(hopas[idx])
+                        )
+                if "AvgDist" in cols:
+                    avgdists = df["AvgDist"].tolist()
+                    for idx, player in enumerate(players):
+                        average_distance_of_defensive_actions[player] = (
+                            _normalize_value(avgdists[idx])
+                        )
+                if "3PAr" in cols:
+                    threepars = df["3PAr"].tolist()
+                    for idx, player in enumerate(players):
+                        three_point_attempt_rate[player] = _normalize_value(
+                            threepars[idx]
+                        )
+
     except Exception as exc:
         logging.error(url)
         logging.error(response.text)
@@ -1216,6 +2266,112 @@ def _create_sportsreference_game_model(
             inherited_runners=inherited_runners,
             inherited_scores=inherited_scores,
             effective_field_goal_percentage=effective_field_goal_percentage,
+            penalty_kicks_made=penalty_kicks_made,
+            penalty_kicks_attempted=penalty_kicks_attempted,
+            shots_total=shots_total,
+            shots_on_target=shots_on_target,
+            yellow_cards=yellow_cards,
+            red_cards=red_cards,
+            touches=touches,
+            expected_goals=expected_goals,
+            non_penalty_expected_goals=non_penalty_expected_goals,
+            expected_assisted_goals=expected_assisted_goals,
+            shot_creating_actions=shot_creating_actions,
+            goal_creating_actions=goal_creating_actions,
+            passes_completed=passes_completed,
+            passes_attempted=passes_attempted,
+            pass_completion=pass_completion,
+            progressive_passes=progressive_passes,
+            carries=carries,
+            progressive_carries=progressive_carries,
+            take_ons_attempted=take_ons_attempted,
+            successful_take_ons=successful_take_ons,
+            total_passing_distance=total_passing_distance,
+            progressive_passing_distance=progressive_passing_distance,
+            passes_completed_short=passes_completed_short,
+            passes_attempted_short=passes_attempted_short,
+            pass_completion_short=pass_completion_short,
+            passes_completed_medium=passes_completed_medium,
+            passes_attempted_medium=passes_attempted_medium,
+            pass_completion_medium=pass_completion_medium,
+            passes_completed_long=passes_completed_long,
+            passes_attempted_long=passes_attempted_long,
+            pass_completion_long=pass_completion_long,
+            expected_assists=expected_assists,
+            key_passes=key_passes,
+            passes_into_final_third=passes_into_final_third,
+            passes_into_penalty_area=passes_into_penalty_area,
+            crosses_into_penalty_area=crosses_into_penalty_area,
+            live_ball_passes=live_ball_passes,
+            dead_ball_passes=dead_ball_passes,
+            passes_from_free_kicks=passes_from_free_kicks,
+            through_balls=through_balls,
+            switches=switches,
+            crosses=crosses,
+            throw_ins_taken=throw_ins_taken,
+            corner_kicks=corner_kicks,
+            inswinging_corner_kicks=inswinging_corner_kicks,
+            outswinging_corner_kicks=outswinging_corner_kicks,
+            straight_corner_kicks=straight_corner_kicks,
+            passes_offside=passes_offside,
+            passes_blocked=passes_blocked,
+            tackles_won=tackles_won,
+            tackles_in_defensive_third=tackles_in_defensive_third,
+            tackles_in_middle_third=tackles_in_middle_third,
+            tackles_in_attacking_third=tackles_in_attacking_third,
+            dribblers_tackled=dribblers_tackled,
+            dribbles_challenged=dribbles_challenged,
+            percent_of_dribblers_tackled=percent_of_dribblers_tackled,
+            challenges_lost=challenges_lost,
+            shots_blocked=shots_blocked,
+            tackles_plus_interceptions=tackles_plus_interceptions,
+            errors=errors,
+            touches_in_defensive_penalty_area=touches_in_defensive_penalty_area,
+            touches_in_defensive_third=touches_in_defensive_third,
+            touches_in_middle_third=touches_in_middle_third,
+            touches_in_attacking_third=touches_in_attacking_third,
+            touches_in_attacking_penalty_area=touches_in_attacking_penalty_area,
+            live_ball_touches=live_ball_touches,
+            successful_take_on_percentage=successful_take_on_percentage,
+            times_tackled_during_take_ons=times_tackled_during_take_ons,
+            tackled_during_take_ons_percentage=tackled_during_take_ons_percentage,
+            total_carrying_distance=total_carrying_distance,
+            progressive_carrying_distance=progressive_carrying_distance,
+            carries_into_final_third=carries_into_final_third,
+            carries_into_penalty_area=carries_into_penalty_area,
+            miscontrols=miscontrols,
+            dispossessed=dispossessed,
+            passes_received=passes_received,
+            progressive_passes_received=progressive_passes_received,
+            second_yellow_card=second_yellow_card,
+            fouls_committed=fouls_committed,
+            fouls_drawn=fouls_drawn,
+            offsides=offsides,
+            penalty_kicks_won=penalty_kicks_won,
+            penalty_kicks_conceded=penalty_kicks_conceded,
+            own_goals=own_goals,
+            ball_recoveries=ball_recoveries,
+            aerials_won=aerials_won,
+            aerials_lost=aerials_lost,
+            percentage_of_aerials_won=percentage_of_aerials_won,
+            shots_on_target_against=shots_on_target_against,
+            post_shot_expected_goals=post_shot_expected_goals,
+            passes_attempted_minus_goal_kicks=passes_attempted_minus_goal_kicks,
+            throws_attempted=throws_attempted,
+            percentage_of_passes_that_were_launched=percentage_of_passes_that_were_launched,
+            average_pass_length=average_pass_length,
+            goal_kicks_attempted=goal_kicks_attempted,
+            percentage_of_goal_kicks_that_were_launched=percentage_of_goal_kicks_that_were_launched,
+            average_goal_kick_length=average_goal_kick_length,
+            crosses_faced=crosses_faced,
+            crosses_stopped=crosses_stopped,
+            percentage_crosses_stopped=percentage_crosses_stopped,
+            defensive_actions_outside_penalty_area=defensive_actions_outside_penalty_area,
+            average_distance_of_defensive_actions=average_distance_of_defensive_actions,
+            three_point_attempt_rate=three_point_attempt_rate,
+            tackles=tackles,
+            interceptions=interceptions,
+            clearances=clearances,
         )
     else:
         dt, teams, venue_name = _find_new_dt(
@@ -1307,6 +2463,112 @@ def _create_sportsreference_game_model(
             inherited_runners=inherited_runners,
             inherited_scores=inherited_scores,
             effective_field_goal_percentage=effective_field_goal_percentage,
+            penalty_kicks_made=penalty_kicks_made,
+            penalty_kicks_attempted=penalty_kicks_attempted,
+            shots_total=shots_total,
+            shots_on_target=shots_on_target,
+            yellow_cards=yellow_cards,
+            red_cards=red_cards,
+            touches=touches,
+            expected_goals=expected_goals,
+            non_penalty_expected_goals=non_penalty_expected_goals,
+            expected_assisted_goals=expected_assisted_goals,
+            shot_creating_actions=shot_creating_actions,
+            goal_creating_actions=goal_creating_actions,
+            passes_completed=passes_completed,
+            passes_attempted=passes_attempted,
+            pass_completion=pass_completion,
+            progressive_passes=progressive_passes,
+            carries=carries,
+            progressive_carries=progressive_carries,
+            take_ons_attempted=take_ons_attempted,
+            successful_take_ons=successful_take_ons,
+            total_passing_distance=total_passing_distance,
+            progressive_passing_distance=progressive_passing_distance,
+            passes_completed_short=passes_completed_short,
+            passes_attempted_short=passes_attempted_short,
+            pass_completion_short=pass_completion_short,
+            passes_completed_medium=passes_completed_medium,
+            passes_attempted_medium=passes_attempted_medium,
+            pass_completion_medium=pass_completion_medium,
+            passes_completed_long=passes_completed_long,
+            passes_attempted_long=passes_attempted_long,
+            pass_completion_long=pass_completion_long,
+            expected_assists=expected_assists,
+            key_passes=key_passes,
+            passes_into_final_third=passes_into_final_third,
+            passes_into_penalty_area=passes_into_penalty_area,
+            crosses_into_penalty_area=crosses_into_penalty_area,
+            live_ball_passes=live_ball_passes,
+            dead_ball_passes=dead_ball_passes,
+            passes_from_free_kicks=passes_from_free_kicks,
+            through_balls=through_balls,
+            switches=switches,
+            crosses=crosses,
+            throw_ins_taken=throw_ins_taken,
+            corner_kicks=corner_kicks,
+            inswinging_corner_kicks=inswinging_corner_kicks,
+            outswinging_corner_kicks=outswinging_corner_kicks,
+            straight_corner_kicks=straight_corner_kicks,
+            passes_offside=passes_offside,
+            passes_blocked=passes_blocked,
+            tackles_won=tackles_won,
+            tackles_in_defensive_third=tackles_in_defensive_third,
+            tackles_in_middle_third=tackles_in_middle_third,
+            tackles_in_attacking_third=tackles_in_attacking_third,
+            dribblers_tackled=dribblers_tackled,
+            dribbles_challenged=dribbles_challenged,
+            percent_of_dribblers_tackled=percent_of_dribblers_tackled,
+            challenges_lost=challenges_lost,
+            shots_blocked=shots_blocked,
+            tackles_plus_interceptions=tackles_plus_interceptions,
+            errors=errors,
+            touches_in_defensive_penalty_area=touches_in_defensive_penalty_area,
+            touches_in_defensive_third=touches_in_defensive_third,
+            touches_in_middle_third=touches_in_middle_third,
+            touches_in_attacking_third=touches_in_attacking_third,
+            touches_in_attacking_penalty_area=touches_in_attacking_penalty_area,
+            live_ball_touches=live_ball_touches,
+            successful_take_on_percentage=successful_take_on_percentage,
+            times_tackled_during_take_ons=times_tackled_during_take_ons,
+            tackled_during_take_ons_percentage=tackled_during_take_ons_percentage,
+            total_carrying_distance=total_carrying_distance,
+            progressive_carrying_distance=progressive_carrying_distance,
+            carries_into_final_third=carries_into_final_third,
+            carries_into_penalty_area=carries_into_penalty_area,
+            miscontrols=miscontrols,
+            dispossessed=dispossessed,
+            passes_received=passes_received,
+            progressive_passes_received=progressive_passes_received,
+            second_yellow_card=second_yellow_card,
+            fouls_committed=fouls_committed,
+            fouls_drawn=fouls_drawn,
+            offsides=offsides,
+            penalty_kicks_won=penalty_kicks_won,
+            penalty_kicks_conceded=penalty_kicks_conceded,
+            own_goals=own_goals,
+            ball_recoveries=ball_recoveries,
+            aerials_won=aerials_won,
+            aerials_lost=aerials_lost,
+            percentage_of_aerials_won=percentage_of_aerials_won,
+            shots_on_target_against=shots_on_target_against,
+            post_shot_expected_goals=post_shot_expected_goals,
+            passes_attempted_minus_goal_kicks=passes_attempted_minus_goal_kicks,
+            throws_attempted=throws_attempted,
+            percentage_of_passes_that_were_launched=percentage_of_passes_that_were_launched,
+            average_pass_length=average_pass_length,
+            goal_kicks_attempted=goal_kicks_attempted,
+            percentage_of_goal_kicks_that_were_launched=percentage_of_goal_kicks_that_were_launched,
+            average_goal_kick_length=average_goal_kick_length,
+            crosses_faced=crosses_faced,
+            crosses_stopped=crosses_stopped,
+            percentage_crosses_stopped=percentage_crosses_stopped,
+            defensive_actions_outside_penalty_area=defensive_actions_outside_penalty_area,
+            average_distance_of_defensive_actions=average_distance_of_defensive_actions,
+            three_point_attempt_rate=three_point_attempt_rate,
+            tackles=tackles,
+            interceptions=interceptions,
+            clearances=clearances,
         )
     for team in teams:
         if team.name == "File Not Found":

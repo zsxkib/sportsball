@@ -1,0 +1,5 @@
+{
+  "exclude": [
+    "sportsball/data/sportsreference/sportsreference_game_model.py"
+  ]
+}

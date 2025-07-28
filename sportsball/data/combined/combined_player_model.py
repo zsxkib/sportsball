@@ -339,6 +339,109 @@ def create_combined_player_model(
     inherited_runners = None
     inherited_scores = None
     effective_field_goal_percentage = None
+    penalty_kicks_made = None
+    penalty_kicks_attempted = None
+    shots_total = None
+    shots_on_target = None
+    yellow_cards = None
+    red_cards = None
+    touches = None
+    expected_goals = None
+    non_penalty_expected_goals = None
+    expected_assisted_goals = None
+    shot_creating_actions = None
+    goal_creating_actions = None
+    passes_completed = None
+    passes_attempted = None
+    pass_completion = None
+    progressive_passes = None
+    carries = None
+    progressive_carries = None
+    take_ons_attempted = None
+    successful_take_ons = None
+    total_passing_distance = None
+    progressive_passing_distance = None
+    passes_completed_short = None
+    passes_attempted_short = None
+    pass_completion_short = None
+    passes_completed_medium = None
+    passes_attempted_medium = None
+    pass_completion_medium = None
+    passes_completed_long = None
+    passes_attempted_long = None
+    pass_completion_long = None
+    expected_assists = None
+    key_passes = None
+    passes_into_final_third = None
+    passes_into_penalty_area = None
+    crosses_into_penalty_area = None
+    live_ball_passes = None
+    dead_ball_passes = None
+    passes_from_free_kicks = None
+    through_balls = None
+    switches = None
+    crosses = None
+    throw_ins_taken = None
+    corner_kicks = None
+    inswinging_corner_kicks = None
+    outswinging_corner_kicks = None
+    straight_corner_kicks = None
+    passes_offside = None
+    passes_blocked = None
+    tackles_won = None
+    tackles_in_defensive_third = None
+    tackles_in_middle_third = None
+    tackles_in_attacking_third = None
+    dribblers_tackled = None
+    dribbles_challenged = None
+    percent_of_dribblers_tackled = None
+    challenges_lost = None
+    shots_blocked = None
+    tackles_plus_interceptions = None
+    errors = None
+    touches_in_defensive_penalty_area = None
+    touches_in_defensive_third = None
+    touches_in_middle_third = None
+    touches_in_attacking_third = None
+    touches_in_attacking_penalty_area = None
+    live_ball_touches = None
+    successful_take_on_percentage = None
+    times_tackled_during_take_ons = None
+    tackled_during_take_on_percentage = None
+    total_carrying_distance = None
+    progressive_carrying_distance = None
+    carries_into_final_third = None
+    carries_into_penalty_area = None
+    miscontrols = None
+    dispossessed = None
+    passes_received = None
+    progressive_passes_received = None
+    second_yellow_card = None
+    fouls_committed = None
+    fouls_drawn = None
+    offsides = None
+    penalty_kicks_won = None
+    penalty_kicks_conceded = None
+    own_goals = None
+    ball_recoveries = None
+    aerials_won = None
+    aerials_lost = None
+    percentage_of_aerials_won = None
+    shots_on_target_against = None
+    post_shot_expected_goals = None
+    passes_attempted_minus_goal_kicks = None
+    throws_attempted = None
+    percentage_of_passes_that_were_launched = None
+    average_pass_length = None
+    goal_kicks_attempted = None
+    percentage_of_goal_kicks_that_were_launched = None
+    average_goal_kick_length = None
+    crosses_faced = None
+    crosses_stopped = None
+    percentage_crosses_stopped = None
+    defensive_actions_outside_penalty_area = None
+    average_distance_of_defensive_actions = None
+    three_point_attempt_rate = None
     for player_model in player_models:
         jersey = more_interesting(jersey, player_model.jersey)
         kicks = more_interesting(kicks, player_model.kicks)
@@ -1105,6 +1208,275 @@ def create_combined_player_model(
             effective_field_goal_percentage,
             player_model.effective_field_goal_percentage,
         )
+        penalty_kicks_made = more_interesting(
+            penalty_kicks_made, player_model.penalty_kicks_made
+        )
+        penalty_kicks_attempted = more_interesting(
+            penalty_kicks_attempted, player_model.penalty_kicks_attempted
+        )
+        shots_total = more_interesting(shots_total, player_model.shots_total)
+        shots_on_target = more_interesting(
+            shots_on_target, player_model.shots_on_target
+        )
+        yellow_cards = more_interesting(yellow_cards, player_model.yellow_cards)
+        red_cards = more_interesting(red_cards, player_model.red_cards)
+        touches = more_interesting(touches, player_model.touches)
+        expected_goals = more_interesting(expected_goals, player_model.expected_goals)
+        non_penalty_expected_goals = more_interesting(
+            non_penalty_expected_goals, player_model.non_penalty_expected_goals
+        )
+        expected_assisted_goals = more_interesting(
+            expected_assisted_goals, player_model.expected_assisted_goals
+        )
+        shot_creating_actions = more_interesting(
+            shot_creating_actions, player_model.shot_creating_actions
+        )
+        goal_creating_actions = more_interesting(
+            goal_creating_actions, player_model.goal_creating_actions
+        )
+        passes_completed = more_interesting(
+            passes_completed, player_model.passes_completed
+        )
+        passes_attempted = more_interesting(
+            passes_attempted, player_model.passes_attempted
+        )
+        pass_completion = more_interesting(
+            pass_completion, player_model.pass_completion
+        )
+        progressive_passes = more_interesting(
+            progressive_passes, player_model.progressive_passes
+        )
+        carries = more_interesting(carries, player_model.carries)
+        progressive_carries = more_interesting(
+            progressive_carries, player_model.progressive_carries
+        )
+        take_ons_attempted = more_interesting(
+            take_ons_attempted, player_model.take_ons_attempted
+        )
+        successful_take_ons = more_interesting(
+            successful_take_ons, player_model.successful_take_ons
+        )
+        total_passing_distance = more_interesting(
+            total_passing_distance, player_model.total_passing_distance
+        )
+        progressive_passing_distance = more_interesting(
+            progressive_passing_distance, player_model.progressive_passing_distance
+        )
+        passes_completed_short = more_interesting(
+            passes_completed_short, player_model.passes_completed_short
+        )
+        passes_attempted_short = more_interesting(
+            passes_attempted_short, player_model.passes_attempted_short
+        )
+        pass_completion_short = more_interesting(
+            pass_completion_short, player_model.pass_completion_short
+        )
+        passes_completed_medium = more_interesting(
+            passes_completed_medium, player_model.passes_completed_medium
+        )
+        passes_attempted_medium = more_interesting(
+            passes_attempted_medium, player_model.passes_attempted_medium
+        )
+        pass_completion_medium = more_interesting(
+            pass_completion_medium, player_model.pass_completion_medium
+        )
+        passes_completed_long = more_interesting(
+            passes_completed_long, player_model.passes_completed_long
+        )
+        passes_attempted_long = more_interesting(
+            passes_attempted_long, player_model.passes_attempted_long
+        )
+        pass_completion_long = more_interesting(
+            pass_completion_long, player_model.pass_completion_long
+        )
+        expected_assists = more_interesting(
+            expected_assists, player_model.expected_assists
+        )
+        key_passes = more_interesting(key_passes, player_model.key_passes)
+        passes_into_final_third = more_interesting(
+            passes_into_final_third, player_model.passes_into_final_third
+        )
+        passes_into_penalty_area = more_interesting(
+            passes_into_penalty_area, player_model.passes_into_penalty_area
+        )
+        crosses_into_penalty_area = more_interesting(
+            crosses_into_penalty_area, player_model.crosses_into_penalty_area
+        )
+        live_ball_passes = more_interesting(
+            live_ball_passes, player_model.live_ball_passes
+        )
+        dead_ball_passes = more_interesting(
+            dead_ball_passes, player_model.dead_ball_passes
+        )
+        passes_from_free_kicks = more_interesting(
+            passes_from_free_kicks, player_model.passes_from_free_kicks
+        )
+        through_balls = more_interesting(through_balls, player_model.through_balls)
+        switches = more_interesting(switches, player_model.switches)
+        crosses = more_interesting(crosses, player_model.crosses)
+        throw_ins_taken = more_interesting(
+            throw_ins_taken, player_model.throw_ins_taken
+        )
+        corner_kicks = more_interesting(corner_kicks, player_model.corner_kicks)
+        inswinging_corner_kicks = more_interesting(
+            inswinging_corner_kicks, player_model.inswinging_corner_kicks
+        )
+        outswinging_corner_kicks = more_interesting(
+            outswinging_corner_kicks, player_model.outswinging_corner_kicks
+        )
+        straight_corner_kicks = more_interesting(
+            straight_corner_kicks, player_model.straight_corner_kicks
+        )
+        passes_offside = more_interesting(passes_offside, player_model.passes_offside)
+        passes_blocked = more_interesting(passes_blocked, player_model.passes_blocked)
+        tackles_won = more_interesting(tackles_won, player_model.tackles_won)
+        tackles_in_defensive_third = more_interesting(
+            tackles_in_defensive_third, player_model.tackles_in_defensive_third
+        )
+        tackles_in_middle_third = more_interesting(
+            tackles_in_middle_third, player_model.tackles_in_middle_third
+        )
+        tackles_in_attacking_third = more_interesting(
+            tackles_in_attacking_third, player_model.tackles_in_attacking_third
+        )
+        dribblers_tackled = more_interesting(
+            dribblers_tackled, player_model.dribblers_tackled
+        )
+        dribbles_challenged = more_interesting(
+            dribbles_challenged, player_model.dribbles_challenged
+        )
+        percent_of_dribblers_tackled = more_interesting(
+            percent_of_dribblers_tackled, player_model.percent_of_dribblers_tackled
+        )
+        challenges_lost = more_interesting(
+            challenges_lost, player_model.challenges_lost
+        )
+        shots_blocked = more_interesting(shots_blocked, player_model.shots_blocked)
+        tackles_plus_interceptions = more_interesting(
+            tackles_plus_interceptions, player_model.tackles_plus_interceptions
+        )
+        errors = more_interesting(errors, player_model.errors)
+        touches_in_defensive_penalty_area = more_interesting(
+            touches_in_defensive_penalty_area,
+            player_model.touches_in_defensive_penalty_area,
+        )
+        touches_in_defensive_third = more_interesting(
+            touches_in_defensive_third, player_model.touches_in_defensive_third
+        )
+        touches_in_middle_third = more_interesting(
+            touches_in_middle_third, player_model.touches_in_middle_third
+        )
+        touches_in_attacking_third = more_interesting(
+            touches_in_attacking_third, player_model.touches_in_attacking_third
+        )
+        touches_in_attacking_penalty_area = more_interesting(
+            touches_in_attacking_penalty_area,
+            player_model.touches_in_attacking_penalty_area,
+        )
+        live_ball_touches = more_interesting(
+            live_ball_touches, player_model.live_ball_touches
+        )
+        successful_take_on_percentage = more_interesting(
+            successful_take_on_percentage, player_model.successful_take_on_percentage
+        )
+        times_tackled_during_take_ons = more_interesting(
+            times_tackled_during_take_ons, player_model.times_tackled_during_take_ons
+        )
+        tackled_during_take_on_percentage = more_interesting(
+            tackled_during_take_on_percentage,
+            player_model.tackled_during_take_on_percentage,
+        )
+        total_carrying_distance = more_interesting(
+            total_carrying_distance, player_model.total_carrying_distance
+        )
+        progressive_carrying_distance = more_interesting(
+            progressive_carrying_distance, player_model.progressive_carrying_distance
+        )
+        carries_into_final_third = more_interesting(
+            carries_into_final_third, player_model.carries_into_final_third
+        )
+        carries_into_penalty_area = more_interesting(
+            carries_into_penalty_area, player_model.carries_into_penalty_area
+        )
+        miscontrols = more_interesting(miscontrols, player_model.miscontrols)
+        dispossessed = more_interesting(dispossessed, player_model.dispossessed)
+        passes_received = more_interesting(
+            passes_received, player_model.passes_received
+        )
+        progressive_passes_received = more_interesting(
+            progressive_passes_received, player_model.progressive_passes_received
+        )
+        second_yellow_card = more_interesting(
+            second_yellow_card, player_model.second_yellow_card
+        )
+        fouls_committed = more_interesting(
+            fouls_committed, player_model.fouls_committed
+        )
+        fouls_drawn = more_interesting(fouls_drawn, player_model.fouls_drawn)
+        offsides = more_interesting(offsides, player_model.offsides)
+        penalty_kicks_won = more_interesting(
+            penalty_kicks_won, player_model.penalty_kicks_won
+        )
+        penalty_kicks_conceded = more_interesting(
+            penalty_kicks_conceded, player_model.penalty_kicks_conceded
+        )
+        own_goals = more_interesting(own_goals, player_model.own_goals)
+        ball_recoveries = more_interesting(
+            ball_recoveries, player_model.ball_recoveries
+        )
+        aerials_won = more_interesting(aerials_won, player_model.aerials_won)
+        aerials_lost = more_interesting(aerials_lost, player_model.aerials_lost)
+        percentage_of_aerials_won = more_interesting(
+            percentage_of_aerials_won, player_model.percentage_of_aerials_won
+        )
+        shots_on_target_against = more_interesting(
+            shots_on_target_against, player_model.shots_on_target_against
+        )
+        post_shot_expected_goals = more_interesting(
+            post_shot_expected_goals, player_model.post_shot_expected_goals
+        )
+        passes_attempted_minus_goal_kicks = more_interesting(
+            passes_attempted_minus_goal_kicks,
+            player_model.passes_attempted_minus_goal_kicks,
+        )
+        throws_attempted = more_interesting(
+            throws_attempted, player_model.throws_attempted
+        )
+        percentage_of_passes_that_were_launched = more_interesting(
+            percentage_of_passes_that_were_launched,
+            player_model.percentage_of_passes_that_were_launched,
+        )
+        average_pass_length = more_interesting(
+            average_pass_length, player_model.average_pass_length
+        )
+        goal_kicks_attempted = more_interesting(
+            goal_kicks_attempted, player_model.goal_kicks_attempted
+        )
+        percentage_of_goal_kicks_that_were_launched = more_interesting(
+            percentage_of_goal_kicks_that_were_launched,
+            player_model.percentage_of_goal_kicks_that_were_launched,
+        )
+        average_goal_kick_length = more_interesting(
+            average_goal_kick_length, player_model.average_goal_kick_length
+        )
+        crosses_faced = more_interesting(crosses_faced, player_model.crosses_faced)
+        crosses_stopped = more_interesting(
+            crosses_stopped, player_model.crosses_stopped
+        )
+        percentage_crosses_stopped = more_interesting(
+            percentage_crosses_stopped, player_model.percentage_crosses_stopped
+        )
+        defensive_actions_outside_penalty_area = more_interesting(
+            defensive_actions_outside_penalty_area,
+            player_model.defensive_actions_outside_penalty_area,
+        )
+        average_distance_of_defensive_actions = more_interesting(
+            average_distance_of_defensive_actions,
+            player_model.average_distance_of_defensive_actions,
+        )
+        three_point_attempt_rate = more_interesting(
+            three_point_attempt_rate, player_model.three_point_attempt_rate
+        )
     if name is None:
         raise ValueError("name is null")
     if species is None:
@@ -1438,6 +1810,109 @@ def create_combined_player_model(
         inherited_runners=inherited_runners,
         inherited_scores=inherited_scores,
         effective_field_goal_percentage=effective_field_goal_percentage,
+        penalty_kicks_made=penalty_kicks_made,
+        penalty_kicks_attempted=penalty_kicks_attempted,
+        shots_total=shots_total,
+        shots_on_target=shots_on_target,
+        yellow_cards=yellow_cards,
+        red_cards=red_cards,
+        touches=touches,
+        expected_goals=expected_goals,
+        non_penalty_expected_goals=non_penalty_expected_goals,
+        expected_assisted_goals=expected_assisted_goals,
+        shot_creating_actions=shot_creating_actions,
+        goal_creating_actions=goal_creating_actions,
+        passes_completed=passes_completed,
+        passes_attempted=passes_attempted,
+        pass_completion=pass_completion,
+        progressive_passes=progressive_passes,
+        carries=carries,
+        progressive_carries=progressive_carries,
+        take_ons_attempted=take_ons_attempted,
+        successful_take_ons=successful_take_ons,
+        total_passing_distance=total_passing_distance,
+        progressive_passing_distance=progressive_passing_distance,
+        passes_completed_short=passes_completed_short,
+        passes_attempted_short=passes_attempted_short,
+        pass_completion_short=pass_completion_short,
+        passes_completed_medium=passes_completed_medium,
+        passes_attempted_medium=passes_attempted_medium,
+        pass_completion_medium=pass_completion_medium,
+        passes_completed_long=passes_completed_long,
+        passes_attempted_long=passes_attempted_long,
+        pass_completion_long=pass_completion_long,
+        expected_assists=expected_assists,
+        key_passes=key_passes,
+        passes_into_final_third=passes_into_final_third,
+        passes_into_penalty_area=passes_into_penalty_area,
+        crosses_into_penalty_area=crosses_into_penalty_area,
+        live_ball_passes=live_ball_passes,
+        dead_ball_passes=dead_ball_passes,
+        passes_from_free_kicks=passes_from_free_kicks,
+        through_balls=through_balls,
+        switches=switches,
+        crosses=crosses,
+        throw_ins_taken=throw_ins_taken,
+        corner_kicks=corner_kicks,
+        inswinging_corner_kicks=inswinging_corner_kicks,
+        outswinging_corner_kicks=outswinging_corner_kicks,
+        straight_corner_kicks=straight_corner_kicks,
+        passes_offside=passes_offside,
+        passes_blocked=passes_blocked,
+        tackles_won=tackles_won,
+        tackles_in_defensive_third=tackles_in_defensive_third,
+        tackles_in_middle_third=tackles_in_middle_third,
+        tackles_in_attacking_third=tackles_in_attacking_third,
+        dribblers_tackled=dribblers_tackled,
+        dribbles_challenged=dribbles_challenged,
+        percent_of_dribblers_tackled=percent_of_dribblers_tackled,
+        challenges_lost=challenges_lost,
+        shots_blocked=shots_blocked,
+        tackles_plus_interceptions=tackles_plus_interceptions,
+        errors=errors,
+        touches_in_defensive_penalty_area=touches_in_defensive_penalty_area,
+        touches_in_defensive_third=touches_in_defensive_third,
+        touches_in_middle_third=touches_in_middle_third,
+        touches_in_attacking_third=touches_in_attacking_third,
+        touches_in_attacking_penalty_area=touches_in_attacking_penalty_area,
+        live_ball_touches=live_ball_touches,
+        successful_take_on_percentage=successful_take_on_percentage,
+        times_tackled_during_take_ons=times_tackled_during_take_ons,
+        tackled_during_take_on_percentage=tackled_during_take_on_percentage,
+        total_carrying_distance=total_carrying_distance,
+        progressive_carrying_distance=progressive_carrying_distance,
+        carries_into_final_third=carries_into_final_third,
+        carries_into_penalty_area=carries_into_penalty_area,
+        miscontrols=miscontrols,
+        dispossessed=dispossessed,
+        passes_received=passes_received,
+        progressive_passes_received=progressive_passes_received,
+        second_yellow_card=second_yellow_card,
+        fouls_committed=fouls_committed,
+        fouls_drawn=fouls_drawn,
+        offsides=offsides,
+        penalty_kicks_won=penalty_kicks_won,
+        penalty_kicks_conceded=penalty_kicks_conceded,
+        own_goals=own_goals,
+        ball_recoveries=ball_recoveries,
+        aerials_won=aerials_won,
+        aerials_lost=aerials_lost,
+        percentage_of_aerials_won=percentage_of_aerials_won,
+        shots_on_target_against=shots_on_target_against,
+        post_shot_expected_goals=post_shot_expected_goals,
+        passes_attempted_minus_goal_kicks=passes_attempted_minus_goal_kicks,
+        throws_attempted=throws_attempted,
+        percentage_of_passes_that_were_launched=percentage_of_passes_that_were_launched,
+        average_pass_length=average_pass_length,
+        goal_kicks_attempted=goal_kicks_attempted,
+        percentage_of_goal_kicks_that_were_launched=percentage_of_goal_kicks_that_were_launched,
+        average_goal_kick_length=average_goal_kick_length,
+        crosses_faced=crosses_faced,
+        crosses_stopped=crosses_stopped,
+        percentage_crosses_stopped=percentage_crosses_stopped,
+        defensive_actions_outside_penalty_area=defensive_actions_outside_penalty_area,
+        average_distance_of_defensive_actions=average_distance_of_defensive_actions,
+        three_point_attempt_rate=three_point_attempt_rate,
     )
 
     ffill(player_ffill, identifier, player_model)

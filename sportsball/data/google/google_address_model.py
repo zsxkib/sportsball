@@ -4684,6 +4684,24 @@ CARRIER_DOME = SportsballGeocodeTuple(
     housenumber="900",
     country="USA",
 )
+MULLINS_CENTER = SportsballGeocodeTuple(
+    city="Amherst",
+    state="MA",
+    postal="01003",
+    lat=42.389381,
+    lng=-72.533439,
+    housenumber="200",
+    country="USA",
+)
+KAUFFMAN_STADIUM = SportsballGeocodeTuple(
+    city="Kansas City",
+    state="MO",
+    postal="",
+    lat=39.051389,
+    lng=-94.480556,
+    housenumber="1",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -8210,15 +8228,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Mullins Center, Amherst, Massachusetts": SportsballGeocodeTuple(
-        city="Amherst",
-        state="MA",
-        postal="01003",
-        lat=42.389381,
-        lng=-72.533439,
-        housenumber="200",
-        country="USA",
-    ),
+    "Mullins Center, Amherst, Massachusetts": MULLINS_CENTER,
     "Richardson Indoor Stadium, Spartanburg, South Carolina": SportsballGeocodeTuple(
         city="Spartanburg",
         state="SC",
@@ -22194,15 +22204,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Rogers Arena, Vancouver, BC, Canada": ROGERS_ARENA,
     "Nationals Park, Washington, DC, USA": NATIONALS_PARK,
     "Ball Arena": PEPSI_CENTRE,
-    "Kauffman Stadium - Kansas City, MO - United States": SportsballGeocodeTuple(
-        city="Kansas City",
-        state="MO",
-        postal="",
-        lat=39.051389,
-        lng=-94.480556,
-        housenumber="1",
-        country="USA",
-    ),
+    "Kauffman Stadium - Kansas City, MO - United States": KAUFFMAN_STADIUM,
     "Katy, TX, United States": SportsballGeocodeTuple(
         city="Katy",
         state="TX",
@@ -23494,6 +23496,36 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lng=-122.389167,
         housenumber="24",
         country="USA",
+    ),
+    "Mullins Center - Amherst, MA - United States": MULLINS_CENTER,
+    "Kauffman Stadium": KAUFFMAN_STADIUM,
+    "Wichita State University": SportsballGeocodeTuple(
+        city="Wichita",
+        state="KS",
+        postal="",
+        lat=37.719167,
+        lng=-97.293056,
+        housenumber="24",
+        country="USA",
+    ),
+    "Bulldog Stadium": SportsballGeocodeTuple(
+        city="Fresno",
+        state="CA",
+        postal="",
+        lat=36.814,
+        lng=-119.758,
+        housenumber="",
+        country="USA",
+    ),
+    "Huntington Bank Field - Cleveland, Ohio - United States": CLEVELAND_BROWNS_STADIUM,
+    "Avesta, Sweden": SportsballGeocodeTuple(
+        city="Avesta",
+        state="",
+        postal="",
+        lat=60.145556,
+        lng=16.168333,
+        housenumber="",
+        country="Sweden",
     ),
 }
 

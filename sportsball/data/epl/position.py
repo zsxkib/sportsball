@@ -1,14 +1,10 @@
 """The enumeration of the different supported positions."""
 
-# pylint: disable=duplicate-code
 from enum import StrEnum
 
 
 class Position(StrEnum):
     """An enumeration over the different positions."""
-
-    POWER_FORWARD = "PF"
-    SHORT_GUARD = "SG"
 
 
 _POSITIONS = {str(x): x for x in Position}
