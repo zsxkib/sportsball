@@ -121,6 +121,8 @@ class ESPNLeagueModel(LeagueModel):
         pbar: tqdm.tqdm,
         cache_disabled: bool,
     ) -> Iterator[GameModel]:
+        if "weeks" not in season_type_json:
+            return
         game_page = 1
         week_count = 0
         while True:

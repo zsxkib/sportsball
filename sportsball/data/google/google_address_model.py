@@ -4702,6 +4702,33 @@ KAUFFMAN_STADIUM = SportsballGeocodeTuple(
     housenumber="1",
     country="USA",
 )
+RUPP_ARENA = SportsballGeocodeTuple(
+    city="Lexington",
+    state="KY",
+    postal="40506",
+    lat=38.049444,
+    lng=-84.502778,
+    housenumber="432",
+    country="USA",
+)
+DAVIS_WADE_STADIUM = SportsballGeocodeTuple(
+    city="Starkville",
+    state="MS",
+    postal="39762",
+    lat=33.456389,
+    lng=-88.793611,
+    housenumber="90",
+    country="USA",
+)
+PNC_ARENA = SportsballGeocodeTuple(
+    city="Raleigh",
+    state="NC",
+    postal="",
+    lat=35.803333,
+    lng=-78.721944,
+    housenumber="1400",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5494,15 +5521,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "JMA Wireless Dome - Syracuse - NY - 13244": JMA_WIRELESS_DOME,
-    "Davis Wade Stadium - Starkville - MS - 39762": SportsballGeocodeTuple(
-        city="Starkville",
-        state="MS",
-        postal="39762",
-        lat=33.456389,
-        lng=-88.793611,
-        housenumber="90",
-        country="USA",
-    ),
+    "Davis Wade Stadium - Starkville - MS - 39762": DAVIS_WADE_STADIUM,
     "FBC Mortgage Stadium - Orlando - FL - 32816": SportsballGeocodeTuple(
         city="Orlando",
         state="FL",
@@ -7030,15 +7049,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="200",
         country="USA",
     ),
-    "Rupp Arena, Lexington, Kentucky": SportsballGeocodeTuple(
-        city="Lexington",
-        state="KY",
-        postal="40506",
-        lat=38.049444,
-        lng=-84.502778,
-        housenumber="432",
-        country="USA",
-    ),
+    "Rupp Arena, Lexington, Kentucky": RUPP_ARENA,
     "Assembly Hall, Bloomington, Indiana": INDIANA_ASSEMBLY_HALL,
     "Kohl Center, Madison, Wisconsin": SportsballGeocodeTuple(
         city="Madison",
@@ -7901,15 +7912,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="700",
         country="USA",
     ),
-    "PNC Arena, Raleigh, North Carolina": SportsballGeocodeTuple(
-        city="Raleigh",
-        state="NC",
-        postal="",
-        lat=35.803333,
-        lng=-78.721944,
-        housenumber="1400",
-        country="USA",
-    ),
+    "PNC Arena, Raleigh, North Carolina": PNC_ARENA,
     "The Nest, Sacramento, California": THE_NEST,
     "Sam Vadalabene Center , Edwardsville, Illinois": SportsballGeocodeTuple(
         city="Edwardsville",
@@ -23527,6 +23530,29 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Sweden",
     ),
+    "Bamako, Mali": SportsballGeocodeTuple(
+        city="Bamako",
+        state="",
+        postal="",
+        lat=12.639167,
+        lng=-8.002778,
+        housenumber="",
+        country="Mali",
+    ),
+    "Monroe, North Carolina, United States": SportsballGeocodeTuple(
+        city="Monroe",
+        state="NC",
+        postal="",
+        lat=34.988889,
+        lng=-80.549722,
+        housenumber="",
+        country="USA",
+    ),
+    "Rupp Arena - Lexington, Kentucky - United States": RUPP_ARENA,
+    "Davis Wade Stadium": DAVIS_WADE_STADIUM,
+    "Croke Park - Dublin - Ireland": CROKE_PARK,
+    "PNC Arena": PNC_ARENA,
+    "Petco Park": PETCO_PARK,
 }
 
 
