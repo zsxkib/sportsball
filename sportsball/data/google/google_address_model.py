@@ -4882,6 +4882,33 @@ FLA_LIVE_ARENA = SportsballGeocodeTuple(
     housenumber="1",
     country="USA",
 )
+MILAN_PUSKAR_STADIUM = SportsballGeocodeTuple(
+    city="Morgantown",
+    state="WV",
+    postal="26505",
+    lat=39.650278,
+    lng=-79.954722,
+    housenumber="900",
+    country="USA",
+)
+TOKYO_DOME = SportsballGeocodeTuple(
+    city="Tokyo",
+    state="",
+    postal="",
+    lat=35.705556,
+    lng=139.751944,
+    housenumber="3",
+    country="Japan",
+)
+SAVE_MART_CENTER = SportsballGeocodeTuple(
+    city="Fresno",
+    state="CA",
+    postal="",
+    lat=36.809722,
+    lng=-119.738611,
+    housenumber="2650",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5587,15 +5614,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Glass Bowl - Toledo - OH - 43606": GLASS_BOWL,
-    "Milan Puskar Stadium - Morgantown - WV - 26505": SportsballGeocodeTuple(
-        city="Morgantown",
-        state="WV",
-        postal="26505",
-        lat=39.650278,
-        lng=-79.954722,
-        housenumber="900",
-        country="USA",
-    ),
+    "Milan Puskar Stadium - Morgantown - WV - 26505": MILAN_PUSKAR_STADIUM,
     "Ohio Stadium - Columbus - OH - 43210": OHIO_STADIUM,
     "Memorial Stadium (Bloomington, IN) - Bloomington - IN - 47408": SportsballGeocodeTuple(
         city="Bloomington",
@@ -6416,15 +6435,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="301",
         country="USA",
     ),
-    "Save Mart Center, Fresno, California": SportsballGeocodeTuple(
-        city="Fresno",
-        state="CA",
-        postal="",
-        lat=36.809722,
-        lng=-119.738611,
-        housenumber="2650",
-        country="USA",
-    ),
+    "Save Mart Center, Fresno, California": SAVE_MART_CENTER,
     "The Pit, Albuquerque, New Mexico": THE_PIT,
     "Gill Coliseum, Corvallis, Oregon": SportsballGeocodeTuple(
         city="Corvallis",
@@ -16173,15 +16184,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="India",
     ),
-    "Tokyo Dome, Tokyo, Japan": SportsballGeocodeTuple(
-        city="Tokyo",
-        state="",
-        postal="",
-        lat=35.705556,
-        lng=139.751944,
-        housenumber="3",
-        country="Japan",
-    ),
+    "Tokyo Dome, Tokyo, Japan": TOKYO_DOME,
     "NH": SportsballGeocodeTuple(
         city="",
         state="",
@@ -23714,6 +23717,28 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Ohio Stadium - Columbus, Ohio, USA - United States": OHIO_STADIUM,
     "FLA Live Arena": FLA_LIVE_ARENA,
     "Minute Maid Park": DAIKIN_PARK,
+    "Moody Center - Austin, Texas - United States": MOODY_CENTER,
+    "Liberty University": SportsballGeocodeTuple(
+        city="Lynchburg",
+        state="VA",
+        postal="",
+        lat=37.352,
+        lng=-79.18,
+        housenumber="",
+        country="USA",
+    ),
+    "Seattle University": SportsballGeocodeTuple(
+        city="Seattle",
+        state="WA",
+        postal="",
+        lat=47.61,
+        lng=-122.32,
+        housenumber="",
+        country="USA",
+    ),
+    "Mountaineer Field at Milan Puskar Stadium": MILAN_PUSKAR_STADIUM,
+    "Tokyo Dome": TOKYO_DOME,
+    "Save Mart Center - Fresno, California - United States": SAVE_MART_CENTER,
 }
 
 

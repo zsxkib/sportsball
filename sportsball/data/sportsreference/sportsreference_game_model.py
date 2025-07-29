@@ -51,6 +51,7 @@ _NON_WAYBACK_URLS: set[str] = {
     "https://www.sports-reference.com/cfb/boxscores/2024-12-31-alabama.html",
     "https://www.hockey-reference.com/boxscores/202410050NJD.html",
     "https://www.hockey-reference.com/boxscores/202410040BUF.html",
+    "https://www.hockey-reference.com/boxscores/202311190MIN.html",
 }
 
 
@@ -1091,7 +1092,10 @@ def _create_sportsreference_game_model(
         if len(path_components) >= 3 and path_components[2] == "comps":
             comp_id = path_components[3]
             if comp_id:
-                comp_ids.append(int(comp_id))
+                try:
+                    comp_ids.append(int(comp_id))
+                except ValueError:
+                    pass
     data = Counter(comp_ids)
     mode_comp_id = data.most_common()
 
