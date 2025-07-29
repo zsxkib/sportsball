@@ -4963,6 +4963,69 @@ MICHIE_STADIUM = SportsballGeocodeTuple(
     housenumber="700",
     country="USA",
 )
+INDIANA_FARMERS_COLISEUM = SportsballGeocodeTuple(
+    city="Indianapolis",
+    state="IN",
+    postal="",
+    lat=39.8275,
+    lng=-86.135,
+    housenumber="1202",
+    country="USA",
+)
+UMBC_EVENT_CENTER = SportsballGeocodeTuple(
+    city="Baltimore",
+    state="MD",
+    postal="21250",
+    lat=39.252342,
+    lng=-76.707431,
+    housenumber="1000",
+    country="USA",
+)
+WEBSTER_BANK_ARENA = SportsballGeocodeTuple(
+    city="Bridgeport",
+    state="CT",
+    postal="79601",
+    lat=41.1732,
+    lng=-73.187,
+    housenumber="600",
+    country="USA",
+)
+WOLSTEIN_CENTER = SportsballGeocodeTuple(
+    city="Cleveland",
+    state="OH",
+    postal="",
+    lat=41.499167,
+    lng=-81.676944,
+    housenumber="2000",
+    country="USA",
+)
+WALTER_PYRAMID = SportsballGeocodeTuple(
+    city="Long Beach",
+    state="CA",
+    postal="90840",
+    lat=33.787222,
+    lng=-118.114167,
+    housenumber="1250",
+    country="USA",
+)
+CHAIFETZ_ARENA = SportsballGeocodeTuple(
+    city="St. Louis",
+    state="MO",
+    postal="63103",
+    lat=38.63246,
+    lng=-90.22797,
+    housenumber="1",
+    country="USA",
+)
+BREN_EVENTS_CENTER = SportsballGeocodeTuple(
+    city="Irvine",
+    state="CA",
+    postal="92612",
+    lat=33.649167,
+    lng=-117.846944,
+    housenumber="100",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -6521,15 +6584,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="11200",
         country="USA",
     ),
-    "UMBC Event Center, Baltimore, Maryland": SportsballGeocodeTuple(
-        city="Baltimore",
-        state="MD",
-        postal="21250",
-        lat=39.252342,
-        lng=-76.707431,
-        housenumber="1000",
-        country="USA",
-    ),
+    "UMBC Event Center, Baltimore, Maryland": UMBC_EVENT_CENTER,
     "Ted Constant Convocation Ctr., Norfolk, Virginia": TED_CONSTANT_CONVOCATION_CENTER,
     "Yanitelli Center, Jersey City, New Jersey": SportsballGeocodeTuple(
         city="Jersey City",
@@ -6815,24 +6870,8 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Robert A. Mott Athletics Center, San Luis Obispo, California": ROBERT_A_MOTT_GYMNASIUM,
-    "Bren Events Center, Irvine, California": SportsballGeocodeTuple(
-        city="Irvine",
-        state="CA",
-        postal="92612",
-        lat=33.649167,
-        lng=-117.846944,
-        housenumber="100",
-        country="USA",
-    ),
-    "The Walter Pyramid, Long Beach, California": SportsballGeocodeTuple(
-        city="Long Beach",
-        state="CA",
-        postal="90840",
-        lat=33.787222,
-        lng=-118.114167,
-        housenumber="1250",
-        country="USA",
-    ),
+    "Bren Events Center, Irvine, California": BREN_EVENTS_CENTER,
+    "The Walter Pyramid, Long Beach, California": WALTER_PYRAMID,
     "Albert Gersten Pavilion, Los Angeles, California": GERSTEN_PAVILION,
     "Firestone Fieldhouse, Malibu, California": SportsballGeocodeTuple(
         city="Malibu",
@@ -8315,15 +8354,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="601",
         country="USA",
     ),
-    "Chaifetz Arena, St. Louis, Missouri": SportsballGeocodeTuple(
-        city="St. Louis",
-        state="MO",
-        postal="63103",
-        lat=38.63246,
-        lng=-90.22797,
-        housenumber="1",
-        country="USA",
-    ),
+    "Chaifetz Arena, St. Louis, Missouri": CHAIFETZ_ARENA,
     "Fiserv Forum, Milwaukee, Wisconsin": FISERV_FORUM,
     "WVU Coliseum, Morgantown, West Virginia": SportsballGeocodeTuple(
         city="Morgantown",
@@ -8611,15 +8642,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="720",
         country="USA",
     ),
-    "Indiana Farmers Coliseum, Indianapolis, Indiana": SportsballGeocodeTuple(
-        city="Indianapolis",
-        state="IN",
-        postal="",
-        lat=39.8275,
-        lng=-86.135,
-        housenumber="1202",
-        country="USA",
-    ),
+    "Indiana Farmers Coliseum, Indianapolis, Indiana": INDIANA_FARMERS_COLISEUM,
     "Moody Coliseum , Abilene, Texas": SportsballGeocodeTuple(
         city="Abilene",
         state="TX",
@@ -10181,15 +10204,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="3300",
         country="USA",
     ),
-    "Wolstein Center, Cleveland, Ohio": SportsballGeocodeTuple(
-        city="Cleveland",
-        state="OH",
-        postal="",
-        lat=41.499167,
-        lng=-81.676944,
-        housenumber="2000",
-        country="USA",
-    ),
+    "Wolstein Center, Cleveland, Ohio": WOLSTEIN_CENTER,
     "Elmore Gymnasium, Normal, Alabama": ELMORE_GYMNASIUM,
     "Teague Special Events Center, Abilene, Texas": SportsballGeocodeTuple(
         city="Abilene",
@@ -10201,15 +10216,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "BB&T Arena, Highland Heights, Kentucky": TRUIST_ARENA,
-    "Webster Bank Arena, Bridgeport, Connecticut": SportsballGeocodeTuple(
-        city="Bridgeport",
-        state="CT",
-        postal="79601",
-        lat=41.1732,
-        lng=-73.187,
-        housenumber="600",
-        country="USA",
-    ),
+    "Webster Bank Arena, Bridgeport, Connecticut": WEBSTER_BANK_ARENA,
     "Scottrade Center, St. Louis, Missouri": ENTERPRISE_CENTER,
     "U.S. Cellular Center, Asheville, North Carolina": HARRAHS_CHEROKEE_CENTER,
     "Entertainment & Sports Arena, Washington, District of Columbia": CAREFIRST_ARENA,
@@ -23781,6 +23788,23 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Blaik Field at Michie Stadium": MICHIE_STADIUM,
+    "Indiana Farmers Coliseum - Indianapolis, Indiana - United States": INDIANA_FARMERS_COLISEUM,
+    "UMBC Event Center - Catonsville, Maryland - United States": UMBC_EVENT_CENTER,
+    "Webster Bank Arena - Bridgeport, Connecticut - United States": WEBSTER_BANK_ARENA,
+    "Wolstein Center - Cleveland, Ohio - United States": WOLSTEIN_CENTER,
+    "George Washington": SportsballGeocodeTuple(
+        city="Foggy Bottom",
+        state="DC",
+        postal="",
+        lat=38.8997145,
+        lng=-77.0485992,
+        housenumber="",
+        country="USA",
+    ),
+    "Mercedes-Benz Superdome - United States": MERCEDES_BANZ_STADIUM,
+    "Walter Pyramid - Long Beach, California - United States": WALTER_PYRAMID,
+    "Chaifetz Arena - St. Louis, Missouri - United States": CHAIFETZ_ARENA,
+    "Bren Events Center - Irvine, California - United States": BREN_EVENTS_CENTER,
 }
 
 
