@@ -4945,6 +4945,24 @@ BENDER_ARENA = SportsballGeocodeTuple(
     housenumber="4400",
     country="USA",
 )
+REED_ARENA = SportsballGeocodeTuple(
+    city="College Station",
+    state="TX",
+    postal="77843",
+    lat=30.60578,
+    lng=-96.34619,
+    housenumber="730",
+    country="USA",
+)
+MICHIE_STADIUM = SportsballGeocodeTuple(
+    city="West Point",
+    state="NY",
+    postal="10996",
+    lat=41.3875,
+    lng=-73.964167,
+    housenumber="700",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5887,15 +5905,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "UB Stadium - Buffalo - NY - 14228": UB_STADIUM,
-    "Michie Stadium - West Point - NY - 10996": SportsballGeocodeTuple(
-        city="West Point",
-        state="NY",
-        postal="10996",
-        lat=41.3875,
-        lng=-73.964167,
-        housenumber="700",
-        country="USA",
-    ),
+    "Michie Stadium - West Point - NY - 10996": MICHIE_STADIUM,
     "DKR-Texas Memorial Stadium - Austin - TX - 78712": DARRELL_K_ROYAL_TEXAS_MEMORIAL_STADIUM,
     "Nippert Stadium - Cincinnati - OH - 45221": NIPPERT_STADIUM,
     "Rice Stadium - Houston - TX - 77005": RICE_STADIUM,
@@ -7574,15 +7584,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Moody Center, Austin, Texas": MOODY_CENTER,
     "The Colonial Life Arena, Columbia, South Carolina": COLONIAL_LIFE_ARENA,
     "United Supermarkets Arena, Lubbock, Texas": UNITED_SUPERMARKETS_ARENA,
-    "Reed Arena, College Station, Texas": SportsballGeocodeTuple(
-        city="College Station",
-        state="TX",
-        postal="77843",
-        lat=30.60578,
-        lng=-96.34619,
-        housenumber="730",
-        country="USA",
-    ),
+    "Reed Arena, College Station, Texas": REED_ARENA,
     "Humphrey Coliseum, Starkville, Mississippi": SportsballGeocodeTuple(
         city="Starkville",
         state="MS",
@@ -23766,6 +23768,19 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="Sweden",
     ),
     "Bender Arena - Washington, D.C. - United States": BENDER_ARENA,
+    "Reed Arena - College Station, Texas, USA - United States": REED_ARENA,
+    "Yuengling Center - Tampa, Florida - United States": YUENGLING_CENTER,
+    "Hulman Center - Terre Haute, Indiana - United States": HULMAN_CENTER,
+    "University of Wisconsin-Green Bay": SportsballGeocodeTuple(
+        city="Green Bay",
+        state="WI",
+        postal="",
+        lat=44.53,
+        lng=-87.92083,
+        housenumber="",
+        country="USA",
+    ),
+    "Blaik Field at Michie Stadium": MICHIE_STADIUM,
 }
 
 

@@ -52,6 +52,7 @@ _NON_WAYBACK_URLS: set[str] = {
     "https://www.hockey-reference.com/boxscores/202410050NJD.html",
     "https://www.hockey-reference.com/boxscores/202410040BUF.html",
     "https://www.hockey-reference.com/boxscores/202311190MIN.html",
+    "https://www.hockey-reference.com/boxscores/202311180OTT.html",
 }
 
 
