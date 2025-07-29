@@ -1089,7 +1089,9 @@ def _create_sportsreference_game_model(
         o = urlparse(comp_url)
         path_components = o.path.split("/")
         if len(path_components) >= 3 and path_components[2] == "comps":
-            comp_ids.append(int(path_components[3]))
+            comp_id = path_components[3]
+            if comp_id:
+                comp_ids.append(int(comp_id))
     data = Counter(comp_ids)
     mode_comp_id = data.most_common()
 

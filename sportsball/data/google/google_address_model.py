@@ -4864,6 +4864,24 @@ NAVY_MARINE_CORPS_MEMORIAL_STADIUM = SportsballGeocodeTuple(
     housenumber="550",
     country="USA",
 )
+RESCH_CENTER = SportsballGeocodeTuple(
+    city="Green Bay",
+    state="WI",
+    postal="",
+    lat=44.499547,
+    lng=-88.055049,
+    housenumber="820",
+    country="USA",
+)
+FLA_LIVE_ARENA = SportsballGeocodeTuple(
+    city="Sunrise",
+    state="FL",
+    postal="",
+    lat=26.158333,
+    lng=-80.325556,
+    housenumber="1",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -6385,15 +6403,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="373",
         country="USA",
     ),
-    "Resch Center, Green Bay, Wisconsin": SportsballGeocodeTuple(
-        city="Green Bay",
-        state="WI",
-        postal="",
-        lat=44.499547,
-        lng=-88.055049,
-        housenumber="820",
-        country="USA",
-    ),
+    "Resch Center, Green Bay, Wisconsin": RESCH_CENTER,
     "Hagan Arena, Philadelphia, Pennsylvania": HAGAN_ARENA,
     "Wells Fargo Center, Philadelphia, Pennsylvania": SPECTRUM,
     "UW-Milwaukee Panther Arena, Milwaukee, Wisconsin": MILWAUKEE_ARENA,
@@ -8737,15 +8747,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Mississippi Coast Coliseum, Biloxi, Mississippi": MISSISSIPPI_COAST_COLISEUM,
     "Footprint Center, Phoenix, Arizona": AMERICA_WEST_ARENA,
     "Simmons Bank Arena, North Little Rock, Arkansas": SIMMONS_BANK_ARENA,
-    "FLA Live Arena, Sunrise, Florida": SportsballGeocodeTuple(
-        city="Sunrise",
-        state="FL",
-        postal="",
-        lat=26.158333,
-        lng=-80.325556,
-        housenumber="1",
-        country="USA",
-    ),
+    "FLA Live Arena, Sunrise, Florida": FLA_LIVE_ARENA,
     "Dollar Loan Center, Henderson, Nevada": SportsballGeocodeTuple(
         city="Henderson",
         state="NV",
@@ -23690,6 +23692,28 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Resch Center - Ashwaubenon, Wisconsin - United States": RESCH_CENTER,
+    "Murray State University": SportsballGeocodeTuple(
+        city="Murray",
+        state="KY",
+        postal="",
+        lat=36.615556,
+        lng=-88.321389,
+        housenumber="",
+        country="USA",
+    ),
+    "Wisconsin": SportsballGeocodeTuple(
+        city="",
+        state="WI",
+        postal="",
+        lat=44.0,
+        lng=-90.0,
+        housenumber="",
+        country="USA",
+    ),
+    "Ohio Stadium - Columbus, Ohio, USA - United States": OHIO_STADIUM,
+    "FLA Live Arena": FLA_LIVE_ARENA,
+    "Minute Maid Park": DAIKIN_PARK,
 }
 
 
