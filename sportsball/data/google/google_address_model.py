@@ -5026,6 +5026,42 @@ BREN_EVENTS_CENTER = SportsballGeocodeTuple(
     housenumber="100",
     country="USA",
 )
+MAGNESS_ARENA = SportsballGeocodeTuple(
+    city="Denver",
+    state="CO",
+    postal="",
+    lat=39.682106,
+    lng=-104.961592,
+    housenumber="2240",
+    country="USA",
+)
+OAKLAND_COLISEUM = SportsballGeocodeTuple(
+    city="Oakland",
+    state="CA",
+    postal="94621",
+    lat=37.7514142,
+    lng=-122.2034855,
+    housenumber="204-206",
+    country="USA",
+)
+AMERICAN_BANK_CENTER = SportsballGeocodeTuple(
+    city="Corpus Christi",
+    state="TX",
+    postal="",
+    lat=27.807339,
+    lng=-97.393561,
+    housenumber="1901",
+    country="USA",
+)
+HUSKY_STADIUM = SportsballGeocodeTuple(
+    city="Seattle",
+    state="WA",
+    postal="98195",
+    lat=47.6503,
+    lng=-122.3016,
+    housenumber="3800",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5218,15 +5254,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="204-206",
         country="Australia",
     ),
-    "Oakland Coliseum - Oakland - CA - 94621": SportsballGeocodeTuple(
-        city="Oakland",
-        state="CA",
-        postal="94621",
-        lat=37.7514142,
-        lng=-122.2034855,
-        housenumber="204-206",
-        country="USA",
-    ),
+    "Oakland Coliseum - Oakland - CA - 94621": OAKLAND_COLISEUM,
     "Los Angeles Memorial Coliseum - Los Angeles - CA - 90037": LOS_ANGELES_MEMORIAL_COLESIUM,
     "Western Oval - Australia": SportsballGeocodeTuple(
         city="Parkville",
@@ -5570,15 +5598,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Westpac Stadium": WESTPAC_STADIUM,
     "AAMI Stadium": AAMI_STADIUM,
     "Blacktown Park": BLACKTOWN_PARK,
-    "Husky Stadium - Seattle - WA - 98195": SportsballGeocodeTuple(
-        city="Seattle",
-        state="WA",
-        postal="98195",
-        lat=47.6503,
-        lng=-122.3016,
-        housenumber="3800",
-        country="USA",
-    ),
+    "Husky Stadium - Seattle - WA - 98195": HUSKY_STADIUM,
     "L&N Federal Credit Union Stadium - Louisville - KY - 40208": LN_FEDERAL_CREDIT_UNION_STADIUM,
     "Bobcat Stadium (TX) - San Marcos - TX - 78666": SportsballGeocodeTuple(
         city="San Marcos",
@@ -7506,15 +7526,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "F. G. Clark Activity Center, Baton Rouge, Louisiana": F_G_CLARK_ACTIVITY_CENTER,
-    "American Bank Center, Corpus Christi, Texas": SportsballGeocodeTuple(
-        city="Corpus Christi",
-        state="TX",
-        postal="",
-        lat=27.807339,
-        lng=-97.393561,
-        housenumber="1901",
-        country="USA",
-    ),
+    "American Bank Center, Corpus Christi, Texas": AMERICAN_BANK_CENTER,
     "Schar Center, Elon, North Carolina": SCHAR_CENTER,
     "Bryce Jordan Center, University Park, Pennsylvania": BRYCE_JORDAN_CENTER,
     "Mackey Arena, West Lafayette, Indiana": SportsballGeocodeTuple(
@@ -13030,15 +13042,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Magness Arena, Denver, Colorado": SportsballGeocodeTuple(
-        city="Denver",
-        state="CO",
-        postal="",
-        lat=39.682106,
-        lng=-104.961592,
-        housenumber="2240",
-        country="USA",
-    ),
+    "Magness Arena, Denver, Colorado": MAGNESS_ARENA,
     "ESPN Wide World of Sports, Orlando, Florida": ESPN_WIDE_WORLD_OF_SPORTS_COMPLEX,
     "Scotiabank Arena, Toronto": SCOTIABANK_ARENA,
     "Chaparral Center, Midland, Texas": SportsballGeocodeTuple(
@@ -23805,6 +23809,22 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Walter Pyramid - Long Beach, California - United States": WALTER_PYRAMID,
     "Chaifetz Arena - St. Louis, Missouri - United States": CHAIFETZ_ARENA,
     "Bren Events Center - Irvine, California - United States": BREN_EVENTS_CENTER,
+    "Magness Arena - Denver, Colorado - United States": MAGNESS_ARENA,
+    "Oakland Coliseum": OAKLAND_COLISEUM,
+    "American Bank Center - Corpus Christi, Texas - United States": AMERICAN_BANK_CENTER,
+    "Nutter Center - Fairborn, Ohio - United States": NUTTER_CENTER,
+    "UWM Panther Arena - Milwaukee, Wisconsin - United States": MILWAUKEE_ARENA,
+    "University of Wyoming": SportsballGeocodeTuple(
+        city="Laramie",
+        state="WY",
+        postal="",
+        lat=41.313056,
+        lng=-105.581389,
+        housenumber="",
+        country="USA",
+    ),
+    "Louisville": LOUISVILLE,
+    "Husky Stadium": HUSKY_STADIUM,
 }
 
 
