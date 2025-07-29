@@ -1089,7 +1089,7 @@ def _create_sportsreference_game_model(
         comp_url = urllib.parse.urljoin(url, a.get("href"))
         o = urlparse(comp_url)
         path_components = o.path.split("/")
-        if len(path_components) >= 3 and path_components[2] == "comps":
+        if len(path_components) >= 4 and path_components[2] == "comps":
             comp_id = path_components[3]
             if comp_id:
                 try:

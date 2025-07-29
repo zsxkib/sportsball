@@ -107,10 +107,15 @@ def create_sportsdb_game_model(
     league: League,
     year: int | None,
     season_type: SeasonType | None,
-) -> GameModel:
+) -> GameModel | None:
     """Create a SportsDB game model."""
     try:
-        dt = datetime.datetime.fromisoformat(game["strTimestamp"])
+        ts = game["strTimestamp"]
+        if ts is None:
+            return None
+        if ts.endswith("T"):
+            ts += "00:00:00"
+        dt = datetime.datetime.fromisoformat(ts)
     except TypeError:
         dt = parser.parse(game["dateEvent"])
     if not pytest_is_running.is_running() and dt < datetime.datetime.now().replace(

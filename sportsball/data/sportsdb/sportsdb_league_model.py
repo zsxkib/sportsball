@@ -74,11 +74,12 @@ class SportsDBLeagueModel(LeagueModel):
                     year,
                     season_type,
                 )
-                pbar.set_description(
-                    f"SportsDB {season_year} - {season_type} - {game_model.dt}"
-                )
-                yield game_model
-                event_ids.add(game["idEvent"])
+                if game_model is not None:
+                    pbar.set_description(
+                        f"SportsDB {season_year} - {season_type} - {game_model.dt}"
+                    )
+                    yield game_model
+                    event_ids.add(game["idEvent"])
                 current_count = count
             response = self.session.get(
                 f"https://www.thesportsdb.com/season/{league_id}/{season_year}?csv=1&all=1",
@@ -116,10 +117,11 @@ class SportsDBLeagueModel(LeagueModel):
                         year,
                         season_type,
                     )
-                    pbar.set_description(
-                        f"SportsDB {season_year} - {season_type} - {game_model.dt}"
-                    )
-                    yield game_model
+                    if game_model is not None:
+                        pbar.set_description(
+                            f"SportsDB {season_year} - {season_type} - {game_model.dt}"
+                        )
+                        yield game_model
                     current_count += 1
 
         if year < datetime.datetime.now().year - 1:

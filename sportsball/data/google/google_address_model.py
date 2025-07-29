@@ -4909,6 +4909,42 @@ SAVE_MART_CENTER = SportsballGeocodeTuple(
     housenumber="2650",
     country="USA",
 )
+FORD_CENTER = SportsballGeocodeTuple(
+    city="Evansville",
+    state="IN",
+    postal="",
+    lat=37.972189,
+    lng=-87.567844,
+    housenumber="1",
+    country="USA",
+)
+SPARTAN_STADIUM = SportsballGeocodeTuple(
+    city="East Lansing",
+    state="MI",
+    postal="48824",
+    lat=42.728056,
+    lng=-84.484722,
+    housenumber="1",
+    country="USA",
+)
+COLLEGE_PARK_CENTER = SportsballGeocodeTuple(
+    city="Arlington",
+    state="TX",
+    postal="76019",
+    lat=32.730586,
+    lng=-97.107972,
+    housenumber="600",
+    country="USA",
+)
+BENDER_ARENA = SportsballGeocodeTuple(
+    city="Washington",
+    state="DC",
+    postal="",
+    lat=38.937778,
+    lng=-77.09,
+    housenumber="4400",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5801,15 +5837,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Williams-Brice Stadium - Columbia - SC - 29201": WILLIAMS_BRICE_STADIUM,
-    "Spartan Stadium - East Lansing - MI - 48824": SportsballGeocodeTuple(
-        city="East Lansing",
-        state="MI",
-        postal="48824",
-        lat=42.728056,
-        lng=-84.484722,
-        housenumber="1",
-        country="USA",
-    ),
+    "Spartan Stadium - East Lansing - MI - 48824": SPARTAN_STADIUM,
     "Alamodome - San Antonio - TX - 78203": ALAMODOME,
     "Jack Trice Stadium - Ames - IA - 50011": SportsballGeocodeTuple(
         city="Ames",
@@ -6747,15 +6775,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="95",
         country="USA",
     ),
-    "College Park Center, Arlington, Texas": SportsballGeocodeTuple(
-        city="Arlington",
-        state="TX",
-        postal="76019",
-        lat=32.730586,
-        lng=-97.107972,
-        housenumber="600",
-        country="USA",
-    ),
+    "College Park Center, Arlington, Texas": COLLEGE_PARK_CENTER,
     "GCU Arena, Phoenix, Arizona": SportsballGeocodeTuple(
         city="Phoenix",
         state="AZ",
@@ -7941,15 +7961,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1964",
         country="USA",
     ),
-    "Bender Arena, Washington, District of Columbia": SportsballGeocodeTuple(
-        city="Washington",
-        state="DC",
-        postal="",
-        lat=38.937778,
-        lng=-77.09,
-        housenumber="4400",
-        country="USA",
-    ),
+    "Bender Arena, Washington, District of Columbia": BENDER_ARENA,
     "Moby Arena, Fort Collins, Colorado": MOBY_ARENA,
     "Freedom Hall Civic Center, Johnson City, Tennessee": SportsballGeocodeTuple(
         city="Johnson City",
@@ -8244,15 +8256,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Thomas M. Ryan Center, Kingston, Rhode Island": RYAN_CENTER,
     "Prudential Center, Newark, New Jersey": PRUDENTIAL_CENTER,
-    "Ford Center, Evansville, Indiana": SportsballGeocodeTuple(
-        city="Evansville",
-        state="IN",
-        postal="",
-        lat=37.972189,
-        lng=-87.567844,
-        housenumber="1",
-        country="USA",
-    ),
+    "Ford Center, Evansville, Indiana": FORD_CENTER,
     "Super Pit, Denton, Texas": SportsballGeocodeTuple(
         city="Denton",
         state="TX",
@@ -23739,6 +23743,29 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Mountaineer Field at Milan Puskar Stadium": MILAN_PUSKAR_STADIUM,
     "Tokyo Dome": TOKYO_DOME,
     "Save Mart Center - Fresno, California - United States": SAVE_MART_CENTER,
+    "Ford Center - Evansville, Indiana - United States": FORD_CENTER,
+    "Spartan Stadium": SPARTAN_STADIUM,
+    "College Park Center - Arlington, Texas - United States": COLLEGE_PARK_CENTER,
+    "KeyArena - Seattle, Washington - United States": CLIMATE_PLEDGE_ARENA,
+    "University of Utah": SportsballGeocodeTuple(
+        city="Salt Lake City",
+        state="UT",
+        postal="",
+        lat=40.7642,
+        lng=-111.8465,
+        housenumber="",
+        country="USA",
+    ),
+    "Ericsson Globe Arena": SportsballGeocodeTuple(
+        city="Stockholm",
+        state="",
+        postal="121 77",
+        lat=59.293556,
+        lng=18.083236,
+        housenumber="",
+        country="Sweden",
+    ),
+    "Bender Arena - Washington, D.C. - United States": BENDER_ARENA,
 }
 
 
