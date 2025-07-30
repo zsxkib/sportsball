@@ -3,15 +3,12 @@
 # pylint: disable=too-many-lines,line-too-long
 import datetime
 import logging
-import zipfile
 from collections import namedtuple
 from typing import Any
 
 import geocoder  # type: ignore
 import pytest_is_running
-import requests
 import requests_cache
-from pyhigh import get_elevation  # type: ignore
 from timezonefinder import TimezoneFinder  # type: ignore
 
 from ...cache import MEMORY
@@ -5062,6 +5059,24 @@ HUSKY_STADIUM = SportsballGeocodeTuple(
     housenumber="3800",
     country="USA",
 )
+HUGHES_STADIUM = SportsballGeocodeTuple(
+    city="Fort Collins",
+    state="CO",
+    postal="80526",
+    lat=40.562,
+    lng=-105.142,
+    housenumber="",
+    country="USA",
+)
+TROPICANA_FIELD = SportsballGeocodeTuple(
+    city="St. Petersburg",
+    state="FL",
+    postal="33705",
+    lat=27.768333,
+    lng=-82.653333,
+    housenumber="1",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -6455,25 +6470,9 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Kibbie Dome - Moscow - ID - 83844": KIBBIE_DOME,
     "Allianz Stadium - Sydney - NSW": SCG,
-    "Tropicana Field - St. Petersburg - FL - 33705": SportsballGeocodeTuple(
-        city="St. Petersburg",
-        state="FL",
-        postal="33705",
-        lat=27.768333,
-        lng=-82.653333,
-        housenumber="1",
-        country="USA",
-    ),
+    "Tropicana Field - St. Petersburg - FL - 33705": TROPICANA_FIELD,
     "ANZ Stadium - Sydney - NSW": ENGIE_STADIUM,
-    "Hughes Stadium (CO) - Fort Collins - CO - 80526": SportsballGeocodeTuple(
-        city="Fort Collins",
-        state="CO",
-        postal="80526",
-        lat=40.562,
-        lng=-105.142,
-        housenumber="",
-        country="USA",
-    ),
+    "Hughes Stadium (CO) - Fort Collins - CO - 80526": HUGHES_STADIUM,
     "Bristol Motor Speedway - Bristol - TN - 37620": SportsballGeocodeTuple(
         city="Bristol",
         state="TN",
@@ -23825,6 +23824,26 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Louisville": LOUISVILLE,
     "Husky Stadium": HUSKY_STADIUM,
+    "Tennessee State University": SportsballGeocodeTuple(
+        city="Nashville",
+        state="TN",
+        postal="",
+        lat=36.166667,
+        lng=-86.830556,
+        housenumber="",
+        country="USA",
+    ),
+    "Cleveland State University": SportsballGeocodeTuple(
+        city="Cleveland",
+        state="OH",
+        postal="",
+        lat=41.5017,
+        lng=-81.6751,
+        housenumber="",
+        country="USA",
+    ),
+    "Sonny Lubick Field at Hughes Stadium": HUGHES_STADIUM,
+    "Tropicana Field": TROPICANA_FIELD,
 }
 
 
@@ -23856,14 +23875,11 @@ def _create_google_address_model(
                 tz,
             )
         if not pytest_is_running.is_running():
-            try:
-                altitude = get_elevation(lat=latitude, lon=longitude)
-            except (zipfile.BadZipFile, requests.exceptions.SSLError):
-                url = f"https://api.opentopodata.org/v1/aster30m?locations={latitude},{longitude}"
-                r = session.get(url)
-                r.raise_for_status()
-                data = r.json()
-                altitude = data["results"][0]["elevation"]
+            url = f"https://api.opentopodata.org/v1/aster30m?locations={latitude},{longitude}"
+            r = session.get(url)
+            r.raise_for_status()
+            data = r.json()
+            altitude = data["results"][0]["elevation"]
     try:
         return AddressModel(
             city=g.city,
