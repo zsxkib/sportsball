@@ -5113,6 +5113,15 @@ DIX_STADIUM = SportsballGeocodeTuple(
     housenumber="2227",
     country="USA",
 )
+FLOYD_CASEY_STADIUM = SportsballGeocodeTuple(
+    city="Waco",
+    state="TX",
+    postal="76798",
+    lat=31.531342,
+    lng=-97.148731,
+    housenumber="3088",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -6513,15 +6522,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Croke Park Stadium - Dublin": CROKE_PARK,
     "Yale Bowl - New Haven - CT - 06515": YALE_BOWL,
-    "Floyd Casey Stadium - Waco - TX - 76798": SportsballGeocodeTuple(
-        city="Waco",
-        state="TX",
-        postal="76798",
-        lat=31.531342,
-        lng=-97.148731,
-        housenumber="3088",
-        country="USA",
-    ),
+    "Floyd Casey Stadium - Waco - TX - 76798": FLOYD_CASEY_STADIUM,
     'William "Dick" Price Stadium - Norfolk - VA - 23504': SportsballGeocodeTuple(
         city="Norfolk",
         state="VA",
@@ -23969,6 +23970,54 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lng=-76.334722,
         housenumber="",
         country="USA",
+    ),
+    "University of Wisconsin": SportsballGeocodeTuple(
+        city="Madison",
+        state="WI",
+        postal="",
+        lat=43.075278,
+        lng=-89.404167,
+        housenumber="",
+        country="USA",
+    ),
+    "Southeastern Illinois College": SportsballGeocodeTuple(
+        city="Harrisburg",
+        state="IL",
+        postal="",
+        lat=37.7525,
+        lng=-88.435556,
+        housenumber="",
+        country="USA",
+    ),
+    "Colorado State University": SportsballGeocodeTuple(
+        city="Fort Collins",
+        state="CO",
+        postal="",
+        lat=40.5762,
+        lng=-105.0808,
+        housenumber="",
+        country="USA",
+    ),
+    "Conte Forum - Chestnut Hill, MA - United States": SILVIO_O_CONTE_FORUM,
+    "Floyd Casey Stadium": FLOYD_CASEY_STADIUM,
+    "Nicholls College": SportsballGeocodeTuple(
+        city="Dudley",
+        state="MA",
+        postal="",
+        lat=42.04,
+        lng=-71.93,
+        housenumber="",
+        country="USA",
+    ),
+    "BB&T Center": AMERANT_BANK_ARENA,
+    "Montreal Olympic Stadium - Montreal, QC - Canada": SportsballGeocodeTuple(
+        city="Montreal",
+        state="QC",
+        postal="",
+        lat=45.558,
+        lng=-73.552,
+        housenumber="4545",
+        country="Canada",
     ),
 }
 
