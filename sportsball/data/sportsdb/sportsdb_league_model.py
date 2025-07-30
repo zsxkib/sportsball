@@ -1,7 +1,6 @@
 """Sports DB league model."""
 
 # pylint: disable=line-too-long
-import datetime
 import io
 from typing import Iterator
 
@@ -124,11 +123,7 @@ class SportsDBLeagueModel(LeagueModel):
                         yield game_model
                     current_count += 1
 
-        if year < datetime.datetime.now().year - 1:
-            yield from internal_produce_games()
-        else:
-            with self.session.cache_disabled():
-                yield from internal_produce_games()
+        yield from internal_produce_games()
 
     @property
     def games(self) -> Iterator[GameModel]:
