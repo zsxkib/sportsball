@@ -23877,6 +23877,42 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Doyt Perry Stadium": SportsballGeocodeTuple(
+        city="Bowling Green",
+        state="OH",
+        postal="",
+        lat=41.378056,
+        lng=-83.6225,
+        housenumber="",
+        country="USA",
+    ),
+    "Milwaukee College": SportsballGeocodeTuple(
+        city="Milwaukee",
+        state="WI",
+        postal="",
+        lat=43.075,
+        lng=-87.8829,
+        housenumber="",
+        country="USA",
+    ),
+    "Nobleton, Ontario, Canada": SportsballGeocodeTuple(
+        city="Nobleton",
+        state="ON",
+        postal="",
+        lat=43.902222,
+        lng=-79.652778,
+        housenumber="",
+        country="Canada",
+    ),
+    "Springfield, VA, United States": SportsballGeocodeTuple(
+        city="Springfield",
+        state="VA",
+        postal="",
+        lat=38.788611,
+        lng=-77.179444,
+        housenumber="",
+        country="Canada",
+    ),
 }
 
 
