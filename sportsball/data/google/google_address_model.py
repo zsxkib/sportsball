@@ -5077,6 +5077,33 @@ TROPICANA_FIELD = SportsballGeocodeTuple(
     housenumber="1",
     country="USA",
 )
+DOAK_CAMPBELL_STADIUM = SportsballGeocodeTuple(
+    city="Tallahassee",
+    state="FL",
+    postal="32304",
+    lat=30.438056,
+    lng=-84.304444,
+    housenumber="403",
+    country="USA",
+)
+COMMONWEALTH_STADIUM = SportsballGeocodeTuple(
+    city="Edmonton",
+    state="AB",
+    postal="",
+    lat=53.558333,
+    lng=-113.475,
+    housenumber="",
+    country="Canada",
+)
+DON_HASKINS_CENTER = SportsballGeocodeTuple(
+    city="El Paso",
+    state="TX",
+    postal="79968",
+    lat=31.777608,
+    lng=-106.505718,
+    housenumber="151",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5711,15 +5738,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="62",
         country="Ireland",
     ),
-    "Doak Campbell Stadium - Tallahassee - FL - 32304": SportsballGeocodeTuple(
-        city="Tallahassee",
-        state="FL",
-        postal="32304",
-        lat=30.438056,
-        lng=-84.304444,
-        housenumber="403",
-        country="USA",
-    ),
+    "Doak Campbell Stadium - Tallahassee - FL - 32304": DOAK_CAMPBELL_STADIUM,
     "Ross-Ade Stadium - West Lafayette - IN - 47906": SportsballGeocodeTuple(
         city="West Lafayette",
         state="IN",
@@ -7834,15 +7853,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "E.A. Diddle Arena, Bowling Green, Kentucky": EA_DIDDLE_ARENA,
-    "Don Haskins Center, El Paso, Texas": SportsballGeocodeTuple(
-        city="El Paso",
-        state="TX",
-        postal="79968",
-        lat=31.777608,
-        lng=-106.505718,
-        housenumber="151",
-        country="USA",
-    ),
+    "Don Haskins Center, El Paso, Texas": DON_HASKINS_CENTER,
     "Jon M. Huntsman Center, Salt Lake City, Utah": JON_M_HUNTSMAN_CENTER,
     "The Pavilion, Davis, California": SportsballGeocodeTuple(
         city="Davis",
@@ -22227,15 +22238,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "SAP Center, San Jose, CA, USA": SAP_CENTER,
     "T-Mobile Arena": T_MOBILE_ARENA,
-    "Commonwealth Stadium - Edmonton, AB - Canada": SportsballGeocodeTuple(
-        city="Edmonton",
-        state="AB",
-        postal="",
-        lat=53.558333,
-        lng=-113.475,
-        housenumber="",
-        country="Canada",
-    ),
+    "Commonwealth Stadium - Edmonton, AB - Canada": COMMONWEALTH_STADIUM,
     "EverBank Stadium, Jacksonville, FL, USA": EVERBANK_STADIUM,
     "Enterprise Center": ENTERPRISE_CENTER,
     "Sanford Stadium - Athens, Georgia, USA - United States": SANFORD_STADIUM,
@@ -23844,6 +23847,36 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Sonny Lubick Field at Hughes Stadium": HUGHES_STADIUM,
     "Tropicana Field": TROPICANA_FIELD,
+    "Bobby Bowden Field at Doak Campbell Stadium": DOAK_CAMPBELL_STADIUM,
+    "Commonwealth Stadium": COMMONWEALTH_STADIUM,
+    "Portland State University": SportsballGeocodeTuple(
+        city="Portland",
+        state="OR",
+        postal="",
+        lat=45.512778,
+        lng=-122.685278,
+        housenumber="",
+        country="USA",
+    ),
+    "Don Haskins Center - El Paso, Texas - United States": DON_HASKINS_CENTER,
+    "Portland State College": SportsballGeocodeTuple(
+        city="Portland",
+        state="OR",
+        postal="",
+        lat=45.512778,
+        lng=-122.685278,
+        housenumber="",
+        country="USA",
+    ),
+    "Journey Bank Ballpark": SportsballGeocodeTuple(
+        city="Williamsport",
+        state="PA",
+        postal="17701",
+        lat=41.242347,
+        lng=-77.047067,
+        housenumber="",
+        country="USA",
+    ),
 }
 
 
