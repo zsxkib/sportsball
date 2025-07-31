@@ -5131,6 +5131,24 @@ JOHNNY_RED_FLOYD_STADIUM = SportsballGeocodeTuple(
     housenumber="1327",
     country="USA",
 )
+MATTHEWS_ARENA = SportsballGeocodeTuple(
+    city="Boston",
+    state="MA",
+    postal="",
+    lat=42.341111,
+    lng=-71.084444,
+    housenumber="238",
+    country="USA",
+)
+JOAN_C_EDWARDS_STADIUM = SportsballGeocodeTuple(
+    city="Huntington",
+    state="WV",
+    postal="25703",
+    lat=38.425,
+    lng=-82.420833,
+    housenumber="2001",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5963,15 +5981,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="3874",
         country="USA",
     ),
-    "Joan C. Edwards Stadium - Huntington - WV - 25703": SportsballGeocodeTuple(
-        city="Huntington",
-        state="WV",
-        postal="25703",
-        lat=38.425,
-        lng=-82.420833,
-        housenumber="2001",
-        country="USA",
-    ),
+    "Joan C. Edwards Stadium - Huntington - WV - 25703": JOAN_C_EDWARDS_STADIUM,
     "Hancock Whitney Stadium - Mobile - AL - 36688": SportsballGeocodeTuple(
         city="Mobile",
         state="AL",
@@ -8583,15 +8593,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Matthews Arena, Boston, Massachusetts": SportsballGeocodeTuple(
-        city="Boston",
-        state="MA",
-        postal="",
-        lat=42.341111,
-        lng=-71.084444,
-        housenumber="238",
-        country="USA",
-    ),
+    "Matthews Arena, Boston, Massachusetts": MATTHEWS_ARENA,
     "Calihan Hall, Detroit, Michigan": SportsballGeocodeTuple(
         city="Detroit",
         state="MI",
@@ -24065,6 +24067,35 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lng=-86.855833,
         housenumber="",
         country="USA",
+    ),
+    "Central Michigan University": SportsballGeocodeTuple(
+        city="Mount Pleasant",
+        state="MI",
+        postal="",
+        lat=43.5898,
+        lng=-84.7775,
+        housenumber="",
+        country="USA",
+    ),
+    "Drexel University": SportsballGeocodeTuple(
+        city="Philadelphia",
+        state="PA",
+        postal="",
+        lat=39.954,
+        lng=-75.188,
+        housenumber="",
+        country="USA",
+    ),
+    "Matthews Arena - United States": MATTHEWS_ARENA,
+    "Joan C. Edwards Stadium": JOAN_C_EDWARDS_STADIUM,
+    "London Stadium": SportsballGeocodeTuple(
+        city="London",
+        state="",
+        postal="E20 2ST",
+        lat=51.538611,
+        lng=-0.016389,
+        housenumber="",
+        country="UK",
     ),
 }
 
