@@ -41,7 +41,7 @@ class CoachModel(BaseModel):
     birth_date: datetime.date | None = Field(
         ..., json_schema_extra={FFILL_KEY: True}, alias=COACH_BIRTH_DATE_COLUMN
     )
-    age: int | None = Field(..., alias=COACH_AGE_COLUMN)
+    age: int | None = Field(None, alias=COACH_AGE_COLUMN)
     version: str
     sex: str | None = Field(
         default_factory=_guess_sex,

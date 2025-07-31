@@ -25,9 +25,9 @@ class VenueModel(BaseModel):
         alias=VENUE_IDENTIFIER_COLUMN,
     )
     name: str = Field(..., json_schema_extra={TYPE_KEY: FieldType.TEXT})
-    address: AddressModel | None = Field(..., alias=VENUE_ADDRESS_COLUMN)
-    is_grass: bool | None
-    is_indoor: bool | None
-    is_turf: bool | None = Field(..., alias=VENUE_IS_TURF_COLUMN)
-    is_dirt: bool | None = Field(..., alias=VENUE_IS_DIRT_COLUMN)
+    address: AddressModel | None = Field(None, alias=VENUE_ADDRESS_COLUMN)
+    is_grass: bool | None = None
+    is_indoor: bool | None = None
+    is_turf: bool | None = Field(None, alias=VENUE_IS_TURF_COLUMN)
+    is_dirt: bool | None = Field(None, alias=VENUE_IS_DIRT_COLUMN)
     version: str

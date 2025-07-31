@@ -938,7 +938,7 @@ class PlayerModel(BaseModel):
         json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL},
         alias=PLAYER_IDENTIFIER_COLUMN,
     )
-    jersey: str | None = Field(..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL})
+    jersey: str | None = Field(None, json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL})
     kicks: int | None = Field(
         ...,
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
@@ -1098,7 +1098,7 @@ class PlayerModel(BaseModel):
         json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL, FFILL_KEY: True},
         alias=PLAYER_SPECIES_COLUMN,
     )
-    handicap_weight: float | None = Field(..., alias=PLAYER_HANDICAP_WEIGHT_COLUMN)
+    handicap_weight: float | None = Field(None, alias=PLAYER_HANDICAP_WEIGHT_COLUMN)
     father: PlayerModel | None = Field(
         ..., json_schema_extra={FFILL_KEY: True}, alias=PLAYER_FATHER_COLUMN
     )
@@ -1107,7 +1107,7 @@ class PlayerModel(BaseModel):
         json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL, FFILL_KEY: True},
         alias=PLAYER_SEX_COLUMN,
     )
-    age: int | None = Field(..., alias=PLAYER_AGE_COLUMN)
+    age: int | None = Field(None, alias=PLAYER_AGE_COLUMN)
     starting_position: str | None = Field(
         ...,
         json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL},
