@@ -7,6 +7,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Any, Iterator
 
 from scrapesession.scrapesession import ScrapeSession  # type: ignore
+from pydantic import ValidationError
 
 from ..game_model import GameModel
 from ..league import League
@@ -80,7 +81,67 @@ class CombinedLeagueModel(LeagueModel):
                 for f in futures:
                     f.cancel()
                 raise  # Optionally re-raise the exception
-        game_lists = [[GameModel.model_validate(y) for y in x] for x in results]
+        def validate_game_with_defaults(game_data):
+            """Validate game data with fallback for missing fields."""
+            try:
+                return GameModel.model_validate(game_data)
+            except ValidationError as e:
+                error_str = str(e)
+                
+                # Handle common missing field issues
+                if "venue.address.altitude" in error_str:
+                    # Set default altitude if missing
+                    if game_data.get("venue", {}).get("address") is not None:
+                        game_data["venue"]["address"].setdefault("altitude", None)
+                        
+                elif "venue.address.weather" in error_str:
+                    # Handle missing weather fields
+                    venue = game_data.get("venue", {})
+                    address = venue.get("address", {})
+                    weather = address.get("weather", {})
+                    
+                    if weather is not None:
+                        # Set defaults for all missing weather fields
+                        weather_defaults = {
+                            "dew_point": None, "apparent_temperature": None, "precipitation_probability": None,
+                            "precipitation": None, "rain": None, "showers": None, "snowfall": None,
+                            "snow_depth": None, "weather_code": None, "sealevel_pressure": None,
+                            "surface_pressure": None, "cloud_cover_total": None, "cloud_cover_low": None,
+                            "cloud_cover_mid": None, "cloud_cover_high": None, "visibility": None,
+                            "evapotranspiration": None, "reference_evapotranspiration": None,
+                            "vapour_pressure_deficit": None, "wind_speed_10m": None, "wind_speed_80m": None,
+                            "wind_speed_120m": None, "wind_speed_180m": None, "wind_direction_10m": None,
+                            "wind_direction_80m": None, "wind_direction_120m": None, "wind_direction_180m": None,
+                            "wind_gusts": None, "temperature_80m": None, "temperature_120m": None,
+                            "temperature_180m": None, "soil_temperature_0cm": None, "soil_temperature_6cm": None,
+                            "soil_temperature_18cm": None, "soil_temperature_54cm": None, "soil_moisture_0cm": None,
+                            "soil_moisture_1cm": None, "soil_moisture_3cm": None, "soil_moisture_9cm": None,
+                            "soil_moisture_27cm": None, "daily_weather_code": None, "daily_maximum_temperature_2m": None,
+                            "daily_minimum_temperature_2m": None, "daily_maximum_apparent_temperature_2m": None,
+                            "daily_minimum_apparent_temperature_2m": None, "sunrise": None, "sunset": None,
+                            "daylight_duration": None, "sunshine_duration": None, "uv_index": None,
+                            "uv_index_clear_sky": None, "rain_sum": None, "showers_sum": None,
+                            "snowfall_sum": None, "precipitation_sum": None, "precipitation_hours": None,
+                            "precipitation_probability_max": None, "maximum_wind_speed_10m": None,
+                            "maximum_wind_gusts_10m": None, "dominant_wind_direction": None,
+                            "shortwave_radiation_sum": None, "daily_reference_evapotranspiration": None
+                        }
+                        for field, default in weather_defaults.items():
+                            weather.setdefault(field, default)
+                
+                # Try validation again after setting defaults
+                try:
+                    return GameModel.model_validate(game_data)
+                except ValidationError:
+                    # If still failing, log and skip this game
+                    logging.warning("Skipping game due to validation errors: %s", str(e)[:200])
+                    return None
+                    
+            return None
+        
+        game_lists = [[validate_game_with_defaults(y) for y in x] for x in results]
+        # Filter out None values (skipped games)
+        game_lists = [[game for game in game_list if game is not None] for game_list in game_lists]
 
         for game_list in game_lists:
             for game_model in game_list:
