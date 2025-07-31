@@ -5122,6 +5122,15 @@ FLOYD_CASEY_STADIUM = SportsballGeocodeTuple(
     housenumber="3088",
     country="USA",
 )
+JOHNNY_RED_FLOYD_STADIUM = SportsballGeocodeTuple(
+    city="Murfreesboro",
+    state="TN",
+    postal="37130",
+    lat=35.850513,
+    lng=-86.368223,
+    housenumber="1327",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5922,15 +5931,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    'Johnny "Red" Floyd Stadium - Murfreesboro - TN - 37130': SportsballGeocodeTuple(
-        city="Murfreesboro",
-        state="TN",
-        postal="37130",
-        lat=35.850513,
-        lng=-86.368223,
-        housenumber="1327",
-        country="USA",
-    ),
+    'Johnny "Red" Floyd Stadium - Murfreesboro - TN - 37130': JOHNNY_RED_FLOYD_STADIUM,
     "Kelly/Shorts Stadium - Mount Pleasant - MI - 48858": KELLY_SHORTS_STADIUM,
     "Kyle Field - College Station - TX - 77840": KYLE_FIELD,
     "Allen E. Paulson Stadium - Statesboro - GA - 30458": SportsballGeocodeTuple(
@@ -24018,6 +24019,52 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lng=-73.552,
         housenumber="4545",
         country="Canada",
+    ),
+    "Butler County Community College": SportsballGeocodeTuple(
+        city="Butler",
+        state="PA",
+        postal="",
+        lat=40.8297,
+        lng=-79.912,
+        housenumber="",
+        country="USA",
+    ),
+    "South Plains College": SportsballGeocodeTuple(
+        city="Levelland",
+        state="TX",
+        postal="",
+        lat=33.576243,
+        lng=-102.367642,
+        housenumber="",
+        country="USA",
+    ),
+    'Johnny Red"" Floyd Stadium""': JOHNNY_RED_FLOYD_STADIUM,
+    "Connecticut College College": SportsballGeocodeTuple(
+        city="New London",
+        state="CT",
+        postal="",
+        lat=41.378433,
+        lng=-72.104669,
+        housenumber="",
+        country="USA",
+    ),
+    "Gila River Arena, Phoenix, AZ, USA": SportsballGeocodeTuple(
+        city="Glendale",
+        state="AZ",
+        postal="",
+        lat=33.531944,
+        lng=-112.261111,
+        housenumber="",
+        country="USA",
+    ),
+    "Rickwood Field": SportsballGeocodeTuple(
+        city="Birmingham",
+        state="AL",
+        postal="",
+        lat=33.502222,
+        lng=-86.855833,
+        housenumber="",
+        country="USA",
     ),
 }
 
