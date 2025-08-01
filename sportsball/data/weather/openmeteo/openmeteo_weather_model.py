@@ -369,7 +369,7 @@ def _parse_openmeteo(
             daily_reference_evapotranspiration=et0_fao_evapotranspiration,
             version=version,
         )
-    except struct.error:
+    except (struct.error, requests.exceptions.HTTPError):
         return None
 
 

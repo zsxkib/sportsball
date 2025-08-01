@@ -5167,6 +5167,15 @@ JACK_TRICE_STADIUM = SportsballGeocodeTuple(
     housenumber="1798",
     country="USA",
 )
+BOONE_PICKENS_STADIUM = SportsballGeocodeTuple(
+    city="Stillwater",
+    state="OK",
+    postal="74075",
+    lat=36.125833,
+    lng=-97.066389,
+    housenumber="700",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -5723,15 +5732,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="451",
         country="USA",
     ),
-    "Boone Pickens Stadium - Stillwater - OK - 74075": SportsballGeocodeTuple(
-        city="Stillwater",
-        state="OK",
-        postal="74075",
-        lat=36.125833,
-        lng=-97.066389,
-        housenumber="700",
-        country="USA",
-    ),
+    "Boone Pickens Stadium - Stillwater - OK - 74075": BOONE_PICKENS_STADIUM,
     "Cajun Field - Lafayette - LA - 70506": CAJUN_FIELD,
     "Ben Hill Griffin Stadium - Gainesville - FL - 32611": SportsballGeocodeTuple(
         city="Gainesville",
@@ -24137,6 +24138,26 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
+    "Boone Pickens Stadium - Stillwater, Oklahoma, USA - United States": BOONE_PICKENS_STADIUM,
+    "Harvard University": SportsballGeocodeTuple(
+        city="Cambridge",
+        state="MA",
+        postal="",
+        lat=42.374444,
+        lng=-71.116944,
+        housenumber="",
+        country="USA",
+    ),
+    "Eastern Michigan University": SportsballGeocodeTuple(
+        city="Ypsilanti",
+        state="MI",
+        postal="",
+        lat=42.250154,
+        lng=-83.624454,
+        housenumber="",
+        country="USA",
+    ),
+    "STAPLES Center": STAPLES_CENTRE,
 }
 
 

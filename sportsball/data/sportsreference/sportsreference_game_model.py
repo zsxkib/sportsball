@@ -2676,7 +2676,7 @@ def _create_sportsreference_game_model(
     game_text = soup.get_text().replace("\n", "")
     attendance = None
     if "Attendance:" in game_text:
-        attendance = int(
+        attendance_text = (
             game_text.split("Attendance:")[1]
             .strip()
             .split()[0]
@@ -2690,6 +2690,8 @@ def _create_sportsreference_game_model(
             .replace("Venue:", "")
             .replace("Game", "")
         )
+        if attendance_text != "Not":
+            attendance = int(attendance_text)
 
     try:
         return GameModel(
