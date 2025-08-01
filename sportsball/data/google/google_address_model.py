@@ -5149,6 +5149,24 @@ JOAN_C_EDWARDS_STADIUM = SportsballGeocodeTuple(
     housenumber="2001",
     country="USA",
 )
+BAXTER_ARENA = SportsballGeocodeTuple(
+    city="Omaha",
+    state="NE",
+    postal="",
+    lat=41.236,
+    lng=-96.013,
+    housenumber="2425",
+    country="USA",
+)
+JACK_TRICE_STADIUM = SportsballGeocodeTuple(
+    city="Ames",
+    state="IA",
+    postal="50011",
+    lat=42.014167,
+    lng=-93.635833,
+    housenumber="1798",
+    country="USA",
+)
 _CACHED_GEOCODES: dict[str, Any] = {
     "S.C.G. - Australia": SCG,
     "Victoria Park - Australia": SportsballGeocodeTuple(
@@ -6003,15 +6021,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Williams-Brice Stadium - Columbia - SC - 29201": WILLIAMS_BRICE_STADIUM,
     "Spartan Stadium - East Lansing - MI - 48824": SPARTAN_STADIUM,
     "Alamodome - San Antonio - TX - 78203": ALAMODOME,
-    "Jack Trice Stadium - Ames - IA - 50011": SportsballGeocodeTuple(
-        city="Ames",
-        state="IA",
-        postal="50011",
-        lat=42.014167,
-        lng=-93.635833,
-        housenumber="1798",
-        country="USA",
-    ),
+    "Jack Trice Stadium - Ames - IA - 50011": JACK_TRICE_STADIUM,
     "Arizona Stadium - Tucson - AZ - 85719": SportsballGeocodeTuple(
         city="Tucson",
         state="AZ",
@@ -7819,15 +7829,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1",
         country="USA",
     ),
-    "Baxter Arena, Omaha, Nebraska": SportsballGeocodeTuple(
-        city="Omaha",
-        state="NE",
-        postal="",
-        lat=41.236,
-        lng=-96.013,
-        housenumber="2425",
-        country="USA",
-    ),
+    "Baxter Arena, Omaha, Nebraska": BAXTER_ARENA,
     "Pete Hanna Center, Birmingham, Alabama": SportsballGeocodeTuple(
         city="Birmingham",
         state="AL",
@@ -24096,6 +24098,44 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lng=-0.016389,
         housenumber="",
         country="UK",
+    ),
+    "Baxter Arena - Omaha, NE - United States": BAXTER_ARENA,
+    "Jack Trice Stadium": JACK_TRICE_STADIUM,
+    "Western Michigan University": SportsballGeocodeTuple(
+        city="Kalamazoo",
+        state="MI",
+        postal="",
+        lat=42.283333,
+        lng=-85.613889,
+        housenumber="",
+        country="USA",
+    ),
+    "Florida State University": SportsballGeocodeTuple(
+        city="Tallahassee",
+        state="FL",
+        postal="",
+        lat=30.442,
+        lng=-84.298,
+        housenumber="",
+        country="USA",
+    ),
+    "Valparaiso University": SportsballGeocodeTuple(
+        city="Valparaiso",
+        state="IN",
+        postal="",
+        lat=41.463611,
+        lng=-87.043611,
+        housenumber="",
+        country="USA",
+    ),
+    "California State Uni College": SportsballGeocodeTuple(
+        city="Long Beach",
+        state="CA",
+        postal="",
+        lat=33.763889,
+        lng=-118.201111,
+        housenumber="",
+        country="USA",
     ),
 }
 
