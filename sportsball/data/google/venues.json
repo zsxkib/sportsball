@@ -139,6 +139,46 @@
             "housenumber": "",
             "country": "Mexico",
             "type": "venue"
+        },
+        "b51fc52b-4254-4ef3-ae31-3b0ad5b75b91": {
+            "city": "Towson",
+            "state": "MD",
+            "postal": "",
+            "lat": 39.394444,
+            "lng": -76.608333,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "5daabad8-94b4-47e5-953d-c86d30618c99": {
+            "city": "Minneapolis",
+            "state": "MN",
+            "postal": "55415",
+            "lat": 44.9736461,
+            "lng": -93.2600694,
+            "housenumber": "401",
+            "country": "USA",
+            "type": "venue"
+        },
+        "1163c6fe-3065-422e-8bea-3486697c4774": {
+            "city": "Lawrenceville",
+            "state": "NJ",
+            "postal": "",
+            "lat": 40.28,
+            "lng": -74.738,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "6011a1cb-8ab9-42be-9d22-d90c403f9d1d": {
+            "city": "Cleveland",
+            "state": "OH",
+            "postal": "44114",
+            "lat": 41.5060535,
+            "lng": -81.702123,
+            "housenumber": "100",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -159,6 +199,10 @@
         "Jones AT&T Stadium - Lubbock - TX - 79407": "d901dd5d-4ac8-476d-8d25-19d8b472b49f",
         "Gila River Arena": "b3c4809c-b5fd-4ab4-ba48-5e39089b8b09",
         "Gila River Arena, Phoenix, AZ, USA": "b3c4809c-b5fd-4ab4-ba48-5e39089b8b09",
-        "Alfredo Harp Helú Stadium": "18400cae-6aec-4966-9587-4b2fc362e91a"
+        "Alfredo Harp Helú Stadium": "18400cae-6aec-4966-9587-4b2fc362e91a",
+        "Towson University": "b51fc52b-4254-4ef3-ae31-3b0ad5b75b91",
+        "U.S. Bank Stadium": "5daabad8-94b4-47e5-953d-c86d30618c99",
+        "Rider University": "1163c6fe-3065-422e-8bea-3486697c4774",
+        "Cleveland Browns Stadium": "6011a1cb-8ab9-42be-9d22-d90c403f9d1d"
     }
 }

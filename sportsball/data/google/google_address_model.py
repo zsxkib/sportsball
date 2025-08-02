@@ -5180,8 +5180,6 @@ BOONE_PICKENS_STADIUM = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "U.S. Bank Stadium": US_BANK_STADIUM,
-    "Cleveland Browns Stadium": CLEVELAND_BROWNS_STADIUM,
     "EverBank Stadium": EVERBANK_STADIUM,
     "Nissan Stadium": NISSAN_STADIUM,
     "Paycor Stadium": PAYCOR_STADIUM,
@@ -24121,15 +24119,18 @@ def _load_cached_geocodes():
             venue_db = json.load(handle)
             venues = venue_db["venues"]
             searches = venue_db["searches"]
-            searches = {k: SportsballGeocodeTuple(
-        city=venues[v]["city"],
-        state=venues[v]["state"],
-        postal=venues[v]["postal"],
-        lat=venues[v]["lat"],
-        lng=venues[v]["lng"],
-        housenumber=venues[v]["housenumber"],
-        country=venues[v]["country"],
-    ) for k, v in searches.items()}
+            searches = {
+                k: SportsballGeocodeTuple(
+                    city=venues[v]["city"],
+                    state=venues[v]["state"],
+                    postal=venues[v]["postal"],
+                    lat=venues[v]["lat"],
+                    lng=venues[v]["lng"],
+                    housenumber=venues[v]["housenumber"],
+                    country=venues[v]["country"],
+                )
+                for k, v in searches.items()
+            }
             _CACHED_GEOCODES.update(searches)
         _GEOCODES_LOADED = True
 
