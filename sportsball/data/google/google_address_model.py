@@ -1,8 +1,10 @@
 """Google address model."""
 
-# pylint: disable=too-many-lines,line-too-long
+# pylint: disable=too-many-lines,line-too-long,global-statement
 import datetime
+import json
 import logging
+import os
 from collections import namedtuple
 from typing import Any
 
@@ -14,6 +16,7 @@ from timezonefinder import TimezoneFinder  # type: ignore
 from ...cache import MEMORY
 from ..address_model import AddressModel
 from ..weather.multi_weather_model import create_mutli_weather_model
+from .address_exception import AddressException
 
 SportsballGeocodeTuple = namedtuple(
     "SportsballGeocodeTuple",
@@ -5177,23 +5180,6 @@ BOONE_PICKENS_STADIUM = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "S.C.G. - Australia": SCG,
-    "Victoria Park - Australia": SportsballGeocodeTuple(
-        city="Abbotsford",
-        state="VIC",
-        postal="3067",
-        lat=-37.8105167,
-        lng=144.9822987,
-        housenumber="",
-        country="Australia",
-    ),
-    "Tom Benson Hall of Fame Stadium": TOM_BENSON_HALL_OF_FAME_STADIUM,
-    "MetLife Stadium": METLIFE_STADIUM,
-    "Gillette Stadium": GILETTE_STADIUM,
-    "Acrisure Stadium": ACRISURE_STADIUM,
-    "Hard Rock Stadium": HARD_ROCK_STADIUM,
-    "M&T Bank Stadium": MTT_BANK_STADIUM,
-    "Highmark Stadium": HIGHMARK_STADIUM,
     "U.S. Bank Stadium": US_BANK_STADIUM,
     "Cleveland Browns Stadium": CLEVELAND_BROWNS_STADIUM,
     "EverBank Stadium": EVERBANK_STADIUM,
@@ -5878,15 +5864,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lat=33.820278,
         lng=-85.766389,
         housenumber="700",
-        country="USA",
-    ),
-    "Jones AT&T Stadium - Lubbock - TX - 79407": SportsballGeocodeTuple(
-        city="Lubbock",
-        state="TX",
-        postal="79407",
-        lat=33.591111,
-        lng=-101.872778,
-        housenumber="2526",
         country="USA",
     ),
     "Bryant-Denny Stadium - Tuscaloosa - AL - 35401": BRYANT_DENNY_STADIUM,
@@ -18767,15 +18744,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="Switzerland",
     ),
     "Enterprise Center, St. Louis, MO, USA": ENTERPRISE_CENTER,
-    "Penn State College": SportsballGeocodeTuple(
-        city="University Park",
-        state="PA",
-        postal="",
-        lat=40.798333,
-        lng=-77.86,
-        housenumber="",
-        country="USA",
-    ),
     "California College": SportsballGeocodeTuple(
         city="Berkeley",
         state="CA",
@@ -23064,15 +23032,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "penn-state": SportsballGeocodeTuple(
-        city="University Park",
-        state="PA",
-        postal="",
-        lat=40.798333,
-        lng=-77.86,
-        housenumber="",
-        country="USA",
-    ),
     "Dodger Stadium": DODGER_STADIUM,
     "ohio-state": SportsballGeocodeTuple(
         city="Columbus",
@@ -24053,15 +24012,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Gila River Arena, Phoenix, AZ, USA": SportsballGeocodeTuple(
-        city="Glendale",
-        state="AZ",
-        postal="",
-        lat=33.531944,
-        lng=-112.261111,
-        housenumber="",
-        country="USA",
-    ),
     "Rickwood Field": SportsballGeocodeTuple(
         city="Birmingham",
         state="AL",
@@ -24159,11 +24109,35 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "STAPLES Center": STAPLES_CENTRE,
 }
+_GEOCODES_LOADED = False
+
+
+def _load_cached_geocodes():
+    global _GEOCODES_LOADED
+    if not _GEOCODES_LOADED:
+        with open(
+            os.path.join(os.path.dirname(__file__), "venues.json"), encoding="utf8"
+        ) as handle:
+            venue_db = json.load(handle)
+            venues = venue_db["venues"]
+            searches = venue_db["searches"]
+            searches = {k: SportsballGeocodeTuple(
+        city=venues[v]["city"],
+        state=venues[v]["state"],
+        postal=venues[v]["postal"],
+        lat=venues[v]["lat"],
+        lng=venues[v]["lng"],
+        housenumber=venues[v]["housenumber"],
+        country=venues[v]["country"],
+    ) for k, v in searches.items()}
+            _CACHED_GEOCODES.update(searches)
+        _GEOCODES_LOADED = True
 
 
 def _create_google_address_model(
     query: str, session: requests_cache.CachedSession, dt: datetime.datetime | None
 ) -> AddressModel:
+    _load_cached_geocodes()
     query = query.replace("\n", "").replace("&nbsp;", " ")
     g = _CACHED_GEOCODES.get(query)
     if g is None:
@@ -24209,7 +24183,7 @@ def _create_google_address_model(
         )
     except Exception as exc:
         logging.warning('Failed to retrieve address model for query "%s"', query)
-        raise ValueError(f'AddressModel failed to validate: "{query}"') from exc
+        raise AddressException(f'AddressModel failed to validate: "{query}"') from exc
 
 
 @MEMORY.cache(ignore=["session"])

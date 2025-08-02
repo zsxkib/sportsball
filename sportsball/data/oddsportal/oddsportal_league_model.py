@@ -14,6 +14,7 @@ from bs4 import BeautifulSoup
 from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ..game_model import GameModel
+from ..google.address_exception import AddressException
 from ..league import League
 from ..league_model import SHUTDOWN_FLAG, LeagueModel
 from .decrypt import fetch_data
@@ -85,6 +86,8 @@ def _process_results_pages(
             pagination = d["pagination"]
             total_pages = pagination["pages"]
             current_page += 1
+        except AddressException as exc:
+            raise exc
         except Exception as exc:
             logging.warning(str(exc))
             break
