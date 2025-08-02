@@ -173,3 +173,4 @@ ret.parquet
 .sportsball_cache*
 *.parquet.gzip
 .testmondata*
+*.sqlite-journal
