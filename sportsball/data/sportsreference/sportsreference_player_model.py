@@ -286,7 +286,7 @@ def _create_sportsreference_player_model(
                     session=session,
                     dt=None,
                 )
-            except ValueError as exc:
+            except AddressException as exc:
                 logging.warning("Failed to find birth address: %s", str(exc))
         if "height" in jsonld:
             height_ft_inches = jsonld["height"]["value"].split()[0].split("-")

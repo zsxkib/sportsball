@@ -279,6 +279,96 @@
             "housenumber": "1001",
             "country": "USA",
             "type": "venue"
+        },
+        "d324a072-025e-4f64-98c9-ea90dd0c0478": {
+            "city": "Las Cruces",
+            "state": "NM",
+            "postal": "88003",
+            "lat": 32.27949,
+            "lng": -106.744288,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "51b4f652-ab49-4c88-899f-570a0a4b4d97": {
+            "city": "Indianapolis",
+            "state": "IN",
+            "postal": "46225",
+            "lat": 39.7601007,
+            "lng": -86.1664626,
+            "housenumber": "500",
+            "country": "USA",
+            "type": "venue"
+        },
+        "c2d6a773-c009-4fc7-bc8d-21ab92b17a0b": {
+            "city": "Houston",
+            "state": "TX",
+            "postal": "77054",
+            "lat": 29.6847219,
+            "lng": -95.4132823,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "df5de05a-c2e5-4f74-b7ad-5cc900296d68": {
+            "city": "Lidkoping",
+            "state": "",
+            "postal": "",
+            "lat": 58.5,
+            "lng": 13.183333,
+            "housenumber": "",
+            "country": "Sweden",
+            "type": "suburb"
+        },
+        "6288704d-be17-469f-acfd-203d9f923c11": {
+            "city": "Chicago",
+            "state": "IL",
+            "postal": "60605",
+            "lat": 41.8623132,
+            "lng": -87.6192633,
+            "housenumber": "1410",
+            "country": "USA",
+            "type": "venue"
+        },
+        "8685f819-e3c0-4452-9e73-008e3757b027": {
+            "city": "Puerto Ordaz",
+            "state": "Bolivar",
+            "postal": "",
+            "lat": 8.275035,
+            "lng": -62.755826,
+            "housenumber": "",
+            "country": "Venezuela",
+            "type": "suburb"
+        },
+        "b6e806a0-61cb-4a49-8384-701a2ae61180": {
+            "city": "Kansas City",
+            "state": "MO",
+            "postal": "64129",
+            "lat": 39.0489647,
+            "lng": -94.486589,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
+        },
+        "697520ca-d03b-45b1-a913-afe3d13a3371": {
+            "city": "London",
+            "state": "",
+            "postal": "SW6 1HS",
+            "lat": 51.481667,
+            "lng": -0.191111,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "543d7f78-3dd0-4046-a366-80ca231e8898": {
+            "city": "Charlotte",
+            "state": "NC",
+            "postal": "28202",
+            "lat": 35.2257795,
+            "lng": -80.8555399,
+            "housenumber": "800",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -324,6 +414,7 @@
         "Nissan Stadium": "6d8bba96-9e07-49d2-8049-b6418652f097",
         "Nissan Stadium - Nashville - TN - 37213": "6d8bba96-9e07-49d2-8049-b6418652f097",
         "Nissan Stadium - Nashville, Tennessee, USA - United States": "6d8bba96-9e07-49d2-8049-b6418652f097",
+        "Nissan Stadium, Nashville, TN, USA": "6d8bba96-9e07-49d2-8049-b6418652f097",
         "Petco Park, San Diego, CA, USA": "12a7f917-294d-4750-9b50-b110ffb23172",
         "Petco Park - San Diego - CA - 92101": "12a7f917-294d-4750-9b50-b110ffb23172",
         "Petco Park, San Diego, California": "12a7f917-294d-4750-9b50-b110ffb23172",
@@ -347,6 +438,37 @@
         "State Farm Stadium - Glendale - AZ - 85305": "6bd78242-34a9-40e2-841c-747455d93542",
         "State Farm Stadium - Glendale, Arizona - United States": "6bd78242-34a9-40e2-841c-747455d93542",
         "State Farm Stadium, Glendale, AZ, USA": "6bd78242-34a9-40e2-841c-747455d93542",
-        "University of Phoenix Stadium": "6bd78242-34a9-40e2-841c-747455d93542"
+        "University of Phoenix Stadium": "6bd78242-34a9-40e2-841c-747455d93542",
+        "Aggie Memorial Stadium": "d324a072-025e-4f64-98c9-ea90dd0c0478",
+        "Aggie Memorial Stadium - Las Cruces - NM - 88003": "d324a072-025e-4f64-98c9-ea90dd0c0478",
+        "Lucas Oil Stadium": "51b4f652-ab49-4c88-899f-570a0a4b4d97",
+        "Lucas Oil Stadium - Indianapolis - IN - 46225": "51b4f652-ab49-4c88-899f-570a0a4b4d97",
+        "RCA Dome - Indianapolis - IN": "51b4f652-ab49-4c88-899f-570a0a4b4d97",
+        "Lucas Oil Stadium - Indianapolis, Indiana, USA - United States": "51b4f652-ab49-4c88-899f-570a0a4b4d97",
+        "Lucas Oil Stadium, Indianapolis, IN, USA": "51b4f652-ab49-4c88-899f-570a0a4b4d97",
+        "Lucas Oil Stadium, Indianapolis, Indiana": "51b4f652-ab49-4c88-899f-570a0a4b4d97",
+        "NRG Stadium": "c2d6a773-c009-4fc7-bc8d-21ab92b17a0b",
+        "NRG Stadium - Houston - TX - 77054": "c2d6a773-c009-4fc7-bc8d-21ab92b17a0b",
+        "Astrodome": "c2d6a773-c009-4fc7-bc8d-21ab92b17a0b",
+        "Astrodome - Houston, TX - United States": "c2d6a773-c009-4fc7-bc8d-21ab92b17a0b",
+        "NRG Stadium - Houston, Texas, USA - United States": "c2d6a773-c009-4fc7-bc8d-21ab92b17a0b",
+        "NRG Stadium, Houston, TX, USA": "c2d6a773-c009-4fc7-bc8d-21ab92b17a0b",
+        "Reliant Stadium, Houston, Texas": "c2d6a773-c009-4fc7-bc8d-21ab92b17a0b",
+        "Lidkoping, Sweden": "df5de05a-c2e5-4f74-b7ad-5cc900296d68",
+        "Soldier Field": "6288704d-be17-469f-acfd-203d9f923c11",
+        "Soldier Field - Chicago - IL - 60605": "6288704d-be17-469f-acfd-203d9f923c11",
+        "Soldier Field - Chicago, Illinois - United States": "6288704d-be17-469f-acfd-203d9f923c11",
+        "Soldier Field, Chicago, IL, USA": "6288704d-be17-469f-acfd-203d9f923c11",
+        "Puerto Ordaz, Bolivar, Venezuela": "8685f819-e3c0-4452-9e73-008e3757b027",
+        "GEHA Field at Arrowhead Stadium": "b6e806a0-61cb-4a49-8384-701a2ae61180",
+        "Arrowhead Stadium": "b6e806a0-61cb-4a49-8384-701a2ae61180",
+        "GEHA Field at Arrowhead Stadium - Kansas City - MO - 64129": "b6e806a0-61cb-4a49-8384-701a2ae61180",
+        "Arrowhead Stadium - Kansas City, Missouri - United States": "b6e806a0-61cb-4a49-8384-701a2ae61180",
+        "GEHA Field at Arrowhead Stadium - Kansas City, Missouri, United States - United States": "b6e806a0-61cb-4a49-8384-701a2ae61180",
+        "Arrowhead Stadium, Kansas City, MO, USA": "b6e806a0-61cb-4a49-8384-701a2ae61180",
+        "Stamford Bridge, London, England": "697520ca-d03b-45b1-a913-afe3d13a3371",
+        "Bank of America Stadium": "543d7f78-3dd0-4046-a366-80ca231e8898",
+        "Bank of America Stadium - Charlotte - NC - 28202": "543d7f78-3dd0-4046-a366-80ca231e8898",
+        "Bank of America Stadium - Charlotte, NC, United States - United States": "543d7f78-3dd0-4046-a366-80ca231e8898"
     }
 }
