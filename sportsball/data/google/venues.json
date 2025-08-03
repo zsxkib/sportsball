@@ -599,6 +599,126 @@
             "housenumber": "111",
             "country": "Brazil",
             "type": "venue"
+        },
+        "f50cbb08-adcb-489b-9fcd-adde32f17ee8": {
+            "city": "Cullowhee",
+            "state": "NC",
+            "postal": "",
+            "lat": 35.309722,
+            "lng": -83.183333,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "b1e15bb5-ca65-4c0a-a5f4-c6477c392fef": {
+            "city": "London",
+            "state": "",
+            "postal": "N17 0BX",
+            "lat": 51.6042204,
+            "lng": -0.071094,
+            "housenumber": "782",
+            "country": "UK",
+            "type": "venue"
+        },
+        "a9e2fa02-4eb3-45c2-9663-f3bcaf567726": {
+            "city": "Birmingham",
+            "state": "AL",
+            "postal": "",
+            "lat": 33.52378,
+            "lng": -86.812935,
+            "housenumber": "2100",
+            "country": "USA",
+            "type": "venue"
+        },
+        "83a236ad-19c2-46ed-9c72-3a14736c17cf": {
+            "city": "Wembley",
+            "state": "",
+            "postal": "HA9 0WS",
+            "lat": 51.5560247,
+            "lng": -0.2821926,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "5d8bbf93-1288-4569-b28a-e395aa3b5015": {
+            "city": "Chapel Hill",
+            "state": "NC",
+            "postal": "27514",
+            "lat": 35.906944,
+            "lng": -79.047778,
+            "housenumber": "78",
+            "country": "USA",
+            "type": "venue"
+        },
+        "3fb131f7-c9b1-4fac-aa97-5521387414ce": {
+            "city": "Minneapolis",
+            "state": "MN",
+            "postal": "55415",
+            "lat": 44.9736461,
+            "lng": -93.2600694,
+            "housenumber": "401",
+            "country": "USA",
+            "type": "venue"
+        },
+        "ba2badaf-4f4d-47c1-bd9c-ce20c944165f": {
+            "city": "Detroit",
+            "state": "MI",
+            "postal": "",
+            "lat": 42.325278,
+            "lng": -83.051389,
+            "housenumber": "19",
+            "country": "USA",
+            "type": "venue"
+        },
+        "379ce6a2-2b84-4a80-811f-cbab46b6d4c8": {
+            "city": "München",
+            "state": "",
+            "postal": "80939",
+            "lat": 48.2187966,
+            "lng": 11.6221325,
+            "housenumber": "25",
+            "country": "Germany",
+            "type": "venue"
+        },
+        "189335f3-b55c-4501-9b90-d8385384f9ac": {
+            "city": "St. Louis",
+            "state": "MO",
+            "postal": "",
+            "lat": 38.6225,
+            "lng": -90.193056,
+            "housenumber": "700",
+            "country": "USA",
+            "type": "venue"
+        },
+        "d038edb8-439b-4cf8-b916-abdbedce45aa": {
+            "city": "Frankfurt",
+            "state": "",
+            "postal": "60528",
+            "lat": 50.0685807,
+            "lng": 8.6428971,
+            "housenumber": "362",
+            "country": "Germany",
+            "type": "venue"
+        },
+        "a065b054-56d6-47df-b1c7-8cf5740ac3fc": {
+            "city": "Birmingham",
+            "state": "",
+            "postal": "B6 6HE",
+            "lat": 52.509167,
+            "lng": -1.884722,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "3cfa1db0-18c7-47d1-ae20-bb791bfc4a46": {
+            "city": "St. Louis",
+            "state": "MO",
+            "postal": "63101",
+            "lat": 38.6328232,
+            "lng": -90.1910817,
+            "housenumber": "701",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -789,6 +909,40 @@
         "New Orleans Arena, New Orleans, Louisiana": "b96a1332-d63b-45e0-9e1d-9f574adf386a",
         "Goodison Park, Liverpool, England": "eb777022-f027-41b7-9b78-27153091ff3d",
         "Neo Química Arena": "23e7778f-d138-48c8-8401-5d2f275354c9",
-        "Neo Química Arena - São Paulo, Brazil - Brazil": "23e7778f-d138-48c8-8401-5d2f275354c9"
+        "Neo Química Arena - São Paulo, Brazil - Brazil": "23e7778f-d138-48c8-8401-5d2f275354c9",
+        "Western Carolina University": "f50cbb08-adcb-489b-9fcd-adde32f17ee8",
+        "Tottenham Hotspur Stadium": "b1e15bb5-ca65-4c0a-a5f4-c6477c392fef",
+        "Tottenham Hotspur Stadium - London": "b1e15bb5-ca65-4c0a-a5f4-c6477c392fef",
+        "Tottenham Hotspur Stadium - Bill Nicholson Way, Tottenham, London - England": "b1e15bb5-ca65-4c0a-a5f4-c6477c392fef",
+        "Legacy Arena - Birmingham, Alabama - United States": "a9e2fa02-4eb3-45c2-9663-f3bcaf567726",
+        "Legacy Arena, Birmingham, Alabama": "a9e2fa02-4eb3-45c2-9663-f3bcaf567726",
+        "Wembley Stadium": "83a236ad-19c2-46ed-9c72-3a14736c17cf",
+        "Wembley Stadium - London": "83a236ad-19c2-46ed-9c72-3a14736c17cf",
+        "Wembley Stadium - Wembley, London - International": "83a236ad-19c2-46ed-9c72-3a14736c17cf",
+        "Wembley Stadium - Wembley, London - England": "83a236ad-19c2-46ed-9c72-3a14736c17cf",
+        "Kenan Memorial Stadium - Chapel Hill, North Carolina, USA - United States": "5d8bbf93-1288-4569-b28a-e395aa3b5015",
+        "Kenan Stadium - Chapel Hill - NC - 27514": "5d8bbf93-1288-4569-b28a-e395aa3b5015",
+        "Huntington Bank Stadium, Minneapolis, MN, USA": "3fb131f7-c9b1-4fac-aa97-5521387414ce",
+        "U.S. Bank Stadium - Minneapolis - MN - 55415": "3fb131f7-c9b1-4fac-aa97-5521387414ce",
+        "Huntington Bank Stadium - Minneapolis - MN - 55455": "3fb131f7-c9b1-4fac-aa97-5521387414ce",
+        "Mall of America Field - Minneapolis - MN - 55415": "3fb131f7-c9b1-4fac-aa97-5521387414ce",
+        "Metrodome - Minneapolis - MN - 55415": "3fb131f7-c9b1-4fac-aa97-5521387414ce",
+        "U.S. Bank Stadium - Minneapolis, Minnesota, USA - United States": "3fb131f7-c9b1-4fac-aa97-5521387414ce",
+        "U.S. Bank Stadium, Minneapolis, MN, USA": "3fb131f7-c9b1-4fac-aa97-5521387414ce",
+        "U.S. Bank Stadium, Minneapolis, Minnesota": "3fb131f7-c9b1-4fac-aa97-5521387414ce",
+        "Joe Louis Arena, Detroit, MI, USA": "ba2badaf-4f4d-47c1-bd9c-ce20c944165f",
+        "Joe Louis Arena - Detroit, Michigan - United States": "ba2badaf-4f4d-47c1-bd9c-ce20c944165f",
+        "Allianz Arena": "379ce6a2-2b84-4a80-811f-cbab46b6d4c8",
+        "Allianz Arena - Munich": "379ce6a2-2b84-4a80-811f-cbab46b6d4c8",
+        "Allianz Arena - Munich, Germany - Germany": "379ce6a2-2b84-4a80-811f-cbab46b6d4c8",
+        "Busch Stadium, St. Louis, MO, USA": "189335f3-b55c-4501-9b90-d8385384f9ac",
+        "Busch Stadium (III) - St. Louis, MO - United States": "189335f3-b55c-4501-9b90-d8385384f9ac",
+        "Busch Stadium III": "189335f3-b55c-4501-9b90-d8385384f9ac",
+        "Deutsche Bank Park": "d038edb8-439b-4cf8-b916-abdbedce45aa",
+        "Frankfurt Stadium - Frankfurt": "d038edb8-439b-4cf8-b916-abdbedce45aa",
+        "Deutsche Bank Park - Frankfurt, Germany - Germany": "d038edb8-439b-4cf8-b916-abdbedce45aa",
+        "Villa Park, Birmingham, England": "a065b054-56d6-47df-b1c7-8cf5740ac3fc",
+        "Trans World Dome": "3cfa1db0-18c7-47d1-ae20-bb791bfc4a46",
+        "The Dome at America's Center - St. Louis - MO - 63101": "3cfa1db0-18c7-47d1-ae20-bb791bfc4a46"
     }
 }
