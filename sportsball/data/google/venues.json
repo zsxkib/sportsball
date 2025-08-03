@@ -949,6 +949,136 @@
             "housenumber": "",
             "country": "Australia",
             "type": "venue"
+        },
+        "d749b0a3-f780-4d86-8c8a-e798272249a7": {
+            "city": "Brookings",
+            "state": "SD",
+            "postal": "",
+            "lat": 44.318056,
+            "lng": -96.783333,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "395f6646-e37b-401d-af98-23f1df2af8ab": {
+            "city": "Richmond",
+            "state": "VIC",
+            "postal": "3002",
+            "lat": -37.8199668,
+            "lng": 144.9785784,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "b53cc5f3-4827-4efe-a5f9-67a5d663553e": {
+            "city": "New York",
+            "state": "NY",
+            "postal": "",
+            "lat": 40.712778,
+            "lng": -74.006111,
+            "housenumber": "",
+            "country": "USA",
+            "type": "city"
+        },
+        "60cc2b2c-393d-4035-8a4a-011ef5c96b96": {
+            "city": "Carlton North",
+            "state": "VIC",
+            "postal": "3054",
+            "lat": -37.7849821,
+            "lng": 144.9565047,
+            "housenumber": "200-590",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "a8cf2e14-c718-40be-a217-c669130a3f04": {
+            "city": "West Lafayette",
+            "state": "IN",
+            "postal": "47906",
+            "lat": 40.434444,
+            "lng": -86.918333,
+            "housenumber": "850",
+            "country": "USA",
+            "type": "venue"
+        },
+        "a1052505-7d77-4d4e-ae6e-18ca641b0833": {
+            "city": "East Melbourne",
+            "state": "VIC",
+            "postal": "3002",
+            "lat": -37.8222208,
+            "lng": 144.9856865,
+            "housenumber": "",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "be43e7df-cebb-449d-ab58-9c1ff1ae1061": {
+            "city": "Essendon",
+            "state": "VIC",
+            "postal": "3040",
+            "lat": -37.7515878,
+            "lng": 144.9001347,
+            "housenumber": "",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "78ee8318-14b0-4b11-b1af-29ef72b3daa5": {
+            "city": "Derby",
+            "state": "",
+            "postal": "DE24 8XL",
+            "lat": 52.915,
+            "lng": -1.447222,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "8e146665-d362-496f-af4c-3d55166e2968": {
+            "city": "Orlando",
+            "state": "FL",
+            "postal": "32805",
+            "lat": 28.5390192,
+            "lng": -81.4033962,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
+        },
+        "acf65d25-2161-4d92-8153-fa345b470a26": {
+            "city": "Minneapolis",
+            "state": "MN",
+            "postal": "",
+            "lat": 44.981667,
+            "lng": -93.278333,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
+        },
+        "8cccf2e9-113e-4137-bd83-6612c806c58c": {
+            "city": "Ciudad de México",
+            "state": "CDMX",
+            "postal": "04650",
+            "lat": 19.3028606,
+            "lng": -99.1553986,
+            "housenumber": "3465",
+            "country": "Mexico",
+            "type": "venue"
+        },
+        "c7b513eb-e5d9-40f7-a917-8af41af51588": {
+            "city": "London",
+            "state": "",
+            "postal": "",
+            "lat": 51.552,
+            "lng": -0.097,
+            "housenumber": "",
+            "country": "UK",
+            "type": "suburb"
+        },
+        "53c1a222-afe8-4c3b-b73a-a85a1c15673c": {
+            "city": "Hawthorn",
+            "state": "VIC",
+            "postal": "3122",
+            "lat": -37.8206183,
+            "lng": 145.0303644,
+            "housenumber": "34",
+            "country": "Australia",
+            "type": "venue"
         }
     },
     "searches": {
@@ -964,6 +1094,7 @@
         "MetLife Stadium - East Rutherford, New Jersey - United States": "7b9c3f52-bb1a-43d9-b074-4b39f5ab12ef",
         "Giants Stadium, East Rutherford, NJ, USA": "7b9c3f52-bb1a-43d9-b074-4b39f5ab12ef",
         "Gillette Stadium": "3219c262-e48f-46bf-94fe-fb037f71dad8",
+        "Foxboro Stadium, Foxborough, MA, USA": "3219c262-e48f-46bf-94fe-fb037f71dad8",
         "Acrisure Stadium": "5596c265-234f-40a0-8dab-88d5a7d91858",
         "Hard Rock Stadium": "b7636e4f-4eb7-4874-8a90-84a0a089b99b",
         "M&T Bank Stadium": "210e9d8a-9efb-47c6-bcda-bad075616325",
@@ -1242,6 +1373,29 @@
         "Kauffman Stadium": "19041e2d-a371-479d-a1bc-7264cbf80068",
         "East Melbourne - Australia": "56a0b392-918c-41b5-9241-937a6d519349",
         "St. Andrew's Stadium, Birmingham, England": "9d1f427b-4106-40ab-8708-de08bc1cd144",
-        "Junction Oval - Australia": "9939510e-feb6-4e0d-aa10-e8f9f3d5f3a6"
+        "Junction Oval - Australia": "9939510e-feb6-4e0d-aa10-e8f9f3d5f3a6",
+        "South Dakota State University": "d749b0a3-f780-4d86-8c8a-e798272249a7",
+        "South Dakota State College": "d749b0a3-f780-4d86-8c8a-e798272249a7",
+        "M.C.G. - Australia": "395f6646-e37b-401d-af98-23f1df2af8ab",
+        "MCG": "395f6646-e37b-401d-af98-23f1df2af8ab",
+        "Melbourne Cricket Ground, Melbourne, Australia": "395f6646-e37b-401d-af98-23f1df2af8ab",
+        "Melbourne Cricket Ground, Melbourne, Austrália": "395f6646-e37b-401d-af98-23f1df2af8ab",
+        "MCG, Melbourne": "395f6646-e37b-401d-af98-23f1df2af8ab",
+        "New York": "b53cc5f3-4827-4efe-a5f9-67a5d663553e",
+        "New York, New York": "b53cc5f3-4827-4efe-a5f9-67a5d663553e",
+        "New York, New York, United States": "b53cc5f3-4827-4efe-a5f9-67a5d663553e",
+        "Princes Park - Australia": "60cc2b2c-393d-4035-8a4a-011ef5c96b96",
+        "Ross-Ade Stadium": "a8cf2e14-c718-40be-a217-c669130a3f04",
+        "Ross-Ade Stadium - West Lafayette - IN - 47906": "a8cf2e14-c718-40be-a217-c669130a3f04",
+        "Punt Rd - Australia": "a1052505-7d77-4d4e-ae6e-18ca641b0833",
+        "Windy Hill - Australia": "be43e7df-cebb-449d-ab58-9c1ff1ae1061",
+        "Pride Park, Derby, England": "78ee8318-14b0-4b11-b1af-29ef72b3daa5",
+        "Camping World Stadium - Orlando - FL - 32805": "8e146665-d362-496f-af4c-3d55166e2968",
+        "Camping World Stadium, Orlando, FL, USA": "8e146665-d362-496f-af4c-3d55166e2968",
+        "Target Field, Minneapolis, MN, USA": "acf65d25-2161-4d92-8153-fa345b470a26",
+        "Target Field": "acf65d25-2161-4d92-8153-fa345b470a26",
+        "Estadio Azteca - Mexico City": "8cccf2e9-113e-4137-bd83-6612c806c58c",
+        "Highbury, London, England": "c7b513eb-e5d9-40f7-a917-8af41af51588",
+        "Glenferrie Oval - Australia": "53c1a222-afe8-4c3b-b73a-a85a1c15673c"
     }
 }

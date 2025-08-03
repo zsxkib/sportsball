@@ -220,15 +220,6 @@ LIBERTY_BOWL_MEMORIAL_STADIUM = SportsballGeocodeTuple(
     housenumber="959",
     country="USA",
 )
-MCG = SportsballGeocodeTuple(
-    city="Richmond",
-    state="VIC",
-    postal="3002",
-    lat=-37.8199668,
-    lng=144.9785784,
-    housenumber="",
-    country="USA",
-)
 SCG = SportsballGeocodeTuple(
     city="Moore Park",
     state="NSW",
@@ -2407,15 +2398,6 @@ DALLAS = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-NEW_YORK = SportsballGeocodeTuple(
-    city="New York",
-    state="NY",
-    postal="",
-    lat=40.712778,
-    lng=-74.006111,
-    housenumber="",
-    country="USA",
-)
 WASHINGTON = SportsballGeocodeTuple(
     city="Washington",
     state="DC",
@@ -3422,15 +3404,6 @@ MARTIN_STADIUM = SportsballGeocodeTuple(
     lat=46.732,
     lng=-117.16,
     housenumber="720",
-    country="USA",
-)
-CAMPING_WORLD_STADIUM = SportsballGeocodeTuple(
-    city="Orlando",
-    state="FL",
-    postal="32805",
-    lat=28.5390192,
-    lng=-81.4033962,
-    housenumber="1",
     country="USA",
 )
 LEGION_FIELD = SportsballGeocodeTuple(
@@ -4757,53 +4730,6 @@ BOONE_PICKENS_STADIUM = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "M.C.G. - Australia": MCG,
-    "Princes Park - Australia": SportsballGeocodeTuple(
-        city="Carlton North",
-        state="VIC",
-        postal="3054",
-        lat=-37.7849821,
-        lng=144.9565047,
-        housenumber="200-590",
-        country="Australia",
-    ),
-    "Punt Rd - Australia": SportsballGeocodeTuple(
-        city="East Melbourne",
-        state="VIC",
-        postal="3002",
-        lat=-37.8222208,
-        lng=144.9856865,
-        housenumber="",
-        country="Australia",
-    ),
-    "Windy Hill - Australia": SportsballGeocodeTuple(
-        city="Essendon",
-        state="VIC",
-        postal="3040",
-        lat=-37.7515878,
-        lng=144.9001347,
-        housenumber="",
-        country="Australia",
-    ),
-    "Camping World Stadium - Orlando - FL - 32805": CAMPING_WORLD_STADIUM,
-    "Estadio Azteca - Mexico City": SportsballGeocodeTuple(
-        city="Ciudad de México",
-        state="CDMX",
-        postal="04650",
-        lat=19.3028606,
-        lng=-99.1553986,
-        housenumber="3465",
-        country="Mexico",
-    ),
-    "Glenferrie Oval - Australia": SportsballGeocodeTuple(
-        city="Hawthorn",
-        state="VIC",
-        postal="3122",
-        lat=-37.8206183,
-        lng=145.0303644,
-        housenumber="34",
-        country="Australia",
-    ),
     "Dignity Health Sports Park - Carson - CA - 90746": DIGNITY_HEALTH_SPORTS_PARK,
     "Arden St - Australia": SportsballGeocodeTuple(
         city="North Melbourne",
@@ -5068,7 +4994,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Riverway Stadium - Australia": RIVERWAY_STADIUM,
     "Norwood Oval - Australia": NORWOOD_OVAL,
     "Summit Sports Park - Australia": ADELAIDE_HILLS,
-    "MCG": MCG,
     "SCG": SCG,
     "ENGIE Stadium": ENGIE_STADIUM,
     "Adelaide Oval": ADELAIDE_OVAL,
@@ -5185,15 +5110,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="Ireland",
     ),
     "Doak Campbell Stadium - Tallahassee - FL - 32304": DOAK_CAMPBELL_STADIUM,
-    "Ross-Ade Stadium - West Lafayette - IN - 47906": SportsballGeocodeTuple(
-        city="West Lafayette",
-        state="IN",
-        postal="47906",
-        lat=40.434444,
-        lng=-86.918333,
-        housenumber="850",
-        country="USA",
-    ),
     "Clarence T.C. Ching Athletics Complex - Honolulu - HI - 96822": SportsballGeocodeTuple(
         city="Honolulu",
         state="HI",
@@ -8500,7 +8416,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Sydney Cricket Ground, Sydney, Australia": SCG,
     "People First Stadium, Gold Coast, Australia": PEOPLE_FIRST_STADIUM,
     "Engie Stadium, Sydney, Australia": ENGIE_STADIUM,
-    "Melbourne Cricket Ground, Melbourne, Australia": MCG,
     "GMHBA Stadium, Geelong, Australia": GMHBA_STADIUM,
     "Marvel Stadium, Melbourne, Australia": MARVEL_STADIUM,
     "Adelaide Oval, Adelaide, Australia": ADELAIDE_OVAL,
@@ -11583,7 +11498,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="201",
         country="USA",
     ),
-    "Melbourne Cricket Ground, Melbourne, Austrália": MCG,
     "Marvel Stadium, Melbourne, Austrália": MARVEL_STADIUM,
     "Adelaide Oval, Adelaide, Austrália": ADELAIDE_OVAL,
     "The Gabba, Brisbane, Austrália": GABBA,
@@ -11616,7 +11530,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="515",
         country="USA",
     ),
-    "New York, New York": NEW_YORK,
     "69th Regiment Armory, New York, New York": SportsballGeocodeTuple(
         city="New York",
         state="NY",
@@ -13743,7 +13656,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "TIO Stadium, Darwin": TIO_STADIUM,
     "SCG, Sydney": SCG,
-    "MCG, Melbourne": MCG,
     "Adelaide Oval, Adelaide": ADELAIDE_OVAL,
     "ENGIE Stadium, Sydney": ENGIE_STADIUM,
     "Marvel Stadium, Melbourne": MARVEL_STADIUM,
@@ -14344,7 +14256,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Serbia",
     ),
-    "New York, New York, United States": NEW_YORK,
     "Washington, District of Columbia, United States": WASHINGTON,
     "Hoke, North Carolina, United States": SportsballGeocodeTuple(
         city="Hoke",
@@ -18147,7 +18058,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Martin Stadium": MARTIN_STADIUM,
-    "Camping World Stadium, Orlando, FL, USA": CAMPING_WORLD_STADIUM,
     "Fredricksburg, VA, USA": SportsballGeocodeTuple(
         city="Fredricksburg",
         state="VA",
@@ -20527,15 +20437,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "South Dakota State College": SportsballGeocodeTuple(
-        city="Brookings",
-        state="SD",
-        postal="",
-        lat=44.318056,
-        lng=-96.783333,
-        housenumber="",
-        country="USA",
-    ),
     "Stony Brook College": SportsballGeocodeTuple(
         city="Stony Brook",
         state="NY",
@@ -22667,15 +22568,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Times Union Center - Albany, New York - United States": TIMES_UNION_CENTER,
     "Autzen Stadium": AUTZEN_STADIUM,
     "O2 Arena": O2_ARENA,
-    "Target Field": SportsballGeocodeTuple(
-        city="Minneapolis",
-        state="MN",
-        postal="",
-        lat=44.981667,
-        lng=-93.278333,
-        housenumber="1",
-        country="USA",
-    ),
     "Lenovo Center - Raleigh, North Carolina, United States - United States": LENOVO_CENTER,
     "Purdue University": SportsballGeocodeTuple(
         city="West Lafayette",
