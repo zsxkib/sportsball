@@ -1079,6 +1079,126 @@
             "housenumber": "34",
             "country": "Australia",
             "type": "venue"
+        },
+        "ea10c038-269f-441c-8fbc-b1c81177536c": {
+            "city": "Athens",
+            "state": "OH",
+            "postal": "45701",
+            "lat": 39.321111,
+            "lng": -82.102778,
+            "housenumber": "200",
+            "country": "USA",
+            "type": "venue"
+        },
+        "d27176ce-1e6b-457a-922a-2b25e657ac43": {
+            "city": "Carson",
+            "state": "CA",
+            "postal": "90746",
+            "lat": 33.8643776,
+            "lng": -118.2660135,
+            "housenumber": "18400",
+            "country": "USA",
+            "type": "venue"
+        },
+        "a2e9a49f-cbc1-451f-94f9-56bb224ed222": {
+            "city": "Milwaukee",
+            "state": "WI",
+            "postal": "",
+            "lat": 43.028333,
+            "lng": -87.971111,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
+        },
+        "74032078-1b05-45cb-9d36-8e30e04488e0": {
+            "city": "North Melbourne",
+            "state": "VIC",
+            "postal": "3051",
+            "lat": -37.7989787,
+            "lng": 144.9388898,
+            "housenumber": "204-206",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "d7467392-c862-4fad-804a-8c6df019768e": {
+            "city": "Bournemouth",
+            "state": "Dorset",
+            "postal": "BH7 7AF",
+            "lat": 50.735278,
+            "lng": -1.838333,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "8d552ac4-4929-4c60-b346-ff752aca9cd4": {
+            "city": "Oakland",
+            "state": "CA",
+            "postal": "94621",
+            "lat": 37.7514142,
+            "lng": -122.2034855,
+            "housenumber": "204-206",
+            "country": "USA",
+            "type": "venue"
+        },
+        "c9f1c69e-b394-4e4a-9126-63956eb4c62b": {
+            "city": "Brenham",
+            "state": "TX",
+            "postal": "",
+            "lat": 30.159722,
+            "lng": -122.2034855,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "b8058648-2769-4b3e-a5f3-fbda691ba66a": {
+            "city": "Los Angeles",
+            "state": "CA",
+            "postal": "90037",
+            "lat": 34.0136647,
+            "lng": -118.2904104,
+            "housenumber": "3911",
+            "country": "USA",
+            "type": "venue"
+        },
+        "da1f647b-9753-4544-8ae2-7db80937e033": {
+            "city": "Fairborn",
+            "state": "OH",
+            "postal": "",
+            "lat": 39.785,
+            "lng": -84.059,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "0d3370d1-5e80-48f3-ac60-0e8af13e26be": {
+            "city": "Parkville",
+            "state": "VIC",
+            "postal": "3052",
+            "lat": -37.7781687,
+            "lng": 144.9505349,
+            "housenumber": "",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "92b4b391-66b7-4af6-9da2-febac3239c5c": {
+            "city": "Hamilton",
+            "state": "ON",
+            "postal": "",
+            "lat": 43.252114,
+            "lng": -79.8301,
+            "housenumber": "64",
+            "country": "Canada",
+            "type": "venue"
+        },
+        "fcce0a61-8e59-446a-8839-06df2131849c": {
+            "city": "Twickenham",
+            "state": "",
+            "postal": "TW2 7BA",
+            "lat": 51.4559558,
+            "lng": -0.34408,
+            "housenumber": "200",
+            "country": "UK",
+            "type": "venue"
         }
     },
     "searches": {
@@ -1395,7 +1515,30 @@
         "Target Field, Minneapolis, MN, USA": "acf65d25-2161-4d92-8153-fa345b470a26",
         "Target Field": "acf65d25-2161-4d92-8153-fa345b470a26",
         "Estadio Azteca - Mexico City": "8cccf2e9-113e-4137-bd83-6612c806c58c",
+        "Estadio Azteca, Mexico City, Mexico": "8cccf2e9-113e-4137-bd83-6612c806c58c",
         "Highbury, London, England": "c7b513eb-e5d9-40f7-a917-8af41af51588",
-        "Glenferrie Oval - Australia": "53c1a222-afe8-4c3b-b73a-a85a1c15673c"
+        "Glenferrie Oval - Australia": "53c1a222-afe8-4c3b-b73a-a85a1c15673c",
+        "Peden Stadium": "ea10c038-269f-441c-8fbc-b1c81177536c",
+        "Peden Stadium - Athens - OH - 45701": "ea10c038-269f-441c-8fbc-b1c81177536c",
+        "Dignity Health Sports Park - Carson - CA - 90746": "d27176ce-1e6b-457a-922a-2b25e657ac43",
+        "Dignity Health Sports Park, Carson, CA, USA": "d27176ce-1e6b-457a-922a-2b25e657ac43",
+        "American Family Field": "a2e9a49f-cbc1-451f-94f9-56bb224ed222",
+        "American Family Field, Milwaukee, WI, USA": "a2e9a49f-cbc1-451f-94f9-56bb224ed222",
+        "Arden St - Australia": "74032078-1b05-45cb-9d36-8e30e04488e0",
+        "Vitality Stadium, Bournemouth, England": "d7467392-c862-4fad-804a-8c6df019768e",
+        "Oakland Coliseum - Oakland - CA - 94621": "8d552ac4-4929-4c60-b346-ff752aca9cd4",
+        "Oakland Coliseum": "8d552ac4-4929-4c60-b346-ff752aca9cd4",
+        "Blinn College": "c9f1c69e-b394-4e4a-9126-63956eb4c62b",
+        "Los Angeles Memorial Coliseum - Los Angeles - CA - 90037": "b8058648-2769-4b3e-a5f3-fbda691ba66a",
+        "Los Angeles Memorial Coliseum": "b8058648-2769-4b3e-a5f3-fbda691ba66a",
+        "Los Angeles Memorial Coliseum - Los Angeles, California - United States": "b8058648-2769-4b3e-a5f3-fbda691ba66a",
+        "Los Angeles Memorial Sports Arena": "b8058648-2769-4b3e-a5f3-fbda691ba66a",
+        "Los Angeles Memorial Sports Arena, Los Angeles, California": "b8058648-2769-4b3e-a5f3-fbda691ba66a",
+        "L. A. Sports Arena, Los Angeles, California": "b8058648-2769-4b3e-a5f3-fbda691ba66a",
+        "Los Angeles Memorial Coliseum, Los Angeles, CA, USA": "b8058648-2769-4b3e-a5f3-fbda691ba66a",
+        "Wright State University": "da1f647b-9753-4544-8ae2-7db80937e033",
+        "Western Oval - Australia": "0d3370d1-5e80-48f3-ac60-0e8af13e26be",
+        "Tim Horton's Field": "92b4b391-66b7-4af6-9da2-febac3239c5c",
+        "Twickenham Stadium - London": "fcce0a61-8e59-446a-8839-06df2131849c"
     }
 }
