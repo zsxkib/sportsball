@@ -63,7 +63,14 @@ def main() -> None:
             }).to_parquet(handle, compression="gzip")
             handle.seek(0)
     if args.file == _STDOUT_FILE:
-        sys.stdout.buffer.write(handle.getbuffer())
+        try:
+            sys.stdout.buffer.write(handle.getbuffer())
+        except BrokenPipeError:
+            # Handle broken pipe gracefully - downstream process closed pipe
+            # This is normal behavior when piping to commands that don't need all data
+            sys.exit(0)
+        except KeyboardInterrupt:
+            sys.exit(1)
     else:
         with open(args.file, "wb") as fhandle:
             fhandle.write(handle.getbuffer())

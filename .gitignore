@@ -173,3 +173,6 @@ ret.parquet
 .sportsball_cache*
 *.parquet.gzip
 .testmondata*
+
+# Local development dependencies
+wavetrainer/
