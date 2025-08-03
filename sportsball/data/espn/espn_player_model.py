@@ -11,6 +11,7 @@ from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta
 
 from ...cache import MEMORY
+from ..google.address_exception import AddressException
 from ..google.google_address_model import create_google_address_model
 from ..player_model import VERSION, PlayerModel
 from ..sex import Sex
@@ -677,9 +678,14 @@ def _create_espn_player_model(
     position_dict = position_response.json()
     college_dict = {}
     if "college" in athlete_dict:
-        college_response = session.get(athlete_dict["college"]["$ref"])
-        college_response.raise_for_status()
-        college_dict = college_response.json()
+        college_url = athlete_dict["college"]["$ref"]
+        if (
+            college_url
+            != "http://sports.core.api.espn.com/v2/colleges/429?lang=en&region=us"
+        ):
+            college_response = session.get(college_url)
+            college_response.raise_for_status()
+            college_dict = college_response.json()
     name = athlete_dict.get("fullName", identifier)
 
     birth_date = None
@@ -720,7 +726,7 @@ def _create_espn_player_model(
             college = create_espn_venue_model(
                 venue=college_dict, session=session, dt=dt, version=VENUE_VERSION
             )
-    except (ValueError, KeyError) as exc:
+    except (KeyError, AddressException) as exc:
         logging.warning("Failed to get college: %s", str(exc))
 
     headshot = None

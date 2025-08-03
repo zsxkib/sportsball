@@ -15,6 +15,7 @@ from dateutil.relativedelta import relativedelta
 from scrapesession.session import DEFAULT_TIMEOUT  # type: ignore
 
 from ...cache import MEMORY
+from ..google.address_exception import AddressException
 from ..google.google_address_model import create_google_address_model
 from ..player_model import VERSION, PlayerModel
 from ..sex import Sex
@@ -285,7 +286,7 @@ def _create_sportsreference_player_model(
                     session=session,
                     dt=None,
                 )
-            except ValueError as exc:
+            except AddressException as exc:
                 logging.warning("Failed to find birth address: %s", str(exc))
         if "height" in jsonld:
             height_ft_inches = jsonld["height"]["value"].split()[0].split("-")
@@ -317,7 +318,7 @@ def _create_sportsreference_player_model(
             college = create_sportsreference_venue_model(
                 venue_name=title, session=session, dt=dt
             )
-        except ValueError as exc:
+        except AddressException as exc:
             logging.warning("Failed to find college: %s", str(exc))
         if college is None:
             continue

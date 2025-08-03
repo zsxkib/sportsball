@@ -55,6 +55,9 @@ _NON_WAYBACK_URLS: set[str] = {
     "https://www.hockey-reference.com/boxscores/202311180OTT.html",
     "https://www.hockey-reference.com/boxscores/202311170DET.html",
     "https://www.hockey-reference.com/boxscores/202311160OTT.html",
+    "https://www.hockey-reference.com/boxscores/202210080SJS.html",
+    "https://www.hockey-reference.com/boxscores/202210070NSH.html",
+    "https://www.baseball-reference.com/boxes/OAK/OAK202405081.shtml",
 }
 
 
@@ -2673,7 +2676,7 @@ def _create_sportsreference_game_model(
     game_text = soup.get_text().replace("\n", "")
     attendance = None
     if "Attendance:" in game_text:
-        attendance = int(
+        attendance_text = (
             game_text.split("Attendance:")[1]
             .strip()
             .split()[0]
@@ -2687,6 +2690,8 @@ def _create_sportsreference_game_model(
             .replace("Venue:", "")
             .replace("Game", "")
         )
+        if attendance_text != "Not":
+            attendance = int(attendance_text)
 
     try:
         return GameModel(

@@ -173,6 +173,7 @@ ret.parquet
 .sportsball_cache*
 *.parquet.gzip
 .testmondata*
+*.sqlite-journal
 
 # Local development dependencies
 wavetrainer/
