@@ -11,6 +11,7 @@ from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta
 
 from ...cache import MEMORY
+from ..google.address_exception import AddressException
 from ..google.google_address_model import create_google_address_model
 from ..player_model import VERSION, PlayerModel
 from ..sex import Sex
@@ -725,7 +726,7 @@ def _create_espn_player_model(
             college = create_espn_venue_model(
                 venue=college_dict, session=session, dt=dt, version=VENUE_VERSION
             )
-    except (ValueError, KeyError) as exc:
+    except (KeyError, AddressException) as exc:
         logging.warning("Failed to get college: %s", str(exc))
 
     headshot = None
