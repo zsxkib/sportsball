@@ -1459,6 +1459,146 @@
             "housenumber": "1",
             "country": "Australia",
             "type": "venue"
+        },
+        "bd5cea91-2009-485a-ada9-2f25d93120bf": {
+            "city": "Santa Clara",
+            "state": "CA",
+            "postal": "",
+            "lat": 37.349167,
+            "lng": -121.938056,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "4383cf4c-a2e7-448f-bd60-f04d08e373de": {
+            "city": "Bowen Hills",
+            "state": "QLD",
+            "postal": "4006",
+            "lat": -27.4503048,
+            "lng": 153.0301872,
+            "housenumber": "600",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "378df2fe-3826-4584-a098-0a2c9b418bef": {
+            "city": "New Britain",
+            "state": "CT",
+            "postal": "",
+            "lat": 41.693,
+            "lng": -72.765,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "602bd8f4-763e-4652-bb1e-6b8065f6e408": {
+            "city": "Tempe",
+            "state": "AZ",
+            "postal": "85287",
+            "lat": 33.4264574,
+            "lng": -111.9374442,
+            "housenumber": "500",
+            "country": "USA",
+            "type": "venue"
+        },
+        "68e86bf5-0e83-4923-af40-557e94dafef9": {
+            "city": "Notre Dame",
+            "state": "IN",
+            "postal": "46556",
+            "lat": 41.69833,
+            "lng": -86.23389,
+            "housenumber": "2010",
+            "country": "USA",
+            "type": "venue"
+        },
+        "3aab2cf1-3072-48cd-b240-de4121d8372d": {
+            "city": "Pontiac",
+            "state": "MI",
+            "postal": "48342",
+            "lat": 42.6456689,
+            "lng": -83.2572144,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "c28435ef-717b-4b46-b5c9-47c4fae983a8": {
+            "city": "St. Louis",
+            "state": "MO",
+            "postal": "",
+            "lat": 38.632778,
+            "lng": -90.188611,
+            "housenumber": "701",
+            "country": "USA",
+            "type": "venue"
+        },
+        "f4c19842-a581-4155-a8c4-a7a978de141d": {
+            "city": "Moorabbin",
+            "state": "VIC",
+            "postal": "3189",
+            "lat": -37.9371257,
+            "lng": 145.0404112,
+            "housenumber": "3",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "a1698713-2b24-4079-b67f-c6ad496b0118": {
+            "city": "Khabarovsk",
+            "state": "",
+            "postal": "",
+            "lat": 48.483333,
+            "lng": 135.083333,
+            "housenumber": "",
+            "country": "Russia",
+            "type": "city"
+        },
+        "18891096-2374-4954-ac3d-83cd7a574c31": {
+            "city": "Nashville",
+            "state": "TN",
+            "postal": "37212",
+            "lat": 36.1438701,
+            "lng": -86.8284249,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "ac5fa64d-8d2d-40db-a66a-c16961e6af26": {
+            "city": "Detroit",
+            "state": "MI",
+            "postal": "",
+            "lat": 42.339167,
+            "lng": -83.048611,
+            "housenumber": "2100",
+            "country": "USA",
+            "type": "venue"
+        },
+        "3df1fc70-3152-4b5a-86f5-dbd2eec06baf": {
+            "city": "Memphis",
+            "state": "TN",
+            "postal": "38119",
+            "lat": 35.1213707,
+            "lng": -89.9969239,
+            "housenumber": "959",
+            "country": "USA",
+            "type": "venue"
+        },
+        "b4cea94d-4cc5-4f7d-8012-ed541cf08a9d": {
+            "city": "Burnley",
+            "state": "",
+            "postal": "BB10 4BX",
+            "lat": 53.789167,
+            "lng": -2.230278,
+            "housenumber": "52-56",
+            "country": "UK",
+            "type": "venue"
+        },
+        "34440af5-4191-4ab7-82de-0415271403ff": {
+            "city": "Washington",
+            "state": "DC",
+            "postal": "20003",
+            "lat": 38.8898525,
+            "lng": -76.9731573,
+            "housenumber": "2400",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -1851,6 +1991,30 @@
         "Mlada Boleslav, Czechoslovakia": "5641734b-6f1f-4a97-9483-ac8d6798fd51",
         "Yallourn - Australia": "fbee3594-0fe8-4c6d-a9e4-602756a31e50",
         "Pepperdine University": "52e73134-3b79-40fe-addc-cfee949c2c33",
-        "Albury - Australia": "c82c6277-7bd8-4364-9da8-e3897f71b3a4"
+        "Albury - Australia": "c82c6277-7bd8-4364-9da8-e3897f71b3a4",
+        "Santa Clara University": "bd5cea91-2009-485a-ada9-2f25d93120bf",
+        "Brisbane Exhibition - Australia": "4383cf4c-a2e7-448f-bd60-f04d08e373de",
+        "Central Connecticut State University": "378df2fe-3826-4584-a098-0a2c9b418bef",
+        "Central Connecticut College": "378df2fe-3826-4584-a098-0a2c9b418bef",
+        "Mountain America Stadium - Tempe - AZ - 85287": "602bd8f4-763e-4652-bb1e-6b8065f6e408",
+        "Sun Devil Stadium": "602bd8f4-763e-4652-bb1e-6b8065f6e408",
+        "Sun Devil Stadium - Tempe, Arizona, USA - United States": "602bd8f4-763e-4652-bb1e-6b8065f6e408",
+        "Notre Dame Stadium - South Bend, IN - United States": "68e86bf5-0e83-4923-af40-557e94dafef9",
+        "Notre Dame Stadium - Notre Dame - IN - 46556": "68e86bf5-0e83-4923-af40-557e94dafef9",
+        "notre-dame": "68e86bf5-0e83-4923-af40-557e94dafef9",
+        "Silverdome - Pontiac - MI": "3aab2cf1-3072-48cd-b240-de4121d8372d",
+        "Pontiac Silverdome": "3aab2cf1-3072-48cd-b240-de4121d8372d",
+        "Pontiac Silverdome, Pontiac, Michigan": "3aab2cf1-3072-48cd-b240-de4121d8372d",
+        "The Dome at America's Center, St. Louis, MO, USA": "c28435ef-717b-4b46-b5c9-47c4fae983a8",
+        "Moorabbin Oval - Australia": "f4c19842-a581-4155-a8c4-a7a978de141d",
+        "Khabarovsk, Russia": "a1698713-2b24-4079-b67f-c6ad496b0118",
+        "Vanderbilt Stadium": "18891096-2374-4954-ac3d-83cd7a574c31",
+        "Comerica Park, Detroit, MI, USA": "ac5fa64d-8d2d-40db-a66a-c16961e6af26",
+        "Comerica Park": "ac5fa64d-8d2d-40db-a66a-c16961e6af26",
+        "Liberty Bowl Memorial Stadium": "3df1fc70-3152-4b5a-86f5-dbd2eec06baf",
+        "Liberty Bowl Memorial Stadium - Memphis, Tennessee, USA - United States": "3df1fc70-3152-4b5a-86f5-dbd2eec06baf",
+        "Turf Moor, Burnley, England": "b4cea94d-4cc5-4f7d-8012-ed541cf08a9d",
+        "RFK Stadium": "34440af5-4191-4ab7-82de-0415271403ff",
+        "RFK Stadium - Washington DC - United States": "34440af5-4191-4ab7-82de-0415271403ff"
     }
 }
