@@ -54,20 +54,20 @@ class GameModel(BaseModel):
 
     dt: datetime.datetime
     week: int | None = Field(..., alias=GAME_WEEK_COLUMN)
-    game_number: int | None
-    venue: VenueModel | None = Field(..., alias=VENUE_COLUMN_PREFIX)
+    game_number: int | None = None
+    venue: VenueModel | None = Field(None, alias=VENUE_COLUMN_PREFIX)
     teams: list[TeamModel] = Field(..., alias=TEAM_COLUMN_PREFIX)
     end_dt: datetime.datetime | None = Field(
-        ..., json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD}, alias=END_DT_COLUMN
+        None, json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD}, alias=END_DT_COLUMN
     )
     attendance: int | None = Field(
-        ...,
+        None,
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=GAME_ATTENDANCE_COLUMN,
     )
     league: str = Field(..., alias=LEAGUE_COLUMN)
-    year: int | None
-    season_type: SeasonType | None
+    year: int | None = None
+    season_type: SeasonType | None = None
     postponed: bool | None = Field(
         ..., json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD}, alias=POSTPONED_COLUMN
     )

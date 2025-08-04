@@ -22,19 +22,19 @@ class AddressModel(BaseModel):
     city: str = Field(..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL})
     state: str = Field(..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL})
     zipcode: str | None = Field(
-        ..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL}
+        None, json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL}
     )
-    latitude: float | None = Field(..., alias=ADDRESS_LATITUDE_COLUMN)
-    longitude: float | None = Field(..., alias=ADDRESS_LONGITUDE_COLUMN)
+    latitude: float | None = Field(None, alias=ADDRESS_LATITUDE_COLUMN)
+    longitude: float | None = Field(None, alias=ADDRESS_LONGITUDE_COLUMN)
     housenumber: str | None = Field(
-        ..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL}
+        None, json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL}
     )
-    weather: WeatherModel | None
+    weather: WeatherModel | None = None
     timezone: str = Field(
         ...,
         json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL},
         alias=ADDRESS_TIMEZONE_COLUMN,
     )
     country: str = Field(..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL})
-    altitude: float | None = Field(..., alias=ADDRESS_ALTITUDE_COLUMN)
+    altitude: float | None = Field(None, alias=ADDRESS_ALTITUDE_COLUMN)
     version: str = VERSION
