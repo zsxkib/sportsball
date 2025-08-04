@@ -31,15 +31,6 @@ SILVERDOME = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-TEXAS_STADIUM = SportsballGeocodeTuple(
-    city="Irving",
-    state="TX",
-    postal="",
-    lat=32.839722,
-    lng=-96.9146954,
-    housenumber="",
-    country="USA",
-)
 MOUNTAIN_AMERICA_STADIUM = SportsballGeocodeTuple(
     city="Tempe",
     state="AZ",
@@ -83,15 +74,6 @@ WRIGLEY_FIELD = SportsballGeocodeTuple(
     lat=41.9484384,
     lng=-87.6579076,
     housenumber="1060",
-    country="USA",
-)
-YANKEE_STADIUM = SportsballGeocodeTuple(
-    city="Bronx",
-    state="NY",
-    postal="10451",
-    lat=40.8296425,
-    lng=-73.9310454,
-    housenumber="1",
     country="USA",
 )
 TIGER_STADIUM = SportsballGeocodeTuple(
@@ -3793,15 +3775,6 @@ VIRGINIA_BEACH = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-ALOHA_STADIUM = SportsballGeocodeTuple(
-    city="Aiea",
-    state="HI",
-    postal="96701",
-    lat=21.3728016,
-    lng=-157.9348645,
-    housenumber="99-500",
-    country="USA",
-)
 TRUIST_PARK = SportsballGeocodeTuple(
     city="Atlanta",
     state="GA",
@@ -4667,44 +4640,6 @@ BOONE_PICKENS_STADIUM = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Euroa - Australia": SportsballGeocodeTuple(
-        city="Euroa",
-        state="VIC",
-        postal="3666",
-        lat=-36.7464868,
-        lng=145.5724273,
-        housenumber="",
-        country="Australia",
-    ),
-    "Aloha Stadium - Honolulu - HI - 96818": ALOHA_STADIUM,
-    "North Hobart - Australia": SportsballGeocodeTuple(
-        city="North Hobart",
-        state="TAS",
-        postal="7000",
-        lat=-42.8682555,
-        lng=147.3146486,
-        housenumber="1-5",
-        country="Australia",
-    ),
-    "Texas Stadium - Irving - TX": TEXAS_STADIUM,
-    "Yallourn - Australia": SportsballGeocodeTuple(
-        city="Yallourn North",
-        state="VIC",
-        postal="3825",
-        lat=-38.1629374,
-        lng=146.3595115,
-        housenumber="",
-        country="Australia",
-    ),
-    "Albury - Australia": SportsballGeocodeTuple(
-        city="Hamilton Valley",
-        state="NSW",
-        postal="2641",
-        lat=-36.0349793,
-        lng=146.9073391,
-        housenumber="1",
-        country="Australia",
-    ),
     "Brisbane Exhibition - Australia": SportsballGeocodeTuple(
         city="Bowen Hills",
         state="QLD",
@@ -4717,7 +4652,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Mountain America Stadium - Tempe - AZ - 85287": MOUNTAIN_AMERICA_STADIUM,
     "Silverdome - Pontiac - MI": SILVERDOME,
     "Pontiac Silverdome": SILVERDOME,
-    "Texas Stadium": TEXAS_STADIUM,
     "Sun Devil Stadium": MOUNTAIN_AMERICA_STADIUM,
     "Moorabbin Oval - Australia": SportsballGeocodeTuple(
         city="Moorabbin",
@@ -4765,7 +4699,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Yale Bowl": YALE_BOWL,
     "Tiger Stadium": TIGER_STADIUM,
     "War Memorial Stadium": WAR_MEMORIAL_STADIUM,
-    "Yankee Stadium": YANKEE_STADIUM,
     "Municipal Stadium": MUNICIPAL_STADIUM,
     "Cotton Bowl": COTTON_BOWL,
     "Kezar Stadium": KEZAR_STADIUM,
@@ -4823,7 +4756,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Kezar Stadium - San Francisco, California - United States": KEZAR_STADIUM,
     "Cotton Bowl - Dallas, Texas - United States": COTTON_BOWL,
     "Wrigley Field - Chicago, Illinois - United States": WRIGLEY_FIELD,
-    "Yankee Stadium - Bronx, New York - United States": YANKEE_STADIUM,
     "Tiger Stadium - Baton Rouge, Louisiana, USA - United States": TIGER_STADIUM,
     "RFK Stadium - Washington DC - United States": RFK_STADIUM,
     "War Memorial Stadium - Little Rock, Arkansas - United States": WAR_MEMORIAL_STADIUM,
@@ -5191,15 +5123,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Neyland Stadium - Knoxville - TN - 37996": NEYLAND_STADIUM,
-    "Bill Snyder Family Stadium - Manhattan - KS - 66502": SportsballGeocodeTuple(
-        city="Manhattan",
-        state="KS",
-        postal="66502",
-        lat=39.201944,
-        lng=-96.593889,
-        housenumber="1800",
-        country="USA",
-    ),
     "Jerry Richardson Stadium - Charlotte - NC - 28223": SportsballGeocodeTuple(
         city="Charlotte",
         state="NC",
@@ -15051,7 +14974,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "TIO Traeger Park, Alice Springs": TIO_STADIUM,
     "Yokohama Arena - Yokohama, Kanagawa - Japan": YOKOHAMA_ARENA,
     "Centre Bell - Montreal, Quebec, Canada - Canada": BELL_CENTRE,
-    "Yankee Stadium - Bronx, New York, USA - United States": YANKEE_STADIUM,
     "SPA": SportsballGeocodeTuple(
         city="",
         state="",
@@ -21440,7 +21362,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Aloha Stadium, Honolulu, HI, USA": ALOHA_STADIUM,
     "College of the Holy Cross": SportsballGeocodeTuple(
         city="Worcester",
         state="MA",
@@ -22387,7 +22308,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Canada",
     ),
-    "Yankee Stadium III": YANKEE_STADIUM,
     "University of New Orleans": SportsballGeocodeTuple(
         city="New Orleans",
         state="LA",

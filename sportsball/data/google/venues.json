@@ -1339,6 +1339,126 @@
             "housenumber": "580",
             "country": "Canada",
             "type": "venue"
+        },
+        "adbf816a-e885-4477-a484-08f310b58967": {
+            "city": "Manhattan",
+            "state": "KS",
+            "postal": "66502",
+            "lat": 39.201944,
+            "lng": -96.593889,
+            "housenumber": "1800",
+            "country": "USA",
+            "type": "venue"
+        },
+        "41e253f5-9197-4168-8970-cd35f5ba4562": {
+            "city": "Bronx",
+            "state": "NY",
+            "postal": "10451",
+            "lat": 40.8296425,
+            "lng": -73.9310454,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
+        },
+        "d2ee3c9d-140e-498c-aaf5-8e7d547c5cbc": {
+            "city": "Euroa",
+            "state": "VIC",
+            "postal": "3666",
+            "lat": -36.7464868,
+            "lng": 145.5724273,
+            "housenumber": "",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "9961d10c-97bb-4d6c-a89b-544a6e001c7e": {
+            "city": "Aiea",
+            "state": "HI",
+            "postal": "96701",
+            "lat": 21.3728016,
+            "lng": -157.9348645,
+            "housenumber": "99-500",
+            "country": "USA",
+            "type": "venue"
+        },
+        "b57f7d58-dd32-45a4-9856-a0cab5251a1b": {
+            "city": "Cardiff",
+            "state": "",
+            "postal": "",
+            "lat": 51.472781,
+            "lng": -3.203061,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "ff625519-3999-40f8-af8f-03aed7e1b705": {
+            "city": "North Hobart",
+            "state": "TAS",
+            "postal": "7000",
+            "lat": -42.8682555,
+            "lng": 147.3146486,
+            "housenumber": "1-5",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "068f05b6-fe45-4616-a7be-5e54dd2a2ddf": {
+            "city": "Little Rock",
+            "state": "AK",
+            "postal": "",
+            "lat": 34.722472,
+            "lng": -92.34065,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "b504fdf1-6d5d-4dfe-b3c5-d029861473a9": {
+            "city": "Irving",
+            "state": "TX",
+            "postal": "",
+            "lat": 32.839722,
+            "lng": -96.9146954,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "5641734b-6f1f-4a97-9483-ac8d6798fd51": {
+            "city": "Mlada Boleslav",
+            "state": "",
+            "postal": "",
+            "lat": 50.4125,
+            "lng": 14.904444,
+            "housenumber": "",
+            "country": "Czechia",
+            "type": "city"
+        },
+        "fbee3594-0fe8-4c6d-a9e4-602756a31e50": {
+            "city": "Yallourn North",
+            "state": "VIC",
+            "postal": "3825",
+            "lat": -38.1629374,
+            "lng": 146.3595115,
+            "housenumber": "",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "52e73134-3b79-40fe-addc-cfee949c2c33": {
+            "city": "Los Angeles",
+            "state": "CA",
+            "postal": "",
+            "lat": 34.038683,
+            "lng": -118.707581,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "c82c6277-7bd8-4364-9da8-e3897f71b3a4": {
+            "city": "Hamilton Valley",
+            "state": "NSW",
+            "postal": "2641",
+            "lat": -36.0349793,
+            "lng": 146.9073391,
+            "housenumber": "1",
+            "country": "Australia",
+            "type": "venue"
         }
     },
     "searches": {
@@ -1712,6 +1832,25 @@
         "SkyDome, Toronto, Canada": "8c968395-1625-4fb1-9f90-ff44b9a88ba3",
         "Rogers Centre, Toronto, ON, Canada": "8c968395-1625-4fb1-9f90-ff44b9a88ba3",
         "Skydome": "8c968395-1625-4fb1-9f90-ff44b9a88ba3",
-        "Rogers Centre": "8c968395-1625-4fb1-9f90-ff44b9a88ba3"
+        "Rogers Centre": "8c968395-1625-4fb1-9f90-ff44b9a88ba3",
+        "Bill Snyder Family Football Stadium": "adbf816a-e885-4477-a484-08f310b58967",
+        "Bill Snyder Family Stadium - Manhattan - KS - 66502": "adbf816a-e885-4477-a484-08f310b58967",
+        "Yankee Stadium, New York, NY, USA": "41e253f5-9197-4168-8970-cd35f5ba4562",
+        "Yankee Stadium": "41e253f5-9197-4168-8970-cd35f5ba4562",
+        "Yankee Stadium - Bronx, New York - United States": "41e253f5-9197-4168-8970-cd35f5ba4562",
+        "Yankee Stadium - Bronx, New York, USA - United States": "41e253f5-9197-4168-8970-cd35f5ba4562",
+        "Yankee Stadium III": "41e253f5-9197-4168-8970-cd35f5ba4562",
+        "Euroa - Australia": "d2ee3c9d-140e-498c-aaf5-8e7d547c5cbc",
+        "Aloha Stadium - Honolulu - HI - 96818": "9961d10c-97bb-4d6c-a89b-544a6e001c7e",
+        "Aloha Stadium, Honolulu, HI, USA": "9961d10c-97bb-4d6c-a89b-544a6e001c7e",
+        "Cardiff City Stadium, Cardiff, Wales": "b57f7d58-dd32-45a4-9856-a0cab5251a1b",
+        "North Hobart - Australia": "ff625519-3999-40f8-af8f-03aed7e1b705",
+        "University of Arkansas at Little Rock": "068f05b6-fe45-4616-a7be-5e54dd2a2ddf",
+        "Texas Stadium - Irving - TX": "b504fdf1-6d5d-4dfe-b3c5-d029861473a9",
+        "Texas Stadium": "b504fdf1-6d5d-4dfe-b3c5-d029861473a9",
+        "Mlada Boleslav, Czechoslovakia": "5641734b-6f1f-4a97-9483-ac8d6798fd51",
+        "Yallourn - Australia": "fbee3594-0fe8-4c6d-a9e4-602756a31e50",
+        "Pepperdine University": "52e73134-3b79-40fe-addc-cfee949c2c33",
+        "Albury - Australia": "c82c6277-7bd8-4364-9da8-e3897f71b3a4"
     }
 }

@@ -465,6 +465,7 @@ def _create_openmeteo_weather_model(
         requests.exceptions.RetryError,
         OpenMeteoRequestsError,
         requests.exceptions.ReadTimeout,
+        requests.exceptions.HTTPError,
     ):
         return None
     except Exception as e:
