@@ -1199,6 +1199,146 @@
             "housenumber": "200",
             "country": "UK",
             "type": "venue"
+        },
+        "20b89361-bb34-41de-a5df-5114554361b1": {
+            "city": "El Paso",
+            "state": "TX",
+            "postal": "",
+            "lat": 31.77,
+            "lng": -106.505,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "6f4732ca-3711-4066-a7c9-453e1e61bb93": {
+            "city": "Heidelberg West",
+            "state": "VIC",
+            "postal": "3081",
+            "lat": -37.7397886,
+            "lng": 145.0317471,
+            "housenumber": "",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "2d140dad-9fbc-404c-a814-6856dffa6d0f": {
+            "city": "Oxford",
+            "state": "OH",
+            "postal": "45056",
+            "lat": 39.5195227,
+            "lng": -84.7355128,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "4789f86b-22ad-4aaf-97c0-3f49a2eb8902": {
+            "city": "San Diego",
+            "state": "CA",
+            "postal": "92108",
+            "lat": 32.7809825,
+            "lng": -117.1244523,
+            "housenumber": "9449",
+            "country": "USA",
+            "type": "venue"
+        },
+        "1145772b-06fd-48d7-a155-0c9312d543ef": {
+            "city": "Inglewood",
+            "state": "CA",
+            "postal": "",
+            "lat": 33.953,
+            "lng": -118.339,
+            "housenumber": "1001",
+            "country": "USA",
+            "type": "venue"
+        },
+        "e0d0121e-fcad-4647-971a-f2031dafe9d3": {
+            "city": "South Geelong",
+            "state": "VIC",
+            "postal": "3220",
+            "lat": -38.1579979,
+            "lng": 144.3520981,
+            "housenumber": "370",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "65673ee1-270d-4eaf-a887-3db34391293b": {
+            "city": "Columbia",
+            "state": "MO",
+            "postal": "",
+            "lat": 39.0975,
+            "lng": -84.506667,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "6a10ad79-7406-4de0-8870-881d6b6a4a6a": {
+            "city": "Yarraville",
+            "state": "VIC",
+            "postal": "3013",
+            "lat": -37.8150875,
+            "lng": 144.8824932,
+            "housenumber": "",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "f4bba906-7b47-4197-8905-71cf04eab3e5": {
+            "city": "London",
+            "state": "",
+            "postal": "TW8 0RU",
+            "lat": 51.490833,
+            "lng": -0.288611,
+            "housenumber": "166",
+            "country": "UK",
+            "type": "venue"
+        },
+        "de17b32a-9591-4726-88c8-4b5e4d728207": {
+            "city": "San Francisco",
+            "state": "CA",
+            "postal": "94124",
+            "lat": 37.7129826,
+            "lng": -122.4064101,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "5fd66472-3d98-4028-bf9a-5cdc7b3bb7bb": {
+            "city": "Statesboro",
+            "state": "GA",
+            "postal": "",
+            "lat": 32.419448,
+            "lng": -81.776698,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "42bb47f8-0447-4475-8e5d-2aa9040682b5": {
+            "city": "Upplands Väsby",
+            "state": "",
+            "postal": "",
+            "lat": 59.516667,
+            "lng": 17.916667,
+            "housenumber": "",
+            "country": "Sweden",
+            "type": "suburb"
+        },
+        "485fbb3f-88a5-4655-965d-14a871dc8299": {
+            "city": "Armadale",
+            "state": "VIC",
+            "postal": "3143",
+            "lat": -37.8528107,
+            "lng": 145.0114987,
+            "housenumber": "580",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "8c968395-1625-4fb1-9f90-ff44b9a88ba3": {
+            "city": "Toronto",
+            "state": "ON",
+            "postal": "",
+            "lat": 43.6415757,
+            "lng": -79.3942991,
+            "housenumber": "580",
+            "country": "Canada",
+            "type": "venue"
         }
     },
     "searches": {
@@ -1539,6 +1679,39 @@
         "Wright State University": "da1f647b-9753-4544-8ae2-7db80937e033",
         "Western Oval - Australia": "0d3370d1-5e80-48f3-ac60-0e8af13e26be",
         "Tim Horton's Field": "92b4b391-66b7-4af6-9da2-febac3239c5c",
-        "Twickenham Stadium - London": "fcce0a61-8e59-446a-8839-06df2131849c"
+        "Twickenham Stadium - London": "fcce0a61-8e59-446a-8839-06df2131849c",
+        "University of Texas at El Paso": "20b89361-bb34-41de-a5df-5114554361b1",
+        "UTEP College": "20b89361-bb34-41de-a5df-5114554361b1",
+        "Olympic Park - Australia": "6f4732ca-3711-4066-a7c9-453e1e61bb93",
+        "Yager Stadium": "2d140dad-9fbc-404c-a814-6856dffa6d0f",
+        "Yager Stadium - Oxford - OH - 45056": "2d140dad-9fbc-404c-a814-6856dffa6d0f",
+        "SDCCU Stadium - San Diego - CA": "4789f86b-22ad-4aaf-97c0-3f49a2eb8902",
+        "Qualcomm Stadium": "4789f86b-22ad-4aaf-97c0-3f49a2eb8902",
+        "Qualcomm Stadium - San Diego, California - United States": "4789f86b-22ad-4aaf-97c0-3f49a2eb8902",
+        "Snapdragon Stadium - San Diego - CA - 92108": "4789f86b-22ad-4aaf-97c0-3f49a2eb8902",
+        "SDCCU Stadium - San Diego - CA - 92108": "4789f86b-22ad-4aaf-97c0-3f49a2eb8902",
+        "SDCCU Stadium, San Diego, CA, USA": "4789f86b-22ad-4aaf-97c0-3f49a2eb8902",
+        "SoFi Stadium, Inglewood, CA, USA": "1145772b-06fd-48d7-a155-0c9312d543ef",
+        "Kardinia Park - Australia": "e0d0121e-fcad-4647-971a-f2031dafe9d3",
+        "GMHBA Stadium": "e0d0121e-fcad-4647-971a-f2031dafe9d3",
+        "GMHBA Stadium, Geelong, Australia": "e0d0121e-fcad-4647-971a-f2031dafe9d3",
+        "GMHBA Stadium, Geelong": "e0d0121e-fcad-4647-971a-f2031dafe9d3",
+        "Great American Ball Park, Cincinnati, OH, USA": "65673ee1-270d-4eaf-a887-3db34391293b",
+        "Great American Ball Park": "65673ee1-270d-4eaf-a887-3db34391293b",
+        "Yarraville Oval - Australia": "6a10ad79-7406-4de0-8870-881d6b6a4a6a",
+        "Brentford Community Stadium, London, England": "f4bba906-7b47-4197-8905-71cf04eab3e5",
+        "Candlestick Park - San Francisco - CA": "de17b32a-9591-4726-88c8-4b5e4d728207",
+        "Monster Park - San Francisco - CA - 94124": "de17b32a-9591-4726-88c8-4b5e4d728207",
+        "Candlestick Park": "de17b32a-9591-4726-88c8-4b5e4d728207",
+        "Candlestick Park - San Francisco, CA - United States": "de17b32a-9591-4726-88c8-4b5e4d728207",
+        "Georgia Southern University": "5fd66472-3d98-4028-bf9a-5cdc7b3bb7bb",
+        "Georgia Southern College": "5fd66472-3d98-4028-bf9a-5cdc7b3bb7bb",
+        "Upplands Vasby, Sweden": "42bb47f8-0447-4475-8e5d-2aa9040682b5",
+        "Toorak Park - Australia": "485fbb3f-88a5-4655-965d-14a871dc8299",
+        "Rogers Centre - Toronto - ON": "8c968395-1625-4fb1-9f90-ff44b9a88ba3",
+        "SkyDome, Toronto, Canada": "8c968395-1625-4fb1-9f90-ff44b9a88ba3",
+        "Rogers Centre, Toronto, ON, Canada": "8c968395-1625-4fb1-9f90-ff44b9a88ba3",
+        "Skydome": "8c968395-1625-4fb1-9f90-ff44b9a88ba3",
+        "Rogers Centre": "8c968395-1625-4fb1-9f90-ff44b9a88ba3"
     }
 }
