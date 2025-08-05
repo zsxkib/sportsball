@@ -1719,6 +1719,116 @@
             "housenumber": "201",
             "country": "USA",
             "type": "venue"
+        },
+        "e4c26c90-59b6-48d8-8202-9c13c224347f": {
+            "city": "Los Angeles",
+            "state": "CA",
+            "postal": "",
+            "lat": 33.97,
+            "lng": -118.418,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "a0e1e4f5-cdf7-48f3-9402-ad4258d6ffc1": {
+            "city": "Flushing",
+            "state": "NY",
+            "postal": "11368",
+            "lat": 40.7570861,
+            "lng": -73.8653052,
+            "housenumber": "41",
+            "country": "USA",
+            "type": "venue"
+        },
+        "dc1c17a2-04d7-4cc5-8173-f1bff3d35b9e": {
+            "city": "Durant",
+            "state": "OK",
+            "postal": "",
+            "lat": 34.006389,
+            "lng": -96.378056,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "e21b9864-290c-4b66-b1dd-54dc819689a8": {
+            "city": "New Haven",
+            "state": "CT",
+            "postal": "06515",
+            "lat": 41.3132191,
+            "lng": -72.9630891,
+            "housenumber": "81",
+            "country": "USA",
+            "type": "venue"
+        },
+        "7d0fd10f-6e63-4266-8cfe-4ba2951743c5": {
+            "city": "Reno",
+            "state": "NV",
+            "postal": "89557",
+            "lat": 39.546944,
+            "lng": -119.8175,
+            "housenumber": "1664",
+            "country": "USA",
+            "type": "venue"
+        },
+        "0ff9e344-1c4d-40f6-ba99-12e90639690a": {
+            "city": "Baton Rouge",
+            "state": "LA",
+            "postal": "70803",
+            "lat": 30.412035,
+            "lng": -91.1863912,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "f772b9d1-8469-4619-82f1-bf443d1c7ee5": {
+            "city": "Little Rock",
+            "state": "AR",
+            "postal": "72205",
+            "lat": 34.749861,
+            "lng": -92.3314143,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "32c2d357-7cc8-4658-9d15-9d10e6a13bd2": {
+            "city": "Bristol",
+            "state": "TN",
+            "postal": "37620",
+            "lat": 36.5156,
+            "lng": -82.2569,
+            "housenumber": "151",
+            "country": "USA",
+            "type": "venue"
+        },
+        "bc2c77db-532f-4ce6-973c-20e5f7b02392": {
+            "city": "Kansas City",
+            "state": "MS",
+            "postal": "",
+            "lat": 39.087,
+            "lng": -94.558,
+            "housenumber": "2123",
+            "country": "USA",
+            "type": "venue"
+        },
+        "19067b7e-f969-4740-af81-c90bea9f3783": {
+            "city": "London",
+            "state": "",
+            "postal": "SW6 6HH",
+            "lat": 51.475,
+            "lng": -0.221667,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "4afa82ac-f580-4d26-9cb1-39cd65ecb504": {
+            "city": "Dallas",
+            "state": "TX",
+            "postal": "75215",
+            "lat": 32.7796106,
+            "lng": -96.7602328,
+            "housenumber": "3750",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -1768,6 +1878,7 @@
         "Nassau Coliseum, Uniondale, New York": "750518c9-729a-4d0b-bd3a-6e38fa7a3ec9",
         "Nassau Veterans Memorial Coliseum, Uniondale, New York": "750518c9-729a-4d0b-bd3a-6e38fa7a3ec9",
         "Nassau Veterans Memorial Coliseum - Uniondale, New York, USA - United States": "750518c9-729a-4d0b-bd3a-6e38fa7a3ec9",
+        "Nassau Veterans Memorial Coliseum": "750518c9-729a-4d0b-bd3a-6e38fa7a3ec9",
         "Nissan Stadium": "6d8bba96-9e07-49d2-8049-b6418652f097",
         "Nissan Stadium - Nashville - TN - 37213": "6d8bba96-9e07-49d2-8049-b6418652f097",
         "Nissan Stadium - Nashville, Tennessee, USA - United States": "6d8bba96-9e07-49d2-8049-b6418652f097",
@@ -1944,6 +2055,7 @@
         "Allianz Arena": "379ce6a2-2b84-4a80-811f-cbab46b6d4c8",
         "Allianz Arena - Munich": "379ce6a2-2b84-4a80-811f-cbab46b6d4c8",
         "Allianz Arena - Munich, Germany - Germany": "379ce6a2-2b84-4a80-811f-cbab46b6d4c8",
+        "Allianz Arena, Munich, Germany": "379ce6a2-2b84-4a80-811f-cbab46b6d4c8",
         "Busch Stadium, St. Louis, MO, USA": "189335f3-b55c-4501-9b90-d8385384f9ac",
         "Busch Stadium (III) - St. Louis, MO - United States": "189335f3-b55c-4501-9b90-d8385384f9ac",
         "Busch Stadium III": "189335f3-b55c-4501-9b90-d8385384f9ac",
@@ -2160,6 +2272,29 @@
         "Canada Life Centre, Winnipeg, MB, Canada": "3aa1793e-2a53-41a9-95a1-99286c7c78e6",
         "Canada Life Centre": "3aa1793e-2a53-41a9-95a1-99286c7c78e6",
         "Milwaukee County Stadium": "c636a85a-7c90-46df-acfa-ad198ae6d87e",
-        "Milwaukee County Stadium - Milwaukee, WI - United States": "c636a85a-7c90-46df-acfa-ad198ae6d87e"
+        "Milwaukee County Stadium - Milwaukee, WI - United States": "c636a85a-7c90-46df-acfa-ad198ae6d87e",
+        "Loyola Marymount University": "e4c26c90-59b6-48d8-8202-9c13c224347f",
+        "Shea Stadium": "a0e1e4f5-cdf7-48f3-9402-ad4258d6ffc1",
+        "Citi Field - Flushing, New York - United States": "a0e1e4f5-cdf7-48f3-9402-ad4258d6ffc1",
+        "Citi Field, New York, NY, USA": "a0e1e4f5-cdf7-48f3-9402-ad4258d6ffc1",
+        "Citi Field": "a0e1e4f5-cdf7-48f3-9402-ad4258d6ffc1",
+        "Southeastern Oklahoma State University": "dc1c17a2-04d7-4cc5-8173-f1bff3d35b9e",
+        "Southeastern Oklahoma College": "dc1c17a2-04d7-4cc5-8173-f1bff3d35b9e",
+        "Yale Bowl": "e21b9864-290c-4b66-b1dd-54dc819689a8",
+        "Yale Bowl - New Haven, Connecticut, USA - United States": "e21b9864-290c-4b66-b1dd-54dc819689a8",
+        "Yale Bowl - New Haven - CT - 06515": "e21b9864-290c-4b66-b1dd-54dc819689a8",
+        "Mackay Stadium": "7d0fd10f-6e63-4266-8cfe-4ba2951743c5",
+        "Mackay Stadium - Reno - NV - 89557": "7d0fd10f-6e63-4266-8cfe-4ba2951743c5",
+        "Tiger Stadium": "0ff9e344-1c4d-40f6-ba99-12e90639690a",
+        "Tiger Stadium - Baton Rouge, Louisiana, USA - United States": "0ff9e344-1c4d-40f6-ba99-12e90639690a",
+        "War Memorial Stadium": "f772b9d1-8469-4619-82f1-bf443d1c7ee5",
+        "War Memorial Stadium - Little Rock, Arkansas - United States": "f772b9d1-8469-4619-82f1-bf443d1c7ee5",
+        "Bristol Motor Speedway": "32c2d357-7cc8-4658-9d15-9d10e6a13bd2",
+        "Bristol Motor Speedway - Bristol - TN - 37620": "32c2d357-7cc8-4658-9d15-9d10e6a13bd2",
+        "Municipal Stadium": "bc2c77db-532f-4ce6-973c-20e5f7b02392",
+        "Craven Cottage, London, England": "19067b7e-f969-4740-af81-c90bea9f3783",
+        "Cotton Bowl": "4afa82ac-f580-4d26-9cb1-39cd65ecb504",
+        "Cotton Bowl - Dallas, Texas - United States": "4afa82ac-f580-4d26-9cb1-39cd65ecb504",
+        "Cotton Bowl - Dallas - TX - 75215": "4afa82ac-f580-4d26-9cb1-39cd65ecb504"
     }
 }
