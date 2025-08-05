@@ -112,33 +112,6 @@ RICE_STADIUM = SportsballGeocodeTuple(
     housenumber="6100",
     country="USA",
 )
-ROSE_BOWL = SportsballGeocodeTuple(
-    city="Pasadena",
-    state="CA",
-    postal="91103",
-    lat=34.1613284,
-    lng=-118.1702211,
-    housenumber="1001",
-    country="USA",
-)
-MILWAUKEE_COUNTY_STADIUM = SportsballGeocodeTuple(
-    city="Milwaukee",
-    state="WI",
-    postal="53208",
-    lat=43.0303919,
-    lng=-87.9787396,
-    housenumber="201",
-    country="USA",
-)
-STANFORD_STADIUM = SportsballGeocodeTuple(
-    city="Stanford",
-    state="CA",
-    postal="94305",
-    lat=37.4345298,
-    lng=-122.1636976,
-    housenumber="625",
-    country="USA",
-)
 SCG = SportsballGeocodeTuple(
     city="Moore Park",
     state="NSW",
@@ -353,15 +326,6 @@ LANNY_AND_SHARON_MARTIN_STADIUM = SportsballGeocodeTuple(
     lat=42.0584293,
     lng=-87.6707798,
     housenumber="2235",
-    country="USA",
-)
-MIAMI_ORANGE_BOWL = SportsballGeocodeTuple(
-    city="Miami",
-    state="FL",
-    postal="33125",
-    lat=25.7781487,
-    lng=-80.2221747,
-    housenumber="501",
     country="USA",
 )
 SPECTRUM = SportsballGeocodeTuple(
@@ -3343,15 +3307,6 @@ WALDO_STADIUM = SportsballGeocodeTuple(
     housenumber="1903",
     country="USA",
 )
-FENWAY_PARK = SportsballGeocodeTuple(
-    city="Boston",
-    state="MA",
-    postal="02297",
-    lat=42.34625,
-    lng=-71.09775,
-    housenumber="4",
-    country="USA",
-)
 UB_STADIUM = SportsballGeocodeTuple(
     city="Buffalo",
     state="NY",
@@ -3648,15 +3603,6 @@ CEDAR_FALLS = SportsballGeocodeTuple(
     lng=-92.446402,
     housenumber="",
     country="USA",
-)
-CANADA_LIFE_CENTER = SportsballGeocodeTuple(
-    city="Winnipeg",
-    state="MB",
-    postal="",
-    lat=49.892778,
-    lng=-97.143611,
-    housenumber="300",
-    country="Canada",
 )
 ALUMNI_STADIUM = SportsballGeocodeTuple(
     city="Chestnut Hill",
@@ -4595,28 +4541,6 @@ BOONE_PICKENS_STADIUM = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Coburg Oval - Australia": SportsballGeocodeTuple(
-        city="Coburg",
-        state="VIC",
-        postal="3058",
-        lat=-37.7437207,
-        lng=144.9671031,
-        housenumber="",
-        country="Australia",
-    ),
-    "Waverley Park - Australia": SportsballGeocodeTuple(
-        city="Mulgrave",
-        state="VIC",
-        postal="3170",
-        lat=-37.9258818,
-        lng=145.1869239,
-        housenumber="2A",
-        country="Australia",
-    ),
-    "Rose Bowl": ROSE_BOWL,
-    "Miami Orange Bowl": MIAMI_ORANGE_BOWL,
-    "Stanford Stadium": STANFORD_STADIUM,
-    "Milwaukee County Stadium": MILWAUKEE_COUNTY_STADIUM,
     "Shea Stadium": SHEA_STADIUM,
     "Yale Bowl": YALE_BOWL,
     "Tiger Stadium": TIGER_STADIUM,
@@ -4697,9 +4621,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Jiangwan Stadium - Australia": JIANGWAN_STADIUM,
     "Yale Bowl - New Haven, Connecticut, USA - United States": YALE_BOWL,
     "Rice Stadium - Houston, Texas, U.S. - United States": RICE_STADIUM,
-    "Rose Bowl - Hampshire - England": ROSE_BOWL,
-    "Milwaukee County Stadium - Milwaukee, WI - United States": MILWAUKEE_COUNTY_STADIUM,
-    "Stanford Stadium - Stanford, California, USA - United States": STANFORD_STADIUM,
     "Citi Field - Flushing, New York - United States": SHEA_STADIUM,
     "Bruce Stadium - Australia": SportsballGeocodeTuple(
         city="Bruce",
@@ -5293,15 +5214,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="2701",
         country="USA",
     ),
-    "Scheumann Stadium - Muncie - IN - 47304": SportsballGeocodeTuple(
-        city="Muncie",
-        state="IN",
-        postal="47304",
-        lat=40.216111,
-        lng=-85.416667,
-        housenumber="",
-        country="USA",
-    ),
     "Razorback Stadium - Fayetteville - AR - 72701": SportsballGeocodeTuple(
         city="Fayetteville",
         state="AR",
@@ -5320,7 +5232,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="2600",
         country="USA",
     ),
-    "Rose Bowl - Pasadena - CA - 91103": ROSE_BOWL,
     "Waldo Stadium - Kalamazoo - MI - 49008": WALDO_STADIUM,
     "InfoCision Stadium - Akron - OH - 44304": SportsballGeocodeTuple(
         city="Akron",
@@ -5371,7 +5282,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1022",
         country="USA",
     ),
-    "Fenway Park - Boston - MA - 02297": FENWAY_PARK,
     "Toyota Stadium - Frisco - TX - 75033": TOYOTA_STADIUM,
     "Chase Field - Phoenix - AZ - 85004": CHASE_FIELD,
     "Thomas A. Robinson National Stadium - Nassau": SportsballGeocodeTuple(
@@ -5441,7 +5351,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1621",
         country="USA",
     ),
-    "loanDepot park - Miami - FL - 33125": MIAMI_ORANGE_BOWL,
     "Barker-Lane Stadium - Buies Creek - NC - 27546": SportsballGeocodeTuple(
         city="Buies Creek",
         state="NC",
@@ -17562,7 +17471,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Canada Life Centre, Winnipeg, MB, Canada": CANADA_LIFE_CENTER,
     "Duke College": DUKE_UNIVERSITY,
     "University of Connecticut": SportsballGeocodeTuple(
         city="Storrs",
@@ -17755,7 +17663,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Prudential Center, Newark, NJ, USA": PRUDENTIAL_CENTER,
     "Wrigley Field, Chicago, IL, USA": WRIGLEY_FIELD,
     "Waldo Stadium": WALDO_STADIUM,
-    "Fenway Park - Boston, USA - United States": FENWAY_PARK,
     "UB Stadium - Buffalo, New York, USA - United States": UB_STADIUM,
     "Tyler, TX, USA": SportsballGeocodeTuple(
         city="Tyler",
@@ -18017,7 +17924,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Progressive Field, Cleveland, OH, USA": PROGRESSIVE_FIELD,
-    "LoanDepot Park, Miami, FL, USA": MIAMI_ORANGE_BOWL,
     "Kelly/Shorts Stadium": KELLY_SHORTS_STADIUM,
     "Tulsa College": SportsballGeocodeTuple(
         city="Tulsa",
@@ -20889,7 +20795,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="90",
         country="USA",
     ),
-    "Canada Life Centre": CANADA_LIFE_CENTER,
     "Comiskey Park - Chicago, IL - United States": SportsballGeocodeTuple(
         city="Chicago",
         state="IL",
@@ -21839,7 +21744,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "PPG Paints Arena": PPG_PAINTS_ARENA,
-    "loanDepot park": MIAMI_ORANGE_BOWL,
     "University of Oregon": SportsballGeocodeTuple(
         city="Eugene",
         state="OR",
@@ -22068,7 +21972,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Oriole Park at Camden Yards": ORIOLE_PARK,
     "Dowdy-Ficklen Stadium": DOWDY_FICKLEN_STADIUM,
     "Ohio Stadium": OHIO_STADIUM,
-    "Fenway Park": FENWAY_PARK,
     "Ohio University": SportsballGeocodeTuple(
         city="Athens",
         state="OH",

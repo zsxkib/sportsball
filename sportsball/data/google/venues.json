@@ -1599,6 +1599,126 @@
             "housenumber": "2400",
             "country": "USA",
             "type": "venue"
+        },
+        "c31a48c3-e895-4fe3-8f08-0564755ca51e": {
+            "city": "Muncie",
+            "state": "IN",
+            "postal": "47304",
+            "lat": 40.216111,
+            "lng": -85.416667,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "9b12e63a-097e-44ae-87db-a23fcb93afb9": {
+            "city": "Coburg",
+            "state": "VIC",
+            "postal": "3058",
+            "lat": -37.7437207,
+            "lng": 144.9671031,
+            "housenumber": "",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "1231f540-2ed0-47c0-b21b-5270cafd5e8a": {
+            "city": "Oslo",
+            "state": "",
+            "postal": "",
+            "lat": 59.948889,
+            "lng": 10.734167,
+            "housenumber": "75",
+            "country": "Norway",
+            "type": "venue"
+        },
+        "6f12da19-c254-43ca-95d9-3bf8755de836": {
+            "city": "Mulgrave",
+            "state": "VIC",
+            "postal": "3170",
+            "lat": -37.9258818,
+            "lng": 145.1869239,
+            "housenumber": "2A",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "02dee2f8-ee91-459e-b2ac-eabef7ff98df": {
+            "city": "Boston",
+            "state": "MA",
+            "postal": "02297",
+            "lat": 42.34625,
+            "lng": -71.09775,
+            "housenumber": "4",
+            "country": "USA",
+            "type": "venue"
+        },
+        "ffb46c91-1180-4c2e-ac13-53fdf9812a58": {
+            "city": "Pasadena",
+            "state": "CA",
+            "postal": "91103",
+            "lat": 34.1613284,
+            "lng": -118.1702211,
+            "housenumber": "1001",
+            "country": "USA",
+            "type": "venue"
+        },
+        "944a4036-70e4-4337-a796-849dca453f63": {
+            "city": "Liverpool",
+            "state": "",
+            "postal": "L4 0TH",
+            "lat": 53.430833,
+            "lng": -2.960833,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "d925671c-4b94-4223-927d-360bc0fe37d6": {
+            "city": "Miami",
+            "state": "FL",
+            "postal": "33125",
+            "lat": 25.7781487,
+            "lng": -80.2221747,
+            "housenumber": "501",
+            "country": "USA",
+            "type": "venue"
+        },
+        "0fdcde49-c5eb-4057-8fd7-848288501845": {
+            "city": "Irvine",
+            "state": "CA",
+            "postal": "",
+            "lat": 33.645556,
+            "lng": -117.8425,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "56df738d-d199-4d44-8632-e20d2ea98c15": {
+            "city": "Stanford",
+            "state": "CA",
+            "postal": "94305",
+            "lat": 37.4345298,
+            "lng": -122.1636976,
+            "housenumber": "625",
+            "country": "USA",
+            "type": "venue"
+        },
+        "3aa1793e-2a53-41a9-95a1-99286c7c78e6": {
+            "city": "Winnipeg",
+            "state": "MB",
+            "postal": "",
+            "lat": 49.892778,
+            "lng": -97.143611,
+            "housenumber": "300",
+            "country": "Canada",
+            "type": "venue"
+        },
+        "c636a85a-7c90-46df-acfa-ad198ae6d87e": {
+            "city": "Milwaukee",
+            "state": "WI",
+            "postal": "53208",
+            "lat": 43.0303919,
+            "lng": -87.9787396,
+            "housenumber": "201",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -2015,6 +2135,31 @@
         "Liberty Bowl Memorial Stadium - Memphis, Tennessee, USA - United States": "3df1fc70-3152-4b5a-86f5-dbd2eec06baf",
         "Turf Moor, Burnley, England": "b4cea94d-4cc5-4f7d-8012-ed541cf08a9d",
         "RFK Stadium": "34440af5-4191-4ab7-82de-0415271403ff",
-        "RFK Stadium - Washington DC - United States": "34440af5-4191-4ab7-82de-0415271403ff"
+        "RFK Stadium - Washington DC - United States": "34440af5-4191-4ab7-82de-0415271403ff",
+        "Scheumann Stadium - Muncie, Indiana, USA - United States": "c31a48c3-e895-4fe3-8f08-0564755ca51e",
+        "Scheumann Stadium - Muncie - IN - 47304": "c31a48c3-e895-4fe3-8f08-0564755ca51e",
+        "Coburg Oval - Australia": "9b12e63a-097e-44ae-87db-a23fcb93afb9",
+        "Ullevaal Stadion, Oslo, Norway": "1231f540-2ed0-47c0-b21b-5270cafd5e8a",
+        "Waverley Park - Australia": "6f12da19-c254-43ca-95d9-3bf8755de836",
+        "Fenway Park - Boston - MA - 02297": "02dee2f8-ee91-459e-b2ac-eabef7ff98df",
+        "Fenway Park - Boston, USA - United States": "02dee2f8-ee91-459e-b2ac-eabef7ff98df",
+        "Fenway Park": "02dee2f8-ee91-459e-b2ac-eabef7ff98df",
+        "Fenway Park, Boston, MA, USA": "02dee2f8-ee91-459e-b2ac-eabef7ff98df",
+        "Rose Bowl": "ffb46c91-1180-4c2e-ac13-53fdf9812a58",
+        "Rose Bowl - Hampshire - England": "ffb46c91-1180-4c2e-ac13-53fdf9812a58",
+        "Rose Bowl - Pasadena - CA - 91103": "ffb46c91-1180-4c2e-ac13-53fdf9812a58",
+        "Anfield, Liverpool, England": "944a4036-70e4-4337-a796-849dca453f63",
+        "Miami Orange Bowl": "d925671c-4b94-4223-927d-360bc0fe37d6",
+        "loanDepot park - Miami - FL - 33125": "d925671c-4b94-4223-927d-360bc0fe37d6",
+        "LoanDepot Park, Miami, FL, USA": "d925671c-4b94-4223-927d-360bc0fe37d6",
+        "loanDepot park": "d925671c-4b94-4223-927d-360bc0fe37d6",
+        "University of California, Irvine": "0fdcde49-c5eb-4057-8fd7-848288501845",
+        "Stanford Stadium": "56df738d-d199-4d44-8632-e20d2ea98c15",
+        "Stanford Stadium - Stanford, California, USA - United States": "56df738d-d199-4d44-8632-e20d2ea98c15",
+        "Bell MTS Place": "3aa1793e-2a53-41a9-95a1-99286c7c78e6",
+        "Canada Life Centre, Winnipeg, MB, Canada": "3aa1793e-2a53-41a9-95a1-99286c7c78e6",
+        "Canada Life Centre": "3aa1793e-2a53-41a9-95a1-99286c7c78e6",
+        "Milwaukee County Stadium": "c636a85a-7c90-46df-acfa-ad198ae6d87e",
+        "Milwaukee County Stadium - Milwaukee, WI - United States": "c636a85a-7c90-46df-acfa-ad198ae6d87e"
     }
 }
