@@ -1949,6 +1949,136 @@
             "housenumber": "6100",
             "country": "USA",
             "type": "venue"
+        },
+        "39351c1c-af5d-4b8e-8b7e-559e6c4848b3": {
+            "city": "Orem",
+            "state": "UT",
+            "postal": "",
+            "lat": 40.277778,
+            "lng": -111.713889,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "a1cc4a97-31f7-4386-a20c-098c844f48e8": {
+            "city": "Woolloongabba",
+            "state": "QLD",
+            "postal": "4102",
+            "lat": -27.4858375,
+            "lng": 153.0332144,
+            "housenumber": "",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "7ce4c13a-9dcb-4f65-aaaf-a760de064597": {
+            "city": "Greenville",
+            "state": "NC",
+            "postal": "",
+            "lat": 35.6075,
+            "lng": -77.37,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "9efe4d0f-51fb-4b7b-bb18-239abbadcd95": {
+            "city": "Shreveport",
+            "state": "LA",
+            "postal": "71109",
+            "lat": 32.475745,
+            "lng": -93.7944423,
+            "housenumber": "3301",
+            "country": "USA",
+            "type": "venue"
+        },
+        "58e5afdf-783d-46bd-b5ba-5743b3c9b0f9": {
+            "city": "Fort Worth",
+            "state": "TX",
+            "postal": "76129",
+            "lat": 32.709722,
+            "lng": -97.368056,
+            "housenumber": "2850",
+            "country": "USA",
+            "type": "venue"
+        },
+        "361298bc-6000-4b40-a8eb-579139c277a5": {
+            "city": "Carrara",
+            "state": "QLD",
+            "postal": "4211",
+            "lat": -28.0063039,
+            "lng": 153.3645259,
+            "housenumber": "",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "247ad0b9-7487-4673-98a1-ee971baca960": {
+            "city": "East Perth",
+            "state": "WA",
+            "postal": "6004",
+            "lat": -31.959812,
+            "lng": 115.874661,
+            "housenumber": "",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "53536783-b4ad-428d-9c63-b0fccbaa9ea2": {
+            "city": "Stateline",
+            "state": "NV",
+            "postal": "89449",
+            "lat": 38.9651286,
+            "lng": -119.947696,
+            "housenumber": "180",
+            "country": "USA",
+            "type": "venue"
+        },
+        "79d23320-5c00-4578-92a9-ee21a4f42e65": {
+            "city": "Lincoln",
+            "state": "NE",
+            "postal": "68588",
+            "lat": 40.8206975,
+            "lng": -96.7081629,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
+        },
+        "1c23dc44-d482-44cb-9e95-fd5492565ac1": {
+            "city": "Arlington",
+            "state": "TX",
+            "postal": "76011",
+            "lat": 32.751389,
+            "lng": -97.082778,
+            "housenumber": "1000",
+            "country": "USA",
+            "type": "venue"
+        },
+        "36a3a238-fa78-474f-892f-4a982ec72d85": {
+            "city": "West Lakes",
+            "state": "SA",
+            "postal": "5021",
+            "lat": -34.8797138,
+            "lng": 138.4910204,
+            "housenumber": "",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "3d01a762-09c2-4038-98b8-25118d8dc68e": {
+            "city": "Hull",
+            "state": "",
+            "postal": "HU3 6HU",
+            "lat": 53.746111,
+            "lng": -0.367778,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "e784a830-640a-4586-8a1e-27bb6e5a45b9": {
+            "city": "Docklands",
+            "state": "VIC",
+            "postal": "3008",
+            "lat": -37.8165647,
+            "lng": 144.9449306,
+            "housenumber": "740",
+            "country": "Australia",
+            "type": "venue"
         }
     },
     "searches": {
@@ -2154,6 +2284,7 @@
         "Tottenham Hotspur Stadium": "b1e15bb5-ca65-4c0a-a5f4-c6477c392fef",
         "Tottenham Hotspur Stadium - London": "b1e15bb5-ca65-4c0a-a5f4-c6477c392fef",
         "Tottenham Hotspur Stadium - Bill Nicholson Way, Tottenham, London - England": "b1e15bb5-ca65-4c0a-a5f4-c6477c392fef",
+        "Tottenham Hotspur Stadium, London, England": "b1e15bb5-ca65-4c0a-a5f4-c6477c392fef",
         "Legacy Arena - Birmingham, Alabama - United States": "a9e2fa02-4eb3-45c2-9663-f3bcaf567726",
         "Legacy Arena, Birmingham, Alabama": "a9e2fa02-4eb3-45c2-9663-f3bcaf567726",
         "Wembley Stadium": "83a236ad-19c2-46ed-9c72-3a14736c17cf",
@@ -2440,6 +2571,35 @@
         "Martin Carpena - Málaga, Spain - Spain": "a1786ecb-d027-4137-afb8-4c3da1327d99",
         "Rice Stadium": "03c7b590-287b-4366-a614-fee56af690d5",
         "Rice Stadium - Houston, Texas, U.S. - United States": "03c7b590-287b-4366-a614-fee56af690d5",
-        "Rice Stadium - Houston - TX - 77005": "03c7b590-287b-4366-a614-fee56af690d5"
+        "Rice Stadium - Houston - TX - 77005": "03c7b590-287b-4366-a614-fee56af690d5",
+        "Utah Valley State College": "39351c1c-af5d-4b8e-8b7e-559e6c4848b3",
+        "Gabba - Australia": "a1cc4a97-31f7-4386-a20c-098c844f48e8",
+        "Gabba": "a1cc4a97-31f7-4386-a20c-098c844f48e8",
+        "The Gabba, Brisbane, Australia": "a1cc4a97-31f7-4386-a20c-098c844f48e8",
+        "The Gabba, Brisbane, Austrália": "a1cc4a97-31f7-4386-a20c-098c844f48e8",
+        "Gabba, Brisbane": "a1cc4a97-31f7-4386-a20c-098c844f48e8",
+        "East Carolina University": "7ce4c13a-9dcb-4f65-aaaf-a760de064597",
+        "East Carolina College": "7ce4c13a-9dcb-4f65-aaaf-a760de064597",
+        "Independence Stadium - 71109": "9efe4d0f-51fb-4b7b-bb18-239abbadcd95",
+        "Amon G. Carter Stadium - Fort Worth, Texas, USA - United States": "58e5afdf-783d-46bd-b5ba-5743b3c9b0f9",
+        "Amon G. Carter Stadium - Fort Worth - TX - 76129": "58e5afdf-783d-46bd-b5ba-5743b3c9b0f9",
+        "Carrara - Australia": "361298bc-6000-4b40-a8eb-579139c277a5",
+        "People First Stadium": "361298bc-6000-4b40-a8eb-579139c277a5",
+        "People First Stadium, Gold Coast, Australia": "361298bc-6000-4b40-a8eb-579139c277a5",
+        "People First Stadium, Gold Coast": "361298bc-6000-4b40-a8eb-579139c277a5",
+        "W.A.C.A. - Australia": "247ad0b9-7487-4673-98a1-ee971baca960",
+        "Edgewood Tahoe Resort": "53536783-b4ad-428d-9c63-b0fccbaa9ea2",
+        "Memorial Stadium (Lincoln) - Terre Haute, Indiana, USA - United States": "79d23320-5c00-4578-92a9-ee21a4f42e65",
+        "Choctaw Stadium, Arlington, TX, USA": "1c23dc44-d482-44cb-9e95-fd5492565ac1",
+        "Choctaw Stadium - Arlington - TX - 76011": "1c23dc44-d482-44cb-9e95-fd5492565ac1",
+        "Football Park - Australia": "36a3a238-fa78-474f-892f-4a982ec72d85",
+        "AAMI Stadium": "36a3a238-fa78-474f-892f-4a982ec72d85",
+        "MKM Stadium, Hull, England": "3d01a762-09c2-4038-98b8-25118d8dc68e",
+        "Docklands - Australia": "e784a830-640a-4586-8a1e-27bb6e5a45b9",
+        "Marvel Stadium": "e784a830-640a-4586-8a1e-27bb6e5a45b9",
+        "Marvl": "e784a830-640a-4586-8a1e-27bb6e5a45b9",
+        "Marvel Stadium, Melbourne, Australia": "e784a830-640a-4586-8a1e-27bb6e5a45b9",
+        "Marvel Stadium, Melbourne, Austrália": "e784a830-640a-4586-8a1e-27bb6e5a45b9",
+        "Marvel Stadium, Melbourne": "e784a830-640a-4586-8a1e-27bb6e5a45b9"
     }
 }
