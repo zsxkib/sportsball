@@ -1829,6 +1829,126 @@
             "housenumber": "3750",
             "country": "USA",
             "type": "venue"
+        },
+        "6e01112a-3d16-4453-b6ee-a2a53f2cefa4": {
+            "city": "New Brunswick",
+            "state": "NJ",
+            "postal": "",
+            "lat": 40.501667,
+            "lng": -74.448056,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "dd8daf7e-30b2-435a-a54f-8e300b7f5039": {
+            "city": "San Francisco",
+            "state": "CA",
+            "postal": "94118",
+            "lat": 37.7669182,
+            "lng": -122.4567445,
+            "housenumber": "670",
+            "country": "USA",
+            "type": "venue"
+        },
+        "3cbdd513-e6fd-4001-99a8-99256fa282c7": {
+            "city": "Itta Bena",
+            "state": "MS",
+            "postal": "",
+            "lat": 33.51256,
+            "lng": -90.342422,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "72f61c1b-56ac-48fa-934f-259891693084": {
+            "city": "Philadelphia",
+            "state": "PA",
+            "postal": "19104",
+            "lat": 39.9502158,
+            "lng": -75.1949801,
+            "housenumber": "235",
+            "country": "USA",
+            "type": "venue"
+        },
+        "847f8a52-e5f3-4977-baa1-d3cf9d4469fa": {
+            "city": "Chicago",
+            "state": "IL",
+            "postal": "60613",
+            "lat": 41.9484384,
+            "lng": -87.6579076,
+            "housenumber": "1060",
+            "country": "USA",
+            "type": "venue"
+        },
+        "71734c2d-5d49-4c4d-b7ce-b37cad804ac7": {
+            "city": "Quincy",
+            "state": "MA",
+            "postal": "",
+            "lat": 42.261111,
+            "lng": -71.01,
+            "housenumber": "850",
+            "country": "USA",
+            "type": "venue"
+        },
+        "ba47ff55-1391-498e-9e61-ff8d9273335a": {
+            "city": "Green Bay",
+            "state": "WI",
+            "postal": "54301",
+            "lat": 44.5076658,
+            "lng": -87.9975486,
+            "housenumber": "1500",
+            "country": "USA",
+            "type": "venue"
+        },
+        "eb7bb413-11ac-4cec-b4fb-09f2822d4bef": {
+            "city": "Winnipeg",
+            "state": "MB",
+            "postal": "R3T 1Z2",
+            "lat": 49.8077033,
+            "lng": -97.1456866,
+            "housenumber": "315",
+            "country": "Canada",
+            "type": "venue"
+        },
+        "813087f1-33d7-48ee-8c3d-486254f9eb03": {
+            "city": "St. Petersburg",
+            "state": "FL",
+            "postal": "33705",
+            "lat": 27.768333,
+            "lng": -82.653333,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
+        },
+        "1c595834-b508-4fe8-bd9c-40bff041b8a5": {
+            "city": "Subiaco",
+            "state": "WA",
+            "postal": "6008",
+            "lat": -31.9444594,
+            "lng": 115.8285952,
+            "housenumber": "304",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "a1786ecb-d027-4137-afb8-4c3da1327d99": {
+            "city": "Málaga",
+            "state": "",
+            "postal": "",
+            "lat": 36.682467,
+            "lng": -4.460628,
+            "housenumber": "",
+            "country": "Spain",
+            "type": "venue"
+        },
+        "03c7b590-287b-4366-a614-fee56af690d5": {
+            "city": "Houston",
+            "state": "TX",
+            "postal": "77005",
+            "lat": 29.7162887,
+            "lng": -95.41188622,
+            "housenumber": "6100",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -2062,6 +2182,7 @@
         "Deutsche Bank Park": "d038edb8-439b-4cf8-b916-abdbedce45aa",
         "Frankfurt Stadium - Frankfurt": "d038edb8-439b-4cf8-b916-abdbedce45aa",
         "Deutsche Bank Park - Frankfurt, Germany - Germany": "d038edb8-439b-4cf8-b916-abdbedce45aa",
+        "Deutsche Bank Park - Frankfurt - Germany": "d038edb8-439b-4cf8-b916-abdbedce45aa",
         "Villa Park, Birmingham, England": "a065b054-56d6-47df-b1c7-8cf5740ac3fc",
         "Trans World Dome": "3cfa1db0-18c7-47d1-ae20-bb791bfc4a46",
         "The Dome at America's Center - St. Louis - MO - 63101": "3cfa1db0-18c7-47d1-ae20-bb791bfc4a46",
@@ -2295,6 +2416,30 @@
         "Craven Cottage, London, England": "19067b7e-f969-4740-af81-c90bea9f3783",
         "Cotton Bowl": "4afa82ac-f580-4d26-9cb1-39cd65ecb504",
         "Cotton Bowl - Dallas, Texas - United States": "4afa82ac-f580-4d26-9cb1-39cd65ecb504",
-        "Cotton Bowl - Dallas - TX - 75215": "4afa82ac-f580-4d26-9cb1-39cd65ecb504"
+        "Cotton Bowl - Dallas - TX - 75215": "4afa82ac-f580-4d26-9cb1-39cd65ecb504",
+        "Rutgers University": "6e01112a-3d16-4453-b6ee-a2a53f2cefa4",
+        "Rutgers College": "6e01112a-3d16-4453-b6ee-a2a53f2cefa4",
+        "Kezar Stadium": "dd8daf7e-30b2-435a-a54f-8e300b7f5039",
+        "Kezar Stadium - San Francisco, California - United States": "dd8daf7e-30b2-435a-a54f-8e300b7f5039",
+        "Kezar Pavillion, San Francisco, California": "dd8daf7e-30b2-435a-a54f-8e300b7f5039",
+        "Mississippi Valley State University": "3cbdd513-e6fd-4001-99a8-99256fa282c7",
+        "Franklin Field": "72f61c1b-56ac-48fa-934f-259891693084",
+        "Wrigley Field": "847f8a52-e5f3-4977-baa1-d3cf9d4469fa",
+        "Wrigley Field - Chicago, Illinois - United States": "847f8a52-e5f3-4977-baa1-d3cf9d4469fa",
+        "Wrigley Field - Chicago - IL - 60613": "847f8a52-e5f3-4977-baa1-d3cf9d4469fa",
+        "Wrigley Field, Chicago, IL, USA": "847f8a52-e5f3-4977-baa1-d3cf9d4469fa",
+        "Veterans Memorial Stadium - Quincy, Massachusetts - United States": "71734c2d-5d49-4c4d-b7ce-b37cad804ac7",
+        "City Stadium": "ba47ff55-1391-498e-9e61-ff8d9273335a",
+        "IG Field - Winnipeg - MB": "eb7bb413-11ac-4cec-b4fb-09f2822d4bef",
+        "Tropicana Field, St. Petersburg, FL, USA": "813087f1-33d7-48ee-8c3d-486254f9eb03",
+        "Tropicana Field - St. Petersburg - FL - 33705": "813087f1-33d7-48ee-8c3d-486254f9eb03",
+        "Tropicana Field": "813087f1-33d7-48ee-8c3d-486254f9eb03",
+        "Subiaco - Australia": "1c595834-b508-4fe8-bd9c-40bff041b8a5",
+        "Domain Stadium": "1c595834-b508-4fe8-bd9c-40bff041b8a5",
+        "Subiaco Oval, Perth, Australia": "1c595834-b508-4fe8-bd9c-40bff041b8a5",
+        "Martin Carpena - Málaga, Spain - Spain": "a1786ecb-d027-4137-afb8-4c3da1327d99",
+        "Rice Stadium": "03c7b590-287b-4366-a614-fee56af690d5",
+        "Rice Stadium - Houston, Texas, U.S. - United States": "03c7b590-287b-4366-a614-fee56af690d5",
+        "Rice Stadium - Houston - TX - 77005": "03c7b590-287b-4366-a614-fee56af690d5"
     }
 }
