@@ -2209,6 +2209,136 @@
             "housenumber": "15",
             "country": "Australia",
             "type": "venue"
+        },
+        "7d1bc40c-a179-4489-9399-0837bcb1b680": {
+            "city": "Richmond",
+            "state": "VA",
+            "postal": "",
+            "lat": 37.5625,
+            "lng": -77.451111,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "780b48b0-6a27-4b4d-925e-54839861d9fb": {
+            "city": "Westcourt",
+            "state": "QLD",
+            "postal": "4870",
+            "lat": -16.9357343,
+            "lng": 145.7464957,
+            "housenumber": "",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "4dbe8ac1-5355-42c1-9133-9a83d4414d7d": {
+            "city": "Lexington",
+            "state": "VA",
+            "postal": "",
+            "lat": 37.79,
+            "lng": -79.44,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "da01d788-7fea-4dd2-afdd-2c1c93c2ba20": {
+            "city": "Pipitea",
+            "state": "",
+            "postal": "6140",
+            "lat": -41.2729198,
+            "lng": 174.7846279,
+            "housenumber": "105",
+            "country": "New Zealand",
+            "type": "venue"
+        },
+        "0025110b-b3f0-4d18-a92b-0c0327c013a1": {
+            "city": "Evanston",
+            "state": "IL",
+            "postal": "60208",
+            "lat": 42.0584293,
+            "lng": -87.6707798,
+            "housenumber": "2235",
+            "country": "USA",
+            "type": "venue"
+        },
+        "ede51062-994d-4283-be6b-7aaa65d08fcd": {
+            "city": "The Gap",
+            "state": "NT",
+            "postal": "0870",
+            "lat": -23.7090566,
+            "lng": 133.8701488,
+            "housenumber": "",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "5843e4e2-fc79-4be6-9936-570253c29a9c": {
+            "city": "Wendouree",
+            "state": "VIC",
+            "postal": "3355",
+            "lat": -37.5386166,
+            "lng": 143.8273839,
+            "housenumber": "725",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "64259fae-0df5-446b-856f-dc72e32a2c25": {
+            "city": "Karlstad",
+            "state": "",
+            "postal": "",
+            "lat": 59.378333,
+            "lng": 13.504167,
+            "housenumber": "",
+            "country": "Sweden",
+            "type": "city"
+        },
+        "61cbdfd3-3b37-48be-8450-dc4b1308cd27": {
+            "city": "Burswood",
+            "state": "WA",
+            "postal": "6100",
+            "lat": -31.9511597,
+            "lng": 115.884175,
+            "housenumber": "333",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "1fcca43b-258c-464e-bf46-cebc85cc311b": {
+            "city": "Seoul",
+            "state": "",
+            "postal": "",
+            "lat": 37.498222,
+            "lng": 126.86725,
+            "housenumber": "430",
+            "country": "South Korea",
+            "type": "venue"
+        },
+        "348174a9-7ffc-45aa-8866-680f7882629e": {
+            "city": "Shanghai",
+            "state": "",
+            "postal": "200433",
+            "lat": 31.3076026,
+            "lng": 121.5160351,
+            "housenumber": "",
+            "country": "China",
+            "type": "venue"
+        },
+        "7015fd4c-dfe0-497b-91df-9e57ed645b8b": {
+            "city": "Bolton",
+            "state": "",
+            "postal": "BL6 6JW",
+            "lat": 53.580556,
+            "lng": -2.535556,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "55c4007a-3fcc-457f-9789-d2070db4b7c7": {
+            "city": "Bruce",
+            "state": "ACT",
+            "postal": "2617",
+            "lat": -35.249994,
+            "lng": 149.1001351,
+            "housenumber": "",
+            "country": "Australia",
+            "type": "venue"
         }
     },
     "searches": {
@@ -2554,6 +2684,7 @@
         "Western Oval - Australia": "0d3370d1-5e80-48f3-ac60-0e8af13e26be",
         "Tim Horton's Field": "92b4b391-66b7-4af6-9da2-febac3239c5c",
         "Twickenham Stadium - London": "fcce0a61-8e59-446a-8839-06df2131849c",
+        "Twickenham Stadium, London, England": "fcce0a61-8e59-446a-8839-06df2131849c",
         "University of Texas at El Paso": "20b89361-bb34-41de-a5df-5114554361b1",
         "UTEP College": "20b89361-bb34-41de-a5df-5114554361b1",
         "Olympic Park - Australia": "6f4732ca-3711-4066-a7c9-453e1e61bb93",
@@ -2776,6 +2907,34 @@
         "Blundstone Arena": "dad0b6d0-43c9-411a-81b1-abc07001f0af",
         "Blundstone Arena, Hobart, Australia": "dad0b6d0-43c9-411a-81b1-abc07001f0af",
         "Ninja Stadium, Bellerive, Australia": "dad0b6d0-43c9-411a-81b1-abc07001f0af",
-        "Ninja Stadium": "dad0b6d0-43c9-411a-81b1-abc07001f0af"
+        "Ninja Stadium": "dad0b6d0-43c9-411a-81b1-abc07001f0af",
+        "Virginia Union University": "7d1bc40c-a179-4489-9399-0837bcb1b680",
+        "Cazaly's Stadium - Australia": "780b48b0-6a27-4b4d-925e-54839861d9fb",
+        "Cazaly’s Stadium": "780b48b0-6a27-4b4d-925e-54839861d9fb",
+        "Cazaly's Stadium, Cairns, Australia": "780b48b0-6a27-4b4d-925e-54839861d9fb",
+        "Virginia Military Institute": "4dbe8ac1-5355-42c1-9133-9a83d4414d7d",
+        "Wellington - Australia": "da01d788-7fea-4dd2-afdd-2c1c93c2ba20",
+        "Westpac Stadium": "da01d788-7fea-4dd2-afdd-2c1c93c2ba20",
+        "Ryan Field - Evanston, Illinois, USA - United States": "0025110b-b3f0-4d18-a92b-0c0327c013a1",
+        "Lanny and Sharon Martin Stadium - Evanston - IL - 60208": "0025110b-b3f0-4d18-a92b-0c0327c013a1",
+        "Ryan Field - Evanston - IL - 60208": "0025110b-b3f0-4d18-a92b-0c0327c013a1",
+        "Martin Stadium - Evanston - IL - 60208": "0025110b-b3f0-4d18-a92b-0c0327c013a1",
+        "Traeger Park - Australia": "ede51062-994d-4283-be6b-7aaa65d08fcd",
+        "Traeger Park": "ede51062-994d-4283-be6b-7aaa65d08fcd",
+        "Eureka Stadium - Australia": "5843e4e2-fc79-4be6-9936-570253c29a9c",
+        "Mars Stadium": "5843e4e2-fc79-4be6-9936-570253c29a9c",
+        "Mars Stadium, Ballarat, Australia": "5843e4e2-fc79-4be6-9936-570253c29a9c",
+        "Karlstad, Sweden": "64259fae-0df5-446b-856f-dc72e32a2c25",
+        "Perth Stadium - Australia": "61cbdfd3-3b37-48be-8450-dc4b1308cd27",
+        "Optus Stadium": "61cbdfd3-3b37-48be-8450-dc4b1308cd27",
+        "Optus Stadium, Perth, Australia": "61cbdfd3-3b37-48be-8450-dc4b1308cd27",
+        "Optus Stadium, Perth, Austrália": "61cbdfd3-3b37-48be-8450-dc4b1308cd27",
+        "Optus Stadium, Perth": "61cbdfd3-3b37-48be-8450-dc4b1308cd27",
+        "Gocheok Sky Dome": "1fcca43b-258c-464e-bf46-cebc85cc311b",
+        "Jiangwan Stadium - Australia": "348174a9-7ffc-45aa-8866-680f7882629e",
+        "Jiangwan Sports Centre": "348174a9-7ffc-45aa-8866-680f7882629e",
+        "Jiangwan Stadium, Shanghai, China": "348174a9-7ffc-45aa-8866-680f7882629e",
+        "Toughsheet Community Stadium, Bolton, England": "7015fd4c-dfe0-497b-91df-9e57ed645b8b",
+        "Bruce Stadium - Australia": "55c4007a-3fcc-457f-9789-d2070db4b7c7"
     }
 }
