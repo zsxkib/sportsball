@@ -22,51 +22,6 @@ SportsballGeocodeTuple = namedtuple(
     "SportsballGeocodeTuple",
     ["city", "state", "postal", "lat", "lng", "housenumber", "country"],
 )
-SCG = SportsballGeocodeTuple(
-    city="Moore Park",
-    state="NSW",
-    postal="2021",
-    lat=-33.8915316,
-    lng=151.2248515,
-    housenumber="",
-    country="Australia",
-)
-NORWOOD_OVAL = SportsballGeocodeTuple(
-    city="Norwood",
-    state="SA",
-    postal="5067",
-    lat=-34.9198089,
-    lng=138.6278735,
-    housenumber="",
-    country="Australia",
-)
-ADELAIDE_HILLS = SportsballGeocodeTuple(
-    city="Mount Barker Summit",
-    state="SA",
-    postal="5251",
-    lat=-35.0779754,
-    lng=138.8908443,
-    housenumber="304",
-    country="Australia",
-)
-RIVERWAY_STADIUM = SportsballGeocodeTuple(
-    city="Thuringowa Central",
-    state="QLD",
-    postal="4817",
-    lat=-19.3176321,
-    lng=146.7270047,
-    housenumber="",
-    country="Australia",
-)
-BLACKTOWN_PARK = SportsballGeocodeTuple(
-    city="Rooty Hill",
-    state="NSW",
-    postal="2766",
-    lat=-33.7695492,
-    lng=150.8558658,
-    housenumber="",
-    country="Australia",
-)
 PITBULL_STADIUM = SportsballGeocodeTuple(
     city="Miami",
     state="FL",
@@ -3514,15 +3469,6 @@ PNC_PARK = SportsballGeocodeTuple(
     housenumber="115",
     country="USA",
 )
-FALCON_STADIUM = SportsballGeocodeTuple(
-    city="",
-    state="CO",
-    postal="80840",
-    lat=38.997,
-    lng=-104.843,
-    housenumber="4900",
-    country="USA",
-)
 CALIFORNIA_MEMORIAL_STADIUM = SportsballGeocodeTuple(
     city="Berkeley",
     state="CA",
@@ -4280,15 +4226,6 @@ BOONE_PICKENS_STADIUM = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Blacktown - Australia": BLACKTOWN_PARK,
-    "Riverway Stadium - Australia": RIVERWAY_STADIUM,
-    "Norwood Oval - Australia": NORWOOD_OVAL,
-    "Summit Sports Park - Australia": ADELAIDE_HILLS,
-    "SCG": SCG,
-    "Norwood Oval": NORWOOD_OVAL,
-    "Adelaide Hills": ADELAIDE_HILLS,
-    "Riverway Stadium": RIVERWAY_STADIUM,
-    "Blacktown Park": BLACKTOWN_PARK,
     "Husky Stadium - Seattle - WA - 98195": HUSKY_STADIUM,
     "L&N Federal Credit Union Stadium - Louisville - KY - 40208": LN_FEDERAL_CREDIT_UNION_STADIUM,
     "Bobcat Stadium (TX) - San Marcos - TX - 78666": SportsballGeocodeTuple(
@@ -4654,7 +4591,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="3112",
         country="USA",
     ),
-    "Falcon Stadium - USAF Academy - CO - 80840": FALCON_STADIUM,
     "Kidd Brewer Stadium - Boone - NC - 28607": SportsballGeocodeTuple(
         city="Boone",
         state="NC",
@@ -4824,15 +4760,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="350",
         country="USA",
     ),
-    "Reser Stadium - Corvallis - OR - 97331": SportsballGeocodeTuple(
-        city="Corvallis",
-        state="OR",
-        postal="97331",
-        lat=44.5595424,
-        lng=-123.2839683,
-        housenumber="2600",
-        country="USA",
-    ),
     "Waldo Stadium - Kalamazoo - MI - 49008": WALDO_STADIUM,
     "InfoCision Stadium - Akron - OH - 44304": SportsballGeocodeTuple(
         city="Akron",
@@ -4950,7 +4877,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Kibbie Dome - Moscow - ID - 83844": KIBBIE_DOME,
-    "Allianz Stadium - Sydney - NSW": SCG,
     "Hughes Stadium (CO) - Fort Collins - CO - 80526": HUGHES_STADIUM,
     "Rate Field - Chicago - IL - 60616": SportsballGeocodeTuple(
         city="Chicago",
@@ -7586,7 +7512,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Dallas, Texas": DALLAS,
-    "Sydney Cricket Ground, Sydney, Australia": SCG,
     "Wisdom Gymnasium, Stephenville, Texas": WISDOM_GYM,
     "Charlotte, North Carolina": CHARLOTTE,
     "Salt Lake City, Utah": SALT_LAKE_CITY,
@@ -8203,10 +8128,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Thailand",
     ),
-    "Norwood Oval, Norwood, Australia": NORWOOD_OVAL,
     "Angel Stadium of Anaheim, Anaheim, CA, USA": ANGEL_STADIUM_OF_ANAHEIM,
-    "Riverway Stadium, Townsville, Australia": RIVERWAY_STADIUM,
-    "Adelaide Hills, Mount Barker, Australia": ADELAIDE_HILLS,
     "Spotland Stadium, Rochdale, England": SportsballGeocodeTuple(
         city="Rochdale",
         state="",
@@ -12800,7 +12722,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="290",
         country="USA",
     ),
-    "SCG, Sydney": SCG,
     "Alexander Memorial Coliseum, Atlanta, Georgia": MCCAMISH_PAVILION,
     "Alltell Arena, North Little Rock, Arkansas": SIMMONS_BANK_ARENA,
     "Auburn Hills, Michigan": SportsballGeocodeTuple(
@@ -21261,7 +21182,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Cajun Field - Lafayette, Louisiana, USA - United States": CAJUN_FIELD,
     "Rogers Arena": ROGERS_ARENA,
     "PNC Park": PNC_PARK,
-    "Falcon Stadium - Colorado Springs, CO - United States": FALCON_STADIUM,
     "TD Garden": TD_GARDEN,
     "California Memorial Stadium": CALIFORNIA_MEMORIAL_STADIUM,
     "Scotiabank Saddledome": SCOTIABANK_SADDLEDOME,
@@ -21940,15 +21860,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         postal="",
         lat=45.512778,
         lng=-122.685278,
-        housenumber="",
-        country="USA",
-    ),
-    "Journey Bank Ballpark": SportsballGeocodeTuple(
-        city="Williamsport",
-        state="PA",
-        postal="17701",
-        lat=41.242347,
-        lng=-77.047067,
         housenumber="",
         country="USA",
     ),

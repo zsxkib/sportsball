@@ -2339,10 +2339,94 @@
             "housenumber": "",
             "country": "Australia",
             "type": "venue"
+        },
+        "50f28c0b-0d65-46d0-b148-b483a77dce27": {
+            "city": "Corvallis",
+            "state": "OR",
+            "postal": "97331",
+            "lat": 44.5595424,
+            "lng": -123.2839683,
+            "housenumber": "2600",
+            "country": "USA",
+            "type": "venue"
+        },
+        "add32356-49fc-46b4-abdc-4965880325fa": {
+            "city": "Rooty Hill",
+            "state": "NSW",
+            "postal": "2766",
+            "lat": -33.7695492,
+            "lng": 150.8558658,
+            "housenumber": "",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "89054249-b445-43ca-b56d-fab33e8f4475": {
+            "city": "Thuringowa Central",
+            "state": "QLD",
+            "postal": "4817",
+            "lat": -19.3176321,
+            "lng": 146.7270047,
+            "housenumber": "",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "2ccb2f00-d03b-48d7-91e9-141df9f704fe": {
+            "city": "",
+            "state": "CO",
+            "postal": "80840",
+            "lat": 38.997,
+            "lng": -104.843,
+            "housenumber": "4900",
+            "country": "USA",
+            "type": "venue"
+        },
+        "8043ad5e-6dc7-4067-a009-5f7fbcab227f": {
+            "city": "Norwood",
+            "state": "SA",
+            "postal": "5067",
+            "lat": -34.9198089,
+            "lng": 138.6278735,
+            "housenumber": "",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "2af2f0e6-82bd-4003-95b4-a3c80e246252": {
+            "city": "Williamsport",
+            "state": "PA",
+            "postal": "17701",
+            "lat": 41.242347,
+            "lng": -77.047067,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "52dbd4a3-72be-4de8-9d08-ccc3b7ec7ac2": {
+            "city": "Mount Barker Summit",
+            "state": "SA",
+            "postal": "5251",
+            "lat": -35.0779754,
+            "lng": 138.8908443,
+            "housenumber": "304",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "03a5e030-7e04-462b-a057-08fb1bd3b4af": {
+            "city": "Manchester",
+            "state": "",
+            "postal": "M16 0RA",
+            "lat": 53.463056,
+            "lng": -2.291389,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
         }
     },
     "searches": {
         "S.C.G. - Australia": "99f30682-caa5-464b-9527-961ade4903ba",
+        "SCG": "99f30682-caa5-464b-9527-961ade4903ba",
+        "Allianz Stadium - Sydney - NSW": "99f30682-caa5-464b-9527-961ade4903ba",
+        "Sydney Cricket Ground, Sydney, Australia": "99f30682-caa5-464b-9527-961ade4903ba",
+        "SCG, Sydney": "99f30682-caa5-464b-9527-961ade4903ba",
         "Victoria Park - Australia": "58c1c80f-b4e2-4d77-bdd2-ad4a920af559",
         "Tom Benson Hall of Fame Stadium": "a872a4e3-53c1-43e7-8af2-79263f5d80d3",
         "MetLife Stadium": "7b9c3f52-bb1a-43d9-b074-4b39f5ab12ef",
@@ -2574,6 +2658,7 @@
         "Frankfurt Stadium - Frankfurt": "d038edb8-439b-4cf8-b916-abdbedce45aa",
         "Deutsche Bank Park - Frankfurt, Germany - Germany": "d038edb8-439b-4cf8-b916-abdbedce45aa",
         "Deutsche Bank Park - Frankfurt - Germany": "d038edb8-439b-4cf8-b916-abdbedce45aa",
+        "Deutsche Bank Park, Frankfurt, Germany": "d038edb8-439b-4cf8-b916-abdbedce45aa",
         "Villa Park, Birmingham, England": "a065b054-56d6-47df-b1c7-8cf5740ac3fc",
         "Trans World Dome": "3cfa1db0-18c7-47d1-ae20-bb791bfc4a46",
         "The Dome at America's Center - St. Louis - MO - 63101": "3cfa1db0-18c7-47d1-ae20-bb791bfc4a46",
@@ -2935,6 +3020,24 @@
         "Jiangwan Sports Centre": "348174a9-7ffc-45aa-8866-680f7882629e",
         "Jiangwan Stadium, Shanghai, China": "348174a9-7ffc-45aa-8866-680f7882629e",
         "Toughsheet Community Stadium, Bolton, England": "7015fd4c-dfe0-497b-91df-9e57ed645b8b",
-        "Bruce Stadium - Australia": "55c4007a-3fcc-457f-9789-d2070db4b7c7"
+        "Bruce Stadium - Australia": "55c4007a-3fcc-457f-9789-d2070db4b7c7",
+        "Reser Stadium - Corvallis, Oregon, USA - United States": "50f28c0b-0d65-46d0-b148-b483a77dce27",
+        "Reser Stadium - Corvallis - OR - 97331": "50f28c0b-0d65-46d0-b148-b483a77dce27",
+        "Blacktown - Australia": "add32356-49fc-46b4-abdc-4965880325fa",
+        "Blacktown Park": "add32356-49fc-46b4-abdc-4965880325fa",
+        "Riverway Stadium - Australia": "89054249-b445-43ca-b56d-fab33e8f4475",
+        "Riverway Stadium": "89054249-b445-43ca-b56d-fab33e8f4475",
+        "Riverway Stadium, Townsville, Australia": "89054249-b445-43ca-b56d-fab33e8f4475",
+        "Falcon Stadium - USAF Academy - CO - 80840": "2ccb2f00-d03b-48d7-91e9-141df9f704fe",
+        "Falcon Stadium - Colorado Springs, CO - United States": "2ccb2f00-d03b-48d7-91e9-141df9f704fe",
+        "Norwood Oval - Australia": "8043ad5e-6dc7-4067-a009-5f7fbcab227f",
+        "Norwood Oval": "8043ad5e-6dc7-4067-a009-5f7fbcab227f",
+        "Norwood Oval, Norwood, Australia": "8043ad5e-6dc7-4067-a009-5f7fbcab227f",
+        "Muncy Bank Ballpark": "2af2f0e6-82bd-4003-95b4-a3c80e246252",
+        "Journey Bank Ballpark": "2af2f0e6-82bd-4003-95b4-a3c80e246252",
+        "Summit Sports Park - Australia": "52dbd4a3-72be-4de8-9d08-ccc3b7ec7ac2",
+        "Adelaide Hills": "52dbd4a3-72be-4de8-9d08-ccc3b7ec7ac2",
+        "Adelaide Hills, Mount Barker, Australia": "52dbd4a3-72be-4de8-9d08-ccc3b7ec7ac2",
+        "Old Trafford, Manchester, England": "03a5e030-7e04-462b-a057-08fb1bd3b4af"
     }
 }
