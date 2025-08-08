@@ -2539,6 +2539,116 @@
             "housenumber": "201",
             "country": "USA",
             "type": "venue"
+        },
+        "b4425a03-b770-4fb3-b0c0-1ce6a2594971": {
+            "city": "Amherst",
+            "state": "MA",
+            "postal": "",
+            "lat": 42.388889,
+            "lng": -72.527778,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "2df05efe-a0a3-4af2-8955-68182f6cbfde": {
+            "city": "Gainesville",
+            "state": "FL",
+            "postal": "32611",
+            "lat": 29.6500337,
+            "lng": -82.3488407,
+            "housenumber": "157",
+            "country": "USA",
+            "type": "venue"
+        },
+        "83a9545a-f293-47c2-8ee5-12665708aa3d": {
+            "city": "Farmville",
+            "state": "VA",
+            "postal": "",
+            "lat": 37.301556,
+            "lng": -78.394194,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "0fbc4995-03e9-4ccb-b0c1-228c1ed988f6": {
+            "city": "Birmingham",
+            "state": "AL",
+            "postal": "35203",
+            "lat": 33.5278,
+            "lng": -86.8092,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "8a343b84-982a-4e6a-8dc9-012c4d1cd052": {
+            "city": "Amherst",
+            "state": "MA",
+            "postal": "01003",
+            "lat": 42.377306,
+            "lng": -72.536019,
+            "housenumber": "300",
+            "country": "USA",
+            "type": "venue"
+        },
+        "6f034dde-8b46-4848-b9f3-aa119dd3db8d": {
+            "city": "Barnaul",
+            "state": "",
+            "postal": "",
+            "lat": 53.348611,
+            "lng": 83.776389,
+            "housenumber": "",
+            "country": "Russia",
+            "type": "city"
+        },
+        "06f4d149-0030-4e75-a4bb-e3cda775a707": {
+            "city": "Bowling Green",
+            "state": "OH",
+            "postal": "43403",
+            "lat": 41.378056,
+            "lng": -83.6225,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "60f62014-0b1d-4ede-9ad7-d534ae1f3dbb": {
+            "city": "Buffalo",
+            "state": "NY",
+            "postal": "",
+            "lat": 42.881306,
+            "lng": -78.874278,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
+        },
+        "eb526f6a-71f3-4919-a46b-8e7b475217ff": {
+            "city": "Winston-Salem",
+            "state": "NC",
+            "postal": "27105",
+            "lat": 36.130556,
+            "lng": -80.254722,
+            "housenumber": "411",
+            "country": "USA",
+            "type": "venue"
+        },
+        "c7149ade-24b1-4ead-934e-470c7404b44e": {
+            "city": "London",
+            "state": "",
+            "postal": "SE7",
+            "lat": 51.486389,
+            "lng": 0.036389,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "19b16985-70f3-45fa-aa5b-d0a21ee5c784": {
+            "city": "Waco",
+            "state": "TX",
+            "postal": "76704",
+            "lat": 31.5582,
+            "lng": -97.1157,
+            "housenumber": "1001",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -2933,6 +3043,7 @@
         "Euroa - Australia": "d2ee3c9d-140e-498c-aaf5-8e7d547c5cbc",
         "Aloha Stadium - Honolulu - HI - 96818": "9961d10c-97bb-4d6c-a89b-544a6e001c7e",
         "Aloha Stadium, Honolulu, HI, USA": "9961d10c-97bb-4d6c-a89b-544a6e001c7e",
+        "Aloha Stadium": "9961d10c-97bb-4d6c-a89b-544a6e001c7e",
         "Cardiff City Stadium, Cardiff, Wales": "b57f7d58-dd32-45a4-9856-a0cab5251a1b",
         "North Hobart - Australia": "ff625519-3999-40f8-af8f-03aed7e1b705",
         "University of Arkansas at Little Rock": "068f05b6-fe45-4616-a7be-5e54dd2a2ddf",
@@ -3178,6 +3289,18 @@
         "Boone Pickens Stadium - Stillwater, Oklahoma, USA - United States": "541c4143-a924-4743-99b1-ed7abe7c4236",
         "Portman Road, Ipswich, England": "3d039b17-cd4c-478f-be28-83afc9da21cf",
         "Cajun Field - Lafayette - LA - 70506": "be13673e-7924-4e95-a76d-868c9df51836",
-        "Cajun Field - Lafayette, Louisiana, USA - United States": "be13673e-7924-4e95-a76d-868c9df51836"
+        "Cajun Field - Lafayette, Louisiana, USA - United States": "be13673e-7924-4e95-a76d-868c9df51836",
+        "University of Massachusetts Amherst": "b4425a03-b770-4fb3-b0c0-1ce6a2594971",
+        "Ben Hill Griffin Stadium - Gainesville - FL - 32611": "2df05efe-a0a3-4af2-8955-68182f6cbfde",
+        "Longwood University": "83a9545a-f293-47c2-8ee5-12665708aa3d",
+        "Protective Stadium - Birmingham - AL - 35203": "0fbc4995-03e9-4ccb-b0c1-228c1ed988f6",
+        "Warren McGuirk Alumni Stadium - Amherst - MA - 01003": "8a343b84-982a-4e6a-8dc9-012c4d1cd052",
+        "Barnaul, Russia": "6f034dde-8b46-4848-b9f3-aa119dd3db8d",
+        "Doyt L. Perry Stadium - Bowling Green - OH - 43403": "06f4d149-0030-4e75-a4bb-e3cda775a707",
+        "Doyt Perry Stadium": "06f4d149-0030-4e75-a4bb-e3cda775a707",
+        "Sahlen Field, Buffalo, NY, USA": "60f62014-0b1d-4ede-9ad7-d534ae1f3dbb",
+        "Allegacy Federal Credit Union Stadium - Winston-Salem - NC - 27105": "eb526f6a-71f3-4919-a46b-8e7b475217ff",
+        "The Valley, London, England": "c7149ade-24b1-4ead-934e-470c7404b44e",
+        "McLane Stadium - Waco - TX - 76704": "19b16985-70f3-45fa-aa5b-d0a21ee5c784"
     }
 }
