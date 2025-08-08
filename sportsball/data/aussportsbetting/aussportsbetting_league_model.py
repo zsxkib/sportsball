@@ -98,6 +98,7 @@ class AusSportsBettingLeagueModel(LeagueModel):
 
     @property
     def games(self) -> Iterator[GameModel]:
+        self.session.cache.delete(urls=[self._spreadsheet_url])
         try:
             with self.session.cache_disabled():
                 response = self.session.get(self._spreadsheet_url)

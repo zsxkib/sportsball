@@ -967,15 +967,6 @@ ROBERT_A_MOTT_GYMNASIUM = SportsballGeocodeTuple(
     housenumber="1",
     country="USA",
 )
-KIBBIE_DOME = SportsballGeocodeTuple(
-    city="Moscow",
-    state="ID",
-    postal="83844",
-    lat=46.726,
-    lng=-117.017,
-    housenumber="",
-    country="USA",
-)
 ELMORE_GYMNASIUM = SportsballGeocodeTuple(
     city="Normal",
     state="AL",
@@ -2830,15 +2821,6 @@ ROGERS_PLACE = SportsballGeocodeTuple(
     housenumber="10220",
     country="Canada",
 )
-LN_FEDERAL_CREDIT_UNION_STADIUM = SportsballGeocodeTuple(
-    city="Louisville",
-    state="KY",
-    postal="40208",
-    lat=38.205833,
-    lng=-85.758889,
-    housenumber="2800",
-    country="USA",
-)
 WICHITA = SportsballGeocodeTuple(
     city="Wichita",
     state="KS",
@@ -3449,15 +3431,6 @@ CITIZENS_BANK_PARK = SportsballGeocodeTuple(
     lat=39.905833,
     lng=-75.166389,
     housenumber="",
-    country="USA",
-)
-CAJUN_FIELD = SportsballGeocodeTuple(
-    city="Lafayette",
-    state="LA",
-    postal="70506",
-    lat=30.215833,
-    lng=-92.041944,
-    housenumber="201",
     country="USA",
 )
 PNC_PARK = SportsballGeocodeTuple(
@@ -4108,15 +4081,6 @@ AMERICAN_BANK_CENTER = SportsballGeocodeTuple(
     housenumber="1901",
     country="USA",
 )
-HUSKY_STADIUM = SportsballGeocodeTuple(
-    city="Seattle",
-    state="WA",
-    postal="98195",
-    lat=47.6503,
-    lng=-122.3016,
-    housenumber="3800",
-    country="USA",
-)
 HUGHES_STADIUM = SportsballGeocodeTuple(
     city="Fort Collins",
     state="CO",
@@ -4216,38 +4180,7 @@ JACK_TRICE_STADIUM = SportsballGeocodeTuple(
     housenumber="1798",
     country="USA",
 )
-BOONE_PICKENS_STADIUM = SportsballGeocodeTuple(
-    city="Stillwater",
-    state="OK",
-    postal="74075",
-    lat=36.125833,
-    lng=-97.066389,
-    housenumber="700",
-    country="USA",
-)
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Husky Stadium - Seattle - WA - 98195": HUSKY_STADIUM,
-    "L&N Federal Credit Union Stadium - Louisville - KY - 40208": LN_FEDERAL_CREDIT_UNION_STADIUM,
-    "Bobcat Stadium (TX) - San Marcos - TX - 78666": SportsballGeocodeTuple(
-        city="San Marcos",
-        state="TX",
-        postal="78666",
-        lat=29.891111,
-        lng=-97.925556,
-        housenumber="1100",
-        country="USA",
-    ),
-    "Rice-Eccles Stadium - Salt Lake City - UT - 84112": SportsballGeocodeTuple(
-        city="Salt Lake City",
-        state="UT",
-        postal="84112",
-        lat=40.759975,
-        lng=-111.848853,
-        housenumber="451",
-        country="USA",
-    ),
-    "Boone Pickens Stadium - Stillwater - OK - 74075": BOONE_PICKENS_STADIUM,
-    "Cajun Field - Lafayette - LA - 70506": CAJUN_FIELD,
     "Ben Hill Griffin Stadium - Gainesville - FL - 32611": SportsballGeocodeTuple(
         city="Gainesville",
         state="FL",
@@ -4876,7 +4809,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="558",
         country="USA",
     ),
-    "Kibbie Dome - Moscow - ID - 83844": KIBBIE_DOME,
     "Hughes Stadium (CO) - Fort Collins - CO - 80526": HUGHES_STADIUM,
     "Rate Field - Chicago - IL - 60616": SportsballGeocodeTuple(
         city="Chicago",
@@ -8594,7 +8526,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="110",
         country="USA",
     ),
-    "Cowan Spectrum, Moscow, Idaho": KIBBIE_DOME,
     "Elmore Health Science Building , Normal, Alabama": ELMORE_GYMNASIUM,
     "McDonough Gymnasium, Washington, District of Columbia": SportsballGeocodeTuple(
         city="Washington",
@@ -16316,7 +16247,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Lenovo Center, Raleigh, NC, USA": LENOVO_CENTER,
-    "Papa John's Cardinal Stadium": LN_FEDERAL_CREDIT_UNION_STADIUM,
     "Nevada College": SportsballGeocodeTuple(
         city="Reno",
         state="NV",
@@ -20254,15 +20184,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Montana College": SportsballGeocodeTuple(
-        city="Missoula",
-        state="MT",
-        postal="",
-        lat=46.86,
-        lng=-113.985278,
-        housenumber="",
-        country="USA",
-    ),
     "Duquesne College": SportsballGeocodeTuple(
         city="Pittsburgh",
         state="PA",
@@ -21179,7 +21100,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Cajun Field - Lafayette, Louisiana, USA - United States": CAJUN_FIELD,
     "Rogers Arena": ROGERS_ARENA,
     "PNC Park": PNC_PARK,
     "TD Garden": TD_GARDEN,
@@ -21822,7 +21742,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Louisville": LOUISVILLE,
-    "Husky Stadium": HUSKY_STADIUM,
     "Tennessee State University": SportsballGeocodeTuple(
         city="Nashville",
         state="TN",
@@ -22107,7 +22026,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Boone Pickens Stadium - Stillwater, Oklahoma, USA - United States": BOONE_PICKENS_STADIUM,
     "Harvard University": SportsballGeocodeTuple(
         city="Cambridge",
         state="MA",

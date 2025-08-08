@@ -2419,6 +2419,126 @@
             "housenumber": "",
             "country": "UK",
             "type": "venue"
+        },
+        "4a4fe9cd-2c7b-427e-b7f6-6188ea6b05a7": {
+            "city": "Tampa",
+            "state": "FL",
+            "postal": "",
+            "lat": 28.054561,
+            "lng": -82.413058,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "16b72653-dd8d-443a-a298-b2c140954e6e": {
+            "city": "Seattle",
+            "state": "WA",
+            "postal": "98195",
+            "lat": 47.6503,
+            "lng": -122.3016,
+            "housenumber": "3800",
+            "country": "USA",
+            "type": "venue"
+        },
+        "814e501f-39f1-43bd-81bc-a3fbd7f82d5d": {
+            "city": "Missoula",
+            "state": "MT",
+            "postal": "",
+            "lat": 46.86,
+            "lng": -113.985278,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "72289ba7-6575-4782-8145-0cdbbf80fd9f": {
+            "city": "Louisville",
+            "state": "KY",
+            "postal": "40208",
+            "lat": 38.205833,
+            "lng": -85.758889,
+            "housenumber": "2800",
+            "country": "USA",
+            "type": "venue"
+        },
+        "cd6e8b5d-1b6b-4f57-9c41-e5c76a324f79": {
+            "city": "Moscow",
+            "state": "ID",
+            "postal": "83844",
+            "lat": 46.726,
+            "lng": -117.017,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "d8eb2dcb-ffd5-408e-b565-59d0aeb53623": {
+            "city": "San Marcos",
+            "state": "TX",
+            "postal": "78666",
+            "lat": 29.891111,
+            "lng": -97.925556,
+            "housenumber": "1100",
+            "country": "USA",
+            "type": "venue"
+        },
+        "2e8d5cb1-0af3-4692-a6f1-dbd33e97ec44": {
+            "city": "Hempstead",
+            "state": "NY",
+            "postal": "",
+            "lat": 40.714722,
+            "lng": -73.600556,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "9ed83302-4008-458b-910b-af7966ec0522": {
+            "city": "Salt Lake City",
+            "state": "UT",
+            "postal": "84112",
+            "lat": 40.759975,
+            "lng": -111.848853,
+            "housenumber": "451",
+            "country": "USA",
+            "type": "venue"
+        },
+        "5b033bb5-aa81-4372-a780-6d23eacdc917": {
+            "city": "Oakland",
+            "state": "CA",
+            "postal": "",
+            "lat": 37.751667,
+            "lng": -122.200556,
+            "housenumber": "7000",
+            "country": "USA",
+            "type": "venue"
+        },
+        "541c4143-a924-4743-99b1-ed7abe7c4236": {
+            "city": "Stillwater",
+            "state": "OK",
+            "postal": "74075",
+            "lat": 36.125833,
+            "lng": -97.066389,
+            "housenumber": "700",
+            "country": "USA",
+            "type": "venue"
+        },
+        "3d039b17-cd4c-478f-be28-83afc9da21cf": {
+            "city": "Ipswich",
+            "state": "",
+            "postal": "",
+            "lat": 52.055,
+            "lng": 1.144722,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "be13673e-7924-4e95-a76d-868c9df51836": {
+            "city": "Lafayette",
+            "state": "LA",
+            "postal": "70506",
+            "lat": 30.215833,
+            "lng": -92.041944,
+            "housenumber": "201",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -3030,6 +3150,7 @@
         "Riverway Stadium, Townsville, Australia": "89054249-b445-43ca-b56d-fab33e8f4475",
         "Falcon Stadium - USAF Academy - CO - 80840": "2ccb2f00-d03b-48d7-91e9-141df9f704fe",
         "Falcon Stadium - Colorado Springs, CO - United States": "2ccb2f00-d03b-48d7-91e9-141df9f704fe",
+        "Falcon Stadium": "2ccb2f00-d03b-48d7-91e9-141df9f704fe",
         "Norwood Oval - Australia": "8043ad5e-6dc7-4067-a009-5f7fbcab227f",
         "Norwood Oval": "8043ad5e-6dc7-4067-a009-5f7fbcab227f",
         "Norwood Oval, Norwood, Australia": "8043ad5e-6dc7-4067-a009-5f7fbcab227f",
@@ -3038,6 +3159,25 @@
         "Summit Sports Park - Australia": "52dbd4a3-72be-4de8-9d08-ccc3b7ec7ac2",
         "Adelaide Hills": "52dbd4a3-72be-4de8-9d08-ccc3b7ec7ac2",
         "Adelaide Hills, Mount Barker, Australia": "52dbd4a3-72be-4de8-9d08-ccc3b7ec7ac2",
-        "Old Trafford, Manchester, England": "03a5e030-7e04-462b-a057-08fb1bd3b4af"
+        "Old Trafford, Manchester, England": "03a5e030-7e04-462b-a057-08fb1bd3b4af",
+        "University of South Florida": "4a4fe9cd-2c7b-427e-b7f6-6188ea6b05a7",
+        "Husky Stadium - Seattle - WA - 98195": "16b72653-dd8d-443a-a298-b2c140954e6e",
+        "Husky Stadium": "16b72653-dd8d-443a-a298-b2c140954e6e",
+        "University of Montana": "814e501f-39f1-43bd-81bc-a3fbd7f82d5d",
+        "Montana College": "814e501f-39f1-43bd-81bc-a3fbd7f82d5d",
+        "L&N Federal Credit Union Stadium - Louisville - KY - 40208": "72289ba7-6575-4782-8145-0cdbbf80fd9f",
+        "Papa John's Cardinal Stadium": "72289ba7-6575-4782-8145-0cdbbf80fd9f",
+        "Kibbie Dome - Moscow, Idaho, USA - United States": "cd6e8b5d-1b6b-4f57-9c41-e5c76a324f79",
+        "Kibbie Dome - Moscow - ID - 83844": "cd6e8b5d-1b6b-4f57-9c41-e5c76a324f79",
+        "Cowan Spectrum, Moscow, Idaho": "cd6e8b5d-1b6b-4f57-9c41-e5c76a324f79",
+        "Bobcat Stadium (TX) - San Marcos - TX - 78666": "d8eb2dcb-ffd5-408e-b565-59d0aeb53623",
+        "Hofstra College": "2e8d5cb1-0af3-4692-a6f1-dbd33e97ec44",
+        "Rice-Eccles Stadium - Salt Lake City - UT - 84112": "9ed83302-4008-458b-910b-af7966ec0522",
+        "RingCentral Coliseum": "5b033bb5-aa81-4372-a780-6d23eacdc917",
+        "Boone Pickens Stadium - Stillwater - OK - 74075": "541c4143-a924-4743-99b1-ed7abe7c4236",
+        "Boone Pickens Stadium - Stillwater, Oklahoma, USA - United States": "541c4143-a924-4743-99b1-ed7abe7c4236",
+        "Portman Road, Ipswich, England": "3d039b17-cd4c-478f-be28-83afc9da21cf",
+        "Cajun Field - Lafayette - LA - 70506": "be13673e-7924-4e95-a76d-868c9df51836",
+        "Cajun Field - Lafayette, Louisiana, USA - United States": "be13673e-7924-4e95-a76d-868c9df51836"
     }
 }
