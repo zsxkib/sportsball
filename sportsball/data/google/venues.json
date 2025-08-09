@@ -2969,6 +2969,116 @@
             "housenumber": "1",
             "country": "USA",
             "type": "venue"
+        },
+        "20ab2aac-f764-4d3e-bf51-30eb6499cc04": {
+            "city": "Orange County",
+            "state": "FL",
+            "postal": "",
+            "lat": 28.6016,
+            "lng": -81.2005,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "59b9770d-b491-47df-9dce-8dde67135640": {
+            "city": "Jacksonville",
+            "state": "AL",
+            "postal": "36265",
+            "lat": 33.820278,
+            "lng": -85.766389,
+            "housenumber": "700",
+            "country": "USA",
+            "type": "venue"
+        },
+        "8e0b1c6e-aaaa-4cb7-b941-1bb9cb849bc7": {
+            "city": "Midland",
+            "state": "TX",
+            "postal": "",
+            "lat": 32.0291,
+            "lng": -102.1053,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "b38d0a22-4ecd-4fc4-9db2-85811d198368": {
+            "city": "Tuscaloosa",
+            "state": "AL",
+            "postal": "35401",
+            "lat": 33.208333,
+            "lng": -87.550278,
+            "housenumber": "920",
+            "country": "USA",
+            "type": "venue"
+        },
+        "fb8c1e46-69a5-4ced-ba86-265e96fd05c3": {
+            "city": "Missoula",
+            "state": "MT",
+            "postal": "",
+            "lat": 46.864,
+            "lng": -113.983,
+            "housenumber": "32",
+            "country": "USA",
+            "type": "venue"
+        },
+        "cd588f2e-5e8e-41fb-ae05-a2a09787a649": {
+            "city": "Greenville",
+            "state": "NC",
+            "postal": "37604",
+            "lat": 35.596389,
+            "lng": -77.365278,
+            "housenumber": "100",
+            "country": "USA",
+            "type": "venue"
+        },
+        "44d244d1-a82e-4c60-b155-c778690b2afe": {
+            "city": "Piscataway",
+            "state": "NJ",
+            "postal": "08854",
+            "lat": 40.513611,
+            "lng": -74.465278,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
+        },
+        "f5936842-f518-4b9e-a9b5-19c21ca558cc": {
+            "city": "Dyersville",
+            "state": "IO",
+            "postal": "",
+            "lat": 42.498889,
+            "lng": -91.0571,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "53cdd906-275c-40a8-8a2f-96978f3269e8": {
+            "city": "Boulder",
+            "state": "CO",
+            "postal": "80305",
+            "lat": 40.009,
+            "lng": -105.267,
+            "housenumber": "2400",
+            "country": "USA",
+            "type": "venue"
+        },
+        "7c74f5d6-a6fd-40c2-abc0-d694e88e99b7": {
+            "city": "Portsmouth",
+            "state": "",
+            "postal": "PO4 8RA",
+            "lat": 50.796389,
+            "lng": -1.063889,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "6b458a61-10e7-480e-ae58-30ba121beb42": {
+            "city": "Lexington",
+            "state": "KY",
+            "postal": "40506",
+            "lat": 38.022778,
+            "lng": -84.505278,
+            "housenumber": "1540",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -3383,6 +3493,7 @@
         "Notre Dame Stadium - South Bend, IN - United States": "68e86bf5-0e83-4923-af40-557e94dafef9",
         "Notre Dame Stadium - Notre Dame - IN - 46556": "68e86bf5-0e83-4923-af40-557e94dafef9",
         "notre-dame": "68e86bf5-0e83-4923-af40-557e94dafef9",
+        "Notre Dame Stadium": "68e86bf5-0e83-4923-af40-557e94dafef9",
         "Silverdome - Pontiac - MI": "3aab2cf1-3072-48cd-b240-de4121d8372d",
         "Pontiac Silverdome": "3aab2cf1-3072-48cd-b240-de4121d8372d",
         "Pontiac Silverdome, Pontiac, Michigan": "3aab2cf1-3072-48cd-b240-de4121d8372d",
@@ -3671,6 +3782,22 @@
         "Camp Randall Stadium - Madison - WI - 53711": "dd5174be-c360-4194-aab3-641dbfb1b3e5",
         "Camp Randall Stadium - Madison, Wisconsin, USA - United States": "dd5174be-c360-4194-aab3-641dbfb1b3e5",
         "Carrow Road, Norwich, England": "092bd985-8418-4bac-aa99-64e59dda878f",
-        "War Memorial Stadium (AR) - Little Rock - AR - 72205": "6fbc0af4-71e6-4794-b118-34c5c3c7a53e"
+        "War Memorial Stadium (AR) - Little Rock - AR - 72205": "6fbc0af4-71e6-4794-b118-34c5c3c7a53e",
+        "University of Central Florida": "20ab2aac-f764-4d3e-bf51-30eb6499cc04",
+        "AmFirst Stadium - Jacksonville - AL - 36265": "59b9770d-b491-47df-9dce-8dde67135640",
+        "Midland College": "8e0b1c6e-aaaa-4cb7-b941-1bb9cb849bc7",
+        "Bryant-Denny Stadium - Tuscaloosa - AL - 35401": "b38d0a22-4ecd-4fc4-9db2-85811d198368",
+        "Bryant Denny Stadium - Tuscaloosa, AL - United States": "b38d0a22-4ecd-4fc4-9db2-85811d198368",
+        "Washington-Grizzly Stadium": "fb8c1e46-69a5-4ced-ba86-265e96fd05c3",
+        "Adams Center/Dahlberg Arena, Missoula, Montana": "fb8c1e46-69a5-4ced-ba86-265e96fd05c3",
+        "Dahlberg Arena, Missoula, Montana": "fb8c1e46-69a5-4ced-ba86-265e96fd05c3",
+        "Dowdy-Ficklen Stadium - Greenville - NC - 37604": "cd588f2e-5e8e-41fb-ae05-a2a09787a649",
+        "Dowdy-Ficklen Stadium": "cd588f2e-5e8e-41fb-ae05-a2a09787a649",
+        "SHI Stadium - Piscataway - NJ - 08854": "44d244d1-a82e-4c60-b155-c778690b2afe",
+        "Field of Dreams": "f5936842-f518-4b9e-a9b5-19c21ca558cc",
+        "Folsom Field - Boulder - CO - 80305": "53cdd906-275c-40a8-8a2f-96978f3269e8",
+        "Folsom Field - Boulder, Colorado, USA - United States": "53cdd906-275c-40a8-8a2f-96978f3269e8",
+        "Fratton Park, Portsmouth, England": "7c74f5d6-a6fd-40c2-abc0-d694e88e99b7",
+        "Kroger Field - Lexington - KY - 40506": "6b458a61-10e7-480e-ae58-30ba121beb42"
     }
 }

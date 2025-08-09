@@ -463,15 +463,6 @@ WALKUP_SKYDOME = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-DAHLBERG_ARENA = SportsballGeocodeTuple(
-    city="Missoula",
-    state="MT",
-    postal="",
-    lat=46.864,
-    lng=-113.983,
-    housenumber="32",
-    country="USA",
-)
 GREAT_SOUTHERN_BANK_ARENA = SportsballGeocodeTuple(
     city="Springfield",
     state="MO",
@@ -2911,15 +2902,6 @@ COMPAQ_CENTER = SportsballGeocodeTuple(
     housenumber="3700",
     country="USA",
 )
-FOLSOM_FIELD = SportsballGeocodeTuple(
-    city="Boulder",
-    state="CO",
-    postal="80305",
-    lat=40.009,
-    lng=-105.267,
-    housenumber="2400",
-    country="USA",
-)
 MARTIN_STADIUM = SportsballGeocodeTuple(
     city="Pullman",
     state="WA",
@@ -3586,15 +3568,6 @@ ORIOLE_PARK = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-DOWDY_FICKLEN_STADIUM = SportsballGeocodeTuple(
-    city="Greenville",
-    state="NC",
-    postal="37604",
-    lat=35.596389,
-    lng=-77.365278,
-    housenumber="100",
-    country="USA",
-)
 KYLE_FIELD = SportsballGeocodeTuple(
     city="College Station",
     state="TX",
@@ -3629,15 +3602,6 @@ VAUGHT_HEMINGWAY_STADIUM = SportsballGeocodeTuple(
     lat=34.361944,
     lng=-89.534167,
     housenumber="6",
-    country="USA",
-)
-BRYANT_DENNY_STADIUM = SportsballGeocodeTuple(
-    city="Tuscaloosa",
-    state="AL",
-    postal="35401",
-    lat=33.208333,
-    lng=-87.550278,
-    housenumber="920",
     country="USA",
 )
 PETERSEN_EVENTS_CENTER = SportsballGeocodeTuple(
@@ -4082,45 +4046,6 @@ JACK_TRICE_STADIUM = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "War Memorial Stadium (AR) - Little Rock - AR - 72205": SportsballGeocodeTuple(
-        city="Little Rock",
-        state="AR",
-        postal="72205",
-        lat=34.749861,
-        lng=-92.33,
-        housenumber="1",
-        country="USA",
-    ),
-    "AmFirst Stadium - Jacksonville - AL - 36265": SportsballGeocodeTuple(
-        city="Jacksonville",
-        state="AL",
-        postal="36265",
-        lat=33.820278,
-        lng=-85.766389,
-        housenumber="700",
-        country="USA",
-    ),
-    "Bryant-Denny Stadium - Tuscaloosa - AL - 35401": BRYANT_DENNY_STADIUM,
-    "Dowdy-Ficklen Stadium - Greenville - NC - 37604": DOWDY_FICKLEN_STADIUM,
-    "SHI Stadium - Piscataway - NJ - 08854": SportsballGeocodeTuple(
-        city="Piscataway",
-        state="NJ",
-        postal="08854",
-        lat=40.513611,
-        lng=-74.465278,
-        housenumber="1",
-        country="USA",
-    ),
-    "Folsom Field - Boulder - CO - 80305": FOLSOM_FIELD,
-    "Kroger Field - Lexington - KY - 40506": SportsballGeocodeTuple(
-        city="Lexington",
-        state="KY",
-        postal="40506",
-        lat=38.022778,
-        lng=-84.505278,
-        housenumber="1540",
-        country="USA",
-    ),
     "Williams Stadium (VA) - Lynchburg - VA - 24502": SportsballGeocodeTuple(
         city="Lynchburg",
         state="VA",
@@ -6198,7 +6123,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Murphy Athletic Center, Murfreesboro, Tennessee": MURPHY_ATHELTIC_CENTER,
-    "Adams Center/Dahlberg Arena, Missoula, Montana": DAHLBERG_ARENA,
     "Kiefer Lakefront Arena, New Orleans , Louisiana": LAKEFRONT_ARENA,
     "Bank of Kentucky Center, Highland Heights, Kentucky": BANK_OF_KENTUCKY_CENTER,
     "Robins Center, Richmond, Virginia": SportsballGeocodeTuple(
@@ -7416,7 +7340,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "KSU Convocation Center, Kennesaw, Georgia": KSU_CONVOCATION_CENTER,
     "Fredrick C. Hobdy Assembly Center, Grambling, Louisiana": FREDRICK_C_HOBDY_ASSEMBLY_CENTER,
     "Walkup Skydome, Flagstaff, Arizona": WALKUP_SKYDOME,
-    "Dahlberg Arena, Missoula, Montana": DAHLBERG_ARENA,
     "Great Southern Bank Arena, Springfield, Missouri": GREAT_SOUTHERN_BANK_ARENA,
     "Banterra Center, Carbondale, Illinois": SportsballGeocodeTuple(
         city="Carbondale",
@@ -16788,7 +16711,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Compaq Center": COMPAQ_CENTER,
-    "Folsom Field - Boulder, Colorado, USA - United States": FOLSOM_FIELD,
     "University of Virginia": SportsballGeocodeTuple(
         city="Charlottesville",
         state="VA",
@@ -21041,7 +20963,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Darrell K Royal-Texas Memorial Stadium": DARRELL_K_ROYAL_TEXAS_MEMORIAL_STADIUM,
     "Oriole Park at Camden Yards": ORIOLE_PARK,
-    "Dowdy-Ficklen Stadium": DOWDY_FICKLEN_STADIUM,
     "Ohio University": SportsballGeocodeTuple(
         city="Athens",
         state="OH",
@@ -21138,7 +21059,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Colonial Life Arena - Columbia, South Carolina - United States": COLONIAL_LIFE_ARENA,
-    "Bryant Denny Stadium - Tuscaloosa, AL - United States": BRYANT_DENNY_STADIUM,
     "Mercer University": SportsballGeocodeTuple(
         city="Macon",
         state="GA",
