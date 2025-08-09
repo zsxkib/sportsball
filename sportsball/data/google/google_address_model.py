@@ -2002,15 +2002,6 @@ JAMAICA = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-CHICAGO = SportsballGeocodeTuple(
-    city="Chicago",
-    state="IL",
-    postal="",
-    lat=41.881944,
-    lng=-87.627778,
-    housenumber="",
-    country="USA",
-)
 CORAL_GABLES = SportsballGeocodeTuple(
     city="Coral Gables",
     state="FL",
@@ -2902,15 +2893,6 @@ T_MOBILE_ARENA = SportsballGeocodeTuple(
     housenumber="3780",
     country="USA",
 )
-CAMP_RANDALL_STADIUM = SportsballGeocodeTuple(
-    city="Madison",
-    state="WI",
-    postal="53711",
-    lat=43.07,
-    lng=-89.412778,
-    housenumber="",
-    country="USA",
-)
 LAVELL_EDWARDS_STADIUM = SportsballGeocodeTuple(
     city="Provo",
     state="UT",
@@ -3505,15 +3487,6 @@ DAIKIN_PARK = SportsballGeocodeTuple(
     housenumber="501",
     country="USA",
 )
-JORDAN_HARE_STADIUM = SportsballGeocodeTuple(
-    city="Auburn",
-    state="AL",
-    postal="36849",
-    lat=32.602222,
-    lng=-85.489167,
-    housenumber="251",
-    country="USA",
-)
 STEINBRENNER_FIELD = SportsballGeocodeTuple(
     city="Tampa",
     state="FL",
@@ -3620,15 +3593,6 @@ DOWDY_FICKLEN_STADIUM = SportsballGeocodeTuple(
     lat=35.596389,
     lng=-77.365278,
     housenumber="100",
-    country="USA",
-)
-OHIO_STADIUM = SportsballGeocodeTuple(
-    city="Columbus",
-    state="OH",
-    postal="43210",
-    lat=40.001667,
-    lng=-83.019722,
-    housenumber="411",
     country="USA",
 )
 KYLE_FIELD = SportsballGeocodeTuple(
@@ -4118,18 +4082,6 @@ JACK_TRICE_STADIUM = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Ohio Stadium - Columbus - OH - 43210": OHIO_STADIUM,
-    "Memorial Stadium (Bloomington, IN) - Bloomington - IN - 47408": SportsballGeocodeTuple(
-        city="Bloomington",
-        state="IN",
-        postal="47408",
-        lat=39.180833,
-        lng=-86.525556,
-        housenumber="701",
-        country="USA",
-    ),
-    "Jordan-Hare Stadium - Auburn - AL - 36849": JORDAN_HARE_STADIUM,
-    "Camp Randall Stadium - Madison - WI - 53711": CAMP_RANDALL_STADIUM,
     "War Memorial Stadium (AR) - Little Rock - AR - 72205": SportsballGeocodeTuple(
         city="Little Rock",
         state="AR",
@@ -7759,7 +7711,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Chicago, Illinois": CHICAGO,
     "Alabama A&M Events Center, Huntsville, Alabama": SportsballGeocodeTuple(
         city="Huntsville",
         state="AL",
@@ -13127,7 +13078,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Guadeloupe",
     ),
-    "Chicago, Illinois, United States": CHICAGO,
     "Amherst, Virginia, United States": SportsballGeocodeTuple(
         city="Amherst",
         state="VA",
@@ -16817,7 +16767,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Villanova College": VILLANOVA_COLLEGE,
     "Canadian Tire Centre, Ottawa, ON, Canada": CANADIAN_TIRE_CENTER,
     "American Airlines Center": AMERICAN_AIRLINES_ARENA,
-    "Camp Randall Stadium - Madison, Wisconsin, USA - United States": CAMP_RANDALL_STADIUM,
     "Lenovo Center": LENOVO_CENTER,
     "Namur, Belgium": SportsballGeocodeTuple(
         city="Namur",
@@ -20118,7 +20067,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Chicago, IL, United States": CHICAGO,
     "Miami, FL, United States": MIAMI,
     "Seattle, WA, United States": SEATTLE,
     "Kansas State": SportsballGeocodeTuple(
@@ -20970,7 +20918,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Jordan-Hare Stadium - Auburn, AL - United States": JORDAN_HARE_STADIUM,
     "Little Caesars Arena": LITTLE_CAESARS_ARENA,
     "Ball State University": SportsballGeocodeTuple(
         city="Muncie",
@@ -21095,7 +21042,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Darrell K Royal-Texas Memorial Stadium": DARRELL_K_ROYAL_TEXAS_MEMORIAL_STADIUM,
     "Oriole Park at Camden Yards": ORIOLE_PARK,
     "Dowdy-Ficklen Stadium": DOWDY_FICKLEN_STADIUM,
-    "Ohio Stadium": OHIO_STADIUM,
     "Ohio University": SportsballGeocodeTuple(
         city="Athens",
         state="OH",
@@ -21450,7 +21396,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Ohio Stadium - Columbus, Ohio, USA - United States": OHIO_STADIUM,
     "FLA Live Arena": FLA_LIVE_ARENA,
     "Minute Maid Park": DAIKIN_PARK,
     "Moody Center - Austin, Texas - United States": MOODY_CENTER,

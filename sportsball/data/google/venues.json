@@ -2869,6 +2869,106 @@
             "housenumber": "900",
             "country": "USA",
             "type": "venue"
+        },
+        "75e1b8b1-3288-48e4-849d-9602de2fd0eb": {
+            "city": "Portland",
+            "state": "OR",
+            "postal": "",
+            "lat": 45.5725,
+            "lng": -122.727222,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "c08dbe54-5fea-40c0-ac6d-58934634b36d": {
+            "city": "Columbus",
+            "state": "OH",
+            "postal": "43210",
+            "lat": 40.001667,
+            "lng": -83.019722,
+            "housenumber": "411",
+            "country": "USA",
+            "type": "venue"
+        },
+        "70e11209-656e-498e-a7c8-515124afab47": {
+            "city": "San Antonio",
+            "state": "TX",
+            "postal": "",
+            "lat": 29.466944,
+            "lng": -98.466389,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "07e9a495-f544-4e78-969d-d00c5d093251": {
+            "city": "Bloomington",
+            "state": "IN",
+            "postal": "47408",
+            "lat": 39.180833,
+            "lng": -86.525556,
+            "housenumber": "701",
+            "country": "USA",
+            "type": "venue"
+        },
+        "24e4d05e-2e2a-4260-ad2f-53259601b819": {
+            "city": "St. Paul",
+            "state": "AB",
+            "postal": "",
+            "lat": 53.992778,
+            "lng": -111.297222,
+            "housenumber": "",
+            "country": "Canada",
+            "type": "city"
+        },
+        "3145df2e-ebf8-4bdb-b2bd-ad5c1a44dbd8": {
+            "city": "Auburn",
+            "state": "AL",
+            "postal": "36849",
+            "lat": 32.602222,
+            "lng": -85.489167,
+            "housenumber": "251",
+            "country": "USA",
+            "type": "venue"
+        },
+        "beab41c1-4b72-4fc4-99a9-11c6b1327f29": {
+            "city": "Chicago",
+            "state": "IL",
+            "postal": "",
+            "lat": 41.881944,
+            "lng": -87.627778,
+            "housenumber": "",
+            "country": "USA",
+            "type": "city"
+        },
+        "dd5174be-c360-4194-aab3-641dbfb1b3e5": {
+            "city": "Madison",
+            "state": "WI",
+            "postal": "53711",
+            "lat": 43.07,
+            "lng": -89.412778,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "092bd985-8418-4bac-aa99-64e59dda878f": {
+            "city": "Norwich",
+            "state": "",
+            "postal": "",
+            "lat": 52.622222,
+            "lng": 1.309167,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "6fbc0af4-71e6-4794-b118-34c5c3c7a53e": {
+            "city": "Little Rock",
+            "state": "AR",
+            "postal": "72205",
+            "lat": 34.749861,
+            "lng": -92.33,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -3554,6 +3654,23 @@
         "Glass Bowl - Toledo, Ohio, USA - United States": "adfca298-fa67-43fd-af24-985976daef81",
         "King Power Stadium, Leicester, England": "8f574f39-3a05-4c58-b38c-475a614952c8",
         "Milan Puskar Stadium - Morgantown - WV - 26505": "6d54f141-4f86-4c30-9100-2146ded3e0c8",
-        "Mountaineer Field at Milan Puskar Stadium": "6d54f141-4f86-4c30-9100-2146ded3e0c8"
+        "Mountaineer Field at Milan Puskar Stadium": "6d54f141-4f86-4c30-9100-2146ded3e0c8",
+        "University of Portland": "75e1b8b1-3288-48e4-849d-9602de2fd0eb",
+        "Ohio Stadium - Columbus - OH - 43210": "c08dbe54-5fea-40c0-ac6d-58934634b36d",
+        "Ohio Stadium": "c08dbe54-5fea-40c0-ac6d-58934634b36d",
+        "Ohio Stadium - Columbus, Ohio, USA - United States": "c08dbe54-5fea-40c0-ac6d-58934634b36d",
+        "Incarnate Word College": "70e11209-656e-498e-a7c8-515124afab47",
+        "Memorial Stadium (Bloomington, IN) - Bloomington - IN - 47408": "07e9a495-f544-4e78-969d-d00c5d093251",
+        "St. Paul, Alberta, Canada": "24e4d05e-2e2a-4260-ad2f-53259601b819",
+        "Jordan-Hare Stadium - Auburn - AL - 36849": "3145df2e-ebf8-4bdb-b2bd-ad5c1a44dbd8",
+        "Jordan-Hare Stadium - Auburn, AL - United States": "3145df2e-ebf8-4bdb-b2bd-ad5c1a44dbd8",
+        "Chicago, IL, US": "beab41c1-4b72-4fc4-99a9-11c6b1327f29",
+        "Chicago, Illinois": "beab41c1-4b72-4fc4-99a9-11c6b1327f29",
+        "Chicago, Illinois, United States": "beab41c1-4b72-4fc4-99a9-11c6b1327f29",
+        "Chicago, IL, United States": "beab41c1-4b72-4fc4-99a9-11c6b1327f29",
+        "Camp Randall Stadium - Madison - WI - 53711": "dd5174be-c360-4194-aab3-641dbfb1b3e5",
+        "Camp Randall Stadium - Madison, Wisconsin, USA - United States": "dd5174be-c360-4194-aab3-641dbfb1b3e5",
+        "Carrow Road, Norwich, England": "092bd985-8418-4bac-aa99-64e59dda878f",
+        "War Memorial Stadium (AR) - Little Rock - AR - 72205": "6fbc0af4-71e6-4794-b118-34c5c3c7a53e"
     }
 }
