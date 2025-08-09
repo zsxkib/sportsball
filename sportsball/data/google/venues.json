@@ -2649,6 +2649,126 @@
             "housenumber": "1001",
             "country": "USA",
             "type": "venue"
+        },
+        "3e370cf6-2020-4adf-ae91-977eeb8f0ba9": {
+            "city": "Westchester",
+            "state": "FL",
+            "postal": "",
+            "lat": 25.757,
+            "lng": -80.374,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "186a746b-01dc-44a2-8b33-c556e2c3bcee": {
+            "city": "Eugene",
+            "state": "OR",
+            "postal": "97401",
+            "lat": 44.058333,
+            "lng": -123.068611,
+            "housenumber": "2727",
+            "country": "USA",
+            "type": "venue"
+        },
+        "7cb3dffd-75d8-4128-9ce0-c407ca8964e5": {
+            "city": "Norfolk",
+            "state": "VA",
+            "postal": "",
+            "lat": 36.88654,
+            "lng": -76.30522,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "bc1287a8-562f-4a19-9164-bb8a2169e60e": {
+            "city": "Iowa City",
+            "state": "IA",
+            "postal": "52240",
+            "lat": 41.658611,
+            "lng": -91.551111,
+            "housenumber": "886",
+            "country": "USA",
+            "type": "venue"
+        },
+        "c47d30c0-6d40-4493-87f5-badc08bc8d01": {
+            "city": "Ruston",
+            "state": "LA",
+            "postal": "71270",
+            "lat": 32.532021,
+            "lng": -92.655899,
+            "housenumber": "1450",
+            "country": "USA",
+            "type": "venue"
+        },
+        "6d061fe2-8a2e-4a48-bf21-8eebf2244ab5": {
+            "city": "Raleigh",
+            "state": "NC",
+            "postal": "27607",
+            "lat": 35.800833,
+            "lng": -78.719444,
+            "housenumber": "4600",
+            "country": "USA",
+            "type": "venue"
+        },
+        "b21f42cc-3bd9-4d39-9abb-3b6c435fc04e": {
+            "city": "Regina",
+            "state": "SK",
+            "postal": "",
+            "lat": 50.450556,
+            "lng": -104.633056,
+            "housenumber": "1734",
+            "country": "Canada",
+            "type": "venue"
+        },
+        "e9ceae11-4db3-4505-894c-0b336934bea8": {
+            "city": "Atlanta",
+            "state": "GA",
+            "postal": "30332",
+            "lat": 33.7725,
+            "lng": -84.392778,
+            "housenumber": "155",
+            "country": "USA",
+            "type": "venue"
+        },
+        "02c7082a-0ef8-460c-9923-55dbebdf506c": {
+            "city": "Azua",
+            "state": "",
+            "postal": "",
+            "lat": 18.46,
+            "lng": -70.74,
+            "housenumber": "",
+            "country": "Dominican Republic",
+            "type": "city"
+        },
+        "990e75f8-5b7c-4f4e-bc5a-a1e4b22b664f": {
+            "city": "Dublin",
+            "state": "",
+            "postal": "D04K5F9",
+            "lat": 53.335278,
+            "lng": -6.228333,
+            "housenumber": "62",
+            "country": "Ireland",
+            "type": "venue"
+        },
+        "d206cbf2-7443-400f-8d60-68d2536ced3f": {
+            "city": "London",
+            "state": "",
+            "postal": "SE25",
+            "lat": 51.398333,
+            "lng": -0.085556,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "4513d7c0-039f-4a07-9d17-c28ad51a2d2e": {
+            "city": "Tallahassee",
+            "state": "FL",
+            "postal": "32304",
+            "lat": 30.438056,
+            "lng": -84.304444,
+            "housenumber": "403",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -3301,6 +3421,26 @@
         "Sahlen Field, Buffalo, NY, USA": "60f62014-0b1d-4ede-9ad7-d534ae1f3dbb",
         "Allegacy Federal Credit Union Stadium - Winston-Salem - NC - 27105": "eb526f6a-71f3-4919-a46b-8e7b475217ff",
         "The Valley, London, England": "c7149ade-24b1-4ead-934e-470c7404b44e",
-        "McLane Stadium - Waco - TX - 76704": "19b16985-70f3-45fa-aa5b-d0a21ee5c784"
+        "McLane Stadium - Waco - TX - 76704": "19b16985-70f3-45fa-aa5b-d0a21ee5c784",
+        "Florida International University": "3e370cf6-2020-4adf-ae91-977eeb8f0ba9",
+        "Florida International College": "3e370cf6-2020-4adf-ae91-977eeb8f0ba9",
+        "Autzen Stadium - Eugene - OR - 97401": "186a746b-01dc-44a2-8b33-c556e2c3bcee",
+        "Autzen Stadium": "186a746b-01dc-44a2-8b33-c556e2c3bcee",
+        "Old Dominion University": "7cb3dffd-75d8-4128-9ce0-c407ca8964e5",
+        "Old Dominion College": "7cb3dffd-75d8-4128-9ce0-c407ca8964e5",
+        "Kinnick Stadium - Iowa City - IA - 52240": "bc1287a8-562f-4a19-9164-bb8a2169e60e",
+        "Kinnick Stadium - Iowa City, Iowa, USA - United States": "bc1287a8-562f-4a19-9164-bb8a2169e60e",
+        "Joe Aillet Stadium - Ruston - LA - 71270": "c47d30c0-6d40-4493-87f5-badc08bc8d01",
+        "Joe Aillet Stadium - Ruston, Louisiana, USA - United States": "c47d30c0-6d40-4493-87f5-badc08bc8d01",
+        "Carter-Finley Stadium - Raleigh - NC - 27607": "6d061fe2-8a2e-4a48-bf21-8eebf2244ab5",
+        "Carter-Finley Stadium": "6d061fe2-8a2e-4a48-bf21-8eebf2244ab5",
+        "Mosaic Stadium": "b21f42cc-3bd9-4d39-9abb-3b6c435fc04e",
+        "Bobby Dodd Stadium - Atlanta - GA - 30332": "e9ceae11-4db3-4505-894c-0b336934bea8",
+        "Bobby Dodd Stadium at Historic Grant Field": "e9ceae11-4db3-4505-894c-0b336934bea8",
+        "Azua, Azua, Dominican Republic": "02c7082a-0ef8-460c-9923-55dbebdf506c",
+        "Aviva Stadium - Dublin": "990e75f8-5b7c-4f4e-bc5a-a1e4b22b664f",
+        "Selhurst Park, London, England": "d206cbf2-7443-400f-8d60-68d2536ced3f",
+        "Doak Campbell Stadium - Tallahassee - FL - 32304": "4513d7c0-039f-4a07-9d17-c28ad51a2d2e",
+        "Bobby Bowden Field at Doak Campbell Stadium": "4513d7c0-039f-4a07-9d17-c28ad51a2d2e"
     }
 }

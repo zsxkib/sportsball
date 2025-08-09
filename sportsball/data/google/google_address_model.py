@@ -3298,15 +3298,6 @@ ALUMNI_STADIUM = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-KINNICK_STADIUM = SportsballGeocodeTuple(
-    city="Iowa City",
-    state="IA",
-    postal="52240",
-    lat=41.658611,
-    lng=-91.551111,
-    housenumber="886",
-    country="USA",
-)
 SANFORD_STADIUM = SportsballGeocodeTuple(
     city="Athens",
     state="GA",
@@ -3532,15 +3523,6 @@ JORDAN_HARE_STADIUM = SportsballGeocodeTuple(
     housenumber="251",
     country="USA",
 )
-BOBBY_DODD_STADIUM = SportsballGeocodeTuple(
-    city="Atlanta",
-    state="GA",
-    postal="30332",
-    lat=33.7725,
-    lng=-84.392778,
-    housenumber="155",
-    country="USA",
-)
 STEINBRENNER_FIELD = SportsballGeocodeTuple(
     city="Tampa",
     state="FL",
@@ -3703,15 +3685,6 @@ BRYANT_DENNY_STADIUM = SportsballGeocodeTuple(
     housenumber="920",
     country="USA",
 )
-AUTZEN_STADIUM = SportsballGeocodeTuple(
-    city="Eugene",
-    state="OR",
-    postal="97401",
-    lat=44.058333,
-    lng=-123.068611,
-    housenumber="2727",
-    country="USA",
-)
 PETERSEN_EVENTS_CENTER = SportsballGeocodeTuple(
     city="Pittsburgh",
     state="PA",
@@ -3818,15 +3791,6 @@ DURHAM = SportsballGeocodeTuple(
     lat=35.978611,
     lng=-78.9,
     housenumber="",
-    country="USA",
-)
-CARTER_FINLEY_STADIUM = SportsballGeocodeTuple(
-    city="Raleigh",
-    state="NC",
-    postal="27607",
-    lat=35.800833,
-    lng=-78.719444,
-    housenumber="4600",
     country="USA",
 )
 PINNACLE_BANK_ARENA = SportsballGeocodeTuple(
@@ -4090,15 +4054,6 @@ HUGHES_STADIUM = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-DOAK_CAMPBELL_STADIUM = SportsballGeocodeTuple(
-    city="Tallahassee",
-    state="FL",
-    postal="32304",
-    lat=30.438056,
-    lng=-84.304444,
-    housenumber="403",
-    country="USA",
-)
 COMMONWEALTH_STADIUM = SportsballGeocodeTuple(
     city="Edmonton",
     state="AB",
@@ -4181,20 +4136,6 @@ JACK_TRICE_STADIUM = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Autzen Stadium - Eugene - OR - 97401": AUTZEN_STADIUM,
-    "Kinnick Stadium - Iowa City - IA - 52240": KINNICK_STADIUM,
-    "Carter-Finley Stadium - Raleigh - NC - 27607": CARTER_FINLEY_STADIUM,
-    "Bobby Dodd Stadium - Atlanta - GA - 30332": BOBBY_DODD_STADIUM,
-    "Aviva Stadium - Dublin": SportsballGeocodeTuple(
-        city="Dublin",
-        state="",
-        postal="D04K5F9",
-        lat=53.335278,
-        lng=-6.228333,
-        housenumber="62",
-        country="Ireland",
-    ),
-    "Doak Campbell Stadium - Tallahassee - FL - 32304": DOAK_CAMPBELL_STADIUM,
     "Clarence T.C. Ching Athletics Complex - Honolulu - HI - 96822": SportsballGeocodeTuple(
         city="Honolulu",
         state="HI",
@@ -4452,15 +4393,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "LaVell Edwards Stadium - Provo - UT - 84604": LAVELL_EDWARDS_STADIUM,
-    "Joe Aillet Stadium - Ruston - LA - 71270": SportsballGeocodeTuple(
-        city="Ruston",
-        state="LA",
-        postal="71270",
-        lat=32.532021,
-        lng=-92.655899,
-        housenumber="1450",
-        country="USA",
-    ),
     "Chapman Stadium - Tulsa - OK - 74104": SportsballGeocodeTuple(
         city="Tulsa",
         state="OK",
@@ -17279,15 +17211,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Florida International College": SportsballGeocodeTuple(
-        city="Westchester",
-        state="FL",
-        postal="",
-        lat=25.757,
-        lng=-80.374,
-        housenumber="",
-        country="USA",
-    ),
     "South Alabama College": SportsballGeocodeTuple(
         city="Mobile",
         state="AL",
@@ -17820,15 +17743,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         postal="",
         lat=38.438444,
         lng=-78.87375,
-        housenumber="",
-        country="USA",
-    ),
-    "Old Dominion College": SportsballGeocodeTuple(
-        city="Norfolk",
-        state="VA",
-        postal="",
-        lat=36.88654,
-        lng=-76.30522,
         housenumber="",
         country="USA",
     ),
@@ -20197,7 +20111,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Legacy Center": LEGACY_CENTER,
-    "Kinnick Stadium - Iowa City, Iowa, USA - United States": KINNICK_STADIUM,
     "Wainwright, Alberta, Canada": SportsballGeocodeTuple(
         city="Wainwright",
         state="AL",
@@ -21134,7 +21047,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Bobby Dodd Stadium at Historic Grant Field": BOBBY_DODD_STADIUM,
     "Honda Center": HONDA_CENTER,
     "Steinbrenner Field": STEINBRENNER_FIELD,
     "Miami University": SportsballGeocodeTuple(
@@ -21357,7 +21269,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Times Union Center - Albany, New York - United States": TIMES_UNION_CENTER,
-    "Autzen Stadium": AUTZEN_STADIUM,
     "O2 Arena": O2_ARENA,
     "Lenovo Center - Raleigh, North Carolina, United States - United States": LENOVO_CENTER,
     "Purdue University": SportsballGeocodeTuple(
@@ -21485,7 +21396,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Durham, North Carolina, United States": DURHAM,
-    "Carter-Finley Stadium": CARTER_FINLEY_STADIUM,
     "Santo Domingo, Distrito Nacional, Dominican Republic": SportsballGeocodeTuple(
         city="Santo Domingo",
         state="Distrito Nacional",
@@ -21707,7 +21617,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Sonny Lubick Field at Hughes Stadium": HUGHES_STADIUM,
-    "Bobby Bowden Field at Doak Campbell Stadium": DOAK_CAMPBELL_STADIUM,
     "Commonwealth Stadium": COMMONWEALTH_STADIUM,
     "Portland State University": SportsballGeocodeTuple(
         city="Portland",
