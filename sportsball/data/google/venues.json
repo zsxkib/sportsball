@@ -2769,6 +2769,106 @@
             "housenumber": "403",
             "country": "USA",
             "type": "venue"
+        },
+        "b0f1a824-9828-4980-b09b-d71e64795b05": {
+            "city": "Shreveport",
+            "state": "LA",
+            "postal": "",
+            "lat": 32.484,
+            "lng": -93.732,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "6d7e9918-f96d-4006-a029-1adfded64b6d": {
+            "city": "Honolulu",
+            "state": "HI",
+            "postal": "96822",
+            "lat": 21.294,
+            "lng": -157.818,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "5d0f19bf-d876-471c-ad57-49976183b7c2": {
+            "city": "Dallas",
+            "state": "TX",
+            "postal": "75205",
+            "lat": 32.836644,
+            "lng": -96.783994,
+            "housenumber": "5801",
+            "country": "USA",
+            "type": "venue"
+        },
+        "3a3de4e3-1cf3-46a8-b557-3941e9bf9291": {
+            "city": "Troy",
+            "state": "AL",
+            "postal": "36082",
+            "lat": 31.799444,
+            "lng": -85.951944,
+            "housenumber": "338",
+            "country": "USA",
+            "type": "venue"
+        },
+        "96709876-5699-4e99-b29b-2f7c3b506db0": {
+            "city": "Smögen",
+            "state": "",
+            "postal": "",
+            "lat": 58.361111,
+            "lng": 11.231944,
+            "housenumber": "",
+            "country": "Sweden",
+            "type": "suburb"
+        },
+        "85be4979-04de-4d79-a5ff-eb64cb41b6cd": {
+            "city": "Columbia",
+            "state": "MO",
+            "postal": "65203",
+            "lat": 38.935833,
+            "lng": -92.333056,
+            "housenumber": "600",
+            "country": "USA",
+            "type": "venue"
+        },
+        "a94183ef-7dd2-4a5a-b7c8-b8f7ce4d0575": {
+            "city": "Selma",
+            "state": "IN",
+            "postal": "",
+            "lat": 40.190556,
+            "lng": -85.270278,
+            "housenumber": "",
+            "country": "USA",
+            "type": "city"
+        },
+        "adfca298-fa67-43fd-af24-985976daef81": {
+            "city": "Toledo",
+            "state": "OH",
+            "postal": "43606",
+            "lat": 41.656944,
+            "lng": -83.613611,
+            "housenumber": "3044",
+            "country": "USA",
+            "type": "venue"
+        },
+        "8f574f39-3a05-4c58-b38c-475a614952c8": {
+            "city": "Leicester",
+            "state": "",
+            "postal": "LE2 7FL",
+            "lat": 52.620278,
+            "lng": -1.142222,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "6d54f141-4f86-4c30-9100-2146ded3e0c8": {
+            "city": "Morgantown",
+            "state": "WV",
+            "postal": "26505",
+            "lat": 39.650278,
+            "lng": -79.954722,
+            "housenumber": "900",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -3441,6 +3541,19 @@
         "Aviva Stadium - Dublin": "990e75f8-5b7c-4f4e-bc5a-a1e4b22b664f",
         "Selhurst Park, London, England": "d206cbf2-7443-400f-8d60-68d2536ced3f",
         "Doak Campbell Stadium - Tallahassee - FL - 32304": "4513d7c0-039f-4a07-9d17-c28ad51a2d2e",
-        "Bobby Bowden Field at Doak Campbell Stadium": "4513d7c0-039f-4a07-9d17-c28ad51a2d2e"
+        "Bobby Bowden Field at Doak Campbell Stadium": "4513d7c0-039f-4a07-9d17-c28ad51a2d2e",
+        "Centenary College of Louisiana": "b0f1a824-9828-4980-b09b-d71e64795b05",
+        "Clarence T.C. Ching Athletics Complex - Honolulu - HI - 96822": "6d7e9918-f96d-4006-a029-1adfded64b6d",
+        "Gerald J. Ford Stadium - Dallas - TX - 75205": "5d0f19bf-d876-471c-ad57-49976183b7c2",
+        "Gerald J. Ford Stadium - University Park, Texas, USA - United States": "5d0f19bf-d876-471c-ad57-49976183b7c2",
+        "Veterans Memorial Stadium (AL) - Troy - AL - 36082": "3a3de4e3-1cf3-46a8-b557-3941e9bf9291",
+        "Smogen, Sweden": "96709876-5699-4e99-b29b-2f7c3b506db0",
+        "Memorial Stadium - Columbia - MO - 65203": "85be4979-04de-4d79-a5ff-eb64cb41b6cd",
+        "Selma, IN, United States": "a94183ef-7dd2-4a5a-b7c8-b8f7ce4d0575",
+        "Glass Bowl - Toledo - OH - 43606": "adfca298-fa67-43fd-af24-985976daef81",
+        "Glass Bowl - Toledo, Ohio, USA - United States": "adfca298-fa67-43fd-af24-985976daef81",
+        "King Power Stadium, Leicester, England": "8f574f39-3a05-4c58-b38c-475a614952c8",
+        "Milan Puskar Stadium - Morgantown - WV - 26505": "6d54f141-4f86-4c30-9100-2146ded3e0c8",
+        "Mountaineer Field at Milan Puskar Stadium": "6d54f141-4f86-4c30-9100-2146ded3e0c8"
     }
 }

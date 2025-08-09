@@ -3037,15 +3037,6 @@ KELLY_SHORTS_STADIUM = SportsballGeocodeTuple(
     housenumber="2300",
     country="USA",
 )
-GLASS_BOWL = SportsballGeocodeTuple(
-    city="Toledo",
-    state="OH",
-    postal="43606",
-    lat=41.656944,
-    lng=-83.613611,
-    housenumber="3044",
-    country="USA",
-)
 BEAVER_STADIUM = SportsballGeocodeTuple(
     city="University Park",
     state="PA",
@@ -3883,15 +3874,6 @@ FLA_LIVE_ARENA = SportsballGeocodeTuple(
     housenumber="1",
     country="USA",
 )
-MILAN_PUSKAR_STADIUM = SportsballGeocodeTuple(
-    city="Morgantown",
-    state="WV",
-    postal="26505",
-    lat=39.650278,
-    lng=-79.954722,
-    housenumber="900",
-    country="USA",
-)
 TOKYO_DOME = SportsballGeocodeTuple(
     city="Tokyo",
     state="",
@@ -4136,35 +4118,6 @@ JACK_TRICE_STADIUM = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Clarence T.C. Ching Athletics Complex - Honolulu - HI - 96822": SportsballGeocodeTuple(
-        city="Honolulu",
-        state="HI",
-        postal="96822",
-        lat=21.294,
-        lng=-157.818,
-        housenumber="",
-        country="USA",
-    ),
-    "Veterans Memorial Stadium (AL) - Troy - AL - 36082": SportsballGeocodeTuple(
-        city="Troy",
-        state="AL",
-        postal="36082",
-        lat=31.799444,
-        lng=-85.951944,
-        housenumber="338",
-        country="USA",
-    ),
-    "Memorial Stadium - Columbia - MO - 65203": SportsballGeocodeTuple(
-        city="Columbia",
-        state="MO",
-        postal="65203",
-        lat=38.935833,
-        lng=-92.333056,
-        housenumber="600",
-        country="USA",
-    ),
-    "Glass Bowl - Toledo - OH - 43606": GLASS_BOWL,
-    "Milan Puskar Stadium - Morgantown - WV - 26505": MILAN_PUSKAR_STADIUM,
     "Ohio Stadium - Columbus - OH - 43210": OHIO_STADIUM,
     "Memorial Stadium (Bloomington, IN) - Bloomington - IN - 47408": SportsballGeocodeTuple(
         city="Bloomington",
@@ -4365,15 +4318,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Navy-Marine Corps Memorial Stadium - Annapolis - MD - 21401": NAVY_MARINE_CORPS_MEMORIAL_STADIUM,
     "Malone Stadium - Monroe - LA - 71203": MALONE_STADIUM,
-    "Gerald J. Ford Stadium - Dallas - TX - 75205": SportsballGeocodeTuple(
-        city="Dallas",
-        state="TX",
-        postal="75205",
-        lat=32.836644,
-        lng=-96.783994,
-        housenumber="5801",
-        country="USA",
-    ),
     "CEFCU Stadium - San Jose - CA - 95112": SportsballGeocodeTuple(
         city="San Jose",
         state="CA",
@@ -17700,7 +17644,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Glass Bowl - Toledo, Ohio, USA - United States": GLASS_BOWL,
     "Sam Houston College": SportsballGeocodeTuple(
         city="Huntsville",
         state="TX",
@@ -21529,7 +21472,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Mountaineer Field at Milan Puskar Stadium": MILAN_PUSKAR_STADIUM,
     "Tokyo Dome": TOKYO_DOME,
     "Save Mart Center - Fresno, California - United States": SAVE_MART_CENTER,
     "Ford Center - Evansville, Indiana - United States": FORD_CENTER,
