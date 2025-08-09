@@ -1,6 +1,7 @@
 """Combined game model."""
 
 # pylint: disable=too-many-locals,line-too-long,too-many-arguments,too-many-branches,too-many-statements
+import datetime
 import logging
 from typing import Any
 
@@ -108,9 +109,11 @@ def create_combined_game_model(
     distance = None
     dividends = []
     pot = None
-    dt = game_models[0].dt
+    dt_votes: dict[str, int] = {}
     for game_model in game_models:
-        dt = more_interesting(dt, game_model.dt)
+        dt_votes[game_model.dt.isoformat()] = (
+            dt_votes.get(game_model.dt.isoformat(), 0) + 1
+        )
         attendance = more_interesting(attendance, game_model.attendance)
         end_dt = more_interesting(end_dt, game_model.end_dt)
         year = more_interesting(year, game_model.year)
@@ -122,6 +125,12 @@ def create_combined_game_model(
         distance = more_interesting(distance, game_model.distance)
         dividends.extend(game_model.dividends)
         pot = more_interesting(pot, game_model.pot)
+
+    dt = None
+    for dt_iso, _ in sorted(dt_votes.items(), key=lambda x: x[1], reverse=True):
+        dt = more_interesting(dt, datetime.datetime.fromisoformat(dt_iso))
+    if dt is None:
+        raise ValueError("dt is null")
 
     if full_venue_identity is None and venue_models:
         for venue_model in venue_models:

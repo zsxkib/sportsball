@@ -1,6 +1,7 @@
 """Combined league model."""
 
 # pylint: disable=raise-missing-from,too-many-locals
+import datetime
 import logging
 import multiprocessing
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -84,6 +85,9 @@ class CombinedLeagueModel(LeagueModel):
 
         for game_list in game_lists:
             for game_model in game_list:
+                old_game_components = [
+                    str(game_model.dt.date() - datetime.timedelta(days=1))
+                ]
                 game_components = [str(game_model.dt.date())]
                 for team in game_model.teams:
                     if team.identifier not in team_identity_map:
@@ -95,10 +99,16 @@ class CombinedLeagueModel(LeagueModel):
                     team_identifier = team_identity_map.get(
                         team.identifier, team.identifier
                     )
+                    old_game_components.append(team_identifier)
                     game_components.append(team_identifier)
+                old_game_components = sorted(game_components)
                 game_components = sorted(game_components)
-                key = "-".join(game_components)
-                games[key] = games.get(key, []) + [game_model]
+                key = "-".join(old_game_components)
+                if key in games:
+                    games[key].append(game_model)
+                else:
+                    key = "-".join(game_components)
+                    games[key] = [game_model]
         names: dict[str, str] = {}
         coach_names: dict[str, str] = {}
         player_ffill: dict[str, dict[str, Any]] = {}
