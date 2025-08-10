@@ -3079,6 +3079,86 @@
             "housenumber": "1540",
             "country": "USA",
             "type": "venue"
+        },
+        "942d2fc9-a829-4b5b-9a42-e3cd049eeb9d": {
+            "city": "Columbia",
+            "state": "SC",
+            "postal": "",
+            "lat": 33.9975,
+            "lng": -81.025278,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "9613498b-eb37-4842-982c-50c53284bd2e": {
+            "city": "Lynchburg",
+            "state": "VA",
+            "postal": "24502",
+            "lat": 37.354,
+            "lng": -79.175,
+            "housenumber": "1972",
+            "country": "USA",
+            "type": "venue"
+        },
+        "513b476e-4ebc-47c6-8381-4fcfae2f70d0": {
+            "city": "Mobile",
+            "state": "AL",
+            "postal": "36604",
+            "lat": 30.673,
+            "lng": -88.076,
+            "housenumber": "1621",
+            "country": "USA",
+            "type": "venue"
+        },
+        "863fb3e6-d2fe-42d2-954e-db399ddc4eea": {
+            "city": "Syracuse",
+            "state": "NY",
+            "postal": "13244",
+            "lat": 43.036111,
+            "lng": -76.136389,
+            "housenumber": "900",
+            "country": "USA",
+            "type": "venue"
+        },
+        "44264875-f59e-4ab3-8b01-3fe46cacd7bf": {
+            "city": "St. Louis",
+            "state": "MO",
+            "postal": "",
+            "lat": 38.627222,
+            "lng": -90.197778,
+            "housenumber": "",
+            "country": "USA",
+            "type": "city"
+        },
+        "9d96cf3f-c0bf-4222-a48e-9fcf62430ec6": {
+            "city": "Starkville",
+            "state": "MS",
+            "postal": "39762",
+            "lat": 33.456389,
+            "lng": -88.793611,
+            "housenumber": "90",
+            "country": "USA",
+            "type": "venue"
+        },
+        "30a262fc-737c-48ea-a1fc-1152778b3a0d": {
+            "city": "Southampton",
+            "state": "",
+            "postal": "",
+            "lat": 50.905833,
+            "lng": -1.391111,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "afefd41d-22ae-47e4-a170-5ee578c3c5b4": {
+            "city": "Orlando",
+            "state": "FL",
+            "postal": "32816",
+            "lat": 28.6091,
+            "lng": -81.1924,
+            "housenumber": "4465",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -3798,6 +3878,20 @@
         "Folsom Field - Boulder - CO - 80305": "53cdd906-275c-40a8-8a2f-96978f3269e8",
         "Folsom Field - Boulder, Colorado, USA - United States": "53cdd906-275c-40a8-8a2f-96978f3269e8",
         "Fratton Park, Portsmouth, England": "7c74f5d6-a6fd-40c2-abc0-d694e88e99b7",
-        "Kroger Field - Lexington - KY - 40506": "6b458a61-10e7-480e-ae58-30ba121beb42"
+        "Kroger Field - Lexington - KY - 40506": "6b458a61-10e7-480e-ae58-30ba121beb42",
+        "University of South Carolina": "942d2fc9-a829-4b5b-9a42-e3cd049eeb9d",
+        "South Carolina College": "942d2fc9-a829-4b5b-9a42-e3cd049eeb9d",
+        "Williams Stadium (VA) - Lynchburg - VA - 24502": "9613498b-eb37-4842-982c-50c53284bd2e",
+        "Ladd Peebles Stadium": "513b476e-4ebc-47c6-8381-4fcfae2f70d0",
+        "Ladd-Peebles Stadium - Mobile - AL - 36604": "513b476e-4ebc-47c6-8381-4fcfae2f70d0",
+        "JMA Wireless Dome - Syracuse - NY - 13244": "863fb3e6-d2fe-42d2-954e-db399ddc4eea",
+        "JMA Wireless Dome, Syracuse, New York": "863fb3e6-d2fe-42d2-954e-db399ddc4eea",
+        "St. Louis, MO, United States": "44264875-f59e-4ab3-8b01-3fe46cacd7bf",
+        "St. Louis, Missouri": "44264875-f59e-4ab3-8b01-3fe46cacd7bf",
+        "St. Louis, Missouri, United States": "44264875-f59e-4ab3-8b01-3fe46cacd7bf",
+        "Davis Wade Stadium - Starkville - MS - 39762": "9d96cf3f-c0bf-4222-a48e-9fcf62430ec6",
+        "Davis Wade Stadium": "9d96cf3f-c0bf-4222-a48e-9fcf62430ec6",
+        "St. Mary's Stadium, Southampton, England": "30a262fc-737c-48ea-a1fc-1152778b3a0d",
+        "FBC Mortgage Stadium - Orlando - FL - 32816": "afefd41d-22ae-47e4-a170-5ee578c3c5b4"
     }
 }

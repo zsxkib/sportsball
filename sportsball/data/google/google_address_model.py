@@ -598,15 +598,6 @@ EA_DIDDLE_ARENA = SportsballGeocodeTuple(
     housenumber="1526",
     country="USA",
 )
-JMA_WIRELESS_DOME = SportsballGeocodeTuple(
-    city="Syracuse",
-    state="NY",
-    postal="13244",
-    lat=43.036111,
-    lng=-76.136389,
-    housenumber="900",
-    country="USA",
-)
 AG_SPANOS_CENTER = SportsballGeocodeTuple(
     city="Stockton",
     state="CA",
@@ -2098,15 +2089,6 @@ MEMPHIS = SportsballGeocodeTuple(
     postal="",
     lat=35.1175,
     lng=-89.971111,
-    housenumber="",
-    country="USA",
-)
-ST_LOUIS = SportsballGeocodeTuple(
-    city="St. Louis",
-    state="MO",
-    postal="",
-    lat=38.627222,
-    lng=-90.197778,
     housenumber="",
     country="USA",
 )
@@ -3649,15 +3631,6 @@ RUPP_ARENA = SportsballGeocodeTuple(
     housenumber="432",
     country="USA",
 )
-DAVIS_WADE_STADIUM = SportsballGeocodeTuple(
-    city="Starkville",
-    state="MS",
-    postal="39762",
-    lat=33.456389,
-    lng=-88.793611,
-    housenumber="90",
-    country="USA",
-)
 PNC_ARENA = SportsballGeocodeTuple(
     city="Raleigh",
     state="NC",
@@ -4046,26 +4019,6 @@ JACK_TRICE_STADIUM = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Williams Stadium (VA) - Lynchburg - VA - 24502": SportsballGeocodeTuple(
-        city="Lynchburg",
-        state="VA",
-        postal="24502",
-        lat=37.354,
-        lng=-79.175,
-        housenumber="1972",
-        country="USA",
-    ),
-    "JMA Wireless Dome - Syracuse - NY - 13244": JMA_WIRELESS_DOME,
-    "Davis Wade Stadium - Starkville - MS - 39762": DAVIS_WADE_STADIUM,
-    "FBC Mortgage Stadium - Orlando - FL - 32816": SportsballGeocodeTuple(
-        city="Orlando",
-        state="FL",
-        postal="32816",
-        lat=28.6091,
-        lng=-81.1924,
-        housenumber="4465",
-        country="USA",
-    ),
     "SECU Stadium - College Park - MD - 20742": SportsballGeocodeTuple(
         city="College Park",
         state="MD",
@@ -4490,15 +4443,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Legion Field (AL) - Birmingham - AL - 35204": LEGION_FIELD,
     "Sam Boyd Stadium - Las Vegas - NV - 89122": SAM_BOYD_STADIUM,
-    "Ladd-Peebles Stadium - Mobile - AL - 36604": SportsballGeocodeTuple(
-        city="Mobile",
-        state="AL",
-        postal="36604",
-        lat=30.673,
-        lng=-88.076,
-        housenumber="1621",
-        country="USA",
-    ),
     "Barker-Lane Stadium - Buies Creek - NC - 27546": SportsballGeocodeTuple(
         city="Buies Creek",
         state="NC",
@@ -7573,7 +7517,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "E. A. Diddle Arena, Bowling Green, Kentucky": EA_DIDDLE_ARENA,
-    "JMA Wireless Dome, Syracuse, New York": JMA_WIRELESS_DOME,
     "Truist Arena, Highland Heights, Kentucky": TRUIST_ARENA,
     "Kress Events Center, Green Bay, Wisconsin": SportsballGeocodeTuple(
         city="Green Bay",
@@ -9324,7 +9267,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "ExploreAsheville.com Arena, Asheville, North Carolina": HARRAHS_CHEROKEE_CENTER,
-    "St. Louis, Missouri": ST_LOUIS,
     "Dover, Delaware": SportsballGeocodeTuple(
         city="Dover",
         state="DE",
@@ -13076,7 +13018,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="Martinique",
     ),
     "Memphis, Tennessee, United States": MEMPHIS,
-    "St. Louis, Missouri, United States": ST_LOUIS,
     "Lake Wales, Florida, United States": SportsballGeocodeTuple(
         city="Lake Wales",
         state="FL",
@@ -17199,15 +17140,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "South Carolina College": SportsballGeocodeTuple(
-        city="Columbia",
-        state="SC",
-        postal="",
-        lat=33.9975,
-        lng=-81.025278,
-        housenumber="",
-        country="USA",
-    ),
     "Northwestern College": SportsballGeocodeTuple(
         city="Orange City",
         state="IO",
@@ -21175,7 +21107,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Rupp Arena - Lexington, Kentucky - United States": RUPP_ARENA,
-    "Davis Wade Stadium": DAVIS_WADE_STADIUM,
     "Croke Park - Dublin - Ireland": CROKE_PARK,
     "PNC Arena": PNC_ARENA,
     "Watsco Center - Miami–Orlando, United States - United States": WATSO_CENTER,
