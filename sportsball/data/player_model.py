@@ -867,7 +867,44 @@ PLAYER_AVERAGE_DISTANCE_OF_DEFENSIVE_ACTIONS_COLUMN: Literal[
 PLAYER_THREE_POINT_ATTEMPT_RATE_COLUMN: Literal["three_point_attempt_rate"] = (
     "three_point_attempt_rate"
 )
-VERSION = DELIMITER.join(["0.0.5", ADDRESS_VERSION, OWNER_VERSION, VENUE_VERSION])
+PLAYER_BATTING_STYLE_COLUMN: Literal["batting_style"] = "batting_style"
+PLAYER_BOWLING_STYLE_COLUMN: Literal["bowling_style"] = "bowling_style"
+PLAYER_PLAYING_ROLES_COLUMN: Literal["playing_roles"] = "playing_roles"
+PLAYER_RUNS_COLUMN: Literal["runs"] = "runs"
+PLAYER_BALLS_COLUMN: Literal["balls"] = "balls"
+PLAYER_FOURS_COLUMN: Literal["fours"] = "fours"
+PLAYER_SIXES_COLUMN: Literal["sixes"] = "sixes"
+PLAYER_STRIKERATE_COLUMN: Literal["strikerate"] = "strikerate"
+PLAYER_FALL_OF_WICKET_ORDER_COLUMN: Literal["fall_of_wicket_order"] = (
+    "fall_of_wicket_order"
+)
+PLAYER_FALL_OF_WICKET_NUM_COLUMN: Literal["fall_of_wicket_num"] = "fall_of_wicket_num"
+PLAYER_FALL_OF_WICKET_RUNS_COLUMN: Literal["fall_of_wicket_runs"] = (
+    "fall_of_wicket_runs"
+)
+PLAYER_FALL_OF_WICKET_BALLS_COLUMN: Literal["fall_of_wicket_balls"] = (
+    "fall_of_wicket_balls"
+)
+PLAYER_FALL_OF_WICKET_OVERS_COLUMN: Literal["fall_of_wicket_overs"] = (
+    "fall_of_wicket_overs"
+)
+PLAYER_FALL_OF_WICKET_OVER_NUMBER_COLUMN: Literal["fall_of_wicket_over_number"] = (
+    "fall_of_wicket_over_number"
+)
+PLAYER_BALL_OVER_ACTUAL_COLUMN: Literal["ball_over_actual"] = "ball_over_actual"
+PLAYER_BALL_OVER_UNIQUE_COLUMN: Literal["ball_over_unique"] = "ball_over_unique"
+PLAYER_BALL_TOTAL_RUNS_COLUMN: Literal["ball_total_runs"] = "ball_total_runs"
+PLAYER_BALL_BATSMAN_RUNS_COLUMN: Literal["ball_batsman_runs"] = "ball_batsman_runs"
+PLAYER_OVERS_COLUMN: Literal["overs"] = "overs"
+PLAYER_MAIDENS_COLUMN: Literal["maidens"] = "maidens"
+PLAYER_CONCEDED_COLUMN: Literal["conceded"] = "conceded"
+PLAYER_WICKETS_COLUMN: Literal["wickets"] = "wickets"
+PLAYER_ECONOMY_COLUMN: Literal["economy"] = "economy"
+PLAYER_RUNS_PER_BALL_COLUMN: Literal["runs_per_ball"] = "runs_per_ball"
+PLAYER_DOTS_COLUMN: Literal["dots"] = "dots"
+PLAYER_WIDES_COLUMN: Literal["wides"] = "wides"
+PLAYER_NO_BALLS_COLUMN: Literal["no_balls"] = "no_balls"
+VERSION = DELIMITER.join(["0.0.6", ADDRESS_VERSION, OWNER_VERSION, VENUE_VERSION])
 
 
 def _guess_sex(data: dict[str, Any]) -> str | None:
@@ -3064,4 +3101,139 @@ class PlayerModel(BaseModel):
         ...,
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=PLAYER_THREE_POINT_ATTEMPT_RATE_COLUMN,
+    )
+    batting_style: str | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL},
+        alias=PLAYER_BATTING_STYLE_COLUMN,
+    )
+    bowling_style: str | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL},
+        alias=PLAYER_BOWLING_STYLE_COLUMN,
+    )
+    playing_roles: str | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL},
+        alias=PLAYER_PLAYING_ROLES_COLUMN,
+    )
+    runs: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_RUNS_COLUMN,
+    )
+    balls: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_BALLS_COLUMN,
+    )
+    fours: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_FOURS_COLUMN,
+    )
+    sixes: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SIXES_COLUMN,
+    )
+    strikerate: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_STRIKERATE_COLUMN,
+    )
+    fall_of_wicket_order: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_FALL_OF_WICKET_ORDER_COLUMN,
+    )
+    fall_of_wicket_num: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_FALL_OF_WICKET_NUM_COLUMN,
+    )
+    fall_of_wicket_runs: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_FALL_OF_WICKET_RUNS_COLUMN,
+    )
+    fall_of_wicket_balls: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_FALL_OF_WICKET_BALLS_COLUMN,
+    )
+    fall_of_wicket_overs: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_FALL_OF_WICKET_OVERS_COLUMN,
+    )
+    fall_of_wicket_over_number: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_FALL_OF_WICKET_OVER_NUMBER_COLUMN,
+    )
+    ball_over_actual: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_BALL_OVER_ACTUAL_COLUMN,
+    )
+    ball_over_unique: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_BALL_OVER_UNIQUE_COLUMN,
+    )
+    ball_total_runs: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_BALL_TOTAL_RUNS_COLUMN,
+    )
+    ball_batsman_runs: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_BALL_BATSMAN_RUNS_COLUMN,
+    )
+    overs: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_OVERS_COLUMN,
+    )
+    maidens: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_MAIDENS_COLUMN,
+    )
+    conceded: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_CONCEDED_COLUMN,
+    )
+    wickets: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_WICKETS_COLUMN,
+    )
+    economy: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_ECONOMY_COLUMN,
+    )
+    runs_per_ball: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_RUNS_PER_BALL_COLUMN,
+    )
+    dots: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_DOTS_COLUMN,
+    )
+    wides: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_WIDES_COLUMN,
+    )
+    no_balls: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_NO_BALLS_COLUMN,
     )

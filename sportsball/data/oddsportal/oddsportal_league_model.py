@@ -107,6 +107,10 @@ class OddsPortalLeagueModel(LeagueModel):
                 return "/".join(["aussie-rules", "australia", "afl", ""])
             case League.EPL:
                 return "/".join(["football", "england", "premier-league", ""])
+            case League.IPL:
+                return "/".join(["cricket", "india", "ipl", ""])
+            case League.MLB:
+                return "/".join(["baseball", USA, "mlb", ""])
             case League.NBA:
                 return "/".join([BASKETBALL, USA, "nba", ""])
             case League.NCAAB:
@@ -117,8 +121,6 @@ class OddsPortalLeagueModel(LeagueModel):
                 return "/".join([AMERICAN_FOOTBALL, USA, "nfl", ""])
             case League.NHL:
                 return "/".join(["hockey", USA, "nhl", ""])
-            case League.MLB:
-                return "/".join(["baseball", USA, "mlb", ""])
             case _:
                 raise ValueError(f"Unsupported league: {self.league}")
 

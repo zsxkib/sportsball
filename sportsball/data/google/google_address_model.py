@@ -3397,15 +3397,6 @@ T_MOBILE_PARK = SportsballGeocodeTuple(
     housenumber="1250",
     country="USA",
 )
-MICHIGAN_STADIUM = SportsballGeocodeTuple(
-    city="Ann Arbor",
-    state="MI",
-    postal="48104",
-    lat=42.2661,
-    lng=-83.7508,
-    housenumber="1201",
-    country="USA",
-)
 UBS_ARENA = SportsballGeocodeTuple(
     city="Elmont",
     state="NY",
@@ -4019,16 +4010,6 @@ JACK_TRICE_STADIUM = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "SECU Stadium - College Park - MD - 20742": SportsballGeocodeTuple(
-        city="College Park",
-        state="MD",
-        postal="20742",
-        lat=38.990278,
-        lng=-76.947222,
-        housenumber="90",
-        country="USA",
-    ),
-    "Michigan Stadium - Ann Arbor - MI - 48104": MICHIGAN_STADIUM,
     "Memorial Stadium (Champaign, IL) - Champaign - IL - 61820": SportsballGeocodeTuple(
         city="Champaign",
         state="IL",
@@ -13449,15 +13430,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Australia",
     ),
-    "Caracas, Venezuela": SportsballGeocodeTuple(
-        city="Caracas",
-        state="",
-        postal="",
-        lat=10.480556,
-        lng=-66.903611,
-        housenumber="",
-        country="Venezuela",
-    ),
     "Flint, Michigan, United States": SportsballGeocodeTuple(
         city="Flint",
         state="MI",
@@ -20737,7 +20709,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Serbia",
     ),
-    "Michigan Stadium - Ann Arbor, Michigan, USA - United States": MICHIGAN_STADIUM,
     "UBS Arena": UBS_ARENA,
     "Angel Stadium of Anaheim": ANGEL_STADIUM_OF_ANAHEIM,
     "Kansas State University": SportsballGeocodeTuple(

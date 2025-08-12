@@ -63,6 +63,7 @@ The supported leagues are:
 * 🏉 [AFL](https://www.afl.com.au/)
 * ⚽ [EPL](https://www.premierleague.com/ens)
 * 🐎 [HKJC](https://www.hkjc.com/home/english/index.aspx)
+* 🏏 [IPL](https://www.iplt20.com/)
 * ⚾ [MLB](https://www.mlb.com/)
 * 🏀 [NBA](https://www.nba.com/)
 * 🏀 [NCAAB](https://www.ncaa.com/sports/basketball-men/d1)
@@ -171,6 +172,20 @@ A representation of a team within a game.
 * **blocks**: The number of blocks made by the players on the team in the game.
 * **personal_fouls**: The number of personal fouls made by the players on the team in the game.
 * **version**: The version of the team model.
+* **runs**: The total number of runs scored by the batting side so far in the innings.
+* **wickets**: The total number of batters dismissed so far in the innings.
+* **overs**: The total number of overs (and partial overs) faced so far in the innings, counting only legal deliveries.
+* **balls**: The total number of legal deliveries faced so far in the innings.
+* **byes**: Runs scored when the ball passes the batter without touching their bat or body, and the batters run or the ball reaches the boundary.
+* **leg_byes**: Runs scored when the ball hits the batter’s body (but not the bat or hand holding the bat) and then the batters run or the ball reaches the boundary.
+* **wides**: Illegal deliveries bowled too far from the batter to be hit with a normal cricket stroke, resulting in extra runs for the batting side.
+* **no_balls**: Illegal deliveries by the bowler that give the batting side extra runs and an extra delivery.
+* **penalties**: Extra runs awarded to a team by the umpire for breaches of the Laws of Cricket or playing conditions.
+* **balls_per_over**: The number of legal deliveries that make up one over in that match format.
+* **fours**: The total number of times batters have hit the ball to the boundary for exactly four runs in that innings, across all players.
+* **sixes**: The total number of times batters have hit the ball over the boundary rope on the full, scoring six runs each time, across all players in that innings.
+* **catches**: The total number of dismissals in the field where a fielder cleanly catches the ball before it touches the ground, across all players in that innings or match.
+* **catches_dropped**: The number of catching opportunities missed by fielders, where the ball could have been caught to dismiss a batter but was not held.
 
 #### Player
 
@@ -606,6 +621,33 @@ A representation of a player within a team within a game.
 * **defensive_actions_outside_penalty_area**: The number of defensive actions (such as tackles, interceptions, or clearances) made by a player or team outside their own penalty area.
 * **average_distance_of_defensive_actions**: The average distance from a team’s own goal where defensive actions (tackles, interceptions, clearances) occur.
 * **three_point_attempt_rate**: The number of three points attempted by a player.
+* **batting_style**: Describes whether a player bats right-handed or left-handed.
+* ***bowling_style**: Describes how a player bowls — specifically their arm used (right-arm or left-arm) and their type of bowling (pace or spin, and the specific variety within those).
+* ***playing_roles**: Describe a player’s primary job in the team — whether they are mainly there to bat, bowl, keep wicket, or contribute in multiple ways.
+* **runs**: The number of runs the batter scored themselves (excluding extras).
+* ***balls**: Balls in a player’s batting record represent the number of legal deliveries they have faced from bowlers.
+* ***fours**: The number of times a batter hits the ball to the boundary for exactly four runs in a legal delivery.
+* **sixes**: The number of times a batter hits the ball over the boundary rope without it touching the ground, scoring six runs automatically.
+* **strikerate**: Strike rate (for batting) measures how quickly a batter scores runs and is expressed as runs scored per 100 balls faced
+* **fall_of_wicket_order**: The sequence in which a batter got out during an innings — basically which wicket they were.
+* **fall_of_wicket_num**: Score at the exact moment a particular wicket fell.
+* **fall_of_wicket_runs**: The number of runs the dismissed batter scored in the innings at the moment their wicket fell.
+* **fall_of_wicket_balls**: The number of legal deliveries faced by the dismissed batter at the time their wicket fell.
+* **fall_of_wicket_overs**: The exact over (and ball within the over) when a wicket fell in the innings.
+* **fall_of_wicket_over_number**: The whole-number over count when a wicket fell — without including the ball number like fall_of_wicket_overs does.
+* **ball_over_actual**: The precise over and ball number of a specific delivery in the innings — recorded in the same decimal style as fall_of_wicket_overs, but for every ball, not just wickets.
+* **ball_over_unique**: A sequential, unique index for every delivery in the innings, regardless of overs, expressed as a single running number.
+* **ball_total_runs**: The total number of runs scored from a single delivery.
+* **ball_batsman_runs**: The number of runs credited directly to the batter from a single legal delivery — excluding any extras.
+* **overs**: A set of six legal deliveries bowled by one bowler from one end of the pitch.
+* **maidens**: Overs in which the bowler concedes zero runs — counting only runs from the bat and byes/leg byes.
+* **conceded**: The total number of runs a bowler has given away while bowling
+* **wickets**: The number of batters they have dismissed while bowling.
+* **economy**: Measures how many runs a bowler concedes per over they bowl.
+* **runs_per_ball**: The average number of runs scored per legal delivery over a given period — it’s essentially the ball-level equivalent of strike rate or economy.
+* **dots**: Deliveries from which no runs are scored by the batting side.
+* **wides**: Deliveries that the umpire judges to be too far from the batter to hit with a normal cricket stroke, resulting in an extra run to the batting team.
+* **no_balls**: An illegal delivery by the bowler.
 
 #### Odds
 

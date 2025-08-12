@@ -10,6 +10,7 @@ class League(StrEnum):
     AFL = "afl"
     EPL = "epl"
     HKJC = "hkjc"
+    IPL = "ipl"
     MLB = "mlb"
     NBA = "nba"
     NCAAB = "ncaab"
@@ -27,6 +28,8 @@ def long_name(league: League) -> str:
             return "English Premier League"
         case League.HKJC:
             return "Hong Kong Jockey Club"
+        case League.IPL:
+            return "Indian Premier League"
         case League.MLB:
             return "Major League Basketball"
         case League.NBA:
@@ -51,6 +54,8 @@ def league_from_str(league_str: str) -> League:
             return League.EPL
         case str(League.HKJC):
             return League.HKJC
+        case str(League.IPL):
+            return League.IPL
         case str(League.MLB):
             return League.MLB
         case str(League.NBA):

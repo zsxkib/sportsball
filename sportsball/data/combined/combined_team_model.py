@@ -1,6 +1,6 @@
 """Combined team model."""
 
-# pylint: disable=too-many-locals,too-many-branches,too-many-statements,too-many-arguments
+# pylint: disable=too-many-locals,too-many-branches,too-many-statements,too-many-arguments,duplicate-code
 import functools
 import re
 import unicodedata
@@ -62,6 +62,20 @@ def create_combined_team_model(
     field_goals = None
     lbw = None
     end_dt = None
+    runs = None
+    wickets = None
+    overs = None
+    balls = None
+    byes = None
+    leg_byes = None
+    wides = None
+    no_balls = None
+    penalties = None
+    balls_per_over = None
+    fours = None
+    sixes = None
+    catches = None
+    catches_dropped = None
     for team_model in team_models:
         location = more_interesting(location, team_model.location)
         for player_model in team_model.players:
@@ -105,6 +119,20 @@ def create_combined_team_model(
             coaches[coach_id] = coaches.get(coach_id, []) + [coach_model]
         lbw = more_interesting(lbw, team_model.lbw)
         end_dt = more_interesting(end_dt, team_model.end_dt)
+        runs = more_interesting(runs, team_model.runs)
+        wickets = more_interesting(wickets, team_model.wickets)
+        overs = more_interesting(overs, team_model.overs)
+        balls = more_interesting(balls, team_model.balls)
+        byes = more_interesting(byes, team_model.byes)
+        leg_byes = more_interesting(leg_byes, team_model.leg_byes)
+        wides = more_interesting(wides, team_model.wides)
+        no_balls = more_interesting(no_balls, team_model.no_balls)
+        penalties = more_interesting(penalties, team_model.penalties)
+        balls_per_over = more_interesting(balls_per_over, team_model.balls_per_over)
+        fours = more_interesting(fours, team_model.fours)
+        sixes = more_interesting(sixes, team_model.sixes)
+        catches = more_interesting(catches, team_model.catches)
+        catches_dropped = more_interesting(catches_dropped, team_model.catches_dropped)
 
     player_list = [
         create_combined_player_model(v, k, player_ffill) for k, v in players.items()
@@ -127,6 +155,20 @@ def create_combined_team_model(
         ],
         lbw=lbw,
         end_dt=end_dt,
+        runs=runs,
+        wickets=wickets,
+        overs=overs,
+        balls=balls,
+        byes=byes,
+        leg_byes=leg_byes,
+        wides=wides,
+        no_balls=no_balls,
+        penalties=penalties,
+        balls_per_over=balls_per_over,
+        fours=fours,
+        sixes=sixes,
+        catches=catches,
+        catches_dropped=catches_dropped,
         version=VERSION,
     )
 

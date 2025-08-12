@@ -442,6 +442,33 @@ def create_combined_player_model(
     defensive_actions_outside_penalty_area = None
     average_distance_of_defensive_actions = None
     three_point_attempt_rate = None
+    batting_style = None
+    bowling_style = None
+    playing_roles = None
+    runs = None
+    balls = None
+    fours = None
+    sixes = None
+    strikerate = None
+    fall_of_wicket_order = None
+    fall_of_wicket_num = None
+    fall_of_wicket_runs = None
+    fall_of_wicket_balls = None
+    fall_of_wicket_overs = None
+    fall_of_wicket_over_number = None
+    ball_over_actual = None
+    ball_over_unique = None
+    ball_total_runs = None
+    ball_batsman_runs = None
+    overs = None
+    maidens = None
+    conceded = None
+    wickets = None
+    economy = None
+    runs_per_ball = None
+    dots = None
+    wides = None
+    no_balls = None
     for player_model in player_models:
         jersey = more_interesting(jersey, player_model.jersey)
         kicks = more_interesting(kicks, player_model.kicks)
@@ -1477,6 +1504,53 @@ def create_combined_player_model(
         three_point_attempt_rate = more_interesting(
             three_point_attempt_rate, player_model.three_point_attempt_rate
         )
+        batting_style = more_interesting(batting_style, player_model.batting_style)
+        bowling_style = more_interesting(bowling_style, player_model.bowling_style)
+        playing_roles = more_interesting(playing_roles, player_model.playing_roles)
+        runs = more_interesting(runs, player_model.runs)
+        balls = more_interesting(balls, player_model.balls)
+        fours = more_interesting(fours, player_model.fours)
+        sixes = more_interesting(sixes, player_model.sixes)
+        strikerate = more_interesting(strikerate, player_model.strikerate)
+        fall_of_wicket_order = more_interesting(
+            fall_of_wicket_order, player_model.fall_of_wicket_order
+        )
+        fall_of_wicket_num = more_interesting(
+            fall_of_wicket_num, player_model.fall_of_wicket_num
+        )
+        fall_of_wicket_runs = more_interesting(
+            fall_of_wicket_runs, player_model.fall_of_wicket_runs
+        )
+        fall_of_wicket_balls = more_interesting(
+            fall_of_wicket_balls, player_model.fall_of_wicket_balls
+        )
+        fall_of_wicket_overs = more_interesting(
+            fall_of_wicket_overs, player_model.fall_of_wicket_overs
+        )
+        fall_of_wicket_over_number = more_interesting(
+            fall_of_wicket_over_number, player_model.fall_of_wicket_over_number
+        )
+        ball_over_actual = more_interesting(
+            ball_over_actual, player_model.ball_over_actual
+        )
+        ball_over_unique = more_interesting(
+            ball_over_unique, player_model.ball_over_unique
+        )
+        ball_total_runs = more_interesting(
+            ball_total_runs, player_model.ball_total_runs
+        )
+        ball_batsman_runs = more_interesting(
+            ball_batsman_runs, player_model.ball_batsman_runs
+        )
+        overs = more_interesting(overs, player_model.overs)
+        maidens = more_interesting(maidens, player_model.maidens)
+        conceded = more_interesting(conceded, player_model.conceded)
+        wickets = more_interesting(wickets, player_model.wickets)
+        economy = more_interesting(economy, player_model.economy)
+        runs_per_ball = more_interesting(runs_per_ball, player_model.runs_per_ball)
+        dots = more_interesting(dots, player_model.dots)
+        wides = more_interesting(wides, player_model.wides)
+        no_balls = more_interesting(no_balls, player_model.no_balls)
     if name is None:
         raise ValueError("name is null")
     if species is None:
@@ -1913,6 +1987,33 @@ def create_combined_player_model(
         defensive_actions_outside_penalty_area=defensive_actions_outside_penalty_area,
         average_distance_of_defensive_actions=average_distance_of_defensive_actions,
         three_point_attempt_rate=three_point_attempt_rate,
+        batting_style=batting_style,
+        bowling_style=bowling_style,
+        playing_roles=playing_roles,
+        runs=runs,
+        balls=balls,
+        fours=fours,
+        sixes=sixes,
+        strikerate=strikerate,
+        fall_of_wicket_order=fall_of_wicket_order,
+        fall_of_wicket_num=fall_of_wicket_num,
+        fall_of_wicket_runs=fall_of_wicket_runs,
+        fall_of_wicket_balls=fall_of_wicket_balls,
+        fall_of_wicket_overs=fall_of_wicket_overs,
+        fall_of_wicket_over_number=fall_of_wicket_over_number,
+        ball_over_actual=ball_over_actual,
+        ball_over_unique=ball_over_unique,
+        ball_total_runs=ball_total_runs,
+        ball_batsman_runs=ball_batsman_runs,
+        overs=overs,
+        maidens=maidens,
+        conceded=conceded,
+        wickets=wickets,
+        economy=economy,
+        runs_per_ball=runs_per_ball,
+        dots=dots,
+        wides=wides,
+        no_balls=no_balls,
     )
 
     ffill(player_ffill, identifier, player_model)

@@ -83,7 +83,21 @@ TEAM_PERSONAL_FOULS_COLUMN: Literal["personal_fouls"] = "personal_fouls"
 TEAM_FORCED_FUMBLES_COLUMN: Literal["forced_fumbles"] = "forced_fumbles"
 TEAM_FUMBLES_RECOVERED_COLUMN: Literal["fumbles_recovered"] = "fumbles_recovered"
 TEAM_FUMBLES_TOUCHDOWNS_COLUMN: Literal["fumbles_touchdowns"] = "fumbles_touchdowns"
-VERSION = DELIMITER.join(["0.0.2", PLAYER_VERSION, COACH_VERSION])
+TEAM_RUNS_COLUMN: Literal["runs"] = "runs"
+TEAM_WICKETS_COLUMN: Literal["wickets"] = "wickets"
+TEAM_OVERS_COLUMN: Literal["overs"] = "overs"
+TEAM_BALLS_COLUMN: Literal["balls"] = "balls"
+TEAM_BYES_COLUMN: Literal["byes"] = "byes"
+TEAM_LEG_BYES_COLUMN: Literal["leg_byes"] = "leg_byes"
+TEAM_WIDES_COLUMN: Literal["wides"] = "wides"
+TEAM_NO_BALLS_COLUMN: Literal["no_balls"] = "no_balls"
+TEAM_PENALTIES_COLUMN: Literal["penalties"] = "penalties"
+TEAM_BALLS_PER_OVER_COLUMN: Literal["balls_per_over"] = "balls_per_over"
+TEAM_FOURS_COLUMN: Literal["fours"] = "fours"
+TEAM_SIXES_COLUMN: Literal["sixes"] = "sixes"
+TEAM_CATCHES_COLUMN: Literal["catches"] = "catches"
+TEAM_CATCHES_DROPPED_COLUMN: Literal["catches_dropped"] = "catches_dropped"
+VERSION = DELIMITER.join(["0.0.3", PLAYER_VERSION, COACH_VERSION])
 
 
 def _calculate_kicks(data: dict[str, Any]) -> int | None:
@@ -910,5 +924,61 @@ class TeamModel(BaseModel):
         default_factory=_calculate_fumbles_touchdowns,
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=TEAM_FUMBLES_TOUCHDOWNS_COLUMN,
+    )
+    runs: int | None = Field(
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_RUNS_COLUMN,
+    )
+    wickets: int | None = Field(
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_WICKETS_COLUMN,
+    )
+    overs: int | None = Field(
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_OVERS_COLUMN,
+    )
+    balls: int | None = Field(
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_BALLS_COLUMN,
+    )
+    byes: int | None = Field(
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_BYES_COLUMN,
+    )
+    leg_byes: int | None = Field(
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_LEG_BYES_COLUMN,
+    )
+    wides: int | None = Field(
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_WIDES_COLUMN,
+    )
+    no_balls: int | None = Field(
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_NO_BALLS_COLUMN,
+    )
+    penalties: int | None = Field(
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_PENALTIES_COLUMN,
+    )
+    balls_per_over: int | None = Field(
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_BALLS_PER_OVER_COLUMN,
+    )
+    fours: int | None = Field(
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_FOURS_COLUMN,
+    )
+    sixes: int | None = Field(
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_SIXES_COLUMN,
+    )
+    catches: int | None = Field(
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_CATCHES_COLUMN,
+    )
+    catches_dropped: int | None = Field(
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=TEAM_CATCHES_DROPPED_COLUMN,
     )
     version: str

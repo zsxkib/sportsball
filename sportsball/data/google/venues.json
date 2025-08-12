@@ -3159,6 +3159,46 @@
             "housenumber": "4465",
             "country": "USA",
             "type": "venue"
+        },
+        "8db3ff39-1c63-465f-a6e3-790621dda489": {
+            "city": "Oklahoma City",
+            "state": "OK",
+            "postal": "",
+            "lat": 35.494722,
+            "lng": -97.541389,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "bdb6167c-ab9f-4250-b490-cb8abff9ec1a": {
+            "city": "College Park",
+            "state": "MD",
+            "postal": "20742",
+            "lat": 38.990278,
+            "lng": -76.947222,
+            "housenumber": "90",
+            "country": "USA",
+            "type": "venue"
+        },
+        "d4a9d21e-ddb7-4a71-a378-1524543488ec": {
+            "city": "Caracas",
+            "state": "Distrito Federal",
+            "postal": "",
+            "lat": 10.480556,
+            "lng": -66.903611,
+            "housenumber": "",
+            "country": "Venezuela",
+            "type": "city"
+        },
+        "7a712900-5ea6-473c-b266-399af9394430": {
+            "city": "Ann Arbor",
+            "state": "MI",
+            "postal": "48104",
+            "lat": 42.2661,
+            "lng": -83.7508,
+            "housenumber": "1201",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -3735,6 +3775,7 @@
         "Blundstone Arena, Hobart, Australia": "dad0b6d0-43c9-411a-81b1-abc07001f0af",
         "Ninja Stadium, Bellerive, Australia": "dad0b6d0-43c9-411a-81b1-abc07001f0af",
         "Ninja Stadium": "dad0b6d0-43c9-411a-81b1-abc07001f0af",
+        "Ninja Stadium, Hobart": "dad0b6d0-43c9-411a-81b1-abc07001f0af",
         "Virginia Union University": "7d1bc40c-a179-4489-9399-0837bcb1b680",
         "Cazaly's Stadium - Australia": "780b48b0-6a27-4b4d-925e-54839861d9fb",
         "Cazaly’s Stadium": "780b48b0-6a27-4b4d-925e-54839861d9fb",
@@ -3892,6 +3933,12 @@
         "Davis Wade Stadium - Starkville - MS - 39762": "9d96cf3f-c0bf-4222-a48e-9fcf62430ec6",
         "Davis Wade Stadium": "9d96cf3f-c0bf-4222-a48e-9fcf62430ec6",
         "St. Mary's Stadium, Southampton, England": "30a262fc-737c-48ea-a1fc-1152778b3a0d",
-        "FBC Mortgage Stadium - Orlando - FL - 32816": "afefd41d-22ae-47e4-a170-5ee578c3c5b4"
+        "FBC Mortgage Stadium - Orlando - FL - 32816": "afefd41d-22ae-47e4-a170-5ee578c3c5b4",
+        "Oklahoma City University": "8db3ff39-1c63-465f-a6e3-790621dda489",
+        "SECU Stadium - College Park - MD - 20742": "bdb6167c-ab9f-4250-b490-cb8abff9ec1a",
+        "Caracas, Distrito Federal, VE": "d4a9d21e-ddb7-4a71-a378-1524543488ec",
+        "Caracas, Venezuela": "d4a9d21e-ddb7-4a71-a378-1524543488ec",
+        "Michigan Stadium - Ann Arbor - MI - 48104": "7a712900-5ea6-473c-b266-399af9394430",
+        "Michigan Stadium - Ann Arbor, Michigan, USA - United States": "7a712900-5ea6-473c-b266-399af9394430"
     }
 }

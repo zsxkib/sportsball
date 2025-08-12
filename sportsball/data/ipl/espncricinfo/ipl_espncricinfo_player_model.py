@@ -1,139 +1,101 @@
-"""HKJC HKJC player model."""
+"""ESPNCricInfo player model."""
 
-# pylint: disable=too-many-arguments,duplicate-code,too-many-locals,too-many-branches,too-many-statements
-import io
-import logging
+# pylint: disable=too-many-arguments,too-many-statements,too-many-locals
+import datetime
+import statistics
 import urllib.parse
-from urllib.parse import urlparse
+from typing import Any
 
-import pandas as pd
-import pytest_is_running
-from bs4 import BeautifulSoup
-from scrapesession.scrapesession import ScrapeSession  # type: ignore
+from dateutil.relativedelta import relativedelta
 
-from ....cache import MEMORY
-from ...google.google_address_model import create_google_address_model
 from ...player_model import VERSION, PlayerModel
-from ...sex import sex_from_str
+from ...sex import Sex
 from ...species import Species
-from ..position import Position
-from .hkjc_hkjc_owner_model import create_hkjc_hkjc_owner_model
+
+_GENDER_TO_SEX = {
+    "M": Sex.MALE,
+    "F": Sex.FEMALE,
+}
 
 
-def _create_hkjc_hkjc_player_model(
-    session: ScrapeSession,
+def create_espncricinfo_player_model(
+    player: dict[str, Any],
+    positions_validator: dict[str, str],
+    innings: list[dict[str, Any]],
+    player_role_type: str,
+    dt: datetime.datetime,
     url: str,
-    jersey: str | None,
-    handicap_weight: float | None,
-    starting_position: Position | None,
-    weight: float | None,
-    version: str,
-) -> PlayerModel | None:
-    with session.wayback_disabled():
-        response = session.get(url)
-    response.raise_for_status()
-
-    o = urlparse(url)
-    is_sire = o.path.endswith("Horse/SameSire.aspx")
-
-    handle = io.StringIO()
-    handle.write(response.text)
-    handle.seek(0)
-    dfs = []
-    try:
-        dfs = pd.read_html(handle)
-    except ValueError:
-        if not is_sire:
-            logging.error(response.text)
-            logging.error(url)
-            logging.error(response.url)
-            return None
-
-    soup = BeautifulSoup(response.text, "lxml")
-    for noscript in soup.find_all("noscript"):
-        no_script_text = noscript.get_text().strip().lower()
-        if "javascript must be enabled in order to view this page." in no_script_text:
-            logging.error("Javascript error on %s", url)
-            session.cache.delete(urls=[url, response.url])
-            return None
-
-    name = None
-    species = Species.HUMAN
-    father = None
-    sex = None
-    age = None
-    birth_address = None
-    owner = None
-    if o.path.endswith("/Horse/Horse.aspx") or o.path.endswith(
-        "/Horse/OtherHorse.aspx"
-    ):
-        species = Species.HORSE
-        for count, df in enumerate(dfs):
-            if count == 0:
-                name = df.iat[1, 0].strip().split("(")[0].strip()
-
-                sex_row = None
-                origin_row = None
-                for i in range(1, len(df)):
-                    row_name = str(df.iat[i, 0]).strip().lower()
-                    if "sex" in row_name:
-                        sex_row = i
-                    elif "origin" in row_name:
-                        origin_row = i
-
-                sex_str = df.iat[sex_row, 2].strip().split("/")[-1].strip()
-                sex = None
-                if sex_str:
-                    sex = sex_from_str(sex_str)
-
-                origin_str = df.iat[origin_row, 2].strip()
-                origin = None
-                age = None
-                if "/" in origin_str:
-                    origin, age_str = origin_str.split("/")
-                    age = int(age_str.strip())
-                else:
-                    origin = origin_str
-                origin = origin.strip()
-
-                birth_address = create_google_address_model(
-                    query=origin.strip(), session=session, dt=None
-                )
-        for a in soup.find_all("a", href=True):
-            a_url = urllib.parse.urljoin(url, a.get("href"))
-            a_o = urlparse(a_url)
-            if a_o.path.endswith("Horse/SameSire.aspx"):
-                father = create_hkjc_hkjc_player_model(
-                    session=session,
-                    url=a_url,
-                    jersey=None,
-                    handicap_weight=None,
-                    starting_position=None,
-                    weight=None,
-                )
-            elif a_o.path.endswith("Horse/OwnerSearch.aspx"):
-                owner = create_hkjc_hkjc_owner_model(a_url)
-    elif o.path.endswith("Jockey/JockeyProfile.aspx"):
-        for count, df in enumerate(dfs):
-            if count == 0:
-                name = df.iat[0, 0].strip()
-                age = int(df.iat[1, 0].strip().split(":")[-1].strip())
-    elif o.path.endswith("Horse/SameSire.aspx"):
-        species = Species.HORSE
-        query = urllib.parse.parse_qs(o.query)
-        name = query["HorseSire"][0]
-
-    if name is None:
-        logging.error(response.text)
-        logging.error(dfs)
-        logging.error(o.path)
-        logging.error(url)
-        logging.error(response.url)
-        raise ValueError("name is null")
-
+) -> PlayerModel:
+    """Create a player model from ESPNCricInfo."""
+    identifier = player["id"]
+    date_of_birth = player["dateOfBirth"]
+    birth_date = datetime.datetime(
+        year=date_of_birth["year"],
+        month=date_of_birth["month"],
+        day=date_of_birth["date"],
+    )
+    headshot_url = urllib.parse.urljoin(url, player["headshotImage"]["url"])
+    batting_style = player["battingStyles"][0]
+    bowling_style = player["bowlingStyles"][0]
+    playing_roles = player["playingRoles"][0]
+    runs = 0
+    balls = 0
+    fours = 0
+    sixes = 0
+    strikerates = []
+    fall_of_wicket_order = 0
+    fall_of_wicket_num = 0
+    fall_of_wicket_runs = 0
+    fall_of_wicket_balls = 0
+    fall_of_wicket_overs = 0.0
+    fall_of_wicket_over_number = 0
+    ball_over_actual = 0.0
+    ball_over_unique = 0.0
+    ball_total_runs = 0
+    ball_batsman_runs = 0
+    overs = 0
+    maidens = 0
+    conceded = 0
+    wickets = 0
+    economy = 0.0
+    runs_per_ball = 0.0
+    dots = 0
+    wides = 0
+    no_balls = 0
+    for inning in innings:
+        for batsman in inning["inningBatsmen"]:
+            if batsman["player"]["id"] != identifier:
+                continue
+            runs += batsman["runs"]
+            balls += batsman["balls"]
+            fours += batsman["fours"]
+            sixes += batsman["sixes"]
+            strikerates.append(batsman["strikerate"])
+            fall_of_wicket_order = batsman["fowOrder"]
+            fall_of_wicket_num = batsman["fowWicketNum"]
+            fall_of_wicket_runs = batsman["fowRuns"]
+            fall_of_wicket_balls = batsman["fowBalls"]
+            fall_of_wicket_overs = batsman["fowOvers"]
+            fall_of_wicket_over_number = batsman["fowOverNumber"]
+            ball_over_actual = batsman["ballOversActual"]
+            ball_over_unique = batsman["ballOversUnique"]
+            ball_total_runs = batsman["ballTotalRuns"]
+            ball_batsman_runs = batsman["ballBatsmanRuns"]
+        for bowler in inning["inningBowlers"]:
+            if bowler["player"]["id"] != identifier:
+                continue
+            overs += bowler["overs"]
+            maidens += bowler["maidens"]
+            conceded += bowler["conceded"]
+            wickets += bowler["wickets"]
+            economy = bowler["economy"]
+            runs_per_ball = bowler["runsPerBall"]
+            dots += bowler["dots"]
+            wides += bowler["wides"]
+            no_balls += bowler["noballs"]
     return PlayerModel(
-        identifier=name,
-        jersey=jersey,
+        identifier=str(identifier),
+        jersey=None,
         kicks=None,
         fumbles=None,
         fumbles_lost=None,
@@ -142,7 +104,7 @@ def _create_hkjc_hkjc_player_model(
         offensive_rebounds=None,
         assists=None,
         turnovers=None,
-        name=name,
+        name=player["longName"],
         marks=None,
         handballs=None,
         disposals=None,
@@ -165,18 +127,16 @@ def _create_hkjc_hkjc_player_model(
         bounces=None,
         goal_assists=None,
         percentage_played=None,
-        birth_date=None,
-        species=str(species),
-        handicap_weight=handicap_weight,
-        father=father,
-        sex=str(sex) if sex is not None else None,
-        age=age,
-        starting_position=str(starting_position)
-        if starting_position is not None
-        else None,
-        weight=weight,
-        birth_address=birth_address,
-        owner=owner,
+        birth_date=birth_date,
+        species=str(Species.HUMAN),
+        handicap_weight=None,
+        father=None,
+        sex=str(_GENDER_TO_SEX[player["gender"]]),
+        age=None if birth_date is None else relativedelta(birth_date, dt).years,
+        starting_position=positions_validator[player_role_type],
+        weight=None,
+        birth_address=None,
+        owner=None,
         seconds_played=None,
         three_point_field_goals=None,
         three_point_field_goals_attempted=None,
@@ -189,10 +149,10 @@ def _create_hkjc_hkjc_player_model(
         points=None,
         game_score=None,
         point_differential=None,
-        version=version,
+        version=VERSION,
         height=None,
         colleges=[],
-        headshot=None,
+        headshot=headshot_url,
         forced_fumbles=None,
         fumbles_recovered=None,
         fumbles_recovered_yards=None,
@@ -564,82 +524,31 @@ def _create_hkjc_hkjc_player_model(
         defensive_actions_outside_penalty_area=None,
         average_distance_of_defensive_actions=None,
         three_point_attempt_rate=None,
-        batting_style=None,
-        bowling_style=None,
-        playing_roles=None,
-        runs=None,
-        balls=None,
-        fours=None,
-        sixes=None,
-        strikerate=None,
-        fall_of_wicket_order=None,
-        fall_of_wicket_num=None,
-        fall_of_wicket_runs=None,
-        fall_of_wicket_balls=None,
-        fall_of_wicket_overs=None,
-        fall_of_wicket_over_number=None,
-        ball_over_actual=None,
-        ball_over_unique=None,
-        ball_total_runs=None,
-        ball_batsman_runs=None,
-        overs=None,
-        maidens=None,
-        conceded=None,
-        wickets=None,
-        economy=None,
-        runs_per_ball=None,
-        dots=None,
-        wides=None,
-        no_balls=None,
-    )
-
-
-@MEMORY.cache(ignore=["session"])
-def _cached_create_hkjc_hkjc_player_model(
-    session: ScrapeSession,
-    url: str,
-    jersey: str | None,
-    handicap_weight: float | None,
-    starting_position: Position | None,
-    weight: float | None,
-    version: str,
-) -> PlayerModel | None:
-    return _create_hkjc_hkjc_player_model(
-        session=session,
-        url=url,
-        jersey=jersey,
-        handicap_weight=handicap_weight,
-        starting_position=starting_position,
-        weight=weight,
-        version=version,
-    )
-
-
-def create_hkjc_hkjc_player_model(
-    session: ScrapeSession,
-    url: str,
-    jersey: str | None,
-    handicap_weight: float | None,
-    starting_position: Position | None,
-    weight: float | None,
-) -> PlayerModel | None:
-    """Create a player model based off HKJC."""
-    if not pytest_is_running.is_running():
-        return _cached_create_hkjc_hkjc_player_model(
-            session=session,
-            url=url,
-            jersey=jersey,
-            handicap_weight=handicap_weight,
-            starting_position=starting_position,
-            weight=weight,
-            version=VERSION,
-        )
-    return _create_hkjc_hkjc_player_model(
-        session=session,
-        url=url,
-        jersey=jersey,
-        handicap_weight=handicap_weight,
-        starting_position=starting_position,
-        weight=weight,
-        version=VERSION,
+        batting_style=batting_style,
+        bowling_style=bowling_style,
+        playing_roles=playing_roles,
+        runs=runs,
+        balls=balls,
+        fours=fours,
+        sixes=sixes,
+        strikerate=statistics.mean(strikerates) if strikerates else 0.0,
+        fall_of_wicket_order=fall_of_wicket_order,
+        fall_of_wicket_num=fall_of_wicket_num,
+        fall_of_wicket_runs=fall_of_wicket_runs,
+        fall_of_wicket_balls=fall_of_wicket_balls,
+        fall_of_wicket_overs=fall_of_wicket_overs,
+        fall_of_wicket_over_number=fall_of_wicket_over_number,
+        ball_over_actual=ball_over_actual,
+        ball_over_unique=ball_over_unique,
+        ball_total_runs=ball_total_runs,
+        ball_batsman_runs=ball_batsman_runs,
+        overs=overs,
+        maidens=maidens,
+        conceded=conceded,
+        wickets=wickets,
+        economy=economy,
+        runs_per_ball=runs_per_ball,
+        dots=dots,
+        wides=wides,
+        no_balls=no_balls,
     )

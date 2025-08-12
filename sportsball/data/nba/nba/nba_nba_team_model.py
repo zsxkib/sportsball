@@ -1,6 +1,6 @@
 """NBA API team model."""
 
-# pylint: disable=too-many-arguments,unused-argument
+# pylint: disable=too-many-arguments,unused-argument,duplicate-code
 import datetime
 
 import numpy as np
@@ -55,6 +55,20 @@ def _create_nba_nba_team_model(
         coaches=[],
         lbw=None,
         end_dt=None,
+        runs=None,
+        wickets=None,
+        overs=None,
+        balls=None,
+        byes=None,
+        leg_byes=None,
+        wides=None,
+        no_balls=None,
+        penalties=None,
+        balls_per_over=None,
+        fours=None,
+        sixes=None,
+        catches=None,
+        catches_dropped=None,
         version=version,
     )
 
