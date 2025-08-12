@@ -257,6 +257,18 @@ def _find_old_dt(
     tackles: dict[str, int],
     interceptions: dict[str, int],
     clearances: dict[str, int],
+    free_throw_attempt_rate: dict[str, float],
+    offensive_rebound_percentage: dict[str, float],
+    defensive_rebound_percentage: dict[str, float],
+    total_rebound_percentage: dict[str, float],
+    assist_percentage: dict[str, float],
+    steal_percentage: dict[str, float],
+    block_percentage: dict[str, float],
+    turnover_percentage: dict[str, float],
+    usage_percentage: dict[str, float],
+    offensive_rating: dict[str, int],
+    defensive_rating: dict[str, int],
+    box_plus_minus: dict[str, float],
 ) -> tuple[datetime.datetime, list[TeamModel], str | None]:
     teams: list[TeamModel] = []
 
@@ -551,6 +563,18 @@ def _find_old_dt(
                     tackles=tackles,
                     interceptions=interceptions,
                     clearances=clearances,
+                    free_throw_attempt_rate=free_throw_attempt_rate,
+                    offensive_rebound_percentage=offensive_rebound_percentage,
+                    defensive_rebound_percentage=defensive_rebound_percentage,
+                    total_rebound_percentage=total_rebound_percentage,
+                    assist_percentage=assist_percentage,
+                    steal_percentage=steal_percentage,
+                    block_percentage=block_percentage,
+                    turnover_percentage=turnover_percentage,
+                    usage_percentage=usage_percentage,
+                    offensive_rating=offensive_rating,
+                    defensive_rating=defensive_rating,
+                    box_plus_minus=box_plus_minus,
                 )
             )
 
@@ -818,6 +842,18 @@ def _find_new_dt(
     tackles: dict[str, int],
     interceptions: dict[str, int],
     clearances: dict[str, int],
+    free_throw_attempt_rate: dict[str, float],
+    offensive_rebound_percentage: dict[str, float],
+    defensive_rebound_percentage: dict[str, float],
+    total_rebound_percentage: dict[str, float],
+    assist_percentage: dict[str, float],
+    steal_percentage: dict[str, float],
+    block_percentage: dict[str, float],
+    turnover_percentage: dict[str, float],
+    usage_percentage: dict[str, float],
+    offensive_rating: dict[str, int],
+    defensive_rating: dict[str, int],
+    box_plus_minus: dict[str, float],
 ) -> tuple[datetime.datetime, list[TeamModel], str]:
     in_divs = scorebox_meta_div.find_all("div")
     current_in_div_idx = 0
@@ -1059,6 +1095,18 @@ def _find_new_dt(
                     tackles=tackles,
                     interceptions=interceptions,
                     clearances=clearances,
+                    free_throw_attempt_rate=free_throw_attempt_rate,
+                    offensive_rebound_percentage=offensive_rebound_percentage,
+                    defensive_rebound_percentage=defensive_rebound_percentage,
+                    total_rebound_percentage=total_rebound_percentage,
+                    assist_percentage=assist_percentage,
+                    steal_percentage=steal_percentage,
+                    block_percentage=block_percentage,
+                    turnover_percentage=turnover_percentage,
+                    usage_percentage=usage_percentage,
+                    offensive_rating=offensive_rating,
+                    defensive_rating=defensive_rating,
+                    box_plus_minus=box_plus_minus,
                 )
             )
 
@@ -1324,6 +1372,18 @@ def _create_sportsreference_game_model(
     tackles = {}
     interceptions = {}
     clearances = {}
+    free_throw_attempt_rate = {}
+    offensive_rebound_percentage = {}
+    defensive_rebound_percentage = {}
+    total_rebound_percentage = {}
+    assist_percentage = {}
+    steal_percentage = {}
+    block_percentage = {}
+    turnover_percentage = {}
+    usage_percentage = {}
+    offensive_rating = {}
+    defensive_rating = {}
+    box_plus_minus = {}
     try:
         dfs = pd.read_html(handle)
         for df in dfs:
@@ -2181,6 +2241,58 @@ def _create_sportsreference_game_model(
                         three_point_attempt_rate[player] = _normalize_value(
                             threepars[idx]
                         )
+                if "FTr" in cols:
+                    ftrs = df["FTr"].tolist()
+                    for idx, player in enumerate(players):
+                        free_throw_attempt_rate[player] = _normalize_value(ftrs[idx])
+                if "ORB%" in cols:
+                    orbps = df["ORB%"].tolist()
+                    for idx, player in enumerate(players):
+                        offensive_rebound_percentage[player] = _normalize_value(
+                            orbps[idx]
+                        )
+                if "DRB%" in cols:
+                    drbps = df["DRB%"].tolist()
+                    for idx, player in enumerate(players):
+                        defensive_rebound_percentage[player] = _normalize_value(
+                            drbps[idx]
+                        )
+                if "TRB%" in cols:
+                    trbps = df["TRB%"].tolist()
+                    for idx, player in enumerate(players):
+                        total_rebound_percentage[player] = _normalize_value(trbps[idx])
+                if "AST%" in cols:
+                    astps = df["AST%"].tolist()
+                    for idx, player in enumerate(players):
+                        assist_percentage[player] = _normalize_value(astps[idx])
+                if "STL%" in cols:
+                    stlps = df["STL%"].tolist()
+                    for idx, player in enumerate(players):
+                        steal_percentage[player] = _normalize_value(stlps[idx])
+                if "BLK%" in cols:
+                    blkps = df["BLK%"].tolist()
+                    for idx, player in enumerate(players):
+                        block_percentage[player] = _normalize_value(blkps[idx])
+                if "TOV%" in cols:
+                    tovps = df["TOV%"].tolist()
+                    for idx, player in enumerate(players):
+                        turnover_percentage[player] = _normalize_value(tovps[idx])
+                if "USG%" in cols:
+                    usgps = df["USG%"].tolist()
+                    for idx, player in enumerate(players):
+                        usage_percentage[player] = _normalize_value(usgps[idx])
+                if "ORtg" in cols:
+                    ortgs = df["ORtg"].tolist()
+                    for idx, player in enumerate(players):
+                        offensive_rating[player] = _normalize_value(ortgs[idx])
+                if "DRtg" in cols:
+                    drtgs = df["DRtg"].tolist()
+                    for idx, player in enumerate(players):
+                        defensive_rating[player] = _normalize_value(drtgs[idx])
+                if "BPM" in cols:
+                    bpms = df["BPM"].tolist()
+                    for idx, player in enumerate(players):
+                        box_plus_minus[player] = _normalize_value(bpms[idx])
 
     except Exception as exc:
         logging.error(url)
@@ -2385,6 +2497,18 @@ def _create_sportsreference_game_model(
             tackles=tackles,
             interceptions=interceptions,
             clearances=clearances,
+            free_throw_attempt_rate=free_throw_attempt_rate,
+            offensive_rebound_percentage=offensive_rebound_percentage,
+            defensive_rebound_percentage=defensive_rebound_percentage,
+            total_rebound_percentage=total_rebound_percentage,
+            assist_percentage=assist_percentage,
+            steal_percentage=steal_percentage,
+            block_percentage=block_percentage,
+            turnover_percentage=turnover_percentage,
+            usage_percentage=usage_percentage,
+            offensive_rating=offensive_rating,
+            defensive_rating=defensive_rating,
+            box_plus_minus=box_plus_minus,
         )
     else:
         dt, teams, venue_name = _find_new_dt(
@@ -2582,6 +2706,18 @@ def _create_sportsreference_game_model(
             tackles=tackles,
             interceptions=interceptions,
             clearances=clearances,
+            free_throw_attempt_rate=free_throw_attempt_rate,
+            offensive_rebound_percentage=offensive_rebound_percentage,
+            defensive_rebound_percentage=defensive_rebound_percentage,
+            total_rebound_percentage=total_rebound_percentage,
+            assist_percentage=assist_percentage,
+            steal_percentage=steal_percentage,
+            block_percentage=block_percentage,
+            turnover_percentage=turnover_percentage,
+            usage_percentage=usage_percentage,
+            offensive_rating=offensive_rating,
+            defensive_rating=defensive_rating,
+            box_plus_minus=box_plus_minus,
         )
     for team in teams:
         if team.name == "File Not Found":

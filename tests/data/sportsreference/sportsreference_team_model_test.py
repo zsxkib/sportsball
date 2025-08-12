@@ -218,6 +218,18 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 tackles={},
                 interceptions={},
                 clearances={},
+                free_throw_attempt_rate={},
+                offensive_rebound_percentage={},
+                defensive_rebound_percentage={},
+                total_rebound_percentage={},
+                assist_percentage={},
+                steal_percentage={},
+                block_percentage={},
+                turnover_percentage={},
+                usage_percentage={},
+                offensive_rating={},
+                defensive_rating={},
+                box_plus_minus={},
             )
             self.assertEqual(team_model.identifier, "Villanova Wildcats Men's")
 
@@ -428,6 +440,18 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 tackles={},
                 interceptions={},
                 clearances={},
+                free_throw_attempt_rate={},
+                offensive_rebound_percentage={},
+                defensive_rebound_percentage={},
+                total_rebound_percentage={},
+                assist_percentage={},
+                steal_percentage={},
+                block_percentage={},
+                turnover_percentage={},
+                usage_percentage={},
+                offensive_rating={},
+                defensive_rating={},
+                box_plus_minus={},
             )
             self.assertEqual(team_model.field_goals, 8)
 
@@ -640,6 +664,18 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 tackles={},
                 interceptions={},
                 clearances={},
+                free_throw_attempt_rate={},
+                offensive_rebound_percentage={},
+                defensive_rebound_percentage={},
+                total_rebound_percentage={},
+                assist_percentage={},
+                steal_percentage={},
+                block_percentage={},
+                turnover_percentage={},
+                usage_percentage={},
+                offensive_rating={},
+                defensive_rating={},
+                box_plus_minus={},
             )
             self.assertEqual(team_model.field_goals_attempted, 10)
 
@@ -845,6 +881,18 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 tackles={},
                 interceptions={},
                 clearances={},
+                free_throw_attempt_rate={},
+                offensive_rebound_percentage={},
+                defensive_rebound_percentage={},
+                total_rebound_percentage={},
+                assist_percentage={},
+                steal_percentage={},
+                block_percentage={},
+                turnover_percentage={},
+                usage_percentage={},
+                offensive_rating={},
+                defensive_rating={},
+                box_plus_minus={},
             )
             self.assertEqual(team_model.identifier, "Los Angeles Clippers")
 
@@ -1050,6 +1098,18 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 tackles={},
                 interceptions={},
                 clearances={},
+                free_throw_attempt_rate={},
+                offensive_rebound_percentage={},
+                defensive_rebound_percentage={},
+                total_rebound_percentage={},
+                assist_percentage={},
+                steal_percentage={},
+                block_percentage={},
+                turnover_percentage={},
+                usage_percentage={},
+                offensive_rating={},
+                defensive_rating={},
+                box_plus_minus={},
             )
             self.assertEqual(team_model.identifier, "Brooklyn Nets")
 
@@ -1255,6 +1315,18 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 tackles={},
                 interceptions={},
                 clearances={},
+                free_throw_attempt_rate={},
+                offensive_rebound_percentage={},
+                defensive_rebound_percentage={},
+                total_rebound_percentage={},
+                assist_percentage={},
+                steal_percentage={},
+                block_percentage={},
+                turnover_percentage={},
+                usage_percentage={},
+                offensive_rating={},
+                defensive_rating={},
+                box_plus_minus={},
             )
             self.assertEqual(team_model.name, "Cleveland Cavaliers")
 
@@ -1460,6 +1532,18 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 tackles={},
                 interceptions={},
                 clearances={},
+                free_throw_attempt_rate={},
+                offensive_rebound_percentage={},
+                defensive_rebound_percentage={},
+                total_rebound_percentage={},
+                assist_percentage={},
+                steal_percentage={},
+                block_percentage={},
+                turnover_percentage={},
+                usage_percentage={},
+                offensive_rating={},
+                defensive_rating={},
+                box_plus_minus={},
             )
             self.assertEqual(team_model.name, "Los Angeles Lakers")
 
@@ -1665,6 +1749,18 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 tackles={},
                 interceptions={},
                 clearances={},
+                free_throw_attempt_rate={},
+                offensive_rebound_percentage={},
+                defensive_rebound_percentage={},
+                total_rebound_percentage={},
+                assist_percentage={},
+                steal_percentage={},
+                block_percentage={},
+                turnover_percentage={},
+                usage_percentage={},
+                offensive_rating={},
+                defensive_rating={},
+                box_plus_minus={},
             )
             self.assertEqual(team_model.name, "Boston Celtics")
 
@@ -1870,5 +1966,17 @@ class TestSportsReferenceTeamModel(unittest.TestCase):
                 tackles={},
                 interceptions={},
                 clearances={},
+                free_throw_attempt_rate={},
+                offensive_rebound_percentage={},
+                defensive_rebound_percentage={},
+                total_rebound_percentage={},
+                assist_percentage={},
+                steal_percentage={},
+                block_percentage={},
+                turnover_percentage={},
+                usage_percentage={},
+                offensive_rating={},
+                defensive_rating={},
+                box_plus_minus={},
             )
             self.assertListEqual(team_model.coaches, [])

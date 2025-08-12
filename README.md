@@ -648,6 +648,18 @@ A representation of a player within a team within a game.
 * **dots**: Deliveries from which no runs are scored by the batting side.
 * **wides**: Deliveries that the umpire judges to be too far from the batter to hit with a normal cricket stroke, resulting in an extra run to the batting team.
 * **no_balls**: An illegal delivery by the bowler.
+* **free_throw_attempt_rate**: Measures how often a player or team gets to the free throw line relative to their shot attempts.
+* **offensive_rebound_percentage**: Estimates the percentage of available offensive rebounds a player or team grabs while they are on the floor.
+* **defensive_rebound_percentage**: Estimates the percentage of available defensive rebounds a player or team secures while they’re on the floor.
+* **total_rebound_percentage**: Estimates the percentage of all available rebounds—offensive and defensive—that a player or team grabs while on the floor.
+* **assist_percentage**: Estimates the percentage of a team’s made field goals that a player assists on while they’re on the floor.
+* **steal_percentage**: Estimates the percentage of opponent possessions that end with a steal by a player while they’re on the floor.
+* **block_percentage**: Estimates the percentage of opponent two-point field goal attempts that a player blocks while they’re on the court.
+* **turnover_percentage**: Estimates the percentage of a player’s possessions that end in a turnover — essentially, how often they lose the ball when they finish a possession.
+* **usage_percentage**: Estimates the percentage of a team’s possessions that a player “uses” while they’re on the floor — meaning possessions that end with the player’s shot attempt, trip to the free throw line, or turnover.
+* **offensive_rating**: Estimates how many points a player (or team) produces per 100 possessions.
+* **defensive_rating**: Estimates how many points a player (or team) allows per 100 possessions while they’re on the floor.
+* **box_plus_minus**: Estimates a player’s overall impact on team performance per 100 possessions, compared to an average player, using only box score data (no play-by-play).
 
 #### Odds
 

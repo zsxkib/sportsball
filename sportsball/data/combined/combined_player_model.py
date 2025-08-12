@@ -469,6 +469,18 @@ def create_combined_player_model(
     dots = None
     wides = None
     no_balls = None
+    free_throw_attempt_rate = None
+    offensive_rebound_percentage = None
+    defensive_rebound_percentage = None
+    total_rebound_percentage = None
+    assist_percentage = None
+    steal_percentage = None
+    block_percentage = None
+    turnover_percentage = None
+    usage_percentage = None
+    offensive_rating = None
+    defensive_rating = None
+    box_plus_minus = None
     for player_model in player_models:
         jersey = more_interesting(jersey, player_model.jersey)
         kicks = more_interesting(kicks, player_model.kicks)
@@ -1551,6 +1563,40 @@ def create_combined_player_model(
         dots = more_interesting(dots, player_model.dots)
         wides = more_interesting(wides, player_model.wides)
         no_balls = more_interesting(no_balls, player_model.no_balls)
+        free_throw_attempt_rate = more_interesting(
+            free_throw_attempt_rate, player_model.free_throw_attempt_rate
+        )
+        offensive_rebound_percentage = more_interesting(
+            offensive_rebound_percentage, player_model.offensive_rebound_percentage
+        )
+        defensive_rebound_percentage = more_interesting(
+            defensive_rebound_percentage, player_model.defensive_rebound_percentage
+        )
+        total_rebound_percentage = more_interesting(
+            total_rebound_percentage, player_model.total_rebound_percentage
+        )
+        assist_percentage = more_interesting(
+            assist_percentage, player_model.assist_percentage
+        )
+        steal_percentage = more_interesting(
+            steal_percentage, player_model.steal_percentage
+        )
+        block_percentage = more_interesting(
+            block_percentage, player_model.block_percentage
+        )
+        turnover_percentage = more_interesting(
+            turnover_percentage, player_model.turnover_percentage
+        )
+        usage_percentage = more_interesting(
+            usage_percentage, player_model.usage_percentage
+        )
+        offensive_rating = more_interesting(
+            offensive_rating, player_model.offensive_rating
+        )
+        defensive_rating = more_interesting(
+            defensive_rating, player_model.defensive_rating
+        )
+        box_plus_minus = more_interesting(box_plus_minus, player_model.box_plus_minus)
     if name is None:
         raise ValueError("name is null")
     if species is None:
@@ -2014,6 +2060,18 @@ def create_combined_player_model(
         dots=dots,
         wides=wides,
         no_balls=no_balls,
+        free_throw_attempt_rate=free_throw_attempt_rate,
+        offensive_rebound_percentage=offensive_rebound_percentage,
+        defensive_rebound_percentage=defensive_rebound_percentage,
+        total_rebound_percentage=total_rebound_percentage,
+        assist_percentage=assist_percentage,
+        steal_percentage=steal_percentage,
+        block_percentage=block_percentage,
+        turnover_percentage=turnover_percentage,
+        usage_percentage=usage_percentage,
+        offensive_rating=offensive_rating,
+        defensive_rating=defensive_rating,
+        box_plus_minus=box_plus_minus,
     )
 
     ffill(player_ffill, identifier, player_model)

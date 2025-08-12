@@ -465,6 +465,18 @@ class TestPlayerModel(unittest.TestCase):
             dots=None,
             wides=None,
             no_balls=None,
+            free_throw_attempt_rate=None,
+            offensive_rebound_percentage=None,
+            defensive_rebound_percentage=None,
+            total_rebound_percentage=None,
+            assist_percentage=None,
+            steal_percentage=None,
+            block_percentage=None,
+            turnover_percentage=None,
+            usage_percentage=None,
+            offensive_rating=None,
+            defensive_rating=None,
+            box_plus_minus=None,
         )
 
     def test_field_goals_attempted(self):

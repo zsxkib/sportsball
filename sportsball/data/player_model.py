@@ -904,7 +904,29 @@ PLAYER_RUNS_PER_BALL_COLUMN: Literal["runs_per_ball"] = "runs_per_ball"
 PLAYER_DOTS_COLUMN: Literal["dots"] = "dots"
 PLAYER_WIDES_COLUMN: Literal["wides"] = "wides"
 PLAYER_NO_BALLS_COLUMN: Literal["no_balls"] = "no_balls"
-VERSION = DELIMITER.join(["0.0.6", ADDRESS_VERSION, OWNER_VERSION, VENUE_VERSION])
+PLAYER_FREE_THROW_ATTEMPT_RATE_COLUMN: Literal["free_throw_attempt_rate"] = (
+    "free_throw_attempt_rate"
+)
+PLAYER_OFFENSIVE_REBOUND_PERCENTAGE_COLUMN: Literal["offensive_rebound_percentage"] = (
+    "offensive_rebound_percentage"
+)
+PLAYER_DEFENSIVE_REBOUND_PERCENTAGE_COLUMN: Literal["defensive_rebound_percentage"] = (
+    "defensive_rebound_percentage"
+)
+PLAYER_TOTAL_REBOUND_PERCENTAGE_COLUMN: Literal["total_rebound_percentage"] = (
+    "total_rebound_percentage"
+)
+PLAYER_ASSIST_PERCENTAGE_COLUMN: Literal["assist_percentage"] = "assist_percentage"
+PLAYER_STEAL_PERCENTAGE_COLUMN: Literal["steal_percentage"] = "steal_percentage"
+PLAYER_BLOCK_PERCENTAGE_COLUMN: Literal["block_percentage"] = "block_percentage"
+PLAYER_TURNOVER_PERCENTAGE_COLUMN: Literal["turnover_percentage"] = (
+    "turnover_percentage"
+)
+PLAYER_USAGE_PERCENTAGE_COLUMN: Literal["usage_percentage"] = "usage_percentage"
+PLAYER_OFFENSIVE_RATING_COLUMN: Literal["offensive_rating"] = "offensive_rating"
+PLAYER_DEFENSIVE_RATING_COLUMN: Literal["defensive_rating"] = "defensive_rating"
+PLAYER_BOX_PLUS_MINUS_COLUMN: Literal["box_plus_minus"] = "box_plus_minus"
+VERSION = DELIMITER.join(["0.0.7", ADDRESS_VERSION, OWNER_VERSION, VENUE_VERSION])
 
 
 def _guess_sex(data: dict[str, Any]) -> str | None:
@@ -3236,4 +3258,64 @@ class PlayerModel(BaseModel):
         ...,
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=PLAYER_NO_BALLS_COLUMN,
+    )
+    free_throw_attempt_rate: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_FREE_THROW_ATTEMPT_RATE_COLUMN,
+    )
+    offensive_rebound_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_OFFENSIVE_REBOUND_PERCENTAGE_COLUMN,
+    )
+    defensive_rebound_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_DEFENSIVE_REBOUND_PERCENTAGE_COLUMN,
+    )
+    total_rebound_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_TOTAL_REBOUND_PERCENTAGE_COLUMN,
+    )
+    assist_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_ASSIST_PERCENTAGE_COLUMN,
+    )
+    steal_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_STEAL_PERCENTAGE_COLUMN,
+    )
+    block_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_BLOCK_PERCENTAGE_COLUMN,
+    )
+    turnover_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_TURNOVER_PERCENTAGE_COLUMN,
+    )
+    usage_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_USAGE_PERCENTAGE_COLUMN,
+    )
+    offensive_rating: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_OFFENSIVE_RATING_COLUMN,
+    )
+    defensive_rating: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_DEFENSIVE_RATING_COLUMN,
+    )
+    box_plus_minus: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_BOX_PLUS_MINUS_COLUMN,
     )

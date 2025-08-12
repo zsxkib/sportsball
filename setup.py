@@ -26,7 +26,7 @@ def install_requires() -> typing.List[str]:
 
 setup(
     name='sportsball',
-    version='0.13.0',
+    version='0.14.0',
     description='A library for pulling in and normalising sports stats.',
     long_description=long_description,
     long_description_content_type='text/markdown',

@@ -213,5 +213,17 @@ class TestSportsReferencePlayerModel(unittest.TestCase):
                 tackles={},
                 interceptions={},
                 clearances={},
+                free_throw_attempt_rate={},
+                offensive_rebound_percentage={},
+                defensive_rebound_percentage={},
+                total_rebound_percentage={},
+                assist_percentage={},
+                steal_percentage={},
+                block_percentage={},
+                turnover_percentage={},
+                usage_percentage={},
+                offensive_rating={},
+                defensive_rating={},
+                box_plus_minus={},
             )
             self.assertEqual(player_model.field_goals, 8)
