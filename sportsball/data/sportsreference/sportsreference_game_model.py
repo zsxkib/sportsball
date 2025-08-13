@@ -1159,6 +1159,9 @@ def _create_sportsreference_game_model(
         case League.EPL:
             if mode_comp_id != 9:
                 return None
+        case League.FIFA:
+            if mode_comp_id != 1:
+                return None
 
     player_urls = set()
     for a in soup.find_all("a"):

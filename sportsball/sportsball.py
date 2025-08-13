@@ -1,5 +1,6 @@
 """The main sportsball class for accessing data."""
 
+# pylint: disable=too-many-branches
 from typing import Dict
 from warnings import simplefilter
 
@@ -10,6 +11,7 @@ from scrapesession.scrapesession import create_scrape_session
 
 from .data.afl import AFLLeagueModel
 from .data.epl import EPLLeagueModel
+from .data.fifa import FIFALeagueModel
 from .data.hkjc import HKJCLeagueModel
 from .data.ipl import IPLLeagueModel
 from .data.league import League
@@ -66,6 +68,8 @@ class SportsBall:
                 self._leagues[league] = EPLLeagueModel(self._session, league_filter)
             elif league == League.IPL:
                 self._leagues[league] = IPLLeagueModel(self._session, league_filter)
+            elif league == League.FIFA:
+                self._leagues[league] = FIFALeagueModel(self._session, league_filter)
             else:
                 raise ValueError(f"Unrecognised league: {league}")
         return self._leagues[league]

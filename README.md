@@ -62,6 +62,7 @@ The supported leagues are:
 
 * 🏉 [AFL](https://www.afl.com.au/)
 * ⚽ [EPL](https://www.premierleague.com/ens)
+* ⚽ [FIFA](https://www.fifa.com/en)
 * 🐎 [HKJC](https://www.hkjc.com/home/english/index.aspx)
 * 🏏 [IPL](https://www.iplt20.com/)
 * ⚾ [MLB](https://www.mlb.com/)

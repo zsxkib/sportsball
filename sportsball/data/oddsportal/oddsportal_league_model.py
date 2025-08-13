@@ -23,6 +23,7 @@ from .oddsportal_game_model import create_oddsportal_game_model
 # Sports
 AMERICAN_FOOTBALL = "american-football"
 BASKETBALL = "basketball"
+FOOTBALL = "football"
 
 # Countries
 USA = "usa"
@@ -107,6 +108,8 @@ class OddsPortalLeagueModel(LeagueModel):
                 return "/".join(["aussie-rules", "australia", "afl", ""])
             case League.EPL:
                 return "/".join(["football", "england", "premier-league", ""])
+            case League.FIFA:
+                return "/".join([FOOTBALL, "world", "world-championship", ""])
             case League.IPL:
                 return "/".join(["cricket", "india", "ipl", ""])
             case League.MLB:
