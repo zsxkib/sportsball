@@ -125,6 +125,7 @@ def _create_oddsportal_game_model(
         dividends=[],
         pot=None,
         version=version,
+        umpires=[],
     )
 
 

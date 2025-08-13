@@ -9,10 +9,13 @@ import requests
 
 from ..game_model import VERSION, GameModel
 from ..team_model import TeamModel
+from ..umpire_model import UmpireModel
 from ..venue_model import VenueModel
 from .combined_team_model import create_combined_team_model
+from .combined_umpire_model import create_combined_umpire_model
 from .combined_venue_model import create_combined_venue_model
 from .most_interesting import more_interesting
+from .normalise_name import normalise_name
 
 
 def _venue_models(
@@ -85,8 +88,10 @@ def create_combined_game_model(
     player_ffill: dict[str, dict[str, Any]],
     team_ffill: dict[str, dict[str, Any]],
     coach_ffill: dict[str, dict[str, Any]],
+    umpire_ffill: dict[str, dict[str, Any]],
 ) -> GameModel:
     """Create a game model by combining many game models."""
+    umpires: dict[str, list[UmpireModel]] = {}
     venue_models, full_venue_identity = _venue_models(game_models, venue_identity_map)
     full_team_models = _team_models(
         game_models,
@@ -125,6 +130,14 @@ def create_combined_game_model(
         distance = more_interesting(distance, game_model.distance)
         dividends.extend(game_model.dividends)
         pot = more_interesting(pot, game_model.pot)
+        for umpire_model in game_model.umpires:
+            umpire_id = umpire_model.identifier
+            umpire_name_key = normalise_name(umpire_model.name)
+            if umpire_name_key in names:
+                umpire_id = names[umpire_name_key]
+            else:
+                names[umpire_name_key] = umpire_id
+            umpires[umpire_id] = umpires.get(umpire_id, []) + [umpire_model]
 
     dt = None
     for dt_iso, _ in sorted(dt_votes.items(), key=lambda x: x[1], reverse=True):
@@ -158,4 +171,7 @@ def create_combined_game_model(
         dividends=dividends,
         pot=pot,
         version=VERSION,
+        umpires=[
+            create_combined_umpire_model(v, k, umpire_ffill) for k, v in umpires.items()
+        ],
     )

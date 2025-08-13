@@ -70,6 +70,7 @@ def _create_aussportsbetting_game_model(
         dividends=[],
         pot=None,
         version=version,
+        umpires=[],
     )
 
 

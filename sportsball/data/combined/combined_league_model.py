@@ -114,6 +114,7 @@ class CombinedLeagueModel(LeagueModel):
         player_ffill: dict[str, dict[str, Any]] = {}
         team_ffill: dict[str, dict[str, Any]] = {}
         coach_ffill: dict[str, dict[str, Any]] = {}
+        umpire_ffill: dict[str, dict[str, Any]] = {}
         last_game_number = None
         for game_models in games.values():
             game_model = create_combined_game_model(  # type: ignore
@@ -128,6 +129,7 @@ class CombinedLeagueModel(LeagueModel):
                 player_ffill=player_ffill,
                 team_ffill=team_ffill,
                 coach_ffill=coach_ffill,
+                umpire_ffill=umpire_ffill,
             )
             last_game_number = game_model.game_number
             yield game_model

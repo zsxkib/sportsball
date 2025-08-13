@@ -3199,6 +3199,36 @@
             "housenumber": "1201",
             "country": "USA",
             "type": "venue"
+        },
+        "0b7c79cd-80f7-4098-b496-7500bc2e8533": {
+            "city": "St. Paul",
+            "state": "MN",
+            "postal": "",
+            "lat": 44.947778,
+            "lng": -93.103889,
+            "housenumber": "",
+            "country": "USA",
+            "type": "city"
+        },
+        "cada22cc-623d-4b30-9bc9-96c31cd09921": {
+            "city": "Hastings",
+            "state": "MN",
+            "postal": "",
+            "lat": 44.753333,
+            "lng": -92.88,
+            "housenumber": "",
+            "country": "USA",
+            "type": "city"
+        },
+        "087b3c38-b17a-4fc8-ae96-86f4a74896d2": {
+            "city": "La Porte",
+            "state": "IN",
+            "postal": "",
+            "lat": 41.613333,
+            "lng": -86.7175,
+            "housenumber": "",
+            "country": "USA",
+            "type": "city"
         }
     },
     "searches": {
@@ -3939,6 +3969,11 @@
         "Caracas, Distrito Federal, VE": "d4a9d21e-ddb7-4a71-a378-1524543488ec",
         "Caracas, Venezuela": "d4a9d21e-ddb7-4a71-a378-1524543488ec",
         "Michigan Stadium - Ann Arbor - MI - 48104": "7a712900-5ea6-473c-b266-399af9394430",
-        "Michigan Stadium - Ann Arbor, Michigan, USA - United States": "7a712900-5ea6-473c-b266-399af9394430"
+        "Michigan Stadium - Ann Arbor, Michigan, USA - United States": "7a712900-5ea6-473c-b266-399af9394430",
+        "Saint Paul, Minnesota": "0b7c79cd-80f7-4098-b496-7500bc2e8533",
+        "St. Paul, Minnesota": "0b7c79cd-80f7-4098-b496-7500bc2e8533",
+        "St. Paul, Minnesota, United States": "0b7c79cd-80f7-4098-b496-7500bc2e8533",
+        "Hastings, Minnesota": "cada22cc-623d-4b30-9bc9-96c31cd09921",
+        "LaPorte, Indiana": "087b3c38-b17a-4fc8-ae96-86f4a74896d2"
     }
 }

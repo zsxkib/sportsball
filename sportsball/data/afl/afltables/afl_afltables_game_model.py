@@ -15,6 +15,7 @@ from ...game_model import VERSION, GameModel
 from ...league import League
 from ...season_type import SeasonType
 from .afl_afltables_team_model import create_afl_afltables_team_model
+from .afl_afltables_umpire_model import create_afl_afltables_umpire_model
 from .afl_afltables_venue_model import create_afl_afltables_venue_model
 
 _FINALS_WEEK_ADDITION_MAP = {
@@ -446,6 +447,13 @@ def _create_afl_afltables_game_model(
     dt, venue_url, week, team_infos, end_dt, attendance = _find_season_metadata(
         soup, url, last_round_number
     )
+
+    umpire_urls = []
+    for a in soup.find_all("a", href=True):
+        umpire_url = urllib.parse.urljoin(url, a.get("href"))
+        if "/umpires/" in umpire_url:
+            umpire_urls.append(umpire_url)
+
     return GameModel(
         dt=dt,
         week=week,
@@ -474,6 +482,7 @@ def _create_afl_afltables_game_model(
         dividends=[],
         pot=None,
         version=version,
+        umpires=[create_afl_afltables_umpire_model(x, session) for x in umpire_urls],
     )
 
 

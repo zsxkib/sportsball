@@ -12,6 +12,8 @@ from .field_type import TYPE_KEY, FieldType
 from .season_type import SeasonType
 from .team_model import VERSION as TEAM_VERSION
 from .team_model import TeamModel
+from .umpire_model import VERSION as UMPIRE_VERSION
+from .umpire_model import UmpireModel
 from .venue_model import VERSION as VENUE_VERSION
 from .venue_model import VenueModel
 
@@ -29,7 +31,8 @@ PLAY_OFF_COLUMN: Literal["play_off"] = "play_off"
 GAME_DISTANCE_COLUMN: Literal["distance"] = "distance"
 GAME_DIVIDENDS_COLUMN: Literal["dividends"] = "dividends"
 GAME_POT_COLUMN: Literal["pot"] = "pot"
-VERSION = DELIMITER.join(["0.0.1", VENUE_VERSION, TEAM_VERSION])
+GAME_UMPIRES_COLUMN: Literal["umpires"] = "umpires"
+VERSION = DELIMITER.join(["0.0.1", VENUE_VERSION, TEAM_VERSION, UMPIRE_VERSION])
 
 
 def localize(venue: VenueModel | None, dt: datetime.datetime) -> datetime.datetime:
@@ -82,3 +85,7 @@ class GameModel(BaseModel):
         ..., json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD}, alias=GAME_POT_COLUMN
     )
     version: str
+    umpires: list[UmpireModel] = Field(
+        ...,
+        alias=GAME_UMPIRES_COLUMN,
+    )

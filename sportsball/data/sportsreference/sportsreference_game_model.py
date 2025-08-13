@@ -27,6 +27,7 @@ from ..league import League
 from ..season_type import SeasonType
 from ..team_model import TeamModel
 from .sportsreference_team_model import create_sportsreference_team_model
+from .sportsreference_umpire_model import create_sportsreference_umpire_model
 from .sportsreference_venue_model import create_sportsreference_venue_model
 
 _MONTHS = [
@@ -2830,6 +2831,18 @@ def _create_sportsreference_game_model(
         if attendance_text != "Not":
             attendance = int(attendance_text)
 
+    umpire_urls = []
+    for div in soup.find_all("div"):
+        for strong in div.find_all("strong"):
+            strong_text = strong.get_text().strip().lower()
+            if strong_text == "officials:":
+                for umpire_a in div.find_all("a", href=True):
+                    umpire_url = urllib.parse.urljoin(url, str(umpire_a.get("href")))
+                    if "/referees/" in umpire_url and not umpire_url.endswith(
+                        "/referees/"
+                    ):
+                        umpire_urls.append(umpire_url)
+
     try:
         return GameModel(
             dt=dt,
@@ -2848,6 +2861,10 @@ def _create_sportsreference_game_model(
             dividends=[],
             pot=None,
             version=version,
+            umpires=[
+                create_sportsreference_umpire_model(url=x, session=session, dt=dt)
+                for x in umpire_urls
+            ],
         )
     except ValueError as exc:
         logging.error(response.text)

@@ -3019,15 +3019,6 @@ GREEN_BAY = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-ST_PAUL = SportsballGeocodeTuple(
-    city="St. Paul",
-    state="MN",
-    postal="",
-    lat=44.947778,
-    lng=-93.103889,
-    housenumber="",
-    country="USA",
-)
 VILLANOVA_COLLEGE = SportsballGeocodeTuple(
     city="Villanova",
     state="PA",
@@ -7433,7 +7424,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="351",
         country="USA",
     ),
-    "St. Paul, Minnesota": ST_PAUL,
     "Jenny Craig Pavilion, San Diego, California": SportsballGeocodeTuple(
         city="San Diego",
         state="CA",
@@ -17867,7 +17857,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Germany",
     ),
-    "St. Paul, Minnesota, United States": ST_PAUL,
     "Florida": SportsballGeocodeTuple(
         city="",
         state="FL",

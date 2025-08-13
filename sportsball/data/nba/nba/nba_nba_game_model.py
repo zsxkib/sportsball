@@ -59,6 +59,7 @@ def _create_nba_nba_game_model(
         distance=None,
         dividends=[],
         pot=None,
+        umpires=[],
         version=version,
     )
 

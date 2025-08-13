@@ -14,7 +14,7 @@ from ..venue_model import VERSION, VenueModel
 def _create_sportsreference_venue_model(
     venue_name: str | None,
     session: requests_cache.CachedSession,
-    dt: datetime.datetime,
+    dt: datetime.datetime | None,
     version: str,
 ) -> VenueModel | None:
     if not venue_name:
@@ -36,7 +36,7 @@ def _create_sportsreference_venue_model(
 def _cached_create_sportsreference_venue_model(
     venue_name: str | None,
     session: requests_cache.CachedSession,
-    dt: datetime.datetime,
+    dt: datetime.datetime | None,
     version: str,
 ) -> VenueModel | None:
     return _create_sportsreference_venue_model(
@@ -45,7 +45,9 @@ def _cached_create_sportsreference_venue_model(
 
 
 def create_sportsreference_venue_model(
-    venue_name: str | None, session: requests_cache.CachedSession, dt: datetime.datetime
+    venue_name: str | None,
+    session: requests_cache.CachedSession,
+    dt: datetime.datetime | None,
 ) -> VenueModel | None:
     """Create a sports reference venue model."""
     if not pytest_is_running.is_running():

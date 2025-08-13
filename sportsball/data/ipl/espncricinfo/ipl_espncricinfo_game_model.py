@@ -72,6 +72,7 @@ def _create_espncricinfo_game_model(
             dividends=[],
             pot=None,
             version=version,
+            umpires=[],
         )
     return None
 

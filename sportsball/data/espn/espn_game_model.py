@@ -15,11 +15,13 @@ from ..league import League
 from ..odds_model import OddsModel
 from ..season_type import SeasonType
 from ..team_model import TeamModel
+from ..umpire_model import UmpireModel
 from ..venue_model import VERSION as VENUE_VERSION
 from ..venue_model import VenueModel
 from .espn_bookie_model import create_espn_bookie_model
 from .espn_odds_model import MONEYLINE_KEY, create_espn_odds_model
 from .espn_team_model import ID_KEY, create_espn_team_model
+from .espn_umpire_model import create_espn_umpire_model
 from .espn_venue_model import create_espn_venue_model
 
 
@@ -99,11 +101,12 @@ def _create_teams(
     dt: datetime.datetime,
     league: League,
     positions_validator: dict[str, str],
-) -> tuple[list[TeamModel], int | None, datetime.datetime | None]:
+) -> tuple[list[TeamModel], int | None, datetime.datetime | None, list[UmpireModel]]:
     # pylint: disable=too-many-locals
     teams = []
     attendance = None
     end_dt = None
+    umpires = []
     for competition in event["competitions"]:
         odds_dict = {}
         if "odds" in competition:
@@ -133,7 +136,16 @@ def _create_teams(
                     end_dt = parse(last_play["wallclock"])
         if venue is not None and end_dt is not None:
             end_dt = localize(venue, end_dt)
-    return teams, attendance, end_dt
+
+        officials_response = session.get(competition["officials"]["$ref"])
+        officials_response.raise_for_status()
+        officials_dict = officials_response.json()
+        for official in officials_dict["items"]:
+            umpires.append(
+                create_espn_umpire_model(session=session, url=official["$ref"], dt=dt)
+            )
+
+    return teams, attendance, end_dt, umpires
 
 
 def _create_espn_game_model(
@@ -151,7 +163,7 @@ def _create_espn_game_model(
     venue = _create_venue(event, session, dt, VENUE_VERSION)
     if venue is not None:
         dt = localize(venue, dt)
-    teams, attendance, end_dt = _create_teams(
+    teams, attendance, end_dt, umpires = _create_teams(
         event, session, venue, dt, league, positions_validator
     )
     return GameModel(
@@ -170,6 +182,7 @@ def _create_espn_game_model(
         distance=None,
         dividends=[],
         pot=None,
+        umpires=umpires,
         version=version,
     )
 

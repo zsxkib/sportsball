@@ -16,6 +16,7 @@ from ...team_model import VERSION
 from ...venue_model import VERSION as VENUE_VERSION
 from ..position import Position, position_from_str
 from .afl_afl_team_model import create_afl_afl_team_model
+from .afl_afl_umpire_model import create_afl_afl_umpire_model
 from .afl_afl_venue_model import create_afl_afl_venue_model
 
 
@@ -124,6 +125,7 @@ def create_afl_afl_game_model(
     url: str | None,
     playwright: Playwright,
     version: str,
+    umpires: list[str],
 ) -> GameModel:
     """Create a game model from AFL Tables."""
     odds: list[float] = []
@@ -172,4 +174,5 @@ def create_afl_afl_game_model(
         dividends=[],
         pot=None,
         version=version,
+        umpires=[create_afl_afl_umpire_model(name=x) for x in umpires],
     )

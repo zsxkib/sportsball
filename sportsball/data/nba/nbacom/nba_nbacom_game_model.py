@@ -67,4 +67,5 @@ def create_nba_nbacom_game_model(
         dividends=[],
         pot=None,
         version=version,
+        umpires=[],
     )

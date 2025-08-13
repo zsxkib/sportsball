@@ -25,6 +25,7 @@ class TestGameModel(unittest.TestCase):
             distance=None,
             dividends=[],
             pot=None,
+            umpires=[],
             version=VERSION,
         )
 

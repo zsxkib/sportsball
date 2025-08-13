@@ -343,6 +343,7 @@ def _create_hkjc_hkjc_game_model(
         dividends=dividends,
         pot=pot,
         version=version,
+        umpires=[],
     )
 
 

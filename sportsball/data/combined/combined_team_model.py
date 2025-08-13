@@ -2,8 +2,6 @@
 
 # pylint: disable=too-many-locals,too-many-branches,too-many-statements,too-many-arguments,duplicate-code
 import functools
-import re
-import unicodedata
 from typing import Any
 
 from ..coach_model import CoachModel
@@ -16,15 +14,7 @@ from .combined_coach_model import create_combined_coach_model
 from .combined_player_model import create_combined_player_model
 from .ffill import ffill
 from .most_interesting import more_interesting
-
-REGEX = re.compile("[^a-zA-Z]")
-
-
-def _normalise_name(name: str) -> str:
-    # Handle "Surname, Firstname"
-    if "," in name:
-        name = " ".join(reversed([x.strip() for x in name.split(",")]))
-    return REGEX.sub("", unicodedata.normalize("NFC", name).lower().strip())
+from .normalise_name import normalise_name
 
 
 def _compare_player_models(left: PlayerModel, right: PlayerModel) -> int:
@@ -80,7 +70,7 @@ def create_combined_team_model(
         location = more_interesting(location, team_model.location)
         for player_model in team_model.players:
             player_id = player_model.identifier
-            player_name_key = _normalise_name(player_model.name)
+            player_name_key = normalise_name(player_model.name)
             if player_model.identifier in player_identity_map:
                 player_id = player_identity_map[player_id]
             elif player_name_key in names:
@@ -111,7 +101,7 @@ def create_combined_team_model(
         field_goals = more_interesting(field_goals, team_model.field_goals)
         for coach_model in team_model.coaches:
             coach_id = coach_model.identifier
-            coach_name_key = _normalise_name(coach_model.name)
+            coach_name_key = normalise_name(coach_model.name)
             if coach_name_key in coach_names:
                 coach_id = coach_names[coach_name_key]
             else:

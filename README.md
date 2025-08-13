@@ -90,6 +90,7 @@ The supported leagues are:
         * **Address**: The address information of a venue.
             * **Weather**: The weather at the address.
     * **Dividend**: The dividends the game pays out.
+    * **Umpire**: The umpires adjudicating the game.
 
 ### Objects
 
@@ -816,6 +817,21 @@ The owner of a player.
 
 * **name**: The name of the owner.
 * **identifier**: The unique identifier of the owner.
+* **sex**: The sex of the owner.
+* **version**: The version of the owner model.
+
+#### Umpire
+
+An umpire within the game.
+
+* **name**: The name of the umpire.
+* **identifier**: The unique identifier of the umpire.
+* **sex**: The sex of the umpire.
+* **birth_date**: The date the umpire was born.
+* **age**: The age of the umpire at the time of the game.
+* **birth_address**: The address of the birthplace of the umpire.
+* **high_school**: The high school the umpire went to.
+* **version**: The version of the umpire model.
 
 ## Caching
 

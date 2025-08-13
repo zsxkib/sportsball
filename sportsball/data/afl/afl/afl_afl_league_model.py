@@ -70,13 +70,16 @@ def _parse_v1(
             url=url,
             playwright=playwright,
             version=VERSION,
+            umpires=[],
         )
 
 
 def _parse_v2_soup(
     soup: BeautifulSoup, html_url: str
 ) -> Iterator[
-    tuple[list[str], list[list[tuple[str, str, str, str, Position]]], str, str]
+    tuple[
+        list[str], list[list[tuple[str, str, str, str, Position]]], str, str, list[str]
+    ]
 ]:
     for div in soup.find_all("div", {"class": "team-lineups__item"}):
         if SHUTDOWN_FLAG.is_set():
@@ -143,7 +146,14 @@ def _parse_v2_soup(
         if url is None:
             raise ValueError("url is null")
 
-        yield (team_names, team_players, venue_name, url)
+        umpires = []
+        for div_umpires in div.find_all("div", {"class": "team-lineups__umpires"}):
+            for player in div_umpires.find_all(
+                "div", {"class": "team-lineups__player"}
+            ):
+                umpires.append(player.get_text().strip().split(",")[0].strip())
+
+        yield (team_names, team_players, venue_name, url, umpires)
 
 
 def _parse_v2(
@@ -153,7 +163,9 @@ def _parse_v2(
     html_url: str,
     playwright: Playwright,
 ) -> Iterator[GameModel]:
-    for team_names, team_players, venue_name, url in _parse_v2_soup(soup, html_url):
+    for team_names, team_players, venue_name, url, umpires in _parse_v2_soup(
+        soup, html_url
+    ):
         yield create_afl_afl_game_model(
             team_names=team_names,
             players=team_players,
@@ -164,6 +176,7 @@ def _parse_v2(
             url=url,
             playwright=playwright,
             version=VERSION,
+            umpires=umpires,
         )
 
 
