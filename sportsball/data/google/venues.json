@@ -3379,6 +3379,106 @@
             "housenumber": "207",
             "country": "USA",
             "type": "venue"
+        },
+        "9a2f6e9e-b069-449f-a11d-287e3224e671": {
+            "city": "Valparaiso",
+            "state": "IN",
+            "postal": "",
+            "lat": 41.463611,
+            "lng": -87.043611,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "c5b06ddc-9de6-4050-8556-d9acab6290f3": {
+            "city": "Stanford",
+            "state": "CA",
+            "postal": "94305",
+            "lat": 37.434444,
+            "lng": -122.161111,
+            "housenumber": "625",
+            "country": "USA",
+            "type": "venue"
+        },
+        "c1778b33-a16a-41db-b0ef-44ce8164e38b": {
+            "city": "Chilliwack",
+            "state": "BC",
+            "postal": "",
+            "lat": 49.157722,
+            "lng": -121.950917,
+            "housenumber": "",
+            "country": "Canada",
+            "type": "city"
+        },
+        "3db094d5-5bac-473c-b595-045825b28615": {
+            "city": "Durham",
+            "state": "NC",
+            "postal": "27708",
+            "lat": 35.995278,
+            "lng": -78.941667,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "5e0b1d7a-7402-491e-a645-9ab761544408": {
+            "city": "Middlesbrough",
+            "state": "",
+            "postal": "",
+            "lat": 54.578333,
+            "lng": -1.216944,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "35236654-4a0b-4eef-9fdc-2d1448078610": {
+            "city": "Oxford",
+            "state": "MS",
+            "postal": "38655",
+            "lat": 34.361944,
+            "lng": -89.534167,
+            "housenumber": "6",
+            "country": "USA",
+            "type": "venue"
+        },
+        "525c8f71-1670-4fea-b3cb-cf7356f3e857": {
+            "city": "New Chandigarh",
+            "state": "Punjab",
+            "postal": "",
+            "lat": 30.7787815,
+            "lng": 76.7238509,
+            "housenumber": "",
+            "country": "India",
+            "type": "venue"
+        },
+        "0d255739-b9ee-41d9-b528-a4c25ebf0a30": {
+            "city": "Houston",
+            "state": "TX",
+            "postal": "77204",
+            "lat": 29.721944,
+            "lng": -95.349167,
+            "housenumber": "3874",
+            "country": "USA",
+            "type": "venue"
+        },
+        "512ea9f3-0424-4e3b-b431-939cf1187659": {
+            "city": "Marseille",
+            "state": "Bouches-du-Rhône",
+            "postal": "13008",
+            "lat": 43.269722,
+            "lng": 5.395833,
+            "housenumber": "3",
+            "country": "France",
+            "type": "venue"
+        },
+        "0ab5e415-92cd-4b13-a2fc-e22f94927a85": {
+            "city": "Huntington",
+            "state": "WV",
+            "postal": "25703",
+            "lat": 38.425,
+            "lng": -82.420833,
+            "housenumber": "2001",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -4147,6 +4247,20 @@
         "Kyle Field - College Station - TX - 77840": "91a1a543-4b43-44e8-9e5c-bc449122b484",
         "Kyle Field": "91a1a543-4b43-44e8-9e5c-bc449122b484",
         "Narendra Modi Stadium, Ahmedabad, India": "517abf21-2d26-441d-98cb-f8518d0a41e4",
-        "Allen E. Paulson Stadium - Statesboro - GA - 30458": "6b6a15a4-3f3e-42f6-aad1-ed506ab1d608"
+        "Allen E. Paulson Stadium - Statesboro - GA - 30458": "6b6a15a4-3f3e-42f6-aad1-ed506ab1d608",
+        "Valparaiso College": "9a2f6e9e-b069-449f-a11d-287e3224e671",
+        "Valparaiso University": "9a2f6e9e-b069-449f-a11d-287e3224e671",
+        "Stanford Stadium - Stanford - CA - 94305": "c5b06ddc-9de6-4050-8556-d9acab6290f3",
+        "Chilliwack, British Columbia, Canada": "c1778b33-a16a-41db-b0ef-44ce8164e38b",
+        "Wallace Wade Stadium - Durham - NC - 27708": "3db094d5-5bac-473c-b595-045825b28615",
+        "Wallace Wade Stadium - Durham, North Carolina, USA - United States": "3db094d5-5bac-473c-b595-045825b28615",
+        "Riverside Stadium, Middlesbrough, England": "5e0b1d7a-7402-491e-a645-9ab761544408",
+        "Vaught-Hemingway Stadium - Oxford - MS - 38655": "35236654-4a0b-4eef-9fdc-2d1448078610",
+        "Vaught-Hemingway Stadium": "35236654-4a0b-4eef-9fdc-2d1448078610",
+        "Maharaja Yadavindra Singh International Cricket Stadium, Mullanpur, India": "525c8f71-1670-4fea-b3cb-cf7356f3e857",
+        "TDECU Stadium - Houston - TX - 77204": "0d255739-b9ee-41d9-b528-a4c25ebf0a30",
+        "Orange Vélodrome - Marseille, Bouches-du-Rhône, France - France": "512ea9f3-0424-4e3b-b431-939cf1187659",
+        "Joan C. Edwards Stadium - Huntington - WV - 25703": "0ab5e415-92cd-4b13-a2fc-e22f94927a85",
+        "Joan C. Edwards Stadium": "0ab5e415-92cd-4b13-a2fc-e22f94927a85"
     }
 }

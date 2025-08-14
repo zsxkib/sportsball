@@ -3424,15 +3424,6 @@ GLOBE_LIFE_FIELD = SportsballGeocodeTuple(
     housenumber="734",
     country="USA",
 )
-WALLACE_WADE_STADIUM = SportsballGeocodeTuple(
-    city="Durham",
-    state="NC",
-    postal="27708",
-    lat=35.995278,
-    lng=-78.941667,
-    housenumber="",
-    country="USA",
-)
 TSONGAS_CENTER = SportsballGeocodeTuple(
     city="Lowell",
     state="MA",
@@ -3512,15 +3503,6 @@ KFC_YUM_CENTER = SportsballGeocodeTuple(
     lat=38.2575,
     lng=-85.753889,
     housenumber="1",
-    country="USA",
-)
-VAUGHT_HEMINGWAY_STADIUM = SportsballGeocodeTuple(
-    city="Oxford",
-    state="MS",
-    postal="38655",
-    lat=34.361944,
-    lng=-89.534167,
-    housenumber="6",
     country="USA",
 )
 PETERSEN_EVENTS_CENTER = SportsballGeocodeTuple(
@@ -3919,15 +3901,6 @@ MATTHEWS_ARENA = SportsballGeocodeTuple(
     housenumber="238",
     country="USA",
 )
-JOAN_C_EDWARDS_STADIUM = SportsballGeocodeTuple(
-    city="Huntington",
-    state="WV",
-    postal="25703",
-    lat=38.425,
-    lng=-82.420833,
-    housenumber="2001",
-    country="USA",
-)
 BAXTER_ARENA = SportsballGeocodeTuple(
     city="Omaha",
     state="NE",
@@ -3947,27 +3920,6 @@ JACK_TRICE_STADIUM = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Stanford Stadium - Stanford - CA - 94305": SportsballGeocodeTuple(
-        city="Stanford",
-        state="CA",
-        postal="94305",
-        lat=37.434444,
-        lng=-122.161111,
-        housenumber="625",
-        country="USA",
-    ),
-    "Wallace Wade Stadium - Durham - NC - 27708": WALLACE_WADE_STADIUM,
-    "Vaught-Hemingway Stadium - Oxford - MS - 38655": VAUGHT_HEMINGWAY_STADIUM,
-    "TDECU Stadium - Houston - TX - 77204": SportsballGeocodeTuple(
-        city="Houston",
-        state="TX",
-        postal="77204",
-        lat=29.721944,
-        lng=-95.349167,
-        housenumber="3874",
-        country="USA",
-    ),
-    "Joan C. Edwards Stadium - Huntington - WV - 25703": JOAN_C_EDWARDS_STADIUM,
     "Hancock Whitney Stadium - Mobile - AL - 36688": SportsballGeocodeTuple(
         city="Mobile",
         state="AL",
@@ -20683,7 +20635,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Wallace Wade Stadium - Durham, North Carolina, USA - United States": WALLACE_WADE_STADIUM,
     "Delta Center": DELTA_CENTER,
     "Northeastern University": SportsballGeocodeTuple(
         city="Boston",
@@ -20784,7 +20735,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="Finland",
     ),
     "KFC YUM! Center - Louisville, Kentucky - United States": KFC_YUM_CENTER,
-    "Vaught-Hemingway Stadium": VAUGHT_HEMINGWAY_STADIUM,
     "University of Memphis": SportsballGeocodeTuple(
         city="Memphis",
         state="TN",
@@ -21420,7 +21370,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Matthews Arena - United States": MATTHEWS_ARENA,
-    "Joan C. Edwards Stadium": JOAN_C_EDWARDS_STADIUM,
     "London Stadium": SportsballGeocodeTuple(
         city="London",
         state="",
@@ -21447,15 +21396,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         postal="",
         lat=30.442,
         lng=-84.298,
-        housenumber="",
-        country="USA",
-    ),
-    "Valparaiso University": SportsballGeocodeTuple(
-        city="Valparaiso",
-        state="IN",
-        postal="",
-        lat=41.463611,
-        lng=-87.043611,
         housenumber="",
         country="USA",
     ),
