@@ -1,6 +1,6 @@
 """Sports Reference umpire model."""
 
-# pylint: disable=too-many-locals
+# pylint: disable=too-many-locals,too-many-branches
 import datetime
 import logging
 import os
@@ -13,6 +13,7 @@ from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta
 
 from ...cache import MEMORY
+from ..google.address_exception import AddressException
 from ..google.google_address_model import create_google_address_model
 from ..umpire_model import VERSION, UmpireModel
 from .sportsreference_venue_model import create_sportsreference_venue_model
@@ -58,10 +59,13 @@ def _create_sportsreference_umpire_model(
         p_text = p.get_text().strip()
         if "Born:" not in p_text:
             continue
-        address_text = p_text.split("in ")[-1].strip()
-        birth_address = create_google_address_model(
-            query=address_text, session=session, dt=None
-        )
+        address_text = p_text.split("in ")[-1].strip().split("College:")[0].strip()
+        try:
+            birth_address = create_google_address_model(
+                query=address_text, session=session, dt=None
+            )
+        except AddressException as exc:
+            logging.warning("Failed to find birth address: %s", str(exc))
         break
 
     high_school = None
@@ -70,9 +74,12 @@ def _create_sportsreference_umpire_model(
         if "High School:" not in p_text:
             continue
         address_text = p_text.split("in ")[-1].strip()
-        high_school = create_sportsreference_venue_model(
-            venue_name=address_text, session=session, dt=None
-        )
+        try:
+            high_school = create_sportsreference_venue_model(
+                venue_name=address_text, session=session, dt=None
+            )
+        except AddressException as exc:
+            logging.warning("Failed to find high school: %s", str(exc))
         break
 
     return UmpireModel(

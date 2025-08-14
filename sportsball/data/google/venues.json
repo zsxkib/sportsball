@@ -3269,6 +3269,26 @@
             "housenumber": "335",
             "country": "USA",
             "type": "venue"
+        },
+        "70a2882d-b3bf-47c4-920f-944ec4210a62": {
+            "city": "Norfolk",
+            "state": "VA",
+            "postal": "",
+            "lat": 36.846944,
+            "lng": -76.285278,
+            "housenumber": "",
+            "country": "USA",
+            "type": "city"
+        },
+        "7ecc3ad3-9bd3-4e8a-894e-ef78e9fb51d3": {
+            "city": "Dekalb",
+            "state": "IL",
+            "postal": "60115",
+            "lat": 41.934,
+            "lng": -88.778,
+            "housenumber": "1245",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -4018,6 +4038,10 @@
         "St. James' Park, Newcastle, England": "18bd8883-d956-4365-b3c2-1cc5cf5768ab",
         "Memorial Stadium (Champaign, IL) - Champaign - IL - 61820": "86a8cafb-515b-4396-a01d-0c71fa68873f",
         "Longmont, CO, United States": "7245784c-92cb-46fb-819a-46837c670971",
-        "Simmons Bank Liberty Stadium - Memphis - TN - 38104": "d01b8cd4-3c9c-47a1-b3ea-6554aa9729ec"
+        "Simmons Bank Liberty Stadium - Memphis - TN - 38104": "d01b8cd4-3c9c-47a1-b3ea-6554aa9729ec",
+        "Norfolk, Virginia": "70a2882d-b3bf-47c4-920f-944ec4210a62",
+        "Norfolk, Virginia, United States": "70a2882d-b3bf-47c4-920f-944ec4210a62",
+        "Huskie Stadium - Dekalb - IL - 60115": "7ecc3ad3-9bd3-4e8a-894e-ef78e9fb51d3",
+        "Brigham Field at Huskie Stadium": "7ecc3ad3-9bd3-4e8a-894e-ef78e9fb51d3"
     }
 }

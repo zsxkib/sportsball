@@ -2911,15 +2911,6 @@ TRACK_COLISEUM = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-HUSKIE_STADIUM = SportsballGeocodeTuple(
-    city="Dekalb",
-    state="IL",
-    postal="60115",
-    lat=41.934,
-    lng=-88.778,
-    housenumber="1245",
-    country="USA",
-)
 NEWARK = SportsballGeocodeTuple(
     city="Newark",
     state="NJ",
@@ -3080,15 +3071,6 @@ NOTRE_DAME_COLLEGE = SportsballGeocodeTuple(
     lat=41.5076,
     lng=-81.5155,
     housenumber="4545",
-    country="USA",
-)
-NORFOLK = SportsballGeocodeTuple(
-    city="Norfolk",
-    state="VA",
-    postal="",
-    lat=36.846944,
-    lng=-76.285278,
-    housenumber="",
     country="USA",
 )
 BOCA_RATON = SportsballGeocodeTuple(
@@ -4001,7 +3983,6 @@ JACK_TRICE_STADIUM = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Huskie Stadium - Dekalb - IL - 60115": HUSKIE_STADIUM,
     "FirstBank Stadium - Nashville - TN - 37212": SportsballGeocodeTuple(
         city="Nashville",
         state="TN",
@@ -10364,7 +10345,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Chattanooga, Tennessee": CHATTANOOGA,
-    "Norfolk, Virginia": NORFOLK,
     "Des Moines, Iowa": SportsballGeocodeTuple(
         city="Des Moines",
         state="IA",
@@ -16619,7 +16599,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Bell Centre, Montreal, QC, Canada": BELL_CENTRE,
     "Newark, New Jersey, United States": NEWARK,
     "Trask Coliseum - Wilmington, North Carolina - United States": TRACK_COLISEUM,
-    "Brigham Field at Huskie Stadium": HUSKIE_STADIUM,
     "Prudential Center, Newark, NJ, USA": PRUDENTIAL_CENTER,
     "Waldo Stadium": WALDO_STADIUM,
     "UB Stadium - Buffalo, New York, USA - United States": UB_STADIUM,
@@ -17972,7 +17951,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "University of Notre Dame": NOTRE_DAME_COLLEGE,
-    "Norfolk, Virginia, United States": NORFOLK,
     "Belleville, Illinois, United States": SportsballGeocodeTuple(
         city="Belleville",
         state="IL",
