@@ -4001,24 +4001,6 @@ JACK_TRICE_STADIUM = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Memorial Stadium (Champaign, IL) - Champaign - IL - 61820": SportsballGeocodeTuple(
-        city="Champaign",
-        state="IL",
-        postal="61820",
-        lat=40.099167,
-        lng=-88.235833,
-        housenumber="1402",
-        country="USA",
-    ),
-    "Simmons Bank Liberty Stadium - Memphis - TN - 38104": SportsballGeocodeTuple(
-        city="Memphis",
-        state="TN",
-        postal="38104",
-        lat=35.121,
-        lng=-89.9774,
-        housenumber="335",
-        country="USA",
-    ),
     "Huskie Stadium - Dekalb - IL - 60115": HUSKIE_STADIUM,
     "FirstBank Stadium - Nashville - TN - 37212": SportsballGeocodeTuple(
         city="Nashville",

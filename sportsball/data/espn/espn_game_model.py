@@ -137,13 +137,16 @@ def _create_teams(
         if venue is not None and end_dt is not None:
             end_dt = localize(venue, end_dt)
 
-        officials_response = session.get(competition["officials"]["$ref"])
-        officials_response.raise_for_status()
-        officials_dict = officials_response.json()
-        for official in officials_dict["items"]:
-            umpires.append(
-                create_espn_umpire_model(session=session, url=official["$ref"], dt=dt)
-            )
+        if "officials" in competition:
+            officials_response = session.get(competition["officials"]["$ref"])
+            officials_response.raise_for_status()
+            officials_dict = officials_response.json()
+            for official in officials_dict["items"]:
+                umpires.append(
+                    create_espn_umpire_model(
+                        session=session, url=official["$ref"], dt=dt
+                    )
+                )
 
     return teams, attendance, end_dt, umpires
 

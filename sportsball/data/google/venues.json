@@ -3229,6 +3229,46 @@
             "housenumber": "",
             "country": "USA",
             "type": "city"
+        },
+        "18bd8883-d956-4365-b3c2-1cc5cf5768ab": {
+            "city": "Newcastle upon Tyne",
+            "state": "",
+            "postal": "NE1 4ST",
+            "lat": 54.975556,
+            "lng": -1.621667,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "86a8cafb-515b-4396-a01d-0c71fa68873f": {
+            "city": "Champaign",
+            "state": "IL",
+            "postal": "61820",
+            "lat": 40.099167,
+            "lng": -88.235833,
+            "housenumber": "1402",
+            "country": "USA",
+            "type": "venue"
+        },
+        "7245784c-92cb-46fb-819a-46837c670971": {
+            "city": "Longmount",
+            "state": "CO",
+            "postal": "",
+            "lat": 40.171667,
+            "lng": -105.109167,
+            "housenumber": "",
+            "country": "USA",
+            "type": "suburb"
+        },
+        "d01b8cd4-3c9c-47a1-b3ea-6554aa9729ec": {
+            "city": "Memphis",
+            "state": "TN",
+            "postal": "38104",
+            "lat": 35.121,
+            "lng": -89.9774,
+            "housenumber": "335",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -3974,6 +4014,10 @@
         "St. Paul, Minnesota": "0b7c79cd-80f7-4098-b496-7500bc2e8533",
         "St. Paul, Minnesota, United States": "0b7c79cd-80f7-4098-b496-7500bc2e8533",
         "Hastings, Minnesota": "cada22cc-623d-4b30-9bc9-96c31cd09921",
-        "LaPorte, Indiana": "087b3c38-b17a-4fc8-ae96-86f4a74896d2"
+        "LaPorte, Indiana": "087b3c38-b17a-4fc8-ae96-86f4a74896d2",
+        "St. James' Park, Newcastle, England": "18bd8883-d956-4365-b3c2-1cc5cf5768ab",
+        "Memorial Stadium (Champaign, IL) - Champaign - IL - 61820": "86a8cafb-515b-4396-a01d-0c71fa68873f",
+        "Longmont, CO, United States": "7245784c-92cb-46fb-819a-46837c670971",
+        "Simmons Bank Liberty Stadium - Memphis - TN - 38104": "d01b8cd4-3c9c-47a1-b3ea-6554aa9729ec"
     }
 }

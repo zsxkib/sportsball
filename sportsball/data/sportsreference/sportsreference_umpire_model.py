@@ -2,6 +2,7 @@
 
 # pylint: disable=too-many-locals
 import datetime
+import logging
 import os
 from urllib.parse import urlparse
 
@@ -36,6 +37,12 @@ def _create_sportsreference_umpire_model(
             break
 
     if name is None:
+        for h1 in soup.find_all("h1"):
+            name = h1.get_text().strip()
+
+    if name is None:
+        logging.error(response.text)
+        logging.error("error url = %s", url)
         raise ValueError("name is null")
 
     o = urlparse(url)
