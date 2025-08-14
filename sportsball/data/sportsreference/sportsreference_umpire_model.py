@@ -73,7 +73,7 @@ def _create_sportsreference_umpire_model(
         p_text = p.get_text().strip()
         if "High School:" not in p_text:
             continue
-        address_text = p_text.split("in ")[-1].strip()
+        address_text = p_text.split("in ")[-1].strip().split("College:")[0].strip()
         try:
             high_school = create_sportsreference_venue_model(
                 venue_name=address_text, session=session, dt=None

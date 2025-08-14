@@ -3289,6 +3289,96 @@
             "housenumber": "1245",
             "country": "USA",
             "type": "venue"
+        },
+        "a1260870-0ea1-483f-9068-bdee0dfac89e": {
+            "city": "Nashville",
+            "state": "TN",
+            "postal": "37212",
+            "lat": 36.144167,
+            "lng": -86.808889,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "bd225fc9-93ac-47de-b758-8337f9a580de": {
+            "city": "Nottingham",
+            "state": "",
+            "postal": "NG2 5FJ",
+            "lat": 52.94,
+            "lng": -1.132778,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "6658753e-b447-477e-8838-c23b816096b1": {
+            "city": "Murfreesboro",
+            "state": "TN",
+            "postal": "37130",
+            "lat": 35.850513,
+            "lng": -86.368223,
+            "housenumber": "1327",
+            "country": "USA",
+            "type": "venue"
+        },
+        "380ddedf-6517-44b7-9c55-d8d420ff73cd": {
+            "city": "Vihti",
+            "state": "",
+            "postal": "",
+            "lat": 60.416667,
+            "lng": 24.316667,
+            "housenumber": "",
+            "country": "Finland",
+            "type": "suburb"
+        },
+        "cfb81d58-073e-4454-9b8d-7051cdc023ba": {
+            "city": "Mount Pleasant",
+            "state": "MI",
+            "postal": "48858",
+            "lat": 43.5775,
+            "lng": -84.770833,
+            "housenumber": "2300",
+            "country": "USA",
+            "type": "venue"
+        },
+        "63e694d4-dbda-45bc-80ad-e16de2a3800d": {
+            "city": "Boca Raton",
+            "state": "FL",
+            "postal": "",
+            "lat": 26.368611,
+            "lng": -80.1,
+            "housenumber": "",
+            "country": "USA",
+            "type": "city"
+        },
+        "91a1a543-4b43-44e8-9e5c-bc449122b484": {
+            "city": "College Station",
+            "state": "TX",
+            "postal": "77840",
+            "lat": 30.6099,
+            "lng": -96.3405,
+            "housenumber": "756",
+            "country": "USA",
+            "type": "venue"
+        },
+        "517abf21-2d26-441d-98cb-f8518d0a41e4": {
+            "city": "Ahmedabad",
+            "state": "Gujarat",
+            "postal": "",
+            "lat": 23.091389,
+            "lng": 72.597222,
+            "housenumber": "",
+            "country": "India",
+            "type": "venue"
+        },
+        "6b6a15a4-3f3e-42f6-aad1-ed506ab1d608": {
+            "city": "Statesboro",
+            "state": "GA",
+            "postal": "30458",
+            "lat": 32.412161,
+            "lng": -81.783135,
+            "housenumber": "207",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -3310,6 +3400,7 @@
         "Gillette Stadium": "3219c262-e48f-46bf-94fe-fb037f71dad8",
         "Foxboro Stadium, Foxborough, MA, USA": "3219c262-e48f-46bf-94fe-fb037f71dad8",
         "Acrisure Stadium": "5596c265-234f-40a0-8dab-88d5a7d91858",
+        "Heinz Field - Pittsburgh, Pennsylvania, USA - United States": "5596c265-234f-40a0-8dab-88d5a7d91858",
         "Hard Rock Stadium": "b7636e4f-4eb7-4874-8a90-84a0a089b99b",
         "M&T Bank Stadium": "210e9d8a-9efb-47c6-bcda-bad075616325",
         "Highmark Stadium": "450b65a8-9438-4862-98cd-accb388e9181",
@@ -4042,6 +4133,20 @@
         "Norfolk, Virginia": "70a2882d-b3bf-47c4-920f-944ec4210a62",
         "Norfolk, Virginia, United States": "70a2882d-b3bf-47c4-920f-944ec4210a62",
         "Huskie Stadium - Dekalb - IL - 60115": "7ecc3ad3-9bd3-4e8a-894e-ef78e9fb51d3",
-        "Brigham Field at Huskie Stadium": "7ecc3ad3-9bd3-4e8a-894e-ef78e9fb51d3"
+        "Brigham Field at Huskie Stadium": "7ecc3ad3-9bd3-4e8a-894e-ef78e9fb51d3",
+        "FirstBank Stadium - Nashville - TN - 37212": "a1260870-0ea1-483f-9068-bdee0dfac89e",
+        "City Ground, Nottingham, England": "bd225fc9-93ac-47de-b758-8337f9a580de",
+        "Johnny \"Red\" Floyd Stadium - Murfreesboro - TN - 37130": "6658753e-b447-477e-8838-c23b816096b1",
+        "Johnny Red\"\" Floyd Stadium\"\"": "6658753e-b447-477e-8838-c23b816096b1",
+        "Vihti, Finland": "380ddedf-6517-44b7-9c55-d8d420ff73cd",
+        "Kelly/Shorts Stadium - Mount Pleasant - MI - 48858": "cfb81d58-073e-4454-9b8d-7051cdc023ba",
+        "Kelly/Shorts Stadium": "cfb81d58-073e-4454-9b8d-7051cdc023ba",
+        "Boca Raton, FL, United States": "63e694d4-dbda-45bc-80ad-e16de2a3800d",
+        "Boca Raton, Florida": "63e694d4-dbda-45bc-80ad-e16de2a3800d",
+        "Boca Raton, Florida, United States": "63e694d4-dbda-45bc-80ad-e16de2a3800d",
+        "Kyle Field - College Station - TX - 77840": "91a1a543-4b43-44e8-9e5c-bc449122b484",
+        "Kyle Field": "91a1a543-4b43-44e8-9e5c-bc449122b484",
+        "Narendra Modi Stadium, Ahmedabad, India": "517abf21-2d26-441d-98cb-f8518d0a41e4",
+        "Allen E. Paulson Stadium - Statesboro - GA - 30458": "6b6a15a4-3f3e-42f6-aad1-ed506ab1d608"
     }
 }

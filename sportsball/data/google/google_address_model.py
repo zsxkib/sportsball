@@ -2965,15 +2965,6 @@ BOSTON_COLLEGE = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-KELLY_SHORTS_STADIUM = SportsballGeocodeTuple(
-    city="Mount Pleasant",
-    state="MI",
-    postal="48858",
-    lat=43.5775,
-    lng=-84.770833,
-    housenumber="2300",
-    country="USA",
-)
 BEAVER_STADIUM = SportsballGeocodeTuple(
     city="University Park",
     state="PA",
@@ -3071,15 +3062,6 @@ NOTRE_DAME_COLLEGE = SportsballGeocodeTuple(
     lat=41.5076,
     lng=-81.5155,
     housenumber="4545",
-    country="USA",
-)
-BOCA_RATON = SportsballGeocodeTuple(
-    city="Boca Raton",
-    state="FL",
-    postal="",
-    lat=26.368611,
-    lng=-80.1,
-    housenumber="",
     country="USA",
 )
 TOLEDO = SportsballGeocodeTuple(
@@ -3514,15 +3496,6 @@ ORIOLE_PARK = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-KYLE_FIELD = SportsballGeocodeTuple(
-    city="College Station",
-    state="TX",
-    postal="77840",
-    lat=30.6099,
-    lng=-96.3405,
-    housenumber="756",
-    country="USA",
-)
 LAWRENCE_JOEL_VETERANS_MEMORIAL_COLISEUM = SportsballGeocodeTuple(
     city="Winston-Salem",
     state="NC",
@@ -3937,15 +3910,6 @@ FLOYD_CASEY_STADIUM = SportsballGeocodeTuple(
     housenumber="3088",
     country="USA",
 )
-JOHNNY_RED_FLOYD_STADIUM = SportsballGeocodeTuple(
-    city="Murfreesboro",
-    state="TN",
-    postal="37130",
-    lat=35.850513,
-    lng=-86.368223,
-    housenumber="1327",
-    country="USA",
-)
 MATTHEWS_ARENA = SportsballGeocodeTuple(
     city="Boston",
     state="MA",
@@ -3983,27 +3947,6 @@ JACK_TRICE_STADIUM = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "FirstBank Stadium - Nashville - TN - 37212": SportsballGeocodeTuple(
-        city="Nashville",
-        state="TN",
-        postal="37212",
-        lat=36.144167,
-        lng=-86.808889,
-        housenumber="",
-        country="USA",
-    ),
-    'Johnny "Red" Floyd Stadium - Murfreesboro - TN - 37130': JOHNNY_RED_FLOYD_STADIUM,
-    "Kelly/Shorts Stadium - Mount Pleasant - MI - 48858": KELLY_SHORTS_STADIUM,
-    "Kyle Field - College Station - TX - 77840": KYLE_FIELD,
-    "Allen E. Paulson Stadium - Statesboro - GA - 30458": SportsballGeocodeTuple(
-        city="Statesboro",
-        state="GA",
-        postal="30458",
-        lat=32.412161,
-        lng=-81.783135,
-        housenumber="207",
-        country="USA",
-    ),
     "Stanford Stadium - Stanford - CA - 94305": SportsballGeocodeTuple(
         city="Stanford",
         state="CA",
@@ -8978,7 +8921,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Birmingham, Alabama": BIRMINGHAM,
     "Buffalo, New York": BUFFALO,
-    "Boca Raton, Florida": BOCA_RATON,
     "Easton, Pennsylvania": SportsballGeocodeTuple(
         city="Easton",
         state="PA",
@@ -16862,7 +16804,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Progressive Field, Cleveland, OH, USA": PROGRESSIVE_FIELD,
-    "Kelly/Shorts Stadium": KELLY_SHORTS_STADIUM,
     "Tulsa College": SportsballGeocodeTuple(
         city="Tulsa",
         state="OK",
@@ -18005,7 +17946,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Boca Raton, Florida, United States": BOCA_RATON,
     "Toledo, Ohio, United States": TOLEDO,
     "Port Arthur, Texas, United States": SportsballGeocodeTuple(
         city="Port Arthur",
@@ -20824,7 +20764,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Kyle Field": KYLE_FIELD,
     "California State University, Long Beach": SportsballGeocodeTuple(
         city="Long Beach",
         state="CA",
@@ -21444,7 +21383,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    'Johnny Red"" Floyd Stadium""': JOHNNY_RED_FLOYD_STADIUM,
     "Connecticut College College": SportsballGeocodeTuple(
         city="New London",
         state="CT",
