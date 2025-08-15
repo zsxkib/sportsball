@@ -2911,15 +2911,6 @@ WALDO_STADIUM = SportsballGeocodeTuple(
     housenumber="1903",
     country="USA",
 )
-UB_STADIUM = SportsballGeocodeTuple(
-    city="Buffalo",
-    state="NY",
-    postal="14228",
-    lat=42.999167,
-    lng=-78.7775,
-    housenumber="",
-    country="USA",
-)
 STARKVILLE = SportsballGeocodeTuple(
     city="Starkville",
     state="MS",
@@ -3343,15 +3334,6 @@ ANGEL_STADIUM_OF_ANAHEIM = SportsballGeocodeTuple(
     housenumber="2000",
     country="USA",
 )
-NEYLAND_STADIUM = SportsballGeocodeTuple(
-    city="Knoxville",
-    state="TN",
-    postal="37996",
-    lat=35.955,
-    lng=-83.925,
-    housenumber="1235",
-    country="USA",
-)
 SCOTT_STADIUM = SportsballGeocodeTuple(
     city="Charlottesville",
     state="VA",
@@ -3433,15 +3415,6 @@ LIACOURAS_CENTER = SportsballGeocodeTuple(
     housenumber="1776",
     country="USA",
 )
-DARRELL_K_ROYAL_TEXAS_MEMORIAL_STADIUM = SportsballGeocodeTuple(
-    city="Austin",
-    state="TX",
-    postal="78712",
-    lat=30.28367,
-    lng=-97.73256,
-    housenumber="405",
-    country="USA",
-)
 ORIOLE_PARK = SportsballGeocodeTuple(
     city="Baltimore",
     state="MD",
@@ -3476,15 +3449,6 @@ PETERSEN_EVENTS_CENTER = SportsballGeocodeTuple(
     lat=40.443777,
     lng=-79.962274,
     housenumber="3719",
-    country="USA",
-)
-NIPPERT_STADIUM = SportsballGeocodeTuple(
-    city="Cincinnati",
-    state="OH",
-    postal="45221",
-    lat=39.1312,
-    lng=-84.5162,
-    housenumber="2700",
     country="USA",
 )
 CARRIER_DOME = SportsballGeocodeTuple(
@@ -3712,15 +3676,6 @@ REED_ARENA = SportsballGeocodeTuple(
     housenumber="730",
     country="USA",
 )
-MICHIE_STADIUM = SportsballGeocodeTuple(
-    city="West Point",
-    state="NY",
-    postal="10996",
-    lat=41.3875,
-    lng=-73.964167,
-    housenumber="700",
-    country="USA",
-)
 INDIANA_FARMERS_COLISEUM = SportsballGeocodeTuple(
     city="Indianapolis",
     state="IN",
@@ -3866,20 +3821,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Neyland Stadium - Knoxville - TN - 37996": NEYLAND_STADIUM,
-    "Jerry Richardson Stadium - Charlotte - NC - 28223": SportsballGeocodeTuple(
-        city="Charlotte",
-        state="NC",
-        postal="28223",
-        lat=35.310556,
-        lng=-80.740278,
-        housenumber="",
-        country="USA",
-    ),
-    "UB Stadium - Buffalo - NY - 14228": UB_STADIUM,
-    "Michie Stadium - West Point - NY - 10996": MICHIE_STADIUM,
-    "DKR-Texas Memorial Stadium - Austin - TX - 78712": DARRELL_K_ROYAL_TEXAS_MEMORIAL_STADIUM,
-    "Nippert Stadium - Cincinnati - OH - 45221": NIPPERT_STADIUM,
     "Scott Stadium - Charlottesville - VA - 22903": SCOTT_STADIUM,
     "Memorial Stadium (Lincoln, NE) - Lincoln - NE - 68508": SportsballGeocodeTuple(
         city="Lincoln",
@@ -16412,7 +16353,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Trask Coliseum - Wilmington, North Carolina - United States": TRACK_COLISEUM,
     "Prudential Center, Newark, NJ, USA": PRUDENTIAL_CENTER,
     "Waldo Stadium": WALDO_STADIUM,
-    "UB Stadium - Buffalo, New York, USA - United States": UB_STADIUM,
     "Tyler, TX, USA": SportsballGeocodeTuple(
         city="Tyler",
         state="TX",
@@ -20477,7 +20417,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Neyland Stadium": NEYLAND_STADIUM,
     "Wells Fargo Center": SPECTRUM,
     "Scott Stadium": SCOTT_STADIUM,
     "Climate Pledge Arena": CLIMATE_PLEDGE_ARENA,
@@ -20610,7 +20549,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Darrell K Royal-Texas Memorial Stadium": DARRELL_K_ROYAL_TEXAS_MEMORIAL_STADIUM,
     "Oriole Park at Camden Yards": ORIOLE_PARK,
     "Ohio University": SportsballGeocodeTuple(
         city="Athens",
@@ -20755,7 +20693,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Petersen Events Center - Pittsburgh,Pennsylvania - United States": PETERSEN_EVENTS_CENTER,
-    "Nippert Stadium - Cincinnati, Ohio, USA - United States": NIPPERT_STADIUM,
     "Carrier Dome - Syracuse, New York, USA - United States": CARRIER_DOME,
     "Virginia Polytechnic Institute and State University": SportsballGeocodeTuple(
         city="Blacksburg",
@@ -21019,7 +20956,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Blaik Field at Michie Stadium": MICHIE_STADIUM,
     "Indiana Farmers Coliseum - Indianapolis, Indiana - United States": INDIANA_FARMERS_COLISEUM,
     "UMBC Event Center - Catonsville, Maryland - United States": UMBC_EVENT_CENTER,
     "Webster Bank Arena - Bridgeport, Connecticut - United States": WEBSTER_BANK_ARENA,

@@ -3619,6 +3619,126 @@
             "housenumber": "1185",
             "country": "USA",
             "type": "venue"
+        },
+        "c6758828-b11e-4237-8cd8-e9cf13fa76ad": {
+            "city": "Pomona",
+            "state": "CA",
+            "postal": "",
+            "lat": 34.060833,
+            "lng": -117.755833,
+            "housenumber": "",
+            "country": "USA",
+            "type": "city"
+        },
+        "7ab88d62-075b-4133-9422-82b1fbf19cec": {
+            "city": "Knoxville",
+            "state": "TN",
+            "postal": "37996",
+            "lat": 35.955,
+            "lng": -83.925,
+            "housenumber": "1235",
+            "country": "USA",
+            "type": "venue"
+        },
+        "a3164027-9744-4c16-a10f-112ce544edcb": {
+            "city": "Staten Island",
+            "state": "NY",
+            "postal": "10301",
+            "lat": 40.617406,
+            "lng": -74.094822,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
+        },
+        "be58ef85-cb3b-4805-bbb4-2e29cf765846": {
+            "city": "Charlotte",
+            "state": "NC",
+            "postal": "28223",
+            "lat": 35.310556,
+            "lng": -80.740278,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "e9f985de-2036-4d5a-a653-c3b18be3ef04": {
+            "city": "Uniondale",
+            "state": "NY",
+            "postal": "",
+            "lat": 40.722778,
+            "lng": -73.590556,
+            "housenumber": "1255",
+            "country": "USA",
+            "type": "venue"
+        },
+        "544bec52-d49a-4981-8486-34281071413b": {
+            "city": "Buffalo",
+            "state": "NY",
+            "postal": "14228",
+            "lat": 42.999167,
+            "lng": -78.7775,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "6c52ec40-a273-4334-ad18-94717853c7ad": {
+            "city": "Leeds",
+            "state": "",
+            "postal": "LS11 0ES",
+            "lat": 53.777778,
+            "lng": -1.572222,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "1a01414b-3ff1-443f-b08c-7c78be778700": {
+            "city": "West Point",
+            "state": "NY",
+            "postal": "10996",
+            "lat": 41.3875,
+            "lng": -73.964167,
+            "housenumber": "700",
+            "country": "USA",
+            "type": "venue"
+        },
+        "9d4f2bf5-3341-496f-9402-5e91d2e970e9": {
+            "city": "Jaipur",
+            "state": "Rajasthan",
+            "postal": "",
+            "lat": 26.894031,
+            "lng": 75.803225,
+            "housenumber": "",
+            "country": "India",
+            "type": "venue"
+        },
+        "6b51b334-e7c3-4020-a9b5-1c340ed8b56b": {
+            "city": "Austin",
+            "state": "TX",
+            "postal": "78712",
+            "lat": 30.28367,
+            "lng": -97.73256,
+            "housenumber": "405",
+            "country": "USA",
+            "type": "venue"
+        },
+        "5da455bc-2605-4352-93a7-9ffd942b02b6": {
+            "city": "Lugano",
+            "state": "Ticino",
+            "postal": "",
+            "lat": 46.023611,
+            "lng": 8.961667,
+            "housenumber": "",
+            "country": "Switzerland",
+            "type": "venue"
+        },
+        "d5e1eed1-3244-49a2-b960-756079e3874e": {
+            "city": "Cincinnati",
+            "state": "OH",
+            "postal": "45221",
+            "lat": 39.1312,
+            "lng": -84.5162,
+            "housenumber": "2700",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -4426,6 +4546,23 @@
         "California Memorial Stadium - Berkeley - CA - 94720": "967435d7-c625-4299-b203-3568121ac1ee",
         "California Memorial Stadium": "967435d7-c625-4299-b203-3568121ac1ee",
         "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow, India": "bdfdf2d8-d4d4-4f0e-8478-56580b2f5526",
-        "Memorial Stadium (Norman, OK) - Norman - OK - 73019": "a4c924b8-8c70-4404-b7a8-c901c51eeca4"
+        "Memorial Stadium (Norman, OK) - Norman - OK - 73019": "a4c924b8-8c70-4404-b7a8-c901c51eeca4",
+        "Pomona, California": "c6758828-b11e-4237-8cd8-e9cf13fa76ad",
+        "Neyland Stadium - Knoxville - TN - 37996": "7ab88d62-075b-4133-9422-82b1fbf19cec",
+        "Neyland Stadium": "7ab88d62-075b-4133-9422-82b1fbf19cec",
+        "Wagner College Stadium": "a3164027-9744-4c16-a10f-112ce544edcb",
+        "Jerry Richardson Stadium - Charlotte - NC - 28223": "be58ef85-cb3b-4805-bbb4-2e29cf765846",
+        "Nassau Coliseum - Uniondale, New York, USA - United States": "e9f985de-2036-4d5a-a653-c3b18be3ef04",
+        "UB Stadium - Buffalo - NY - 14228": "544bec52-d49a-4981-8486-34281071413b",
+        "UB Stadium - Buffalo, New York, USA - United States": "544bec52-d49a-4981-8486-34281071413b",
+        "Elland Road, Leeds, England": "6c52ec40-a273-4334-ad18-94717853c7ad",
+        "Michie Stadium - West Point - NY - 10996": "1a01414b-3ff1-443f-b08c-7c78be778700",
+        "Blaik Field at Michie Stadium": "1a01414b-3ff1-443f-b08c-7c78be778700",
+        "Sawai Mansingh Stadium, Jaipur, India": "9d4f2bf5-3341-496f-9402-5e91d2e970e9",
+        "DKR-Texas Memorial Stadium - Austin - TX - 78712": "6b51b334-e7c3-4020-a9b5-1c340ed8b56b",
+        "Darrell K Royal-Texas Memorial Stadium": "6b51b334-e7c3-4020-a9b5-1c340ed8b56b",
+        "Stadio di Cornaredo - Lugano, Ticino - Switzerland": "5da455bc-2605-4352-93a7-9ffd942b02b6",
+        "Nippert Stadium - Cincinnati - OH - 45221": "d5e1eed1-3244-49a2-b960-756079e3874e",
+        "Nippert Stadium - Cincinnati, Ohio, USA - United States": "d5e1eed1-3244-49a2-b960-756079e3874e"
     }
 }
