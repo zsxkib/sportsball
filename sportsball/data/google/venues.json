@@ -3479,6 +3479,146 @@
             "housenumber": "2001",
             "country": "USA",
             "type": "venue"
+        },
+        "38d3d33b-5dc2-4750-a558-e65c30f6abb1": {
+            "city": "Pittsburgh",
+            "state": "PA",
+            "postal": "15219",
+            "lat": 40.441667,
+            "lng": -79.99,
+            "housenumber": "66",
+            "country": "USA",
+            "type": "venue"
+        },
+        "d895d3dd-111e-4a81-80af-8ec020c6b53e": {
+            "city": "Mobile",
+            "state": "AL",
+            "postal": "36688",
+            "lat": 30.696904,
+            "lng": -88.192013,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "f82ccf5f-e3ee-40cb-971c-61ade7a73702": {
+             "city": "Stoke-on-Trent",
+            "state": "",
+            "postal": "ST4 4EG",
+            "lat": 52.988333,
+            "lng": -2.175556,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "85726d6a-f68d-4e69-948f-6360bdddb2d1": {
+            "city": "Columbia",
+            "state": "SC",
+            "postal": "29201",
+            "lat": 33.973056,
+            "lng": -81.019167,
+            "housenumber": "1174",
+            "country": "USA",
+            "type": "venue"
+        },
+        "70e89f76-d8e3-4d1f-94aa-16f4a2e22a3c": {
+            "city": "Rio de Janeiro",
+            "state": "",
+            "postal": "",
+            "lat": -22.912222,
+            "lng": -43.230278,
+            "housenumber": "",
+            "country": "Brazil",
+            "type": "venue"
+        },
+        "20c8731d-1ff2-4567-a007-89accf57779c": {
+            "city": "East Lansing",
+            "state": "MI",
+            "postal": "48824",
+            "lat": 42.728056,
+            "lng": -84.484722,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
+        },
+        "fa5844b6-7b29-4d1b-9509-68016739547e": {
+            "city": "Rockville",
+            "state": "MD",
+            "postal": "",
+            "lat": 39.08,
+            "lng": -77.142778,
+            "housenumber": "",
+            "country": "USA",
+            "type": "city"
+        },
+        "bd10f708-68ea-40ab-8161-f2688a4696cc": {
+            "city": "San Antonio",
+            "state": "TX",
+            "postal": "78203",
+            "lat": 29.416944,
+            "lng": -98.478889,
+            "housenumber": "100",
+            "country": "USA",
+            "type": "venue"
+        },
+        "2e13f340-9779-4e43-92cd-a29d2e205ed8": {
+            "city": "Morehead",
+            "state": "KY",
+            "postal": "",
+            "lat": 38.189,
+            "lng": -83.431,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "4ee81211-66e8-4fbe-b786-993473584b96": {
+            "city": "Ames",
+            "state": "IA",
+            "postal": "50011",
+            "lat": 42.014167,
+            "lng": -93.635833,
+            "housenumber": "1798",
+            "country": "USA",
+            "type": "venue"
+        },
+        "85a00172-39b7-4f34-835f-d37568e4a779": {
+            "city": "Calvert",
+            "state": "TX",
+            "postal": "",
+            "lat": 30.979167,
+            "lng": -96.671667,
+            "housenumber": "",
+            "country": "USA",
+            "type": "city"
+        },
+        "967435d7-c625-4299-b203-3568121ac1ee": {
+            "city": "Berkeley",
+            "state": "CA",
+            "postal": "94720",
+            "lat": 37.871111,
+            "lng": -122.250833,
+            "housenumber": "210",
+            "country": "USA",
+            "type": "venue"
+        },
+        "bdfdf2d8-d4d4-4f0e-8478-56580b2f5526": {
+            "city": "Lucknow",
+            "state": "",
+            "postal": "",
+            "lat": 26.811111,
+            "lng": 81.016944,
+            "housenumber": "",
+            "country": "India",
+            "type": "venue"
+        },
+        "a4c924b8-8c70-4404-b7a8-c901c51eeca4": {
+            "city": "Norman",
+            "state": "OK",
+            "postal": "73019",
+            "lat": 35.205833,
+            "lng": -97.4425,
+            "housenumber": "1185",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -4261,6 +4401,31 @@
         "TDECU Stadium - Houston - TX - 77204": "0d255739-b9ee-41d9-b528-a4c25ebf0a30",
         "Orange Vélodrome - Marseille, Bouches-du-Rhône, France - France": "512ea9f3-0424-4e3b-b431-939cf1187659",
         "Joan C. Edwards Stadium - Huntington - WV - 25703": "0ab5e415-92cd-4b13-a2fc-e22f94927a85",
-        "Joan C. Edwards Stadium": "0ab5e415-92cd-4b13-a2fc-e22f94927a85"
+        "Joan C. Edwards Stadium": "0ab5e415-92cd-4b13-a2fc-e22f94927a85",
+        "Civic Arena": "38d3d33b-5dc2-4750-a558-e65c30f6abb1",
+        "Pittsburgh Civic Arena, Pittsburgh, Pennsylvania": "38d3d33b-5dc2-4750-a558-e65c30f6abb1",
+        "Civic Arena, Pittsburgh, Pennsylvania": "38d3d33b-5dc2-4750-a558-e65c30f6abb1",
+        "Pittsburgh Civic Arena": "38d3d33b-5dc2-4750-a558-e65c30f6abb1",
+        "Hancock Whitney Stadium - Mobile - AL - 36688": "d895d3dd-111e-4a81-80af-8ec020c6b53e",
+        "Bet365 Stadium, Stoke on Trent, England": "f82ccf5f-e3ee-40cb-971c-61ade7a73702",
+        "Williams-Brice Stadium - Columbia - SC - 29201": "85726d6a-f68d-4e69-948f-6360bdddb2d1",
+        "Williams-Brice Stadium": "85726d6a-f68d-4e69-948f-6360bdddb2d1",
+        "Maracanã - Rio de Janeiro - Brazil": "70e89f76-d8e3-4d1f-94aa-16f4a2e22a3c",
+        "Spartan Stadium - East Lansing - MI - 48824": "20c8731d-1ff2-4567-a007-89accf57779c",
+        "Spartan Stadium": "20c8731d-1ff2-4567-a007-89accf57779c",
+        "Rockville, Maryland": "fa5844b6-7b29-4d1b-9509-68016739547e",
+        "Alamodome - San Antonio - TX - 78203": "bd10f708-68ea-40ab-8161-f2688a4696cc",
+        "Alamodome, San Antonio, Texas": "bd10f708-68ea-40ab-8161-f2688a4696cc",
+        "Alamodome, San Antonio, TX, USA": "bd10f708-68ea-40ab-8161-f2688a4696cc",
+        "Alamodome - San Antonio, Texas, USA - United States": "bd10f708-68ea-40ab-8161-f2688a4696cc",
+        "Morehead State College": "2e13f340-9779-4e43-92cd-a29d2e205ed8",
+        "Morehead State University": "2e13f340-9779-4e43-92cd-a29d2e205ed8",
+        "Jack Trice Stadium - Ames - IA - 50011": "4ee81211-66e8-4fbe-b786-993473584b96",
+        "Jack Trice Stadium": "4ee81211-66e8-4fbe-b786-993473584b96",
+        "Calvert, TX, United States": "85a00172-39b7-4f34-835f-d37568e4a779",
+        "California Memorial Stadium - Berkeley - CA - 94720": "967435d7-c625-4299-b203-3568121ac1ee",
+        "California Memorial Stadium": "967435d7-c625-4299-b203-3568121ac1ee",
+        "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow, India": "bdfdf2d8-d4d4-4f0e-8478-56580b2f5526",
+        "Memorial Stadium (Norman, OK) - Norman - OK - 73019": "a4c924b8-8c70-4404-b7a8-c901c51eeca4"
     }
 }
