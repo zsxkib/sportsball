@@ -84,6 +84,10 @@ WIKIPEDIA_VENUE_ID_MAP: dict[str, str | None] = {
     "UW–Milwaukee Panther Arena, Milwaukee, Wisconsin": "UW–Milwaukee_Panther_Arena",
     # AFL.com
     "Hands Oval, Bunbury": "Hands_Oval",
+    # ESPN
+    "4461": "Princess_Auto_Stadium",
+    "3610": "Aloha_Stadium",
+    "4013": "Camping_World_Stadium",
 }
 
 
