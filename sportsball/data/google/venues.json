@@ -3739,6 +3739,146 @@
             "housenumber": "2700",
             "country": "USA",
             "type": "venue"
+        },
+        "3bb42958-8c3f-49f2-aa8e-537e4ce56cf8": {
+            "city": "Santa Monica",
+            "state": "CA",
+            "postal": "",
+            "lat": 34.021944,
+            "lng": -118.481389,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "86408288-c276-42e8-9ec9-0b26cc95be89": {
+            "city": "Charlottesville",
+            "state": "VA",
+            "postal": "22903",
+            "lat": 38.031111,
+            "lng": -78.513611,
+            "housenumber": "1815",
+            "country": "USA",
+            "type": "venue"
+        },
+        "84798786-d286-44a5-ade4-819ecae420d8": {
+            "city": "Lincoln",
+            "state": "NB",
+            "postal": "",
+            "lat": 40.8175,
+            "lng": -96.701389,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "2569f0e7-0ebf-4d6c-9884-4af03eeebdbc": {
+            "city": "Lincoln",
+            "state": "NE",
+            "postal": "68508",
+            "lat": 40.8206,
+            "lng": -96.706,
+            "housenumber": "600",
+            "country": "USA",
+            "type": "venue"
+        },
+        "7f048283-4195-4c1c-8b31-67bcc625247a": {
+            "city": "Lorman",
+            "state": "MS",
+            "postal": "",
+            "lat": 31.873545,
+            "lng": -91.134918,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "594aff1d-ae72-46fb-9954-bb457df1425a": {
+            "city": "Jonesboro",
+            "state": "AR",
+            "postal": "72401",
+            "lat": 35.848889,
+            "lng": -90.667222,
+            "housenumber": "2180",
+            "country": "USA",
+            "type": "venue"
+        },
+        "53c4c021-edc5-413c-b298-14bdd743b296": {
+            "city": "Highland Heights",
+            "state": "KT",
+            "postal": "41099",
+            "lat": 39.032273,
+            "lng": -84.458864,
+            "housenumber": "500",
+            "country": "USA",
+            "type": "venue"
+        },
+        "9cc05dfc-ae09-42f9-b32b-7bd61593aaf6": {
+            "city": "Annapolis",
+            "state": "MD",
+            "postal": "21401",
+            "lat": 38.985,
+            "lng": -76.507,
+            "housenumber": "550",
+            "country": "USA",
+            "type": "venue"
+        },
+        "880a5276-fe64-4a4d-a836-7b1304a91ae5": {
+            "city": "Sunderland",
+            "state": "",
+            "postal": "SR5 1SU",
+            "lat": 54.914429,
+            "lng": -1.388173,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "0e0e62ae-69ee-458b-8e0f-47b8f624746c": {
+            "city": "Monroe",
+            "state": "LA",
+            "postal": "71203",
+            "lat": 32.530833,
+            "lng": -92.065833,
+            "housenumber": "514",
+            "country": "USA",
+            "type": "venue"
+        },
+        "619f5bb8-b4a3-48a8-a65e-d65f9a51b363": {
+            "city": "Delhi",
+            "state": "",
+            "postal": "",
+            "lat": 28.637778,
+            "lng": 77.243056,
+            "housenumber": "",
+            "country": "India",
+            "type": "venue"
+        },
+        "5506b9e0-600a-45e2-ae20-26313ebe61fd": {
+            "city": "San Jose",
+            "state": "CA",
+            "postal": "95112",
+            "lat": 37.31972,
+            "lng": -121.868333,
+            "housenumber": "1257",
+            "country": "USA",
+            "type": "venue"
+        },
+        "69ba9d4a-19cf-43ee-b755-2db3524dd4cb": {
+            "city": "Stockholm",
+            "state": "",
+            "postal": "",
+            "lat": 59.362778,
+            "lng": 17.996389,
+            "housenumber": "",
+            "country": "Sweden",
+            "type": "venue"
+        },
+        "ed168eb7-f9ec-4707-97ee-39a659ad29e2": {
+            "city": "Albuquerque",
+            "state": "NM",
+            "postal": "87106",
+            "lat": 35.066944,
+            "lng": -106.628333,
+            "housenumber": "1111",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -4563,6 +4703,26 @@
         "Darrell K Royal-Texas Memorial Stadium": "6b51b334-e7c3-4020-a9b5-1c340ed8b56b",
         "Stadio di Cornaredo - Lugano, Ticino - Switzerland": "5da455bc-2605-4352-93a7-9ffd942b02b6",
         "Nippert Stadium - Cincinnati - OH - 45221": "d5e1eed1-3244-49a2-b960-756079e3874e",
-        "Nippert Stadium - Cincinnati, Ohio, USA - United States": "d5e1eed1-3244-49a2-b960-756079e3874e"
+        "Nippert Stadium - Cincinnati, Ohio, USA - United States": "d5e1eed1-3244-49a2-b960-756079e3874e",
+        "Santa Monica, California": "3bb42958-8c3f-49f2-aa8e-537e4ce56cf8",
+        "Scott Stadium - Charlottesville - VA - 22903": "86408288-c276-42e8-9ec9-0b26cc95be89",
+        "Scott Stadium": "86408288-c276-42e8-9ec9-0b26cc95be89",
+        "University of Nebraska": "84798786-d286-44a5-ade4-819ecae420d8",
+        "Nebraska College": "84798786-d286-44a5-ade4-819ecae420d8",
+        "Memorial Stadium (Lincoln, NE) - Lincoln - NE - 68508": "2569f0e7-0ebf-4d6c-9884-4af03eeebdbc",
+        "Jack Spinks Stadium - Lorman, Mississippi, USA - United States": "7f048283-4195-4c1c-8b31-67bcc625247a",
+        "Centennial Bank Stadium - Jonesboro - AR - 72401": "594aff1d-ae72-46fb-9954-bb457df1425a",
+        "BB&T Park": "53c4c021-edc5-413c-b298-14bdd743b296",
+        "Truist Arena, Highland Heights, Kentucky": "53c4c021-edc5-413c-b298-14bdd743b296",
+        "BB&T Arena, Highland Heights, Kentucky": "53c4c021-edc5-413c-b298-14bdd743b296",
+        "Navy-Marine Corps Memorial Stadium - Annapolis - MD - 21401": "9cc05dfc-ae09-42f9-b32b-7bd61593aaf6",
+        "Navy-Marine Corps Memorial Stadium": "9cc05dfc-ae09-42f9-b32b-7bd61593aaf6",
+        "Stadium of Light, Sunderland, England": "880a5276-fe64-4a4d-a836-7b1304a91ae5",
+        "Malone Stadium - Monroe - LA - 71203": "0e0e62ae-69ee-458b-8e0f-47b8f624746c",
+        "Malone Stadium": "0e0e62ae-69ee-458b-8e0f-47b8f624746c",
+        "Arun Jaitley Stadium, Delhi, India": "619f5bb8-b4a3-48a8-a65e-d65f9a51b363",
+        "CEFCU Stadium - San Jose - CA - 95112": "5506b9e0-600a-45e2-ae20-26313ebe61fd",
+        "Råsundastadion - Solna, Stockholm - Sweden": "69ba9d4a-19cf-43ee-b755-2db3524dd4cb",
+        "University Stadium (NM) - Albuquerque - NM - 87106": "ed168eb7-f9ec-4707-97ee-39a659ad29e2"
     }
 }

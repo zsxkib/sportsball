@@ -2,6 +2,7 @@
 
 # pylint: disable=line-too-long
 import datetime
+import logging
 import threading
 from typing import Iterator, get_args, get_origin
 
@@ -33,11 +34,13 @@ def _clear_column_list(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def _reduce_memory_usage(df: pd.DataFrame) -> pd.DataFrame:
+    logging.info(df.memory_usage(deep=True))
     for col in df.columns:
         if df[col].dtype == "int64":
             df[col] = pd.to_numeric(df[col], downcast="integer")
         elif df[col].dtype == "float64":
             df[col] = pd.to_numeric(df[col], downcast="float")
+    logging.info(df.memory_usage(deep=True))
     return df
 
 
@@ -217,6 +220,7 @@ class LeagueModel(Model):
             df = _clear_column_list(df)
             df = df.reset_index()
 
+            logging.info("Memory Usage for %s", self.name())
             df = _reduce_memory_usage(
                 df[sorted(df.columns.values.tolist())].dropna(axis=1, how="all")
             )
