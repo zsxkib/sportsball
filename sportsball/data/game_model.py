@@ -84,7 +84,7 @@ class GameModel(BaseModel):
     pot: float | None = Field(
         ..., json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD}, alias=GAME_POT_COLUMN
     )
-    version: str
+    version: str = Field(..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL})
     umpires: list[UmpireModel] = Field(
         ...,
         alias=GAME_UMPIRES_COLUMN,

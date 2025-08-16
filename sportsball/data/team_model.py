@@ -981,4 +981,4 @@ class TeamModel(BaseModel):
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=TEAM_CATCHES_DROPPED_COLUMN,
     )
-    version: str
+    version: str = Field(..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL})

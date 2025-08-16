@@ -1,7 +1,7 @@
 """Combined weather model."""
 
 # pylint: disable=too-many-locals,too-many-statements,too-many-branches
-from ..weather_model import WeatherModel
+from ..weather_model import VERSION, WeatherModel
 from .most_interesting import more_interesting
 
 
@@ -301,4 +301,5 @@ def create_combined_weather_model(
         dominant_wind_direction=dominant_wind_direction,
         shortwave_radiation_sum=shortwave_radiation_sum,
         daily_reference_evapotranspiration=daily_reference_evapotranspiration,
+        version=VERSION,
     )

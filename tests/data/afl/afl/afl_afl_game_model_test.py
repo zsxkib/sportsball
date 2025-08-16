@@ -14,7 +14,7 @@ class TestAFLAFLGameModel(unittest.TestCase):
 
     def test_parse_game_info(self):
         with open(os.path.join(self.dir, "match.html")) as handle:
-            _, _, players = _parse(handle.read(), [])
+            _, _, players = _parse(handle.read(), [], "")
             self.assertEqual(len(players), 2)
             for team in players:
                 self.assertEqual(len(team), 26)

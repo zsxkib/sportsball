@@ -3879,6 +3879,26 @@
             "housenumber": "1111",
             "country": "USA",
             "type": "venue"
+        },
+        "383a4934-a006-4d7e-a50f-0d0bde0e3118": {
+            "city": "Salt Lake City",
+            "state": "UT",
+            "postal": "",
+            "lat": 40.759975,
+            "lng": -111.848853,
+            "housenumber": "451",
+            "country": "USA",
+            "type": "venue"
+        },
+        "31228a60-7303-4194-a99e-af50f34e32eb": {
+            "city": "Provo",
+            "state": "UT",
+            "postal": "84604",
+            "lat": 40.258,
+            "lng": -111.655,
+            "housenumber": "1700",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -4723,6 +4743,9 @@
         "Arun Jaitley Stadium, Delhi, India": "619f5bb8-b4a3-48a8-a65e-d65f9a51b363",
         "CEFCU Stadium - San Jose - CA - 95112": "5506b9e0-600a-45e2-ae20-26313ebe61fd",
         "Råsundastadion - Solna, Stockholm - Sweden": "69ba9d4a-19cf-43ee-b755-2db3524dd4cb",
-        "University Stadium (NM) - Albuquerque - NM - 87106": "ed168eb7-f9ec-4707-97ee-39a659ad29e2"
+        "University Stadium (NM) - Albuquerque - NM - 87106": "ed168eb7-f9ec-4707-97ee-39a659ad29e2",
+        "Rice-Eccles Stadium - Salt Lake City, Utah, USA - United States": "383a4934-a006-4d7e-a50f-0d0bde0e3118",
+        "LaVell Edwards Stadium - Provo - UT - 84604": "31228a60-7303-4194-a99e-af50f34e32eb",
+        "LaVell Edwards Stadium - Provo, Utah, USA - United States": "31228a60-7303-4194-a99e-af50f34e32eb"
     }
 }

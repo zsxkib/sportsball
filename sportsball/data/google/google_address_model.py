@@ -14,7 +14,7 @@ import requests_cache
 from timezonefinder import TimezoneFinder  # type: ignore
 
 from ...cache import MEMORY
-from ..address_model import AddressModel
+from ..address_model import VERSION, AddressModel
 from ..weather.multi_weather_model import create_mutli_weather_model
 from .address_exception import AddressException
 
@@ -2839,15 +2839,6 @@ T_MOBILE_ARENA = SportsballGeocodeTuple(
     housenumber="3780",
     country="USA",
 )
-LAVELL_EDWARDS_STADIUM = SportsballGeocodeTuple(
-    city="Provo",
-    state="UT",
-    postal="84604",
-    lat=40.258,
-    lng=-111.655,
-    housenumber="1700",
-    country="USA",
-)
 COMPAQ_CENTER = SportsballGeocodeTuple(
     city="Houston",
     state="TX",
@@ -3785,16 +3776,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "University Stadium (NM) - Albuquerque - NM - 87106": SportsballGeocodeTuple(
-        city="Albuquerque",
-        state="NM",
-        postal="87106",
-        lat=35.066944,
-        lng=-106.628333,
-        housenumber="1111",
-        country="USA",
-    ),
-    "LaVell Edwards Stadium - Provo - UT - 84604": LAVELL_EDWARDS_STADIUM,
     "Chapman Stadium - Tulsa - OK - 74104": SportsballGeocodeTuple(
         city="Tulsa",
         state="OK",
@@ -16249,7 +16230,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Belgium",
     ),
-    "LaVell Edwards Stadium - Provo, Utah, USA - United States": LAVELL_EDWARDS_STADIUM,
     "Gaylord Family Oklahoma Memorial Stadium": SportsballGeocodeTuple(
         city="Norman",
         state="OK",
@@ -21262,6 +21242,7 @@ def _create_google_address_model(
             timezone=tz,
             country=g.country,
             altitude=altitude,
+            version=VERSION,
         )
     except Exception as exc:
         logging.warning('Failed to retrieve address model for query "%s"', query)

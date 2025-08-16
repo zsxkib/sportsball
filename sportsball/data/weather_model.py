@@ -2,7 +2,9 @@
 
 from typing import Literal
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
+
+from .field_type import TYPE_KEY, FieldType
 
 VERSION: Literal["0.0.1"] = "0.0.1"
 
@@ -74,4 +76,4 @@ class WeatherModel(BaseModel):
     dominant_wind_direction: float | None
     shortwave_radiation_sum: float | None
     daily_reference_evapotranspiration: float | None
-    version: str = VERSION
+    version: str = Field(..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL})

@@ -76,11 +76,11 @@ def _extract_odds(soup: BeautifulSoup) -> list[float]:
     return odds
 
 
-def _extract_dt(soup: BeautifulSoup) -> datetime.datetime:
+def _extract_dt(soup: BeautifulSoup, url: str) -> datetime.datetime:
     for div in soup.find_all("div", {"class": re.compile(".*js-match-start-time.*")}):
         start_time = div.get("data-start-time")
         return datetime.datetime.fromisoformat(start_time)
-    raise ValueError("Unable to find datetime")
+    raise ValueError(f"Unable to find datetime for {url}")
 
 
 def _extract_players(
@@ -107,12 +107,12 @@ def _extract_players(
 
 
 def _parse(
-    html: str, players: list[list[tuple[str, str, str, str, Position]]]
+    html: str, players: list[list[tuple[str, str, str, str, Position]]], url: str
 ) -> tuple[
     list[float], datetime.datetime, list[list[tuple[str, str, str, str, Position]]]
 ]:
     soup = BeautifulSoup(html, "lxml")
-    return _extract_odds(soup), _extract_dt(soup), _extract_players(soup, players)
+    return _extract_odds(soup), _extract_dt(soup, url), _extract_players(soup, players)
 
 
 def create_afl_afl_game_model(
@@ -138,7 +138,7 @@ def create_afl_afl_game_model(
             page.goto(url + "#line-ups", wait_until="networkidle")
         except:  # noqa: E722
             pass
-        odds, dt, players = _parse(page.content(), players)
+        odds, dt, players = _parse(page.content(), players, url)
     if dt is None:
         raise ValueError("dt is null")
 

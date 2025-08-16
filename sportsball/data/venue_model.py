@@ -30,4 +30,4 @@ class VenueModel(BaseModel):
     is_indoor: bool | None
     is_turf: bool | None = Field(..., alias=VENUE_IS_TURF_COLUMN)
     is_dirt: bool | None = Field(..., alias=VENUE_IS_DIRT_COLUMN)
-    version: str
+    version: str = Field(..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL})

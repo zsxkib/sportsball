@@ -1261,7 +1261,7 @@ class PlayerModel(BaseModel):
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=PLAYER_POINT_DIFFERENTIAL_COLUMN,
     )
-    version: str
+    version: str = Field(..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL})
     height: float | None = Field(
         ..., json_schema_extra={FFILL_KEY: True}, alias=PLAYER_HEIGHT_COLUMN
     )

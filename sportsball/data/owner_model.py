@@ -41,4 +41,4 @@ class OwnerModel(BaseModel):
         json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL, FFILL_KEY: True},
         alias=OWNER_SEX_COLUMN,
     )
-    version: str
+    version: str = Field(..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL})

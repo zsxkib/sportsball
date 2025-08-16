@@ -42,7 +42,7 @@ class CoachModel(BaseModel):
         ..., json_schema_extra={FFILL_KEY: True}, alias=COACH_BIRTH_DATE_COLUMN
     )
     age: int | None = Field(..., alias=COACH_AGE_COLUMN)
-    version: str
+    version: str = Field(..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL})
     sex: str | None = Field(
         default_factory=_guess_sex,
         json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL, FFILL_KEY: True},

@@ -61,4 +61,4 @@ class UmpireModel(BaseModel):
     high_school: VenueModel | None = Field(
         ..., json_schema_extra={FFILL_KEY: True}, alias=UMPIRE_HIGH_SCHOOL_COLUMN
     )
-    version: str
+    version: str = Field(..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL})

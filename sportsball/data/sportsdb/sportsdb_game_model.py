@@ -119,7 +119,7 @@ def create_sportsdb_game_model(
         dt = datetime.datetime.fromisoformat(ts)
     except TypeError:
         dt = parser.parse(game["dateEvent"])
-    if dt > datetime.datetime.now():
+    if dt > datetime.datetime.now().replace(tzinfo=dt.tzinfo):
         return None
 
     if not pytest_is_running.is_running() and dt < datetime.datetime.now().replace(

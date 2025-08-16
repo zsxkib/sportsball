@@ -37,4 +37,4 @@ class AddressModel(BaseModel):
     )
     country: str = Field(..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL})
     altitude: float | None = Field(..., alias=ADDRESS_ALTITUDE_COLUMN)
-    version: str = VERSION
+    version: str = Field(..., json_schema_extra={TYPE_KEY: FieldType.CATEGORICAL})
