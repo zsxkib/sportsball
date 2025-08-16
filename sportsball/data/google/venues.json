@@ -3899,6 +3899,106 @@
             "housenumber": "1700",
             "country": "USA",
             "type": "venue"
+        },
+        "732ef25f-a35d-40aa-b914-e5e94d9cbb5d": {
+            "city": "East Hartford",
+            "state": "CT",
+            "postal": "06118",
+            "lat": 41.759722,
+            "lng": -72.618889,
+            "housenumber": "615",
+            "country": "USA",
+            "type": "venue"
+        },
+        "e7d57e08-5609-4091-b666-1c3856d57a3e": {
+            "city": "Tulsa",
+            "state": "OK",
+            "postal": "74104",
+            "lat": 36.148611,
+            "lng": -95.943889,
+            "housenumber": "3112",
+            "country": "USA",
+            "type": "venue"
+        },
+        "e1d8e3e3-8ec8-44c8-acc2-eb13ce8d7457": {
+            "city": "Buffalo",
+            "state": "NY",
+            "postal": "",
+            "lat": 42.881306,
+            "lng": -78.874278,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
+        },
+        "1e2ecdc9-4785-4bd6-9729-7d3a0128879b": {
+            "city": "Boone",
+            "state": "NC",
+            "postal": "28607",
+            "lat": 36.211667,
+            "lng": -81.685556,
+            "housenumber": "270",
+            "country": "USA",
+            "type": "venue"
+        },
+        "71ea177e-9ede-43d0-b967-463ac315e7de": {
+            "city": "London",
+            "state": "",
+            "postal": "E20 2ST",
+            "lat": 51.538611,
+            "lng": -0.016389,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "67d91ae1-b162-450e-bd96-24051bc2de1f": {
+            "city": "Kennesaw",
+            "state": "GA",
+            "postal": "30144",
+            "lat": 34.028967,
+            "lng": -84.567626,
+            "housenumber": "3200",
+            "country": "USA",
+            "type": "venue"
+        },
+        "cdb5d5d6-df0b-404f-b8ca-46262bb3a884": {
+            "city": "Mumbai",
+            "state": "Maharashtra",
+            "postal": "",
+            "lat": 18.938889,
+            "lng": 72.825833,
+            "housenumber": "",
+            "country": "India",
+            "type": "venue"
+        },
+        "86769284-6453-4b29-95d9-7d3be027cb53": {
+            "city": "University Park",
+            "state": "PA",
+            "postal": "16802",
+            "lat": 40.8121,
+            "lng": -77.856,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
+        },
+        "f2148c4b-0e4d-47a1-9170-d04a1e29721d": {
+            "city": "Örebro",
+            "state": "",
+            "postal": "",
+            "lat": 59.266111,
+            "lng": 15.225833,
+            "housenumber": "",
+            "country": "Sweden",
+            "type": "venue"
+        },
+        "f9157faa-d240-4959-882c-459ad133953d": {
+            "city": "Athens",
+            "state": "GA",
+            "postal": "30602",
+            "lat": 33.949803,
+            "lng": -83.373364,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -4746,6 +4846,20 @@
         "University Stadium (NM) - Albuquerque - NM - 87106": "ed168eb7-f9ec-4707-97ee-39a659ad29e2",
         "Rice-Eccles Stadium - Salt Lake City, Utah, USA - United States": "383a4934-a006-4d7e-a50f-0d0bde0e3118",
         "LaVell Edwards Stadium - Provo - UT - 84604": "31228a60-7303-4194-a99e-af50f34e32eb",
-        "LaVell Edwards Stadium - Provo, Utah, USA - United States": "31228a60-7303-4194-a99e-af50f34e32eb"
+        "LaVell Edwards Stadium - Provo, Utah, USA - United States": "31228a60-7303-4194-a99e-af50f34e32eb",
+        "Rentschler Field": "732ef25f-a35d-40aa-b914-e5e94d9cbb5d",
+        "Pratt & Whitney Stadium - East Hartford - CT - 06118": "732ef25f-a35d-40aa-b914-e5e94d9cbb5d",
+        "Chapman Stadium - Tulsa - OK - 74104": "e7d57e08-5609-4091-b666-1c3856d57a3e",
+        "Donald W. Reynolds Center, Tulsa, Oklahoma": "e7d57e08-5609-4091-b666-1c3856d57a3e",
+        "Sahlen Field": "e1d8e3e3-8ec8-44c8-acc2-eb13ce8d7457",
+        "Kidd Brewer Stadium - Boone - NC - 28607": "1e2ecdc9-4785-4bd6-9729-7d3a0128879b",
+        "London Stadium, London, England": "71ea177e-9ede-43d0-b967-463ac315e7de",
+        "Fifth Third Stadium - Kennesaw - GA - 30144": "67d91ae1-b162-450e-bd96-24051bc2de1f",
+        "Wankhede Stadium, Mumbai, India": "cdb5d5d6-df0b-404f-b8ca-46262bb3a884",
+        "Beaver Stadium - University Park - PA - 16802": "86769284-6453-4b29-95d9-7d3be027cb53",
+        "Beaver Stadium - University Park, PA - United States": "86769284-6453-4b29-95d9-7d3be027cb53",
+        "Behrn Arena - Örebro - Sweden": "f2148c4b-0e4d-47a1-9170-d04a1e29721d",
+        "Sanford Stadium - Athens - GA - 30602": "f9157faa-d240-4959-882c-459ad133953d",
+        "Sanford Stadium - Athens, Georgia, USA - United States": "f9157faa-d240-4959-882c-459ad133953d"
     }
 }

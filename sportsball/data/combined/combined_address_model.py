@@ -1,6 +1,6 @@
 """Combined address model."""
 
-from ..address_model import AddressModel
+from ..address_model import VERSION, AddressModel
 from .combined_weather_model import create_combined_weather_model
 from .most_interesting import more_interesting
 from .null_check import is_null
@@ -36,4 +36,5 @@ def create_combined_address_model(
         timezone=address_models[0].timezone,
         country=address_models[0].country,
         altitude=altitude,
+        version=VERSION,
     )

@@ -2920,15 +2920,6 @@ BOSTON_COLLEGE = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-BEAVER_STADIUM = SportsballGeocodeTuple(
-    city="University Park",
-    state="PA",
-    postal="16802",
-    lat=40.8121,
-    lng=-77.856,
-    housenumber="1",
-    country="USA",
-)
 UNIVERSITY_OF_KENTUCKY = SportsballGeocodeTuple(
     city="Lexington",
     state="KY",
@@ -3142,15 +3133,6 @@ ALUMNI_STADIUM = SportsballGeocodeTuple(
     postal="02467",
     lat=42.335,
     lng=-71.166389,
-    housenumber="",
-    country="USA",
-)
-SANFORD_STADIUM = SportsballGeocodeTuple(
-    city="Athens",
-    state="GA",
-    postal="30602",
-    lat=33.949803,
-    lng=-83.373364,
     housenumber="",
     country="USA",
 )
@@ -3776,44 +3758,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Chapman Stadium - Tulsa - OK - 74104": SportsballGeocodeTuple(
-        city="Tulsa",
-        state="OK",
-        postal="74104",
-        lat=36.148611,
-        lng=-95.943889,
-        housenumber="3112",
-        country="USA",
-    ),
-    "Kidd Brewer Stadium - Boone - NC - 28607": SportsballGeocodeTuple(
-        city="Boone",
-        state="NC",
-        postal="28607",
-        lat=36.211667,
-        lng=-81.685556,
-        housenumber="270",
-        country="USA",
-    ),
-    "Fifth Third Stadium - Kennesaw - GA - 30144": SportsballGeocodeTuple(
-        city="Kennesaw",
-        state="GA",
-        postal="30144",
-        lat=34.028967,
-        lng=-84.567626,
-        housenumber="3200",
-        country="USA",
-    ),
-    "Beaver Stadium - University Park - PA - 16802": BEAVER_STADIUM,
-    "Pratt & Whitney Stadium - East Hartford - CT - 06118": SportsballGeocodeTuple(
-        city="East Hartford",
-        state="CT",
-        postal="06118",
-        lat=41.759722,
-        lng=-72.618889,
-        housenumber="615",
-        country="USA",
-    ),
-    "Sanford Stadium - Athens - GA - 30602": SANFORD_STADIUM,
     "Gesa Field - Pullman - WA - 99164": SportsballGeocodeTuple(
         city="Pullman",
         state="WA",
@@ -5173,15 +5117,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lat=40.520212,
         lng=-80.21476,
         housenumber="",
-        country="USA",
-    ),
-    "Donald W. Reynolds Center, Tulsa, Oklahoma": SportsballGeocodeTuple(
-        city="Tulsa",
-        state="OK",
-        postal="74104",
-        lat=36.148611,
-        lng=-95.941944,
-        housenumber="800",
         country="USA",
     ),
     "Ramsey Center, Cullowhee, North Carolina": SportsballGeocodeTuple(
@@ -17087,7 +17022,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Greensboro, NC, United States": GREENSBORO,
-    "Beaver Stadium - University Park, PA - United States": BEAVER_STADIUM,
     "New Mexico College": SportsballGeocodeTuple(
         city="Albuquerque",
         state="NM",
@@ -19443,7 +19377,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "T-Mobile Arena": T_MOBILE_ARENA,
     "Commonwealth Stadium - Edmonton, AB - Canada": COMMONWEALTH_STADIUM,
     "Enterprise Center": ENTERPRISE_CENTER,
-    "Sanford Stadium - Athens, Georgia, USA - United States": SANFORD_STADIUM,
     "Rogers Arena, Vancouver, BC, Canada": ROGERS_ARENA,
     "Nationals Park, Washington, DC, USA": NATIONALS_PARK,
     "Katy, TX, United States": SportsballGeocodeTuple(
