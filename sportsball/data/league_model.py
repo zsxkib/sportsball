@@ -4,7 +4,7 @@
 import datetime
 import logging
 import threading
-from typing import Iterator, get_args, get_origin
+from typing import Any, Iterator, get_args, get_origin
 
 import pandas as pd
 import tqdm
@@ -88,6 +88,56 @@ def _normalize_tz(df: pd.DataFrame) -> pd.DataFrame:
     return df.progress_apply(apply_tz, axis=1)  # type: ignore
 
 
+def _find_nested_paths(
+    field_type: str, model_class: type[BaseModel], cols: list[str]
+) -> list[str]:
+    def any_column_contains(substr: str) -> bool:
+        for col in cols:
+            if substr in col:
+                return True
+        return False
+
+    nested_paths = []
+    for field_name, field in model_class.model_fields.items():
+        nested_field_type = (
+            field.json_schema_extra.get("type")  # type: ignore
+            if field.json_schema_extra
+            else None
+        )
+        if nested_field_type == field_type:
+            nested_paths.append(field_name)
+        else:
+            if issubclass(
+                get_origin(field.annotation) or field.annotation,  # type: ignore
+                BaseModel,  # type: ignore
+            ):
+                nested_paths.extend(
+                    [
+                        DELIMITER.join([field_name, x])
+                        for x in _find_nested_paths(
+                            field_type,
+                            field.annotation,  # type: ignore
+                            cols,
+                        )  # type: ignore
+                    ]
+                )
+            elif get_origin(field.annotation) == list and issubclass(
+                get_args(field.annotation)[0], BaseModel
+            ):
+                i = 0
+                while any_column_contains(DELIMITER.join([field_name, str(i)])):
+                    nested_paths.extend(
+                        [
+                            DELIMITER.join([field_name, str(i), x])
+                            for x in _find_nested_paths(
+                                field_type, get_args(field.annotation)[0], cols
+                            )
+                        ]
+                    )
+                    i += 1
+    return nested_paths
+
+
 class LeagueModel(Model):
     """The prototype league model class."""
 
@@ -123,84 +173,58 @@ class LeagueModel(Model):
         """Render the league as a dataframe."""
         df = self._df
         if df is None:
-            df = pd.DataFrame(
-                [
-                    flatten(x.model_dump(by_alias=True), DELIMITER)
-                    for x in tqdm.tqdm(self.games, desc="Games")
-                ]
+            data: dict[str, Any] = {}
+            for game in tqdm.tqdm(self.games, desc="Games"):
+                game_dict = flatten(game.model_dump(by_alias=True), DELIMITER)
+                for k, v in game_dict.items():
+                    current_v = data.get(k, [])
+                    current_v.append(v)
+                    data[k] = current_v
+
+            categorical_cols = set(
+                _find_nested_paths(FieldType.CATEGORICAL, GameModel, list(data.keys()))
             )
 
-            def any_column_contains(substr: str) -> bool:
-                if df is None:
-                    raise ValueError("df is null.")
-                for col in df.columns.values:
-                    if substr in col:
-                        return True
-                return False
+            for k in data:
+                if k in categorical_cols:
+                    data[k] = pd.Categorical(data[k])
 
-            def find_nested_paths(
-                field_type: str, model_class: type[BaseModel]
-            ) -> list[str]:
-                nested_paths = []
-                for field_name, field in model_class.model_fields.items():
-                    nested_field_type = (
-                        field.json_schema_extra.get("type")  # type: ignore
-                        if field.json_schema_extra
-                        else None
-                    )
-                    if nested_field_type == field_type:
-                        nested_paths.append(field_name)
-                    else:
-                        if issubclass(
-                            get_origin(field.annotation) or field.annotation,  # type: ignore
-                            BaseModel,  # type: ignore
-                        ):
-                            nested_paths.extend(
-                                [
-                                    DELIMITER.join([field_name, x])
-                                    for x in find_nested_paths(
-                                        field_type,
-                                        field.annotation,  # type: ignore
-                                    )  # type: ignore
-                                ]
-                            )
-                        elif get_origin(field.annotation) == list and issubclass(
-                            get_args(field.annotation)[0], BaseModel
-                        ):
-                            i = 0
-                            while any_column_contains(
-                                DELIMITER.join([field_name, str(i)])
-                            ):
-                                nested_paths.extend(
-                                    [
-                                        DELIMITER.join([field_name, str(i), x])
-                                        for x in find_nested_paths(
-                                            field_type, get_args(field.annotation)[0]
-                                        )
-                                    ]
-                                )
-                                i += 1
-                return nested_paths
+            df = pd.DataFrame(data)
 
             df.attrs[str(FieldType.LOOKAHEAD)] = list(
                 set(df.columns.values)
-                & set(find_nested_paths(FieldType.LOOKAHEAD, GameModel))
+                & set(
+                    _find_nested_paths(
+                        FieldType.LOOKAHEAD, GameModel, df.columns.values.tolist()
+                    )
+                )
             )
             df.attrs[str(FieldType.ODDS)] = list(
                 set(df.columns.values)
-                & set(find_nested_paths(FieldType.ODDS, GameModel))
+                & set(
+                    _find_nested_paths(
+                        FieldType.ODDS, GameModel, df.columns.values.tolist()
+                    )
+                )
             )
             df.attrs[str(FieldType.POINTS)] = list(
                 set(df.columns.values)
-                & set(find_nested_paths(FieldType.POINTS, GameModel))
+                & set(
+                    _find_nested_paths(
+                        FieldType.POINTS, GameModel, df.columns.values.tolist()
+                    )
+                )
             )
             df.attrs[str(FieldType.TEXT)] = list(
                 set(df.columns.values)
-                & set(find_nested_paths(FieldType.TEXT, GameModel))
+                & set(
+                    _find_nested_paths(
+                        FieldType.TEXT, GameModel, df.columns.values.tolist()
+                    )
+                )
             )
             df.attrs[str(FieldType.CATEGORICAL)] = list(
-                set(df.columns.values)
-                & set(find_nested_paths(FieldType.CATEGORICAL, GameModel))
+                set(df.columns.values) & categorical_cols
             )
             df.attrs[str(FieldType.LOOKAHEAD)] = list(
                 set(df.attrs[str(FieldType.LOOKAHEAD)])

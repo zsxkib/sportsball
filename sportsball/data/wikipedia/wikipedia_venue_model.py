@@ -88,6 +88,7 @@ WIKIPEDIA_VENUE_ID_MAP: dict[str, str | None] = {
     "4461": "Princess_Auto_Stadium",
     "3610": "Aloha_Stadium",
     "4013": "Camping_World_Stadium",
+    "3766": "Independence_Stadium_(Shreveport)",
 }
 
 

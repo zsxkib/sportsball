@@ -4089,6 +4089,86 @@
             "housenumber": "118",
             "country": "USA",
             "type": "venue"
+        },
+        "47bef237-e95d-45b4-871a-5282e0992ace": {
+            "city": "Easton",
+            "state": "PA",
+            "postal": "18042",
+            "lat": 40.700833,
+            "lng": -75.210556,
+            "housenumber": "218",
+            "country": "USA",
+            "type": "venue"
+        },
+        "36669088-4161-471d-ad46-1e228a95cf42": {
+            "city": "Baton Rouge",
+            "state": "LA",
+            "postal": "70803",
+            "lat": 30.412222,
+            "lng": -91.183889,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "788579fb-31b2-4eb8-9bc9-70216954b350": {
+            "city": "Oklahoma City",
+            "state": "OK",
+            "postal": "73102",
+            "lat": 35.465278,
+            "lng": -97.514444,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
+        },
+        "d33246b0-4dc5-45e2-9864-bfcaecbdfb3d": {
+            "city": "Fresno",
+            "state": "CA",
+            "postal": "93710",
+            "lat": 36.814,
+            "lng": -119.758,
+            "housenumber": "1620",
+            "country": "USA",
+            "type": "venue"
+        },
+        "088c526e-2e3a-47a8-a9c8-72c905eee8b8": {
+            "city": "Dunedin",
+            "state": "FL",
+            "postal": "34698",
+            "lat": 28.003611,
+            "lng": -82.786389,
+            "housenumber": "373",
+            "country": "USA",
+            "type": "venue"
+        },
+        "a3cfb0bc-f6cc-4445-a86a-4859b77e7f3e": {
+            "city": "Blacksburg",
+            "state": "VA",
+            "postal": "24060",
+            "lat": 37.22,
+            "lng": -80.418056,
+            "housenumber": "285",
+            "country": "USA",
+            "type": "venue"
+        },
+        "60c283d8-475a-4e9a-8248-f8597f1b0f86": {
+            "city": "Sheffield",
+            "state": "",
+            "postal": "",
+            "lat": 53.404492,
+            "lng": -1.496109,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "8496c99a-bf4a-4d8b-9e70-6dd3cb4d92d4": {
+            "city": "Miami",
+            "state": "FL",
+            "postal": "33199",
+            "lat": 25.7525,
+            "lng": -80.377778,
+            "housenumber": "11200",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -4963,6 +5043,17 @@
         "S.B. Ballard Stadium - Norfolk - VA - 23508": "e0968fb0-02e5-4421-bf87-818f32f05b33",
         "M. Chinnaswamy Stadium, Bengaluru, India": "bbbab4b2-d86e-43b0-ba8a-051ed89e9007",
         "M. M. Roberts Stadium - Hattiesburg - MS - 39406": "ca4babd1-7f70-4228-a795-3c5287a621ce",
-        "M. M. Roberts Stadium": "ca4babd1-7f70-4228-a795-3c5287a621ce"
+        "M. M. Roberts Stadium": "ca4babd1-7f70-4228-a795-3c5287a621ce",
+        "Fisher Field": "47bef237-e95d-45b4-871a-5282e0992ace",
+        "Tiger Stadium (LA) - Baton Rouge - LA - 70803": "36669088-4161-471d-ad46-1e228a95cf42",
+        "Myriad Convention Center": "788579fb-31b2-4eb8-9bc9-70216954b350",
+        "Valley Children's Stadium - Fresno - CA - 93710": "d33246b0-4dc5-45e2-9864-bfcaecbdfb3d",
+        "Bulldog Stadium": "d33246b0-4dc5-45e2-9864-bfcaecbdfb3d",
+        "TD Ballpark": "088c526e-2e3a-47a8-a9c8-72c905eee8b8",
+        "Lane Stadium - Blacksburg - VA - 24060": "a3cfb0bc-f6cc-4445-a86a-4859b77e7f3e",
+        "Lane Stadium": "a3cfb0bc-f6cc-4445-a86a-4859b77e7f3e",
+        "Hillsborough - Owlerton, Sheffield - England": "60c283d8-475a-4e9a-8248-f8597f1b0f86",
+        "Pitbull Stadium - Miami - FL - 33199": "8496c99a-bf4a-4d8b-9e70-6dd3cb4d92d4",
+        "Riccardo Silva Stadium - Miami - FL - 33199": "8496c99a-bf4a-4d8b-9e70-6dd3cb4d92d4"
     }
 }

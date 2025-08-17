@@ -22,15 +22,6 @@ SportsballGeocodeTuple = namedtuple(
     "SportsballGeocodeTuple",
     ["city", "state", "postal", "lat", "lng", "housenumber", "country"],
 )
-PITBULL_STADIUM = SportsballGeocodeTuple(
-    city="Miami",
-    state="FL",
-    postal="33199",
-    lat=25.7525,
-    lng=-80.377778,
-    housenumber="11200",
-    country="USA",
-)
 SPECTRUM = SportsballGeocodeTuple(
     city="Philadelphia",
     state="PA",
@@ -3082,15 +3073,6 @@ GONZAGA = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-LANE_STADIUM = SportsballGeocodeTuple(
-    city="Blacksburg",
-    state="VA",
-    postal="24060",
-    lat=37.22,
-    lng=-80.418056,
-    housenumber="285",
-    country="USA",
-)
 NATIONWIDE_ARENA = SportsballGeocodeTuple(
     city="Columbus",
     state="OH",
@@ -3740,26 +3722,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Tiger Stadium (LA) - Baton Rouge - LA - 70803": SportsballGeocodeTuple(
-        city="Baton Rouge",
-        state="LA",
-        postal="70803",
-        lat=30.412222,
-        lng=-91.183889,
-        housenumber="",
-        country="USA",
-    ),
-    "Valley Children's Stadium - Fresno - CA - 93710": SportsballGeocodeTuple(
-        city="Fresno",
-        state="CA",
-        postal="93710",
-        lat=36.814,
-        lng=-119.758,
-        housenumber="1620",
-        country="USA",
-    ),
-    "Lane Stadium - Blacksburg - VA - 24060": LANE_STADIUM,
-    "Pitbull Stadium - Miami - FL - 33199": PITBULL_STADIUM,
     "Memorial Stadium (Clemson, SC) - Clemson - SC - 29634": SportsballGeocodeTuple(
         city="Clemson",
         state="SC",
@@ -3920,7 +3882,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1101",
         country="USA",
     ),
-    "Riccardo Silva Stadium - Miami - FL - 33199": PITBULL_STADIUM,
     "Providence Park - Portland - OR - 97205": SportsballGeocodeTuple(
         city="Portland",
         state="OR",
@@ -17863,7 +17824,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Lane Stadium": LANE_STADIUM,
     "Utah College": SportsballGeocodeTuple(
         city="Salt Lake City",
         state="UT",
@@ -20496,15 +20456,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lat=37.719167,
         lng=-97.293056,
         housenumber="24",
-        country="USA",
-    ),
-    "Bulldog Stadium": SportsballGeocodeTuple(
-        city="Fresno",
-        state="CA",
-        postal="",
-        lat=36.814,
-        lng=-119.758,
-        housenumber="",
         country="USA",
     ),
     "Avesta, Sweden": SportsballGeocodeTuple(
