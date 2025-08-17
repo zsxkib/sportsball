@@ -3999,6 +3999,96 @@
             "housenumber": "",
             "country": "USA",
             "type": "venue"
+        },
+        "84f9a12b-d0bd-4209-9915-a442d760a0fc": {
+            "city": "Lombard",
+            "state": "IL",
+            "postal": "",
+            "lat": 41.876111,
+            "lng": -88.015,
+            "housenumber": "",
+            "country": "USA",
+            "type": "city"
+        },
+        "8f8bdc6c-0989-4b11-960f-eb472f5e6c53": {
+            "city": "Pullman",
+            "state": "WA",
+            "postal": "99164",
+            "lat": 46.732,
+            "lng": -117.16,
+            "housenumber": "720",
+            "country": "USA",
+            "type": "venue"
+        },
+        "1f508621-cdf7-4478-af03-eaa95c50ed44": {
+            "city": "Florence",
+            "state": "AL",
+            "postal": "",
+            "lat": 34.81,
+            "lng": -87.68,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "a220b641-202f-4ccd-8948-9be0a78b4c76": {
+            "city": "Bowling Green",
+            "state": "KY",
+            "postal": "42101",
+            "lat": 36.984722,
+            "lng": -86.459444,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "6bc95021-7749-400d-904e-d27a2c4f0499": {
+            "city": "Hamilton",
+            "state": "ON",
+            "postal": "",
+            "lat": 43.259167,
+            "lng": -79.8725,
+            "housenumber": "101",
+            "country": "Canada",
+            "type": "venue"
+        },
+        "e238493d-55dc-4096-96a9-2e82a43f46da": {
+            "city": "Sheffield",
+            "state": "",
+            "postal": "S2 4SU",
+            "lat": 53.370278,
+            "lng": -1.470833,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "e0968fb0-02e5-4421-bf87-818f32f05b33": {
+            "city": "Norfolk",
+            "state": "VA",
+            "postal": "23508",
+            "lat": 36.8889,
+            "lng": -76.304878,
+            "housenumber": "5115",
+            "country": "USA",
+            "type": "venue"
+        },
+        "bbbab4b2-d86e-43b0-ba8a-051ed89e9007": {
+            "city": "Bengaluru",
+            "state": "Karnataka",
+            "postal": "",
+            "lat": 12.978806,
+            "lng": 77.599556,
+            "housenumber": "",
+            "country": "India",
+            "type": "venue"
+        },
+        "ca4babd1-7f70-4228-a795-3c5287a621ce": {
+             "city": "Hattiesburg",
+            "state": "MS",
+            "postal": "39406",
+            "lat": 31.328889,
+            "lng": -89.331389,
+            "housenumber": "118",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -4565,6 +4655,7 @@
         "TIO Stadium, Darwin": "d09ab736-f5a8-4b13-b1fe-ecfa2f755ec3",
         "TIO Traeger Park, Alice Springs": "d09ab736-f5a8-4b13-b1fe-ecfa2f755ec3",
         "Turner Field, Atlanta, GA, USA": "02870e93-be2b-483d-bb26-9ce33c57bdab",
+        "Center Parc Stadium - Atlanta - GA - 30315": "02870e93-be2b-483d-bb26-9ce33c57bdab",
         "Adelaide Oval - Australia": "bf625f3c-5819-42b2-80ab-5a6d6e03be19",
         "Adelaide Oval": "bf625f3c-5819-42b2-80ab-5a6d6e03be19",
         "Adelaide Oval, Adelaide, Australia": "bf625f3c-5819-42b2-80ab-5a6d6e03be19",
@@ -4860,6 +4951,18 @@
         "Beaver Stadium - University Park, PA - United States": "86769284-6453-4b29-95d9-7d3be027cb53",
         "Behrn Arena - Örebro - Sweden": "f2148c4b-0e4d-47a1-9170-d04a1e29721d",
         "Sanford Stadium - Athens - GA - 30602": "f9157faa-d240-4959-882c-459ad133953d",
-        "Sanford Stadium - Athens, Georgia, USA - United States": "f9157faa-d240-4959-882c-459ad133953d"
+        "Sanford Stadium - Athens, Georgia, USA - United States": "f9157faa-d240-4959-882c-459ad133953d",
+        "Lombard, Illinois": "84f9a12b-d0bd-4209-9915-a442d760a0fc",
+        "Gesa Field - Pullman - WA - 99164": "8f8bdc6c-0989-4b11-960f-eb472f5e6c53",
+        "Martin Stadium - Pullman - WA - 99164": "8f8bdc6c-0989-4b11-960f-eb472f5e6c53",
+        "Martin Stadium": "8f8bdc6c-0989-4b11-960f-eb472f5e6c53",
+        "North Alabama College": "1f508621-cdf7-4478-af03-eaa95c50ed44",
+        "Houchens Industries-L.T. Smith Stadium - Bowling Green - KY - 42101": "a220b641-202f-4ccd-8948-9be0a78b4c76",
+        "Copps Coliseum": "6bc95021-7749-400d-904e-d27a2c4f0499",
+        "Bramall Lane, Sheffield, England": "e238493d-55dc-4096-96a9-2e82a43f46da",
+        "S.B. Ballard Stadium - Norfolk - VA - 23508": "e0968fb0-02e5-4421-bf87-818f32f05b33",
+        "M. Chinnaswamy Stadium, Bengaluru, India": "bbbab4b2-d86e-43b0-ba8a-051ed89e9007",
+        "M. M. Roberts Stadium - Hattiesburg - MS - 39406": "ca4babd1-7f70-4228-a795-3c5287a621ce",
+        "M. M. Roberts Stadium": "ca4babd1-7f70-4228-a795-3c5287a621ce"
     }
 }

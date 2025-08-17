@@ -2848,15 +2848,6 @@ COMPAQ_CENTER = SportsballGeocodeTuple(
     housenumber="3700",
     country="USA",
 )
-MARTIN_STADIUM = SportsballGeocodeTuple(
-    city="Pullman",
-    state="WA",
-    postal="99164",
-    lat=46.732,
-    lng=-117.16,
-    housenumber="720",
-    country="USA",
-)
 LEGION_FIELD = SportsballGeocodeTuple(
     city="Birmingham",
     state="AL",
@@ -3098,15 +3089,6 @@ LANE_STADIUM = SportsballGeocodeTuple(
     lat=37.22,
     lng=-80.418056,
     housenumber="285",
-    country="USA",
-)
-M_M_ROBERTS_STADIUM = SportsballGeocodeTuple(
-    city="Hattiesburg",
-    state="MS",
-    postal="39406",
-    lat=31.328889,
-    lng=-89.331389,
-    housenumber="118",
     country="USA",
 )
 NATIONWIDE_ARENA = SportsballGeocodeTuple(
@@ -3758,43 +3740,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Gesa Field - Pullman - WA - 99164": SportsballGeocodeTuple(
-        city="Pullman",
-        state="WA",
-        postal="99164",
-        lat=46.732,
-        lng=-117.16,
-        housenumber="720",
-        country="USA",
-    ),
-    "Houchens Industries-L.T. Smith Stadium - Bowling Green - KY - 42101": SportsballGeocodeTuple(
-        city="Bowling Green",
-        state="KY",
-        postal="42101",
-        lat=36.984722,
-        lng=-86.459444,
-        housenumber="",
-        country="USA",
-    ),
-    "Center Parc Stadium - Atlanta - GA - 30315": SportsballGeocodeTuple(
-        city="Atlanta",
-        state="GA",
-        postal="30315",
-        lat=33.735278,
-        lng=-84.389444,
-        housenumber="755",
-        country="USA",
-    ),
-    "S.B. Ballard Stadium - Norfolk - VA - 23508": SportsballGeocodeTuple(
-        city="Norfolk",
-        state="VA",
-        postal="23508",
-        lat=36.8889,
-        lng=-76.304878,
-        housenumber="5115",
-        country="USA",
-    ),
-    "M. M. Roberts Stadium - Hattiesburg - MS - 39406": M_M_ROBERTS_STADIUM,
     "Tiger Stadium (LA) - Baton Rouge - LA - 70803": SportsballGeocodeTuple(
         city="Baton Rouge",
         state="LA",
@@ -15062,7 +15007,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "MECCA Arena, Milwaukee, Wisconsin": MILWAUKEE_ARENA,
-    "Martin Stadium - Pullman - WA - 99164": MARTIN_STADIUM,
     "Flagler Credit Union Stadium - Boca Raton - FL - 33431": FAU_STADIUM,
     "Freedom Hall - Louisville, Kentucky - United States": FREEDOM_HALL,
     "Finneran Pavilion - Villanova, Pennsylvania - United States": FINNERAN_PAVILION,
@@ -16184,7 +16128,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Martin Stadium": MARTIN_STADIUM,
     "Fredricksburg, VA, USA": SportsballGeocodeTuple(
         city="Fredricksburg",
         state="VA",
@@ -19184,7 +19127,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "M. M. Roberts Stadium": M_M_ROBERTS_STADIUM,
     "Murray State College": SportsballGeocodeTuple(
         city="Tishomingo",
         state="OK",
