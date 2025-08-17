@@ -4169,6 +4169,26 @@
             "housenumber": "11200",
             "country": "USA",
             "type": "venue"
+        },
+        "3354f21b-d2e2-414a-82aa-5bf693de6052": {
+            "city": "Kolkata",
+            "state": "West Bengal",
+            "postal": "",
+            "lat": 22.5642939,
+            "lng": 88.3406246,
+            "housenumber": "",
+            "country": "India",
+            "type": "venue"
+        },
+        "4d654178-83f5-4474-9e10-068e58b855e9": {
+            "city": "Clemson",
+            "state": "SC",
+            "postal": "29634",
+            "lat": 34.678611,
+            "lng": -82.843056,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -5054,6 +5074,8 @@
         "Lane Stadium": "a3cfb0bc-f6cc-4445-a86a-4859b77e7f3e",
         "Hillsborough - Owlerton, Sheffield - England": "60c283d8-475a-4e9a-8248-f8597f1b0f86",
         "Pitbull Stadium - Miami - FL - 33199": "8496c99a-bf4a-4d8b-9e70-6dd3cb4d92d4",
-        "Riccardo Silva Stadium - Miami - FL - 33199": "8496c99a-bf4a-4d8b-9e70-6dd3cb4d92d4"
+        "Riccardo Silva Stadium - Miami - FL - 33199": "8496c99a-bf4a-4d8b-9e70-6dd3cb4d92d4",
+        "Eden Gardens, Kolkata, India": "3354f21b-d2e2-414a-82aa-5bf693de6052",
+        "Memorial Stadium (Clemson, SC) - Clemson - SC - 29634": "4d654178-83f5-4474-9e10-068e58b855e9"
     }
 }

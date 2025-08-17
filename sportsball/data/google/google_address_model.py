@@ -3722,15 +3722,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Memorial Stadium (Clemson, SC) - Clemson - SC - 29634": SportsballGeocodeTuple(
-        city="Clemson",
-        state="SC",
-        postal="29634",
-        lat=34.678611,
-        lng=-82.843056,
-        housenumber="",
-        country="USA",
-    ),
     "Dix Stadium - Kent - OH - 44242": DIX_STADIUM,
     "DATCU Stadium - Denton - TX - 76205": SportsballGeocodeTuple(
         city="Denton",

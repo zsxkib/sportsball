@@ -138,10 +138,19 @@ def _find_nested_paths(
     return nested_paths
 
 
+def _print_memory_usage(df: pd.DataFrame) -> None:
+    mem_usage = df.memory_usage(deep=True, index=False)
+    summary = pd.DataFrame({"dtype": df.dtypes, "memory_usage_bytes": mem_usage})
+    summary["memory_usage_MB"] = summary["memory_usage_bytes"] / (1024**2)
+
+    # Sort by memory usage, descending
+    summary_sorted = summary.sort_values("memory_usage_bytes", ascending=False)
+
+    logging.info(summary_sorted.head(50))
+
+
 class LeagueModel(Model):
     """The prototype league model class."""
-
-    _df: pd.DataFrame | None
 
     def __init__(
         self,
@@ -151,7 +160,6 @@ class LeagueModel(Model):
     ) -> None:
         super().__init__(session)
         self._league = league
-        self._df = None
         self.position = position
 
     @classmethod
@@ -171,83 +179,82 @@ class LeagueModel(Model):
 
     def to_frame(self) -> pd.DataFrame:
         """Render the league as a dataframe."""
-        df = self._df
-        if df is None:
-            data: dict[str, Any] = {}
-            for game in tqdm.tqdm(self.games, desc="Games"):
-                game_dict = flatten(game.model_dump(by_alias=True), DELIMITER)
-                for k, v in game_dict.items():
-                    current_v = data.get(k, [])
-                    current_v.append(v)
-                    data[k] = current_v
+        data: dict[str, Any] = {}
+        for count, game in enumerate(tqdm.tqdm(self.games, desc="Games")):
+            game_dict = flatten(game.model_dump(by_alias=True), DELIMITER)
+            for k, v in game_dict.items():
+                current_v = data.get(k, [None for _ in range(count)])
+                current_v.append(v)
+                data[k] = current_v
+            for k, v in data.items():
+                if len(v) < count + 1:
+                    data[k] = v + [None]
 
-            categorical_cols = set(
-                _find_nested_paths(FieldType.CATEGORICAL, GameModel, list(data.keys()))
-            )
+        categorical_cols = set(
+            _find_nested_paths(FieldType.CATEGORICAL, GameModel, list(data.keys()))
+        )
 
-            for k in data:
-                if k in categorical_cols:
-                    data[k] = pd.Categorical(data[k])
+        for k in data:
+            if k in categorical_cols:
+                data[k] = pd.Categorical(data[k])
 
-            df = pd.DataFrame(data)
+        df = pd.DataFrame(data)
 
-            df.attrs[str(FieldType.LOOKAHEAD)] = list(
-                set(df.columns.values)
-                & set(
-                    _find_nested_paths(
-                        FieldType.LOOKAHEAD, GameModel, df.columns.values.tolist()
-                    )
+        df.attrs[str(FieldType.LOOKAHEAD)] = list(
+            set(df.columns.values)
+            & set(
+                _find_nested_paths(
+                    FieldType.LOOKAHEAD, GameModel, df.columns.values.tolist()
                 )
             )
-            df.attrs[str(FieldType.ODDS)] = list(
-                set(df.columns.values)
-                & set(
-                    _find_nested_paths(
-                        FieldType.ODDS, GameModel, df.columns.values.tolist()
-                    )
+        )
+        df.attrs[str(FieldType.ODDS)] = list(
+            set(df.columns.values)
+            & set(
+                _find_nested_paths(
+                    FieldType.ODDS, GameModel, df.columns.values.tolist()
                 )
             )
-            df.attrs[str(FieldType.POINTS)] = list(
-                set(df.columns.values)
-                & set(
-                    _find_nested_paths(
-                        FieldType.POINTS, GameModel, df.columns.values.tolist()
-                    )
+        )
+        df.attrs[str(FieldType.POINTS)] = list(
+            set(df.columns.values)
+            & set(
+                _find_nested_paths(
+                    FieldType.POINTS, GameModel, df.columns.values.tolist()
                 )
             )
-            df.attrs[str(FieldType.TEXT)] = list(
-                set(df.columns.values)
-                & set(
-                    _find_nested_paths(
-                        FieldType.TEXT, GameModel, df.columns.values.tolist()
-                    )
+        )
+        df.attrs[str(FieldType.TEXT)] = list(
+            set(df.columns.values)
+            & set(
+                _find_nested_paths(
+                    FieldType.TEXT, GameModel, df.columns.values.tolist()
                 )
             )
-            df.attrs[str(FieldType.CATEGORICAL)] = list(
-                set(df.columns.values) & categorical_cols
+        )
+        df.attrs[str(FieldType.CATEGORICAL)] = list(
+            set(df.columns.values) & categorical_cols
+        )
+        df.attrs[str(FieldType.LOOKAHEAD)] = list(
+            set(df.attrs[str(FieldType.LOOKAHEAD)])
+            | set(df.attrs[str(FieldType.POINTS)])
+        )
+
+        for categorical_column in df.attrs[str(FieldType.CATEGORICAL)]:
+            df[categorical_column] = df[categorical_column].astype("category")
+
+        df = _normalize_tz(df)
+
+        if GAME_DT_COLUMN in df.columns.values:
+            df = df.sort_values(
+                by=GAME_DT_COLUMN,
+                ascending=True,
             )
-            df.attrs[str(FieldType.LOOKAHEAD)] = list(
-                set(df.attrs[str(FieldType.LOOKAHEAD)])
-                | set(df.attrs[str(FieldType.POINTS)])
-            )
+        df = _clear_column_list(df)
+        df = df.reset_index()
 
-            for categorical_column in df.attrs[str(FieldType.CATEGORICAL)]:
-                df[categorical_column] = df[categorical_column].astype("category")
-
-            df = _normalize_tz(df)
-
-            if GAME_DT_COLUMN in df.columns.values:
-                df = df.sort_values(
-                    by=GAME_DT_COLUMN,
-                    ascending=True,
-                )
-            df = _clear_column_list(df)
-            df = df.reset_index()
-
-            logging.info("Memory Usage for %s", self.name())
-            df = _reduce_memory_usage(
-                df[sorted(df.columns.values.tolist())].dropna(axis=1, how="all")
-            )
-
-            self._df = df
+        df = _reduce_memory_usage(
+            df[sorted(df.columns.values.tolist())].dropna(axis=1, how="all")
+        )
+        _print_memory_usage(df)
         return df
