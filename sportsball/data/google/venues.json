@@ -4189,6 +4189,46 @@
             "housenumber": "",
             "country": "USA",
             "type": "venue"
+        },
+        "695ac06b-d2aa-4226-8ced-29f75f3ddb7f": {
+            "city": "Richmond",
+            "state": "KY",
+            "postal": "40475",
+            "lat": 37.73439,
+            "lng": -84.29741,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "ba102172-dce3-409c-a5b4-ae5c41f8d8e5": {
+            "city": "Kent",
+            "state": "OH",
+            "postal": "44242",
+            "lat": 41.139167,
+            "lng": -81.313333,
+            "housenumber": "2227",
+            "country": "USA",
+            "type": "venue"
+        },
+        "028a4275-cedd-426f-bbbd-5231768ccef9": {
+            "city": "Wolverhampton",
+            "state": "",
+            "postal": "",
+            "lat": 41.139167,
+            "lng": -81.313333,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "1fa6ee44-bc77-4b15-9fdf-dbd450b5fea1": {
+            "city": "Denton",
+            "state": "TX",
+            "postal": "76205",
+            "lat": 33.203611,
+            "lng": -97.159444,
+            "housenumber": "1251",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -5076,6 +5116,12 @@
         "Pitbull Stadium - Miami - FL - 33199": "8496c99a-bf4a-4d8b-9e70-6dd3cb4d92d4",
         "Riccardo Silva Stadium - Miami - FL - 33199": "8496c99a-bf4a-4d8b-9e70-6dd3cb4d92d4",
         "Eden Gardens, Kolkata, India": "3354f21b-d2e2-414a-82aa-5bf693de6052",
-        "Memorial Stadium (Clemson, SC) - Clemson - SC - 29634": "4d654178-83f5-4474-9e10-068e58b855e9"
+        "Memorial Stadium (Clemson, SC) - Clemson - SC - 29634": "4d654178-83f5-4474-9e10-068e58b855e9",
+        "Roy Kidd Stadium": "695ac06b-d2aa-4226-8ced-29f75f3ddb7f",
+        "Roy Kidd Stadium - Richmond - KY - 40475": "695ac06b-d2aa-4226-8ced-29f75f3ddb7f",
+        "Dix Stadium - Kent - OH - 44242": "ba102172-dce3-409c-a5b4-ae5c41f8d8e5",
+        "Dix Stadium": "ba102172-dce3-409c-a5b4-ae5c41f8d8e5",
+        "Molineux Stadium, Wolverhampton, England": "028a4275-cedd-426f-bbbd-5231768ccef9",
+        "DATCU Stadium - Denton - TX - 76205": "1fa6ee44-bc77-4b15-9fdf-dbd450b5fea1"
     }
 }

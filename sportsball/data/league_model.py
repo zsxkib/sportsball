@@ -179,19 +179,20 @@ class LeagueModel(Model):
 
     def to_frame(self) -> pd.DataFrame:
         """Render the league as a dataframe."""
-        data: dict[str, Any] = {}
-        for count, game in enumerate(tqdm.tqdm(self.games, desc="Games")):
+        jsonl: list[dict[str, Any]] = []
+        cols: set[str] = set()
+        for game in tqdm.tqdm(self.games, desc="Games"):
             game_dict = flatten(game.model_dump(by_alias=True), DELIMITER)
-            for k, v in game_dict.items():
-                current_v = data.get(k, [None for _ in range(count)])
-                current_v.append(v)
-                data[k] = current_v
-            for k, v in data.items():
-                if len(v) < count + 1:
-                    data[k] = v + [None]
+            jsonl.append(game_dict)
+            cols &= set(game_dict.keys())
+
+        data: dict[str, Any] = {x: [] for x in cols}
+        for json_dict in jsonl:
+            for col in cols:
+                data[col].append(json_dict.get(col))
 
         categorical_cols = set(
-            _find_nested_paths(FieldType.CATEGORICAL, GameModel, list(data.keys()))
+            _find_nested_paths(FieldType.CATEGORICAL, GameModel, list(cols))
         )
 
         for k in data:

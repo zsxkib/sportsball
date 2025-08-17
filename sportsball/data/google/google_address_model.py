@@ -3685,15 +3685,6 @@ DON_HASKINS_CENTER = SportsballGeocodeTuple(
     housenumber="151",
     country="USA",
 )
-DIX_STADIUM = SportsballGeocodeTuple(
-    city="Kent",
-    state="OH",
-    postal="44242",
-    lat=41.139167,
-    lng=-81.313333,
-    housenumber="2227",
-    country="USA",
-)
 FLOYD_CASEY_STADIUM = SportsballGeocodeTuple(
     city="Waco",
     state="TX",
@@ -3722,16 +3713,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Dix Stadium - Kent - OH - 44242": DIX_STADIUM,
-    "DATCU Stadium - Denton - TX - 76205": SportsballGeocodeTuple(
-        city="Denton",
-        state="TX",
-        postal="76205",
-        lat=33.203611,
-        lng=-97.159444,
-        housenumber="1251",
-        country="USA",
-    ),
     "FAU Stadium - Boca Raton - FL - 33431": FAU_STADIUM,
     "Brooks Stadium (SC) - Conway - SC - 29526": SportsballGeocodeTuple(
         city="Conway",
@@ -3933,15 +3914,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Robertson Stadium - Houston - TX - 77004": ROBERTSON_STADIUM,
-    "Roy Kidd Stadium - Richmond - KY - 40475": SportsballGeocodeTuple(
-        city="Richmond",
-        state="KY",
-        postal="40475",
-        lat=37.73439,
-        lng=-84.29741,
-        housenumber="",
-        country="USA",
-    ),
     "Capital One Arena, Washington, District of Columbia": CAPITAL_ONE_ARENA,
     "Stan Sheriff Center, Honolulu, Hawaii": STAN_SHERIFF_CENTER,
     "Value City Arena, Columbus, Ohio": VALUE_CITY_ARENA,
@@ -20787,7 +20759,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Dix Stadium": DIX_STADIUM,
     "Winnipeg Arena": SportsballGeocodeTuple(
         city="Winnipeg",
         state="MB",
