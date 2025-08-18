@@ -4429,6 +4429,96 @@
             "housenumber": "799",
             "country": "USA",
             "type": "venue"
+        },
+        "10d2f789-48a3-4ccc-a117-1425413e1ffe": {
+            "city": "Irvine",
+            "state": "CA",
+            "postal": "",
+            "lat": 33.669444,
+            "lng": -117.823056,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "c150cd5c-c845-46f6-9878-0805265544e0": {
+            "city": "Kansas City",
+            "state": "KS",
+            "postal": "66111",
+            "lat": 39.12174,
+            "lng": -94.82318,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
+        },
+        "d7cef3e9-37a6-48cf-a0c4-998ccb12fd1f": {
+            "city": "Wigan",
+            "state": "",
+            "postal": "WN5 0UH",
+            "lat": 53.547778,
+            "lng": -2.653889,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "6f41f376-229b-4b2e-ab6c-231fc7ee60ad": {
+            "city": "Huntsville",
+            "state": "TX",
+            "postal": "77340",
+            "lat": 30.713889,
+            "lng": -95.541667,
+            "housenumber": "620",
+            "country": "USA",
+            "type": "venue"
+        },
+        "250fe196-7b71-4471-a238-92d74f0e477b": {
+            "city": "Dortmund",
+            "state": "North Rhine-Westphalia",
+            "postal": "44139",
+            "lat": 51.4925,
+            "lng": 7.451667,
+            "housenumber": "50",
+            "country": "Germany",
+            "type": "venue"
+        },
+        "764bbd0b-3584-4bfa-a94b-9deb9b6c6a80": {
+            "city": "Chestnut Hill",
+            "state": "MA",
+            "postal": "02467",
+            "lat": 42.335,
+            "lng": -71.166389,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "3313fe8d-89bb-4006-a391-7300b206c06e": {
+            "city": "Birmingham",
+            "state": "AL",
+            "postal": "35229",
+            "lat": 33.463236,
+            "lng": -86.795254,
+            "housenumber": "800",
+            "country": "USA",
+            "type": "venue"
+        },
+        "a2eaa85f-445d-43d9-9aa0-b375d73f176a": {
+            "city": "Landover",
+            "state": "MD",
+            "postal": "",
+            "lat": 38.9025,
+            "lng": -76.846944,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
+        },
+        "53726044-0bc2-4c51-9744-fc5d5d8d3bd0": {
+            "city": "Montgomery",
+            "state": "AL",
+            "postal": "36107",
+            "lat": 32.37949,
+            "lng": -86.293002,
+            "housenumber": "1022",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -4822,6 +4912,7 @@
         "Yankee Stadium - Bronx, New York - United States": "41e253f5-9197-4168-8970-cd35f5ba4562",
         "Yankee Stadium - Bronx, New York, USA - United States": "41e253f5-9197-4168-8970-cd35f5ba4562",
         "Yankee Stadium III": "41e253f5-9197-4168-8970-cd35f5ba4562",
+        "Yankee Stadium - Bronx - NY - 10451": "41e253f5-9197-4168-8970-cd35f5ba4562",
         "Euroa - Australia": "d2ee3c9d-140e-498c-aaf5-8e7d547c5cbc",
         "Aloha Stadium - Honolulu - HI - 96818": "9961d10c-97bb-4d6c-a89b-544a6e001c7e",
         "Aloha Stadium, Honolulu, HI, USA": "9961d10c-97bb-4d6c-a89b-544a6e001c7e",
@@ -5349,6 +5440,19 @@
         "InfoCision Stadium - Akron - OH - 44304": "182e29bd-212b-412f-96dc-7d81e1073a22",
         "Goodman Stadium": "993c0d39-9e3f-4c0f-b81f-fe596f86629a",
         "Rynearson Stadium - Ypsilanti - MI - 48197": "f89a77f6-60be-42eb-a99d-20adc19dd831",
-        "Rynearson Stadium - Ypsilanti, Michigan, USA - United States": "f89a77f6-60be-42eb-a99d-20adc19dd831"
+        "Rynearson Stadium - Ypsilanti, Michigan, USA - United States": "f89a77f6-60be-42eb-a99d-20adc19dd831",
+        "Irvine, California, United States": "10d2f789-48a3-4ccc-a117-1425413e1ffe",
+        "Irvine, California": "10d2f789-48a3-4ccc-a117-1425413e1ffe",
+        "Children's Mercy Park - Kansas City - KS - 66111": "c150cd5c-c845-46f6-9878-0805265544e0",
+        "The Brick Community Stadium, Wigan, England": "d7cef3e9-37a6-48cf-a0c4-998ccb12fd1f",
+        "Elliott T. Bowers Stadium - Huntsville - TX - 77340": "6f41f376-229b-4b2e-ab6c-231fc7ee60ad",
+        "Signal Iduna Park - Dortmund - Germany": "250fe196-7b71-4471-a238-92d74f0e477b",
+        "Alumni Stadium (Chestnut Hill, MA) - Chestnut Hill - MA - 02467": "764bbd0b-3584-4bfa-a94b-9deb9b6c6a80",
+        "Alumni Stadium": "764bbd0b-3584-4bfa-a94b-9deb9b6c6a80",
+        "Seibert Stadium - Birmingham, Alabama, USA - United States": "3313fe8d-89bb-4006-a391-7300b206c06e",
+        "USAir Arena": "a2eaa85f-445d-43d9-9aa0-b375d73f176a",
+        "US Airways Arena, Landover, Maryland": "a2eaa85f-445d-43d9-9aa0-b375d73f176a",
+        "Capital Centre, Landover, Maryland": "a2eaa85f-445d-43d9-9aa0-b375d73f176a",
+        "Cramton Bowl - Montgomery - AL - 36107": "53726044-0bc2-4c51-9744-fc5d5d8d3bd0"
     }
 }

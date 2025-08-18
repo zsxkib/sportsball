@@ -10,7 +10,7 @@ from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ...game_model import GameModel
 from ...league import League
-from ...league_model import LeagueModel, needs_shutdown
+from ...league_model import SHUTDOWN_FLAG, LeagueModel, needs_shutdown
 from .atp_tennisabstract_game_model import create_tennisabstract_game_model
 
 
@@ -37,32 +37,36 @@ class ATPTennisAbstractLeagueModel(LeagueModel):
     @property
     def games(self) -> Iterator[GameModel]:
         """Find all the games."""
-        with tqdm.tqdm(position=self.position) as pbar:
-            url = "https://www.tennisabstract.com/charting/"
-            response = None
-            with self.session.wayback_disabled():
-                with self.session.cache_disabled():
-                    self.session.cache.delete(urls=[url])
-                    response = self.session.get(url)
-            response.raise_for_status()
-            soup = BeautifulSoup(response.text, "lxml")
-            for a in soup.find_all("a", href=True):
-                if needs_shutdown():
-                    return
-                match_name = a.get_text().strip()
-                if not match_name.endswith("(ATP)"):
-                    continue
-                match_url = urllib.parse.urljoin(url, a.get("href"))
-                filename = os.path.basename(match_url)
-                datestr = filename.split("-")[0]
-                if len(datestr) == 8 and datestr.isnumeric():
-                    pbar.update(1)
-                    game_model = create_tennisabstract_game_model(
-                        self.session,
-                        match_url,
-                        self.league,
-                    )
-                    if game_model is None:
+        try:
+            with tqdm.tqdm(position=self.position) as pbar:
+                url = "https://www.tennisabstract.com/charting/"
+                response = None
+                with self.session.wayback_disabled():
+                    with self.session.cache_disabled():
+                        self.session.cache.delete(urls=[url])
+                        response = self.session.get(url)
+                response.raise_for_status()
+                soup = BeautifulSoup(response.text, "lxml")
+                for a in soup.find_all("a", href=True):
+                    if needs_shutdown():
+                        return
+                    match_name = a.get_text().strip()
+                    if not match_name.endswith("(ATP)"):
                         continue
-                    pbar.set_description(f"TennisAbstract {game_model.dt}")
-                    yield game_model
+                    match_url = urllib.parse.urljoin(url, a.get("href"))
+                    filename = os.path.basename(match_url)
+                    datestr = filename.split("-")[0]
+                    if len(datestr) == 8 and datestr.isnumeric():
+                        pbar.update(1)
+                        game_model = create_tennisabstract_game_model(
+                            self.session,
+                            match_url,
+                            self.league,
+                        )
+                        if game_model is None:
+                            continue
+                        pbar.set_description(f"TennisAbstract {game_model.dt}")
+                        yield game_model
+        except Exception as exc:
+            SHUTDOWN_FLAG.set()
+            raise exc

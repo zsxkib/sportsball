@@ -2416,15 +2416,6 @@ CANTON = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-CAPITAL_CENTER = SportsballGeocodeTuple(
-    city="Landover",
-    state="MD",
-    postal="",
-    lat=38.9025,
-    lng=-76.846944,
-    housenumber="1",
-    country="USA",
-)
 KNOXVILLE = SportsballGeocodeTuple(
     city="Knoxville",
     state="TN",
@@ -3073,15 +3064,6 @@ CEDAR_FALLS = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-ALUMNI_STADIUM = SportsballGeocodeTuple(
-    city="Chestnut Hill",
-    state="MA",
-    postal="02467",
-    lat=42.335,
-    lng=-71.166389,
-    housenumber="",
-    country="USA",
-)
 BRIDGESTONE_ARENA = SportsballGeocodeTuple(
     city="Nashville",
     state="TN",
@@ -3686,43 +3668,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Children's Mercy Park - Kansas City - KS - 66111": SportsballGeocodeTuple(
-        city="Kansas City",
-        state="KS",
-        postal="66111",
-        lat=39.12174,
-        lng=-94.82318,
-        housenumber="1",
-        country="USA",
-    ),
-    "Elliott T. Bowers Stadium - Huntsville - TX - 77340": SportsballGeocodeTuple(
-        city="Huntsville",
-        state="TX",
-        postal="77340",
-        lat=30.713889,
-        lng=-95.541667,
-        housenumber="620",
-        country="USA",
-    ),
-    "Alumni Stadium (Chestnut Hill, MA) - Chestnut Hill - MA - 02467": ALUMNI_STADIUM,
-    "Yankee Stadium - Bronx - NY - 10451": SportsballGeocodeTuple(
-        city="Bronx",
-        state="NY",
-        postal="10451",
-        lat=40.829167,
-        lng=-73.926389,
-        housenumber="1",
-        country="USA",
-    ),
-    "Cramton Bowl - Montgomery - AL - 36107": SportsballGeocodeTuple(
-        city="Montgomery",
-        state="AL",
-        postal="36107",
-        lat=32.37949,
-        lng=-86.293002,
-        housenumber="1022",
-        country="USA",
-    ),
     "Toyota Stadium - Frisco - TX - 75033": TOYOTA_STADIUM,
     "Chase Field - Phoenix - AZ - 85004": CHASE_FIELD,
     "Thomas A. Robinson National Stadium - Nassau": SportsballGeocodeTuple(
@@ -8775,15 +8720,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Irvine, California": SportsballGeocodeTuple(
-        city="Irvine",
-        state="CA",
-        postal="",
-        lat=33.669444,
-        lng=-117.823056,
-        housenumber="",
-        country="USA",
-    ),
     "St. George, Utah": ST_GEORGE,
     "Long Beach, California": LONG_BEACH,
     "El Paso, Texas": SportsballGeocodeTuple(
@@ -13398,7 +13334,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "San Jose Arena, San Jose, California": SAP_CENTER,
-    "US Airways Arena, Landover, Maryland": CAPITAL_CENTER,
     "Orlando Arena, Orlando, Florida": ORLANDO_ARENA,
     "Reno, NV, USA": RENO,
     "Larkspur, CA, USA": SportsballGeocodeTuple(
@@ -13614,7 +13549,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Capital Centre, Landover, Maryland": CAPITAL_CENTER,
     "Mission Hills, CA, USA": SportsballGeocodeTuple(
         city="Mission Hills",
         state="CA",
@@ -19111,7 +19045,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Alumni Stadium": ALUMNI_STADIUM,
     "PPG Paints Arena, Pittsburgh, PA, USA": PPG_PAINTS_ARENA,
     "Capital One Arena": CAPITAL_ONE_ARENA,
     "Nevada": SportsballGeocodeTuple(
