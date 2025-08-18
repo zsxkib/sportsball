@@ -10,7 +10,7 @@ from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ...game_model import GameModel
 from ...league import League
-from ...league_model import SHUTDOWN_FLAG, LeagueModel
+from ...league_model import LeagueModel, needs_shutdown
 from .atp_tennisabstract_game_model import create_tennisabstract_game_model
 
 
@@ -47,7 +47,7 @@ class ATPTennisAbstractLeagueModel(LeagueModel):
             response.raise_for_status()
             soup = BeautifulSoup(response.text, "lxml")
             for a in soup.find_all("a", href=True):
-                if SHUTDOWN_FLAG.is_set():
+                if needs_shutdown():
                     return
                 match_name = a.get_text().strip()
                 if not match_name.endswith("(ATP)"):

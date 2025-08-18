@@ -8,7 +8,7 @@ from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ..game_model import GameModel
 from ..league import League
-from ..league_model import SHUTDOWN_FLAG, LeagueModel
+from ..league_model import SHUTDOWN_FLAG, LeagueModel, needs_shutdown
 from ..season_type import SeasonType
 from .espn_game_model import create_espn_game_model
 
@@ -138,7 +138,7 @@ class ESPNLeagueModel(LeagueModel):
             weeks_response.raise_for_status()
             weeks = weeks_response.json()
             for item in weeks["items"]:
-                if SHUTDOWN_FLAG.is_set():
+                if needs_shutdown():
                     return
                 if cache_disabled:
                     with self.session.cache_disabled():

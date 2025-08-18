@@ -16,7 +16,7 @@ from scrapesession.scrapesession import ScrapeSession  # type: ignore
 from ..game_model import GameModel
 from ..google.address_exception import AddressException
 from ..league import League
-from ..league_model import SHUTDOWN_FLAG, LeagueModel
+from ..league_model import SHUTDOWN_FLAG, LeagueModel, needs_shutdown
 from .decrypt import fetch_data
 from .oddsportal_game_model import create_oddsportal_game_model
 
@@ -75,7 +75,7 @@ def _process_results_pages(
             if d.get("total") == 0:
                 return
             for row in d.get("rows", []):
-                if SHUTDOWN_FLAG.is_set():
+                if needs_shutdown():
                     return
                 game_model = create_oddsportal_game_model(
                     session, urllib.parse.urljoin(url, row["url"]), league, False

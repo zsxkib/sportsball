@@ -2857,15 +2857,6 @@ NEWARK = SportsballGeocodeTuple(
     housenumber="700",
     country="USA",
 )
-WALDO_STADIUM = SportsballGeocodeTuple(
-    city="Kalamazoo",
-    state="MI",
-    postal="49008",
-    lat=42.285833,
-    lng=-85.601111,
-    housenumber="1903",
-    country="USA",
-)
 STARKVILLE = SportsballGeocodeTuple(
     city="Starkville",
     state="MS",
@@ -3269,15 +3260,6 @@ STEINBRENNER_FIELD = SportsballGeocodeTuple(
     lat=27.980278,
     lng=-82.506667,
     housenumber="1",
-    country="USA",
-)
-RYNEARSON_STADIUM = SportsballGeocodeTuple(
-    city="Ypsilanti",
-    state="MI",
-    postal="48197",
-    lat=42.2558889,
-    lng=-83.6499574,
-    housenumber="799",
     country="USA",
 )
 GLOBE_LIFE_FIELD = SportsballGeocodeTuple(
@@ -3704,35 +3686,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Sun Bowl - El Paso - TX - 79902": SportsballGeocodeTuple(
-        city="El Paso",
-        state="TX",
-        postal="79902",
-        lat=31.773,
-        lng=-106.508,
-        housenumber="2701",
-        country="USA",
-    ),
-    "Razorback Stadium - Fayetteville - AR - 72701": SportsballGeocodeTuple(
-        city="Fayetteville",
-        state="AR",
-        postal="72701",
-        lat=36.068056,
-        lng=-94.178889,
-        housenumber="350",
-        country="USA",
-    ),
-    "Waldo Stadium - Kalamazoo - MI - 49008": WALDO_STADIUM,
-    "InfoCision Stadium - Akron - OH - 44304": SportsballGeocodeTuple(
-        city="Akron",
-        state="OH",
-        postal="44304",
-        lat=41.072347,
-        lng=-81.508019,
-        housenumber="",
-        country="USA",
-    ),
-    "Rynearson Stadium - Ypsilanti - MI - 48197": RYNEARSON_STADIUM,
     "Children's Mercy Park - Kansas City - KS - 66111": SportsballGeocodeTuple(
         city="Kansas City",
         state="KS",
@@ -16009,7 +15962,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Newark, New Jersey, United States": NEWARK,
     "Trask Coliseum - Wilmington, North Carolina - United States": TRACK_COLISEUM,
     "Prudential Center, Newark, NJ, USA": PRUDENTIAL_CENTER,
-    "Waldo Stadium": WALDO_STADIUM,
     "Tyler, TX, USA": SportsballGeocodeTuple(
         city="Tyler",
         state="TX",
@@ -20103,7 +20055,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Rynearson Stadium - Ypsilanti, Michigan, USA - United States": RYNEARSON_STADIUM,
     "United Center": UNITED_CENTER,
     "Globe Life Field": GLOBE_LIFE_FIELD,
     "Seton Hall University": SportsballGeocodeTuple(

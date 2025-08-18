@@ -9,7 +9,7 @@ from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ...game_model import VERSION, GameModel
 from ...league import League
-from ...league_model import SHUTDOWN_FLAG, LeagueModel
+from ...league_model import SHUTDOWN_FLAG, LeagueModel, needs_shutdown
 from .nba_nbacom_game_model import create_nba_nbacom_game_model
 
 
@@ -34,7 +34,7 @@ class NBANBAComLeagueModel(LeagueModel):
                 if response.ok:
                     lineup = response.json()
                     for game in lineup["games"]:
-                        if SHUTDOWN_FLAG.is_set():
+                        if needs_shutdown():
                             return
                         yield create_nba_nbacom_game_model(
                             game=game, session=self.session, version=VERSION

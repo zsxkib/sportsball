@@ -1,5 +1,6 @@
 """The CLI for executing the data harvesting."""
 
+import datetime
 import io
 import logging
 import sys
@@ -7,6 +8,7 @@ from contextlib import redirect_stdout
 
 from . import __VERSION__
 from .args import parse_args
+from .data import league_model
 from .data.league import league_from_str
 from .logger import setup_logger
 from .sportsball import SportsBall
@@ -21,6 +23,11 @@ def main() -> None:
         setup_logger()
 
         logging.info("--- sportsball %s ---", __VERSION__)
+
+        if args.timeout is not None:
+            league_model.TIMEOUT_DT = datetime.datetime.now() + datetime.timedelta(
+                seconds=args.timeout
+            )
 
         ball = SportsBall()
         league = ball.league(league_from_str(args.league), args.leaguemodel)

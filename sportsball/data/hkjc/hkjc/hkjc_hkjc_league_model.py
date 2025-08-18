@@ -13,7 +13,7 @@ from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ...game_model import GameModel
 from ...league import League
-from ...league_model import SHUTDOWN_FLAG, LeagueModel
+from ...league_model import SHUTDOWN_FLAG, LeagueModel, needs_shutdown
 from .hkjc_hkjc_game_model import (RACE_COURSE_QUERY_KEY, RACE_DATE_QUERY_KEY,
                                    RACE_NUMBER_QUERY_KEY,
                                    create_hkjc_hkjc_game_model)
@@ -57,7 +57,7 @@ class HKJCHKJCLeagueModel(LeagueModel):
                     soup = BeautifulSoup(response.text, "lxml")
                     seen_urls = {response.url}
                     for a in soup.find_all("a", href=True):
-                        if SHUTDOWN_FLAG.is_set():
+                        if needs_shutdown():
                             return
                         url = urllib.parse.urljoin(response.url, a.get("href"))
                         if url in seen_urls:

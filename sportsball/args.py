@@ -29,6 +29,12 @@ def parse_args() -> argparse.Namespace:
         help="The league model to use.",
     )
     parser.add_argument(
+        "--timeout",
+        required=False,
+        help="The timeout to use (in seconds).",
+        type=int,
+    )
+    parser.add_argument(
         "file",
         default=STDOUT_FILE,
         help="The file to write the output to (- if to stdout).",

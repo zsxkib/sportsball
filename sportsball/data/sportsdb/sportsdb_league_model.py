@@ -11,7 +11,7 @@ from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ..game_model import GameModel
 from ..league import League
-from ..league_model import SHUTDOWN_FLAG, LeagueModel
+from ..league_model import SHUTDOWN_FLAG, LeagueModel, needs_shutdown
 from ..season_type import SeasonType
 from .sportsdb_game_model import create_sportsdb_game_model
 
@@ -48,7 +48,7 @@ class SportsDBLeagueModel(LeagueModel):
         year = int(season_year.split("-")[0])
 
         def internal_produce_games() -> Iterator[GameModel]:
-            if SHUTDOWN_FLAG.is_set():
+            if needs_shutdown():
                 return
             response = self.session.get(
                 f"https://www.thesportsdb.com/api/v1/json/3/eventsround.php?id={league_id}&r={round_str}&s={season_year}"
@@ -61,7 +61,7 @@ class SportsDBLeagueModel(LeagueModel):
             event_ids = set()
             current_count = 0
             for count, game in enumerate(events):
-                if SHUTDOWN_FLAG.is_set():
+                if needs_shutdown():
                     return
                 pbar.update(1)
                 game_model = create_sportsdb_game_model(
@@ -97,7 +97,7 @@ class SportsDBLeagueModel(LeagueModel):
                     }
                 )
                 for game_id in df["idEvent"].tolist():
-                    if SHUTDOWN_FLAG.is_set():
+                    if needs_shutdown():
                         return
                     if game_id in event_ids:
                         continue

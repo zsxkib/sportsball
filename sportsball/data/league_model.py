@@ -22,6 +22,7 @@ from .venue_model import VENUE_ADDRESS_COLUMN
 
 LEAGUE_COLUMN = "league"
 SHUTDOWN_FLAG = threading.Event()
+TIMEOUT_DT = datetime.datetime.now() + datetime.timedelta(days=365)
 
 
 def _clear_column_list(df: pd.DataFrame) -> pd.DataFrame:
@@ -145,6 +146,15 @@ def _print_memory_usage(df: pd.DataFrame) -> None:
     summary_sorted = summary.sort_values("memory_usage_bytes", ascending=False)
 
     logging.info(summary_sorted.head(50))
+
+
+def needs_shutdown() -> bool:
+    """Whether the system needs to shutdown."""
+    if SHUTDOWN_FLAG.is_set():
+        return True
+    if TIMEOUT_DT < datetime.datetime.now():
+        return True
+    return False
 
 
 class LeagueModel(Model):

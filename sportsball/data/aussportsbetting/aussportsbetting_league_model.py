@@ -11,7 +11,7 @@ from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ..game_model import GameModel
 from ..league import League
-from ..league_model import SHUTDOWN_FLAG, LeagueModel
+from ..league_model import SHUTDOWN_FLAG, LeagueModel, needs_shutdown
 from .aussportsbetting_game_model import create_aussportsbetting_game_model
 
 
@@ -109,7 +109,7 @@ class AusSportsBettingLeagueModel(LeagueModel):
                 raise ValueError("ws is null.")
             with tqdm.tqdm(position=self.position) as pbar:
                 for row in ws.iter_rows():
-                    if SHUTDOWN_FLAG.is_set():
+                    if needs_shutdown():
                         return
                     game_model = self._row_to_game(row)
                     if game_model is not None:

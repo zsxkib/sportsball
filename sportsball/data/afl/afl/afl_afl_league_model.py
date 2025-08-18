@@ -15,7 +15,7 @@ from scrapesession.scrapesession import ScrapeSession  # type: ignore
 from ....playwright import ensure_install
 from ...game_model import VERSION, GameModel
 from ...league import League
-from ...league_model import SHUTDOWN_FLAG, LeagueModel
+from ...league_model import SHUTDOWN_FLAG, LeagueModel, needs_shutdown
 from ..position import Position, position_from_str
 from .afl_afl_game_model import create_afl_afl_game_model, parse_players_v1
 
@@ -28,7 +28,7 @@ def _parse_v1(
     playwright: Playwright,
 ) -> Iterator[GameModel]:
     for div in soup.find_all("div", {"class": re.compile(".*js-match-list-item.*")}):
-        if SHUTDOWN_FLAG.is_set():
+        if needs_shutdown():
             return
         team_names = []
         for span in div.find_all(
@@ -82,7 +82,7 @@ def _parse_v2_soup(
     ]
 ]:
     for div in soup.find_all("div", {"class": "team-lineups__item"}):
-        if SHUTDOWN_FLAG.is_set():
+        if needs_shutdown():
             return
         team_names = []
         for span in div.find_all(

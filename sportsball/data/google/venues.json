@@ -4359,6 +4359,76 @@
             "housenumber": "2701",
             "country": "USA",
             "type": "venue"
+        },
+        "c3df04e6-4005-4362-b73f-910af8b0ff14": {
+            "city": "Mason",
+            "state": "OH",
+            "postal": "",
+            "lat": 39.348934,
+            "lng": -84.27711,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "e37c44da-f154-4782-8eee-914f655f45d4": {
+            "city": "Fayetteville",
+            "state": "AR",
+            "postal": "72701",
+            "lat": 36.068056,
+            "lng": -94.178889,
+            "housenumber": "350",
+            "country": "USA",
+            "type": "venue"
+        },
+        "2cef23d8-8bd7-4a63-83b9-542903140699": {
+            "city": "London",
+            "state": "",
+            "postal": "",
+            "lat": 51.531944,
+            "lng": 0.039444,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "bcae4326-1f01-44b2-83d2-619c7e1326b5": {
+            "city": "Kalamazoo",
+            "state": "MI",
+            "postal": "49008",
+            "lat": 42.285833,
+            "lng": -85.601111,
+            "housenumber": "1903",
+            "country": "USA",
+            "type": "venue"
+        },
+        "182e29bd-212b-412f-96dc-7d81e1073a22": {
+            "city": "Akron",
+            "state": "OH",
+            "postal": "44304",
+            "lat": 41.072347,
+            "lng": -81.508019,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "993c0d39-9e3f-4c0f-b81f-fe596f86629a": {
+            "city": "Lower Saucon Township",
+            "state": "PA",
+            "postal": "",
+            "lat": 40.588889,
+            "lng": -75.355278,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "f89a77f6-60be-42eb-a99d-20adc19dd831": {
+            "city": "Ypsilanti",
+            "state": "MI",
+            "postal": "48197",
+            "lat": 42.2558889,
+            "lng": -83.6499574,
+            "housenumber": "799",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -4686,6 +4756,7 @@
         "Target Field": "acf65d25-2161-4d92-8153-fa345b470a26",
         "Estadio Azteca - Mexico City": "8cccf2e9-113e-4137-bd83-6612c806c58c",
         "Estadio Azteca, Mexico City, Mexico": "8cccf2e9-113e-4137-bd83-6612c806c58c",
+        "Estadio Azteca - Tlalpan, Mexico City - Mexico": "8cccf2e9-113e-4137-bd83-6612c806c58c",
         "Highbury, London, England": "c7b513eb-e5d9-40f7-a917-8af41af51588",
         "Glenferrie Oval - Australia": "53c1a222-afe8-4c3b-b73a-a85a1c15673c",
         "Peden Stadium": "ea10c038-269f-441c-8fbc-b1c81177536c",
@@ -5269,6 +5340,15 @@
         "Roanoke, Virginia": "9ab6c7b9-efb1-4b95-b53f-8d7dc69671fd",
         "War Memorial Stadium - Laramie - WY - 82070": "92f0cf1f-4443-4ea1-8f98-d82921b9af13",
         "Rajiv Gandhi International Cricket Stadium, Hyderabad, India": "6a9b4c00-102a-4034-b614-5cd7166b5ae0",
-        "Sun Bowl - El Paso - TX - 79902": "138331dd-1e24-43bd-9c60-7d46a637dbf3"
+        "Sun Bowl - El Paso - TX - 79902": "138331dd-1e24-43bd-9c60-7d46a637dbf3",
+        "Cincinnati Masters": "c3df04e6-4005-4362-b73f-910af8b0ff14",
+        "Razorback Stadium - Fayetteville - AR - 72701": "e37c44da-f154-4782-8eee-914f655f45d4",
+        "Boleyn Ground, London, England": "2cef23d8-8bd7-4a63-83b9-542903140699",
+        "Waldo Stadium - Kalamazoo - MI - 49008": "bcae4326-1f01-44b2-83d2-619c7e1326b5",
+        "Waldo Stadium": "bcae4326-1f01-44b2-83d2-619c7e1326b5",
+        "InfoCision Stadium - Akron - OH - 44304": "182e29bd-212b-412f-96dc-7d81e1073a22",
+        "Goodman Stadium": "993c0d39-9e3f-4c0f-b81f-fe596f86629a",
+        "Rynearson Stadium - Ypsilanti - MI - 48197": "f89a77f6-60be-42eb-a99d-20adc19dd831",
+        "Rynearson Stadium - Ypsilanti, Michigan, USA - United States": "f89a77f6-60be-42eb-a99d-20adc19dd831"
     }
 }

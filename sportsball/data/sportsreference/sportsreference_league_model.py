@@ -14,7 +14,7 @@ from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ..game_model import GameModel
 from ..league import League
-from ..league_model import SHUTDOWN_FLAG, LeagueModel
+from ..league_model import SHUTDOWN_FLAG, LeagueModel, needs_shutdown
 from .sportsreference_game_model import create_sportsreference_game_model
 
 REPLACEMENT_URLS = {
@@ -131,7 +131,7 @@ class SportsReferenceLeagueModel(LeagueModel):
         self, soup: BeautifulSoup, pbar: tqdm.tqdm, url: str
     ) -> Iterator[GameModel]:
         for game_url in _find_game_urls(soup, url):
-            if SHUTDOWN_FLAG.is_set():
+            if needs_shutdown():
                 return
             pbar.update(1)
             try:
@@ -155,7 +155,7 @@ class SportsReferenceLeagueModel(LeagueModel):
             final_path: str | None = ""
             with tqdm.tqdm(position=self.position) as pbar:
                 while final_path is not None:
-                    if SHUTDOWN_FLAG.is_set():
+                    if needs_shutdown():
                         return
                     url = self._base_url + final_path
                     if final_path:

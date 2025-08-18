@@ -13,7 +13,7 @@ from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ...game_model import GameModel
 from ...league import League
-from ...league_model import SHUTDOWN_FLAG, LeagueModel
+from ...league_model import SHUTDOWN_FLAG, LeagueModel, needs_shutdown
 from .nba_nba_game_model import create_nba_nba_game_model
 
 
@@ -83,7 +83,7 @@ class NBANBALeagueModel(LeagueModel):
         pbar: tqdm.tqdm,
     ) -> Iterator[GameModel]:
         for _, row in all_games.iterrows():
-            if SHUTDOWN_FLAG.is_set():
+            if needs_shutdown():
                 return
             season_id = row["SEASON_ID"]
             dt = parse(row["GAME_DATE"])

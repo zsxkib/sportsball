@@ -15,7 +15,7 @@ from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ...game_model import GameModel
 from ...league import League
-from ...league_model import SHUTDOWN_FLAG, LeagueModel
+from ...league_model import SHUTDOWN_FLAG, LeagueModel, needs_shutdown
 from ...season_type import SeasonType
 from .afl_afltables_game_model import create_afl_afltables_game_model
 
@@ -83,7 +83,7 @@ class AFLAFLTablesLeagueModel(LeagueModel):
                 if "Venue:" in td_text:
                     current_dt = _find_dt(td_text, season_url)
             for a in table.find_all("a", href=True):
-                if SHUTDOWN_FLAG.is_set():
+                if needs_shutdown():
                     return
                 if a.get_text().strip().lower() == "match stats":
                     url = urllib.parse.urljoin(season_url, a.get("href"))

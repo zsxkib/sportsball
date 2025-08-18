@@ -11,7 +11,7 @@ from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ...game_model import GameModel
 from ...league import League
-from ...league_model import SHUTDOWN_FLAG, LeagueModel
+from ...league_model import SHUTDOWN_FLAG, LeagueModel, needs_shutdown
 from ..position import Position
 from .ipl_espncricinfo_game_model import create_espncricinfo_game_model
 
@@ -59,7 +59,7 @@ class ESPNCricInfoLeagueModel(LeagueModel):
         try:
             with tqdm.tqdm(position=self.position) as pbar:
                 while dt.year > 1900:
-                    if SHUTDOWN_FLAG.is_set():
+                    if needs_shutdown():
                         return
                     url = f"https://www.espncricinfo.com/live-cricket-match-results?date={dt.strftime('%d-%m-%Y')}"
                     response = self.session.get(url)
