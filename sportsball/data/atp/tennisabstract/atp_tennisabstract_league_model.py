@@ -39,7 +39,11 @@ class ATPTennisAbstractLeagueModel(LeagueModel):
         """Find all the games."""
         with tqdm.tqdm(position=self.position) as pbar:
             url = "https://www.tennisabstract.com/charting/"
-            response = self.session.get(url)
+            response = None
+            with self.session.wayback_disabled():
+                with self.session.cache_disabled():
+                    self.session.cache.delete(urls=[url])
+                    response = self.session.get(url)
             response.raise_for_status()
             soup = BeautifulSoup(response.text, "lxml")
             for a in soup.find_all("a", href=True):

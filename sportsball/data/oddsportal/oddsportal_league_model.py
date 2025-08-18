@@ -24,6 +24,7 @@ from .oddsportal_game_model import create_oddsportal_game_model
 AMERICAN_FOOTBALL = "american-football"
 BASKETBALL = "basketball"
 FOOTBALL = "football"
+TENNIS = "tennis"
 
 # Countries
 USA = "usa"
@@ -102,92 +103,100 @@ class OddsPortalLeagueModel(LeagueModel):
         return "oddsportal-league-model"
 
     @property
-    def _path(self) -> str:
+    def _paths(self) -> list[str]:
         match self.league:
             case League.AFL:
-                return "/".join(["aussie-rules", "australia", "afl", ""])
+                return ["/".join(["aussie-rules", "australia", "afl", ""])]
+            case League.ATP:
+                return [
+                    "/".join([TENNIS, USA, "atp-us-open", ""]),
+                    "/".join([TENNIS, USA, "atp-cincinnati", ""]),
+                    "/".join([TENNIS, USA, "atp-winston-salem", ""]),
+                ]
             case League.EPL:
-                return "/".join(["football", "england", "premier-league", ""])
+                return ["/".join(["football", "england", "premier-league", ""])]
             case League.FIFA:
-                return "/".join([FOOTBALL, "world", "world-championship", ""])
+                return ["/".join([FOOTBALL, "world", "world-championship", ""])]
             case League.IPL:
-                return "/".join(["cricket", "india", "ipl", ""])
+                return ["/".join(["cricket", "india", "ipl", ""])]
             case League.MLB:
-                return "/".join(["baseball", USA, "mlb", ""])
+                return ["/".join(["baseball", USA, "mlb", ""])]
             case League.NBA:
-                return "/".join([BASKETBALL, USA, "nba", ""])
+                return ["/".join([BASKETBALL, USA, "nba", ""])]
             case League.NCAAB:
-                return "/".join([BASKETBALL, USA, NCAA, ""])
+                return ["/".join([BASKETBALL, USA, NCAA, ""])]
             case League.NCAAF:
-                return "/".join([AMERICAN_FOOTBALL, USA, NCAA, ""])
+                return ["/".join([AMERICAN_FOOTBALL, USA, NCAA, ""])]
             case League.NFL:
-                return "/".join([AMERICAN_FOOTBALL, USA, "nfl", ""])
+                return ["/".join([AMERICAN_FOOTBALL, USA, "nfl", ""])]
             case League.NHL:
-                return "/".join(["hockey", USA, "nhl", ""])
+                return ["/".join(["hockey", USA, "nhl", ""])]
             case _:
                 raise ValueError(f"Unsupported league: {self.league}")
 
     def _find_next(self, pbar: tqdm.tqdm) -> Iterator[GameModel]:
-        base_url = "https://www.oddsportal.com/" + self._path
-        with self.session.cache_disabled():
-            with self.session.wayback_disabled():
-                response = self.session.get(base_url)
-        response.raise_for_status()
-        data = extruct.extract(response.text, base_url=base_url)
-        for jsonld in data["json-ld"]:
-            if jsonld["@type"] != "SportsEvent":
-                continue
-            try:
-                game_model = create_oddsportal_game_model(
-                    self.session,
-                    urllib.parse.urljoin(base_url, jsonld["url"]),
-                    self.league,
-                    True,
-                )
-                if game_model is None:
-                    continue
-                pbar.update(1)
-                pbar.set_description(
-                    f"OddsPortal {game_model.year} - {game_model.season_type} - {game_model.dt}"
-                )
-                yield game_model
-            except requests.exceptions.HTTPError as exc:
-                if exc.response.status_code == http.HTTPStatus.NOT_FOUND:
-                    logging.warning("Failed to find game at: %s", jsonld["url"])
-                    continue
-                raise exc
-
-    def _find_previous(self, pbar: tqdm.tqdm) -> Iterator[GameModel]:
-        standard_suffix = self._path + "results/"
-        seen_urls = set()
-        queued_urls = {"https://www.oddsportal.com/" + standard_suffix}
-        while queued_urls:
-            url = queued_urls.pop()
-            if url in seen_urls:
-                continue
-            seen_urls.add(url)
-
+        for path in self._paths:
+            base_url = "https://www.oddsportal.com/" + path
             with self.session.cache_disabled():
                 with self.session.wayback_disabled():
-                    response = self.session.get(url)
+                    response = self.session.get(base_url)
             response.raise_for_status()
+            data = extruct.extract(response.text, base_url=base_url)
+            for jsonld in data["json-ld"]:
+                if jsonld["@type"] != "SportsEvent":
+                    continue
+                try:
+                    game_model = create_oddsportal_game_model(
+                        self.session,
+                        urllib.parse.urljoin(base_url, jsonld["url"]),
+                        self.league,
+                        True,
+                    )
+                    if game_model is None:
+                        continue
+                    pbar.update(1)
+                    pbar.set_description(
+                        f"OddsPortal {game_model.year} - {game_model.season_type} - {game_model.dt}"
+                    )
+                    yield game_model
+                except requests.exceptions.HTTPError as exc:
+                    if exc.response.status_code == http.HTTPStatus.NOT_FOUND:
+                        logging.warning("Failed to find game at: %s", jsonld["url"])
+                        continue
+                    raise exc
 
-            soup = BeautifulSoup(response.text, "lxml")
+    def _find_previous(self, pbar: tqdm.tqdm) -> Iterator[GameModel]:
+        for path in self._paths:
+            standard_suffix = path + "results/"
+            seen_urls = set()
+            queued_urls = {"https://www.oddsportal.com/" + standard_suffix}
+            while queued_urls:
+                url = queued_urls.pop()
+                if url in seen_urls:
+                    continue
+                seen_urls.add(url)
 
-            # Find next URLs
-            for option in soup.find_all("option"):
-                next_url = urllib.parse.urljoin(url, option.get("value"))
-                if next_url.endswith("/results/") and self._path[:-1] in next_url:
-                    queued_urls.add(next_url)
+                with self.session.cache_disabled():
+                    with self.session.wayback_disabled():
+                        response = self.session.get(url)
+                response.raise_for_status()
 
-            yield from _process_results_pages(
-                url,
-                self.session,
-                soup,
-                self.league,
-                pbar,
-                response,
-            )
+                soup = BeautifulSoup(response.text, "lxml")
+
+                # Find next URLs
+                for option in soup.find_all("option"):
+                    next_url = urllib.parse.urljoin(url, option.get("value"))
+                    if next_url.endswith("/results/") and path[:-1] in next_url:
+                        queued_urls.add(next_url)
+
+                yield from _process_results_pages(
+                    url,
+                    self.session,
+                    soup,
+                    self.league,
+                    pbar,
+                    response,
+                )
 
     @property
     def games(self) -> Iterator[GameModel]:
