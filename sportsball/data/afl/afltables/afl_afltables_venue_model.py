@@ -1,5 +1,6 @@
 """AFL AFLTables venue model."""
 
+# pylint: disable=duplicate-code
 import datetime
 import os
 from urllib.parse import urlparse

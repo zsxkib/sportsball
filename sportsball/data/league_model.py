@@ -34,13 +34,11 @@ def _clear_column_list(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def _reduce_memory_usage(df: pd.DataFrame) -> pd.DataFrame:
-    logging.info(df.memory_usage(deep=True))
     for col in df.columns:
         if df[col].dtype == "int64":
             df[col] = pd.to_numeric(df[col], downcast="integer")
         elif df[col].dtype == "float64":
             df[col] = pd.to_numeric(df[col], downcast="float")
-    logging.info(df.memory_usage(deep=True))
     return df
 
 
@@ -184,7 +182,7 @@ class LeagueModel(Model):
         for game in tqdm.tqdm(self.games, desc="Games"):
             game_dict = flatten(game.model_dump(by_alias=True), DELIMITER)
             jsonl.append(game_dict)
-            cols &= set(game_dict.keys())
+            cols |= set(game_dict.keys())
 
         data: dict[str, Any] = {x: [] for x in cols}
         for json_dict in jsonl:
@@ -194,10 +192,16 @@ class LeagueModel(Model):
         categorical_cols = set(
             _find_nested_paths(FieldType.CATEGORICAL, GameModel, list(cols))
         )
-
         for k in data:
             if k in categorical_cols:
                 data[k] = pd.Categorical(data[k])
+
+        datetime_cols = set(
+            _find_nested_paths(FieldType.DATETIME, GameModel, list(cols))
+        )
+        for k in data:
+            if k in datetime_cols:
+                data[k] = pd.to_datetime(data[k])
 
         df = pd.DataFrame(data)
 

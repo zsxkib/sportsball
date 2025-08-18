@@ -24,6 +24,7 @@ class OddsModel(BaseModel):
     bookie: BookieModel = Field(..., alias=ODDS_BOOKIE_COLUMN)
     dt: datetime.datetime | None = Field(
         ...,
+        json_schema_extra={TYPE_KEY: FieldType.DATETIME},
         alias=DT_COLUMN,
     )
     canonical: bool = Field(..., alias=ODDS_CANONICAL_COLUMN)

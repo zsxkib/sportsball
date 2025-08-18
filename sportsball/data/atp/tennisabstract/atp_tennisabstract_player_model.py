@@ -1,139 +1,109 @@
-"""HKJC HKJC player model."""
+"""TennisAbstract player model."""
 
-# pylint: disable=too-many-arguments,duplicate-code,too-many-locals,too-many-branches,too-many-statements
-import io
-import logging
+# pylint: disable=too-many-arguments,too-many-locals
+import datetime
+import urllib
 import urllib.parse
 from urllib.parse import urlparse
 
-import pandas as pd
 import pytest_is_running
 from bs4 import BeautifulSoup
+from dateutil.parser import parse
+from dateutil.relativedelta import relativedelta
 from scrapesession.scrapesession import ScrapeSession  # type: ignore
 
 from ....cache import MEMORY
 from ...google.google_address_model import create_google_address_model
+from ...league import League
 from ...player_model import VERSION, PlayerModel
-from ...sex import sex_from_str
+from ...sex import Sex
 from ...species import Species
-from ..position import Position
-from .hkjc_hkjc_owner_model import create_hkjc_hkjc_owner_model
+
+_LEAGUE_TO_SEX = {
+    League.ATP: Sex.MALE,
+}
 
 
-def _create_hkjc_hkjc_player_model(
+def _create_tennisabstract_player_model(
     session: ScrapeSession,
+    dt: datetime.datetime,
+    league: League,
     url: str,
-    jersey: str | None,
-    handicap_weight: float | None,
-    starting_position: Position | None,
-    weight: float | None,
+    ace_percentages: list[float],
+    team_idx: int,
+    double_fault_percentages: list[float],
+    first_serves_ins: list[float],
+    first_serve_percentages: list[float],
+    second_serve_percentages: list[float],
+    break_points_saveds: list[float],
+    return_points_won_percentages: list[float],
+    winners: list[int],
+    winners_fronthands: list[int],
+    winners_backhands: list[int],
+    unforced_errors: list[int],
+    unforced_errors_fronthand: list[int],
+    unforced_errors_backhand: list[int],
+    serve_points: list[int],
+    serves_won: list[float],
+    serves_aces: list[float],
+    serves_unreturned: list[float],
+    serves_forced_error_percentage: list[float],
+    serves_won_in_three_shots_or_less: list[float],
+    serves_wide_percentage: list[float],
+    serves_body_percentage: list[float],
+    serves_t_percentage: list[float],
+    serves_wide_deuce_percentage: list[float],
+    serves_body_deuce_percentage: list[float],
+    serves_t_deuce_percentage: list[float],
+    serves_wide_ad_percentage: list[float],
+    serves_body_ad_percentage: list[float],
+    serves_t_ad_percentage: list[float],
+    serves_net_percentage: list[float],
+    serves_wide_direction_percentage: list[float],
+    shots_deep_percentage: list[float],
+    shots_deep_wide_percentage: list[float],
+    shots_foot_errors_percentage: list[float],
+    shots_unknown_percentage: list[float],
+    points_won_percentage: list[float],
     version: str,
-) -> PlayerModel | None:
-    with session.wayback_disabled():
-        response = session.get(url)
+) -> PlayerModel:
+    """Create a player model from TennisAbstract."""
+    o = urlparse(url)
+    query = urllib.parse.parse_qs(o.query)
+    identifier = query["p"][0]
+
+    response = session.get(url)
     response.raise_for_status()
 
-    o = urlparse(url)
-    is_sire = o.path.endswith("Horse/SameSire.aspx")
-
-    handle = io.StringIO()
-    handle.write(response.text)
-    handle.seek(0)
-    dfs = []
-    try:
-        dfs = pd.read_html(handle)
-    except ValueError:
-        if not is_sire:
-            logging.error(response.text)
-            logging.error(url)
-            logging.error(response.url)
-            return None
-
     soup = BeautifulSoup(response.text, "lxml")
-    for noscript in soup.find_all("noscript"):
-        no_script_text = noscript.get_text().strip().lower()
-        if "javascript must be enabled in order to view this page." in no_script_text:
-            logging.error("Javascript error on %s", url)
-            session.cache.delete(urls=[url, response.url])
-            return None
-
     name = None
-    species = Species.HUMAN
-    father = None
-    sex = None
-    age = None
     birth_address = None
-    owner = None
-    if o.path.endswith("/Horse/Horse.aspx") or o.path.endswith(
-        "/Horse/OtherHorse.aspx"
-    ):
-        species = Species.HORSE
-        for count, df in enumerate(dfs):
-            if count == 0:
-                name = df.iat[1, 0].strip().split("(")[0].strip()
-
-                sex_row = None
-                origin_row = None
-                for i in range(1, len(df)):
-                    row_name = str(df.iat[i, 0]).strip().lower()
-                    if "sex" in row_name:
-                        sex_row = i
-                    elif "origin" in row_name:
-                        origin_row = i
-
-                sex_str = df.iat[sex_row, 2].strip().split("/")[-1].strip()
-                sex = None
-                if sex_str:
-                    sex = sex_from_str(sex_str)
-
-                origin_str = df.iat[origin_row, 2].strip()
-                origin = None
-                age = None
-                if "/" in origin_str:
-                    origin, age_str = origin_str.split("/")
-                    age = int(age_str.strip())
-                else:
-                    origin = origin_str
-                origin = origin.strip()
-
-                birth_address = create_google_address_model(
-                    query=origin.strip(), session=session, dt=None
-                )
-        for a in soup.find_all("a", href=True):
-            a_url = urllib.parse.urljoin(url, a.get("href"))
-            a_o = urlparse(a_url)
-            if a_o.path.endswith("Horse/SameSire.aspx"):
-                father = create_hkjc_hkjc_player_model(
-                    session=session,
-                    url=a_url,
-                    jersey=None,
-                    handicap_weight=None,
-                    starting_position=None,
-                    weight=None,
-                )
-            elif a_o.path.endswith("Horse/OwnerSearch.aspx"):
-                owner = create_hkjc_hkjc_owner_model(a_url)
-    elif o.path.endswith("Jockey/JockeyProfile.aspx"):
-        for count, df in enumerate(dfs):
-            if count == 0:
-                name = df.iat[0, 0].strip()
-                age = int(df.iat[1, 0].strip().split(":")[-1].strip())
-    elif o.path.endswith("Horse/SameSire.aspx"):
-        species = Species.HORSE
-        query = urllib.parse.parse_qs(o.query)
-        name = query["HorseSire"][0]
-
+    for b in soup.find_all("b"):
+        b_text = b.get_text().strip()
+        if "[" in b_text and "]" in b_text:
+            b_text_split = b_text.split("[")
+            name = b_text_split[0].strip()
+            country = b_text_split[-1].split("]")[0]
+            birth_address = create_google_address_model(
+                query=country, session=session, dt=dt
+            )
     if name is None:
-        logging.error(response.text)
-        logging.error(dfs)
-        logging.error(o.path)
-        logging.error(url)
-        logging.error(response.url)
         raise ValueError("name is null")
 
+    birth_date = None
+    for td in soup.find_all("td"):
+        td_text = td.get_text().strip()
+        if "Age:" in td_text:
+            birth_date_str = td_text.split("(")[-1].split(")")[0].strip()
+            birth_date = parse(birth_date_str)
+
+    headshot_url = None
+    for img in soup.find_all("img"):
+        headshot_url = urllib.parse.urljoin(url, img.get("src"))
+
     return PlayerModel(
-        identifier=name,
-        jersey=jersey,
+        identifier=identifier,
+        jersey=None,
         kicks=None,
         fumbles=None,
         fumbles_lost=None,
@@ -165,18 +135,16 @@ def _create_hkjc_hkjc_player_model(
         bounces=None,
         goal_assists=None,
         percentage_played=None,
-        birth_date=None,
-        species=str(species),
-        handicap_weight=handicap_weight,
-        father=father,
-        sex=str(sex) if sex is not None else None,
-        age=age,
-        starting_position=str(starting_position)
-        if starting_position is not None
-        else None,
-        weight=weight,
+        birth_date=birth_date,
+        species=str(Species.HUMAN),
+        handicap_weight=None,
+        father=None,
+        sex=str(_LEAGUE_TO_SEX[league]),
+        age=None if birth_date is None else relativedelta(birth_date, dt).years,
+        starting_position=None,
+        weight=None,
         birth_address=birth_address,
-        owner=owner,
+        owner=None,
         seconds_played=None,
         three_point_field_goals=None,
         three_point_field_goals_attempted=None,
@@ -192,7 +160,7 @@ def _create_hkjc_hkjc_player_model(
         version=version,
         height=None,
         colleges=[],
-        headshot=None,
+        headshot=headshot_url,
         forced_fumbles=None,
         fumbles_recovered=None,
         fumbles_recovered_yards=None,
@@ -603,90 +571,261 @@ def _create_hkjc_hkjc_player_model(
         offensive_rating=None,
         defensive_rating=None,
         box_plus_minus=None,
-        ace_percentage=None,
-        double_fault_percentage=None,
-        first_serves_in=None,
-        first_serve_percentage=None,
-        second_serve_percentage=None,
-        break_points_saved=None,
-        return_points_won_percentage=None,
-        winners=None,
-        winners_fronthand=None,
-        winners_backhand=None,
-        unforced_errors=None,
-        unforced_errors_fronthand=None,
-        unforced_errors_backhand=None,
-        serve_points=None,
-        serves_won=None,
-        serves_aces=None,
-        serves_unreturned=None,
-        serves_forced_error_percentage=None,
-        serves_won_in_three_shots_or_less=None,
-        serves_wide_percentage=None,
-        serves_body_percentage=None,
-        serves_t_percentage=None,
-        serves_wide_deuce_percentage=None,
-        serves_body_deuce_percentage=None,
-        serves_t_deuce_percentage=None,
-        serves_wide_ad_percentage=None,
-        serves_body_ad_percentage=None,
-        serves_t_ad_percentage=None,
-        serves_net_percentage=None,
-        serves_wide_direction_percentage=None,
-        shots_deep_percentage=None,
-        shots_deep_wide_percentage=None,
-        shots_foot_errors_percentage=None,
-        shots_unknown_percentage=None,
-        points_won_percentage=None,
+        ace_percentage=ace_percentages[team_idx],
+        double_fault_percentage=double_fault_percentages[team_idx],
+        first_serves_in=first_serves_ins[team_idx],
+        first_serve_percentage=first_serve_percentages[team_idx],
+        second_serve_percentage=second_serve_percentages[team_idx],
+        break_points_saved=break_points_saveds[team_idx],
+        return_points_won_percentage=return_points_won_percentages[team_idx],
+        winners=winners[team_idx],
+        winners_fronthand=winners_fronthands[team_idx],
+        winners_backhand=winners_backhands[team_idx],
+        unforced_errors=unforced_errors[team_idx],
+        unforced_errors_fronthand=unforced_errors_fronthand[team_idx],
+        unforced_errors_backhand=unforced_errors_backhand[team_idx],
+        serve_points=serve_points[team_idx],
+        serves_won=serves_won[team_idx],
+        serves_aces=serves_aces[team_idx],
+        serves_unreturned=serves_unreturned[team_idx],
+        serves_forced_error_percentage=serves_forced_error_percentage[team_idx],
+        serves_won_in_three_shots_or_less=serves_won_in_three_shots_or_less[team_idx],
+        serves_wide_percentage=serves_wide_percentage[team_idx],
+        serves_body_percentage=serves_body_percentage[team_idx],
+        serves_t_percentage=serves_t_percentage[team_idx],
+        serves_wide_deuce_percentage=serves_wide_deuce_percentage[team_idx],
+        serves_body_deuce_percentage=serves_body_deuce_percentage[team_idx],
+        serves_t_deuce_percentage=serves_t_deuce_percentage[team_idx],
+        serves_wide_ad_percentage=serves_wide_ad_percentage[team_idx],
+        serves_body_ad_percentage=serves_body_ad_percentage[team_idx],
+        serves_t_ad_percentage=serves_t_ad_percentage[team_idx],
+        serves_net_percentage=serves_net_percentage[team_idx],
+        serves_wide_direction_percentage=serves_wide_direction_percentage[team_idx],
+        shots_deep_percentage=shots_deep_percentage[team_idx],
+        shots_deep_wide_percentage=shots_deep_wide_percentage[team_idx],
+        shots_foot_errors_percentage=shots_foot_errors_percentage[team_idx],
+        shots_unknown_percentage=shots_unknown_percentage[team_idx],
+        points_won_percentage=points_won_percentage[team_idx],
     )
 
 
 @MEMORY.cache(ignore=["session"])
-def _cached_create_hkjc_hkjc_player_model(
+def _cached_create_tennisabstract_player_model(
     session: ScrapeSession,
+    dt: datetime.datetime,
+    league: League,
     url: str,
-    jersey: str | None,
-    handicap_weight: float | None,
-    starting_position: Position | None,
-    weight: float | None,
+    ace_percentages: list[float],
+    team_idx: int,
+    double_fault_percentages: list[float],
+    first_serves_ins: list[float],
+    first_serve_percentages: list[float],
+    second_serve_percentages: list[float],
+    break_points_saveds: list[float],
+    return_points_won_percentages: list[float],
+    winners: list[int],
+    winners_fronthands: list[int],
+    winners_backhands: list[int],
+    unforced_errors: list[int],
+    unforced_errors_fronthand: list[int],
+    unforced_errors_backhand: list[int],
+    serve_points: list[int],
+    serves_won: list[float],
+    serves_aces: list[float],
+    serves_unreturned: list[float],
+    serves_forced_error_percentage: list[float],
+    serves_won_in_three_shots_or_less: list[float],
+    serves_wide_percentage: list[float],
+    serves_body_percentage: list[float],
+    serves_t_percentage: list[float],
+    serves_wide_deuce_percentage: list[float],
+    serves_body_deuce_percentage: list[float],
+    serves_t_deuce_percentage: list[float],
+    serves_wide_ad_percentage: list[float],
+    serves_body_ad_percentage: list[float],
+    serves_t_ad_percentage: list[float],
+    serves_net_percentage: list[float],
+    serves_wide_direction_percentage: list[float],
+    shots_deep_percentage: list[float],
+    shots_deep_wide_percentage: list[float],
+    shots_foot_errors_percentage: list[float],
+    shots_unknown_percentage: list[float],
+    points_won_percentage: list[float],
     version: str,
-) -> PlayerModel | None:
-    return _create_hkjc_hkjc_player_model(
+) -> PlayerModel:
+    return _create_tennisabstract_player_model(
         session=session,
+        dt=dt,
+        league=league,
         url=url,
-        jersey=jersey,
-        handicap_weight=handicap_weight,
-        starting_position=starting_position,
-        weight=weight,
+        ace_percentages=ace_percentages,
+        team_idx=team_idx,
+        double_fault_percentages=double_fault_percentages,
+        first_serves_ins=first_serves_ins,
+        first_serve_percentages=first_serve_percentages,
+        second_serve_percentages=second_serve_percentages,
+        break_points_saveds=break_points_saveds,
+        return_points_won_percentages=return_points_won_percentages,
+        winners=winners,
+        winners_fronthands=winners_fronthands,
+        winners_backhands=winners_backhands,
+        unforced_errors=unforced_errors,
+        unforced_errors_fronthand=unforced_errors_fronthand,
+        unforced_errors_backhand=unforced_errors_backhand,
+        serve_points=serve_points,
+        serves_won=serves_won,
+        serves_aces=serves_aces,
+        serves_unreturned=serves_unreturned,
+        serves_forced_error_percentage=serves_forced_error_percentage,
+        serves_won_in_three_shots_or_less=serves_won_in_three_shots_or_less,
+        serves_wide_percentage=serves_wide_percentage,
+        serves_body_percentage=serves_body_percentage,
+        serves_t_percentage=serves_t_percentage,
+        serves_wide_deuce_percentage=serves_wide_deuce_percentage,
+        serves_body_deuce_percentage=serves_body_deuce_percentage,
+        serves_t_deuce_percentage=serves_t_deuce_percentage,
+        serves_wide_ad_percentage=serves_wide_ad_percentage,
+        serves_body_ad_percentage=serves_body_ad_percentage,
+        serves_t_ad_percentage=serves_t_ad_percentage,
+        serves_net_percentage=serves_net_percentage,
+        serves_wide_direction_percentage=serves_wide_direction_percentage,
+        shots_deep_percentage=shots_deep_percentage,
+        shots_deep_wide_percentage=shots_deep_wide_percentage,
+        shots_foot_errors_percentage=shots_foot_errors_percentage,
+        shots_unknown_percentage=shots_unknown_percentage,
+        points_won_percentage=points_won_percentage,
         version=version,
     )
 
 
-def create_hkjc_hkjc_player_model(
+def create_tennisabstract_player_model(
     session: ScrapeSession,
+    dt: datetime.datetime,
+    league: League,
     url: str,
-    jersey: str | None,
-    handicap_weight: float | None,
-    starting_position: Position | None,
-    weight: float | None,
-) -> PlayerModel | None:
-    """Create a player model based off HKJC."""
+    ace_percentages: list[float],
+    team_idx: int,
+    double_fault_percentages: list[float],
+    first_serves_ins: list[float],
+    first_serve_percentages: list[float],
+    second_serve_percentages: list[float],
+    break_points_saveds: list[float],
+    return_points_won_percentages: list[float],
+    winners: list[int],
+    winners_fronthands: list[int],
+    winners_backhands: list[int],
+    unforced_errors: list[int],
+    unforced_errors_fronthand: list[int],
+    unforced_errors_backhand: list[int],
+    serve_points: list[int],
+    serves_won: list[float],
+    serves_aces: list[float],
+    serves_unreturned: list[float],
+    serves_forced_error_percentage: list[float],
+    serves_won_in_three_shots_or_less: list[float],
+    serves_wide_percentage: list[float],
+    serves_body_percentage: list[float],
+    serves_t_percentage: list[float],
+    serves_wide_deuce_percentage: list[float],
+    serves_body_deuce_percentage: list[float],
+    serves_t_deuce_percentage: list[float],
+    serves_wide_ad_percentage: list[float],
+    serves_body_ad_percentage: list[float],
+    serves_t_ad_percentage: list[float],
+    serves_net_percentage: list[float],
+    serves_wide_direction_percentage: list[float],
+    shots_deep_percentage: list[float],
+    shots_deep_wide_percentage: list[float],
+    shots_foot_errors_percentage: list[float],
+    shots_unknown_percentage: list[float],
+    points_won_percentage: list[float],
+) -> PlayerModel:
+    """Create a player model from TennisAbstract."""
     if not pytest_is_running.is_running():
-        return _cached_create_hkjc_hkjc_player_model(
+        return _cached_create_tennisabstract_player_model(
             session=session,
+            dt=dt,
+            league=league,
             url=url,
-            jersey=jersey,
-            handicap_weight=handicap_weight,
-            starting_position=starting_position,
-            weight=weight,
+            ace_percentages=ace_percentages,
+            team_idx=team_idx,
+            double_fault_percentages=double_fault_percentages,
+            first_serves_ins=first_serves_ins,
+            first_serve_percentages=first_serve_percentages,
+            second_serve_percentages=second_serve_percentages,
+            break_points_saveds=break_points_saveds,
+            return_points_won_percentages=return_points_won_percentages,
+            winners=winners,
+            winners_fronthands=winners_fronthands,
+            winners_backhands=winners_backhands,
+            unforced_errors=unforced_errors,
+            unforced_errors_fronthand=unforced_errors_fronthand,
+            unforced_errors_backhand=unforced_errors_backhand,
+            serve_points=serve_points,
+            serves_won=serves_won,
+            serves_aces=serves_aces,
+            serves_unreturned=serves_unreturned,
+            serves_forced_error_percentage=serves_forced_error_percentage,
+            serves_won_in_three_shots_or_less=serves_won_in_three_shots_or_less,
+            serves_wide_percentage=serves_wide_percentage,
+            serves_body_percentage=serves_body_percentage,
+            serves_t_percentage=serves_t_percentage,
+            serves_wide_deuce_percentage=serves_wide_deuce_percentage,
+            serves_body_deuce_percentage=serves_body_deuce_percentage,
+            serves_t_deuce_percentage=serves_t_deuce_percentage,
+            serves_wide_ad_percentage=serves_wide_ad_percentage,
+            serves_body_ad_percentage=serves_body_ad_percentage,
+            serves_t_ad_percentage=serves_t_ad_percentage,
+            serves_net_percentage=serves_net_percentage,
+            serves_wide_direction_percentage=serves_wide_direction_percentage,
+            shots_deep_percentage=shots_deep_percentage,
+            shots_deep_wide_percentage=shots_deep_wide_percentage,
+            shots_foot_errors_percentage=shots_foot_errors_percentage,
+            shots_unknown_percentage=shots_unknown_percentage,
+            points_won_percentage=points_won_percentage,
             version=VERSION,
         )
-    return _create_hkjc_hkjc_player_model(
-        session=session,
-        url=url,
-        jersey=jersey,
-        handicap_weight=handicap_weight,
-        starting_position=starting_position,
-        weight=weight,
-        version=VERSION,
-    )
+    with session.cache_disabled():
+        return _create_tennisabstract_player_model(
+            session=session,
+            dt=dt,
+            league=league,
+            url=url,
+            ace_percentages=ace_percentages,
+            team_idx=team_idx,
+            double_fault_percentages=double_fault_percentages,
+            first_serves_ins=first_serves_ins,
+            first_serve_percentages=first_serve_percentages,
+            second_serve_percentages=second_serve_percentages,
+            break_points_saveds=break_points_saveds,
+            return_points_won_percentages=return_points_won_percentages,
+            winners=winners,
+            winners_fronthands=winners_fronthands,
+            winners_backhands=winners_backhands,
+            unforced_errors=unforced_errors,
+            unforced_errors_fronthand=unforced_errors_fronthand,
+            unforced_errors_backhand=unforced_errors_backhand,
+            serve_points=serve_points,
+            serves_won=serves_won,
+            serves_aces=serves_aces,
+            serves_unreturned=serves_unreturned,
+            serves_forced_error_percentage=serves_forced_error_percentage,
+            serves_won_in_three_shots_or_less=serves_won_in_three_shots_or_less,
+            serves_wide_percentage=serves_wide_percentage,
+            serves_body_percentage=serves_body_percentage,
+            serves_t_percentage=serves_t_percentage,
+            serves_wide_deuce_percentage=serves_wide_deuce_percentage,
+            serves_body_deuce_percentage=serves_body_deuce_percentage,
+            serves_t_deuce_percentage=serves_t_deuce_percentage,
+            serves_wide_ad_percentage=serves_wide_ad_percentage,
+            serves_body_ad_percentage=serves_body_ad_percentage,
+            serves_t_ad_percentage=serves_t_ad_percentage,
+            serves_net_percentage=serves_net_percentage,
+            serves_wide_direction_percentage=serves_wide_direction_percentage,
+            shots_deep_percentage=shots_deep_percentage,
+            shots_deep_wide_percentage=shots_deep_wide_percentage,
+            shots_foot_errors_percentage=shots_foot_errors_percentage,
+            shots_unknown_percentage=shots_unknown_percentage,
+            points_won_percentage=points_won_percentage,
+            version=VERSION,
+        )

@@ -481,6 +481,41 @@ def create_combined_player_model(
     offensive_rating = None
     defensive_rating = None
     box_plus_minus = None
+    ace_percentage = None
+    double_fault_percentage = None
+    first_serves_in = None
+    first_serve_percentage = None
+    second_serve_percentage = None
+    break_points_saved = None
+    return_points_won_percentage = None
+    winners = None
+    winners_fronthand = None
+    winners_backhand = None
+    unforced_errors = None
+    unforced_errors_fronthand = None
+    unforced_errors_backhand = None
+    serve_points = None
+    serves_won = None
+    serves_aces = None
+    serves_unreturned = None
+    serves_forced_error_percentage = None
+    serves_won_in_three_shots_or_less = None
+    serves_wide_percentage = None
+    serves_body_percentage = None
+    serves_t_percentage = None
+    serves_wide_deuce_percentage = None
+    serves_body_deuce_percentage = None
+    serves_t_deuce_percentage = None
+    serves_wide_ad_percentage = None
+    serves_body_ad_percentage = None
+    serves_t_ad_percentage = None
+    serves_net_percentage = None
+    serves_wide_direction_percentage = None
+    shots_deep_percentage = None
+    shots_deep_wide_percentage = None
+    shots_foot_errors_percentage = None
+    shots_unknown_percentage = None
+    points_won_percentage = None
     for player_model in player_models:
         jersey = more_interesting(jersey, player_model.jersey)
         kicks = more_interesting(kicks, player_model.kicks)
@@ -1597,6 +1632,103 @@ def create_combined_player_model(
             defensive_rating, player_model.defensive_rating
         )
         box_plus_minus = more_interesting(box_plus_minus, player_model.box_plus_minus)
+        ace_percentage = more_interesting(ace_percentage, player_model.ace_percentage)
+        double_fault_percentage = more_interesting(
+            double_fault_percentage, player_model.double_fault_percentage
+        )
+        first_serves_in = more_interesting(
+            first_serves_in, player_model.first_serves_in
+        )
+        first_serve_percentage = more_interesting(
+            first_serve_percentage, player_model.first_serve_percentage
+        )
+        second_serve_percentage = more_interesting(
+            second_serve_percentage, player_model.second_serve_percentage
+        )
+        break_points_saved = more_interesting(
+            break_points_saved, player_model.break_points_saved
+        )
+        return_points_won_percentage = more_interesting(
+            return_points_won_percentage, player_model.return_points_won_percentage
+        )
+        winners = more_interesting(winners, player_model.winners)
+        winners_fronthand = more_interesting(
+            winners_fronthand, player_model.winners_fronthand
+        )
+        winners_backhand = more_interesting(
+            winners_backhand, player_model.winners_backhand
+        )
+        unforced_errors = more_interesting(
+            unforced_errors, player_model.unforced_errors
+        )
+        unforced_errors_fronthand = more_interesting(
+            unforced_errors_fronthand, player_model.unforced_errors_fronthand
+        )
+        unforced_errors_backhand = more_interesting(
+            unforced_errors_backhand, player_model.unforced_errors_backhand
+        )
+        serve_points = more_interesting(serve_points, player_model.serve_points)
+        serves_won = more_interesting(serves_won, player_model.serves_won)
+        serves_aces = more_interesting(serves_aces, player_model.serves_aces)
+        serves_unreturned = more_interesting(
+            serves_unreturned, player_model.serves_unreturned
+        )
+        serves_forced_error_percentage = more_interesting(
+            serves_forced_error_percentage, player_model.serves_forced_error_percentage
+        )
+        serves_won_in_three_shots_or_less = more_interesting(
+            serves_won_in_three_shots_or_less,
+            player_model.serves_won_in_three_shots_or_less,
+        )
+        serves_wide_percentage = more_interesting(
+            serves_wide_percentage, player_model.serves_wide_percentage
+        )
+        serves_body_percentage = more_interesting(
+            serves_body_percentage, player_model.serves_body_percentage
+        )
+        serves_t_percentage = more_interesting(
+            serves_t_percentage, player_model.serves_t_percentage
+        )
+        serves_wide_deuce_percentage = more_interesting(
+            serves_wide_deuce_percentage, player_model.serves_wide_deuce_percentage
+        )
+        serves_body_deuce_percentage = more_interesting(
+            serves_body_deuce_percentage, player_model.serves_body_deuce_percentage
+        )
+        serves_t_deuce_percentage = more_interesting(
+            serves_t_deuce_percentage, player_model.serves_t_deuce_percentage
+        )
+        serves_wide_ad_percentage = more_interesting(
+            serves_wide_ad_percentage, player_model.serves_wide_ad_percentage
+        )
+        serves_body_ad_percentage = more_interesting(
+            serves_body_ad_percentage, player_model.serves_body_ad_percentage
+        )
+        serves_t_ad_percentage = more_interesting(
+            serves_t_ad_percentage, player_model.serves_t_ad_percentage
+        )
+        serves_net_percentage = more_interesting(
+            serves_net_percentage, player_model.serves_net_percentage
+        )
+        serves_wide_direction_percentage = more_interesting(
+            serves_wide_direction_percentage,
+            player_model.serves_wide_direction_percentage,
+        )
+        shots_deep_percentage = more_interesting(
+            shots_deep_percentage, player_model.shots_deep_percentage
+        )
+        shots_deep_wide_percentage = more_interesting(
+            shots_deep_wide_percentage, player_model.shots_deep_wide_percentage
+        )
+        shots_foot_errors_percentage = more_interesting(
+            shots_foot_errors_percentage, player_model.shots_foot_errors_percentage
+        )
+        shots_unknown_percentage = more_interesting(
+            shots_unknown_percentage, player_model.shots_unknown_percentage
+        )
+        points_won_percentage = more_interesting(
+            points_won_percentage, player_model.points_won_percentage
+        )
     if name is None:
         raise ValueError("name is null")
     if species is None:
@@ -2072,6 +2204,41 @@ def create_combined_player_model(
         offensive_rating=offensive_rating,
         defensive_rating=defensive_rating,
         box_plus_minus=box_plus_minus,
+        ace_percentage=ace_percentage,
+        double_fault_percentage=double_fault_percentage,
+        first_serves_in=first_serves_in,
+        first_serve_percentage=first_serve_percentage,
+        second_serve_percentage=second_serve_percentage,
+        break_points_saved=break_points_saved,
+        return_points_won_percentage=return_points_won_percentage,
+        winners=winners,
+        winners_fronthand=winners_fronthand,
+        winners_backhand=winners_backhand,
+        unforced_errors=unforced_errors,
+        unforced_errors_fronthand=unforced_errors_fronthand,
+        unforced_errors_backhand=unforced_errors_backhand,
+        serve_points=serve_points,
+        serves_won=serves_won,
+        serves_aces=serves_aces,
+        serves_unreturned=serves_unreturned,
+        serves_forced_error_percentage=serves_forced_error_percentage,
+        serves_won_in_three_shots_or_less=serves_won_in_three_shots_or_less,
+        serves_wide_percentage=serves_wide_percentage,
+        serves_body_percentage=serves_body_percentage,
+        serves_t_percentage=serves_t_percentage,
+        serves_wide_deuce_percentage=serves_wide_deuce_percentage,
+        serves_body_deuce_percentage=serves_body_deuce_percentage,
+        serves_t_deuce_percentage=serves_t_deuce_percentage,
+        serves_wide_ad_percentage=serves_wide_ad_percentage,
+        serves_body_ad_percentage=serves_body_ad_percentage,
+        serves_t_ad_percentage=serves_t_ad_percentage,
+        serves_net_percentage=serves_net_percentage,
+        serves_wide_direction_percentage=serves_wide_direction_percentage,
+        shots_deep_percentage=shots_deep_percentage,
+        shots_deep_wide_percentage=shots_deep_wide_percentage,
+        shots_foot_errors_percentage=shots_foot_errors_percentage,
+        shots_unknown_percentage=shots_unknown_percentage,
+        points_won_percentage=points_won_percentage,
     )
 
     ffill(player_ffill, identifier, player_model)

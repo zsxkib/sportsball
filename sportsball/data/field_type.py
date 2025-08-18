@@ -15,3 +15,4 @@ class FieldType(StrEnum):
     ODDS = "odds"
     POINTS = "points"
     GOLDEN = "golden"
+    DATETIME = "datetime"

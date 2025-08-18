@@ -2587,15 +2587,6 @@ MVP_ARENA = SportsballGeocodeTuple(
     housenumber="51",
     country="USA",
 )
-FAU_STADIUM = SportsballGeocodeTuple(
-    city="Boca Raton",
-    state="FL",
-    postal="33431",
-    lat=26.375278,
-    lng=-80.100278,
-    housenumber="777",
-    country="USA",
-)
 FREEDOM_HALL = SportsballGeocodeTuple(
     city="Louisville",
     state="KY",
@@ -3713,52 +3704,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "FAU Stadium - Boca Raton - FL - 33431": FAU_STADIUM,
-    "Brooks Stadium (SC) - Conway - SC - 29526": SportsballGeocodeTuple(
-        city="Conway",
-        state="SC",
-        postal="29526",
-        lat=33.7929,
-        lng=-79.0175,
-        housenumber="540",
-        country="USA",
-    ),
-    "Canvas Stadium - Fort Collins - CO - 80521": SportsballGeocodeTuple(
-        city="Fort Collins",
-        state="CO",
-        postal="80521",
-        lat=40.5698965,
-        lng=-105.0910097,
-        housenumber="751",
-        country="USA",
-    ),
-    "Yulman Stadium - New Orleans - LA - 70118": SportsballGeocodeTuple(
-        city="New Orleans",
-        state="LA",
-        postal="70118",
-        lat=29.94482,
-        lng=-90.116816,
-        housenumber="",
-        country="USA",
-    ),
-    "Bridgeforth Stadium - Harrisonburg - VA - 22807": SportsballGeocodeTuple(
-        city="Harrisonburg",
-        state="VA",
-        postal="22807",
-        lat=38.435278,
-        lng=-78.873056,
-        housenumber="",
-        country="USA",
-    ),
-    "War Memorial Stadium - Laramie - WY - 82070": SportsballGeocodeTuple(
-        city="Laramie",
-        state="WY",
-        postal="82070",
-        lat=41.3117075,
-        lng=-105.5708596,
-        housenumber="",
-        country="USA",
-    ),
     "Sun Bowl - El Paso - TX - 79902": SportsballGeocodeTuple(
         city="El Paso",
         state="TX",
@@ -4922,7 +4867,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Crisler Arena, Ann Arbor, Michigan": CRISLER_CENTER,
-    "FAU Arena, Boca Raton, Florida": FAU_STADIUM,
     "Hammel Court, North Andover, Massachusetts": SportsballGeocodeTuple(
         city="North Andover",
         state="MA",
@@ -14931,7 +14875,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "MECCA Arena, Milwaukee, Wisconsin": MILWAUKEE_ARENA,
-    "Flagler Credit Union Stadium - Boca Raton - FL - 33431": FAU_STADIUM,
     "Freedom Hall - Louisville, Kentucky - United States": FREEDOM_HALL,
     "Finneran Pavilion - Villanova, Pennsylvania - United States": FINNERAN_PAVILION,
     "Prudential Center - Newark, New Jersey, USA - United States": PRUDENTIAL_CENTER,

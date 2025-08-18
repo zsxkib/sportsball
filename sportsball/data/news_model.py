@@ -19,7 +19,11 @@ class NewsModel(BaseModel):
     title: str = Field(
         ..., json_schema_extra={TYPE_KEY: FieldType.TEXT}, alias=NEWS_TITLE_COLUMN
     )
-    published: datetime.datetime = Field(..., alias=NEWS_PUBLISHED_COLUMN)
+    published: datetime.datetime = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.DATETIME},
+        alias=NEWS_PUBLISHED_COLUMN,
+    )
     summary: str = Field(
         ..., json_schema_extra={TYPE_KEY: FieldType.TEXT}, alias=NEWS_SUMMARY_COLUMN
     )

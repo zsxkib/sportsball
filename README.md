@@ -61,6 +61,7 @@ The models it uses are designed to be used for many different types of sports.
 The supported leagues are:
 
 * 🏉 [AFL](https://www.afl.com.au/)
+* 🎾 [ATP](https://www.atptour.com/en)
 * ⚽ [EPL](https://www.premierleague.com/ens)
 * ⚽ [FIFA](https://www.fifa.com/en)
 * 🐎 [HKJC](https://www.hkjc.com/home/english/index.aspx)
@@ -662,6 +663,40 @@ A representation of a player within a team within a game.
 * **offensive_rating**: Estimates how many points a player (or team) produces per 100 possessions.
 * **defensive_rating**: Estimates how many points a player (or team) allows per 100 possessions while they’re on the floor.
 * **box_plus_minus**: Estimates a player’s overall impact on team performance per 100 possessions, compared to an average player, using only box score data (no play-by-play).
+* **ace_percentage**: Percentage of the players serves that were aces.
+* **double_fault_percentage**: Percentage of the players serves that were double faults.
+* **first_serves_in**: The number of first serves in.
+* **first_serve_percentage**: Percentage of the players serves that landed on the first try.
+* **second_serve_percentage**: Percentage of the players second serves that landed.
+* **break_points_saved**: Number of break points saved.
+* **return_points_won_percentage**: Percentage of the return points won.
+* **winners**: Number of rallies that the player won.
+* **winners_fronthand**: Number of rallies that the player won with their fronthand.
+* **winners_backhand**: Number of rallies that the player won with their backhand.
+* **unforced_errors**: Number of unforced errors that the player made.
+* **unforced_errors_fronthand**: Number of unforced errors that the player made with their fronthand.
+* **unforced_errors_backhand**: Number of unforced errors that the player made with their backhand.
+* **serve_points**: Number of points the player made from their serves.
+* **serves_won**: Number of serves won by the player.
+* **serves_aces**: Number of serves that are aces by the player.
+* **serves_unreturned**: Number of serves made by the player that were unreturned.
+* **serves_forced_error_percentage**: Percentage of serves that contained a forced error.
+* **serves_won_in_three_shots_or_less**: Percentage of rallies served by the player won in 3 shots or less.
+* **serves_wide_percentage**: Percentage of serves that went wide.
+* **serves_body_percentage**: Percentage of serves the player made aimed at the body.
+* **serves_t_percentage**: Percentage of serves the player made down the T.
+* **serves_wide_deuce_percentage**: Percentage of serves the player made that were wide from the deuce.
+* **serves_body_deuce_percentage**: Percentage of serves the player made that were aimed at the body from the deuce.
+* **serves_t_deuce_percentage**: Percentage of serves the player made down the T from the deuce.
+* **serves_wide_ad_percentage**: Percentage of serves the player made that were wide from the ad.
+* **serves_body_ad_percentage**: Percentage of serves the player made that were aimed at the body from the ad.
+* **serves_t_ad_percentage**: Percentage of serves the player made down the T from the ad.
+* **serves_net_percentage**: Percentage of serves that hit the net.
+* **serves_wide_direction_percentage**: Percentage of serves that were wide.
+* **shots_deep_wide_percentage**: Percentage of shots that were deep and wide.
+* **shots_foot_errors_percentage**: Percentage of shots that were foot errors.
+* **shots_unknown_percentage**: Percentage of shots that had an unknown classification.
+* **points_won_percentage**: Percentage of rallies won.
 
 #### Odds
 

@@ -4229,6 +4229,136 @@
             "housenumber": "1251",
             "country": "USA",
             "type": "venue"
+        },
+        "a15a4c37-d8a4-4e9b-ad3e-2345375a5d86": {
+            "city": "Brookings",
+            "state": "SD",
+            "postal": "57007",
+            "lat": 44.320833,
+            "lng": -96.78,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "e0ac47cd-4095-4856-8396-a095186e0065": {
+            "city": "Boca Raton",
+            "state": "FL",
+            "postal": "33431",
+            "lat": 26.375278,
+            "lng": -80.100278,
+            "housenumber": "777",
+            "country": "USA",
+            "type": "venue"
+        },
+        "fda2efa4-ab74-4767-b5cc-4743e6e5602e": {
+            "city": "Amiens",
+            "state": "",
+            "postal": "80000",
+            "lat": 49.8937,
+            "lng": 2.2895,
+            "housenumber": "20",
+            "country": "France",
+            "type": "venue"
+        },
+        "3b07eb5c-c8c8-437c-83d4-0a53f9be4983": {
+            "city": "Conway",
+            "state": "SC",
+            "postal": "29526",
+            "lat": 33.7929,
+            "lng": -79.0175,
+            "housenumber": "540",
+            "country": "USA",
+            "type": "venue"
+        },
+        "f74bf18e-e062-4b93-9d99-f6fce5fe847e": {
+            "city": "Swansea",
+            "state": "",
+            "postal": "",
+            "lat": 51.6422,
+            "lng": -3.9351,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "da36b073-aba2-405f-84c4-d04b3b66e755": {
+            "city": "Fort Collins",
+            "state": "CO",
+            "postal": "80521",
+            "lat": 40.5698965,
+            "lng": -105.0910097,
+            "housenumber": "751",
+            "country": "USA",
+            "type": "venue"
+        },
+        "76d9f3c2-796b-4cb9-88e9-9bb030ea4514": {
+            "city": "New Orleans",
+            "state": "LA",
+            "postal": "70118",
+            "lat": 29.94482,
+            "lng": -90.116816,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "e158ed7d-4089-4902-bdaa-bf807657c249": {
+            "city": "Latrobe",
+            "state": "PA",
+            "postal": "",
+            "lat": 40.2928,
+            "lng": -79.4021,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "c40c8293-fea8-48fa-8f59-0ecb401f7ce1": {
+            "city": "Harrisonburg",
+            "state": "VA",
+            "postal": "22807",
+            "lat": 38.435278,
+            "lng": -78.873056,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "9ab6c7b9-efb1-4b95-b53f-8d7dc69671fd": {
+            "city": "Roanoke",
+            "state": "VA",
+            "postal": "",
+            "lat": 37.270556,
+            "lng": -79.9425,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "92f0cf1f-4443-4ea1-8f98-d82921b9af13": {
+            "city": "Laramie",
+            "state": "WY",
+            "postal": "82070",
+            "lat": 41.3117075,
+            "lng": -105.5708596,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "6a9b4c00-102a-4034-b614-5cd7166b5ae0": {
+            "city": "Hyderabad",
+            "state": "Telangana",
+            "postal": "",
+            "lat": 17.406389,
+            "lng": 78.550278,
+            "housenumber": "",
+            "country": "India",
+            "type": "venue"
+        },
+        "138331dd-1e24-43bd-9c60-7d46a637dbf3": {
+            "city": "El Paso",
+            "state": "TX",
+            "postal": "",
+            "lat": 31.773,
+            "lng": -106.508,
+            "housenumber": "2701",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -4855,6 +4985,7 @@
         "Adelaide Hills": "52dbd4a3-72be-4de8-9d08-ccc3b7ec7ac2",
         "Adelaide Hills, Mount Barker, Australia": "52dbd4a3-72be-4de8-9d08-ccc3b7ec7ac2",
         "Old Trafford, Manchester, England": "03a5e030-7e04-462b-a057-08fb1bd3b4af",
+        "Old Trafford - Sir Matt Busby Way, Old Trafford, England - England": "03a5e030-7e04-462b-a057-08fb1bd3b4af",
         "University of South Florida": "4a4fe9cd-2c7b-427e-b7f6-6188ea6b05a7",
         "Husky Stadium - Seattle - WA - 98195": "16b72653-dd8d-443a-a298-b2c140954e6e",
         "Husky Stadium": "16b72653-dd8d-443a-a298-b2c140954e6e",
@@ -4869,6 +5000,7 @@
         "Hofstra College": "2e8d5cb1-0af3-4692-a6f1-dbd33e97ec44",
         "Rice-Eccles Stadium - Salt Lake City - UT - 84112": "9ed83302-4008-458b-910b-af7966ec0522",
         "RingCentral Coliseum": "5b033bb5-aa81-4372-a780-6d23eacdc917",
+        "Oakland-Alameda County Coliseum": "5b033bb5-aa81-4372-a780-6d23eacdc917",
         "Boone Pickens Stadium - Stillwater - OK - 74075": "541c4143-a924-4743-99b1-ed7abe7c4236",
         "Boone Pickens Stadium - Stillwater, Oklahoma, USA - United States": "541c4143-a924-4743-99b1-ed7abe7c4236",
         "Portman Road, Ipswich, England": "3d039b17-cd4c-478f-be28-83afc9da21cf",
@@ -5122,6 +5254,21 @@
         "Dix Stadium - Kent - OH - 44242": "ba102172-dce3-409c-a5b4-ae5c41f8d8e5",
         "Dix Stadium": "ba102172-dce3-409c-a5b4-ae5c41f8d8e5",
         "Molineux Stadium, Wolverhampton, England": "028a4275-cedd-426f-bbbd-5231768ccef9",
-        "DATCU Stadium - Denton - TX - 76205": "1fa6ee44-bc77-4b15-9fdf-dbd450b5fea1"
+        "DATCU Stadium - Denton - TX - 76205": "1fa6ee44-bc77-4b15-9fdf-dbd450b5fea1",
+        "Coughlin-Alumni Stadium": "a15a4c37-d8a4-4e9b-ad3e-2345375a5d86",
+        "FAU Stadium - Boca Raton - FL - 33431": "e0ac47cd-4095-4856-8396-a095186e0065",
+        "FAU Arena, Boca Raton, Florida": "e0ac47cd-4095-4856-8396-a095186e0065",
+        "Flagler Credit Union Stadium - Boca Raton - FL - 33431": "e0ac47cd-4095-4856-8396-a095186e0065",
+        "Coliseum - Amiens, France - France": "fda2efa4-ab74-4767-b5cc-4743e6e5602e",
+        "Brooks Stadium (SC) - Conway - SC - 29526": "3b07eb5c-c8c8-437c-83d4-0a53f9be4983",
+        "Swansea.com Stadium, Swansea, Wales": "f74bf18e-e062-4b93-9d99-f6fce5fe847e",
+        "Canvas Stadium - Fort Collins - CO - 80521": "da36b073-aba2-405f-84c4-d04b3b66e755",
+        "Yulman Stadium - New Orleans - LA - 70118": "76d9f3c2-796b-4cb9-88e9-9bb030ea4514",
+        "Saint Vincent College": "e158ed7d-4089-4902-bdaa-bf807657c249",
+        "Bridgeforth Stadium - Harrisonburg - VA - 22807": "c40c8293-fea8-48fa-8f59-0ecb401f7ce1",
+        "Roanoke, Virginia": "9ab6c7b9-efb1-4b95-b53f-8d7dc69671fd",
+        "War Memorial Stadium - Laramie - WY - 82070": "92f0cf1f-4443-4ea1-8f98-d82921b9af13",
+        "Rajiv Gandhi International Cricket Stadium, Hyderabad, India": "6a9b4c00-102a-4034-b614-5cd7166b5ae0",
+        "Sun Bowl - El Paso - TX - 79902": "138331dd-1e24-43bd-9c60-7d46a637dbf3"
     }
 }

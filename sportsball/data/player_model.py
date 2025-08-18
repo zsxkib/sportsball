@@ -926,7 +926,90 @@ PLAYER_USAGE_PERCENTAGE_COLUMN: Literal["usage_percentage"] = "usage_percentage"
 PLAYER_OFFENSIVE_RATING_COLUMN: Literal["offensive_rating"] = "offensive_rating"
 PLAYER_DEFENSIVE_RATING_COLUMN: Literal["defensive_rating"] = "defensive_rating"
 PLAYER_BOX_PLUS_MINUS_COLUMN: Literal["box_plus_minus"] = "box_plus_minus"
-VERSION = DELIMITER.join(["0.0.7", ADDRESS_VERSION, OWNER_VERSION, VENUE_VERSION])
+PLAYER_ACE_PERCENTAGE_COLUMN: Literal["ace_percentage"] = "ace_percentage"
+PLAYER_DOUBLE_FAULT_PERCENTAGE_COLUMN: Literal["double_fault_percentage"] = (
+    "double_fault_percentage"
+)
+PLAYER_FIRST_SERVES_IN_COLUMN: Literal["first_serves_in"] = "first_serves_in"
+PLAYER_FIRST_SERVE_PERCENTAGE_COLUMN: Literal["first_serve_percentage"] = (
+    "first_serve_percentage"
+)
+PLAYER_SECOND_SERVE_PERCENTAGE_COLUMN: Literal["second_serve_percentage"] = (
+    "second_serve_percentage"
+)
+PLAYER_BREAK_POINTS_SAVED_COLUMN: Literal["break_points_saved"] = "break_points_saved"
+PLAYER_RETURN_POINTS_WON_PERCENTGE_COLUMN: Literal["return_points_won_percentage"] = (
+    "return_points_won_percentage"
+)
+PLAYER_WINNERS_COLUMN: Literal["winners"] = "winners"
+PLAYER_WINNERS_FRONTHAND_COLUMN: Literal["winners_fronthand"] = "winners_fronthand"
+PLAYER_WINNERS_BACKHAND_COLUMN: Literal["winners_backhand"] = "winners_backhand"
+PLAYER_UNFORCED_ERRORS_COLUMN: Literal["unforced_errors"] = "unforced_errors"
+PLAYER_UNFORCED_ERRORS_FRONTHAND_COLUMN: Literal["unforced_errors_fronthand"] = (
+    "unforced_errors_fronthand"
+)
+PLAYER_UNFORCED_ERRORS_BACKHAND_COLUMN: Literal["unforced_errors_backhand"] = (
+    "unforced_errors_backhand"
+)
+PLAYER_SERVE_POINTS_COLUMN: Literal["serve_points"] = "serve_points"
+PLAYER_SERVES_WON_COLUMN: Literal["serves_won"] = "serves_won"
+PLAYER_SERVES_ACES_COLUMN: Literal["serves_aces"] = "serves_aces"
+PLAYER_SERVES_UNRETURNED_COLUMN: Literal["serves_unreturned"] = "serves_unreturned"
+PLAYER_SERVES_FORCED_ERROR_PERCENTAGE_COLUMN: Literal[
+    "serves_forced_error_percentage"
+] = "serves_forced_error_percentage"
+PLAYER_SERVES_WON_IN_THREE_SHOTS_OR_LESS_COLUMN: Literal[
+    "serves_won_in_three_shots_or_less"
+] = "serves_won_in_three_shots_or_less"
+PLAYER_SERVES_WIDE_PERCENTAGE_COLUMN: Literal["serves_wide_percentage"] = (
+    "serves_wide_percentage"
+)
+PLAYER_SERVES_BODY_PERCENTAGE_COLUMN: Literal["serves_body_percentage"] = (
+    "serves_body_percentage"
+)
+PLAYER_SERVES_T_PERCENTAGE_COLUMN: Literal["serves_t_percentage"] = (
+    "serves_t_percentage"
+)
+PLAYER_SERVES_WIDE_DEUCE_PERCENTAGE_COLUMN: Literal["serves_wide_deuce_percentage"] = (
+    "serves_wide_deuce_percentage"
+)
+PLAYER_SERVES_BODY_DEUCE_PERCENTAGE_COLUMN: Literal["serves_body_deuce_percentage"] = (
+    "serves_body_deuce_percentage"
+)
+PLAYER_SERVES_T_DEUCE_PERCENTAGE_COLUMN: Literal["serves_t_deuce_percentage"] = (
+    "serves_t_deuce_percentage"
+)
+PLAYER_SERVES_WIDE_AD_PERCENTAGE_COLUMN: Literal["serves_wide_ad_percentage"] = (
+    "serves_wide_ad_percentage"
+)
+PLAYER_SERVES_BODY_AD_PERCENTAGE_COLUMN: Literal["serves_body_ad_percentage"] = (
+    "serves_body_ad_percentage"
+)
+PLAYER_SERVES_T_AD_PERCENTAGE_COLUMN: Literal["serves_t_ad_percentage"] = (
+    "serves_t_ad_percentage"
+)
+PLAYER_SERVES_NET_PERCENTAGE_COLUMN: Literal["serves_net_percentage"] = (
+    "serves_net_percentage"
+)
+PLAYER_SERVES_WIDE_DIRECTION_PERCENTAGE_COLUMN: Literal[
+    "serves_wide_direction_percentage"
+] = "serves_wide_direction_percentage"
+PLAYER_SHOTS_DEEP_PERCENTAGE_COLUMN: Literal["shots_deep_percentage"] = (
+    "shots_deep_percentage"
+)
+PLAYER_SHOTS_DEEP_WIDE_PERCENTAGE_COLUMN: Literal["shots_deep_wide_percentage"] = (
+    "shots_deep_wide_percentage"
+)
+PLAYER_SHOTS_FOOT_ERRORS_PERCENTAGE_COLUMN: Literal["shots_foot_errors_percentage"] = (
+    "shots_foot_errors_percentage"
+)
+PLAYER_SHOTS_UNKNOWN_PERCENTAGE_COLUMN: Literal["shots_unknown_percentage"] = (
+    "shots_unknown_percentage"
+)
+PLAYER_POINTS_WON_PERCENTAGE_COLUMN: Literal["points_won_percentage"] = (
+    "points_won_percentage"
+)
+VERSION = DELIMITER.join(["0.0.8", ADDRESS_VERSION, OWNER_VERSION, VENUE_VERSION])
 
 
 def _guess_sex(data: dict[str, Any]) -> str | None:
@@ -3318,4 +3401,179 @@ class PlayerModel(BaseModel):
         ...,
         json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
         alias=PLAYER_BOX_PLUS_MINUS_COLUMN,
+    )
+    ace_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_ACE_PERCENTAGE_COLUMN,
+    )
+    double_fault_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_DOUBLE_FAULT_PERCENTAGE_COLUMN,
+    )
+    first_serves_in: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_FIRST_SERVES_IN_COLUMN,
+    )
+    first_serve_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_FIRST_SERVE_PERCENTAGE_COLUMN,
+    )
+    second_serve_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SECOND_SERVE_PERCENTAGE_COLUMN,
+    )
+    break_points_saved: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_BREAK_POINTS_SAVED_COLUMN,
+    )
+    return_points_won_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_RETURN_POINTS_WON_PERCENTGE_COLUMN,
+    )
+    winners: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_WINNERS_COLUMN,
+    )
+    winners_fronthand: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_WINNERS_FRONTHAND_COLUMN,
+    )
+    winners_backhand: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_WINNERS_BACKHAND_COLUMN,
+    )
+    unforced_errors: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_UNFORCED_ERRORS_COLUMN,
+    )
+    unforced_errors_fronthand: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_UNFORCED_ERRORS_FRONTHAND_COLUMN,
+    )
+    unforced_errors_backhand: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_UNFORCED_ERRORS_BACKHAND_COLUMN,
+    )
+    serve_points: int | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SERVE_POINTS_COLUMN,
+    )
+    serves_won: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SERVES_WON_COLUMN,
+    )
+    serves_aces: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SERVES_ACES_COLUMN,
+    )
+    serves_unreturned: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SERVES_UNRETURNED_COLUMN,
+    )
+    serves_forced_error_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SERVES_FORCED_ERROR_PERCENTAGE_COLUMN,
+    )
+    serves_won_in_three_shots_or_less: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SERVES_WON_IN_THREE_SHOTS_OR_LESS_COLUMN,
+    )
+    serves_wide_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SERVES_WIDE_PERCENTAGE_COLUMN,
+    )
+    serves_body_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SERVES_BODY_PERCENTAGE_COLUMN,
+    )
+    serves_t_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SERVES_T_PERCENTAGE_COLUMN,
+    )
+    serves_wide_deuce_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SERVES_WIDE_DEUCE_PERCENTAGE_COLUMN,
+    )
+    serves_body_deuce_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SERVES_BODY_DEUCE_PERCENTAGE_COLUMN,
+    )
+    serves_t_deuce_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SERVES_T_DEUCE_PERCENTAGE_COLUMN,
+    )
+    serves_wide_ad_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SERVES_WIDE_AD_PERCENTAGE_COLUMN,
+    )
+    serves_body_ad_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SERVES_BODY_AD_PERCENTAGE_COLUMN,
+    )
+    serves_t_ad_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SERVES_T_AD_PERCENTAGE_COLUMN,
+    )
+    serves_net_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SERVES_NET_PERCENTAGE_COLUMN,
+    )
+    serves_wide_direction_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SERVES_WIDE_DIRECTION_PERCENTAGE_COLUMN,
+    )
+    shots_deep_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SHOTS_DEEP_PERCENTAGE_COLUMN,
+    )
+    shots_deep_wide_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SHOTS_DEEP_WIDE_PERCENTAGE_COLUMN,
+    )
+    shots_foot_errors_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SHOTS_FOOT_ERRORS_PERCENTAGE_COLUMN,
+    )
+    shots_unknown_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_SHOTS_UNKNOWN_PERCENTAGE_COLUMN,
+    )
+    points_won_percentage: float | None = Field(
+        ...,
+        json_schema_extra={TYPE_KEY: FieldType.LOOKAHEAD},
+        alias=PLAYER_POINTS_WON_PERCENTAGE_COLUMN,
     )

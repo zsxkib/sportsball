@@ -164,6 +164,7 @@ class SportsDBLeagueModel(LeagueModel):
                                 case SeasonType.REGULAR:
                                     if self.league not in {
                                         League.NBA,
+                                        League.NCAAB,
                                         League.NHL,
                                         League.MLB,
                                     }:
@@ -182,12 +183,22 @@ class SportsDBLeagueModel(LeagueModel):
                                         except ValueError:
                                             pass
                                 case SeasonType.POSTSEASON:
-                                    for count, round_str in enumerate(
-                                        [125, 150, 160, 170, 180, 200]
+                                    for count, postseason_round in enumerate(
+                                        [
+                                            str(125),
+                                            str(150),
+                                            str(160),
+                                            str(170),
+                                            str(180),
+                                            str(200),
+                                            "QF",
+                                            "SF",
+                                            "Final",
+                                        ]
                                     ):
                                         try:
                                             yield from self._produce_games(
-                                                str(round_str),
+                                                str(postseason_round),
                                                 21 + count,
                                                 self._league_id,
                                                 season_year,

@@ -8,6 +8,7 @@ class League(StrEnum):
     """An enumeration over the different leagues."""
 
     AFL = "afl"
+    ATP = "atp"
     EPL = "epl"
     FIFA = "fifa"
     HKJC = "hkjc"
@@ -25,6 +26,8 @@ def long_name(league: League) -> str:
     match league:
         case League.AFL:
             return "Australia Football League"
+        case League.ATP:
+            return "Association of Tennis Professionals"
         case League.EPL:
             return "English Premier League"
         case League.FIFA:
@@ -53,6 +56,8 @@ def league_from_str(league_str: str) -> League:
     match league_str:
         case str(League.AFL):
             return League.AFL
+        case str(League.ATP):
+            return League.ATP
         case str(League.EPL):
             return League.EPL
         case str(League.FIFA):

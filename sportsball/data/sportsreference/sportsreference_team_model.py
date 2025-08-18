@@ -57,7 +57,7 @@ def _find_name(response: requests.Response, soup: BeautifulSoup, url: str) -> st
     try:
         data = extruct.extract(response.text, base_url=base_url)
         return data["json-ld"][0]["name"]
-    except (json.decoder.JSONDecodeError, IndexError) as exc:
+    except (json.decoder.JSONDecodeError, IndexError, UnicodeDecodeError) as exc:
         h1 = soup.find("h1")
         if not isinstance(h1, Tag):
             logging.error(response.text)
