@@ -110,6 +110,9 @@ def create_sportsdb_game_model(
     season_type: SeasonType | None,
 ) -> GameModel | None:
     """Create a SportsDB game model."""
+    if isinstance(game, str):
+        return None
+
     try:
         ts = game["strTimestamp"]
         if ts is None:
