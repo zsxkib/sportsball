@@ -4,7 +4,7 @@ import unittest
 import datetime
 
 import requests_mock
-import requests_cache
+from scrapesession.scrapesession import ScrapeSession
 from sportsball.data.atp.tennisabstract.atp_tennisabstract_game_model import create_tennisabstract_game_model
 from sportsball.data.league import League
 
@@ -12,7 +12,7 @@ from sportsball.data.league import League
 class TestATPTennisAbstractGameModel(unittest.TestCase):
 
     def setUp(self):
-        self.session = requests_cache.CachedSession(backend="memory")
+        self.session = ScrapeSession(backend="memory")
         self.dir = os.path.dirname(__file__)
 
     def test_points(self):
