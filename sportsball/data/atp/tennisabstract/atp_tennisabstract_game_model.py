@@ -41,7 +41,8 @@ def _create_tennisabstract_game_model(
         filename = os.path.basename(o.path)
         dt = parse(filename.split("-")[0])
 
-        response = session.get(url)
+        with session.wayback_disabled():
+            response = session.get(url)
         response.raise_for_status()
         soup = BeautifulSoup(response.text, "lxml")
 

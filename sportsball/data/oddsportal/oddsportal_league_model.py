@@ -136,6 +136,8 @@ class OddsPortalLeagueModel(LeagueModel):
 
     def _find_next(self, pbar: tqdm.tqdm) -> Iterator[GameModel]:
         for path in self._paths:
+            if needs_shutdown():
+                return
             base_url = "https://www.oddsportal.com/" + path
             with self.session.cache_disabled():
                 with self.session.wayback_disabled():
@@ -172,6 +174,8 @@ class OddsPortalLeagueModel(LeagueModel):
             seen_urls = set()
             queued_urls = {"https://www.oddsportal.com/" + standard_suffix}
             while queued_urls:
+                if needs_shutdown():
+                    return
                 url = queued_urls.pop()
                 if url in seen_urls:
                     continue

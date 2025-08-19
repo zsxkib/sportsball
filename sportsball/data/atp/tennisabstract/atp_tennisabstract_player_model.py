@@ -23,9 +23,6 @@ from ...species import Species
 _LEAGUE_TO_SEX = {
     League.ATP: Sex.MALE,
 }
-_NON_WAYBACK_URLS = {
-    "https://www.tennisabstract.com/cgi-bin/player.cgi?p=JannikSinner",
-}
 
 
 def _create_tennisabstract_player_model(
@@ -77,10 +74,7 @@ def _create_tennisabstract_player_model(
         query = urllib.parse.parse_qs(o.query)
         identifier = query["p"][0]
 
-        if url in _NON_WAYBACK_URLS:
-            with session.wayback_disabled():
-                response = session.get(url)
-        else:
+        with session.wayback_disabled():
             response = session.get(url)
         response.raise_for_status()
 
