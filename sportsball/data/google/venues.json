@@ -4819,6 +4819,56 @@
             "housenumber": "3088",
             "country": "USA",
             "type": "venue"
+        },
+        "9db48e0c-538f-4eb5-85a0-cae7567463cf": {
+            "city": "",
+            "state": "",
+            "postal": "",
+            "lat": 40.0,
+            "lng": -4.0,
+            "housenumber": "",
+            "country": "Spain",
+            "type": "country"
+        },
+        "8e9bec3e-8bea-4607-8869-686cefdb009b": {
+            "city": "DeSoto",
+            "state": "TX",
+            "postal": "",
+            "lat": 32.599167,
+            "lng": -96.858889,
+            "housenumber": "",
+            "country": "USA",
+            "type": "city"
+        },
+        "a2a82099-78f1-4ded-afdf-c6f97bbd4cf9": {
+            "city": "Norfolk",
+            "state": "VA",
+            "postal": "23504",
+            "lat": 36.846964,
+            "lng": -76.260053,
+            "housenumber": "700",
+            "country": "USA",
+            "type": "venue"
+        },
+        "acf63696-a90b-452f-bbea-e56342229be4": {
+            "city": "North Andover",
+            "state": "MA",
+            "postal": "",
+            "lat": 42.667,
+            "lng": -71.123,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "5ed7d7da-b327-4a8a-8c7c-c3a3806a4d34": {
+            "city": "Marquette",
+            "state": "MI",
+            "postal": "49855",
+            "lat": 46.56,
+            "lng": -87.393611,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -5801,6 +5851,12 @@
         "Honda Center, Anaheim, CA, USA": "a75443bd-80b7-45e1-b3c5-419bca5e1707",
         "Honda Center": "a75443bd-80b7-45e1-b3c5-419bca5e1707",
         "Floyd Casey Stadium - Waco - TX - 76798": "0edeccbf-fa0d-48be-892d-624f395af58e",
-        "Floyd Casey Stadium": "0edeccbf-fa0d-48be-892d-624f395af58e"
+        "Floyd Casey Stadium": "0edeccbf-fa0d-48be-892d-624f395af58e",
+        "ESP": "9db48e0c-538f-4eb5-85a0-cae7567463cf",
+        "SPA": "9db48e0c-538f-4eb5-85a0-cae7567463cf",
+        "DeSoto, Texas, United States": "8e9bec3e-8bea-4607-8869-686cefdb009b",
+        "William \"Dick\" Price Stadium - Norfolk - VA - 23504": "a2a82099-78f1-4ded-afdf-c6f97bbd4cf9",
+        "Merrimack College": "acf63696-a90b-452f-bbea-e56342229be4",
+        "Superior Dome - Marquette - MI - 49855": "5ed7d7da-b327-4a8a-8c7c-c3a3806a4d34"
     }
 }

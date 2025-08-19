@@ -202,6 +202,7 @@ def _create_tennisabstract_game_model(
                                 .strip()
                                 .replace("%", "")
                                 .replace(")", "")
+                                .replace("-", "0")
                             )
                             for x in df["Won---%"].dropna().tolist()
                         ]
@@ -212,6 +213,7 @@ def _create_tennisabstract_game_model(
                                 .strip()
                                 .replace("%", "")
                                 .replace(")", "")
+                                .replace("-", "0")
                             )
                             for x in df["Aces---%"].dropna().tolist()
                         ]
@@ -232,6 +234,7 @@ def _create_tennisabstract_game_model(
                                 .strip()
                                 .replace("%", "")
                                 .replace(")", "")
+                                .replace("-", "0")
                             )
                             for x in df["FcdE---%"].dropna().tolist()
                         ]
@@ -242,6 +245,7 @@ def _create_tennisabstract_game_model(
                                 .strip()
                                 .replace("%", "")
                                 .replace(")", "")
+                                .replace("-", "0")
                             )
                             for x in df["<=3W---%"].dropna().tolist()
                         ]

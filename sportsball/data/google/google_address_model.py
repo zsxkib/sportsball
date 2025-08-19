@@ -3578,15 +3578,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    'William "Dick" Price Stadium - Norfolk - VA - 23504': SportsballGeocodeTuple(
-        city="Norfolk",
-        state="VA",
-        postal="23504",
-        lat=36.846964,
-        lng=-76.260053,
-        housenumber="700",
-        country="USA",
-    ),
     "Superior Dome - Marquette - MI - 49855": SportsballGeocodeTuple(
         city="Marquette",
         state="MI",
@@ -12872,15 +12863,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Yokohama Arena - Yokohama, Kanagawa - Japan": YOKOHAMA_ARENA,
     "Centre Bell - Montreal, Quebec, Canada - Canada": BELL_CENTRE,
-    "SPA": SportsballGeocodeTuple(
-        city="",
-        state="",
-        postal="",
-        lat=40.0,
-        lng=-4.0,
-        housenumber="",
-        country="Spain",
-    ),
     "Corinthians Arena - Sao Paulo": SportsballGeocodeTuple(
         city="Sao Paulo",
         state="",
