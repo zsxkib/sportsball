@@ -2,6 +2,7 @@
 
 # pylint: disable=too-many-arguments,too-many-locals
 import datetime
+import logging
 import urllib
 import urllib.parse
 from urllib.parse import urlparse
@@ -78,29 +79,36 @@ def _create_tennisabstract_player_model(
     soup = BeautifulSoup(response.text, "lxml")
     name = None
     birth_address = None
-    for b in soup.find_all("b"):
-        b_text = b.get_text().strip()
-        if "[" in b_text and "]" in b_text:
-            b_text_split = b_text.split("[")
-            name = b_text_split[0].strip()
-            country = b_text_split[-1].split("]")[0]
-            birth_address = create_google_address_model(
-                query=country, session=session, dt=dt
-            )
+    birth_date = None
+    photog = None
+    for script in soup.find_all("script"):
+        script_text = script.get_text().strip()
+        for script_line in script_text.split("\n"):
+            if script_line.startswith("var fullname = '"):
+                name = script_line.split("var fullname = '")[-1].split("';")[0].strip()
+            elif script_line.startswith("var country = '"):
+                country = (
+                    script_line.split("var country = '")[-1].split("';")[0].strip()
+                )
+                birth_address = create_google_address_model(
+                    query=country, session=session, dt=dt
+                )
+            elif script_line.startswith("var dob = '"):
+                dob = script_line.split("var dob = '")[-1].split("';")[0].strip()
+                birth_date = parse(dob)
+            elif script_line.startswith("var photog = '"):
+                photog = script_line.split("var photog = '")[-1].split("';")[0].strip()
     if name is None:
         raise ValueError("name is null")
+    logging.warning(serves_wide_deuce_percentage)
 
-    birth_date = None
-    for td in soup.find_all("td"):
-        td_text = td.get_text().strip()
-        if "Age:" in td_text:
-            birth_date_str = td_text.split("(")[-1].split(")")[0].strip()
-            birth_date = parse(birth_date_str)
-
-    headshot_url = None
-    for img in soup.find_all("img"):
-        headshot_url = urllib.parse.urljoin(url, img.get("src"))
-
+    headshot_url = (
+        "https://www.tennisabstract.com/photos/"
+        + name.lower().replace(" ", "_")
+        + "-"
+        + photog
+        + ".jpg"
+    )
     return PlayerModel(
         identifier=identifier,
         jersey=None,

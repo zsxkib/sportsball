@@ -139,6 +139,7 @@ class OddsPortalLeagueModel(LeagueModel):
             base_url = "https://www.oddsportal.com/" + path
             with self.session.cache_disabled():
                 with self.session.wayback_disabled():
+                    self.session.cache.delete(urls=[base_url])
                     response = self.session.get(base_url)
             response.raise_for_status()
             data = extruct.extract(response.text, base_url=base_url)
@@ -178,6 +179,7 @@ class OddsPortalLeagueModel(LeagueModel):
 
                 with self.session.cache_disabled():
                     with self.session.wayback_disabled():
+                        self.session.cache.delete(urls=[url])
                         response = self.session.get(url)
                 response.raise_for_status()
 

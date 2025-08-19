@@ -778,15 +778,6 @@ AMALIE_ARENA = SportsballGeocodeTuple(
     housenumber="401",
     country="USA",
 )
-TOYOTA_STADIUM = SportsballGeocodeTuple(
-    city="Frisco",
-    state="TX",
-    postal="75033",
-    lat=33.154444,
-    lng=-96.835278,
-    housenumber="9200",
-    country="USA",
-)
 MOODY_CENTER = SportsballGeocodeTuple(
     city="Austin",
     state="TX",
@@ -2362,15 +2353,6 @@ FRESNO = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-SAP_CENTER = SportsballGeocodeTuple(
-    city="San Jose",
-    state="CA",
-    postal="",
-    lat=37.332778,
-    lng=-121.901111,
-    housenumber="525",
-    country="USA",
-)
 RENO = SportsballGeocodeTuple(
     city="Reno",
     state="NV",
@@ -2821,15 +2803,6 @@ COMPAQ_CENTER = SportsballGeocodeTuple(
     housenumber="3700",
     country="USA",
 )
-LEGION_FIELD = SportsballGeocodeTuple(
-    city="Birmingham",
-    state="AL",
-    postal="35204",
-    lat=33.511389,
-    lng=-86.842778,
-    housenumber="400",
-    country="USA",
-)
 TRACK_COLISEUM = SportsballGeocodeTuple(
     city="Wilmington",
     state="NC",
@@ -3073,15 +3046,6 @@ BRIDGESTONE_ARENA = SportsballGeocodeTuple(
     housenumber="501",
     country="USA",
 )
-CHASE_FIELD = SportsballGeocodeTuple(
-    city="Phoenix",
-    state="AZ",
-    postal="85004",
-    lat=33.445278,
-    lng=-112.066944,
-    housenumber="401",
-    country="USA",
-)
 CANADIAN_TIRE_CENTER = SportsballGeocodeTuple(
     city="Ottawa",
     state="ON",
@@ -3161,15 +3125,6 @@ COORS_FIELD = SportsballGeocodeTuple(
     lat=39.756111,
     lng=-104.994167,
     housenumber="2001",
-    country="USA",
-)
-SAP_CENTER = SportsballGeocodeTuple(
-    city="San Jose",
-    state="CA",
-    postal="",
-    lat=37.332778,
-    lng=-121.901111,
-    housenumber="525",
     country="USA",
 )
 CITIZENS_BANK_PARK = SportsballGeocodeTuple(
@@ -3413,15 +3368,6 @@ FERTITTA_CENTER = SportsballGeocodeTuple(
     lat=29.724722,
     lng=-95.346944,
     housenumber="3875",
-    country="USA",
-)
-SAM_BOYD_STADIUM = SportsballGeocodeTuple(
-    city="Las Vegas",
-    state="NV",
-    postal="89122",
-    lat=36.086,
-    lng=-115.017,
-    housenumber="7000",
     country="USA",
 )
 JON_M_HUNTSMAN_CENTER = SportsballGeocodeTuple(
@@ -3668,55 +3614,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Toyota Stadium - Frisco - TX - 75033": TOYOTA_STADIUM,
-    "Chase Field - Phoenix - AZ - 85004": CHASE_FIELD,
-    "Thomas A. Robinson National Stadium - Nassau": SportsballGeocodeTuple(
-        city="Nassau",
-        state="",
-        postal="",
-        lat=25.054381,
-        lng=-77.360217,
-        housenumber="",
-        country="Bahamas",
-    ),
-    "Independence Stadium - Shreveport - LA - 71109": SportsballGeocodeTuple(
-        city="Shreveport",
-        state="LA",
-        postal="71109",
-        lat=32.475556,
-        lng=-93.791944,
-        housenumber="",
-        country="USA",
-    ),
-    "David Booth Kansas Memorial Stadium - Lawrence - KS - 66044": SportsballGeocodeTuple(
-        city="Lawrence",
-        state="KS",
-        postal="66044",
-        lat=38.963333,
-        lng=-95.246389,
-        housenumber="1101",
-        country="USA",
-    ),
-    "Providence Park - Portland - OR - 97205": SportsballGeocodeTuple(
-        city="Portland",
-        state="OR",
-        postal="97205",
-        lat=45.521389,
-        lng=-122.691667,
-        housenumber="1844",
-        country="USA",
-    ),
-    "Inter&Co Stadium - Orlando - FL - 32805": SportsballGeocodeTuple(
-        city="Orlando",
-        state="FL",
-        postal="32805",
-        lat=28.5411,
-        lng=-81.3893,
-        housenumber="655",
-        country="USA",
-    ),
-    "Legion Field (AL) - Birmingham - AL - 35204": LEGION_FIELD,
-    "Sam Boyd Stadium - Las Vegas - NV - 89122": SAM_BOYD_STADIUM,
     "Barker-Lane Stadium - Buies Creek - NC - 27546": SportsballGeocodeTuple(
         city="Buies Creek",
         state="NC",
@@ -7024,7 +6921,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Oriole Park at Camden Yards, Baltimore, MD, USA": ORIOLE_PARK,
     "ESPN Wide World of Sports Complex, Bay Lake, FL, USA": ESPN_WIDE_WORLD_OF_SPORTS_COMPLEX,
     "Amalie Arena, Tampa, FL, USA": AMALIE_ARENA,
-    "Toyota Stadium, Frisco, TX, USA": TOYOTA_STADIUM,
     "Visa Athletic Center, Orlando, FL, USA": ESPN_WIDE_WORLD_OF_SPORTS_COMPLEX,
     "The Arena (WWOS), Orlando, FL, USA": ESPN_WIDE_WORLD_OF_SPORTS_COMPLEX,
     "PayPal Park, San Jose, CA, USA": SportsballGeocodeTuple(
@@ -7772,15 +7668,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         postal="",
         lat=43.615833,
         lng=-116.201667,
-        housenumber="",
-        country="USA",
-    ),
-    "Kansas City, Missouri": SportsballGeocodeTuple(
-        city="Kansas City",
-        state="MO",
-        postal="",
-        lat=39.099722,
-        lng=-94.578333,
         housenumber="",
         country="USA",
     ),
@@ -9187,15 +9074,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         postal="",
         lat=40.015,
         lng=-105.2705,
-        housenumber="",
-        country="USA",
-    ),
-    "Tallahassee, Florida": SportsballGeocodeTuple(
-        city="Tallahassee",
-        state="FL",
-        postal="",
-        lat=30.438333,
-        lng=-84.280556,
         housenumber="",
         country="USA",
     ),
@@ -10876,15 +10754,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "UCR Student Rec Center, Riverside, California": UCR_STUDENT_REC_CENTER,
     "Maurice Stokes Athletic Center, Loretto, Pennsylvania": DEGOL_ARENA,
     "RAC Arena, Baltimore, Maryland": RETRIEVER_ACTIVITIES_CENTER,
-    "Alfond Arena, Orono, Maine": SportsballGeocodeTuple(
-        city="Orono",
-        state="ME",
-        postal="04473",
-        lat=44.904539,
-        lng=-68.673617,
-        housenumber="",
-        country="USA",
-    ),
     "The Milk House, Lake Buena Vista, Florida": ESPN_WIDE_WORLD_OF_SPORTS_COMPLEX,
     "Sullivan Arena, Anchorage, Alaska": SportsballGeocodeTuple(
         city="Anchorage",
@@ -13333,7 +13202,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="2010",
         country="USA",
     ),
-    "San Jose Arena, San Jose, California": SAP_CENTER,
     "Orlando Arena, Orlando, Florida": ORLANDO_ARENA,
     "Reno, NV, USA": RENO,
     "Larkspur, CA, USA": SportsballGeocodeTuple(
@@ -15891,7 +15759,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Legion Field - Birmingham, Alabama, USA - United States": LEGION_FIELD,
     "Bell Centre, Montreal, QC, Canada": BELL_CENTRE,
     "Newark, New Jersey, United States": NEWARK,
     "Trask Coliseum - Wilmington, North Carolina - United States": TRACK_COLISEUM,
@@ -19066,7 +18933,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Canada",
     ),
-    "SAP Center, San Jose, CA, USA": SAP_CENTER,
     "T-Mobile Arena": T_MOBILE_ARENA,
     "Commonwealth Stadium - Edmonton, AB - Canada": COMMONWEALTH_STADIUM,
     "Enterprise Center": ENTERPRISE_CENTER,
@@ -19279,7 +19145,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "T-Mobile Park, Seattle, WA, USA": T_MOBILE_PARK,
-    "Chase Field": CHASE_FIELD,
     "UBS Arena, Elmont, NY, USA": UBS_ARENA,
     "Canadian Tire Centre": CANADIAN_TIRE_CENTER,
     "Dodger Stadium, Los Angeles, CA, USA": DODGER_STADIUM,
@@ -19630,7 +19495,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Chase Field, Phoenix, AZ, USA": CHASE_FIELD,
     "Baylor University": SportsballGeocodeTuple(
         city="Waco",
         state="TX",
@@ -19883,7 +19747,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "SAP Center at San Jose": SAP_CENTER,
     "Citizens Bank Park": CITIZENS_BANK_PARK,
     "DePaul University": SportsballGeocodeTuple(
         city="Chicago",
@@ -20316,7 +20179,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Pinnacle Bank Arena - Lincoln, Nebraska - United States": PINNACLE_BANK_ARENA,
     "Fertitta Center - Houston, Texas - United States": FERTITTA_CENTER,
-    "Sam Boyd Stadium": SAM_BOYD_STADIUM,
     "State Farm Center - Champaign, Illinois - United States": STATE_FARM_CENTER,
     "Lubumbashi, Democratic Republic of the Congo": SportsballGeocodeTuple(
         city="Lubumbashi",

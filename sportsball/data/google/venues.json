@@ -4519,6 +4519,206 @@
             "housenumber": "1022",
             "country": "USA",
             "type": "venue"
+        },
+        "038a0f0f-d39b-4017-bbc3-1cf85ac2f6cc": {
+            "city": "",
+            "state": "",
+            "postal": "",
+            "lat": 47.0,
+            "lng": 2.0,
+            "housenumber": "",
+            "country": "France",
+            "type": "country"
+        },
+        "bab782cb-1d49-41a2-b3d0-c210c321dc6d": {
+            "city": "",
+            "state": "",
+            "postal": "",
+            "lat": 43.0,
+            "lng": 12.0,
+            "housenumber": "",
+            "country": "Italy",
+            "type": "country"
+        },
+        "31f69f62-5c09-4d7f-82f9-40ec93c6e652": {
+            "city": "Kansas City",
+            "state": "MO",
+            "postal": "",
+            "lat": 39.099722,
+            "lng": -94.578333,
+            "housenumber": "",
+            "country": "USA",
+            "type": "city"
+        },
+        "28d0ba05-1a9c-405b-af54-8ec8b00576c5": {
+            "city": "Frisco",
+            "state": "TX",
+            "postal": "75033",
+            "lat": 33.154444,
+            "lng": -96.835278,
+            "housenumber": "9200",
+            "country": "USA",
+            "type": "venue"
+        },
+        "d886c1f3-0749-40ad-ad41-7c877988a2bc": {
+            "city": "London",
+            "state": "",
+            "postal": "",
+            "lat": 51.603333,
+            "lng": -0.065833,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "59a4d697-b2f5-4bfd-8489-287029cc2f9a": {
+            "city": "Phoenix",
+            "state": "AZ",
+            "postal": "85004",
+            "lat": 33.445278,
+            "lng": -112.066944,
+            "housenumber": "401",
+            "country": "USA",
+            "type": "venue"
+        },
+        "53a1254e-f2bb-4b22-ba9e-88ae37df188b": {
+            "city": "Munich",
+            "state": "",
+            "postal": "80809",
+            "lat": 48.173056,
+            "lng": 11.546667,
+            "housenumber": "25",
+            "country": "Germany",
+            "type": "venue"
+        },
+        "b3a814ad-ba69-437b-8359-4ede88748cf4": {
+            "city": "Nassau",
+            "state": "",
+            "postal": "",
+            "lat": 25.054381,
+            "lng": -77.360217,
+            "housenumber": "",
+            "country": "Bahamas",
+            "type": "venue"
+        },
+        "d6ef30a7-b077-4cc3-9d0b-eba86154ff7f": {
+            "city": "Dharamshala",
+            "state": "Himachal Pradesh",
+            "postal": "",
+            "lat": 32.197672,
+            "lng": 76.325997,
+            "housenumber": "",
+            "country": "India",
+            "type": "venue"
+        },
+        "c34715d4-1972-4bce-b34b-146b3b868725": {
+            "city": "Shreveport",
+            "state": "LA",
+            "postal": "71109",
+            "lat": 32.475556,
+            "lng": -93.791944,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "60537135-52ca-4e28-a754-9a88adb00b9d": {
+            "city": "Tallahassee",
+            "state": "FL",
+            "postal": "",
+            "lat": 30.438333,
+            "lng": -84.280556,
+            "housenumber": "",
+            "country": "USA",
+            "type": "city"
+        },
+        "bca9659a-aa50-43c2-8fc2-41ec9531ad0c": {
+            "city": "Saint-Cloud",
+            "state": "",
+            "postal": "",
+            "lat": 48.84,
+            "lng": 2.22,
+            "housenumber": "",
+            "country": "France",
+            "type": "city"
+        },
+        "e61a0da6-967d-4130-8c77-906cc7aa34aa": {
+            "city": "Lawrence",
+            "state": "KS",
+            "postal": "66044",
+            "lat": 38.963333,
+            "lng": -95.246389,
+            "housenumber": "1101",
+            "country": "USA",
+            "type": "venue"
+        },
+        "5bbe1666-bbe4-43ce-9ea4-659f7afedae0": {
+            "city": "Portland",
+            "state": "OR",
+            "postal": "97205",
+            "lat": 45.521389,
+            "lng": -122.691667,
+            "housenumber": "1844",
+            "country": "USA",
+            "type": "venue"
+        },
+        "94a7d741-02cb-411c-8c7b-3f805112823e": {
+            "city": "Orono",
+            "state": "ME",
+            "postal": "04473",
+            "lat": 44.904539,
+            "lng": -68.673617,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "2afc0605-d065-4f51-a6c0-9531a904da18": {
+            "city": "Orlando",
+            "state": "FL",
+            "postal": "32805",
+            "lat": 28.5411,
+            "lng": -81.3893,
+            "housenumber": "655",
+            "country": "USA",
+            "type": "venue"
+        },
+        "2b107db0-46c7-416f-a851-966794ab6c98": {
+            "city": "Anderson",
+            "state": "SC",
+            "postal": "",
+            "lat": 34.515,
+            "lng": -82.64,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "c5207766-0d7b-48d4-b947-bc104a63f483": {
+            "city": "Birmingham",
+            "state": "AL",
+            "postal": "35204",
+            "lat": 33.511389,
+            "lng": -86.842778,
+            "housenumber": "400",
+            "country": "USA",
+            "type": "venue"
+        },
+        "e18d34a1-472b-4dcf-aab4-7e67457d7d86": {
+            "city": "San Jose",
+            "state": "CA",
+            "postal": "",
+            "lat": 37.332778,
+            "lng": -121.901111,
+            "housenumber": "525",
+            "country": "USA",
+            "type": "venue"
+        },
+        "a57dd4aa-8c93-486d-b824-18a782cb83f6": {
+            "city": "Las Vegas",
+            "state": "NV",
+            "postal": "89122",
+            "lat": 36.086,
+            "lng": -115.017,
+            "housenumber": "7000",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -5453,6 +5653,37 @@
         "USAir Arena": "a2eaa85f-445d-43d9-9aa0-b375d73f176a",
         "US Airways Arena, Landover, Maryland": "a2eaa85f-445d-43d9-9aa0-b375d73f176a",
         "Capital Centre, Landover, Maryland": "a2eaa85f-445d-43d9-9aa0-b375d73f176a",
-        "Cramton Bowl - Montgomery - AL - 36107": "53726044-0bc2-4c51-9744-fc5d5d8d3bd0"
+        "Cramton Bowl - Montgomery - AL - 36107": "53726044-0bc2-4c51-9744-fc5d5d8d3bd0",
+        "FRA": "038a0f0f-d39b-4017-bbc3-1cf85ac2f6cc",
+        "ITA": "bab782cb-1d49-41a2-b3d0-c210c321dc6d",
+        "Kansas City, Missouri, United States": "31f69f62-5c09-4d7f-82f9-40ec93c6e652",
+        "Kansas City, Missouri": "31f69f62-5c09-4d7f-82f9-40ec93c6e652",
+        "Toyota Stadium - Frisco - TX - 75033": "28d0ba05-1a9c-405b-af54-8ec8b00576c5",
+        "Toyota Stadium, Frisco, TX, USA": "28d0ba05-1a9c-405b-af54-8ec8b00576c5",
+        "White Hart Lane, London, England": "d886c1f3-0749-40ad-ad41-7c877988a2bc",
+        "Chase Field - Phoenix - AZ - 85004": "59a4d697-b2f5-4bfd-8489-287029cc2f9a",
+        "Chase Field": "59a4d697-b2f5-4bfd-8489-287029cc2f9a",
+        "Chase Field, Phoenix, AZ, USA": "59a4d697-b2f5-4bfd-8489-287029cc2f9a",
+        "Olympiastadion München - Munich - Germany": "53a1254e-f2bb-4b22-ba9e-88ae37df188b",
+        "Thomas A. Robinson National Stadium - Nassau": "b3a814ad-ba69-437b-8359-4ede88748cf4",
+        "HPCA Stadium, Dharmashala, India": "d6ef30a7-b077-4cc3-9d0b-eba86154ff7f",
+        "Independence Stadium - Shreveport - LA - 71109": "c34715d4-1972-4bce-b34b-146b3b868725",
+        "Tallahassee, FL, US": "60537135-52ca-4e28-a754-9a88adb00b9d",
+        "Tallahassee, Florida": "60537135-52ca-4e28-a754-9a88adb00b9d",
+        "Saint-Cloud, France": "bca9659a-aa50-43c2-8fc2-41ec9531ad0c",
+        "David Booth Kansas Memorial Stadium - Lawrence - KS - 66044": "e61a0da6-967d-4130-8c77-906cc7aa34aa",
+        "Providence Park - Portland - OR - 97205": "5bbe1666-bbe4-43ce-9ea4-659f7afedae0",
+        "Alfond Stadium": "94a7d741-02cb-411c-8c7b-3f805112823e",
+        "Alfond Arena, Orono, Maine": "94a7d741-02cb-411c-8c7b-3f805112823e",
+        "Inter&Co Stadium - Orlando - FL - 32805": "2afc0605-d065-4f51-a6c0-9531a904da18",
+        "Anderson (SC) College": "2b107db0-46c7-416f-a851-966794ab6c98",
+        "Legion Field (AL) - Birmingham - AL - 35204": "c5207766-0d7b-48d4-b947-bc104a63f483",
+        "Legion Field - Birmingham, Alabama, USA - United States": "c5207766-0d7b-48d4-b947-bc104a63f483",
+        "San Jose Arena": "e18d34a1-472b-4dcf-aab4-7e67457d7d86",
+        "San Jose Arena, San Jose, California": "e18d34a1-472b-4dcf-aab4-7e67457d7d86",
+        "SAP Center, San Jose, CA, USA": "e18d34a1-472b-4dcf-aab4-7e67457d7d86",
+        "SAP Center at San Jose": "e18d34a1-472b-4dcf-aab4-7e67457d7d86",
+        "Sam Boyd Stadium - Las Vegas - NV - 89122": "a57dd4aa-8c93-486d-b824-18a782cb83f6",
+        "Sam Boyd Stadium": "a57dd4aa-8c93-486d-b824-18a782cb83f6"
     }
 }
