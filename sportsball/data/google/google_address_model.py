@@ -2290,15 +2290,6 @@ BELL_CENTRE = SportsballGeocodeTuple(
     housenumber="1909",
     country="CA",
 )
-CROKE_PARK = SportsballGeocodeTuple(
-    city="Dublin",
-    state="",
-    postal="D03 P6K7",
-    lat=53.3609,
-    lng=-6.2519,
-    housenumber="",
-    country="Ireland",
-)
 MADISON = SportsballGeocodeTuple(
     city="Madison",
     state="WI",
@@ -3100,15 +3091,6 @@ BIRMINGHAM = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-HONDA_CENTER = SportsballGeocodeTuple(
-    city="Anaheim",
-    state="CA",
-    postal="",
-    lat=33.807778,
-    lng=-117.876667,
-    housenumber="2695",
-    country="USA",
-)
 PROGRESSIVE_FIELD = SportsballGeocodeTuple(
     city="Cleveland",
     state="OH",
@@ -3559,15 +3541,6 @@ AMERICAN_BANK_CENTER = SportsballGeocodeTuple(
     housenumber="1901",
     country="USA",
 )
-HUGHES_STADIUM = SportsballGeocodeTuple(
-    city="Fort Collins",
-    state="CO",
-    postal="80526",
-    lat=40.562,
-    lng=-105.142,
-    housenumber="",
-    country="USA",
-)
 COMMONWEALTH_STADIUM = SportsballGeocodeTuple(
     city="Edmonton",
     state="AB",
@@ -3584,15 +3557,6 @@ DON_HASKINS_CENTER = SportsballGeocodeTuple(
     lat=31.777608,
     lng=-106.505718,
     housenumber="151",
-    country="USA",
-)
-FLOYD_CASEY_STADIUM = SportsballGeocodeTuple(
-    city="Waco",
-    state="TX",
-    postal="76798",
-    lat=31.531342,
-    lng=-97.148731,
-    housenumber="3088",
     country="USA",
 )
 MATTHEWS_ARENA = SportsballGeocodeTuple(
@@ -3614,18 +3578,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Hughes Stadium (CO) - Fort Collins - CO - 80526": HUGHES_STADIUM,
-    "Rate Field - Chicago - IL - 60616": SportsballGeocodeTuple(
-        city="Chicago",
-        state="IL",
-        postal="60616",
-        lat=41.83,
-        lng=-87.633889,
-        housenumber="333",
-        country="USA",
-    ),
-    "Croke Park Stadium - Dublin": CROKE_PARK,
-    "Floyd Casey Stadium - Waco - TX - 76798": FLOYD_CASEY_STADIUM,
     'William "Dick" Price Stadium - Norfolk - VA - 23504': SportsballGeocodeTuple(
         city="Norfolk",
         state="VA",
@@ -10002,7 +9954,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="2240",
         country="USA",
     ),
-    "Honda Center, Anaheim, California": HONDA_CENTER,
     "NJIT Wellness and Events Center, Newark, New Jersey": WELLNESS_AND_EVENTS_CENTER,
     "McGrath-Phillips Arena, Chicago, Illinois": SportsballGeocodeTuple(
         city="Chicago",
@@ -12948,7 +12899,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Croke Park - Dublin": CROKE_PARK,
     "Pittsburg, CA, USA": SportsballGeocodeTuple(
         city="Pittsburg",
         state="CA",
@@ -19666,7 +19616,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Honda Center, Anaheim, CA, USA": HONDA_CENTER,
     "Progressive Field": PROGRESSIVE_FIELD,
     "Nationwide Arena": NATIONWIDE_ARENA,
     "Coors Field": COORS_FIELD,
@@ -19831,7 +19780,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Honda Center": HONDA_CENTER,
     "Steinbrenner Field": STEINBRENNER_FIELD,
     "Miami University": SportsballGeocodeTuple(
         city="Oxford",
@@ -20130,7 +20078,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Rupp Arena - Lexington, Kentucky - United States": RUPP_ARENA,
-    "Croke Park - Dublin - Ireland": CROKE_PARK,
     "PNC Arena": PNC_ARENA,
     "Watsco Center - Miami–Orlando, United States - United States": WATSO_CENTER,
     "Breslin Student Events Center - East Lansing, Michigan - United States": BRESLIN_EVENTS_CENTER,
@@ -20373,7 +20320,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Sonny Lubick Field at Hughes Stadium": HUGHES_STADIUM,
     "Commonwealth Stadium": COMMONWEALTH_STADIUM,
     "Portland State University": SportsballGeocodeTuple(
         city="Portland",
@@ -20504,7 +20450,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Conte Forum - Chestnut Hill, MA - United States": SILVIO_O_CONTE_FORUM,
-    "Floyd Casey Stadium": FLOYD_CASEY_STADIUM,
     "Nicholls College": SportsballGeocodeTuple(
         city="Dudley",
         state="MA",

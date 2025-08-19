@@ -110,7 +110,6 @@ def _create_tennisabstract_game_model(
                 dfs = pd.read_html(handle)
                 for df in dfs:
                     cols = set(df.columns.values.tolist())
-                    logging.warning(cols)
                     found_total = False
                     for val in df[df.columns.values.tolist()[0]]:
                         if isinstance(val, str) and "Total" in val:
