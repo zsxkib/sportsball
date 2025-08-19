@@ -4719,6 +4719,26 @@
             "housenumber": "7000",
             "country": "USA",
             "type": "venue"
+        },
+        "3d5506d1-33e3-459b-8ec6-2230ffb17887": {
+            "city": "Flushing",
+            "state": "NY",
+            "postal": "",
+            "lat": 40.749889,
+            "lng": -73.847028,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "771c8e2b-72f6-41eb-bd2e-5edb49030e61": {
+            "city": "Buies Creek",
+            "state": "NC",
+            "postal": "27546",
+            "lat": 35.4046,
+            "lng": -78.7427,
+            "housenumber": "558",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -5684,6 +5704,8 @@
         "SAP Center, San Jose, CA, USA": "e18d34a1-472b-4dcf-aab4-7e67457d7d86",
         "SAP Center at San Jose": "e18d34a1-472b-4dcf-aab4-7e67457d7d86",
         "Sam Boyd Stadium - Las Vegas - NV - 89122": "a57dd4aa-8c93-486d-b824-18a782cb83f6",
-        "Sam Boyd Stadium": "a57dd4aa-8c93-486d-b824-18a782cb83f6"
+        "Sam Boyd Stadium": "a57dd4aa-8c93-486d-b824-18a782cb83f6",
+        "Arthur Ashe Stadium, New York, NY, USA": "3d5506d1-33e3-459b-8ec6-2230ffb17887",
+        "Barker-Lane Stadium - Buies Creek - NC - 27546": "771c8e2b-72f6-41eb-bd2e-5edb49030e61"
     }
 }

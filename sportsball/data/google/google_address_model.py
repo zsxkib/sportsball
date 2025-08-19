@@ -3614,15 +3614,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Barker-Lane Stadium - Buies Creek - NC - 27546": SportsballGeocodeTuple(
-        city="Buies Creek",
-        state="NC",
-        postal="27546",
-        lat=35.4046,
-        lng=-78.7427,
-        housenumber="558",
-        country="USA",
-    ),
     "Hughes Stadium (CO) - Fort Collins - CO - 80526": HUGHES_STADIUM,
     "Rate Field - Chicago - IL - 60616": SportsballGeocodeTuple(
         city="Chicago",
