@@ -256,15 +256,6 @@ BRADLEY_CENTER = SportsballGeocodeTuple(
     housenumber="1001",
     country="USA",
 )
-THE_PIT = SportsballGeocodeTuple(
-    city="Albuquerque",
-    state="NM",
-    postal="",
-    lat=35.067,
-    lng=-106.632,
-    housenumber="",
-    country="USA",
-)
 JOHN_GLASER_ARENA = SportsballGeocodeTuple(
     city="Philadelphia",
     state="PA",
@@ -3343,15 +3334,6 @@ TOKYO_DOME = SportsballGeocodeTuple(
     housenumber="3",
     country="Japan",
 )
-SAVE_MART_CENTER = SportsballGeocodeTuple(
-    city="Fresno",
-    state="CA",
-    postal="",
-    lat=36.809722,
-    lng=-119.738611,
-    housenumber="2650",
-    country="USA",
-)
 FORD_CENTER = SportsballGeocodeTuple(
     city="Evansville",
     state="IN",
@@ -3506,8 +3488,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Save Mart Center, Fresno, California": SAVE_MART_CENTER,
-    "The Pit, Albuquerque, New Mexico": THE_PIT,
     "Gill Coliseum, Corvallis, Oregon": SportsballGeocodeTuple(
         city="Corvallis",
         state="OR",
@@ -6046,7 +6026,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Air Canada Centre, Toronto, Canada": SCOTIABANK_ARENA,
     "BMO Harris Bradley Center, Milwaukee, Wisconsin": BRADLEY_CENTER,
     "Philips Arena, Atlanta, Georgia": STATE_FARM_ARENA,
-    "Dreamstyle Arena, Albuquerque, New Mexico": THE_PIT,
     "Tom Gola Arena, Philadelphia, Pennsylvania": JOHN_GLASER_ARENA,
     "Texas A&M–Commerce Field House, Commerce, Texas": TEXAS_AM_COMMERCE_FIELD_HOUSE,
     "Detroit, Michigan": DETROIT,
@@ -10553,7 +10532,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "The Pit/Bob King Court, Albuquerque, New Mexico": THE_PIT,
     "UTPA Fieldhouse, Edinburg, Texas": UTRGV_FIELDHOUSE,
     "Rabobank Arena, Bakersfield, California": SportsballGeocodeTuple(
         city="Bakersfield",
@@ -14441,7 +14419,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "University Arena, Albuquerque, New Mexico": THE_PIT,
     "Long Beach Arena": LONG_BEACH_ARENA,
     "Las Vegas Convention Center": SportsballGeocodeTuple(
         city="Las Vegas",
@@ -20088,7 +20065,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Tokyo Dome": TOKYO_DOME,
-    "Save Mart Center - Fresno, California - United States": SAVE_MART_CENTER,
     "Ford Center - Evansville, Indiana - United States": FORD_CENTER,
     "College Park Center - Arlington, Texas - United States": COLLEGE_PARK_CENTER,
     "KeyArena - Seattle, Washington - United States": CLIMATE_PLEDGE_ARENA,

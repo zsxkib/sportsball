@@ -5069,6 +5069,46 @@
             "housenumber": "301",
             "country": "USA",
             "type": "venue"
+        },
+        "2b04d352-0e5a-474c-b5a5-558d7e8a174a": {
+            "city": "",
+            "state": "",
+            "postal": "",
+            "lat": 56.0,
+            "lng": 10.0,
+            "housenumber": "",
+            "country": "Denmark",
+            "type": "country"
+        },
+        "b33be184-7836-4c39-82e1-a8d6b8e3e91c": {
+            "city": "Fresno",
+            "state": "CA",
+            "postal": "",
+            "lat": 36.809722,
+            "lng": -119.738611,
+            "housenumber": "2650",
+            "country": "USA",
+            "type": "venue"
+        },
+        "c360e461-1716-4b4d-99b0-77f9c27d7a56": {
+            "city": "Miami",
+            "state": "FL",
+            "postal": "33175",
+            "lat": 25.7525,
+            "lng": -80.377778,
+            "housenumber": "11310",
+            "country": "USA",
+            "type": "venue"
+        },
+        "c90ad948-ab00-47dd-8648-ad2b5a264342": {
+            "city": "Albuquerque",
+            "state": "NM",
+            "postal": "",
+            "lat": 35.067,
+            "lng": -106.632,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -6103,6 +6143,14 @@
         "MECCA Arena, Milwaukee, Wisconsin": "57b80240-7828-4e60-a0c9-f8176bfc1f7b",
         "UWM Panther Arena - Milwaukee, Wisconsin - United States": "57b80240-7828-4e60-a0c9-f8176bfc1f7b",
         "CZE": "e726b0f0-e8f8-40db-9124-33bfb1fa2346",
-        "Pauley Pavilion, Los Angeles, California": "28fa9429-ad14-47f1-8002-39a2bb2e1524"
+        "Pauley Pavilion, Los Angeles, California": "28fa9429-ad14-47f1-8002-39a2bb2e1524",
+        "DEN": "2b04d352-0e5a-474c-b5a5-558d7e8a174a",
+        "Save Mart Center, Fresno, California": "b33be184-7836-4c39-82e1-a8d6b8e3e91c",
+        "Save Mart Center - Fresno, California - United States": "b33be184-7836-4c39-82e1-a8d6b8e3e91c",
+        "FIU Stadium": "c360e461-1716-4b4d-99b0-77f9c27d7a56",
+        "The Pit, Albuquerque, New Mexico": "c90ad948-ab00-47dd-8648-ad2b5a264342",
+        "Dreamstyle Arena, Albuquerque, New Mexico": "c90ad948-ab00-47dd-8648-ad2b5a264342",
+        "The Pit/Bob King Court, Albuquerque, New Mexico": "c90ad948-ab00-47dd-8648-ad2b5a264342",
+        "University Arena, Albuquerque, New Mexico": "c90ad948-ab00-47dd-8648-ad2b5a264342"
     }
 }
