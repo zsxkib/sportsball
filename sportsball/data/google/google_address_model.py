@@ -634,15 +634,6 @@ SPECTRUM_CENTRE = SportsballGeocodeTuple(
     housenumber="333",
     country="USA",
 )
-CAPITAL_ONE_ARENA = SportsballGeocodeTuple(
-    city="Washington",
-    state="DC",
-    postal="",
-    lat=38.898056,
-    lng=-77.020833,
-    housenumber="601",
-    country="USA",
-)
 LITTLE_CAESARS_ARENA = SportsballGeocodeTuple(
     city="Detroit",
     state="MI",
@@ -3569,7 +3560,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Capital One Arena, Washington, District of Columbia": CAPITAL_ONE_ARENA,
     "Stan Sheriff Center, Honolulu, Hawaii": STAN_SHERIFF_CENTER,
     "Value City Arena, Columbus, Ohio": VALUE_CITY_ARENA,
     "James A. Rhodes Arena, Akron, Ohio": SportsballGeocodeTuple(
@@ -6775,7 +6765,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "TD Garden, Boston, MA, USA": TD_GARDEN,
     "Spectrum Center, Charlotte, NC, USA": SPECTRUM_CENTRE,
-    "Capital One Arena, Washington, DC, USA": CAPITAL_ONE_ARENA,
     "State Farm Arena, Atlanta, GA, USA": STATE_FARM_ARENA,
     "Little Caesars Arena, Detroit, MI, USA": LITTLE_CAESARS_ARENA,
     "Paycom Center, Oklahoma, OK, USA": PAYCOM_CENTRE,
@@ -6820,7 +6809,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Frost Bank Center - San Antonio, Texas - United States": FROST_BANK_CENTER,
     "Moda Center - Portland, Oregon - United States": MODA_CENTER,
     "BOK Center - Tulsa, Oklahoma - United States": BOK_CENTER,
-    "Capital One Arena - Washington DC, USA - United States": CAPITAL_ONE_ARENA,
     "The Palace of Auburn Hills, Auburn Hills, MI, USA": THE_PALACE_OF_AUBURN_HILLS,
     "BMO Harris Bradley Center, Milwaukee, WI, USA": BRADLEY_CENTER,
     "State Farm Field House, Orlando, FL, USA": STATE_FARM_FIELDHOUSE,
@@ -6866,7 +6854,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Verizon Center, Washington, District of Columbia": CAPITAL_ONE_ARENA,
     "The Palace of Auburn Hills, Auburn Hills, Michigan": THE_PALACE_OF_AUBURN_HILLS,
     "Wells Fargo Arena, Des Moines, Iowa": SportsballGeocodeTuple(
         city="Des Moines",
@@ -7717,7 +7704,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "America West Arena, Phoenix, Arizona": AMERICA_WEST_ARENA,
     "SBC Center, San Antonio, Texas": FROST_BANK_CENTER,
     "Gund Arena, Cleveland, Ohio": ROCKET_MORTGAGE_FIELDHOUSE,
-    "MCI Center, Washington, District of Columbia": CAPITAL_ONE_ARENA,
     "TD Waterhouse Centre, Orlando, Florida": ORLANDO_ARENA,
     "LLoyd Noble Center, Norman, Oklahoma": LLOYD_NOBLE_CENTER,
     "Pete Maravich Assembly Center, Baton Rouge, Louisiana": PETE_MARAVICH_ASSEMBLY_CENTER,
@@ -18816,7 +18802,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "PPG Paints Arena, Pittsburgh, PA, USA": PPG_PAINTS_ARENA,
-    "Capital One Arena": CAPITAL_ONE_ARENA,
     "Nevada": SportsballGeocodeTuple(
         city="",
         state="NV",

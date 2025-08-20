@@ -4889,6 +4889,26 @@
             "housenumber": "3874",
             "country": "USA",
             "type": "venue"
+        },
+        "91c6a095-4ea1-4e1b-86a9-82e8eb2598b0": {
+            "city": "Toronto",
+            "state": "ON",
+            "postal": "",
+            "lat": 43.771556,
+            "lng": -79.512056,
+            "housenumber": "1",
+            "country": "Canada",
+            "type": "venue"
+        },
+        "70757220-6101-48ad-b62d-158fc295cf51": {
+            "city": "Washington",
+            "state": "DC",
+            "postal": "",
+            "lat": 38.898056,
+            "lng": -77.020833,
+            "housenumber": "601",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -5880,6 +5900,13 @@
         "Superior Dome - Marquette - MI - 49855": "5ed7d7da-b327-4a8a-8c7c-c3a3806a4d34",
         "COL": "0ae379ea-30da-4b98-99cd-c806653f7aa0",
         "Robertson Stadium - Houston - TX - 77004": "c3184a23-a15c-4b8f-b4b7-3067079c27e7",
-        "Robertson Stadium": "c3184a23-a15c-4b8f-b4b7-3067079c27e7"
+        "Robertson Stadium": "c3184a23-a15c-4b8f-b4b7-3067079c27e7",
+        "Canada Masters": "91c6a095-4ea1-4e1b-86a9-82e8eb2598b0",
+        "Capital One Arena, Washington, District of Columbia": "70757220-6101-48ad-b62d-158fc295cf51",
+        "Capital One Arena, Washington, DC, USA": "70757220-6101-48ad-b62d-158fc295cf51",
+        "Capital One Arena - Washington DC, USA - United States": "70757220-6101-48ad-b62d-158fc295cf51",
+        "Verizon Center, Washington, District of Columbia": "70757220-6101-48ad-b62d-158fc295cf51",
+        "MCI Center, Washington, District of Columbia": "70757220-6101-48ad-b62d-158fc295cf51",
+        "Capital One Arena": "70757220-6101-48ad-b62d-158fc295cf51"
     }
 }
