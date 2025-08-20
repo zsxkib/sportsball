@@ -5049,6 +5049,26 @@
             "housenumber": "400",
             "country": "USA",
             "type": "venue"
+        },
+        "e726b0f0-e8f8-40db-9124-33bfb1fa2346": {
+            "city": "",
+            "state": "",
+            "postal": "",
+            "lat": 49.75,
+            "lng": 15.5,
+            "housenumber": "",
+            "country": "Czechia",
+            "type": "country"
+        },
+        "28fa9429-ad14-47f1-8002-39a2bb2e1524": {
+            "city": "Los Angeles",
+            "state": "CA",
+            "postal": "",
+            "lat": 34.070211,
+            "lng": -118.446775,
+            "housenumber": "301",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -6081,6 +6101,8 @@
         "UW–Milwaukee Panther Arena, Milwaukee, Wisconsin": "57b80240-7828-4e60-a0c9-f8176bfc1f7b",
         "U.S. Cellular Arena, Milwaukee, Wisconsin": "57b80240-7828-4e60-a0c9-f8176bfc1f7b",
         "MECCA Arena, Milwaukee, Wisconsin": "57b80240-7828-4e60-a0c9-f8176bfc1f7b",
-        "UWM Panther Arena - Milwaukee, Wisconsin - United States": "57b80240-7828-4e60-a0c9-f8176bfc1f7b"
+        "UWM Panther Arena - Milwaukee, Wisconsin - United States": "57b80240-7828-4e60-a0c9-f8176bfc1f7b",
+        "CZE": "e726b0f0-e8f8-40db-9124-33bfb1fa2346",
+        "Pauley Pavilion, Los Angeles, California": "28fa9429-ad14-47f1-8002-39a2bb2e1524"
     }
 }

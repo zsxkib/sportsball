@@ -3506,15 +3506,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Pauley Pavilion, Los Angeles, California": SportsballGeocodeTuple(
-        city="Los Angeles",
-        state="CA",
-        postal="",
-        lat=34.070211,
-        lng=-118.446775,
-        housenumber="301",
-        country="USA",
-    ),
     "Save Mart Center, Fresno, California": SAVE_MART_CENTER,
     "The Pit, Albuquerque, New Mexico": THE_PIT,
     "Gill Coliseum, Corvallis, Oregon": SportsballGeocodeTuple(
