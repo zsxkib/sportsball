@@ -74,7 +74,7 @@ class ESPNLeagueModel(LeagueModel):
             game_number,
             self.session,
             self.league,
-            season_type_json["year"],
+            season_type_json.get("year"),
             _season_type_from_name(season_type_json["name"]),
             self.position_validator(),
         )

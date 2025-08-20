@@ -5289,6 +5289,26 @@
             "housenumber": "2641",
             "country": "USA",
             "type": "venue"
+        },
+        "fa01927c-46b0-4965-98c7-093fddb4ae38": {
+            "city": "",
+            "state": "",
+            "postal": "",
+            "lat": 54.0,
+            "lng": 2.0,
+            "housenumber": "",
+            "country": "UK",
+            "type": "country"
+        },
+        "42a2ee0c-20f8-4302-b930-3a0cca031ba4": {
+            "city": "DeLand",
+            "state": "FL",
+            "postal": "32723",
+            "lat": 29.039584,
+            "lng": -81.301819,
+            "housenumber": "143",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -6355,6 +6375,8 @@
         "Ted Constant Convocation Ctr., Norfolk, Virginia": "4ed325e0-8e30-4620-85ab-7464c0700fbd",
         "Ted Constant Convocaation Center, Norfolk, Virginia": "4ed325e0-8e30-4620-85ab-7464c0700fbd",
         "Yakutsk, Russia": "860c6102-2ca4-401f-9594-4dad2acae4a0",
-        "Yanitelli Center, Jersey City, New Jersey": "57c4fc1d-31fa-4376-9999-41650419ce73"
+        "Yanitelli Center, Jersey City, New Jersey": "57c4fc1d-31fa-4376-9999-41650419ce73",
+        "GBR": "fa01927c-46b0-4965-98c7-093fddb4ae38",
+        "Edmunds Center, DeLand, Florida": "42a2ee0c-20f8-4302-b930-3a0cca031ba4"
     }
 }

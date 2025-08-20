@@ -3452,15 +3452,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Edmunds Center, DeLand, Florida": SportsballGeocodeTuple(
-        city="DeLand",
-        state="FL",
-        postal="32723",
-        lat=29.039584,
-        lng=-81.301819,
-        housenumber="143",
-        country="USA",
-    ),
     "Pinnacle Bank Arena, Lincoln, Nebraska": PINNACLE_BANK_ARENA,
     "Welsh-Ryan Arena, Evanston, Illinois": SportsballGeocodeTuple(
         city="Evanston",
