@@ -8,8 +8,6 @@ from ...league import League
 from ..espn.epl_espn_league_model import EPLESPNLeagueModel
 from ..oddsportal.epl_oddsportal_league_model import EPLOddsPortalLeagueModel
 from ..sportsdb.epl_sportsdb_league_model import EPLSportsDBLeagueModel
-from ..sportsreference.epl_sportsreference_league_model import \
-    EPLSportsReferenceLeagueModel
 
 EPL_TEAM_IDENTITY_MAP: dict[str, str] = {}
 EPL_VENUE_IDENTITY_MAP: dict[str, str] = {}
@@ -26,8 +24,8 @@ class EPLCombinedLeagueModel(CombinedLeagueModel):
             [
                 EPLESPNLeagueModel(session, position=0),
                 EPLSportsDBLeagueModel(session, position=1),
-                EPLSportsReferenceLeagueModel(session, position=2),
-                EPLOddsPortalLeagueModel(session, position=3),
+                EPLOddsPortalLeagueModel(session, position=2),
+                # EPLSportsReferenceLeagueModel(session, position=3),
             ],
             league_filter,
         )

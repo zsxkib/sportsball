@@ -580,15 +580,6 @@ HENDERSON_CENTER = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-TED_CONSTANT_CONVOCATION_CENTER = SportsballGeocodeTuple(
-    city="Norfolk",
-    state="VA",
-    postal="",
-    lat=36.884169,
-    lng=-76.301231,
-    housenumber="4320",
-    country="USA",
-)
 STONY_BROOK_ARENA = SportsballGeocodeTuple(
     city="Stony Brook",
     state="NY",
@@ -3361,15 +3352,6 @@ INDIANA_FARMERS_COLISEUM = SportsballGeocodeTuple(
     housenumber="1202",
     country="USA",
 )
-UMBC_EVENT_CENTER = SportsballGeocodeTuple(
-    city="Baltimore",
-    state="MD",
-    postal="21250",
-    lat=39.252342,
-    lng=-76.707431,
-    housenumber="1000",
-    country="USA",
-)
 WEBSTER_BANK_ARENA = SportsballGeocodeTuple(
     city="Bridgeport",
     state="CT",
@@ -3470,26 +3452,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "FIU Arena, Miami, Florida": SportsballGeocodeTuple(
-        city="Miami",
-        state="FL",
-        postal="33199-2516",
-        lat=25.756667,
-        lng=-80.379444,
-        housenumber="11200",
-        country="USA",
-    ),
-    "UMBC Event Center, Baltimore, Maryland": UMBC_EVENT_CENTER,
-    "Ted Constant Convocation Ctr., Norfolk, Virginia": TED_CONSTANT_CONVOCATION_CENTER,
-    "Yanitelli Center, Jersey City, New Jersey": SportsballGeocodeTuple(
-        city="Jersey City",
-        state="NJ",
-        postal="07306",
-        lat=40.727648,
-        lng=-74.073173,
-        housenumber="2641",
-        country="USA",
-    ),
     "Edmunds Center, DeLand, Florida": SportsballGeocodeTuple(
         city="DeLand",
         state="FL",
@@ -6462,7 +6424,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Cam Henderson Center, Huntington, West Virginia": HENDERSON_CENTER,
-    "Ted Constant Convocaation Center, Norfolk, Virginia": TED_CONSTANT_CONVOCATION_CENTER,
     "Brooklyn, New York": SportsballGeocodeTuple(
         city="Brooklyn",
         state="NY",
@@ -20033,7 +19994,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Indiana Farmers Coliseum - Indianapolis, Indiana - United States": INDIANA_FARMERS_COLISEUM,
-    "UMBC Event Center - Catonsville, Maryland - United States": UMBC_EVENT_CENTER,
     "Webster Bank Arena - Bridgeport, Connecticut - United States": WEBSTER_BANK_ARENA,
     "Wolstein Center - Cleveland, Ohio - United States": WOLSTEIN_CENTER,
     "George Washington": SportsballGeocodeTuple(

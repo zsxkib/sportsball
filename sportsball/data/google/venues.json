@@ -5229,6 +5229,66 @@
             "housenumber": "11200",
             "country": "USA",
             "type": "venue"
+        },
+        "098382cc-446e-4e0b-9c72-ed0b31e83a50": {
+            "city": "",
+            "state": "",
+            "postal": "",
+            "lat": 52.0,
+            "lng": 6.0,
+            "housenumber": "",
+            "country": "Netherlands",
+            "type": "country"
+        },
+        "a5c125e9-d717-4b09-8d59-5a2ba428ffad": {
+            "city": "Baltimore",
+            "state": "MD",
+            "postal": "21250",
+            "lat": 39.252342,
+            "lng": -76.707431,
+            "housenumber": "1000",
+            "country": "USA",
+            "type": "venue"
+        },
+        "c04047a6-7be1-41a1-a5ba-3495b9a4e21d": {
+            "city": "Clearwater",
+            "state": "FL",
+            "postal": "",
+            "lat": 27.973611,
+            "lng": -82.764167,
+            "housenumber": "",
+            "country": "USA",
+            "type": "city"
+        },
+        "4ed325e0-8e30-4620-85ab-7464c0700fbd": {
+            "city": "Norfolk",
+            "state": "VA",
+            "postal": "",
+            "lat": 36.884169,
+            "lng": -76.301231,
+            "housenumber": "4320",
+            "country": "USA",
+            "type": "venue"
+        },
+        "860c6102-2ca4-401f-9594-4dad2acae4a0": {
+            "city": "Yakutsk",
+            "state": "",
+            "postal": "",
+            "lat": 62.03,
+            "lng": 129.73,
+            "housenumber": "",
+            "country": "Russia",
+            "type": "city"
+        },
+        "57c4fc1d-31fa-4376-9999-41650419ce73": {
+            "city": "Jersey City",
+            "state": "NJ",
+            "postal": "07306",
+            "lat": 40.727648,
+            "lng": -74.073173,
+            "housenumber": "2641",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -6287,6 +6347,14 @@
         "Case Field": "4d4dfe49-40db-42fe-aa35-0138bf20fe49",
         "Ocean Bank Convocation Center, Miami, Florida": "a654644c-4451-451f-a302-76946d691a44",
         "US Century Bank Arena, Miami, Florida": "a654644c-4451-451f-a302-76946d691a44",
-        "FIU Arena, Miami, Florida": "a654644c-4451-451f-a302-76946d691a44"
+        "FIU Arena, Miami, Florida": "a654644c-4451-451f-a302-76946d691a44",
+        "NED": "098382cc-446e-4e0b-9c72-ed0b31e83a50",
+        "UMBC Event Center, Baltimore, Maryland": "a5c125e9-d717-4b09-8d59-5a2ba428ffad",
+        "UMBC Event Center - Catonsville, Maryland - United States": "a5c125e9-d717-4b09-8d59-5a2ba428ffad",
+        "Clearwater, Florida": "c04047a6-7be1-41a1-a5ba-3495b9a4e21d",
+        "Ted Constant Convocation Ctr., Norfolk, Virginia": "4ed325e0-8e30-4620-85ab-7464c0700fbd",
+        "Ted Constant Convocaation Center, Norfolk, Virginia": "4ed325e0-8e30-4620-85ab-7464c0700fbd",
+        "Yakutsk, Russia": "860c6102-2ca4-401f-9594-4dad2acae4a0",
+        "Yanitelli Center, Jersey City, New Jersey": "57c4fc1d-31fa-4376-9999-41650419ce73"
     }
 }

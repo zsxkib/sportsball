@@ -153,7 +153,7 @@ def _create_teams(
 
 def _create_espn_game_model(
     event: dict[str, Any],
-    week: int,
+    week: int | None,
     game_number: int,
     session: requests_cache.CachedSession,
     league: League,
@@ -193,7 +193,7 @@ def _create_espn_game_model(
 @MEMORY.cache(ignore=["session"])
 def _cached_create_espn_game_model(
     event: dict[str, Any],
-    week: int,
+    week: int | None,
     game_number: int,
     session: requests_cache.CachedSession,
     league: League,
@@ -217,7 +217,7 @@ def _cached_create_espn_game_model(
 
 def create_espn_game_model(
     event: dict[str, Any],
-    week: int,
+    week: int | None,
     game_number: int,
     session: requests_cache.CachedSession,
     league: League,
