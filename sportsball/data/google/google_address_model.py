@@ -2992,15 +2992,6 @@ MONTGOMERY = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-ROBERTSON_STADIUM = SportsballGeocodeTuple(
-    city="Houston",
-    state="TX",
-    postal="77004",
-    lat=29.721944,
-    lng=-95.349167,
-    housenumber="3874",
-    country="USA",
-)
 GONZAGA = SportsballGeocodeTuple(
     city="Spokane",
     state="WA",
@@ -3578,16 +3569,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Superior Dome - Marquette - MI - 49855": SportsballGeocodeTuple(
-        city="Marquette",
-        state="MI",
-        postal="49855",
-        lat=46.56,
-        lng=-87.393611,
-        housenumber="",
-        country="USA",
-    ),
-    "Robertson Stadium - Houston - TX - 77004": ROBERTSON_STADIUM,
     "Capital One Arena, Washington, District of Columbia": CAPITAL_ONE_ARENA,
     "Stan Sheriff Center, Honolulu, Hawaii": STAN_SHERIFF_CENTER,
     "Value City Arena, Columbus, Ohio": VALUE_CITY_ARENA,
@@ -17286,7 +17267,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Robertson Stadium": ROBERTSON_STADIUM,
     "Northern Illinois College": SportsballGeocodeTuple(
         city="DeKalb",
         state="IL",

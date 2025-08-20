@@ -4869,6 +4869,26 @@
             "housenumber": "",
             "country": "USA",
             "type": "venue"
+        },
+        "0ae379ea-30da-4b98-99cd-c806653f7aa0": {
+            "city": "",
+            "state": "",
+            "postal": "",
+            "lat": 4.0,
+            "lng": -72.0,
+            "housenumber": "",
+            "country": "Colombia",
+            "type": "country"
+        },
+        "c3184a23-a15c-4b8f-b4b7-3067079c27e7": {
+            "city": "Houston",
+            "state": "TX",
+            "postal": "77004",
+            "lat": 29.721944,
+            "lng": -95.349167,
+            "housenumber": "3874",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -5857,6 +5877,9 @@
         "DeSoto, Texas, United States": "8e9bec3e-8bea-4607-8869-686cefdb009b",
         "William \"Dick\" Price Stadium - Norfolk - VA - 23504": "a2a82099-78f1-4ded-afdf-c6f97bbd4cf9",
         "Merrimack College": "acf63696-a90b-452f-bbea-e56342229be4",
-        "Superior Dome - Marquette - MI - 49855": "5ed7d7da-b327-4a8a-8c7c-c3a3806a4d34"
+        "Superior Dome - Marquette - MI - 49855": "5ed7d7da-b327-4a8a-8c7c-c3a3806a4d34",
+        "COL": "0ae379ea-30da-4b98-99cd-c806653f7aa0",
+        "Robertson Stadium - Houston - TX - 77004": "c3184a23-a15c-4b8f-b4b7-3067079c27e7",
+        "Robertson Stadium": "c3184a23-a15c-4b8f-b4b7-3067079c27e7"
     }
 }
