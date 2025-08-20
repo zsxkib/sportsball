@@ -5349,6 +5349,46 @@
             "housenumber": "2705",
             "country": "USA",
             "type": "venue"
+        },
+        "8a6bee1d-a64b-4e66-8754-69c4570ceb04": {
+            "city": "Mohali",
+            "state": "Punjab",
+            "postal": "",
+            "lat": 30.690858,
+            "lng": 76.737258,
+            "housenumber": "",
+            "country": "India",
+            "type": "venue"
+        },
+        "84fb4feb-3a67-4f25-ab23-ded5946209dd": {
+            "city": "Nashville",
+            "state": "TN",
+            "postal": "",
+            "lat": 36.168889,
+            "lng": -86.829444,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "5e83cafb-c17e-47c1-af43-beaed40f1bc4": {
+            "city": "",
+            "state": "",
+            "postal": "",
+            "lat": 48.0,
+            "lng": 68.0,
+            "housenumber": "",
+            "country": "Kazakhstan",
+            "type": "country"
+        },
+        "5805e047-d21f-4423-86ab-c68c80add435": {
+            "city": "Cookeville",
+            "state": "TN",
+            "postal": "",
+            "lat": 36.178508,
+            "lng": -85.51,
+            "housenumber": "1100",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -5794,6 +5834,7 @@
         "Rose Bowl - Hampshire - England": "ffb46c91-1180-4c2e-ac13-53fdf9812a58",
         "Rose Bowl - Pasadena - CA - 91103": "ffb46c91-1180-4c2e-ac13-53fdf9812a58",
         "Anfield, Liverpool, England": "944a4036-70e4-4337-a796-849dca453f63",
+        "Anfield - Liverpool": "944a4036-70e4-4337-a796-849dca453f63",
         "Miami Orange Bowl": "d925671c-4b94-4223-927d-360bc0fe37d6",
         "loanDepot park - Miami - FL - 33125": "d925671c-4b94-4223-927d-360bc0fe37d6",
         "LoanDepot Park, Miami, FL, USA": "d925671c-4b94-4223-927d-360bc0fe37d6",
@@ -6422,6 +6463,10 @@
         "Pinnacle Bank Arena, Lincoln, Nebraska": "b0738ea1-7fda-42c9-b216-ce6f64708095",
         "Pinnacle Bank Arena - Lincoln, Nebraska - United States": "b0738ea1-7fda-42c9-b216-ce6f64708095",
         "Kitzbuhel": "7f4c64fe-d863-4a46-8e6d-711109112e1e",
-        "Welsh-Ryan Arena, Evanston, Illinois": "06a6ff22-fb8d-43da-aa7d-ca909e7cdad2"
+        "Welsh-Ryan Arena, Evanston, Illinois": "06a6ff22-fb8d-43da-aa7d-ca909e7cdad2",
+        "Inderjit Singh Bindra Stadium, Mohali, India": "8a6bee1d-a64b-4e66-8754-69c4570ceb04",
+        "Gentry Center Complex, Nashville, Tennessee": "84fb4feb-3a67-4f25-ab23-ded5946209dd",
+        "KAZ": "5e83cafb-c17e-47c1-af43-beaed40f1bc4",
+        "Eblen Center, Cookeville, Tennessee": "5805e047-d21f-4423-86ab-c68c80add435"
     }
 }

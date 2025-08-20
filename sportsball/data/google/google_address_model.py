@@ -3443,15 +3443,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Gentry Center Complex, Nashville, Tennessee": SportsballGeocodeTuple(
-        city="Nashville",
-        state="TN",
-        postal="",
-        lat=36.168889,
-        lng=-86.829444,
-        housenumber="",
-        country="USA",
-    ),
     "Eblen Center, Cookeville, Tennessee": SportsballGeocodeTuple(
         city="Cookeville",
         state="TN",
