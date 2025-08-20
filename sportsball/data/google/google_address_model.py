@@ -3244,15 +3244,6 @@ DURHAM = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-PINNACLE_BANK_ARENA = SportsballGeocodeTuple(
-    city="Lincoln",
-    state="NE",
-    postal="",
-    lat=40.817778,
-    lng=-96.713333,
-    housenumber="400",
-    country="USA",
-)
 FERTITTA_CENTER = SportsballGeocodeTuple(
     city="Houston",
     state="TX",
@@ -3452,16 +3443,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Pinnacle Bank Arena, Lincoln, Nebraska": PINNACLE_BANK_ARENA,
-    "Welsh-Ryan Arena, Evanston, Illinois": SportsballGeocodeTuple(
-        city="Evanston",
-        state="IL",
-        postal="60201",
-        lat=42.066944,
-        lng=-87.692778,
-        housenumber="2705",
-        country="USA",
-    ),
     "Gentry Center Complex, Nashville, Tennessee": SportsballGeocodeTuple(
         city="Nashville",
         state="TN",
@@ -19830,7 +19811,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Dominican Republic",
     ),
-    "Pinnacle Bank Arena - Lincoln, Nebraska - United States": PINNACLE_BANK_ARENA,
     "Fertitta Center - Houston, Texas - United States": FERTITTA_CENTER,
     "State Farm Center - Champaign, Illinois - United States": STATE_FARM_CENTER,
     "Lubumbashi, Democratic Republic of the Congo": SportsballGeocodeTuple(

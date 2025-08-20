@@ -17,6 +17,8 @@ from .espn_game_model import create_espn_game_model
 
 
 def _season_type_from_name(name: str) -> SeasonType:
+    if "English Premier League" in name:
+        return SeasonType.REGULAR
     if name == "Regular Season":
         return SeasonType.REGULAR
     if name == "Preseason":

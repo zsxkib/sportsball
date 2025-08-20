@@ -5309,6 +5309,46 @@
             "housenumber": "143",
             "country": "USA",
             "type": "venue"
+        },
+        "95786c20-641c-46b1-bdc4-2960e367a8af": {
+            "city": "Lake Charles",
+            "state": "LA",
+            "postal": "",
+            "lat": 30.180556,
+            "lng": -93.216667,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
+        },
+        "b0738ea1-7fda-42c9-b216-ce6f64708095": {
+            "city": "Lincoln",
+            "state": "NE",
+            "postal": "",
+            "lat": 40.817778,
+            "lng": -96.713333,
+            "housenumber": "400",
+            "country": "USA",
+            "type": "venue"
+        },
+        "7f4c64fe-d863-4a46-8e6d-711109112e1e": {
+            "city": "Kitzbühel",
+            "state": "",
+            "postal": "",
+            "lat": 47.441389,
+            "lng": 12.400556,
+            "housenumber": "",
+            "country": "Austria",
+            "type": "venue"
+        },
+        "06a6ff22-fb8d-43da-aa7d-ca909e7cdad2": {
+            "city": "Evanston",
+            "state": "IL",
+            "postal": "60201",
+            "lat": 42.066944,
+            "lng": -87.692778,
+            "housenumber": "2705",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -6377,6 +6417,11 @@
         "Yakutsk, Russia": "860c6102-2ca4-401f-9594-4dad2acae4a0",
         "Yanitelli Center, Jersey City, New Jersey": "57c4fc1d-31fa-4376-9999-41650419ce73",
         "GBR": "fa01927c-46b0-4965-98c7-093fddb4ae38",
-        "Edmunds Center, DeLand, Florida": "42a2ee0c-20f8-4302-b930-3a0cca031ba4"
+        "Edmunds Center, DeLand, Florida": "42a2ee0c-20f8-4302-b930-3a0cca031ba4",
+        "McNeese College": "95786c20-641c-46b1-bdc4-2960e367a8af",
+        "Pinnacle Bank Arena, Lincoln, Nebraska": "b0738ea1-7fda-42c9-b216-ce6f64708095",
+        "Pinnacle Bank Arena - Lincoln, Nebraska - United States": "b0738ea1-7fda-42c9-b216-ce6f64708095",
+        "Kitzbuhel": "7f4c64fe-d863-4a46-8e6d-711109112e1e",
+        "Welsh-Ryan Arena, Evanston, Illinois": "06a6ff22-fb8d-43da-aa7d-ca909e7cdad2"
     }
 }
