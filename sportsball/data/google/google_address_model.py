@@ -724,15 +724,6 @@ ARCO_ARENA = SportsballGeocodeTuple(
     housenumber="1",
     country="USA",
 )
-STAN_SHERIFF_CENTER = SportsballGeocodeTuple(
-    city="Honolulu",
-    state="HI",
-    postal="96822-2312",
-    lat=21.294167,
-    lng=-157.818889,
-    housenumber="1355",
-    country="USA",
-)
 CLIMATE_PLEDGE_ARENA = SportsballGeocodeTuple(
     city="Seattle",
     state="WA",
@@ -3560,7 +3551,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Stan Sheriff Center, Honolulu, Hawaii": STAN_SHERIFF_CENTER,
     "Value City Arena, Columbus, Ohio": VALUE_CITY_ARENA,
     "James A. Rhodes Arena, Akron, Ohio": SportsballGeocodeTuple(
         city="Akron",
@@ -6797,7 +6787,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Paycom Center - Oklahoma City, Oklahoma - United States": PAYCOM_CENTRE,
     "Spectrum Center - Charlotte, North Carolina - United States": SPECTRUM_CENTRE,
     "Little Caesars Arena - Detroit, Michigan - United States": LITTLE_CAESARS_ARENA,
-    "Stan Sheriff Center - Honolulu, Hawaii - United States": STAN_SHERIFF_CENTER,
     "Kia Center - Orlando, Florida - United States": KIA_CENTER,
     "Scotiabank Arena - Toronto, Ontario - Canada": SCOTIABANK_ARENA,
     "Climate Pledge Arena - Seattle, Washington - United States": CLIMATE_PLEDGE_ARENA,
