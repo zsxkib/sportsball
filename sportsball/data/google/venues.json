@@ -4929,6 +4929,126 @@
             "housenumber": "1355",
             "country": "USA",
             "type": "venue"
+        },
+        "b0562ffc-1b44-4a06-b61c-07a4863ccc59": {
+            "city": "",
+            "state": "",
+            "postal": "",
+            "lat": 61.0,
+            "lng": 8.0,
+            "housenumber": "",
+            "country": "Norway",
+            "type": "country"
+        },
+        "17778068-75fc-4e5a-a33d-93f5d312d675": {
+            "city": "Columbus",
+            "state": "OH",
+            "postal": "",
+            "lat": 40.007511,
+            "lng": -83.025102,
+            "housenumber": "555",
+            "country": "USA",
+            "type": "venue"
+        },
+        "0f47c94a-1d60-46b9-b9e1-9d5bf47089ba": {
+            "city": "Watford",
+            "state": "",
+            "postal": "",
+            "lat": 51.649722,
+            "lng": -0.401389,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "ca4c379c-cd71-4a73-af1e-e4784c66f64c": {
+            "city": "Akron",
+            "state": "OH",
+            "postal": "44303",
+            "lat": 41.075833,
+            "lng": -81.508611,
+            "housenumber": "373",
+            "country": "USA",
+            "type": "venue"
+        },
+        "89a8419d-c213-4919-ba58-f0d53cbbf815": {
+            "city": "Barcelona",
+            "state": "Catalonia",
+            "postal": "",
+            "lat": 41.380833,
+            "lng": 2.122778,
+            "housenumber": "",
+            "country": "Spain",
+            "type": "venue"
+        },
+        "624f08ec-db1f-42fa-9ffc-19e32340e619": {
+            "city": "Green Bay",
+            "state": "WI",
+            "postal": "",
+            "lat": 44.499547,
+            "lng": -88.055049,
+            "housenumber": "820",
+            "country": "USA",
+            "type": "venue"
+        },
+        "05c7aaff-0534-4088-af9d-0d59a504a7b3": {
+            "city": "Guwahati",
+            "state": "Assam",
+            "postal": "",
+            "lat": 26.145,
+            "lng": 91.736389,
+            "housenumber": "",
+            "country": "India",
+            "type": "venue"
+        },
+        "375e4e46-cda4-49ad-87d4-eb59b7a48334": {
+            "city": "Philadelphia",
+            "state": "PA",
+            "postal": "",
+            "lat": 39.995245,
+            "lng": -75.234806,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "1d980770-144f-4275-bcf6-0e3cfc6b3b23": {
+            "city": "Charlotte",
+            "state": "NC",
+            "postal": "",
+            "lat": 35.227988,
+            "lng": -80.849011,
+            "housenumber": "324",
+            "country": "USA",
+            "type": "venue"
+        },
+        "632c915d-1f70-446a-a97e-ac5cd539a4bc": {
+            "city": "Philadelphia",
+            "state": "PA",
+            "postal": "",
+            "lat": 39.901111,
+            "lng": -75.171944,
+            "housenumber": "3601",
+            "country": "USA",
+            "type": "venue"
+        },
+        "b7be80ce-0f3c-4a6f-8d52-7aae1bdf2009": {
+            "city": "Omsk",
+            "state": "",
+            "postal": "",
+            "lat": 54.983333,
+            "lng": 73.366667,
+            "housenumber": "",
+            "country": "Russia",
+            "type": "city"
+        },
+        "57b80240-7828-4e60-a0c9-f8176bfc1f7b": {
+            "city": "Milwaukee",
+            "state": "WI",
+            "postal": "",
+            "lat": 43.042222,
+            "lng": -87.916944,
+            "housenumber": "400",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -5931,6 +6051,36 @@
         "Capital One Arena": "70757220-6101-48ad-b62d-158fc295cf51",
         "RUS": "8863ca60-3c0d-4222-9659-f98158507ad1",
         "Stan Sheriff Center, Honolulu, Hawaii": "ed184c3b-6af6-4f2f-8922-09f6a19db940",
-        "Stan Sheriff Center - Honolulu, Hawaii - United States": "ed184c3b-6af6-4f2f-8922-09f6a19db940"
+        "Stan Sheriff Center - Honolulu, Hawaii - United States": "ed184c3b-6af6-4f2f-8922-09f6a19db940",
+        "NOR": "b0562ffc-1b44-4a06-b61c-07a4863ccc59",
+        "Value City Arena, Columbus, Ohio": "17778068-75fc-4e5a-a33d-93f5d312d675",
+        "Value City Arena - Columbus, Ohio - United States": "17778068-75fc-4e5a-a33d-93f5d312d675",
+        "Vicarage Road, Watford, England": "0f47c94a-1d60-46b9-b9e1-9d5bf47089ba",
+        "James A. Rhodes Arena, Akron, Ohio": "ca4c379c-cd71-4a73-af1e-e4784c66f64c",
+        "Spotify Camp Nou - Barcelona - Spain": "89a8419d-c213-4919-ba58-f0d53cbbf815",
+        "Resch Center, Green Bay, Wisconsin": "624f08ec-db1f-42fa-9ffc-19e32340e619",
+        "Resch Center - Ashwaubenon, Wisconsin - United States": "624f08ec-db1f-42fa-9ffc-19e32340e619",
+        "Barsapara Stadium, Guwahati, India": "05c7aaff-0534-4088-af9d-0d59a504a7b3",
+        "Hagan Arena, Philadelphia, Pennsylvania": "375e4e46-cda4-49ad-87d4-eb59b7a48334",
+        "Alumni Memorial Fieldhouse, Philadelphia, Pennsylvania": "375e4e46-cda4-49ad-87d4-eb59b7a48334",
+        "BB&T Field": "1d980770-144f-4275-bcf6-0e3cfc6b3b23",
+        "Wells Fargo Center, Philadelphia, Pennsylvania": "632c915d-1f70-446a-a97e-ac5cd539a4bc",
+        "Spectrum": "632c915d-1f70-446a-a97e-ac5cd539a4bc",
+        "Wachovia Center": "632c915d-1f70-446a-a97e-ac5cd539a4bc",
+        "Wells Fargo Center, Philadelphia, PA, USA": "632c915d-1f70-446a-a97e-ac5cd539a4bc",
+        "Wells Fargo Center - Philadelphia, PA - United States": "632c915d-1f70-446a-a97e-ac5cd539a4bc",
+        "Wachovia Center, Philadelphia, Pennsylvania": "632c915d-1f70-446a-a97e-ac5cd539a4bc",
+        "First Union Center, Philadelphia, Pennsylvania": "632c915d-1f70-446a-a97e-ac5cd539a4bc",
+        "CoreStates Center, Philadelphia, Pennsylvania": "632c915d-1f70-446a-a97e-ac5cd539a4bc",
+        "CoreStates Spectrum, Philadelphia, Pennsylvania": "632c915d-1f70-446a-a97e-ac5cd539a4bc",
+        "The Spectrum, Philadelphia, Pennsylvania": "632c915d-1f70-446a-a97e-ac5cd539a4bc",
+        "Wells Fargo Center": "632c915d-1f70-446a-a97e-ac5cd539a4bc",
+        "Omsk, Russia": "b7be80ce-0f3c-4a6f-8d52-7aae1bdf2009",
+        "UW-Milwaukee Panther Arena, Milwaukee, Wisconsin": "57b80240-7828-4e60-a0c9-f8176bfc1f7b",
+        "Milwaukee Arena": "57b80240-7828-4e60-a0c9-f8176bfc1f7b",
+        "UW–Milwaukee Panther Arena, Milwaukee, Wisconsin": "57b80240-7828-4e60-a0c9-f8176bfc1f7b",
+        "U.S. Cellular Arena, Milwaukee, Wisconsin": "57b80240-7828-4e60-a0c9-f8176bfc1f7b",
+        "MECCA Arena, Milwaukee, Wisconsin": "57b80240-7828-4e60-a0c9-f8176bfc1f7b",
+        "UWM Panther Arena - Milwaukee, Wisconsin - United States": "57b80240-7828-4e60-a0c9-f8176bfc1f7b"
     }
 }
