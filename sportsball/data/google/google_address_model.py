@@ -1489,15 +1489,6 @@ HARBOR_YARD = SportsballGeocodeTuple(
     housenumber="500",
     country="USA",
 )
-OCEAN_BANK_CONVOCATION_CENTER = SportsballGeocodeTuple(
-    city="Miami",
-    state="FL",
-    postal="33199",
-    lat=25.756667,
-    lng=-80.379444,
-    housenumber="11200",
-    country="USA",
-)
 UTRGV_FIELDHOUSE = SportsballGeocodeTuple(
     city="Edinburg",
     state="TX",
@@ -3145,15 +3136,6 @@ NATIONALS_PARK = SportsballGeocodeTuple(
     housenumber="1500",
     country="USA",
 )
-LIACOURAS_CENTER = SportsballGeocodeTuple(
-    city="Philadelphia",
-    state="PA",
-    postal="",
-    lat=39.979722,
-    lng=-75.158611,
-    housenumber="1776",
-    country="USA",
-)
 ORIOLE_PARK = SportsballGeocodeTuple(
     city="Baltimore",
     state="MD",
@@ -3488,43 +3470,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Gill Coliseum, Corvallis, Oregon": SportsballGeocodeTuple(
-        city="Corvallis",
-        state="OR",
-        postal="",
-        lat=44.5613,
-        lng=-123.2805,
-        housenumber="660",
-        country="USA",
-    ),
-    "Liacouras Center, Philadelphia, Pennsylvania": LIACOURAS_CENTER,
-    "Williams Arena, Minneapolis, Minnesota": SportsballGeocodeTuple(
-        city="Minneapolis",
-        state="MN",
-        postal="55455",
-        lat=44.976944,
-        lng=-93.228333,
-        housenumber="1925",
-        country="USA",
-    ),
-    "John W. Pope Jr. Convocation Center, Buies Creek, North Carolina": SportsballGeocodeTuple(
-        city="Buies Creek",
-        state="NC",
-        postal="27506",
-        lat=35.407905,
-        lng=-78.736696,
-        housenumber="",
-        country="USA",
-    ),
-    "Bob Carpenter Center, Newark, Delaware": SportsballGeocodeTuple(
-        city="Newark",
-        state="DE",
-        postal="",
-        lat=39.660556,
-        lng=-75.748639,
-        housenumber="631",
-        country="USA",
-    ),
     "FIU Arena, Miami, Florida": SportsballGeocodeTuple(
         city="Miami",
         state="FL",
@@ -6384,7 +6329,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Ocean Bank Convocation Center, Miami, Florida": OCEAN_BANK_CONVOCATION_CENTER,
     "Island Federal Credit Union Arena, Stony Brook, New York": STONY_BROOK_ARENA,
     "Phoenix, Arizona": PHOENIX,
     "Evansville, Indiana": SportsballGeocodeTuple(
@@ -10521,7 +10465,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Harbor Yard, Bridgeport, Connecticut": HARBOR_YARD,
     "Arena at Harbor Yard, Bridgeport, Connecticut": HARBOR_YARD,
     "Alltel Pavilion at the Stuart C. Siegel Center, Richmond, Virginia": STUART_SIEGEL_CENTER,
-    "US Century Bank Arena, Miami, Florida": OCEAN_BANK_CONVOCATION_CENTER,
     "Chase Arena at Reich Family Pavilion, West Hartford, Connecticut": CHASE_FAMILY_ARENA,
     "University Center, Macon, Georgia": SportsballGeocodeTuple(
         city="Macon",
@@ -12343,15 +12286,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lng=144.963056,
         housenumber="",
         country="Australia",
-    ),
-    "Flint, Michigan, United States": SportsballGeocodeTuple(
-        city="Flint",
-        state="MI",
-        postal="",
-        lat=43.018889,
-        lng=-83.693333,
-        housenumber="",
-        country="USA",
     ),
     "Bar, Montenegro": SportsballGeocodeTuple(
         city="Bar",
@@ -19670,7 +19604,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Nationals Park": NATIONALS_PARK,
-    "Liacouras Center - North Philadelphia - United States": LIACOURAS_CENTER,
     "Fayetteville State University": SportsballGeocodeTuple(
         city="Fayetteville",
         state="NC",

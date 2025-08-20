@@ -5109,6 +5109,126 @@
             "housenumber": "",
             "country": "USA",
             "type": "venue"
+        },
+        "a4240169-e1c9-4ffd-a227-808159e7287f": {
+            "city": "Hagen",
+            "state": "North Rhine-Westphalia",
+            "postal": "",
+            "lat": 51.366667,
+            "lng": 7.483333,
+            "housenumber": "",
+            "country": "Germany",
+            "type": "city"
+        },
+        "ae4d4d17-f821-4113-b391-3e23b8e5eab0": {
+            "city": "Corvallis",
+            "state": "OR",
+            "postal": "",
+            "lat": 44.5613,
+            "lng": -123.2805,
+            "housenumber": "660",
+            "country": "USA",
+            "type": "venue"
+        },
+        "0f8e16b2-525a-4f20-b1ac-1b7a1cb8ea72": {
+            "city": "Reading",
+            "state": "",
+            "postal": "RG2 0FL",
+            "lat": 51.422222,
+            "lng": -0.982778,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "ea15b391-0790-4ce6-aaef-cb4bf52c9560": {
+            "city": "Philadelphia",
+            "state": "PA",
+            "postal": "",
+            "lat": 39.979722,
+            "lng": -75.158611,
+            "housenumber": "1776",
+            "country": "USA",
+            "type": "venue"
+        },
+        "c79f96e9-1069-4aa4-942f-e6e95fd3be3a": {
+            "city": "Seville",
+            "state": "Andalusia",
+            "postal": "",
+            "lat": 37.384,
+            "lng": -5.9705,
+            "housenumber": "",
+            "country": "Spain",
+            "type": "venue"
+        },
+        "d1ddc9fe-b251-49a3-84ca-3368e722be99": {
+            "city": "Minneapolis",
+            "state": "MN",
+            "postal": "55455",
+            "lat": 44.976944,
+            "lng": -93.228333,
+            "housenumber": "1925",
+            "country": "USA",
+            "type": "venue"
+        },
+        "2d3f5f80-84aa-4677-b330-5c2b90a3d964": {
+            "city": "Visakhapatnam",
+            "state": "Andhra Pradesh",
+            "postal": "",
+            "lat": 17.7974,
+            "lng": 83.3519,
+            "housenumber": "",
+            "country": "India",
+            "type": "venue"
+        },
+        "09dd93b9-c697-4588-9107-0e9ed150d9cb": {
+            "city": "Buies Creek",
+            "state": "NC",
+            "postal": "27506",
+            "lat": 35.407905,
+            "lng": -78.736696,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "7a2e9f3b-101c-48d6-9828-2f1d354464dc": {
+            "city": "Flint",
+            "state": "MI",
+            "postal": "",
+            "lat": 43.018889,
+            "lng": -83.693333,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "7f1bfb38-e01e-47f7-8c6c-f498d795dad9": {
+            "city": "Newark",
+            "state": "DE",
+            "postal": "",
+            "lat": 39.660556,
+            "lng": -75.748639,
+            "housenumber": "631",
+            "country": "USA",
+            "type": "venue"
+        },
+        "4d4dfe49-40db-42fe-aa35-0138bf20fe49": {
+            "city": "Milford",
+            "state": "NJ",
+            "postal": "08848",
+            "lat": 40.6103279,
+            "lng": -75.1183513,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "a654644c-4451-451f-a302-76946d691a44": {
+            "city": "Miami",
+            "state": "FL",
+            "postal": "33199",
+            "lat": 25.756667,
+            "lng": -80.379444,
+            "housenumber": "11200",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -6151,6 +6271,22 @@
         "The Pit, Albuquerque, New Mexico": "c90ad948-ab00-47dd-8648-ad2b5a264342",
         "Dreamstyle Arena, Albuquerque, New Mexico": "c90ad948-ab00-47dd-8648-ad2b5a264342",
         "The Pit/Bob King Court, Albuquerque, New Mexico": "c90ad948-ab00-47dd-8648-ad2b5a264342",
-        "University Arena, Albuquerque, New Mexico": "c90ad948-ab00-47dd-8648-ad2b5a264342"
+        "University Arena, Albuquerque, New Mexico": "c90ad948-ab00-47dd-8648-ad2b5a264342",
+        "Hagen CH": "a4240169-e1c9-4ffd-a227-808159e7287f",
+        "Gill Coliseum, Corvallis, Oregon": "ae4d4d17-f821-4113-b391-3e23b8e5eab0",
+        "Select Car Leasing Stadium, Reading, England": "0f8e16b2-525a-4f20-b1ac-1b7a1cb8ea72",
+        "Liacouras Center, Philadelphia, Pennsylvania": "ea15b391-0790-4ce6-aaef-cb4bf52c9560",
+        "Liacouras Center - North Philadelphia - United States": "ea15b391-0790-4ce6-aaef-cb4bf52c9560",
+        "Estadio Ramón Sánchez Pizjuán - Seville, Andalusia, Spain - Spain": "c79f96e9-1069-4aa4-942f-e6e95fd3be3a",
+        "Williams Arena, Minneapolis, Minnesota": "d1ddc9fe-b251-49a3-84ca-3368e722be99",
+        "Dr. Y. S. Rajasekhara Reddy ACA–VDCA Cricket Stadium, Visakhapatnam, India": "2d3f5f80-84aa-4677-b330-5c2b90a3d964",
+        "John W. Pope Jr. Convocation Center, Buies Creek, North Carolina": "09dd93b9-c697-4588-9107-0e9ed150d9cb",
+        "Flint, Michigan": "7a2e9f3b-101c-48d6-9828-2f1d354464dc",
+        "Flint, Michigan, United States": "7a2e9f3b-101c-48d6-9828-2f1d354464dc",
+        "Bob Carpenter Center, Newark, Delaware": "7f1bfb38-e01e-47f7-8c6c-f498d795dad9",
+        "Case Field": "4d4dfe49-40db-42fe-aa35-0138bf20fe49",
+        "Ocean Bank Convocation Center, Miami, Florida": "a654644c-4451-451f-a302-76946d691a44",
+        "US Century Bank Arena, Miami, Florida": "a654644c-4451-451f-a302-76946d691a44",
+        "FIU Arena, Miami, Florida": "a654644c-4451-451f-a302-76946d691a44"
     }
 }
