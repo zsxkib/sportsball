@@ -33,7 +33,7 @@ def create_espn_venue_model(
         )
     else:
         address = create_google_address_model(
-            name + " College",
+            name,
             session,
             dt,
         )
