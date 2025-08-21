@@ -5639,6 +5639,16 @@
             "housenumber": "1",
             "country": "USA",
             "type": "venue"
+        },
+        "85078a0f-1b54-43ec-88ab-cedc2eb199de": {
+            "city": "Hamburg",
+            "state": "",
+            "postal": "",
+            "lat": 53.55,
+            "lng": 10.0,
+            "housenumber": "",
+            "country": "Germany",
+            "type": "city"
         }
     },
     "searches": {
@@ -6764,6 +6774,8 @@
         "Hynes Athletics Center, New Rochelle, New York": "9e68d2e9-2082-479d-981a-9a768155e206",
         "Hynes Athletic Center, New Rochelle, New York": "9e68d2e9-2082-479d-981a-9a768155e206",
         "Nove Mesto na Morave, Czech Republic": "35c95425-9367-4019-b01c-9508b170786e",
-        "Swisher Gymnasium, Jacksonville, Florida": "7d21075f-fc23-4846-bf3a-4ddd2096d095"
+        "Swisher Gymnasium, Jacksonville, Florida": "7d21075f-fc23-4846-bf3a-4ddd2096d095",
+        "Hamburg": "85078a0f-1b54-43ec-88ab-cedc2eb199de",
+        "Hamburg, Germany": "85078a0f-1b54-43ec-88ab-cedc2eb199de"
     }
 }

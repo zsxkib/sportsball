@@ -1,6 +1,6 @@
 """ESPN league model."""
 
-# pylint: disable=too-many-locals,too-many-arguments,line-too-long,too-many-branches
+# pylint: disable=too-many-locals,too-many-arguments,line-too-long,too-many-branches,too-many-statements
 import datetime
 from typing import Any, Iterator
 from urllib.parse import urlparse
@@ -145,6 +145,7 @@ class ESPNLeagueModel(LeagueModel):
         pbar: tqdm.tqdm,
         cache_disabled: bool,
     ) -> Iterator[GameModel]:
+        found_pages = False
         if "weeks" in season_type_json:
             game_page = 1
             week_count = 0
@@ -170,14 +171,16 @@ class ESPNLeagueModel(LeagueModel):
                         week_response = self.session.get(item["$ref"])
                     week_response.raise_for_status()
                     week = week_response.json()
-                    yield from self._produce_games(
+                    for game_model in self._produce_games(
                         week, week_count, season_type_json, pbar, cache_disabled
-                    )
+                    ):
+                        yield game_model
+                        found_pages = True
                     week_count += 1
                 if game_page >= weeks["pageCount"]:
                     break
                 game_page += 1
-        else:
+        if not found_pages:
             # Lets check the scoreboards via the calendar
             o = urlparse(season_type_json["$ref"])
             path_components = o.path.split("/")
@@ -202,10 +205,13 @@ class ESPNLeagueModel(LeagueModel):
                 )
                 scoreboard_response.raise_for_status()
                 scoreboard = scoreboard_response.json()
-                declared_calendar_dates = {
-                    parse(x).date() for x in scoreboard["leagues"][0]["calendar"]
-                }
-                calendar_dates &= declared_calendar_dates
+                calendar_list = scoreboard["leagues"][0]["calendar"]
+                if calendar_list:
+                    if isinstance(calendar_list[0], str):
+                        declared_calendar_dates = {
+                            parse(x).date() for x in calendar_list
+                        }
+                        calendar_dates &= declared_calendar_dates
                 for event in scoreboard["events"]:
                     event_id = event["id"]
                     event_response = self.session.get(

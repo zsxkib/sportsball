@@ -8,6 +8,7 @@ class Position(StrEnum):
 
     GOALKEEPER = "G"
     CENTRE_DEFENDER_LEFT = "CD-L"
+    CENTRE_DEFENDER_RIGHT = "CD-R"
 
 
 _POSITIONS = {str(x): x for x in Position}
