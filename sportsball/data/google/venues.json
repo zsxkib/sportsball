@@ -5389,6 +5389,26 @@
             "housenumber": "1100",
             "country": "USA",
             "type": "venue"
+        },
+        "d7f9554a-336d-4b38-824f-4ad7189a305d": {
+            "city": "Philadelphia",
+            "state": "PA",
+            "postal": "",
+            "lat": 39.904167,
+            "lng": -75.171111,
+            "housenumber": "3601",
+            "country": "USA",
+            "type": "venue"
+        },
+        "a083127c-7698-4621-935f-5512b6eeeb71": {
+            "city": "Santa Barbara",
+            "state": "CA",
+            "postal": "",
+            "lat": 34.413792,
+            "lng": -119.851147,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -6213,6 +6233,7 @@
         "UB Stadium - Buffalo - NY - 14228": "544bec52-d49a-4981-8486-34281071413b",
         "UB Stadium - Buffalo, New York, USA - United States": "544bec52-d49a-4981-8486-34281071413b",
         "Elland Road, Leeds, England": "6c52ec40-a273-4334-ad18-94717853c7ad",
+        "Elland Road - Leeds": "6c52ec40-a273-4334-ad18-94717853c7ad",
         "Michie Stadium - West Point - NY - 10996": "1a01414b-3ff1-443f-b08c-7c78be778700",
         "Blaik Field at Michie Stadium": "1a01414b-3ff1-443f-b08c-7c78be778700",
         "Sawai Mansingh Stadium, Jaipur, India": "9d4f2bf5-3341-496f-9402-5e91d2e970e9",
@@ -6467,6 +6488,8 @@
         "Inderjit Singh Bindra Stadium, Mohali, India": "8a6bee1d-a64b-4e66-8754-69c4570ceb04",
         "Gentry Center Complex, Nashville, Tennessee": "84fb4feb-3a67-4f25-ab23-ded5946209dd",
         "KAZ": "5e83cafb-c17e-47c1-af43-beaed40f1bc4",
-        "Eblen Center, Cookeville, Tennessee": "5805e047-d21f-4423-86ab-c68c80add435"
+        "Eblen Center, Cookeville, Tennessee": "5805e047-d21f-4423-86ab-c68c80add435",
+        "CoreStates Spectrum": "d7f9554a-336d-4b38-824f-4ad7189a305d",
+        "The Thunderdome, Santa Barbara, California": "a083127c-7698-4621-935f-5512b6eeeb71"
     }
 }

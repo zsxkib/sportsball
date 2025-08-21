@@ -18,8 +18,8 @@ def create_espn_venue_model(
     version: str,
 ) -> VenueModel:
     """Create a venue model from an ESPN result."""
-    identifier = venue["id"]
     name = venue.get("fullName", venue.get("name"))
+    identifier = venue.get("id", name)
     venue_address = venue.get("address")
     address = None
     if venue_address is not None:

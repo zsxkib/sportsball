@@ -3443,24 +3443,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Eblen Center, Cookeville, Tennessee": SportsballGeocodeTuple(
-        city="Cookeville",
-        state="TN",
-        postal="",
-        lat=36.178508,
-        lng=-85.51,
-        housenumber="1100",
-        country="USA",
-    ),
-    "The Thunderdome, Santa Barbara, California": SportsballGeocodeTuple(
-        city="Santa Barbara",
-        state="CA",
-        postal="",
-        lat=34.413792,
-        lng=-119.851147,
-        housenumber="",
-        country="USA",
-    ),
     "Jenny Craig Pavillion, San Diego, California": SportsballGeocodeTuple(
         city="San Diego",
         state="CA",
