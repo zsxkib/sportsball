@@ -1930,15 +1930,6 @@ SEATTLE = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-MIAMI = SportsballGeocodeTuple(
-    city="Miami",
-    state="FL",
-    postal="",
-    lat=25.766667,
-    lng=-80.2,
-    housenumber="",
-    country="USA",
-)
 HOUSTON = SportsballGeocodeTuple(
     city="Houston",
     state="TX",
@@ -3443,15 +3434,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Physical Education Complex, Baltimore, Maryland": SportsballGeocodeTuple(
-        city="Baltimore",
-        state="MD",
-        postal="21216",
-        lat=39.315453,
-        lng=-76.657381,
-        housenumber="2500",
-        country="USA",
-    ),
     "Estelle and Zoom Fleisher Athletic Center, Newark, New Jersey": SportsballGeocodeTuple(
         city="Newark",
         state="NJ",
@@ -8094,7 +8076,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Miami, Florida": MIAMI,
     "Terre Haute, Indiana": SportsballGeocodeTuple(
         city="Terre Haute",
         state="IN",
@@ -11721,7 +11702,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Shreveport, Louisiana, United States": SHREVEPORT,
     "Seattle, Washington, United States": SEATTLE,
-    "Miami, Florida, United States": MIAMI,
     "Houston, Texas, United States": HOUSTON,
     "Milwaukee, Wisconsin, United States": MILWAUKEE,
     "Wallace, North Carolina, United States": SportsballGeocodeTuple(
@@ -13234,7 +13214,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Miami, FL, USA": MIAMI,
     "Knoxville, TN, USA": KNOXVILLE,
     "Bradenton, FL, USA": SportsballGeocodeTuple(
         city="Bradenton",
@@ -16825,7 +16804,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Miami (FL)": MIAMI,
     "Princeton, New Jersey, United States": PRINCETON,
     "University of Georgia": SportsballGeocodeTuple(
         city="Athens",
@@ -18589,7 +18567,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Miami, FL, United States": MIAMI,
     "Seattle, WA, United States": SEATTLE,
     "Kansas State": SportsballGeocodeTuple(
         city="Manhattan",

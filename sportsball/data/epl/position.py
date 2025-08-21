@@ -6,6 +6,8 @@ from enum import StrEnum
 class Position(StrEnum):
     """An enumeration over the different positions."""
 
+    GOALKEEPER = "G"
+
 
 _POSITIONS = {str(x): x for x in Position}
 

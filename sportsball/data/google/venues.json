@@ -5429,6 +5429,26 @@
             "housenumber": "5998",
             "country": "USA",
             "type": "venue"
+        },
+        "b5a19152-f1eb-4cff-b826-8087e2318eb1": {
+            "city": "Miami",
+            "state": "FL",
+            "postal": "",
+            "lat": 25.766667,
+            "lng": -80.2,
+            "housenumber": "",
+            "country": "USA",
+            "type": "city"
+        },
+        "36184641-86e4-49ed-9aec-135485fb89b4": {
+            "city": "Baltimore",
+            "state": "MD",
+            "postal": "21216",
+            "lat": 39.315453,
+            "lng": -76.657381,
+            "housenumber": "2500",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -6514,6 +6534,13 @@
         "CoreStates Spectrum": "d7f9554a-336d-4b38-824f-4ad7189a305d",
         "The Thunderdome, Santa Barbara, California": "a083127c-7698-4621-935f-5512b6eeeb71",
         "Umag": "27808d19-23e4-49a9-91e9-d8f5425e30d2",
-        "Jenny Craig Pavillion, San Diego, California": "f8539691-a13d-4b45-aa20-369b2e720e40"
+        "Jenny Craig Pavillion, San Diego, California": "f8539691-a13d-4b45-aa20-369b2e720e40",
+        "Miami, USA": "b5a19152-f1eb-4cff-b826-8087e2318eb1",
+        "Miami, Florida": "b5a19152-f1eb-4cff-b826-8087e2318eb1",
+        "Miami, Florida, United States": "b5a19152-f1eb-4cff-b826-8087e2318eb1",
+        "Miami, FL, USA": "b5a19152-f1eb-4cff-b826-8087e2318eb1",
+        "Miami (FL)": "b5a19152-f1eb-4cff-b826-8087e2318eb1",
+        "Miami, FL, United States": "b5a19152-f1eb-4cff-b826-8087e2318eb1",
+        "Physical Education Complex, Baltimore, Maryland": "36184641-86e4-49ed-9aec-135485fb89b4"
     }
 }
