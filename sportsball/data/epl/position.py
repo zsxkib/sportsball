@@ -7,6 +7,7 @@ class Position(StrEnum):
     """An enumeration over the different positions."""
 
     GOALKEEPER = "G"
+    CENTRE_DEFENDER_LEFT = "CD-L"
 
 
 _POSITIONS = {str(x): x for x in Position}

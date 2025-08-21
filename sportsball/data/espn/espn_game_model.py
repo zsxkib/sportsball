@@ -11,15 +11,19 @@ from dateutil.parser import parse
 from ...cache import MEMORY
 from ..game_model import VERSION as GAME_VERSION
 from ..game_model import GameModel, localize
+from ..google.google_news_model import create_google_news_models
 from ..league import League
 from ..odds_model import OddsModel
 from ..season_type import SeasonType
+from ..team_model import VERSION as TEAM_VERSION
 from ..team_model import TeamModel
 from ..umpire_model import UmpireModel
 from ..venue_model import VERSION as VENUE_VERSION
 from ..venue_model import VenueModel
+from ..x.x_social_model import create_x_social_model
 from .espn_bookie_model import create_espn_bookie_model
 from .espn_odds_model import MONEYLINE_KEY, create_espn_odds_model
+from .espn_player_model import create_espn_player_model
 from .espn_team_model import ID_KEY, create_espn_team_model
 from .espn_umpire_model import create_espn_umpire_model
 from .espn_venue_model import create_espn_venue_model
@@ -33,6 +37,44 @@ def _create_espn_team(
     league: League,
     positions_validator: dict[str, str],
 ) -> TeamModel:
+    if competitor["type"] == "athlete":
+        player = create_espn_player_model(
+            session=session,
+            player=competitor,
+            dt=dt,
+            positions_validator=positions_validator,
+        )
+        return TeamModel(
+            identifier=player.identifier,
+            name=player.name,
+            location=None,
+            players=[player],
+            odds=[],
+            points=int(competitor["winner"]),
+            ladder_rank=None,
+            news=create_google_news_models(player.name, session, dt, league),
+            social=create_x_social_model(player.identifier, session, dt),
+            field_goals=None,
+            coaches=[],
+            lbw=None,
+            end_dt=None,
+            runs=None,
+            wickets=None,
+            overs=None,
+            balls=None,
+            byes=None,
+            leg_byes=None,
+            wides=None,
+            no_balls=None,
+            penalties=None,
+            balls_per_over=None,
+            fours=None,
+            sixes=None,
+            catches=None,
+            catches_dropped=None,
+            version=TEAM_VERSION,
+        )
+
     team_response = session.get(competitor["team"]["$ref"])
     team_response.raise_for_status()
     team_dict = team_response.json()

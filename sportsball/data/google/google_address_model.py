@@ -778,15 +778,6 @@ PPG_PAINTS_ARENA = SportsballGeocodeTuple(
     housenumber="1001",
     country="USA",
 )
-ENTERPRISE_CENTER = SportsballGeocodeTuple(
-    city="St. Louis",
-    state="MO",
-    postal="",
-    lat=38.626667,
-    lng=-90.2025,
-    housenumber="1401",
-    country="USA",
-)
 HARRAHS_CHEROKEE_CENTER = SportsballGeocodeTuple(
     city="Asheville",
     state="NC",
@@ -3434,24 +3425,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Estelle and Zoom Fleisher Athletic Center, Newark, New Jersey": SportsballGeocodeTuple(
-        city="Newark",
-        state="NJ",
-        postal="",
-        lat=40.743125,
-        lng=-74.182161,
-        housenumber="",
-        country="USA",
-    ),
-    "SEFCU Arena, Albany, New York": SportsballGeocodeTuple(
-        city="Albany",
-        state="NY",
-        postal="12222",
-        lat=42.681667,
-        lng=-73.828333,
-        housenumber="1400",
-        country="USA",
-    ),
     "Knights Hall, Louisville, Kentucky": SportsballGeocodeTuple(
         city="Louisville",
         state="KY",
@@ -3963,15 +3936,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Donald L. Tucker Center, Tallahassee, Florida": DONALD_L_TUCKER_CENTER,
     "John Paul Jones Arena, Charlottesville, Virginia": JOHN_PAUL_JONES_ARENA,
     "Lloyd Noble Center, Norman, Oklahoma": LLOYD_NOBLE_CENTER,
-    "Brown Stadium (RI) - Providence - RI - 02906": SportsballGeocodeTuple(
-        city="Providence",
-        state="RI",
-        postal="02906",
-        lat=41.842222,
-        lng=-71.394444,
-        housenumber="400",
-        country="USA",
-    ),
     "Auburn Arena, Auburn, Alabama": SportsballGeocodeTuple(
         city="Auburn",
         state="AL",
@@ -5420,7 +5384,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Enterprise Center, St. Louis, Missouri": ENTERPRISE_CENTER,
     "MassMutual Center, Springfield, Massachusetts": SportsballGeocodeTuple(
         city="Springfield",
         state="MA",
@@ -6854,7 +6817,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Webster Bank Arena, Bridgeport, Connecticut": WEBSTER_BANK_ARENA,
-    "Scottrade Center, St. Louis, Missouri": ENTERPRISE_CENTER,
     "U.S. Cellular Center, Asheville, North Carolina": HARRAHS_CHEROKEE_CENTER,
     "Entertainment & Sports Arena, Washington, District of Columbia": CAREFIRST_ARENA,
     "St. Elizabeths East Entertainment & Sports Arena, Washington, District of Columbia": CAREFIRST_ARENA,
@@ -7477,7 +7439,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1000",
         country="USA",
     ),
-    "St. Louis Arena, St. Louis, Missouri": ENTERPRISE_CENTER,
     "Richmond Coliseum, Richmond, Virginia": SportsballGeocodeTuple(
         city="Richmond",
         state="VA",
@@ -8045,15 +8006,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lat=33.4968,
         lng=-86.8714,
         housenumber="",
-        country="USA",
-    ),
-    "Broadview Center, Albany, New York": SportsballGeocodeTuple(
-        city="Albany",
-        state="NY",
-        postal="12222",
-        lat=42.681667,
-        lng=-73.828333,
-        housenumber="1400",
         country="USA",
     ),
     "Newark, Delaware": SportsballGeocodeTuple(
@@ -15211,7 +15163,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Switzerland",
     ),
-    "Enterprise Center, St. Louis, MO, USA": ENTERPRISE_CENTER,
     "California College": SportsballGeocodeTuple(
         city="Berkeley",
         state="CA",
@@ -17218,15 +17169,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "South Florida College": SportsballGeocodeTuple(
-        city="Highlands County",
-        state="FL",
-        postal="",
-        lat=27.56909,
-        lng=-81.50958,
-        housenumber="",
-        country="USA",
-    ),
     "Arkansas College": SportsballGeocodeTuple(
         city="Fayetteville",
         state="AK",
@@ -18516,7 +18458,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "T-Mobile Arena": T_MOBILE_ARENA,
     "Commonwealth Stadium - Edmonton, AB - Canada": COMMONWEALTH_STADIUM,
-    "Enterprise Center": ENTERPRISE_CENTER,
     "Rogers Arena, Vancouver, BC, Canada": ROGERS_ARENA,
     "Nationals Park, Washington, DC, USA": NATIONALS_PARK,
     "Katy, TX, United States": SportsballGeocodeTuple(

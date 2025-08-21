@@ -5449,6 +5449,56 @@
             "housenumber": "2500",
             "country": "USA",
             "type": "venue"
+        },
+        "ef748f23-92e7-45ed-80fc-682101fee8c0": {
+            "city": "St. Louis",
+            "state": "MO",
+            "postal": "",
+            "lat": 38.626667,
+            "lng": -90.2025,
+            "housenumber": "1401",
+            "country": "USA",
+            "type": "venue"
+        },
+        "a03aa240-d29c-4c95-b1ff-a3954563ecb3": {
+            "city": "Newark",
+            "state": "NJ",
+            "postal": "",
+            "lat": 40.743125,
+            "lng": -74.182161,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "a85084a4-f2a2-4ec2-9474-3479cab022dd": {
+            "city": "Providence",
+            "state": "RI",
+            "postal": "02906",
+            "lat": 41.842222,
+            "lng": -71.394444,
+            "housenumber": "400",
+            "country": "USA",
+            "type": "venue"
+        },
+        "deff1e92-f173-4d5b-bde2-54021aef8efd": {
+            "city": "Albany",
+            "state": "NY",
+            "postal": "12222",
+            "lat": 42.681667,
+            "lng": -73.828333,
+            "housenumber": "1400",
+            "country": "USA",
+            "type": "venue"
+        },
+        "ad437163-252b-4396-a488-d97a4f922593": {
+            "city": "Highlands County",
+            "state": "FL",
+            "postal": "",
+            "lat": 27.56909,
+            "lng": -81.50958,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -6541,6 +6591,19 @@
         "Miami, FL, USA": "b5a19152-f1eb-4cff-b826-8087e2318eb1",
         "Miami (FL)": "b5a19152-f1eb-4cff-b826-8087e2318eb1",
         "Miami, FL, United States": "b5a19152-f1eb-4cff-b826-8087e2318eb1",
-        "Physical Education Complex, Baltimore, Maryland": "36184641-86e4-49ed-9aec-135485fb89b4"
+        "Physical Education Complex, Baltimore, Maryland": "36184641-86e4-49ed-9aec-135485fb89b4",
+        "Kiel Center": "ef748f23-92e7-45ed-80fc-682101fee8c0",
+        "Enterprise Center, St. Louis, Missouri": "ef748f23-92e7-45ed-80fc-682101fee8c0",
+        "Scottrade Center, St. Louis, Missouri": "ef748f23-92e7-45ed-80fc-682101fee8c0",
+        "St. Louis Arena, St. Louis, Missouri": "ef748f23-92e7-45ed-80fc-682101fee8c0",
+        "Enterprise Center, St. Louis, MO, USA": "ef748f23-92e7-45ed-80fc-682101fee8c0",
+        "Enterprise Center": "ef748f23-92e7-45ed-80fc-682101fee8c0",
+        "Estelle and Zoom Fleisher Athletic Center, Newark, New Jersey": "a03aa240-d29c-4c95-b1ff-a3954563ecb3",
+        "Brown Stadium": "a85084a4-f2a2-4ec2-9474-3479cab022dd",
+        "Brown Stadium (RI) - Providence - RI - 02906": "a85084a4-f2a2-4ec2-9474-3479cab022dd",
+        "SEFCU Arena, Albany, New York": "deff1e92-f173-4d5b-bde2-54021aef8efd",
+        "Broadview Center, Albany, New York": "deff1e92-f173-4d5b-bde2-54021aef8efd",
+        "South Florida Stars College": "ad437163-252b-4396-a488-d97a4f922593",
+        "South Florida College": "ad437163-252b-4396-a488-d97a4f922593"
     }
 }
