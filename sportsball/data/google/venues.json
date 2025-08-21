@@ -5499,6 +5499,146 @@
             "housenumber": "",
             "country": "USA",
             "type": "venue"
+        },
+        "e1cc12bb-e030-41ec-8f1c-5c8bee992729": {
+            "city": "Spain",
+            "state": "",
+            "postal": "",
+            "lat": 40.416944,
+            "lng": -3.703333,
+            "housenumber": "",
+            "country": "Spain",
+            "type": "venue"
+        },
+        "6cd182d1-5765-49bb-93da-a1a1a46d112a": {
+            "city": "Louisville",
+            "state": "KY",
+            "postal": "40205",
+            "lat": 38.2215197,
+            "lng": -85.7077667,
+            "housenumber": "2000",
+            "country": "USA",
+            "type": "venue"
+        },
+        "f6f41a65-5008-462c-9338-9f55aae5ed8f": {
+            "city": "Fort Myers",
+            "state": "FL",
+            "postal": "",
+            "lat": 26.471111,
+            "lng": -81.764722,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "c2d864f0-8b25-41fb-900e-2f39f678089a": {
+            "city": "A Coruña",
+            "state": "",
+            "postal": "",
+            "lat": 43.3687,
+            "lng": -8.4175,
+            "housenumber": "",
+            "country": "Spain",
+            "type": "venue"
+        },
+        "a2655237-816e-47d3-a041-0559b8d3557c": {
+            "city": "Conway",
+            "state": "SC",
+            "postal": "29579",
+            "lat": 33.799167,
+            "lng": -79.015556,
+            "housenumber": "104",
+            "country": "USA",
+            "type": "venue"
+        },
+        "688fb9d7-376b-4161-b493-baac63e65782": {
+            "city": "Dharamshala",
+            "state": "Himachal Pradesh",
+            "postal": "",
+            "lat": 32.197672,
+            "lng": 76.325997,
+            "housenumber": "",
+            "country": "India",
+            "type": "venue"
+        },
+        "9d22bd2b-fda4-4728-bbf5-f2b29e667c34": {
+            "city": "Philadelphia",
+            "state": "PA",
+            "postal": "",
+            "lat": 39.956389,
+            "lng": -75.190833,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "cebc2b14-7f32-4fd1-9675-88daf4f4c11d": {
+            "city": "Glendora",
+            "state": "CA",
+            "postal": "",
+            "lat": 34.136111,
+            "lng": -117.865278,
+            "housenumber": "",
+            "country": "USA",
+            "type": "city"
+        },
+        "1b6b24e2-41bc-4bb0-8ab5-2b0fb17807e5": {
+            "city": "Fairfield",
+            "state": "CT",
+            "postal": "06824",
+            "lat": 41.159722,
+            "lng": -73.256667,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "d88cd6ee-ce70-4036-b864-d1076953e6fd": {
+            "city": "Hampton",
+            "state": "VA",
+            "postal": "23668",
+            "lat": 37.01974,
+            "lng": -76.33108,
+            "housenumber": "100",
+            "country": "USA",
+            "type": "venue"
+        },
+        "51ec7c88-9d39-46b1-8a68-58fa52b72be9": {
+            "city": "Greenville",
+            "state": "NC",
+            "postal": "",
+            "lat": 35.6075,
+            "lng": -77.37,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "9e68d2e9-2082-479d-981a-9a768155e206": {
+            "city": "New Rochelle",
+            "state": "NY",
+            "postal": "",
+            "lat": 40.92664,
+            "lng": -73.784325,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "35c95425-9367-4019-b01c-9508b170786e": {
+            "city": "Nové Město na Moravě",
+            "state": "",
+            "postal": "",
+            "lat": 49.561389,
+            "lng": 16.074167,
+            "housenumber": "",
+            "country": "Czechia",
+            "type": "city"
+        },
+        "7d21075f-fc23-4846-bf3a-4ddd2096d095": {
+            "city": "Jacksonville",
+            "state": "FL",
+            "postal": "32211",
+            "lat": 30.350278,
+            "lng": -81.605,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -5610,6 +5750,7 @@
         "GEHA Field at Arrowhead Stadium - Kansas City, Missouri, United States - United States": "b6e806a0-61cb-4a49-8384-701a2ae61180",
         "Arrowhead Stadium, Kansas City, MO, USA": "b6e806a0-61cb-4a49-8384-701a2ae61180",
         "Stamford Bridge, London, England": "697520ca-d03b-45b1-a913-afe3d13a3371",
+        "Stamford Bridge - London": "697520ca-d03b-45b1-a913-afe3d13a3371",
         "Bank of America Stadium": "543d7f78-3dd0-4046-a366-80ca231e8898",
         "Bank of America Stadium - Charlotte - NC - 28202": "543d7f78-3dd0-4046-a366-80ca231e8898",
         "Bank of America Stadium - Charlotte, NC, United States - United States": "543d7f78-3dd0-4046-a366-80ca231e8898",
@@ -6377,6 +6518,7 @@
         "Martin Stadium": "8f8bdc6c-0989-4b11-960f-eb472f5e6c53",
         "North Alabama College": "1f508621-cdf7-4478-af03-eaa95c50ed44",
         "Houchens Industries-L.T. Smith Stadium - Bowling Green - KY - 42101": "a220b641-202f-4ccd-8948-9be0a78b4c76",
+        "Houchens Industries-L. T. Smith Stadium": "a220b641-202f-4ccd-8948-9be0a78b4c76",
         "Copps Coliseum": "6bc95021-7749-400d-904e-d27a2c4f0499",
         "Bramall Lane, Sheffield, England": "e238493d-55dc-4096-96a9-2e82a43f46da",
         "S.B. Ballard Stadium - Norfolk - VA - 23508": "e0968fb0-02e5-4421-bf87-818f32f05b33",
@@ -6604,6 +6746,24 @@
         "SEFCU Arena, Albany, New York": "deff1e92-f173-4d5b-bde2-54021aef8efd",
         "Broadview Center, Albany, New York": "deff1e92-f173-4d5b-bde2-54021aef8efd",
         "South Florida Stars College": "ad437163-252b-4396-a488-d97a4f922593",
-        "South Florida College": "ad437163-252b-4396-a488-d97a4f922593"
+        "South Florida College": "ad437163-252b-4396-a488-d97a4f922593",
+        "Madrid, Spain": "e1cc12bb-e030-41ec-8f1c-5c8bee992729",
+        "Knights Hall, Louisville, Kentucky": "6cd182d1-5765-49bb-93da-a1a1a46d112a",
+        "Alico Arena, Fort Myers, Florida": "f6f41a65-5008-462c-9338-9f55aae5ed8f",
+        "Estadio Abanca-Riazor - A Coruña, Galicia - Spain": "c2d864f0-8b25-41fb-900e-2f39f678089a",
+        "The HTC Center, Conway, South Carolina": "a2655237-816e-47d3-a041-0559b8d3557c",
+        "HTC Center, Conway, South Carolina": "a2655237-816e-47d3-a041-0559b8d3557c",
+        "Himachal Pradesh Cricket Association Stadium, Dharamsala, India": "688fb9d7-376b-4161-b493-baac63e65782",
+        "Daskalakis Athletic Center, Philadelphia, Pennsylvania": "9d22bd2b-fda4-4728-bbf5-f2b29e667c34",
+        "Glendora, California": "cebc2b14-7f32-4fd1-9675-88daf4f4c11d",
+        "Leo D. Mahoney Arena, Fairfield, Connecticut": "1b6b24e2-41bc-4bb0-8ab5-2b0fb17807e5",
+        "Convocation Center, Hampton, Virginia": "d88cd6ee-ce70-4036-b864-d1076953e6fd",
+        "Hampton Convocation Center, Hampton, Virginia": "d88cd6ee-ce70-4036-b864-d1076953e6fd",
+        "Hampton University Convocation Center, Hampton, Virginia": "d88cd6ee-ce70-4036-b864-d1076953e6fd",
+        "East Carolina": "51ec7c88-9d39-46b1-8a68-58fa52b72be9",
+        "Hynes Athletics Center, New Rochelle, New York": "9e68d2e9-2082-479d-981a-9a768155e206",
+        "Hynes Athletic Center, New Rochelle, New York": "9e68d2e9-2082-479d-981a-9a768155e206",
+        "Nove Mesto na Morave, Czech Republic": "35c95425-9367-4019-b01c-9508b170786e",
+        "Swisher Gymnasium, Jacksonville, Florida": "7d21075f-fc23-4846-bf3a-4ddd2096d095"
     }
 }

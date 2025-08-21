@@ -472,15 +472,6 @@ CRISLER_CENTER = SportsballGeocodeTuple(
     housenumber="333",
     country="USA",
 )
-HYNES_ATHELTIC_CENTER = SportsballGeocodeTuple(
-    city="New Rochelle",
-    state="NY",
-    postal="",
-    lat=40.92664,
-    lng=-73.784325,
-    housenumber="",
-    country="USA",
-)
 OLE_MISS = SportsballGeocodeTuple(
     city="Oxford",
     state="MS",
@@ -506,15 +497,6 @@ FARRIS_CENTER = SportsballGeocodeTuple(
     lat=35.081667,
     lng=-92.459444,
     housenumber="",
-    country="USA",
-)
-HTC_CENTER = SportsballGeocodeTuple(
-    city="Conway",
-    state="SC",
-    postal="29579",
-    lat=33.799167,
-    lng=-79.015556,
-    housenumber="104",
     country="USA",
 )
 GERSTEN_PAVILION = SportsballGeocodeTuple(
@@ -893,15 +875,6 @@ WATSO_CENTER = SportsballGeocodeTuple(
     lat=25.715,
     lng=-80.279167,
     housenumber="1245",
-    country="USA",
-)
-HAMPTON_CONVOCATION_CENTER = SportsballGeocodeTuple(
-    city="Hampton",
-    state="VA",
-    postal="23668",
-    lat=37.01974,
-    lng=-76.33108,
-    housenumber="100",
     country="USA",
 )
 BINGHAMPTON_UNIVERSITY_EVENTS_CENTER = SportsballGeocodeTuple(
@@ -3425,54 +3398,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Knights Hall, Louisville, Kentucky": SportsballGeocodeTuple(
-        city="Louisville",
-        state="KY",
-        postal="40205",
-        lat=38.2215197,
-        lng=-85.7077667,
-        housenumber="2000",
-        country="USA",
-    ),
-    "Alico Arena, Fort Myers, Florida": SportsballGeocodeTuple(
-        city="Fort Myers",
-        state="FL",
-        postal="",
-        lat=26.471111,
-        lng=-81.764722,
-        housenumber="",
-        country="USA",
-    ),
-    "The HTC Center, Conway, South Carolina": HTC_CENTER,
-    "Daskalakis Athletic Center, Philadelphia, Pennsylvania": SportsballGeocodeTuple(
-        city="Philadelphia",
-        state="PA",
-        postal="",
-        lat=39.956389,
-        lng=-75.190833,
-        housenumber="",
-        country="USA",
-    ),
-    "Leo D. Mahoney Arena, Fairfield, Connecticut": SportsballGeocodeTuple(
-        city="Fairfield",
-        state="CT",
-        postal="06824",
-        lat=41.159722,
-        lng=-73.256667,
-        housenumber="",
-        country="USA",
-    ),
-    "Convocation Center, Hampton, Virginia": HAMPTON_CONVOCATION_CENTER,
-    "Hynes Athletics Center, New Rochelle, New York": HYNES_ATHELTIC_CENTER,
-    "Swisher Gymnasium, Jacksonville, Florida": SportsballGeocodeTuple(
-        city="Jacksonville",
-        state="FL",
-        postal="32211",
-        lat=30.350278,
-        lng=-81.605,
-        housenumber="1",
-        country="USA",
-    ),
     "Pete Mathews Coliseum, Jacksonville, Alabama": SportsballGeocodeTuple(
         city="Jacksonville",
         state="AL",
@@ -6161,7 +6086,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="70",
         country="USA",
     ),
-    "Hynes Athletic Center, New Rochelle, New York": HYNES_ATHELTIC_CENTER,
     "The Sandy and John Black Pavilion at Ole Miss, Oxford, Mississippi": OLE_MISS,
     "Moscow, Idaho": SportsballGeocodeTuple(
         city="Moscow",
@@ -6203,7 +6127,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "George M. Holmes Convocation Center, Boone, North Carolina": HOLMES_CENTER,
     "Farris Center, Conway, Arkansas": FARRIS_CENTER,
-    "HTC Center, Conway, South Carolina": HTC_CENTER,
     "Atlanta, Georgia": ATLANTA,
     "UNF Arena, Jacksonville, Florida": SportsballGeocodeTuple(
         city="Jacksonville",
@@ -7007,7 +6930,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Hampton Convocation Center, Hampton, Virginia": HAMPTON_CONVOCATION_CENTER,
     "Ability360 Sports & Fitness Center, Phoenix, Arizona": SportsballGeocodeTuple(
         city="Phoenix",
         state="AZ",
@@ -9744,7 +9666,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Hampton University Convocation Center, Hampton, Virginia": HAMPTON_CONVOCATION_CENTER,
     "Alumni Gym, Elon, North Carolina": SportsballGeocodeTuple(
         city="Elon",
         state="NC",
