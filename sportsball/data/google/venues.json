@@ -5409,6 +5409,26 @@
             "housenumber": "",
             "country": "USA",
             "type": "venue"
+        },
+        "27808d19-23e4-49a9-91e9-d8f5425e30d2": {
+            "city": "Umag",
+            "state": "",
+            "postal": "",
+            "lat": 45.44769,
+            "lng": 13.519803,
+            "housenumber": "",
+            "country": "Croatia",
+            "type": "venue"
+        },
+        "f8539691-a13d-4b45-aa20-369b2e720e40": {
+            "city": "San Diego",
+            "state": "CA",
+            "postal": "",
+            "lat": 32.7745,
+            "lng": -117.1837,
+            "housenumber": "5998",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -5651,6 +5671,7 @@
         "Deutsche Bank Park - Frankfurt - Germany": "d038edb8-439b-4cf8-b916-abdbedce45aa",
         "Deutsche Bank Park, Frankfurt, Germany": "d038edb8-439b-4cf8-b916-abdbedce45aa",
         "Villa Park, Birmingham, England": "a065b054-56d6-47df-b1c7-8cf5740ac3fc",
+        "Villa Park - Birmingham": "a065b054-56d6-47df-b1c7-8cf5740ac3fc",
         "Trans World Dome": "3cfa1db0-18c7-47d1-ae20-bb791bfc4a46",
         "The Dome at America's Center - St. Louis - MO - 63101": "3cfa1db0-18c7-47d1-ae20-bb791bfc4a46",
         "Belmont University": "588dcb38-26ad-4c4c-a6b0-d492a498dd41",
@@ -6491,6 +6512,8 @@
         "KAZ": "5e83cafb-c17e-47c1-af43-beaed40f1bc4",
         "Eblen Center, Cookeville, Tennessee": "5805e047-d21f-4423-86ab-c68c80add435",
         "CoreStates Spectrum": "d7f9554a-336d-4b38-824f-4ad7189a305d",
-        "The Thunderdome, Santa Barbara, California": "a083127c-7698-4621-935f-5512b6eeeb71"
+        "The Thunderdome, Santa Barbara, California": "a083127c-7698-4621-935f-5512b6eeeb71",
+        "Umag": "27808d19-23e4-49a9-91e9-d8f5425e30d2",
+        "Jenny Craig Pavillion, San Diego, California": "f8539691-a13d-4b45-aa20-369b2e720e40"
     }
 }
