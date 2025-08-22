@@ -5729,6 +5729,136 @@
             "housenumber": "111",
             "country": "USA",
             "type": "venue"
+        },
+        "4055a1d3-a085-4a7c-bd2c-5e12a7d9ca1d": {
+            "city": "Cincinnati",
+            "state": "OH",
+            "postal": "",
+            "lat": 39.1,
+            "lng": -84.5125,
+            "housenumber": "",
+            "country": "USA",
+            "type": "city"
+        },
+        "94ce6715-c9d5-4622-85e9-1497798bb2de": {
+            "city": "Greensboro",
+            "state": "NC",
+            "postal": "27411",
+            "lat": 36.076783,
+            "lng": -79.768849,
+            "housenumber": "1601",
+            "country": "USA",
+            "type": "venue"
+        },
+        "18f74dc5-fb94-44c9-a83e-28b165a6ddef": {
+            "city": "Wilmington",
+            "state": "NC",
+            "postal": "",
+            "lat": 34.225,
+            "lng": -77.878333,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "c1dc4d50-b23b-447d-8b30-c225469cb6c8": {
+            "city": "Al Khor",
+            "state": "",
+            "postal": "",
+            "lat": 25.652222,
+            "lng": 51.487778,
+            "housenumber": "",
+            "country": "Qatar",
+            "type": "venue"
+        },
+        "fe339de8-0c06-4110-bdcb-e1b93e175bbc": {
+            "city": "Sharjah",
+            "state": "",
+            "postal": "",
+            "lat": 25.330833,
+            "lng": 55.420833,
+            "housenumber": "",
+            "country": "UAE",
+            "type": "venue"
+        },
+        "3cc88686-3cfc-469c-b1f1-a9fc0c4d7121": {
+            "city": "Jacksonville",
+            "state": "FL",
+            "postal": "32224",
+            "lat": 30.2734,
+            "lng": -81.5079,
+            "housenumber": "11852",
+            "country": "USA",
+            "type": "venue"
+        },
+        "82515d2c-d11f-4d24-b191-494c739ecd1e": {
+            "city": "Lawrenceville",
+            "state": "NJ",
+            "postal": "",
+            "lat": 40.2788,
+            "lng": -74.7354,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "d2f0195d-086d-4a7c-ad7b-db60348fd036": {
+            "city": "Abu Dhabi",
+            "state": "Abu Dhabi",
+            "postal": "",
+            "lat": 24.4603,
+            "lng": 54.604,
+            "housenumber": "",
+            "country": "UAE",
+            "type": "venue"
+        },
+        "386f452f-b7ab-48dd-bf6f-84a64dda063c": {
+            "city": "Albany",
+            "state": "NY",
+            "postal": "",
+            "lat": 42.648611,
+            "lng": -73.754722,
+            "housenumber": "51",
+            "country": "USA",
+            "type": "venue"
+        },
+        "11be71dc-a47e-4710-a0f1-5d6c33ff8472": {
+            "city": "Chattanooga",
+            "state": "TN",
+            "postal": "",
+            "lat": 35.036374,
+            "lng": -85.315762,
+            "housenumber": "1826",
+            "country": "USA",
+            "type": "venue"
+        },
+        "0bfb31e4-0235-4ade-b532-bcb7e014cfdc": {
+            "city": "Towson",
+            "state": "MD",
+            "postal": "21252",
+            "lat": 39.387361,
+            "lng": -76.617083,
+            "housenumber": "8000",
+            "country": "USA",
+            "type": "venue"
+        },
+        "f0cd6b0b-4320-4285-bee8-4fd808da8c9e": {
+            "city": "Buffalo",
+            "state": "NY",
+            "postal": "",
+            "lat": 42.875,
+            "lng": -78.876389,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
+        },
+        "9e35fb37-0ac7-4a43-b011-2bad1620f57b": {
+            "city": "Burlington",
+            "state": "VT",
+            "postal": "",
+            "lat": 44.470264,
+            "lng": -73.194705,
+            "housenumber": "97",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -6272,6 +6402,7 @@
         "Manuka Oval": "fc6f191c-0d7e-47cd-bb08-0bc2c63b7b43",
         "Manuka Oval, Canberra, Australia": "fc6f191c-0d7e-47cd-bb08-0bc2c63b7b43",
         "Corroboree Group Oval Manuka, Canberra": "fc6f191c-0d7e-47cd-bb08-0bc2c63b7b43",
+        "Manuka Oval - 2603": "fc6f191c-0d7e-47cd-bb08-0bc2c63b7b43",
         "Southern University and A&M College": "a412f6f7-a7e7-45bf-a9e8-9a7e7aaf5263",
         "Southern College": "a412f6f7-a7e7-45bf-a9e8-9a7e7aaf5263",
         "Romney Stadium": "a78137c2-09e8-416a-9fe0-f4459ff3e67a",
@@ -6867,6 +6998,28 @@
         "Gallivare, Sweden": "ea4f8e07-818e-46bb-947f-95bdb1d976c6",
         "KSU Convocation Center , Kennesaw, Georgia": "b1e96209-eeed-421f-bfc7-d9d7f0afa8dd",
         "KSU Convocation Center, Kennesaw, Georgia": "b1e96209-eeed-421f-bfc7-d9d7f0afa8dd",
-        "Ellis T. Johnson Arena, Morehead, Kentucky": "1b82b0f8-e01b-47de-a431-35956290c26e"
+        "Ellis T. Johnson Arena, Morehead, Kentucky": "1b82b0f8-e01b-47de-a431-35956290c26e",
+        "Cincinnati, Ohio": "4055a1d3-a085-4a7c-bd2c-5e12a7d9ca1d",
+        "Cincinnati, OH, USA": "4055a1d3-a085-4a7c-bd2c-5e12a7d9ca1d",
+        "Cincinnati, USA": "4055a1d3-a085-4a7c-bd2c-5e12a7d9ca1d",
+        "Ellis Corbett Sports Center, Greensboro, North Carolina": "94ce6715-c9d5-4622-85e9-1497798bb2de",
+        "Corbett Sports Center, Greensboro, North Carolina": "94ce6715-c9d5-4622-85e9-1497798bb2de",
+        "Trask Coliseum, Wilmington, North Carolina": "18f74dc5-fb94-44c9-a83e-28b165a6ddef",
+        "Trask Coliseum - Wilmington, North Carolina - United States": "18f74dc5-fb94-44c9-a83e-28b165a6ddef",
+        "Al Bayt Stadium - Al Khor": "c1dc4d50-b23b-447d-8b30-c225469cb6c8",
+        "Sharjah Cricket Stadium, Sharjah, United Arab Emirates": "fe339de8-0c06-4110-bdcb-e1b93e175bbc",
+        "UNF Arena , Jacksonville, Florida": "3cc88686-3cfc-469c-b1f1-a9fc0c4d7121",
+        "Alumni Gymnasium, Lawrenceville, New Jersey": "82515d2c-d11f-4d24-b191-494c739ecd1e",
+        "Etihad Arena - Abu Dhabi": "d2f0195d-086d-4a7c-ad7b-db60348fd036",
+        "MVP Arena, Albany, New York": "386f452f-b7ab-48dd-bf6f-84a64dda063c",
+        "Pepsi Arena, Albany, New York": "386f452f-b7ab-48dd-bf6f-84a64dda063c",
+        "Finley Stadium - Chattanooga - United States": "11be71dc-a47e-4710-a0f1-5d6c33ff8472",
+        "SECU Arena, Towson, Maryland": "0bfb31e4-0235-4ade-b532-bcb7e014cfdc",
+        "KeyBank Center - Buffalo - NY": "f0cd6b0b-4320-4285-bee8-4fd808da8c9e",
+        "KeyBank Center, Buffalo, New York": "f0cd6b0b-4320-4285-bee8-4fd808da8c9e",
+        "HSBC Arena, Buffalo, New York": "f0cd6b0b-4320-4285-bee8-4fd808da8c9e",
+        "KeyBank Center, Buffalo, NY, USA": "f0cd6b0b-4320-4285-bee8-4fd808da8c9e",
+        "KeyBank Center": "f0cd6b0b-4320-4285-bee8-4fd808da8c9e",
+        "Roy L. Patrick Gymnasium, Burlington, Vermont": "9e35fb37-0ac7-4a43-b011-2bad1620f57b"
     }
 }

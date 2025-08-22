@@ -10,6 +10,7 @@ class Position(StrEnum):
     CENTRE_DEFENDER_LEFT = "CD-L"
     CENTRE_DEFENDER_RIGHT = "CD-R"
     LEFT_BACK = "LB"
+    RIGHT_BACK = "RB"
 
 
 _POSITIONS = {str(x): x for x in Position}
