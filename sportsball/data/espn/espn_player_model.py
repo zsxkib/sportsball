@@ -33,7 +33,11 @@ def _create_espn_player_model(
     dt: datetime.datetime,
     version: str,
 ) -> PlayerModel:
-    identifier = str(player["playerId"])
+    identifier = None
+    try:
+        identifier = str(player["playerId"])
+    except KeyError:
+        identifier = str(player["id"])
     jersey = player.get("jersey")
     fumbles = None
     fumbles_lost = None

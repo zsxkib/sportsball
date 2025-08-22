@@ -183,7 +183,7 @@ class ESPNLeagueModel(LeagueModel):
                 if game_page >= weeks["pageCount"]:
                     break
                 game_page += 1
-        if not found_pages:
+        if not found_pages and self.league != League.NFL:
             # Lets check the scoreboards via the calendar
             o = urlparse(season_type_json["$ref"])
             path_components = o.path.split("/")

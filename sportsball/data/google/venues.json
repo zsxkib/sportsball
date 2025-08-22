@@ -6079,6 +6079,126 @@
             "housenumber": "270",
             "country": "USA",
             "type": "venue"
+        },
+        "40342956-55f0-49df-b010-bbac588bfa37": {
+            "city": "Ogden",
+            "state": "UT",
+            "postal": "",
+            "lat": 41.1825,
+            "lng": -111.945,
+            "housenumber": "4400",
+            "country": "USA",
+            "type": "venue"
+        },
+        "d5e66e7f-dbc5-4e62-b13d-3c412acd1e89": {
+            "city": "Seville",
+            "state": "",
+            "postal": "",
+            "lat": 37.356389,
+            "lng": -5.981389,
+            "housenumber": "",
+            "country": "Spain",
+            "type": "venue"
+        },
+        "b28f0dcb-2648-45a7-9e80-1553cca268bc": {
+            "city": "San Luis Obispo",
+            "state": "CA",
+            "postal": "93407",
+            "lat": 35.29886,
+            "lng": -120.65855,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
+        },
+        "b4e7702d-6128-4f96-939a-1577373e2540": {
+            "city": "Tampa",
+            "state": "FL",
+            "postal": "33614",
+            "lat": 27.980278,
+            "lng": -82.506667,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
+        },
+        "a42b8b11-2df8-4b08-8f3d-b0d8c0e7d2b9": {
+            "city": "Irvine",
+            "state": "CA",
+            "postal": "92612",
+            "lat": 33.649167,
+            "lng": -117.846944,
+            "housenumber": "100",
+            "country": "USA",
+            "type": "venue"
+        },
+        "84591cf0-d740-4a83-be0e-10f3be617e25": {
+            "city": "Boston",
+            "state": "MA",
+            "postal": "",
+            "lat": 42.366303,
+            "lng": -71.062228,
+            "housenumber": "100",
+            "country": "USA",
+            "type": "venue"
+        },
+        "140548b1-620b-49ff-ba32-def70d3e9a76": {
+            "city": "Long Beach",
+            "state": "CA",
+            "postal": "90840",
+            "lat": 33.787222,
+            "lng": -118.114167,
+            "housenumber": "1250",
+            "country": "USA",
+            "type": "venue"
+        },
+        "c0a028f7-8513-4d40-a25d-d8f5a39d58b0": {
+            "city": "Orlando",
+            "state": "FL",
+            "postal": "32816",
+            "lat": 28.6091,
+            "lng": -81.1924,
+            "housenumber": "4465",
+            "country": "USA",
+            "type": "venue"
+        },
+        "04979d50-1e56-45f1-8301-42d253e8a6f7": {
+            "city": "Los Angeles",
+            "state": "CA",
+            "postal": "90045",
+            "lat": 33.9675,
+            "lng": -118.415556,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
+        },
+        "9147c05e-6acf-42b1-9796-93c734a6c42a": {
+            "city": "Dallas",
+            "state": "TX",
+            "postal": "",
+            "lat": 32.790556,
+            "lng": -96.810278,
+            "housenumber": "2500",
+            "country": "USA",
+            "type": "venue"
+        },
+        "f23aac2e-181e-4918-b337-1f541d4219ec": {
+            "city": "Malibu",
+            "state": "CA",
+            "postal": "",
+            "lat": 34.038571,
+            "lng": -118.709625,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "5abfac8a-7bdb-4247-9611-910be206fe3f": {
+            "city": "Normal",
+            "state": "IL",
+            "postal": "",
+            "lat": 40.511,
+            "lng": -88.993,
+            "housenumber": "",
+            "country": "USA",
+            "type": "college"
         }
     },
     "searches": {
@@ -6451,6 +6571,7 @@
         "GMHBA Stadium": "e0d0121e-fcad-4647-971a-f2031dafe9d3",
         "GMHBA Stadium, Geelong, Australia": "e0d0121e-fcad-4647-971a-f2031dafe9d3",
         "GMHBA Stadium, Geelong": "e0d0121e-fcad-4647-971a-f2031dafe9d3",
+        "GMHBA Stadium - 3220": "e0d0121e-fcad-4647-971a-f2031dafe9d3",
         "Great American Ball Park, Cincinnati, OH, USA": "65673ee1-270d-4eaf-a887-3db34391293b",
         "Great American Ball Park": "65673ee1-270d-4eaf-a887-3db34391293b",
         "Yarraville Oval - Australia": "6a10ad79-7406-4de0-8870-881d6b6a4a6a",
@@ -7286,6 +7407,37 @@
         "Amerant Bank Arena": "f1bd089a-90d1-4264-8c30-35b4660ca477",
         "BB&T Center": "f1bd089a-90d1-4264-8c30-35b4660ca477",
         "Bank of Colorado Arena, Greeley, Colorado": "74d7fc4a-06dd-46fd-8b78-5cd52ee0388c",
-        "Butler Hancock Sports Pavilion, Greeley, Colorado": "74d7fc4a-06dd-46fd-8b78-5cd52ee0388c"
+        "Butler Hancock Sports Pavilion, Greeley, Colorado": "74d7fc4a-06dd-46fd-8b78-5cd52ee0388c",
+        "Dee Events Center, Ogden, Utah": "40342956-55f0-49df-b010-bbac588bfa37",
+        "Estadio Benito Villamarín - Seville - Spain": "d5e66e7f-dbc5-4e62-b13d-3c412acd1e89",
+        "Robert A. Mott Athletics Center, San Luis Obispo, California": "b28f0dcb-2648-45a7-9e80-1553cca268bc",
+        "Robert A. Mott Gymnasium, San Luis Obispo, California": "b28f0dcb-2648-45a7-9e80-1553cca268bc",
+        "George M. Steinbrenner Field - Tampa - Florida - 33697": "b4e7702d-6128-4f96-939a-1577373e2540",
+        "George M. Steinbrenner, Tampa, FL, USA": "b4e7702d-6128-4f96-939a-1577373e2540",
+        "Steinbrenner Field": "b4e7702d-6128-4f96-939a-1577373e2540",
+        "Bren Events Center, Irvine, California": "a42b8b11-2df8-4b08-8f3d-b0d8c0e7d2b9",
+        "Bren Events Center - Irvine, California - United States": "a42b8b11-2df8-4b08-8f3d-b0d8c0e7d2b9",
+        "TD Garden - Boston - MA": "84591cf0-d740-4a83-be0e-10f3be617e25",
+        "TD Banknorth Garden": "84591cf0-d740-4a83-be0e-10f3be617e25",
+        "TD Garden - Boston, Massachusetts - United States": "84591cf0-d740-4a83-be0e-10f3be617e25",
+        "TD Garden, Boston, Massachusetts": "84591cf0-d740-4a83-be0e-10f3be617e25",
+        "TD Garden, Boston, MA, USA": "84591cf0-d740-4a83-be0e-10f3be617e25",
+        "TD Banknorth Garden, Boston, Massachusetts": "84591cf0-d740-4a83-be0e-10f3be617e25",
+        "FleetCenter, Boston, Massachusetts": "84591cf0-d740-4a83-be0e-10f3be617e25",
+        "TD Garden": "84591cf0-d740-4a83-be0e-10f3be617e25",
+        "The Walter Pyramid, Long Beach, California": "140548b1-620b-49ff-ba32-def70d3e9a76",
+        "Walter Pyramid - Long Beach, California - United States": "140548b1-620b-49ff-ba32-def70d3e9a76",
+        "Bright House Networks Stadium": "c0a028f7-8513-4d40-a25d-d8f5a39d58b0",
+        "Albert Gersten Pavilion, Los Angeles, California": "04979d50-1e56-45f1-8301-42d253e8a6f7",
+        "Gersten Pavilion, Los Angeles, California": "04979d50-1e56-45f1-8301-42d253e8a6f7",
+        "American Airlines Center - Dallas - TX - 75398": "9147c05e-6acf-42b1-9796-93c734a6c42a",
+        "American Airlines Arena": "9147c05e-6acf-42b1-9796-93c734a6c42a",
+        "American Airlines Center, Dallas, Texas": "9147c05e-6acf-42b1-9796-93c734a6c42a",
+        "American Airlines Center - Dallas, Texas, USA - United States": "9147c05e-6acf-42b1-9796-93c734a6c42a",
+        "American Airlines Center, Dallas, TX, USA": "9147c05e-6acf-42b1-9796-93c734a6c42a",
+        "American Airlines Center": "9147c05e-6acf-42b1-9796-93c734a6c42a",
+        "Firestone Fieldhouse, Malibu, California": "f23aac2e-181e-4918-b337-1f541d4219ec",
+        "Illinois State": "5abfac8a-7bdb-4247-9611-910be206fe3f",
+        "Illinois State College": "5abfac8a-7bdb-4247-9611-910be206fe3f"
     }
 }

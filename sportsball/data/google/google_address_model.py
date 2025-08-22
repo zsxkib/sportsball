@@ -49,15 +49,6 @@ AMERICA_WEST_ARENA = SportsballGeocodeTuple(
     housenumber="201",
     country="USA",
 )
-AMERICAN_AIRLINES_ARENA = SportsballGeocodeTuple(
-    city="Dallas",
-    state="TX",
-    postal="",
-    lat=32.790556,
-    lng=-96.810278,
-    housenumber="2500",
-    country="USA",
-)
 THOMAS_AND_MACK_CENTER = SportsballGeocodeTuple(
     city="Las Vegas",
     state="NV",
@@ -74,15 +65,6 @@ ORLANDO_ARENA = SportsballGeocodeTuple(
     lat=28.548889,
     lng=-81.386667,
     housenumber="600",
-    country="USA",
-)
-TD_GARDEN = SportsballGeocodeTuple(
-    city="Boston",
-    state="MA",
-    postal="",
-    lat=42.366303,
-    lng=-71.062228,
-    housenumber="100",
     country="USA",
 )
 STATE_FARM_ARENA = SportsballGeocodeTuple(
@@ -472,15 +454,6 @@ FARRIS_CENTER = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-GERSTEN_PAVILION = SportsballGeocodeTuple(
-    city="Los Angeles",
-    state="CA",
-    postal="90045",
-    lat=33.9675,
-    lng=-118.415556,
-    housenumber="1",
-    country="USA",
-)
 BOGOTA_SAVINGS_BANK_CENTER = SportsballGeocodeTuple(
     city="Teaneck",
     state="NJ",
@@ -767,15 +740,6 @@ GENEROSO_POPE_ATHELTIC_COMPLEX = SportsballGeocodeTuple(
     lat=40.693147,
     lng=-73.992164,
     housenumber="180",
-    country="USA",
-)
-ROBERT_A_MOTT_GYMNASIUM = SportsballGeocodeTuple(
-    city="San Luis Obispo",
-    state="CA",
-    postal="93407",
-    lat=35.29886,
-    lng=-120.65855,
-    housenumber="1",
     country="USA",
 )
 ELMORE_GYMNASIUM = SportsballGeocodeTuple(
@@ -2929,15 +2893,6 @@ DAIKIN_PARK = SportsballGeocodeTuple(
     housenumber="501",
     country="USA",
 )
-STEINBRENNER_FIELD = SportsballGeocodeTuple(
-    city="Tampa",
-    state="FL",
-    postal="33614",
-    lat=27.980278,
-    lng=-82.506667,
-    housenumber="1",
-    country="USA",
-)
 GLOBE_LIFE_FIELD = SportsballGeocodeTuple(
     city="Arlington",
     state="TX",
@@ -3190,15 +3145,6 @@ WOLSTEIN_CENTER = SportsballGeocodeTuple(
     housenumber="2000",
     country="USA",
 )
-WALTER_PYRAMID = SportsballGeocodeTuple(
-    city="Long Beach",
-    state="CA",
-    postal="90840",
-    lat=33.787222,
-    lng=-118.114167,
-    housenumber="1250",
-    country="USA",
-)
 CHAIFETZ_ARENA = SportsballGeocodeTuple(
     city="St. Louis",
     state="MO",
@@ -3206,15 +3152,6 @@ CHAIFETZ_ARENA = SportsballGeocodeTuple(
     lat=38.63246,
     lng=-90.22797,
     housenumber="1",
-    country="USA",
-)
-BREN_EVENTS_CENTER = SportsballGeocodeTuple(
-    city="Irvine",
-    state="CA",
-    postal="92612",
-    lat=33.649167,
-    lng=-117.846944,
-    housenumber="100",
     country="USA",
 )
 MAGNESS_ARENA = SportsballGeocodeTuple(
@@ -3272,28 +3209,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Dee Events Center, Ogden, Utah": SportsballGeocodeTuple(
-        city="Ogden",
-        state="UT",
-        postal="",
-        lat=41.1825,
-        lng=-111.945,
-        housenumber="4400",
-        country="USA",
-    ),
-    "Robert A. Mott Athletics Center, San Luis Obispo, California": ROBERT_A_MOTT_GYMNASIUM,
-    "Bren Events Center, Irvine, California": BREN_EVENTS_CENTER,
-    "The Walter Pyramid, Long Beach, California": WALTER_PYRAMID,
-    "Albert Gersten Pavilion, Los Angeles, California": GERSTEN_PAVILION,
-    "Firestone Fieldhouse, Malibu, California": SportsballGeocodeTuple(
-        city="Malibu",
-        state="CA",
-        postal="",
-        lat=34.038571,
-        lng=-118.709625,
-        housenumber="",
-        country="USA",
-    ),
     "Chiles Center, Portland, Oregon": SportsballGeocodeTuple(
         city="Portland",
         state="OR",
@@ -5251,7 +5166,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "America West Arena": AMERICA_WEST_ARENA,
     "Quicken Loans Arena - Cleveland, Ohio - United States": QUICKEN_LOANS_ARENA,
     "Staples Center": STAPLES_CENTRE,
-    "American Airlines Arena": AMERICAN_AIRLINES_ARENA,
     "Chesapeake Energy Arena - Oklahoma City, Oklahoma - United States": CHESAPEAKE_ENERGY_ARENA,
     "AT&T Center - San Antonio, Texas - United States": ATT_CENTER,
     "ESPN Wide World of Sports Complex": ESPN_WIDE_WORLD_OF_SPORTS_COMPLEX,
@@ -5384,7 +5298,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Bradley Center": BRADLEY_CENTER,
     "Charlotte Coliseum": CHARLOTTE_COLISEUM,
     "Toyota Center, Houston, Texas": TOYOTA_CENTRE,
-    "American Airlines Center, Dallas, Texas": AMERICAN_AIRLINES_ARENA,
     "Miami Arena": MIAMI_ARENA,
     "Al McGuire Center, Milwaukee, Wisconsin": SportsballGeocodeTuple(
         city="Milwaukee",
@@ -5410,10 +5323,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Delta Center - Salt Lake City, Utah - United States": DELTA_CENTER,
     "Yokohama Arena": YOKOHAMA_ARENA,
     "Anaheim Convention Center": ANAHEIM_CONVENTION_CENTER,
-    "TD Banknorth Garden": TD_GARDEN,
     "Amway Arena": ORLANDO_ARENA,
-    "TD Garden - Boston, Massachusetts - United States": TD_GARDEN,
-    "American Airlines Center - Dallas, Texas, USA - United States": AMERICAN_AIRLINES_ARENA,
     "FTX Arena": FTX_ARENA,
     "Rose Garden": ROSE_GARDEN,
     "Toyota Center - Kennewick, Washington - United States": TOYOTA_CENTER,
@@ -5452,7 +5362,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Golden 1 Center, Sacramento, California": GOLDEN_1_CENTER,
     "Kaseya Center, Miami, Florida": KASEYA_CENTER,
     "Scotiabank Arena, Toronto, Canada": SCOTIABANK_ARENA,
-    "TD Garden, Boston, Massachusetts": TD_GARDEN,
     "Frost Bank Center, San Antonio, Texas": FROST_BANK_CENTER,
     "Intuit Dome, Inglewood, California": INTUIT_DOME,
     "Delta Center, Salt Lake City, Utah": DELTA_CENTER,
@@ -5881,7 +5790,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Wellness and Events Center, Newark, New Jersey": WELLNESS_AND_EVENTS_CENTER,
-    "Gersten Pavilion, Los Angeles, California": GERSTEN_PAVILION,
     "Rothman Center, Teaneck, New Jersey": BOGOTA_SAVINGS_BANK_CENTER,
     "Easton, Massachusetts": SportsballGeocodeTuple(
         city="Easton",
@@ -6093,12 +6001,10 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="UK",
     ),
-    "TD Garden, Boston, MA, USA": TD_GARDEN,
     "State Farm Arena, Atlanta, GA, USA": STATE_FARM_ARENA,
     "Little Caesars Arena, Detroit, MI, USA": LITTLE_CAESARS_ARENA,
     "Paycom Center, Oklahoma, OK, USA": PAYCOM_CENTRE,
     "Footprint Center, Phoenix, AZ, USA": AMERICA_WEST_ARENA,
-    "American Airlines Center, Dallas, TX, USA": AMERICAN_AIRLINES_ARENA,
     "Crypto.com Arena, Los Angeles, CA, USA": STAPLES_CENTRE,
     "United Center, Chicago, IL, USA": UNITED_CENTER,
     "FedExForum, Memphis, TN, USA": FEDEX_FORUM,
@@ -6524,7 +6430,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1269",
         country="USA",
     ),
-    "Robert A. Mott Gymnasium, San Luis Obispo, California": ROBERT_A_MOTT_GYMNASIUM,
     "John J. Moore Athletic Center, Jersey City, New Jersey": SportsballGeocodeTuple(
         city="Jersey City",
         state="NJ",
@@ -6957,7 +6862,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "TD Banknorth Garden, Boston, Massachusetts": TD_GARDEN,
     "ARCO Arena (II), Sacramento, California": ARCO_ARENA,
     "Ford Center, Oklahoma City, Oklahoma": PAYCOM_CENTRE,
     "Nashville Municipal Auditorium, Nashville, Tennessee": SportsballGeocodeTuple(
@@ -7024,7 +6928,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "TD Waterhouse Centre, Orlando, Florida": ORLANDO_ARENA,
     "LLoyd Noble Center, Norman, Oklahoma": LLOYD_NOBLE_CENTER,
     "Pete Maravich Assembly Center, Baton Rouge, Louisiana": PETE_MARAVICH_ASSEMBLY_CENTER,
-    "FleetCenter, Boston, Massachusetts": TD_GARDEN,
     "Charlotte Coliseum, Charlotte, North Carolina": CHARLOTTE_COLISEUM,
     "Pyramid Arena, Memphis, Tennessee": SportsballGeocodeTuple(
         city="Memphis",
@@ -13850,15 +13753,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Illinois State College": SportsballGeocodeTuple(
-        city="Normal",
-        state="IL",
-        postal="",
-        lat=40.511,
-        lng=-88.993,
-        housenumber="",
-        country="USA",
-    ),
     "BankUnited Center": WATSO_CENTER,
     "Maple Leaf Gardens - Toronto, Ontario - United States": MAPLE_LEAF_GARDENS,
     "El Paso County Coliseum": SportsballGeocodeTuple(
@@ -14871,7 +14765,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Villanova College": VILLANOVA_COLLEGE,
     "Canadian Tire Centre, Ottawa, ON, Canada": CANADIAN_TIRE_CENTER,
-    "American Airlines Center": AMERICAN_AIRLINES_ARENA,
     "Lenovo Center": LENOVO_CENTER,
     "Namur, Belgium": SportsballGeocodeTuple(
         city="Namur",
@@ -18084,7 +17977,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="Panama",
     ),
     "Bridgestone Arena, Nashville, TN, USA": BRIDGESTONE_ARENA,
-    "George M. Steinbrenner, Tampa, FL, USA": STEINBRENNER_FIELD,
     "Dodger Stadium - Los Angeles, CA, USA - United States": DODGER_STADIUM,
     "Mississippi State University": SportsballGeocodeTuple(
         city="Mississippi State",
@@ -18883,7 +18775,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Rogers Arena": ROGERS_ARENA,
     "PNC Park": PNC_PARK,
-    "TD Garden": TD_GARDEN,
     "Scotiabank Saddledome": SCOTIABANK_SADDLEDOME,
     "T-Mobile Park": T_MOBILE_PARK,
     "Davidson College": SportsballGeocodeTuple(
@@ -18963,7 +18854,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Steinbrenner Field": STEINBRENNER_FIELD,
     "Miami University": SportsballGeocodeTuple(
         city="Oxford",
         state="OH",
@@ -19461,9 +19351,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Walter Pyramid - Long Beach, California - United States": WALTER_PYRAMID,
     "Chaifetz Arena - St. Louis, Missouri - United States": CHAIFETZ_ARENA,
-    "Bren Events Center - Irvine, California - United States": BREN_EVENTS_CENTER,
     "Magness Arena - Denver, Colorado - United States": MAGNESS_ARENA,
     "American Bank Center - Corpus Christi, Texas - United States": AMERICAN_BANK_CENTER,
     "Nutter Center - Fairborn, Ohio - United States": NUTTER_CENTER,
