@@ -49,15 +49,6 @@ AMERICA_WEST_ARENA = SportsballGeocodeTuple(
     housenumber="201",
     country="USA",
 )
-THOMAS_AND_MACK_CENTER = SportsballGeocodeTuple(
-    city="Las Vegas",
-    state="NV",
-    postal="",
-    lat=36.105,
-    lng=-115.144167,
-    housenumber="4505",
-    country="USA",
-)
 ORLANDO_ARENA = SportsballGeocodeTuple(
     city="Orlando",
     state="FL",
@@ -317,15 +308,6 @@ COLONIAL_LIFE_ARENA = SportsballGeocodeTuple(
     lat=33.995,
     lng=-81.037222,
     housenumber="801",
-    country="USA",
-)
-BRESLIN_EVENTS_CENTER = SportsballGeocodeTuple(
-    city="East Lansing",
-    state="MI",
-    postal="48824",
-    lat=42.728227,
-    lng=-84.492396,
-    housenumber="534",
     country="USA",
 )
 CHASE_ATHLETIC_CENTER = SportsballGeocodeTuple(
@@ -3019,15 +3001,6 @@ DURHAM = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-FERTITTA_CENTER = SportsballGeocodeTuple(
-    city="Houston",
-    state="TX",
-    postal="77004",
-    lat=29.724722,
-    lng=-95.346944,
-    housenumber="3875",
-    country="USA",
-)
 JON_M_HUNTSMAN_CENTER = SportsballGeocodeTuple(
     city="Salt Lake City",
     state="UT",
@@ -3191,35 +3164,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Thompson-Boling Arena, Knoxville, Tennessee": SportsballGeocodeTuple(
-        city="Knoxville",
-        state="TN",
-        postal="37916",
-        lat=35.951167,
-        lng=-83.925028,
-        housenumber="1600",
-        country="USA",
-    ),
-    "Hofheinz Pavilion, Houston, Texas": SportsballGeocodeTuple(
-        city="Houston",
-        state="TX",
-        postal="77004",
-        lat=29.724722,
-        lng=-95.346944,
-        housenumber="3875",
-        country="USA",
-    ),
-    "Breslin Events Center, East Lansing, Michigan": BRESLIN_EVENTS_CENTER,
-    "Alaska Airlines Arena, Seattle, Washington": SportsballGeocodeTuple(
-        city="Seattle",
-        state="WA",
-        postal="",
-        lat=47.652,
-        lng=-122.302,
-        housenumber="3870",
-        country="USA",
-    ),
-    "Thomas & Mack Center, Las Vegas, Nevada": THOMAS_AND_MACK_CENTER,
     "Christl Arena, West Point, New York": SportsballGeocodeTuple(
         city="West Point",
         state="NY",
@@ -5290,7 +5234,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="Japan",
     ),
     "Target Center - Minneapolis, Minnesota - United States": TARGET_CENTER,
-    "Thomas & Mack Center - Paradise, NV - United States": THOMAS_AND_MACK_CENTER,
     "Delta Center - Salt Lake City, Utah - United States": DELTA_CENTER,
     "Yokohama Arena": YOKOHAMA_ARENA,
     "Anaheim Convention Center": ANAHEIM_CONVENTION_CENTER,
@@ -5537,7 +5480,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Coral Gables, Florida": CORAL_GABLES,
-    "Breslin Student Events Center, East Lansing, Michigan": BRESLIN_EVENTS_CENTER,
     "Kingston, Rhode Island": SportsballGeocodeTuple(
         city="Kingston",
         state="KI",
@@ -5671,7 +5613,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Crisler Center, Ann Arbor, Michigan": CRISLER_CENTER,
     "Jersey Mike's Arena, New Brunswick, New Jersey": JERSEY_MIKES_ARENA,
-    "Fertitta Center, Houston, Texas": FERTITTA_CENTER,
     "UMPC Cooper Fieldhouse, Pittsburgh, Pennsylvania": SportsballGeocodeTuple(
         city="Pittsburgh",
         state="PA",
@@ -9858,15 +9799,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lng=-105.2334998,
         housenumber="",
         country="Mexico",
-    ),
-    "Bank of America Arena, Seattle, Washington": SportsballGeocodeTuple(
-        city="Seattle",
-        state="WA",
-        postal="",
-        lat=47.652,
-        lng=-122.302,
-        housenumber="3870",
-        country="USA",
     ),
     "Comcast Center, College Park, Maryland": XFINITY_CENTER,
     "Atlantis Resort Arena, Nassau": IMPERIAL_ARENA,
@@ -19121,7 +19053,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Rupp Arena - Lexington, Kentucky - United States": RUPP_ARENA,
     "PNC Arena": PNC_ARENA,
     "Watsco Center - Miami–Orlando, United States - United States": WATSO_CENTER,
-    "Breslin Student Events Center - East Lansing, Michigan - United States": BRESLIN_EVENTS_CENTER,
     "Chartway Arena - Norfolk, Virginia - United States": SportsballGeocodeTuple(
         city="Norfolk",
         state="VA",
@@ -19155,7 +19086,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Dominican Republic",
     ),
-    "Fertitta Center - Houston, Texas - United States": FERTITTA_CENTER,
     "State Farm Center - Champaign, Illinois - United States": STATE_FARM_CENTER,
     "Lubumbashi, Democratic Republic of the Congo": SportsballGeocodeTuple(
         city="Lubumbashi",

@@ -6249,6 +6249,96 @@
             "housenumber": "",
             "country": "USA",
             "type": "venue"
+        },
+        "fd886afc-48b0-4cbb-acca-47f628f18c29": {
+            "city": "Kingston",
+            "state": "RI",
+            "postal": "02881",
+            "lat": 41.488006,
+            "lng": -71.534643,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "f707fef1-c470-4e6b-a425-d12e099b63b5": {
+            "city": "Knoxville",
+            "state": "TN",
+            "postal": "37916",
+            "lat": 35.951167,
+            "lng": -83.925028,
+            "housenumber": "1600",
+            "country": "USA",
+            "type": "venue"
+        },
+        "b7ab95be-592a-4949-8232-7ee86d2783da": {
+            "city": "Båstad",
+            "state": "",
+            "postal": "",
+            "lat": 56.434722,
+            "lng": 12.838333,
+            "housenumber": "",
+            "country": "Sweden",
+            "type": "venue"
+        },
+        "1105097e-a845-45a5-8a6a-dbcf850b2940": {
+            "city": "Houston",
+            "state": "TX",
+            "postal": "77004",
+            "lat": 29.724722,
+            "lng": -95.346944,
+            "housenumber": "3875",
+            "country": "USA",
+            "type": "venue"
+        },
+        "7e846177-2a22-4c45-b5cb-a1473943dc22": {
+            "city": "Al Wakrah",
+            "state": "",
+            "postal": "",
+            "lat": 25.159778,
+            "lng": 51.574083,
+            "housenumber": "",
+            "country": "Qatar",
+            "type": "venue"
+        },
+        "9b2b0df7-028c-4f25-8e90-1563cd63a98a": {
+            "city": "East Lansing",
+            "state": "MI",
+            "postal": "48824",
+            "lat": 42.728227,
+            "lng": -84.492396,
+            "housenumber": "534",
+            "country": "USA",
+            "type": "venue"
+        },
+        "8af55611-5e8a-4d44-8668-aa521195c13b": {
+            "city": "Seattle",
+            "state": "WA",
+            "postal": "",
+            "lat": 47.652,
+            "lng": -122.302,
+            "housenumber": "3870",
+            "country": "USA",
+            "type": "venue"
+        },
+        "23ec0292-44bc-42c2-9c23-b818cbd2d3c9": {
+            "city": "Quebec City",
+            "state": "QC",
+            "postal": "",
+            "lat": 46.829,
+            "lng": -71.248,
+            "housenumber": "250",
+            "country": "Canada",
+            "type": "venue"
+        },
+        "d980d608-61f0-45dc-9178-510480dd859f": {
+            "city": "Las Vegas",
+            "state": "NV",
+            "postal": "",
+            "lat": 36.105,
+            "lng": -115.144167,
+            "housenumber": "4505",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -7260,6 +7350,7 @@
         "Verizon Center, Washington, District of Columbia": "70757220-6101-48ad-b62d-158fc295cf51",
         "MCI Center, Washington, District of Columbia": "70757220-6101-48ad-b62d-158fc295cf51",
         "Capital One Arena": "70757220-6101-48ad-b62d-158fc295cf51",
+        "Capital One Arena - Washington - DC": "70757220-6101-48ad-b62d-158fc295cf51",
         "RUS": "8863ca60-3c0d-4222-9659-f98158507ad1",
         "Stan Sheriff Center, Honolulu, Hawaii": "ed184c3b-6af6-4f2f-8922-09f6a19db940",
         "Stan Sheriff Center - Honolulu, Hawaii - United States": "ed184c3b-6af6-4f2f-8922-09f6a19db940",
@@ -7497,6 +7588,21 @@
         "BayCare Ballpark - Clearwater - Florida - 33765": "9ff12eec-39ed-489d-8d97-c550a89e7bf9",
         "James H. Hilton Coliseum , Ames, Iowa": "cc534e03-12df-4956-aa6f-1738b4ddc798",
         "James H. Hilton Coliseum, Ames, Iowa": "cc534e03-12df-4956-aa6f-1738b4ddc798",
-        "Hilton Coliseum - Ames, Iowa - United States": "cc534e03-12df-4956-aa6f-1738b4ddc798"
+        "Hilton Coliseum - Ames, Iowa - United States": "cc534e03-12df-4956-aa6f-1738b4ddc798",
+        "Meade Stadium - Kingston - RI - 02881": "fd886afc-48b0-4cbb-acca-47f628f18c29",
+        "Thompson-Boling Arena, Knoxville, Tennessee": "f707fef1-c470-4e6b-a425-d12e099b63b5",
+        "Bastad": "b7ab95be-592a-4949-8232-7ee86d2783da",
+        "Hofheinz Pavilion, Houston, Texas": "1105097e-a845-45a5-8a6a-dbcf850b2940",
+        "Fertitta Center, Houston, Texas": "1105097e-a845-45a5-8a6a-dbcf850b2940",
+        "Fertitta Center - Houston, Texas - United States": "1105097e-a845-45a5-8a6a-dbcf850b2940",
+        "Al Janoub Stadium - Al Wakrah": "7e846177-2a22-4c45-b5cb-a1473943dc22",
+        "Breslin Events Center, East Lansing, Michigan": "9b2b0df7-028c-4f25-8e90-1563cd63a98a",
+        "Breslin Student Events Center, East Lansing, Michigan": "9b2b0df7-028c-4f25-8e90-1563cd63a98a",
+        "Breslin Student Events Center - East Lansing, Michigan - United States": "9b2b0df7-028c-4f25-8e90-1563cd63a98a",
+        "Alaska Airlines Arena, Seattle, Washington": "8af55611-5e8a-4d44-8668-aa521195c13b",
+        "Bank of America Arena, Seattle, Washington": "8af55611-5e8a-4d44-8668-aa521195c13b",
+        "Videotron Centre - Quebec City - QC": "23ec0292-44bc-42c2-9c23-b818cbd2d3c9",
+        "Thomas & Mack Center, Las Vegas, Nevada": "d980d608-61f0-45dc-9178-510480dd859f",
+        "Thomas & Mack Center - Paradise, NV - United States": "d980d608-61f0-45dc-9178-510480dd859f"
     }
 }

@@ -16,6 +16,7 @@ class Position(StrEnum):
     LEFT_MIDFIELDER = "LM"
     RIGHT_MIDFIELDER = "RM"
     CENTRAL_MIDFIELDER_LEFT = "CM-L"
+    FORWARD = "F"
 
 
 _POSITIONS = {str(x): x for x in Position}

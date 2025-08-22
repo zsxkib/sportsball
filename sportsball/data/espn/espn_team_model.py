@@ -37,7 +37,7 @@ def _create_espn_team_model(
     name = team.get("name", team.get("fullName", team.get("displayName")))
     if name is None:
         raise ValueError("name is null")
-    location = team["location"]
+    location = team.get("location")
     players = []
     for entity in roster_dict.get("entries", []):
         player = create_espn_player_model(session, entity, dt, positions_validator)

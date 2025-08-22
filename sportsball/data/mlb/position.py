@@ -5,3 +5,5 @@ from enum import StrEnum
 
 class Position(StrEnum):
     """An enumeration over the different positions."""
+
+    LEFT_FIELD = "LF"
