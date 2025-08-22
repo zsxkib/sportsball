@@ -400,15 +400,6 @@ F_G_CLARK_ACTIVITY_CENTER = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-KSU_CONVOCATION_CENTER = SportsballGeocodeTuple(
-    city="Kennesaw",
-    state="GA",
-    postal="30144",
-    lat=34.036924,
-    lng=-84.580329,
-    housenumber="590",
-    country="USA",
-)
 WALKUP_SKYDOME = SportsballGeocodeTuple(
     city="Flagstaff",
     state="AZ",
@@ -3398,34 +3389,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Pete Mathews Coliseum, Jacksonville, Alabama": SportsballGeocodeTuple(
-        city="Jacksonville",
-        state="AL",
-        postal="36265",
-        lat=33.824,
-        lng=-85.773,
-        housenumber="700",
-        country="USA",
-    ),
-    "Atlantic Union Bank Center, Harrisonburg, Virginia": SportsballGeocodeTuple(
-        city="Harrisonburg",
-        state="VA",
-        postal="",
-        lat=38.430437,
-        lng=-78.859574,
-        housenumber="645",
-        country="USA",
-    ),
-    "KSU Convocation Center , Kennesaw, Georgia": KSU_CONVOCATION_CENTER,
-    "Ellis T. Johnson Arena, Morehead, Kentucky": SportsballGeocodeTuple(
-        city="Morehead",
-        state="KY",
-        postal="40351",
-        lat=38.188786,
-        lng=-83.429006,
-        housenumber="111",
-        country="USA",
-    ),
     "Ellis Corbett Sports Center, Greensboro, North Carolina": CORBETT_SPORTS_CENTER,
     "Trask Coliseum, Wilmington, North Carolina": TRACK_COLISEUM,
     "UNF Arena , Jacksonville, Florida": SportsballGeocodeTuple(
@@ -5947,7 +5910,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "KSU Convocation Center, Kennesaw, Georgia": KSU_CONVOCATION_CENTER,
     "Fredrick C. Hobdy Assembly Center, Grambling, Louisiana": FREDRICK_C_HOBDY_ASSEMBLY_CENTER,
     "Walkup Skydome, Flagstaff, Arizona": WALKUP_SKYDOME,
     "Great Southern Bank Arena, Springfield, Missouri": GREAT_SOUTHERN_BANK_ARENA,
@@ -16083,15 +16045,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         postal="",
         lat=36.986111,
         lng=-86.455556,
-        housenumber="",
-        country="USA",
-    ),
-    "Coastal Carolina College": SportsballGeocodeTuple(
-        city="Conway",
-        state="SC",
-        postal="",
-        lat=33.794722,
-        lng=-79.011667,
         housenumber="",
         country="USA",
     ),
