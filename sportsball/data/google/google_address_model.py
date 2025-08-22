@@ -400,15 +400,6 @@ F_G_CLARK_ACTIVITY_CENTER = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-WALKUP_SKYDOME = SportsballGeocodeTuple(
-    city="Flagstaff",
-    state="AZ",
-    postal="",
-    lat=35.1805,
-    lng=-111.6525,
-    housenumber="",
-    country="USA",
-)
 GREAT_SOUTHERN_BANK_ARENA = SportsballGeocodeTuple(
     city="Springfield",
     state="MO",
@@ -578,15 +569,6 @@ PAYCOM_CENTRE = SportsballGeocodeTuple(
     lat=35.463333,
     lng=-97.515,
     housenumber="100",
-    country="USA",
-)
-KIA_CENTER = SportsballGeocodeTuple(
-    city="Orlando",
-    state="FL",
-    postal="",
-    lat=28.539167,
-    lng=-81.383611,
-    housenumber="400",
     country="USA",
 )
 INTUIT_DOME = SportsballGeocodeTuple(
@@ -1262,15 +1244,6 @@ FINNERAN_PAVILION = SportsballGeocodeTuple(
     lat=40.034072,
     lng=-75.336553,
     housenumber="",
-    country="USA",
-)
-SCHEELS_ARENA = SportsballGeocodeTuple(
-    city="Fargo",
-    state="ND",
-    postal="",
-    lat=46.900442,
-    lng=-96.799025,
-    housenumber="1600",
     country="USA",
 )
 BROOKSHIRE_GROCERY_ARENA = SportsballGeocodeTuple(
@@ -3344,53 +3317,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Roy L. Patrick Gymnasium, Burlington, Vermont": SportsballGeocodeTuple(
-        city="Burlington",
-        state="VT",
-        postal="",
-        lat=44.470264,
-        lng=-73.194705,
-        housenumber="97",
-        country="USA",
-    ),
-    "Convocation Center, Jonesboro, Arkansas": SportsballGeocodeTuple(
-        city="Jonesboro",
-        state="AR",
-        postal="72401",
-        lat=35.845422,
-        lng=-90.670319,
-        housenumber="217",
-        country="USA",
-    ),
-    "Reed Gym, Pocatello, Idaho": SportsballGeocodeTuple(
-        city="Pocatello",
-        state="ID",
-        postal="",
-        lat=42.8645,
-        lng=-112.429,
-        housenumber="936",
-        country="USA",
-    ),
-    "Scheels Center, Fargo, North Dakota": SCHEELS_ARENA,
-    "Findlay Toyota Court at Walkup Skydome, Flagstaff, Arizona": WALKUP_SKYDOME,
-    "Sanford Coyote Sports Center, Vermillon, South Dakota": SportsballGeocodeTuple(
-        city="Vermillon",
-        state="SD",
-        postal="57069",
-        lat=42.790111,
-        lng=-96.927806,
-        housenumber="",
-        country="USA",
-    ),
-    "Screaming Eagles Arena, Evansville, Indiana": SportsballGeocodeTuple(
-        city="Evansville",
-        state="IN",
-        postal="47712",
-        lat=37.961944,
-        lng=-87.674722,
-        housenumber="8600",
-        country="USA",
-    ),
     "Wisdom Gym, Stephenville, Texas": WISDOM_GYM,
     "Skyhawk Arena, Martin, Tennessee": SportsballGeocodeTuple(
         city="Martin",
@@ -5597,7 +5523,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Rocket Mortgage Fieldhouse, Cleveland, Ohio": ROCKET_MORTGAGE_FIELDHOUSE,
     "FedEx Forum, Memphis, Tennessee": FEDEX_FORUM,
     "Target Center, Minneapolis, Minnesota": TARGET_CENTER,
-    "Kia Center, Orlando, Florida": KIA_CENTER,
     "Crypto.com Arena, Los Angeles, California": STAPLES_CENTRE,
     "Paycom Center, Oklahoma City, Oklahoma": PAYCOM_CENTRE,
     "Golden 1 Center, Sacramento, California": GOLDEN_1_CENTER,
@@ -5836,7 +5761,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Fredrick C. Hobdy Assembly Center, Grambling, Louisiana": FREDRICK_C_HOBDY_ASSEMBLY_CENTER,
-    "Walkup Skydome, Flagstaff, Arizona": WALKUP_SKYDOME,
     "Great Southern Bank Arena, Springfield, Missouri": GREAT_SOUTHERN_BANK_ARENA,
     "Banterra Center, Carbondale, Illinois": SportsballGeocodeTuple(
         city="Carbondale",
@@ -6085,15 +6009,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Alex G. Spanos Center, Stockton, California": AG_SPANOS_CENTER,
     "War Memorial Gymnasium, San Francisco, California": WAR_MEMORIAL_GYMNASIUM,
-    "First National Bank Arena, Jonesboro, Arkansas": SportsballGeocodeTuple(
-        city="Jonesboro",
-        state="AR",
-        postal="72401",
-        lat=35.845422,
-        lng=-90.670319,
-        housenumber="217",
-        country="USA",
-    ),
     "Frost Arena, Brookings, South Dakota": SportsballGeocodeTuple(
         city="Brookings",
         state="SD",
@@ -6263,7 +6178,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Footprint Center, Phoenix, AZ, USA": AMERICA_WEST_ARENA,
     "American Airlines Center, Dallas, TX, USA": AMERICAN_AIRLINES_ARENA,
     "Crypto.com Arena, Los Angeles, CA, USA": STAPLES_CENTRE,
-    "Kia Center, Orlando, FL, USA": KIA_CENTER,
     "United Center, Chicago, IL, USA": UNITED_CENTER,
     "FedExForum, Memphis, TN, USA": FEDEX_FORUM,
     "Target Center, Minneapolis, MN, USA": TARGET_CENTER,
@@ -6288,7 +6202,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Paycom Center - Oklahoma City, Oklahoma - United States": PAYCOM_CENTRE,
     "Spectrum Center - Charlotte, North Carolina - United States": SPECTRUM_CENTRE,
     "Little Caesars Arena - Detroit, Michigan - United States": LITTLE_CAESARS_ARENA,
-    "Kia Center - Orlando, Florida - United States": KIA_CENTER,
     "Scotiabank Arena - Toronto, Ontario - Canada": SCOTIABANK_ARENA,
     "Climate Pledge Arena - Seattle, Washington - United States": CLIMATE_PLEDGE_ARENA,
     "State Farm Arena - Atlanta, Georgia - United States": STATE_FARM_ARENA,
@@ -9591,7 +9504,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "The Pavilion, Villanova, Pennsylvania": FINNERAN_PAVILION,
-    "Scheels Arena, Fargo, North Dakota": SCHEELS_ARENA,
     "DakotaDome , Vermillion, South Dakota": SportsballGeocodeTuple(
         city="Vermillion",
         state="SD",
@@ -9748,7 +9660,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Monroe, Louisiana": MONROE,
-    "Bison Sports Arena, Fargo, North Dakota": SCHEELS_ARENA,
     "F&M Bank Arena, Clarksville, Tennessee": SportsballGeocodeTuple(
         city="Clarksville",
         state="TN",
@@ -9823,7 +9734,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "FedExForum - Memphis, Tennessee - United States": FEDEX_FORUM,
-    "Kia Center, Orlando, FL, EUA": KIA_CENTER,
     "Davis Field House, Greenville, South Carolina": SportsballGeocodeTuple(
         city="Greenville",
         state="SC",

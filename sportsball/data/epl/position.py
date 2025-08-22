@@ -11,6 +11,7 @@ class Position(StrEnum):
     CENTRE_DEFENDER_RIGHT = "CD-R"
     LEFT_BACK = "LB"
     RIGHT_BACK = "RB"
+    ATTACKING_MIDFIELDER = "AM"
 
 
 _POSITIONS = {str(x): x for x in Position}

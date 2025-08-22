@@ -5859,6 +5859,116 @@
             "housenumber": "97",
             "country": "USA",
             "type": "venue"
+        },
+        "0e135e0d-25e4-4ab0-9bce-25f993e2148e": {
+            "city": "Jonesboro",
+            "state": "AR",
+            "postal": "72401",
+            "lat": 35.845422,
+            "lng": -90.670319,
+            "housenumber": "217",
+            "country": "USA",
+            "type": "venue"
+        },
+        "a8e7a81a-b25f-43e8-924d-fa59005e5972": {
+            "city": "Halle (Saale)",
+            "state": "Saxony-Anhalt",
+            "postal": "",
+            "lat": 51.482778,
+            "lng": 11.969722,
+            "housenumber": "",
+            "country": "Germany",
+            "type": "city"
+        },
+        "565e52f6-11e6-45ba-864c-2be67c75ea20": {
+            "city": "Pocatello",
+            "state": "ID",
+            "postal": "",
+            "lat": 42.8645,
+            "lng": -112.429,
+            "housenumber": "936",
+            "country": "USA",
+            "type": "venue"
+        },
+        "06afd7e0-7f6e-44f0-9da5-6744a2804457": {
+            "city": "Bilbao",
+            "state": "Basque Country",
+            "postal": "",
+            "lat": 43.2643,
+            "lng": -2.9504,
+            "housenumber": "",
+            "country": "Spain",
+            "type": "venue"
+        },
+        "38ea0c65-1f00-4c3c-b720-1d6ab5aed13d": {
+            "city": "Fargo",
+            "state": "ND",
+            "postal": "",
+            "lat": 46.900442,
+            "lng": -96.799025,
+            "housenumber": "1600",
+            "country": "USA",
+            "type": "venue"
+        },
+        "eef7ed91-d03f-4284-a1eb-8312cc0c1cc6": {
+            "city": "Port Charlotte",
+            "state": "FL",
+            "postal": "33948",
+            "lat": 26.999167,
+            "lng": -82.181667,
+            "housenumber": "2300",
+            "country": "USA",
+            "type": "venue"
+        },
+        "a6935f76-1d5a-4c7e-a54c-39007240fa25": {
+            "city": "Flagstaff",
+            "state": "AZ",
+            "postal": "",
+            "lat": 35.1805,
+            "lng": -111.6525,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "18f56b88-fe90-4528-9a1b-68f98624ce95": {
+            "city": "Orlando",
+            "state": "FL",
+            "postal": "",
+            "lat": 28.539167,
+            "lng": -81.383611,
+            "housenumber": "400",
+            "country": "USA",
+            "type": "venue"
+        },
+        "f10db841-cd80-423f-9c2f-92345b5b558d": {
+            "city": "Vermillon",
+            "state": "SD",
+            "postal": "57069",
+            "lat": 42.790111,
+            "lng": -96.927806,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "73e8f934-c14b-42ab-a63b-de5480e8abd5": {
+            "city": "Ontario",
+            "state": "CA",
+            "postal": "91798",
+            "lat": 34.072947,
+            "lng": -117.566401,
+            "housenumber": "4000",
+            "country": "USA",
+            "type": "venue"
+        },
+        "cdb64392-ec8f-427e-87b0-826497a34ee4": {
+            "city": "Evansville",
+            "state": "IN",
+            "postal": "47712",
+            "lat": 37.961944,
+            "lng": -87.674722,
+            "housenumber": "8600",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -6177,6 +6287,7 @@
         "New York, New York": "b53cc5f3-4827-4efe-a5f9-67a5d663553e",
         "New York, New York, United States": "b53cc5f3-4827-4efe-a5f9-67a5d663553e",
         "Princes Park - Australia": "60cc2b2c-393d-4035-8a4a-011ef5c96b96",
+        "IKON Park": "60cc2b2c-393d-4035-8a4a-011ef5c96b96",
         "Ross-Ade Stadium": "a8cf2e14-c718-40be-a217-c669130a3f04",
         "Ross-Ade Stadium - West Lafayette - IN - 47906": "a8cf2e14-c718-40be-a217-c669130a3f04",
         "Punt Rd - Australia": "a1052505-7d77-4d4e-ae6e-18ca641b0833",
@@ -7020,6 +7131,25 @@
         "HSBC Arena, Buffalo, New York": "f0cd6b0b-4320-4285-bee8-4fd808da8c9e",
         "KeyBank Center, Buffalo, NY, USA": "f0cd6b0b-4320-4285-bee8-4fd808da8c9e",
         "KeyBank Center": "f0cd6b0b-4320-4285-bee8-4fd808da8c9e",
-        "Roy L. Patrick Gymnasium, Burlington, Vermont": "9e35fb37-0ac7-4a43-b011-2bad1620f57b"
+        "Roy L. Patrick Gymnasium, Burlington, Vermont": "9e35fb37-0ac7-4a43-b011-2bad1620f57b",
+        "Convocation Center, Jonesboro, Arkansas": "0e135e0d-25e4-4ab0-9bce-25f993e2148e",
+        "First National Bank Arena, Jonesboro, Arkansas": "0e135e0d-25e4-4ab0-9bce-25f993e2148e",
+        "Halle, Germany": "a8e7a81a-b25f-43e8-924d-fa59005e5972",
+        "Reed Gym, Pocatello, Idaho": "565e52f6-11e6-45ba-864c-2be67c75ea20",
+        "San Mamés Barria - Bilbao - Spain": "06afd7e0-7f6e-44f0-9da5-6744a2804457",
+        "Scheels Center, Fargo, North Dakota": "38ea0c65-1f00-4c3c-b720-1d6ab5aed13d",
+        "Scheels Arena, Fargo, North Dakota": "38ea0c65-1f00-4c3c-b720-1d6ab5aed13d",
+        "Bison Sports Arena, Fargo, North Dakota": "38ea0c65-1f00-4c3c-b720-1d6ab5aed13d",
+        "Charlotte Sports Park - Port Charlotte - Florida - 33948": "eef7ed91-d03f-4284-a1eb-8312cc0c1cc6",
+        "Findlay Toyota Court at Walkup Skydome, Flagstaff, Arizona": "a6935f76-1d5a-4c7e-a54c-39007240fa25",
+        "Walkup Skydome, Flagstaff, Arizona": "a6935f76-1d5a-4c7e-a54c-39007240fa25",
+        "Kia Center - Orlando - FL": "18f56b88-fe90-4528-9a1b-68f98624ce95",
+        "Kia Center, Orlando, Florida": "18f56b88-fe90-4528-9a1b-68f98624ce95",
+        "Kia Center, Orlando, FL, USA": "18f56b88-fe90-4528-9a1b-68f98624ce95",
+        "Kia Center - Orlando, Florida - United States": "18f56b88-fe90-4528-9a1b-68f98624ce95",
+        "Kia Center, Orlando, FL, EUA": "18f56b88-fe90-4528-9a1b-68f98624ce95",
+        "Sanford Coyote Sports Center, Vermillon, South Dakota": "f10db841-cd80-423f-9c2f-92345b5b558d",
+        "Toyota Arena - Ontario - CA - 91798": "73e8f934-c14b-42ab-a63b-de5480e8abd5",
+        "Screaming Eagles Arena, Evansville, Indiana": "cdb64392-ec8f-427e-87b0-826497a34ee4"
     }
 }
