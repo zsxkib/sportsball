@@ -8,3 +8,4 @@ class Position(StrEnum):
 
     DEFENSEMAN = "D"
     CENTRE = "C"
+    GOALTENDER = "G"

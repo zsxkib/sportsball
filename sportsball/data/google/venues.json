@@ -6359,6 +6359,86 @@
             "housenumber": "600",
             "country": "USA",
             "type": "venue"
+        },
+        "e407e78f-f372-49fb-bf63-8959a11de76c": {
+            "city": "Williamsburg",
+            "state": "VA",
+            "postal": "",
+            "lat": 37.272778,
+            "lng": -76.714167,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "8d0a547b-9b24-43cb-ad56-1f0e7995779f": {
+            "city": "Chattanooga",
+            "state": "TN",
+            "postal": "37403",
+            "lat": 35.050382,
+            "lng": -85.30091,
+            "housenumber": "720",
+            "country": "USA",
+            "type": "venue"
+        },
+        "0afa4d0a-b0ae-43ad-a74f-53e4001b5a0c": {
+            "city": "Winston-Salem",
+            "state": "NC",
+            "postal": "",
+            "lat": 36.102778,
+            "lng": -80.260833,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "ff7fa0b7-d0d1-4d8d-933e-cde1fa5cbeae": {
+            "city": "Dayton",
+            "state": "OH",
+            "postal": "45417",
+            "lat": 39.7348749,
+            "lng": -84.2021489,
+            "housenumber": "1801",
+            "country": "USA",
+            "type": "venue"
+        },
+        "1a90d1d2-9639-4728-be62-3b71739fd66c": {
+            "city": "Al Rayyan",
+            "state": "",
+            "postal": "",
+            "lat": 25.32964,
+            "lng": 51.342273,
+            "housenumber": "",
+            "country": "Qatar",
+            "type": "venue"
+        },
+        "44d0b911-e8ff-4a63-81b3-c694c894537d": {
+            "city": "Philadelphia",
+            "state": "PA",
+            "postal": "19141",
+            "lat": 40.039993,
+            "lng": -75.15654,
+            "housenumber": "15",
+            "country": "USA",
+            "type": "venue"
+        },
+        "8a99bebc-31ba-4672-9862-04784266eb98": {
+            "city": "West Palm Beach",
+            "state": "FL",
+            "postal": "",
+            "lat": 26.755278,
+            "lng": -80.112778,
+            "housenumber": "5444",
+            "country": "USA",
+            "type": "venue"
+        },
+        "aac4fc47-7353-4395-b56c-5f8bb9eb1c6b": {
+            "city": "Hammond",
+            "state": "LA",
+            "postal": "70401",
+            "lat": 30.52,
+            "lng": -90.472778,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -7625,6 +7705,18 @@
         "Thomas & Mack Center, Las Vegas, Nevada": "d980d608-61f0-45dc-9178-510480dd859f",
         "Thomas & Mack Center - Paradise, NV - United States": "d980d608-61f0-45dc-9178-510480dd859f",
         "London, Great Britain": "e295afec-c043-467d-884a-d2815adf8bd2",
-        "Christl Arena, West Point, New York": "da23d9eb-e411-4ea0-8675-c383b8150959"
+        "Christl Arena, West Point, New York": "da23d9eb-e411-4ea0-8675-c383b8150959",
+        "Walter J. Zable Stadium - Williamsburg - VA - 23186": "e407e78f-f372-49fb-bf63-8959a11de76c",
+        "The McKenzie Arena, Chattanooga, Tennessee": "8d0a547b-9b24-43cb-ad56-1f0e7995779f",
+        "McKenzie Arena, Chattanooga, Tennessee": "8d0a547b-9b24-43cb-ad56-1f0e7995779f",
+        "Winston-Salem, USA": "0afa4d0a-b0ae-43ad-a74f-53e4001b5a0c",
+        "Winston-Salem, North Carolina": "0afa4d0a-b0ae-43ad-a74f-53e4001b5a0c",
+        "Winston-Salem, North Carolina, United States": "0afa4d0a-b0ae-43ad-a74f-53e4001b5a0c",
+        "University of Dayton Arena, Dayton, Ohio": "ff7fa0b7-d0d1-4d8d-933e-cde1fa5cbeae",
+        "Ahmad bin Ali Stadium - Doha": "1a90d1d2-9639-4728-be62-3b71739fd66c",
+        "John Glaser Arena, Philadelphia, Pennsylvania": "44d0b911-e8ff-4a63-81b3-c694c894537d",
+        "Tom Gola Arena, Philadelphia, Pennsylvania": "44d0b911-e8ff-4a63-81b3-c694c894537d",
+        "CACTI Park of the Palm Beaches - Palm Beach - Florida - 33407": "8a99bebc-31ba-4672-9862-04784266eb98",
+        "University Center, Hammond, Louisiana": "aac4fc47-7353-4395-b56c-5f8bb9eb1c6b"
     }
 }

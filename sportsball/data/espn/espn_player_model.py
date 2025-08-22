@@ -723,7 +723,7 @@ def _create_espn_player_model(
             except ValueError:
                 logging.warning("Failed to get birth address for: %s", query)
 
-    position_abbreviation = position_dict["abbreviation"]
+    position_abbreviation = position_dict.get("abbreviation")
     college = None
     try:
         if "id" in college_dict:
@@ -778,7 +778,7 @@ def _create_espn_player_model(
         sex=str(Sex.MALE),
         age=None if birth_date is None else relativedelta(birth_date, dt.date()).years,
         starting_position=positions_validator[position_abbreviation]
-        if position_abbreviation != "-"
+        if position_abbreviation != "-" and position_abbreviation is not None
         else None,
         weight=athlete_dict["weight"] * 0.453592 if "weight" in athlete_dict else None,
         birth_address=birth_address,

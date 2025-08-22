@@ -738,6 +738,8 @@ NCAAB_TEAM_IDENTITY_MAP: dict[str, str] = {
     "St. Thomas Tommies Men's": ST_THOMAS_TOMMIES,
     "Cal State Bakersfield Roadrunners Men's": CAL_STATE_BAKERSFIELD_ROADRUNNERS,
     "Wagner Seahawks Men's": WAGNER_SEAHAWKS,
+    # SportsDB
+    "138501": FLORIDA_GATORS,
 }
 NCAAB_VENUE_IDENTITY_MAP: dict[str, str] = {}
 NCAAB_PLAYER_IDENTITY_MAP: dict[str, str] = {}
