@@ -6339,6 +6339,26 @@
             "housenumber": "4505",
             "country": "USA",
             "type": "venue"
+        },
+        "e295afec-c043-467d-884a-d2815adf8bd2": {
+            "city": "London",
+            "state": "",
+            "postal": "",
+            "lat": 51.507222,
+            "lng": -0.1275,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "da23d9eb-e411-4ea0-8675-c383b8150959": {
+            "city": "West Point",
+            "state": "NY",
+            "postal": "10996",
+            "lat": 41.38641,
+            "lng": -73.96571,
+            "housenumber": "600",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -7603,6 +7623,8 @@
         "Bank of America Arena, Seattle, Washington": "8af55611-5e8a-4d44-8668-aa521195c13b",
         "Videotron Centre - Quebec City - QC": "23ec0292-44bc-42c2-9c23-b818cbd2d3c9",
         "Thomas & Mack Center, Las Vegas, Nevada": "d980d608-61f0-45dc-9178-510480dd859f",
-        "Thomas & Mack Center - Paradise, NV - United States": "d980d608-61f0-45dc-9178-510480dd859f"
+        "Thomas & Mack Center - Paradise, NV - United States": "d980d608-61f0-45dc-9178-510480dd859f",
+        "London, Great Britain": "e295afec-c043-467d-884a-d2815adf8bd2",
+        "Christl Arena, West Point, New York": "da23d9eb-e411-4ea0-8675-c383b8150959"
     }
 }

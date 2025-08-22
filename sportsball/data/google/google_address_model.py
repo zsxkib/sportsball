@@ -3164,15 +3164,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Christl Arena, West Point, New York": SportsballGeocodeTuple(
-        city="West Point",
-        state="NY",
-        postal="10996",
-        lat=41.38641,
-        lng=-73.96571,
-        housenumber="600",
-        country="USA",
-    ),
     "The McKenzie Arena, Chattanooga, Tennessee": SportsballGeocodeTuple(
         city="Chattanooga",
         state="TN",

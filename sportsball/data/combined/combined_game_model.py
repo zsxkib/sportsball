@@ -55,7 +55,9 @@ def _team_models(
                 team_identity = team_identity_map.get(team_model.identifier)
                 if team_identity is None:
                     logging.warning(
-                        "Failed to find %s team identifier.", team_model.identifier
+                        "Failed to find %s team identifier (%s).",
+                        team_model.identifier,
+                        team_model.name,
                     )
                     team_identity = team_model.identifier
                 team_models[team_identity] = team_models.get(team_identity, []) + [

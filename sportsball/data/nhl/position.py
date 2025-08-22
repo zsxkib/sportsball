@@ -7,3 +7,4 @@ class Position(StrEnum):
     """An enumeration over the different positions."""
 
     DEFENSEMAN = "D"
+    CENTRE = "C"
