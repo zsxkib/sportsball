@@ -14,6 +14,8 @@ class Position(StrEnum):
     ATTACKING_MIDFIELDER = "AM"
     CENTRAL_MIDFIELDER = "CM"
     LEFT_MIDFIELDER = "LM"
+    RIGHT_MIDFIELDER = "RM"
+    CENTRAL_MIDFIELDER_LEFT = "CM-L"
 
 
 _POSITIONS = {str(x): x for x in Position}

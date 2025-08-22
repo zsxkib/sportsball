@@ -319,15 +319,6 @@ COLONIAL_LIFE_ARENA = SportsballGeocodeTuple(
     housenumber="801",
     country="USA",
 )
-JAMES_H_HILTON_COLISEUM = SportsballGeocodeTuple(
-    city="Ames",
-    state="IA",
-    postal="50010",
-    lat=42.02101,
-    lng=-93.634763,
-    housenumber="",
-    country="USA",
-)
 BRESLIN_EVENTS_CENTER = SportsballGeocodeTuple(
     city="East Lansing",
     state="MI",
@@ -749,15 +740,6 @@ ELMORE_GYMNASIUM = SportsballGeocodeTuple(
     lat=34.7852,
     lng=-86.5752,
     housenumber="4900",
-    country="USA",
-)
-REDHAWK_CENTER = SportsballGeocodeTuple(
-    city="Seattle",
-    state="WA",
-    postal="",
-    lat=47.607222,
-    lng=-122.313333,
-    housenumber="",
     country="USA",
 )
 VIRGIN_ISLANDS_SPORT_AND_FITNESS_CENTER = SportsballGeocodeTuple(
@@ -3209,17 +3191,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Chiles Center, Portland, Oregon": SportsballGeocodeTuple(
-        city="Portland",
-        state="OR",
-        postal="",
-        lat=45.575,
-        lng=-122.728,
-        housenumber="",
-        country="USA",
-    ),
-    "Redhawk Center, Seattle, Washington": REDHAWK_CENTER,
-    "James H. Hilton Coliseum , Ames, Iowa": JAMES_H_HILTON_COLISEUM,
     "Thompson-Boling Arena, Knoxville, Tennessee": SportsballGeocodeTuple(
         city="Knoxville",
         state="TN",
@@ -5547,7 +5518,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Nutter Center, Dayton, Ohio": NUTTER_CENTER,
     "Addition Financial Arena, Orlando, Florida": ADDITION_FINANCIAL_ARENA,
     "Colonial Life Arena, Columbia, South Carolina": COLONIAL_LIFE_ARENA,
-    "James H. Hilton Coliseum, Ames, Iowa": JAMES_H_HILTON_COLISEUM,
     "Provident Credit Union Event Center, San Jose, California": SportsballGeocodeTuple(
         city="San Jose",
         state="CA",
@@ -6497,7 +6467,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="2601",
         country="USA",
     ),
-    "Connolly Center, Seattle, Washington": REDHAWK_CENTER,
     "Chase Family Arena, Hartford, Connecticut": CHASE_FAMILY_ARENA,
     "Virgin Islands Sport & Fitness Center , St. Thomas": VIRGIN_ISLANDS_SPORT_AND_FITNESS_CENTER,
     "Virgin Islands Sport & Fitness Center, St. Thomas": VIRGIN_ISLANDS_SPORT_AND_FITNESS_CENTER,
@@ -19164,7 +19133,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Bryce Jordan Center - University Park, Pennsylvania - United States": BRYCE_JORDAN_CENTER,
     "Agganis Arena - Boston, Massachusetts - United States": AGGANIS_ARENA,
-    "Hilton Coliseum - Ames, Iowa - United States": JAMES_H_HILTON_COLISEUM,
     "Cajundome - Lafayette, Louisiana - United States": CAJUNDOME,
     "Wintrust Arena - Chicago, Illinois, USA - United States": WINTRUST_ARENA,
     "Ryan Center - Kingston, Rhode Island - United States": RYAN_CENTER,

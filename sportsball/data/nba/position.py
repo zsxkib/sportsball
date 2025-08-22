@@ -9,6 +9,7 @@ class Position(StrEnum):
 
     POWER_FORWARD = "PF"
     SHORT_GUARD = "SG"
+    SMALL_FORWARD = "SF"
 
 
 _POSITIONS = {str(x): x for x in Position}

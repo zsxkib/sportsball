@@ -10,8 +10,6 @@ from ..nba.nba_nba_league_model import NBANBALeagueModel
 from ..nbacom.nba_nbacom_league_model import NBANBAComLeagueModel
 from ..oddsportal.nba_oddsportal_league_model import NBAOddsPortalLeagueModel
 from ..sportsdb.nba_sportsdb_league_model import NBASportsDBLeagueModel
-from ..sportsreference.nba_sportsreference_league_model import \
-    NBASportsReferenceLeagueModel
 
 ORLANDO_MAGIC = "1610612753"
 ATLANTA_HAWKS = "1610612737"
@@ -904,9 +902,9 @@ class NBACombinedLeagueModel(CombinedLeagueModel):
                 NBANBALeagueModel(session, position=0),
                 NBAESPNLeagueModel(session, position=1),
                 NBASportsDBLeagueModel(session, position=2),
-                NBASportsReferenceLeagueModel(session, position=3),
-                NBAOddsPortalLeagueModel(session, position=4),
-                NBANBAComLeagueModel(session, position=5),
+                NBAOddsPortalLeagueModel(session, position=3),
+                NBANBAComLeagueModel(session, position=4),
+                # NBASportsReferenceLeagueModel(session, position=5),
             ],
             league_filter,
         )

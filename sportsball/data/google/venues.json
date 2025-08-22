@@ -6199,6 +6199,56 @@
             "housenumber": "",
             "country": "USA",
             "type": "college"
+        },
+        "b9e7f7b0-bf03-4dcb-bb58-52d90c49ead8": {
+            "city": "Portland",
+            "state": "OR",
+            "postal": "",
+            "lat": 45.575,
+            "lng": -122.728,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "b693f834-d1c8-4b79-b306-a2414ef5e64a": {
+            "city": "Dubai",
+            "state": "Dubai",
+            "postal": "",
+            "lat": 25.204722,
+            "lng": 55.270833,
+            "housenumber": "",
+            "country": "UAE",
+            "type": "city"
+        },
+        "0944c18b-3fce-4ca1-a07a-178ac4437283": {
+            "city": "Seattle",
+            "state": "WA",
+            "postal": "",
+            "lat": 47.607222,
+            "lng": -122.313333,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "9ff12eec-39ed-489d-8d97-c550a89e7bf9": {
+            "city": "Clearwater",
+            "state": "FL",
+            "postal": "33765",
+            "lat": 27.971667,
+            "lng": -82.731667,
+            "housenumber": "601",
+            "country": "USA",
+            "type": "venue"
+        },
+        "cc534e03-12df-4956-aa6f-1738b4ddc798": {
+            "city": "Ames",
+            "state": "IA",
+            "postal": "50010",
+            "lat": 42.02101,
+            "lng": -93.634763,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -6765,6 +6815,7 @@
         "University of Tasmania Stadium, Launceston, Austrália": "a8d92a71-b88d-47db-a5f4-f625a0720371",
         "UTAS Stadium, Launceston": "a8d92a71-b88d-47db-a5f4-f625a0720371",
         "University of Tasmania Stadium, Launceston": "a8d92a71-b88d-47db-a5f4-f625a0720371",
+        "UTAS Stadium - 7250": "a8d92a71-b88d-47db-a5f4-f625a0720371",
         "Barclays Center": "fc07ec74-208f-4ac4-a633-747f8cc58772",
         "Marrara Oval - Australia": "d09ab736-f5a8-4b13-b1fe-ecfa2f755ec3",
         "TIO Stadium": "d09ab736-f5a8-4b13-b1fe-ecfa2f755ec3",
@@ -7438,6 +7489,14 @@
         "American Airlines Center": "9147c05e-6acf-42b1-9796-93c734a6c42a",
         "Firestone Fieldhouse, Malibu, California": "f23aac2e-181e-4918-b337-1f541d4219ec",
         "Illinois State": "5abfac8a-7bdb-4247-9611-910be206fe3f",
-        "Illinois State College": "5abfac8a-7bdb-4247-9611-910be206fe3f"
+        "Illinois State College": "5abfac8a-7bdb-4247-9611-910be206fe3f",
+        "Chiles Center, Portland, Oregon": "b9e7f7b0-bf03-4dcb-bb58-52d90c49ead8",
+        "Dubai, United Arab Emirates": "b693f834-d1c8-4b79-b306-a2414ef5e64a",
+        "Redhawk Center, Seattle, Washington": "0944c18b-3fce-4ca1-a07a-178ac4437283",
+        "Connolly Center, Seattle, Washington": "0944c18b-3fce-4ca1-a07a-178ac4437283",
+        "BayCare Ballpark - Clearwater - Florida - 33765": "9ff12eec-39ed-489d-8d97-c550a89e7bf9",
+        "James H. Hilton Coliseum , Ames, Iowa": "cc534e03-12df-4956-aa6f-1738b4ddc798",
+        "James H. Hilton Coliseum, Ames, Iowa": "cc534e03-12df-4956-aa6f-1738b4ddc798",
+        "Hilton Coliseum - Ames, Iowa - United States": "cc534e03-12df-4956-aa6f-1738b4ddc798"
     }
 }
