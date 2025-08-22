@@ -5969,6 +5969,116 @@
             "housenumber": "8600",
             "country": "USA",
             "type": "venue"
+        },
+        "dfd2130c-e3a8-40ce-a9c2-dbe78f5ba73b": {
+            "city": "Stephenville",
+            "state": "TX",
+            "postal": "",
+            "lat": 32.215438,
+            "lng": -98.220617,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "c55de4ae-33f1-4329-be2e-f5ab28629d8d": {
+            "city": "Stuttgart",
+            "state": "Baden-Württemberg",
+            "postal": "",
+            "lat": 48.7775,
+            "lng": 9.18,
+            "housenumber": "",
+            "country": "Germany",
+            "type": "city"
+        },
+        "b401bfc4-4ebc-452a-8e6b-f71442c46423": {
+            "city": "Martin",
+            "state": "TN",
+            "postal": "",
+            "lat": 36.343648,
+            "lng": -88.867185,
+            "housenumber": "95",
+            "country": "USA",
+            "type": "venue"
+        },
+        "b0a2ce1b-628a-450c-ad9b-6fd9f5ed14c2": {
+            "city": "Lusail",
+            "state": "",
+            "postal": "",
+            "lat": 25.420861,
+            "lng": 51.490389,
+            "housenumber": "",
+            "country": "Qatar",
+            "type": "venue"
+        },
+        "815a3094-5e7f-43d3-b38d-1c20453008d2": {
+            "city": "Arlington",
+            "state": "TX",
+            "postal": "76019",
+            "lat": 32.730586,
+            "lng": -97.107972,
+            "housenumber": "600",
+            "country": "USA",
+            "type": "venue"
+        },
+        "56b1e509-92a5-47e5-8f35-304a60d90c6f": {
+            "city": "Fort Myers",
+            "state": "FL",
+            "postal": "33912",
+            "lat": 26.538333,
+            "lng": -81.841944,
+            "housenumber": "14100",
+            "country": "USA",
+            "type": "venue"
+        },
+        "b4fd745c-12cd-4de7-8d68-2c568eca74d4": {
+            "city": "Phoenix",
+            "state": "AZ",
+            "postal": "85017",
+            "lat": 33.510152,
+            "lng": -112.128884,
+            "housenumber": "3300",
+            "country": "USA",
+            "type": "venue"
+        },
+        "60d6f941-a10a-4146-99f4-0a97ddea9b91": {
+            "city": "Charlotte",
+            "state": "NC",
+            "postal": "",
+            "lat": 35.225,
+            "lng": -80.839167,
+            "housenumber": "333",
+            "country": "USA",
+            "type": "venue"
+        },
+        "37dd5f39-b280-46fa-9f4e-766c9cddba6f": {
+            "city": "Lynchburg",
+            "state": "VA",
+            "postal": "",
+            "lat": 37.349356,
+            "lng": -79.180225,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "f1bd089a-90d1-4264-8c30-35b4660ca477": {
+            "city": "Sunrise",
+            "state": "FL",
+            "postal": "",
+            "lat": 26.158333,
+            "lng": -80.325556,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
+        },
+        "74d7fc4a-06dd-46fd-8b78-5cd52ee0388c": {
+            "city": "Greeley",
+            "state": "CO",
+            "postal": "80639",
+            "lat": 40.402217,
+            "lng": -104.703044,
+            "housenumber": "270",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -6395,6 +6505,7 @@
         "Pontiac Silverdome, Pontiac, Michigan": "3aab2cf1-3072-48cd-b240-de4121d8372d",
         "The Dome at America's Center, St. Louis, MO, USA": "c28435ef-717b-4b46-b5c9-47c4fae983a8",
         "Moorabbin Oval - Australia": "f4c19842-a581-4155-a8c4-a7a978de141d",
+        "RSEA Park": "f4c19842-a581-4155-a8c4-a7a978de141d",
         "Khabarovsk, Russia": "a1698713-2b24-4079-b67f-c6ad496b0118",
         "Vanderbilt Stadium": "18891096-2374-4954-ac3d-83cd7a574c31",
         "Comerica Park, Detroit, MI, USA": "ac5fa64d-8d2d-40db-a66a-c16961e6af26",
@@ -7150,6 +7261,31 @@
         "Kia Center, Orlando, FL, EUA": "18f56b88-fe90-4528-9a1b-68f98624ce95",
         "Sanford Coyote Sports Center, Vermillon, South Dakota": "f10db841-cd80-423f-9c2f-92345b5b558d",
         "Toyota Arena - Ontario - CA - 91798": "73e8f934-c14b-42ab-a63b-de5480e8abd5",
-        "Screaming Eagles Arena, Evansville, Indiana": "cdb64392-ec8f-427e-87b0-826497a34ee4"
+        "Screaming Eagles Arena, Evansville, Indiana": "cdb64392-ec8f-427e-87b0-826497a34ee4",
+        "Wisdom Gym, Stephenville, Texas": "dfd2130c-e3a8-40ce-a9c2-dbe78f5ba73b",
+        "Wisdom Gymnasium, Stephenville, Texas": "dfd2130c-e3a8-40ce-a9c2-dbe78f5ba73b",
+        "Stuttgart, Germany": "c55de4ae-33f1-4329-be2e-f5ab28629d8d",
+        "Skyhawk Arena, Martin, Tennessee": "b401bfc4-4ebc-452a-8e6b-f71442c46423",
+        "Lusail Stadium - Lusail": "b0a2ce1b-628a-450c-ad9b-6fd9f5ed14c2",
+        "College Park Center, Arlington, Texas": "815a3094-5e7f-43d3-b38d-1c20453008d2",
+        "College Park Center - Arlington, Texas - United States": "815a3094-5e7f-43d3-b38d-1c20453008d2",
+        "Hammond Stadium - Fort Myers - Florida": "56b1e509-92a5-47e5-8f35-304a60d90c6f",
+        "GCU Arena, Phoenix, Arizona": "b4fd745c-12cd-4de7-8d68-2c568eca74d4",
+        "Spectrum Center - Charlotte - NC": "60d6f941-a10a-4146-99f4-0a97ddea9b91",
+        "Spectrum Center, Charlotte, North Carolina": "60d6f941-a10a-4146-99f4-0a97ddea9b91",
+        "Spectrum Center, Charlotte, NC, USA": "60d6f941-a10a-4146-99f4-0a97ddea9b91",
+        "Spectrum Center - Charlotte, North Carolina - United States": "60d6f941-a10a-4146-99f4-0a97ddea9b91",
+        "Time Warner Cable Arena, Charlotte, North Carolina": "60d6f941-a10a-4146-99f4-0a97ddea9b91",
+        "Charlotte Bobcats Arena, Charlotte, North Carolina": "60d6f941-a10a-4146-99f4-0a97ddea9b91",
+        "Times Warner Cable Arena, Charlotte, North Carolina": "60d6f941-a10a-4146-99f4-0a97ddea9b91",
+        "Liberty Arena, Lynchburg, Virginia": "37dd5f39-b280-46fa-9f4e-766c9cddba6f",
+        "Amerant Bank Arena - Sunrise - FL": "f1bd089a-90d1-4264-8c30-35b4660ca477",
+        "BB&T Center, Sunrise, Florida": "f1bd089a-90d1-4264-8c30-35b4660ca477",
+        "BankAtlantic Center, Sunrise, Florida": "f1bd089a-90d1-4264-8c30-35b4660ca477",
+        "Amerant Bank Arena, Sunrise, FL, USA": "f1bd089a-90d1-4264-8c30-35b4660ca477",
+        "Amerant Bank Arena": "f1bd089a-90d1-4264-8c30-35b4660ca477",
+        "BB&T Center": "f1bd089a-90d1-4264-8c30-35b4660ca477",
+        "Bank of Colorado Arena, Greeley, Colorado": "74d7fc4a-06dd-46fd-8b78-5cd52ee0388c",
+        "Butler Hancock Sports Pavilion, Greeley, Colorado": "74d7fc4a-06dd-46fd-8b78-5cd52ee0388c"
     }
 }

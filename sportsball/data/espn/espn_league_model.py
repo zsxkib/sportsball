@@ -21,6 +21,7 @@ def _season_type_from_name(name: str) -> SeasonType:
         name == "Regular Season"
         or "English Premier League" in name
         or "Group Stage" in name
+        or "Spring Regular Season" in name
     ):
         return SeasonType.REGULAR
     if name == "Preseason" or "Spring Training" in name:
