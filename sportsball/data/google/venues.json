@@ -6859,6 +6859,156 @@
             "housenumber": "",
             "country": "USA",
             "type": "venue"
+        },
+        "2bde231c-486b-4ab2-92ad-63a90fc2e867": {
+            "city": "Tampa",
+            "state": "FL",
+            "postal": "",
+            "lat": 28.059236,
+            "lng": -82.406472,
+            "housenumber": "12499",
+            "country": "USA",
+            "type": "venue"
+        },
+        "5b2c966e-062c-4725-bf31-c97c342181ce": {
+            "city": "",
+            "state": "",
+            "postal": "",
+            "lat": -10.0,
+            "lng": -76.0,
+            "housenumber": "",
+            "country": "Peru",
+            "type": "country"
+        },
+        "7ae62946-69c1-4dbc-8cea-eb37118d0518": {
+            "city": "St. Bonaventure",
+            "state": "NY",
+            "postal": "",
+            "lat": 42.079428,
+            "lng": -78.484998,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "73757514-5dfe-421a-a616-fa315bb8a9d9": {
+            "city": "Brighton and Hove",
+            "state": "",
+            "postal": "BN1 9BL",
+            "lat": 50.861944,
+            "lng": -0.083333,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "3528b84a-d0ae-4875-8f79-85b1632d61cf": {
+            "city": "New Orleans",
+            "state": "LA",
+            "postal": "70118",
+            "lat": 29.938611,
+            "lng": -90.120556,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "594e5def-2c9e-4eec-9ab8-7fbbc07e3d1d": {
+            "city": "Mumbai",
+            "state": "Maharashtra",
+            "postal": "",
+            "lat": 18.938889,
+            "lng": 72.825833,
+            "housenumber": "",
+            "country": "India",
+            "type": "venue"
+        },
+        "d5a71672-cdc0-4070-8b16-2c65a1b99ddf": {
+            "city": "Blacksburg",
+            "state": "VA",
+            "postal": "",
+            "lat": 37.222222,
+            "lng": -80.418889,
+            "housenumber": "675",
+            "country": "USA",
+            "type": "venue"
+        },
+        "010a33b1-6f6f-4f3f-83bf-deaf490aae3b": {
+            "city": "Fort Myers",
+            "state": "FL",
+            "postal": "",
+            "lat": 26.548056,
+            "lng": -81.763333,
+            "housenumber": "11581",
+            "country": "USA",
+            "type": "venue"
+        },
+        "e112ae7d-b843-44bb-bbcd-ea1cc2283b35": {
+            "city": "Dayton",
+            "state": "OH",
+            "postal": "",
+            "lat": 39.781944,
+            "lng": -84.0525,
+            "housenumber": "3640",
+            "country": "USA",
+            "type": "venue"
+        },
+        "303b26b7-2108-44d6-ab61-0af5461e3a22": {
+            "city": "Cleveland",
+            "state": "OH",
+            "postal": "",
+            "lat": 41.496389,
+            "lng": -81.688056,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
+        },
+        "57b288da-8834-4f30-8c8b-0603da00d61f": {
+            "city": "Peoria",
+            "state": "IL",
+            "postal": "61602-1423",
+            "lat": 40.691667,
+            "lng": -89.594167,
+            "housenumber": "201",
+            "country": "USA",
+            "type": "venue"
+        },
+        "bc83e266-fc8b-4a06-b5e3-7a068fb71c5d": {
+            "city": "Tuscaloosa",
+            "state": "AL",
+            "postal": "35487",
+            "lat": 33.202939,
+            "lng": -87.539706,
+            "housenumber": "1201",
+            "country": "USA",
+            "type": "venue"
+        },
+        "4303217e-f7bb-4169-b126-7f941c83b821": {
+            "city": "Charleston",
+            "state": "IL",
+            "postal": "61920",
+            "lat": 39.480556,
+            "lng": -88.181111,
+            "housenumber": "100",
+            "country": "USA",
+            "type": "venue"
+        },
+        "b6be9877-ac10-432f-8cc0-bd862b96eafa": {
+            "city": "Chicago",
+            "state": "IL",
+            "postal": "60607",
+            "lat": 41.874722,
+            "lng": -87.656111,
+            "housenumber": "525",
+            "country": "USA",
+            "type": "venue"
+        },
+        "c848a705-6f24-4123-984f-22f31b591568": {
+            "city": "Mobile",
+            "state": "AL",
+            "postal": "36608",
+            "lat": 30.69229,
+            "lng": -88.17975,
+            "housenumber": "2195",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -7422,6 +7572,7 @@
         "Engie Stadium, Sydney, Australia": "8f11d2bb-8a78-4707-a751-5dc4a9608104",
         "Accor Stadium, Sydney, Australia": "8f11d2bb-8a78-4707-a751-5dc4a9608104",
         "ENGIE Stadium, Sydney": "8f11d2bb-8a78-4707-a751-5dc4a9608104",
+        "ENGIE Stadium - 2127": "8f11d2bb-8a78-4707-a751-5dc4a9608104",
         "Wembley Stadium, London, England": "077370d1-839c-425c-8ac4-ed2d627dec43",
         "York Park - Australia": "a8d92a71-b88d-47db-a5f4-f625a0720371",
         "UTAS Stadium": "a8d92a71-b88d-47db-a5f4-f625a0720371",
@@ -7902,6 +8053,7 @@
         "CoreStates Spectrum, Philadelphia, Pennsylvania": "632c915d-1f70-446a-a97e-ac5cd539a4bc",
         "The Spectrum, Philadelphia, Pennsylvania": "632c915d-1f70-446a-a97e-ac5cd539a4bc",
         "Wells Fargo Center": "632c915d-1f70-446a-a97e-ac5cd539a4bc",
+        "Wells Fargo Center - Philadelphia - PA - 19255": "632c915d-1f70-446a-a97e-ac5cd539a4bc",
         "Omsk, Russia": "b7be80ce-0f3c-4a6f-8d52-7aae1bdf2009",
         "UW-Milwaukee Panther Arena, Milwaukee, Wisconsin": "57b80240-7828-4e60-a0c9-f8176bfc1f7b",
         "Milwaukee Arena": "57b80240-7828-4e60-a0c9-f8176bfc1f7b",
@@ -8207,6 +8359,33 @@
         "Greensboro Coliseum": "de52e5ee-c2ed-4e38-ba95-2c1414c4b08d",
         "Greensboro Coliseum Complex - Greensboro, North Carolina - United States": "de52e5ee-c2ed-4e38-ba95-2c1414c4b08d",
         "Athletics Center O'rena, Rochester, Michigan": "8f52a5f6-ed43-4b37-b229-c539ee5dcfdf",
-        "Athletics Center O''rena, Rochester, Michigan": "8f52a5f6-ed43-4b37-b229-c539ee5dcfdf"
+        "Athletics Center O''rena, Rochester, Michigan": "8f52a5f6-ed43-4b37-b229-c539ee5dcfdf",
+        "Yuengling Center, Tampa, Florida": "2bde231c-486b-4ab2-92ad-63a90fc2e867",
+        "Sun Dome, Tampa, Florida": "2bde231c-486b-4ab2-92ad-63a90fc2e867",
+        "Yuengling Center - Tampa, Florida - United States": "2bde231c-486b-4ab2-92ad-63a90fc2e867",
+        "PER": "5b2c966e-062c-4725-bf31-c97c342181ce",
+        "Reilly Center, St. Bonaventure, New York": "7ae62946-69c1-4dbc-8cea-eb37118d0518",
+        "Amex Stadium, Brighton, England": "73757514-5dfe-421a-a616-fa315bb8a9d9",
+        "Devlin Fieldhouse, New Orleans, Louisiana": "3528b84a-d0ae-4875-8f79-85b1632d61cf",
+        "Wankhede Stadium - Mumbai, Maharashtra - India": "594e5def-2c9e-4eec-9ab8-7fbbc07e3d1d",
+        "Cassell Coliseum, Blacksburg, Virginia": "d5a71672-cdc0-4070-8b16-2c65a1b99ddf",
+        "JetBlue Park at Fenway South - Fort Myers - Florida - 33913": "010a33b1-6f6f-4f3f-83bf-deaf490aae3b",
+        "Ervin J. Nutter Center, Dayton, Ohio": "e112ae7d-b843-44bb-bbcd-ea1cc2283b35",
+        "Nutter Center, Dayton, Ohio": "e112ae7d-b843-44bb-bbcd-ea1cc2283b35",
+        "Nutter Center - Fairborn, Ohio - United States": "e112ae7d-b843-44bb-bbcd-ea1cc2283b35",
+        "Rocket Mortgage Fieldhouse, Cleveland, Ohio": "303b26b7-2108-44d6-ab61-0af5461e3a22",
+        "Rocket Mortgage FieldHouse, Cleveland, OH, USA": "303b26b7-2108-44d6-ab61-0af5461e3a22",
+        "Rocket Mortgage FieldHouse - Cleveland, Ohio - United States": "303b26b7-2108-44d6-ab61-0af5461e3a22",
+        "Rocket Mortgage FieldHouse, Cleveland, Ohio": "303b26b7-2108-44d6-ab61-0af5461e3a22",
+        "Rocket Arena, Cleveland, Ohio": "303b26b7-2108-44d6-ab61-0af5461e3a22",
+        "Gund Arena, Cleveland, Ohio": "303b26b7-2108-44d6-ab61-0af5461e3a22",
+        "Rocket Arena - Cleveland - OH": "303b26b7-2108-44d6-ab61-0af5461e3a22",
+        "Carver Arena, Peoria, Illinois": "57b288da-8834-4f30-8c8b-0603da00d61f",
+        "Coleman Coliseum , Tuscaloosa, Alabama": "bc83e266-fc8b-4a06-b5e3-7a068fb71c5d",
+        "Coleman Coliseum, Tuscaloosa, Alabama": "bc83e266-fc8b-4a06-b5e3-7a068fb71c5d",
+        "Coleman Coliseum - Tuscaloosa - AL - 35401": "bc83e266-fc8b-4a06-b5e3-7a068fb71c5d",
+        "O'Brien Field - Charleston - IL - 61920": "4303217e-f7bb-4169-b126-7f941c83b821",
+        "UIC Pavilion, Chicago, Illinois": "b6be9877-ac10-432f-8cc0-bd862b96eafa",
+        "Mitchell Center, Mobile, Alabama": "c848a705-6f24-4123-984f-22f31b591568"
     }
 }

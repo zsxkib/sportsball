@@ -34,6 +34,8 @@ _POSITIONS = {str(x): x for x in Position}
 
 def position_from_str(position_str: str) -> Position:
     """Find a position from a string."""
+    if position_str == "RCF":
+        return Position.CENTRE_FORWARD_RIGHT
     position = _POSITIONS.get(position_str)
     if position is None:
         raise ValueError(f"Unrecognised position: {position_str}")
