@@ -42,7 +42,11 @@ def _create_espn_team_model(
     for entity in roster_dict.get("entries", []):
         player = create_espn_player_model(session, entity, dt, positions_validator)
         players.append(player)
-    points = score_dict["value"]
+    points = None
+    try:
+        points = score_dict["value"]
+    except KeyError:
+        points = float(int(team["winner"]))
     coaches_urls = []
     if "coaches" in team:
         try:

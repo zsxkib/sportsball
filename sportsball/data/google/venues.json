@@ -8019,6 +8019,106 @@
             "housenumber": "",
             "country": "USA",
             "type": "venue"
+        },
+        "11019cec-c086-40ab-9bbc-6a141ae4db70": {
+            "city": "Alberton",
+            "state": "SA",
+            "postal": "",
+            "lat": -34.864444,
+            "lng": 138.519444,
+            "housenumber": "",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "9cac843a-760b-4055-9c9c-6bab374eb032": {
+            "city": "West Lafayette",
+            "state": "IN",
+            "postal": "47907",
+            "lat": 40.433322,
+            "lng": -86.916144,
+            "housenumber": "900",
+            "country": "USA",
+            "type": "venue"
+        },
+        "c60c9d7e-686e-4428-9e8c-9914209a6029": {
+            "city": "Ann Arbor",
+            "state": "MI",
+            "postal": "48104",
+            "lat": 42.265037,
+            "lng": -83.746768,
+            "housenumber": "333",
+            "country": "USA",
+            "type": "venue"
+        },
+        "4564d26b-7d6a-43a0-95d0-37e0ab5fabae": {
+            "city": "Oklahoma City",
+            "state": "OK",
+            "postal": "",
+            "lat": 35.463333,
+            "lng": -97.515,
+            "housenumber": "100",
+            "country": "USA",
+            "type": "venue"
+        },
+        "949569a7-0b59-4d48-af3a-709a9030f2bc": {
+            "city": "North Andover",
+            "state": "MA",
+            "postal": "",
+            "lat": 42.667843,
+            "lng": -71.119995,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "f1ff79e3-def1-4c03-8cea-a6f509432b4d": {
+            "city": "Lawrence",
+            "state": "KS",
+            "postal": "",
+            "lat": 38.954306,
+            "lng": -95.252394,
+            "housenumber": "1651",
+            "country": "USA",
+            "type": "venue"
+        },
+        "369199e5-f7b0-4a6f-b6db-e0328a93aac7": {
+            "city": "Martin",
+            "state": "TN",
+            "postal": "38238",
+            "lat": 36.3447,
+            "lng": -88.8619,
+            "housenumber": "505",
+            "country": "USA",
+            "type": "venue"
+        },
+        "12accb3c-ab25-4d08-b5f1-0d612276bd7b": {
+            "city": "Buffalo",
+            "state": "NY",
+            "postal": "14208",
+            "lat": 42.920919,
+            "lng": -78.85754,
+            "housenumber": "1829",
+            "country": "USA",
+            "type": "venue"
+        },
+        "bd2159da-cd03-4b84-8c4b-f86cb7c3dd64": {
+            "city": "Elmont",
+            "state": "NY",
+            "postal": "",
+            "lat": 40.71179,
+            "lng": -73.72604,
+            "housenumber": "2400",
+            "country": "USA",
+            "type": "venue"
+        },
+        "65cb5d9e-84c0-400f-aaf7-54ccdeeca129": {
+            "city": "New Britain",
+            "state": "CT",
+            "postal": "06053",
+            "lat": 41.693,
+            "lng": -72.7649,
+            "housenumber": "1615",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -8798,6 +8898,7 @@
         "Hastings, Minnesota": "cada22cc-623d-4b30-9bc9-96c31cd09921",
         "LaPorte, Indiana": "087b3c38-b17a-4fc8-ae96-86f4a74896d2",
         "St. James' Park, Newcastle, England": "18bd8883-d956-4365-b3c2-1cc5cf5768ab",
+        "St. James' Park - Newcastle-upon-Tyne": "18bd8883-d956-4365-b3c2-1cc5cf5768ab",
         "Memorial Stadium (Champaign, IL) - Champaign - IL - 61820": "86a8cafb-515b-4396-a01d-0c71fa68873f",
         "Longmont, CO, United States": "7245784c-92cb-46fb-819a-46837c670971",
         "Simmons Bank Liberty Stadium - Memphis - TN - 38104": "d01b8cd4-3c9c-47a1-b3ea-6554aa9729ec",
@@ -9635,6 +9736,26 @@
         "Schar Center,": "38a5fbd5-5a02-4d3a-b70f-b6afb48e9b39",
         "Rec Hall, University Park, Pennsylvania": "08dd469e-ed95-4fb2-b1d1-1c9ee35a0f53",
         "Bryce Jordan Center, University Park, Pennsylvania": "08dd469e-ed95-4fb2-b1d1-1c9ee35a0f53",
-        "Bryce Jordan Center - University Park, Pennsylvania - United States": "08dd469e-ed95-4fb2-b1d1-1c9ee35a0f53"
+        "Bryce Jordan Center - University Park, Pennsylvania - United States": "08dd469e-ed95-4fb2-b1d1-1c9ee35a0f53",
+        "Alberton Oval": "11019cec-c086-40ab-9bbc-6a141ae4db70",
+        "Mackey Arena, West Lafayette, Indiana": "9cac843a-760b-4055-9c9c-6bab374eb032",
+        "Crisler Arena, Ann Arbor, Michigan": "c60c9d7e-686e-4428-9e8c-9914209a6029",
+        "Crisler Center, Ann Arbor, Michigan": "c60c9d7e-686e-4428-9e8c-9914209a6029",
+        "Paycom Center, Oklahoma City, Oklahoma": "4564d26b-7d6a-43a0-95d0-37e0ab5fabae",
+        "Paycom Center, Oklahoma, OK, USA": "4564d26b-7d6a-43a0-95d0-37e0ab5fabae",
+        "Paycom Center - Oklahoma City, Oklahoma - United States": "4564d26b-7d6a-43a0-95d0-37e0ab5fabae",
+        "Oklahoma City Arena, Oklahoma City, Oklahoma": "4564d26b-7d6a-43a0-95d0-37e0ab5fabae",
+        "Ford Center, Oklahoma City, Oklahoma": "4564d26b-7d6a-43a0-95d0-37e0ab5fabae",
+        "Paycom Center, Oklahoma City, OK": "4564d26b-7d6a-43a0-95d0-37e0ab5fabae",
+        "Paycom Center - Oklahoma City - OK": "4564d26b-7d6a-43a0-95d0-37e0ab5fabae",
+        "Hammel Court, North Andover, Massachusetts": "949569a7-0b59-4d48-af3a-709a9030f2bc",
+        "Allen Fieldhouse, Lawrence, Kansas": "f1ff79e3-def1-4c03-8cea-a6f509432b4d",
+        "Allen Fieldhouse - Lawrence - KS": "f1ff79e3-def1-4c03-8cea-a6f509432b4d",
+        "Hardy M. Graham Stadium - Martin - TN - 38237": "369199e5-f7b0-4a6f-b6db-e0328a93aac7",
+        "Koessler Athletic Center, Buffalo, New York": "12accb3c-ab25-4d08-b5f1-0d612276bd7b",
+        "UBS Arena, Elmont, NY, USA": "bd2159da-cd03-4b84-8c4b-f86cb7c3dd64",
+        "UBS Arena": "bd2159da-cd03-4b84-8c4b-f86cb7c3dd64",
+        "UBS Arena - Elmont - NY - 11003": "bd2159da-cd03-4b84-8c4b-f86cb7c3dd64",
+        "Detrick Gymnasium, New Britain, Connecticut": "65cb5d9e-84c0-400f-aaf7-54ccdeeca129"
     }
 }

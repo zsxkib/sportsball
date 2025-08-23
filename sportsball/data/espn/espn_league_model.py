@@ -27,7 +27,7 @@ def _season_type_from_name(name: str) -> SeasonType:
         return SeasonType.REGULAR
     if name == "Preseason" or "Spring Training" in name:
         return SeasonType.PRESEASON
-    if name == "Postseason" or "Quarterfinals" in name:
+    if name == "Postseason" or "Quarterfinals" in name or "Semifinals" in name:
         return SeasonType.POSTSEASON
     if name == "Off Season":
         return SeasonType.OFFSEASON

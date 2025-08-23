@@ -100,9 +100,11 @@ def _create_espn_team(
         roster_response.raise_for_status()
         roster_dict = roster_response.json()
 
-    score_response = session.get(competitor["score"]["$ref"])
-    score_response.raise_for_status()
-    score_dict = score_response.json()
+    score_dict = {}
+    if "score" in competitor:
+        score_response = session.get(competitor["score"]["$ref"])
+        score_response.raise_for_status()
+        score_dict = score_response.json()
 
     return create_espn_team_model(
         session,

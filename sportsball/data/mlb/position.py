@@ -17,3 +17,4 @@ class Position(StrEnum):
     THIRD_BASEMAN = "3B"
     PINCH_RUNNER = "PR"
     PITCHER = "P"
+    PINCH_HITTER = "PH"
