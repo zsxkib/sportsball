@@ -1957,15 +1957,6 @@ YOKOHAMA_ARENA = SportsballGeocodeTuple(
     housenumber="",
     country="Japan",
 )
-BELL_CENTRE = SportsballGeocodeTuple(
-    city="Montreal",
-    state="QC",
-    postal="",
-    lat=45.496111,
-    lng=-73.569444,
-    housenumber="1909",
-    country="CA",
-)
 MADISON = SportsballGeocodeTuple(
     city="Madison",
     state="WI",
@@ -3119,33 +3110,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Winthrop Coliseum, Rock Hill, South Carolina": SportsballGeocodeTuple(
-        city="Rock Hill",
-        state="SC",
-        postal="29730",
-        lat=34.947911,
-        lng=-81.014972,
-        housenumber="1162",
-        country="USA",
-    ),
-    "Sojka Pavilion, Lewisburg, Pennsylvania": SportsballGeocodeTuple(
-        city="Lewisburg",
-        state="PA",
-        postal="17837",
-        lat=40.956964,
-        lng=-76.887093,
-        housenumber="701",
-        country="USA",
-    ),
-    "Hinkle Fieldhouse, Indianapolis, Indiana": SportsballGeocodeTuple(
-        city="Indianapolis",
-        state="IN",
-        postal="",
-        lat=39.843611,
-        lng=-86.167222,
-        housenumber="510",
-        country="USA",
-    ),
     "Henry J. Goodman Arena, Cleveland, Ohio": SportsballGeocodeTuple(
         city="Cleveland",
         state="OH",
@@ -5783,7 +5747,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Scotiabank Arena - Toronto, Ontario - Canada": SCOTIABANK_ARENA,
     "Climate Pledge Arena - Seattle, Washington - United States": CLIMATE_PLEDGE_ARENA,
     "State Farm Arena - Atlanta, Georgia - United States": STATE_FARM_ARENA,
-    "Bell Centre": BELL_CENTRE,
     "Footprint Center - Phoenix, Arizona - United States": AMERICA_WEST_ARENA,
     "Kaseya Center - Miami, Florida - United States": KASEYA_CENTER,
     "Frost Bank Center - San Antonio, Texas - United States": FROST_BANK_CENTER,
@@ -11751,7 +11714,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="Italy",
     ),
     "Yokohama Arena - Yokohama, Kanagawa - Japan": YOKOHAMA_ARENA,
-    "Centre Bell - Montreal, Quebec, Canada - Canada": BELL_CENTRE,
     "Corinthians Arena - Sao Paulo": SportsballGeocodeTuple(
         city="Sao Paulo",
         state="",
@@ -14541,7 +14503,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Bell Centre, Montreal, QC, Canada": BELL_CENTRE,
     "Newark, New Jersey, United States": NEWARK,
     "Prudential Center, Newark, NJ, USA": PRUDENTIAL_CENTER,
     "Tyler, TX, USA": SportsballGeocodeTuple(

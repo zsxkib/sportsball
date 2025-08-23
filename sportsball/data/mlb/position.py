@@ -10,3 +10,4 @@ class Position(StrEnum):
     RIGHT_FIELD = "RF"
     SECOND_BASEMAN = "2B"
     CATCHER = "C"
+    SHORTSTOP = "SS"
