@@ -238,15 +238,6 @@ TEXAS_AM_COMMERCE_FIELD_HOUSE = SportsballGeocodeTuple(
     housenumber="2600",
     country="USA",
 )
-ROSE_HILL_GYM = SportsballGeocodeTuple(
-    city="Bronx",
-    state="NY",
-    postal="10458",
-    lat=40.862148,
-    lng=-73.883824,
-    housenumber="",
-    country="USA",
-)
 SAVAGE_ARENA = SportsballGeocodeTuple(
     city="Toledo",
     state="OH",
@@ -2641,15 +2632,6 @@ GONZAGA = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-NATIONWIDE_ARENA = SportsballGeocodeTuple(
-    city="Columbus",
-    state="OH",
-    postal="",
-    lat=39.969283,
-    lng=-83.006111,
-    housenumber="200",
-    country="USA",
-)
 CEDAR_FALLS = SportsballGeocodeTuple(
     city="Cedar Falls",
     state="IA",
@@ -3110,34 +3092,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Henry J. Goodman Arena, Cleveland, Ohio": SportsballGeocodeTuple(
-        city="Cleveland",
-        state="OH",
-        postal="",
-        lat=41.499167,
-        lng=-81.676944,
-        housenumber="2000",
-        country="USA",
-    ),
-    "Rose Hill Gym, Bronx, New York": ROSE_HILL_GYM,
-    "Bon Secours Wellness Arena, Greenville, South Carolina": SportsballGeocodeTuple(
-        city="Greenville",
-        state="SC",
-        postal="",
-        lat=34.852789,
-        lng=-82.391458,
-        housenumber="650",
-        country="USA",
-    ),
-    "Charles E. Smith Center, Washington, District of Columbia": SportsballGeocodeTuple(
-        city="Washington",
-        state="DC",
-        postal="20052",
-        lat=38.897755,
-        lng=-77.049329,
-        housenumber="600",
-        country="USA",
-    ),
     "Burr Gymnasium, Washington, District of Columbia": SportsballGeocodeTuple(
         city="Washington",
         state="DC",
@@ -5193,7 +5147,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="201",
         country="USA",
     ),
-    "Rose Hill Gymnasium, Bronx, New York": ROSE_HILL_GYM,
     "Austin, Texas": AUSTIN,
     "Lundholm Gym, Durham, New Hampshire": SportsballGeocodeTuple(
         city="Durham",
@@ -8840,7 +8793,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="2323",
         country="USA",
     ),
-    "Nationwide Arena, Columbus, Ohio": NATIONWIDE_ARENA,
     "Jacksonville Veteran's Memorial Arena, Jacksonville, Florida": SportsballGeocodeTuple(
         city="Jacksonville",
         state="FL",
@@ -8903,15 +8855,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Kendal Isaacs Gymnasium, Nassau": KENDALL_ISAACS_GYMNASIUM,
     "Kendal Isaacs Gymnasium, Nassau, The Bahamas": KENDALL_ISAACS_GYMNASIUM,
     "Otter Sports Center, Marina, California": SportsballGeocodeTuple(
-        city="Marina",
-        state="CA",
-        postal="93933",
-        lat=36.6544526,
-        lng=-121.8081741,
-        housenumber="2050",
-        country="USA",
-    ),
-    "SimpliFi Arena at Stan Sheriff Center, Honolulu, Hawaii": SportsballGeocodeTuple(
         city="Marina",
         state="CA",
         postal="93933",
@@ -17503,7 +17446,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Switzerland",
     ),
-    "Nationwide Arena, Columbus, OH, USA": NATIONWIDE_ARENA,
     "PNC Park, Pittsburgh, PA, USA": PNC_PARK,
     "Wurzburg, Bavaria, DE": SportsballGeocodeTuple(
         city="Wurzburg",
@@ -18383,7 +18325,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Progressive Field": PROGRESSIVE_FIELD,
-    "Nationwide Arena": NATIONWIDE_ARENA,
     "Coors Field": COORS_FIELD,
     "University of Arkansas": SportsballGeocodeTuple(
         city="Fayetteville",

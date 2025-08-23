@@ -164,7 +164,7 @@ def _create_teams(
                     competitor, odds_dict, session, dt, league, positions_validator
                 )
             )
-        attendance = competition["attendance"]
+        attendance = competition.get("attendance")
         if "situation" in competition:
             situation_url = competition["situation"]["$ref"]
             situation_response = session.get(situation_url)

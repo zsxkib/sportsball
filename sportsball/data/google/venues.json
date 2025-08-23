@@ -6699,6 +6699,66 @@
             "housenumber": "2000",
             "country": "USA",
             "type": "venue"
+        },
+        "d2649b68-282a-470f-8139-cbd43418d429": {
+            "city": "Al-Rayyan",
+            "state": "",
+            "postal": "",
+            "lat": 25.263611,
+            "lng": 51.448056,
+            "housenumber": "",
+            "country": "Qatar",
+            "type": "venue"
+        },
+        "36a5211c-f4bf-42af-ad3f-112fb07242b4": {
+            "city": "Bronx",
+            "state": "NY",
+            "postal": "10458",
+            "lat": 40.862148,
+            "lng": -73.883824,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "347ae602-d8b3-4820-bcee-52e1f4e0aaf8": {
+            "city": "Honolulu",
+            "state": "HI",
+            "postal": "96822",
+            "lat": 21.294167,
+            "lng": -157.818889,
+            "housenumber": "1355",
+            "country": "USA",
+            "type": "venue"
+        },
+        "6a87df8d-d529-4716-9390-58b8a792f9e4": {
+            "city": "Greenville",
+            "state": "SC",
+            "postal": "",
+            "lat": 34.852789,
+            "lng": -82.391458,
+            "housenumber": "650",
+            "country": "USA",
+            "type": "venue"
+        },
+        "04fcfcfe-148d-44d0-babe-a7da5e7896a3": {
+            "city": "Columbus",
+            "state": "OH",
+            "postal": "",
+            "lat": 39.969283,
+            "lng": -83.006111,
+            "housenumber": "200",
+            "country": "USA",
+            "type": "venue"
+        },
+        "687e6d16-6f92-4580-a5c4-de9558f1fdc7": {
+            "city": "Washington",
+            "state": "DC",
+            "postal": "20052",
+            "lat": 38.897755,
+            "lng": -77.049329,
+            "housenumber": "600",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -8013,6 +8073,17 @@
         "Bell Centre": "5c191950-dc0b-4162-8dab-5e05f92e42e9",
         "Centre Bell - Montreal, Quebec, Canada - Canada": "5c191950-dc0b-4162-8dab-5e05f92e42e9",
         "Bell Centre, Montreal, QC, Canada": "5c191950-dc0b-4162-8dab-5e05f92e42e9",
-        "Henry J. Goodman Arena, Cleveland, Ohio": "b264896b-a655-49ff-a398-0a5e3343b2dd"
+        "Henry J. Goodman Arena, Cleveland, Ohio": "b264896b-a655-49ff-a398-0a5e3343b2dd",
+        "Khalifa International Stadium - Doha": "d2649b68-282a-470f-8139-cbd43418d429",
+        "Rose Hill Gym, Bronx, New York": "36a5211c-f4bf-42af-ad3f-112fb07242b4",
+        "Rose Hill Gymnasium, Bronx, New York": "36a5211c-f4bf-42af-ad3f-112fb07242b4",
+        "Stan Sheriff Center - Honolulu - HI": "347ae602-d8b3-4820-bcee-52e1f4e0aaf8",
+        "SimpliFi Arena at Stan Sheriff Center, Honolulu, Hawaii": "347ae602-d8b3-4820-bcee-52e1f4e0aaf8",
+        "Bon Secours Wellness Arena, Greenville, South Carolina": "6a87df8d-d529-4716-9390-58b8a792f9e4",
+        "Nationwide Arena - Columbus - OH": "04fcfcfe-148d-44d0-babe-a7da5e7896a3",
+        "Nationwide Arena, Columbus, Ohio": "04fcfcfe-148d-44d0-babe-a7da5e7896a3",
+        "Nationwide Arena, Columbus, OH, USA": "04fcfcfe-148d-44d0-babe-a7da5e7896a3",
+        "Nationwide Arena": "04fcfcfe-148d-44d0-babe-a7da5e7896a3",
+        "Charles E. Smith Center, Washington, District of Columbia": "687e6d16-6f92-4580-a5c4-de9558f1fdc7"
     }
 }

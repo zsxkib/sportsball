@@ -11,3 +11,4 @@ class Position(StrEnum):
     SECOND_BASEMAN = "2B"
     CATCHER = "C"
     SHORTSTOP = "SS"
+    DESIGNATED_HITTER = "DH"
