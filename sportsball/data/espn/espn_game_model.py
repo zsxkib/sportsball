@@ -75,9 +75,11 @@ def _create_espn_team(
             version=TEAM_VERSION,
         )
 
-    team_response = session.get(competitor["team"]["$ref"])
-    team_response.raise_for_status()
-    team_dict = team_response.json()
+    team_dict = competitor
+    if "team" in competitor:
+        team_response = session.get(competitor["team"]["$ref"])
+        team_response.raise_for_status()
+        team_dict = team_response.json()
 
     odds_key = competitor["homeAway"] + "TeamOdds"
     odds: list[OddsModel] = []

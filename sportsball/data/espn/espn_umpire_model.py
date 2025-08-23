@@ -1,5 +1,6 @@
 """ESPN umpire model."""
 
+# pylint: disable=duplicate-code
 import datetime
 
 import pytest_is_running
@@ -17,9 +18,14 @@ def _create_espn_umpire_model(
     response = session.get(url)
     response.raise_for_status()
     data = response.json()
+    name = (
+        " ".join([data["firstName"], data["lastName"]])
+        if "firstName" in data
+        else data["displayName"]
+    )
     return UmpireModel(
-        identifier=data("id", data["displayName"]),
-        name=" ".join([data["firstName"], data["lastName"]]),
+        identifier=data.get("id", data["displayName"]),
+        name=name,
         birth_date=None,
         age=None,
         birth_address=None,
