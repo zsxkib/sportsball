@@ -7229,6 +7229,146 @@
             "housenumber": "1001",
             "country": "USA",
             "type": "venue"
+        },
+        "a2fa978f-0e6c-4bc5-b723-367a68597e96": {
+            "city": "Madison",
+            "state": "WI",
+            "postal": "53715-1206",
+            "lat": 43.06942,
+            "lng": -89.396972,
+            "housenumber": "601",
+            "country": "USA",
+            "type": "venue"
+        },
+        "7d0e7a1d-3df8-4c79-bdcd-3654dc9e003b": {
+            "city": "Delray Beach",
+            "state": "FL",
+            "postal": "",
+            "lat": 26.462694,
+            "lng": -80.075556,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "64a782db-c9bf-4986-a776-5191e2ea956e": {
+            "city": "Tucson",
+            "state": "AZ",
+            "postal": "",
+            "lat": 32.23,
+            "lng": -110.95,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
+        },
+        "36932351-bb73-443c-80c2-8facb163b794": {
+            "city": "Kent",
+            "state": "OH",
+            "postal": "44242",
+            "lat": 41.148,
+            "lng": -81.344,
+            "housenumber": "1025",
+            "country": "USA",
+            "type": "venue"
+        },
+        "424c023e-7349-47e6-88e6-debb63b1851a": {
+            "city": "Lakeland",
+            "state": "FL",
+            "postal": "33815",
+            "lat": 28.074722,
+            "lng": -81.950833,
+            "housenumber": "2301",
+            "country": "USA",
+            "type": "venue"
+        },
+        "e04b9aeb-35c1-458d-87e9-f55b52a19907": {
+            "city": "Richmond",
+            "state": "VA",
+            "postal": "23284",
+            "lat": 37.552918,
+            "lng": -77.4529,
+            "housenumber": "1200",
+            "country": "USA",
+            "type": "venue"
+        },
+        "f0d50f33-c128-45f6-9f60-67e1f9b2c855": {
+            "city": "Nashville",
+            "state": "TN",
+            "postal": "37212",
+            "lat": 36.132222,
+            "lng": -86.794444,
+            "housenumber": "2002",
+            "country": "USA",
+            "type": "venue"
+        },
+        "a7541504-de01-4019-8d18-1ae37b4e9e79": {
+            "city": "Manhattan",
+            "state": "KS",
+            "postal": "66502",
+            "lat": 39.200361,
+            "lng": -96.593833,
+            "housenumber": "1800",
+            "country": "USA",
+            "type": "venue"
+        },
+        "61430879-33cb-4936-b13a-b91eca8b642d": {
+            "city": "Elon",
+            "state": "NC",
+            "postal": "27244",
+            "lat": 39.200361,
+            "lng": -96.593833,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
+        },
+        "3b979246-4981-4943-bfdf-e816001e67d0": {
+            "city": "DeKalb",
+            "state": "IL",
+            "postal": "60115-2854",
+            "lat": 41.935106,
+            "lng": -88.785569,
+            "housenumber": "1525",
+            "country": "USA",
+            "type": "venue"
+        },
+        "fef8f1a9-99c7-49da-a407-70b2e48d035b": {
+            "city": "Tampa",
+            "state": "FL",
+            "postal": "",
+            "lat": 27.942778,
+            "lng": -82.451944,
+            "housenumber": "401",
+            "country": "USA",
+            "type": "venue"
+        },
+        "5479db82-82c4-45ba-aa3e-7a0036b2e6b9": {
+            "city": "Cedar Falls",
+            "state": "IO",
+            "postal": "",
+            "lat": 42.51395,
+            "lng": -92.46714,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "85195940-a6a6-4075-ba1a-84aff126414f": {
+            "city": "Mexico City",
+            "state": "CDMX",
+            "postal": "03400",
+            "lat": 19.331944,
+            "lng": -99.192222,
+            "housenumber": "",
+            "country": "Mexico",
+            "type": "venue"
+        },
+        "3abd1282-fe9e-4b52-b99d-9f060e8b791b": {
+            "city": "Tempe",
+            "state": "AZ",
+            "postal": "",
+            "lat": 33.424524,
+            "lng": -111.930948,
+            "housenumber": "600",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -7511,6 +7651,7 @@
         "Barclays Center, Brooklyn, New York": "ab3222a8-061e-4d79-9808-4d6330602069",
         "Barclays Center, New York, NY, USA": "ab3222a8-061e-4d79-9808-4d6330602069",
         "Barclays Center - Brooklyn, New York - United States": "ab3222a8-061e-4d79-9808-4d6330602069",
+        "Barclays Center - Brooklyn - NY": "ab3222a8-061e-4d79-9808-4d6330602069",
         "Acrisure Stadium - Pittsburgh - PA - 15212": "0a9cd435-1e78-4536-aa2d-3d38b572ffa1",
         "Three Rivers Stadium": "0a9cd435-1e78-4536-aa2d-3d38b572ffa1",
         "Three Rivers Stadium - Pittsburgh - PA": "0a9cd435-1e78-4536-aa2d-3d38b572ffa1",
@@ -7817,6 +7958,7 @@
         "Adelaide Oval, Adelaide, Australia": "bf625f3c-5819-42b2-80ab-5a6d6e03be19",
         "Adelaide Oval, Adelaide, Austrália": "bf625f3c-5819-42b2-80ab-5a6d6e03be19",
         "Adelaide Oval, Adelaide": "bf625f3c-5819-42b2-80ab-5a6d6e03be19",
+        "Adelaide Oval - 5006": "bf625f3c-5819-42b2-80ab-5a6d6e03be19",
         "Etihad Stadium, Manchester, England": "8927ad43-5c93-4bc8-9a1c-6b0ef777a0af",
         "Bellerive Oval - Australia": "dad0b6d0-43c9-411a-81b1-abc07001f0af",
         "Blundstone Arena": "dad0b6d0-43c9-411a-81b1-abc07001f0af",
@@ -8147,6 +8289,7 @@
         "Dix Stadium - Kent - OH - 44242": "ba102172-dce3-409c-a5b4-ae5c41f8d8e5",
         "Dix Stadium": "ba102172-dce3-409c-a5b4-ae5c41f8d8e5",
         "Molineux Stadium, Wolverhampton, England": "028a4275-cedd-426f-bbbd-5231768ccef9",
+        "Molineux Stadium - Wolverhampton": "028a4275-cedd-426f-bbbd-5231768ccef9",
         "DATCU Stadium - Denton - TX - 76205": "1fa6ee44-bc77-4b15-9fdf-dbd450b5fea1",
         "Coughlin-Alumni Stadium": "a15a4c37-d8a4-4e9b-ad3e-2345375a5d86",
         "FAU Stadium - Boca Raton - FL - 33431": "e0ac47cd-4095-4856-8396-a095186e0065",
@@ -8496,6 +8639,7 @@
         "Hofheinz Pavilion, Houston, Texas": "1105097e-a845-45a5-8a6a-dbcf850b2940",
         "Fertitta Center, Houston, Texas": "1105097e-a845-45a5-8a6a-dbcf850b2940",
         "Fertitta Center - Houston, Texas - United States": "1105097e-a845-45a5-8a6a-dbcf850b2940",
+        "Fertitta Center - Houston - TX": "1105097e-a845-45a5-8a6a-dbcf850b2940",
         "Al Janoub Stadium - Al Wakrah": "7e846177-2a22-4c45-b5cb-a1473943dc22",
         "Breslin Events Center, East Lansing, Michigan": "9b2b0df7-028c-4f25-8e90-1563cd63a98a",
         "Breslin Student Events Center, East Lansing, Michigan": "9b2b0df7-028c-4f25-8e90-1563cd63a98a",
@@ -8658,6 +8802,27 @@
         "PPG Paints Arena, Pittsburgh, PA, USA": "b32c25e1-3c77-43a9-9409-82731fe2b45b",
         "PPG Paints Arena": "b32c25e1-3c77-43a9-9409-82731fe2b45b",
         "Assembly Hall, Bloomington, Indiana": "9f67dbf1-dc41-449d-8b9b-75941df1d2b4",
-        "Indiana Assembly Hall, Bloomington, Indiana": "9f67dbf1-dc41-449d-8b9b-75941df1d2b4"
+        "Indiana Assembly Hall, Bloomington, Indiana": "9f67dbf1-dc41-449d-8b9b-75941df1d2b4",
+        "Kohl Center, Madison, Wisconsin": "a2fa978f-0e6c-4bc5-b723-367a68597e96",
+        "Delray Beach, USA": "7d0e7a1d-3df8-4c79-bdcd-3654dc9e003b",
+        "McKale Center, Tucson, Arizona": "64a782db-c9bf-4986-a776-5191e2ea956e",
+        "Memorial Athletic & Convocation Center, Kent, Ohio": "36932351-bb73-443c-80c2-8facb163b794",
+        "Publix Field at Joker Marchant Stadium - Lakeland - Florida - 33815": "424c023e-7349-47e6-88e6-debb63b1851a",
+        "Stuart Siegel Center, Richmond, Virginia": "e04b9aeb-35c1-458d-87e9-f55b52a19907",
+        "E.J. Wade Arena at Stuart C. Siegel Center, Richmond, Virginia": "e04b9aeb-35c1-458d-87e9-f55b52a19907",
+        "Alltel Pavilion at the Stuart C. Siegel Center, Richmond, Virginia": "e04b9aeb-35c1-458d-87e9-f55b52a19907",
+        "Curb Event Center, Nashville, Tennessee": "f0d50f33-c128-45f6-9f60-67e1f9b2c855",
+        "Bramlage Coliseum, Manhattan, Kansas": "a7541504-de01-4019-8d18-1ae37b4e9e79",
+        "Rhodes Stadium - Elon - NC - 27244": "61430879-33cb-4936-b13a-b91eca8b642d",
+        "Convocation Center, DeKalb, Illinois": "3b979246-4981-4943-bfdf-e816001e67d0",
+        "Benchmark International Arena - Tampa - FL": "fef8f1a9-99c7-49da-a407-70b2e48d035b",
+        "Amalie Arena, Tampa, Florida": "fef8f1a9-99c7-49da-a407-70b2e48d035b",
+        "Amalie Arena, Tampa, FL, USA": "fef8f1a9-99c7-49da-a407-70b2e48d035b",
+        "St. Pete Times Forum, Tampa, Florida": "fef8f1a9-99c7-49da-a407-70b2e48d035b",
+        "Amalie Arena": "fef8f1a9-99c7-49da-a407-70b2e48d035b",
+        "McLeod Center, Cedar Falls, Iowa": "5479db82-82c4-45ba-aa3e-7a0036b2e6b9",
+        "Estadio Olímpico Universitario - Coyoacán, Mexico City - Mexico": "85195940-a6a6-4075-ba1a-84aff126414f",
+        "Desert Financial Arena, Tempe, Arizona": "3abd1282-fe9e-4b52-b99d-9f060e8b791b",
+        "Wells Fargo Arena, Tempe, Arizona": "3abd1282-fe9e-4b52-b99d-9f060e8b791b"
     }
 }

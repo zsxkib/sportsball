@@ -490,15 +490,6 @@ STATE_FARM_FIELDHOUSE = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-AMALIE_ARENA = SportsballGeocodeTuple(
-    city="Tampa",
-    state="FL",
-    postal="",
-    lat=27.942778,
-    lng=-82.451944,
-    housenumber="401",
-    country="USA",
-)
 MOODY_CENTER = SportsballGeocodeTuple(
     city="Austin",
     state="TX",
@@ -695,15 +686,6 @@ ROSE_GARDEN = SportsballGeocodeTuple(
     lat=45.531667,
     lng=-122.666667,
     housenumber="1",
-    country="USA",
-)
-DESERT_FINANCIAL_ARENA = SportsballGeocodeTuple(
-    city="Tempe",
-    state="AZ",
-    postal="",
-    lat=33.424524,
-    lng=-111.930948,
-    housenumber="600",
     country="USA",
 )
 TIMES_UNION_CENTER = SportsballGeocodeTuple(
@@ -992,15 +974,6 @@ SCHAR_CENTER = SportsballGeocodeTuple(
     lat=36.10805,
     lng=-79.51084,
     housenumber="",
-    country="USA",
-)
-STUART_SIEGEL_CENTER = SportsballGeocodeTuple(
-    city="Richmond",
-    state="VA",
-    postal="23284",
-    lat=37.552918,
-    lng=-77.4529,
-    housenumber="1200",
     country="USA",
 )
 MEMORIAL_COLISEUM = SportsballGeocodeTuple(
@@ -2912,71 +2885,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Kohl Center, Madison, Wisconsin": SportsballGeocodeTuple(
-        city="Madison",
-        state="WI",
-        postal="53715-1206",
-        lat=43.06942,
-        lng=-89.396972,
-        housenumber="601",
-        country="USA",
-    ),
-    "McKale Center, Tucson, Arizona": SportsballGeocodeTuple(
-        city="Tucson",
-        state="AZ",
-        postal="",
-        lat=32.23,
-        lng=-110.95,
-        housenumber="1",
-        country="USA",
-    ),
-    "Memorial Athletic & Convocation Center, Kent, Ohio": SportsballGeocodeTuple(
-        city="Kent",
-        state="OH",
-        postal="44242",
-        lat=41.148,
-        lng=-81.344,
-        housenumber="1025",
-        country="USA",
-    ),
-    "Stuart Siegel Center, Richmond, Virginia": STUART_SIEGEL_CENTER,
-    "Curb Event Center, Nashville, Tennessee": SportsballGeocodeTuple(
-        city="Nashville",
-        state="TN",
-        postal="37212",
-        lat=36.132222,
-        lng=-86.794444,
-        housenumber="2002",
-        country="USA",
-    ),
-    "Bramlage Coliseum, Manhattan, Kansas": SportsballGeocodeTuple(
-        city="Manhattan",
-        state="KS",
-        postal="66502",
-        lat=39.200361,
-        lng=-96.593833,
-        housenumber="1800",
-        country="USA",
-    ),
-    "Convocation Center, DeKalb, Illinois": SportsballGeocodeTuple(
-        city="DeKalb",
-        state="IL",
-        postal="60115-2854",
-        lat=41.935106,
-        lng=-88.785569,
-        housenumber="1525",
-        country="USA",
-    ),
-    "McLeod Center, Cedar Falls, Iowa": SportsballGeocodeTuple(
-        city="Cedar Falls",
-        state="IO",
-        postal="",
-        lat=42.51395,
-        lng=-92.46714,
-        housenumber="",
-        country="USA",
-    ),
-    "Desert Financial Arena, Tempe, Arizona": DESERT_FINANCIAL_ARENA,
     "Lawlor Events Center, Reno, Nevada": SportsballGeocodeTuple(
         city="Reno",
         state="NV",
@@ -4735,7 +4643,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Quicken Loans Arena, Cleveland, Ohio": QUICKEN_LOANS_ARENA,
     "STAPLES Center, Los Angeles, California": STAPLES_CENTRE,
     "AmericanAirlines Arena, Miami, Florida": KASEYA_CENTER,
-    "Amalie Arena, Tampa, Florida": AMALIE_ARENA,
     "Visa Athletic Center, Bay Lake, Florida": ESPN_WIDE_WORLD_OF_SPORTS_COMPLEX,
     "Dunn–Oliver Acadome, Montgomery, Alabama": DUNN_OLIVER_ACADOME,
     "Talking Stick Resort Arena, Phoenix, Arizona": AMERICA_WEST_ARENA,
@@ -5383,7 +5290,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Oriole Park at Camden Yards, Baltimore, MD, USA": ORIOLE_PARK,
     "ESPN Wide World of Sports Complex, Bay Lake, FL, USA": ESPN_WIDE_WORLD_OF_SPORTS_COMPLEX,
-    "Amalie Arena, Tampa, FL, USA": AMALIE_ARENA,
     "Visa Athletic Center, Orlando, FL, USA": ESPN_WIDE_WORLD_OF_SPORTS_COMPLEX,
     "The Arena (WWOS), Orlando, FL, USA": ESPN_WIDE_WORLD_OF_SPORTS_COMPLEX,
     "PayPal Park, San Jose, CA, USA": SportsballGeocodeTuple(
@@ -5980,7 +5886,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Denver, Colorado": DENVER,
-    "Wells Fargo Arena, Tempe, Arizona": DESERT_FINANCIAL_ARENA,
     "Times Union Center, Albany, New York": TIMES_UNION_CENTER,
     "Louis Brown Athletic Center, New Brunswick, New Jersey": JERSEY_MIKES_ARENA,
     "Carmichael Arena, Chapel Hill, North Carolina": SportsballGeocodeTuple(
@@ -8556,7 +8461,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="400",
         country="USA",
     ),
-    "E.J. Wade Arena at Stuart C. Siegel Center, Richmond, Virginia": STUART_SIEGEL_CENTER,
     "Allstate Arena, Rosemont, Illinois": SportsballGeocodeTuple(
         city="Rosemont",
         state="IL",
@@ -9127,7 +9031,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Assembly Hall, Champaign, Illinois": STATE_FARM_CENTER,
     "Harbor Yard, Bridgeport, Connecticut": HARBOR_YARD,
     "Arena at Harbor Yard, Bridgeport, Connecticut": HARBOR_YARD,
-    "Alltel Pavilion at the Stuart C. Siegel Center, Richmond, Virginia": STUART_SIEGEL_CENTER,
     "Chase Arena at Reich Family Pavilion, West Hartford, Connecticut": CHASE_FAMILY_ARENA,
     "University Center, Macon, Georgia": SportsballGeocodeTuple(
         city="Macon",
@@ -9427,7 +9330,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Qwest Arena, Boise, Idaho": IDAHO_CENTRAL_ARENA,
     "Coliseo Juan AubÃ­n Cruz Abreu, ManatÃ­": COLISEO_JUAN_AUBIN_CRUZ_ABREU,
-    "St. Pete Times Forum, Tampa, Florida": AMALIE_ARENA,
     "Alltel Arena, North Little Rock, Arkansas": SIMMONS_BANK_ARENA,
     "Mohegan Arena at Casey Plaza, Wilkes-Barre, Pennsylvania": SportsballGeocodeTuple(
         city="Wilkes-Barre",
@@ -17471,7 +17373,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Amalie Arena": AMALIE_ARENA,
     "Crypto.com Arena": STAPLES_CENTRE,
     "Seoul, South Korea": SportsballGeocodeTuple(
         city="Seoul",
