@@ -14,3 +14,4 @@ class Position(StrEnum):
     DESIGNATED_HITTER = "DH"
     FIRST_BASEMAN = "1B"
     CENTRE_FIELDER = "CF"
+    THIRD_BASEMAN = "3B"

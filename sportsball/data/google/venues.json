@@ -7129,6 +7129,106 @@
             "housenumber": "2900",
             "country": "USA",
             "type": "venue"
+        },
+        "1264ca48-8d96-4412-b981-c713a05de9a6": {
+            "city": "Auburn",
+            "state": "AL",
+            "postal": "36849",
+            "lat": 32.60253,
+            "lng": -85.49301,
+            "housenumber": "250",
+            "country": "USA",
+            "type": "venue"
+        },
+        "529391bf-bd42-423c-9420-1b45fb2f9be1": {
+            "city": "London",
+            "state": "",
+            "postal": "SW19 5AE",
+            "lat": 51.4237,
+            "lng": -0.2056,
+            "housenumber": "",
+            "country": "UK",
+            "type": "venue"
+        },
+        "4232cf45-c30a-4a92-bc3a-1ab3b20e10f6": {
+            "city": "Durham",
+            "state": "NC",
+            "postal": "",
+            "lat": 35.9976,
+            "lng": -78.9422,
+            "housenumber": "115",
+            "country": "USA",
+            "type": "venue"
+        },
+        "eba1149e-5adb-401e-83ed-4ffaf11aa3cb": {
+            "city": "Gainesville",
+            "state": "FL",
+            "postal": "32611",
+            "lat": 29.649444,
+            "lng": -82.351111,
+            "housenumber": "250",
+            "country": "USA",
+            "type": "venue"
+        },
+        "41d2883d-107a-40c8-b566-31b1b79a3bc9": {
+            "city": "Des Moines",
+            "state": "IO",
+            "postal": "",
+            "lat": 41.592667,
+            "lng": -93.621139,
+            "housenumber": "233",
+            "country": "USA",
+            "type": "venue"
+        },
+        "ffc3cfd9-bc8c-49ba-aa2f-7746e845c6c7": {
+            "city": "Chicago",
+            "state": "IL",
+            "postal": "",
+            "lat": 41.853611,
+            "lng": -87.621389,
+            "housenumber": "200",
+            "country": "USA",
+            "type": "venue"
+        },
+        "75f8199c-0bd4-4a55-bf77-e371c75a4494": {
+            "city": "Hanover",
+            "state": "NH",
+            "postal": "03755",
+            "lat": 43.703056,
+            "lng": -72.283333,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "cdde4cb0-89ff-41a5-83d7-878493285a5f": {
+            "city": "Lexington",
+            "state": "KY",
+            "postal": "40506",
+            "lat": 38.049444,
+            "lng": -84.502778,
+            "housenumber": "432",
+            "country": "USA",
+            "type": "venue"
+        },
+        "b32c25e1-3c77-43a9-9409-82731fe2b45b": {
+            "city": "Pittsburgh",
+            "state": "PA",
+            "postal": "",
+            "lat": 40.439444,
+            "lng": -79.989167,
+            "housenumber": "1001",
+            "country": "USA",
+            "type": "venue"
+        },
+        "9f67dbf1-dc41-449d-8b9b-75941df1d2b4": {
+            "city": "Bloomington",
+            "state": "IN",
+            "postal": "47408-1590",
+            "lat": 39.180833,
+            "lng": -86.522222,
+            "housenumber": "1001",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -7740,6 +7840,7 @@
         "Eureka Stadium - Australia": "5843e4e2-fc79-4be6-9936-570253c29a9c",
         "Mars Stadium": "5843e4e2-fc79-4be6-9936-570253c29a9c",
         "Mars Stadium, Ballarat, Australia": "5843e4e2-fc79-4be6-9936-570253c29a9c",
+        "Mars Stadium - 3350": "5843e4e2-fc79-4be6-9936-570253c29a9c",
         "Karlstad, Sweden": "64259fae-0df5-446b-856f-dc72e32a2c25",
         "Perth Stadium - Australia": "61cbdfd3-3b37-48be-8450-dc4b1308cd27",
         "Optus Stadium": "61cbdfd3-3b37-48be-8450-dc4b1308cd27",
@@ -7991,6 +8092,7 @@
         "Navy-Marine Corps Memorial Stadium - Annapolis - MD - 21401": "9cc05dfc-ae09-42f9-b32b-7bd61593aaf6",
         "Navy-Marine Corps Memorial Stadium": "9cc05dfc-ae09-42f9-b32b-7bd61593aaf6",
         "Stadium of Light, Sunderland, England": "880a5276-fe64-4a4d-a836-7b1304a91ae5",
+        "Stadium of Light - Sunderland": "880a5276-fe64-4a4d-a836-7b1304a91ae5",
         "Malone Stadium - Monroe - LA - 71203": "0e0e62ae-69ee-458b-8e0f-47b8f624746c",
         "Malone Stadium": "0e0e62ae-69ee-458b-8e0f-47b8f624746c",
         "Arun Jaitley Stadium, Delhi, India": "619f5bb8-b4a3-48a8-a65e-d65f9a51b363",
@@ -8534,6 +8636,28 @@
         "John Paul Jones Arena - Charlottesville, Virginia - United States": "0e2c1ae2-6db6-42ed-991f-554128ee2d28",
         "Lloyd Noble Center, Norman, Oklahoma": "2609c84a-7142-47c3-a052-d9ae9071469e",
         "LLoyd Noble Center, Norman, Oklahoma": "2609c84a-7142-47c3-a052-d9ae9071469e",
-        "Lloyd Noble Center - Norman, Oklahoma, USA - United States": "2609c84a-7142-47c3-a052-d9ae9071469e"
+        "Lloyd Noble Center - Norman, Oklahoma, USA - United States": "2609c84a-7142-47c3-a052-d9ae9071469e",
+        "Auburn Arena, Auburn, Alabama": "1264ca48-8d96-4412-b981-c713a05de9a6",
+        "Wimbledon": "529391bf-bd42-423c-9420-1b45fb2f9be1",
+        "Cameron Indoor Stadium, Durham, North Carolina": "4232cf45-c30a-4a92-bc3a-1ab3b20e10f6",
+        "Stephen C. O'Connell Center, Gainesville, Florida": "eba1149e-5adb-401e-83ed-4ffaf11aa3cb",
+        "Stephen C. O''Connell Center, Gainesville, Florida": "eba1149e-5adb-401e-83ed-4ffaf11aa3cb",
+        "Wells Fargo Arena - Des Moines - IA": "41d2883d-107a-40c8-b566-31b1b79a3bc9",
+        "Wells Fargo Arena, Des Moines, Iowa": "41d2883d-107a-40c8-b566-31b1b79a3bc9",
+        "Wintrust Arena, Chicago, Illinois": "ffc3cfd9-bc8c-49ba-aa2f-7746e845c6c7",
+        "Wintrust Arena - Chicago, Illinois, USA - United States": "ffc3cfd9-bc8c-49ba-aa2f-7746e845c6c7",
+        "Leede Arena, Hanover, New Hampshire": "75f8199c-0bd4-4a55-bf77-e371c75a4494",
+        "Leede Arena - Hanover - NH": "75f8199c-0bd4-4a55-bf77-e371c75a4494",
+        "Rupp Arena, Lexington, Kentucky": "cdde4cb0-89ff-41a5-83d7-878493285a5f",
+        "Rupp Arena - Lexington, Kentucky - United States": "cdde4cb0-89ff-41a5-83d7-878493285a5f",
+        "PPG Paints Arena - Pittsburgh - PA": "b32c25e1-3c77-43a9-9409-82731fe2b45b",
+        "PPG Paints Arena, Pittsburgh, Pennsylvania": "b32c25e1-3c77-43a9-9409-82731fe2b45b",
+        "CONSOL Energy Center, Pittsburgh, Pennsylvania": "b32c25e1-3c77-43a9-9409-82731fe2b45b",
+        "CONSOL Enegery Center, Pittsburgh, Pennsylvania": "b32c25e1-3c77-43a9-9409-82731fe2b45b",
+        "Consol Energy Center, Pittsburgh, Pennsylvania": "b32c25e1-3c77-43a9-9409-82731fe2b45b",
+        "PPG Paints Arena, Pittsburgh, PA, USA": "b32c25e1-3c77-43a9-9409-82731fe2b45b",
+        "PPG Paints Arena": "b32c25e1-3c77-43a9-9409-82731fe2b45b",
+        "Assembly Hall, Bloomington, Indiana": "9f67dbf1-dc41-449d-8b9b-75941df1d2b4",
+        "Indiana Assembly Hall, Bloomington, Indiana": "9f67dbf1-dc41-449d-8b9b-75941df1d2b4"
     }
 }

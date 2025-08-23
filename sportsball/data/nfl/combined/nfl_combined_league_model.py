@@ -374,6 +374,8 @@ NFL_VENUE_IDENTITY_MAP = {
     # OddsPortal
     "Lincoln Financial Field": LINCOLN_FINANCIAL_FIELD,
     "Lucas Oil Stadium": LUCAS_OIL_STADIUM,
+    # ESPN
+    "8748": NEO_QUIMICA_ARENA,
 }
 NFL_PLAYER_IDENTITY_MAP: dict[str, str] = {}
 
