@@ -7369,6 +7369,126 @@
             "housenumber": "600",
             "country": "USA",
             "type": "venue"
+        },
+        "65a23dbb-1df9-495f-9b62-e0cb5dfc523e": {
+            "city": "",
+            "state": "",
+            "postal": "",
+            "lat": 44.0,
+            "lng": 21.0,
+            "housenumber": "",
+            "country": "Serbia",
+            "type": "country"
+        },
+        "5e608cbc-962b-472b-9409-1d495c67104f": {
+            "city": "Reno",
+            "state": "NV",
+            "postal": "",
+            "lat": 39.545069,
+            "lng": -119.818269,
+            "housenumber": "1500",
+            "country": "USA",
+            "type": "venue"
+        },
+        "a03a0ed7-dd08-4436-9342-bfd062d08461": {
+            "city": "San Jose",
+            "state": "CA",
+            "postal": "95192",
+            "lat": 37.33536,
+            "lng": -121.87985,
+            "housenumber": "290",
+            "country": "USA",
+            "type": "venue"
+        },
+        "cd3134ac-20e3-4dae-8dba-af686d4f9e67": {
+            "city": "Los Angeles",
+            "state": "CA",
+            "postal": "",
+            "lat": 34.021,
+            "lng": -118.28,
+            "housenumber": "3400",
+            "country": "USA",
+            "type": "venue"
+        },
+        "e90f9a39-c197-49b9-aa49-cfeb781e4a99": {
+            "city": "Cincinnati",
+            "state": "OH",
+            "postal": "45207",
+            "lat": 39.150148,
+            "lng": -84.471881,
+            "housenumber": "1624",
+            "country": "USA",
+            "type": "venue"
+        },
+        "40bd0766-958c-4039-88b9-fe067703b548": {
+            "city": "Toronto",
+            "state": "ON",
+            "postal": "",
+            "lat": 43.643333,
+            "lng": -79.379167,
+            "housenumber": "40",
+            "country": "Canada",
+            "type": "venue"
+        },
+        "458b3b46-dc9b-42b2-b4f8-6cdd055b6333": {
+            "city": "Bowling Green",
+            "state": "OH",
+            "postal": "43402",
+            "lat": 41.375343,
+            "lng": -83.624711,
+            "housenumber": "1535",
+            "country": "USA",
+            "type": "venue"
+        },
+        "2632368a-3af0-43df-bf2b-f322e423a5ec": {
+            "city": "Mt. Pleasant",
+            "state": "MI",
+            "postal": "",
+            "lat": 43.580888,
+            "lng": -84.773941,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "ee0b6e04-53e4-4854-9cdd-681c594a716f": {
+            "city": "San Antonio",
+            "state": "TX",
+            "postal": "78209",
+            "lat": 29.467472,
+            "lng": -98.47,
+            "housenumber": "4301",
+            "country": "USA",
+            "type": "venue"
+        },
+        "34e74e6f-ece4-4b8b-bd76-7a245744c949": {
+            "city": "Greenville",
+            "state": "NC",
+            "postal": "27858",
+            "lat": 35.597391,
+            "lng": -77.367167,
+            "housenumber": "1",
+            "country": "USA",
+            "type": "venue"
+        },
+        "6eacc525-1173-4d60-aca1-6cde495be288": {
+            "city": "Sudbury",
+            "state": "ON",
+            "postal": "",
+            "lat": 46.488611,
+            "lng": -80.9925,
+            "housenumber": "240",
+            "country": "Canada",
+            "type": "venue"
+        },
+        "b8546b28-55e0-4443-9764-5eb92ff92240": {
+            "city": "Athens",
+            "state": "OH",
+            "postal": "45701",
+            "lat": 39.323056,
+            "lng": -82.105556,
+            "housenumber": "95",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -7989,6 +8109,7 @@
         "Optus Stadium, Perth, Australia": "61cbdfd3-3b37-48be-8450-dc4b1308cd27",
         "Optus Stadium, Perth, Austrália": "61cbdfd3-3b37-48be-8450-dc4b1308cd27",
         "Optus Stadium, Perth": "61cbdfd3-3b37-48be-8450-dc4b1308cd27",
+        "Optus Stadium - 6100": "61cbdfd3-3b37-48be-8450-dc4b1308cd27",
         "Gocheok Sky Dome": "1fcca43b-258c-464e-bf46-cebc85cc311b",
         "Jiangwan Stadium - Australia": "348174a9-7ffc-45aa-8866-680f7882629e",
         "Jiangwan Sports Centre": "348174a9-7ffc-45aa-8866-680f7882629e",
@@ -8015,6 +8136,7 @@
         "Adelaide Hills, Mount Barker, Australia": "52dbd4a3-72be-4de8-9d08-ccc3b7ec7ac2",
         "Old Trafford, Manchester, England": "03a5e030-7e04-462b-a057-08fb1bd3b4af",
         "Old Trafford - Sir Matt Busby Way, Old Trafford, England - England": "03a5e030-7e04-462b-a057-08fb1bd3b4af",
+        "Old Trafford - Manchester": "03a5e030-7e04-462b-a057-08fb1bd3b4af",
         "University of South Florida": "4a4fe9cd-2c7b-427e-b7f6-6188ea6b05a7",
         "Husky Stadium - Seattle - WA - 98195": "16b72653-dd8d-443a-a298-b2c140954e6e",
         "Husky Stadium": "16b72653-dd8d-443a-a298-b2c140954e6e",
@@ -8161,6 +8283,7 @@
         "Kyle Field - College Station - TX - 77840": "91a1a543-4b43-44e8-9e5c-bc449122b484",
         "Kyle Field": "91a1a543-4b43-44e8-9e5c-bc449122b484",
         "Narendra Modi Stadium, Ahmedabad, India": "517abf21-2d26-441d-98cb-f8518d0a41e4",
+        "Narendra Modi Stadium - Ahmedabad, Gujarat - India": "517abf21-2d26-441d-98cb-f8518d0a41e4",
         "Allen E. Paulson Stadium - Statesboro - GA - 30458": "6b6a15a4-3f3e-42f6-aad1-ed506ab1d608",
         "Valparaiso College": "9a2f6e9e-b069-449f-a11d-287e3224e671",
         "Valparaiso University": "9a2f6e9e-b069-449f-a11d-287e3224e671",
@@ -8823,6 +8946,28 @@
         "McLeod Center, Cedar Falls, Iowa": "5479db82-82c4-45ba-aa3e-7a0036b2e6b9",
         "Estadio Olímpico Universitario - Coyoacán, Mexico City - Mexico": "85195940-a6a6-4075-ba1a-84aff126414f",
         "Desert Financial Arena, Tempe, Arizona": "3abd1282-fe9e-4b52-b99d-9f060e8b791b",
-        "Wells Fargo Arena, Tempe, Arizona": "3abd1282-fe9e-4b52-b99d-9f060e8b791b"
+        "Wells Fargo Arena, Tempe, Arizona": "3abd1282-fe9e-4b52-b99d-9f060e8b791b",
+        "SRB": "65a23dbb-1df9-495f-9b62-e0cb5dfc523e",
+        "Lawlor Events Center, Reno, Nevada": "5e608cbc-962b-472b-9409-1d495c67104f",
+        "San Jose State Event Center, San Jose, California": "a03a0ed7-dd08-4436-9342-bfd062d08461",
+        "Provident Credit Union Event Center, San Jose, California": "a03a0ed7-dd08-4436-9342-bfd062d08461",
+        "The Event Center, San Jose, California": "a03a0ed7-dd08-4436-9342-bfd062d08461",
+        "Galen Center, Los Angeles, California": "cd3134ac-20e3-4dae-8dba-af686d4f9e67",
+        "Galen Center - Los Angeles, California, USA - United States": "cd3134ac-20e3-4dae-8dba-af686d4f9e67",
+        "Cintas Center, Cincinnati, Ohio": "e90f9a39-c197-49b9-aa49-cfeb781e4a99",
+        "Cintas Center - Cincinnati - OH": "e90f9a39-c197-49b9-aa49-cfeb781e4a99",
+        "Scotiabank Arena - Toronto - ON": "40bd0766-958c-4039-88b9-fe067703b548",
+        "Scotiabank Arena, Toronto, Canada": "40bd0766-958c-4039-88b9-fe067703b548",
+        "Air Canada Centre, Toronto, Canada": "40bd0766-958c-4039-88b9-fe067703b548",
+        "Scotiabank Arena, Toronto, ON, Canada": "40bd0766-958c-4039-88b9-fe067703b548",
+        "Scotiabank Arena - Toronto, Ontario - Canada": "40bd0766-958c-4039-88b9-fe067703b548",
+        "Scotiabank Arena, Toronto": "40bd0766-958c-4039-88b9-fe067703b548",
+        "Scotiabank Arena": "40bd0766-958c-4039-88b9-fe067703b548",
+        "Stroh Center, Bowling Green, Ohio": "458b3b46-dc9b-42b2-b4f8-6cdd055b6333",
+        "McGuirk Arena, Mt. Pleasant, Michigan": "2632368a-3af0-43df-bf2b-f322e423a5ec",
+        "Gayle and Tom Benson Stadium - San Antonio - TX - 78209": "ee0b6e04-53e4-4854-9cdd-681c594a716f",
+        "Williams Arena at Minges Coliseum, Greenville, North Carolina": "34e74e6f-ece4-4b8b-bd76-7a245744c949",
+        "Sudbury Community Arena - Sudbury - ON": "6eacc525-1173-4d60-aca1-6cde495be288",
+        "Convocation Center, Athens, Ohio": "b8546b28-55e0-4443-9764-5eb92ff92240"
     }
 }

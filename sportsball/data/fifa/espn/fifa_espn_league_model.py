@@ -22,4 +22,6 @@ class FIFAESPNLeagueModel(ESPNLeagueModel):
 
     @classmethod
     def position_validator(cls) -> dict[str, str]:
-        return {str(x): str(x) for x in Position}
+        positions = {str(x): str(x) for x in Position}
+        positions["RCF"] = str(Position.CENTRE_FORWARD_RIGHT)
+        return positions

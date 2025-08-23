@@ -29,7 +29,7 @@ class Position(StrEnum):
     CENTRE_FORWARD_RIGHT = "CF-R"
 
 
-_POSITIONS = {**{str(x): x for x in Position}, **{"RCF": Position.CENTRE_FORWARD_RIGHT}}
+_POSITIONS = {str(x): x for x in Position}
 
 
 def position_from_str(position_str: str) -> Position:

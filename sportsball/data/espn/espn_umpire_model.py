@@ -18,7 +18,7 @@ def _create_espn_umpire_model(
     response.raise_for_status()
     data = response.json()
     return UmpireModel(
-        identifier=data["id"],
+        identifier=data("id", data["displayName"]),
         name=" ".join([data["firstName"], data["lastName"]]),
         birth_date=None,
         age=None,
