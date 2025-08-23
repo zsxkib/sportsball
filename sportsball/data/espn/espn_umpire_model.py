@@ -24,7 +24,7 @@ def _create_espn_umpire_model(
         else data["displayName"]
     )
     return UmpireModel(
-        identifier=data.get("id", data["displayName"]),
+        identifier=data.get("id", data.get("displayName", name)),
         name=name,
         birth_date=None,
         age=None,

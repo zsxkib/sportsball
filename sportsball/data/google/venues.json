@@ -7899,6 +7899,126 @@
             "housenumber": "700",
             "country": "USA",
             "type": "venue"
+        },
+        "776a2cd9-1e55-4d9f-9622-ddfa6cfd226c": {
+            "city": "Rotterdam",
+            "state": "South Holland",
+            "postal": "",
+            "lat": 51.92,
+            "lng": 4.48,
+            "housenumber": "",
+            "country": "Netherlands",
+            "type": "city"
+        },
+        "4c4ba9df-dc35-46a7-9c8b-0d2cec161cf2": {
+            "city": "Edinburg",
+            "state": "TX",
+            "postal": "",
+            "lat": 26.310278,
+            "lng": -98.178056,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "42b18015-45bc-43d9-b62c-e2fa6509fae9": {
+            "city": "Houston",
+            "state": "TX",
+            "postal": "77074",
+            "lat": 29.41,
+            "lng": -95.31,
+            "housenumber": "7502",
+            "country": "USA",
+            "type": "venue"
+        },
+        "6c0837a3-b02c-4529-b736-b39cbdbcc6c8": {
+            "city": "Tokyo",
+            "state": "",
+            "postal": "",
+            "lat": 35.705556,
+            "lng": 139.751944,
+            "housenumber": "3",
+            "country": "Japan",
+            "type": "venue"
+        },
+        "4e4ca494-7b6f-4912-a993-eb181775462e": {
+            "city": "Beaumont",
+            "state": "TX",
+            "postal": "77710",
+            "lat": 30.2,
+            "lng": -94.4,
+            "housenumber": "4400",
+            "country": "USA",
+            "type": "venue"
+        },
+        "771795b5-13cb-4d3d-87c2-84f5872234a7": {
+            "city": "Chicago",
+            "state": "IL",
+            "postal": "",
+            "lat": 41.880556,
+            "lng": -87.674167,
+            "housenumber": "1901",
+            "country": "USA",
+            "type": "venue"
+        },
+        "4bc0196e-a237-40a4-b9c0-bf6e0e2eb40a": {
+            "city": "Baton Rouge",
+            "state": "LA",
+            "postal": "",
+            "lat": 30.521667,
+            "lng": -91.185556,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "01b353eb-843c-44b6-99ba-3bb432f90c27": {
+            "city": "Champaign",
+            "state": "IL",
+            "postal": "",
+            "lat": 40.096259,
+            "lng": -88.235956,
+            "housenumber": "1800",
+            "country": "USA",
+            "type": "venue"
+        },
+        "2af77c99-e4a2-4dca-bc66-a8cd22822725": {
+            "city": "Corpus Christi",
+            "state": "TX",
+            "postal": "",
+            "lat": 27.807339,
+            "lng": -97.393561,
+            "housenumber": "1901",
+            "country": "USA",
+            "type": "venue"
+        },
+        "07b137e1-8f19-470a-9218-99902e24c5b8": {
+            "city": "Villanova",
+            "state": "PA",
+            "postal": "19085",
+            "lat": 40.033056,
+            "lng": -75.336667,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "38a5fbd5-5a02-4d3a-b70f-b6afb48e9b39": {
+            "city": "Elon",
+            "state": "NC",
+            "postal": "",
+            "lat": 36.10805,
+            "lng": -79.51084,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "08dd469e-ed95-4fb2-b1d1-1c9ee35a0f53": {
+            "city": "University Park",
+            "state": "PA",
+            "postal": "16802",
+            "lat": 40.79578,
+            "lng": -77.869399,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -8791,6 +8911,7 @@
         "Sahlen Field": "e1d8e3e3-8ec8-44c8-acc2-eb13ce8d7457",
         "Kidd Brewer Stadium - Boone - NC - 28607": "1e2ecdc9-4785-4bd6-9729-7d3a0128879b",
         "London Stadium, London, England": "71ea177e-9ede-43d0-b967-463ac315e7de",
+        "London Stadium - London": "71ea177e-9ede-43d0-b967-463ac315e7de",
         "Fifth Third Stadium - Kennesaw - GA - 30144": "67d91ae1-b162-450e-bd96-24051bc2de1f",
         "Wankhede Stadium, Mumbai, India": "cdb5d5d6-df0b-404f-b8ca-46262bb3a884",
         "Beaver Stadium - University Park - PA - 16802": "86769284-6453-4b29-95d9-7d3be027cb53",
@@ -9031,6 +9152,7 @@
         "St. Louis Arena, St. Louis, Missouri": "ef748f23-92e7-45ed-80fc-682101fee8c0",
         "Enterprise Center, St. Louis, MO, USA": "ef748f23-92e7-45ed-80fc-682101fee8c0",
         "Enterprise Center": "ef748f23-92e7-45ed-80fc-682101fee8c0",
+        "Enterprise Center - St. Louis - MO": "ef748f23-92e7-45ed-80fc-682101fee8c0",
         "Estelle and Zoom Fleisher Athletic Center, Newark, New Jersey": "a03aa240-d29c-4c95-b1ff-a3954563ecb3",
         "Brown Stadium": "a85084a4-f2a2-4ec2-9474-3479cab022dd",
         "Brown Stadium (RI) - Providence - RI - 02906": "a85084a4-f2a2-4ec2-9474-3479cab022dd",
@@ -9486,6 +9608,33 @@
         "Prudential Center, Newark, NJ, USA": "36433729-bec3-400f-ae5c-52a9e87b8221",
         "Prudential Center": "36433729-bec3-400f-ae5c-52a9e87b8221",
         "Prudential Center - Newark - NJ - 07199": "36433729-bec3-400f-ae5c-52a9e87b8221",
-        "William Johnson Coliseum, Nacogdoches, Texas": "3614ff6d-80e9-41b2-bb67-d407c39e7867"
+        "William Johnson Coliseum, Nacogdoches, Texas": "3614ff6d-80e9-41b2-bb67-d407c39e7867",
+        "Rotterdam, Netherlands": "776a2cd9-1e55-4d9f-9622-ddfa6cfd226c",
+        "UTRGV Fieldhouse, Edinburg, Texas": "4c4ba9df-dc35-46a7-9c8b-0d2cec161cf2",
+        "UTPA Fieldhouse, Edinburg, Texas": "4c4ba9df-dc35-46a7-9c8b-0d2cec161cf2",
+        "Frank and Lucille Sharp Gymnasium, Houston, Texas": "42b18015-45bc-43d9-b62c-e2fa6509fae9",
+        "Tokyo Dome, Tokyo, Japan": "6c0837a3-b02c-4529-b736-b39cbdbcc6c8",
+        "Tokyo Dome": "6c0837a3-b02c-4529-b736-b39cbdbcc6c8",
+        "Tokyo Dome - Tokyo - Japan": "6c0837a3-b02c-4529-b736-b39cbdbcc6c8",
+        "Montagne Center, Beaumont, Texas": "4e4ca494-7b6f-4912-a993-eb181775462e",
+        "United Center - Chicago - IL": "771795b5-13cb-4d3d-87c2-84f5872234a7",
+        "United Center - Chicago, Illinois - United States": "771795b5-13cb-4d3d-87c2-84f5872234a7",
+        "United Center, Chicago, Illinois": "771795b5-13cb-4d3d-87c2-84f5872234a7",
+        "United Center, Chicago, IL, USA": "771795b5-13cb-4d3d-87c2-84f5872234a7",
+        "United Center": "771795b5-13cb-4d3d-87c2-84f5872234a7",
+        "F. G. Clark Activity Center, Baton Rouge, Louisiana": "4bc0196e-a237-40a4-b9c0-bf6e0e2eb40a",
+        "F. G. Clark Center, Baton Rouge, Louisiana": "4bc0196e-a237-40a4-b9c0-bf6e0e2eb40a",
+        "State Farm Center - Champaign - IL": "01b353eb-843c-44b6-99ba-3bb432f90c27",
+        "State Farm Center, Champaign, Illinois": "01b353eb-843c-44b6-99ba-3bb432f90c27",
+        "Assembly Hall, Champaign, Illinois": "01b353eb-843c-44b6-99ba-3bb432f90c27",
+        "State Farm Center - Champaign, Illinois - United States": "01b353eb-843c-44b6-99ba-3bb432f90c27",
+        "American Bank Center, Corpus Christi, Texas": "2af77c99-e4a2-4dca-bc66-a8cd22822725",
+        "American Bank Center - Corpus Christi, Texas - United States": "2af77c99-e4a2-4dca-bc66-a8cd22822725",
+        "Villanova Stadium - Philadelphia - PA - 19085": "07b137e1-8f19-470a-9218-99902e24c5b8",
+        "Schar Center, Elon, North Carolina": "38a5fbd5-5a02-4d3a-b70f-b6afb48e9b39",
+        "Schar Center,": "38a5fbd5-5a02-4d3a-b70f-b6afb48e9b39",
+        "Rec Hall, University Park, Pennsylvania": "08dd469e-ed95-4fb2-b1d1-1c9ee35a0f53",
+        "Bryce Jordan Center, University Park, Pennsylvania": "08dd469e-ed95-4fb2-b1d1-1c9ee35a0f53",
+        "Bryce Jordan Center - University Park, Pennsylvania - United States": "08dd469e-ed95-4fb2-b1d1-1c9ee35a0f53"
     }
 }

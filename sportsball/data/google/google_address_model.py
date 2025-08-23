@@ -76,15 +76,6 @@ STAPLES_CENTRE = SportsballGeocodeTuple(
     housenumber="1111",
     country="USA",
 )
-UNITED_CENTER = SportsballGeocodeTuple(
-    city="Chicago",
-    state="IL",
-    postal="",
-    lat=41.880556,
-    lng=-87.674167,
-    housenumber="1901",
-    country="USA",
-)
 FEDEX_FORUM = SportsballGeocodeTuple(
     city="Memphis",
     state="TN",
@@ -236,15 +227,6 @@ MURPHY_ATHELTIC_CENTER = SportsballGeocodeTuple(
     lat=35.852467,
     lng=-86.369803,
     housenumber="2650",
-    country="USA",
-)
-F_G_CLARK_ACTIVITY_CENTER = SportsballGeocodeTuple(
-    city="Baton Rouge",
-    state="LA",
-    postal="",
-    lat=30.521667,
-    lng=-91.185556,
-    housenumber="",
     country="USA",
 )
 MCCANN_ARENA = SportsballGeocodeTuple(
@@ -877,15 +859,6 @@ KENDALL_ISAACS_GYMNASIUM = SportsballGeocodeTuple(
     housenumber="",
     country="Bahamas",
 )
-SCHAR_CENTER = SportsballGeocodeTuple(
-    city="Elon",
-    state="NC",
-    postal="",
-    lat=36.10805,
-    lng=-79.51084,
-    housenumber="",
-    country="USA",
-)
 MEMORIAL_COLISEUM = SportsballGeocodeTuple(
     city="Portland",
     state="OR",
@@ -1012,15 +985,6 @@ UCCU_CENTER = SportsballGeocodeTuple(
     housenumber="800",
     country="USA",
 )
-STATE_FARM_CENTER = SportsballGeocodeTuple(
-    city="Champaign",
-    state="IL",
-    postal="",
-    lat=40.096259,
-    lng=-88.235956,
-    housenumber="1800",
-    country="USA",
-)
 HARBOR_YARD = SportsballGeocodeTuple(
     city="Bridgeport",
     state="CT",
@@ -1028,15 +992,6 @@ HARBOR_YARD = SportsballGeocodeTuple(
     lat=41.171944,
     lng=-73.1875,
     housenumber="500",
-    country="USA",
-)
-UTRGV_FIELDHOUSE = SportsballGeocodeTuple(
-    city="Edinburg",
-    state="TX",
-    postal="",
-    lat=26.310278,
-    lng=-98.178056,
-    housenumber="",
     country="USA",
 )
 UCR_STUDENT_REC_CENTER = SportsballGeocodeTuple(
@@ -2533,15 +2488,6 @@ PNC_ARENA = SportsballGeocodeTuple(
     housenumber="1400",
     country="USA",
 )
-BRYCE_JORDAN_CENTER = SportsballGeocodeTuple(
-    city="University Park",
-    state="PA",
-    postal="16802",
-    lat=40.79578,
-    lng=-77.869399,
-    housenumber="",
-    country="USA",
-)
 AGGANIS_ARENA = SportsballGeocodeTuple(
     city="Boston",
     state="MA",
@@ -2586,15 +2532,6 @@ FLA_LIVE_ARENA = SportsballGeocodeTuple(
     lng=-80.325556,
     housenumber="1",
     country="USA",
-)
-TOKYO_DOME = SportsballGeocodeTuple(
-    city="Tokyo",
-    state="",
-    postal="",
-    lat=35.705556,
-    lng=139.751944,
-    housenumber="3",
-    country="Japan",
 )
 FORD_CENTER = SportsballGeocodeTuple(
     city="Evansville",
@@ -2668,15 +2605,6 @@ MAGNESS_ARENA = SportsballGeocodeTuple(
     housenumber="2240",
     country="USA",
 )
-AMERICAN_BANK_CENTER = SportsballGeocodeTuple(
-    city="Corpus Christi",
-    state="TX",
-    postal="",
-    lat=27.807339,
-    lng=-97.393561,
-    housenumber="1901",
-    country="USA",
-)
 COMMONWEALTH_STADIUM = SportsballGeocodeTuple(
     city="Edmonton",
     state="AB",
@@ -2714,29 +2642,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "UTRGV Fieldhouse, Edinburg, Texas": UTRGV_FIELDHOUSE,
-    "Frank and Lucille Sharp Gymnasium, Houston, Texas": SportsballGeocodeTuple(
-        city="Houston",
-        state="TX",
-        postal="77074",
-        lat=29.41,
-        lng=-95.31,
-        housenumber="7502",
-        country="USA",
-    ),
-    "Montagne Center, Beaumont, Texas": SportsballGeocodeTuple(
-        city="Beaumont",
-        state="TX",
-        postal="77710",
-        lat=30.2,
-        lng=-94.4,
-        housenumber="4400",
-        country="USA",
-    ),
-    "F. G. Clark Activity Center, Baton Rouge, Louisiana": F_G_CLARK_ACTIVITY_CENTER,
-    "American Bank Center, Corpus Christi, Texas": AMERICAN_BANK_CENTER,
-    "Schar Center, Elon, North Carolina": SCHAR_CENTER,
-    "Bryce Jordan Center, University Park, Pennsylvania": BRYCE_JORDAN_CENTER,
     "Mackey Arena, West Lafayette, Indiana": SportsballGeocodeTuple(
         city="West Lafayette",
         state="IN",
@@ -2861,7 +2766,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="2700",
         country="USA",
     ),
-    "State Farm Center, Champaign, Illinois": STATE_FARM_CENTER,
     "Stegeman Coliseum, Athens, Georgia": SportsballGeocodeTuple(
         city="Athens",
         state="GA",
@@ -4205,7 +4109,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Rose Garden": ROSE_GARDEN,
     "Toyota Center - Kennewick, Washington - United States": TOYOTA_CENTER,
     "Philips Arena": STATE_FARM_ARENA,
-    "United Center - Chicago, Illinois - United States": UNITED_CENTER,
     "Saitama Super Arena - Saitama, Japan - Japan": SportsballGeocodeTuple(
         city="Saitama",
         state="",
@@ -4229,7 +4132,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Crypto.com Arena - Los Angeles, California, USA - United States": STAPLES_CENTRE,
     "Golden 1 Center - Sacramento, California - United States": GOLDEN_1_CENTER,
     "Moda Center, Portland, Oregon": MODA_CENTER,
-    "United Center, Chicago, Illinois": UNITED_CENTER,
     "FedEx Forum, Memphis, Tennessee": FEDEX_FORUM,
     "Target Center, Minneapolis, Minnesota": TARGET_CENTER,
     "Crypto.com Arena, Los Angeles, California": STAPLES_CENTRE,
@@ -4256,15 +4158,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Philips Arena, Atlanta, Georgia": STATE_FARM_ARENA,
     "Texas A&M–Commerce Field House, Commerce, Texas": TEXAS_AM_COMMERCE_FIELD_HOUSE,
     "Detroit, Michigan": DETROIT,
-    "Rec Hall, University Park, Pennsylvania": SportsballGeocodeTuple(
-        city="University Park",
-        state="PA",
-        postal="16802",
-        lat=40.79578,
-        lng=-77.869399,
-        housenumber="",
-        country="USA",
-    ),
     "Charlotte, North Carolina": CHARLOTTE,
     "Salt Lake City, Utah": SALT_LAKE_CITY,
     "Ferrell Center, Waco, Texas": SportsballGeocodeTuple(
@@ -4414,7 +4307,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Chase Athletic Center, Smithfield, Rhode Island": CHASE_ATHLETIC_CENTER,
     "Murphy Center, Murfreesboro, Tennessee": MURPHY_ATHELTIC_CENTER,
     "Chesapeake Employers Insurance Arena, Baltimore, Maryland": CHESAPEAKE_ENERGY_ARENA,
-    "F. G. Clark Center, Baton Rouge, Louisiana": F_G_CLARK_ACTIVITY_CENTER,
     "Bozeman, Montana": SportsballGeocodeTuple(
         city="Bozeman",
         state="MT",
@@ -4804,7 +4696,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "Paycom Center, Oklahoma, OK, USA": PAYCOM_CENTRE,
     "Footprint Center, Phoenix, AZ, USA": AMERICA_WEST_ARENA,
     "Crypto.com Arena, Los Angeles, CA, USA": STAPLES_CENTRE,
-    "United Center, Chicago, IL, USA": UNITED_CENTER,
     "FedExForum, Memphis, TN, USA": FEDEX_FORUM,
     "Target Center, Minneapolis, MN, USA": TARGET_CENTER,
     "Golden 1 Center, Sacramento, CA, USA": GOLDEN_1_CENTER,
@@ -7960,7 +7851,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="625",
         country="USA",
     ),
-    "Schar Center,": SCHAR_CENTER,
     "Fort Bliss, El Paso, Texas": SportsballGeocodeTuple(
         city="El Paso",
         state="TX",
@@ -8544,7 +8434,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Assembly Hall, Champaign, Illinois": STATE_FARM_CENTER,
     "Harbor Yard, Bridgeport, Connecticut": HARBOR_YARD,
     "Arena at Harbor Yard, Bridgeport, Connecticut": HARBOR_YARD,
     "Chase Arena at Reich Family Pavilion, West Hartford, Connecticut": CHASE_FAMILY_ARENA,
@@ -8557,7 +8446,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "UTPA Fieldhouse, Edinburg, Texas": UTRGV_FIELDHOUSE,
     "Rabobank Arena, Bakersfield, California": SportsballGeocodeTuple(
         city="Bakersfield",
         state="CA",
@@ -10858,7 +10746,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="India",
     ),
-    "Tokyo Dome, Tokyo, Japan": TOKYO_DOME,
     "NH": SportsballGeocodeTuple(
         city="",
         state="",
@@ -17500,7 +17387,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "United Center": UNITED_CENTER,
     "Globe Life Field": GLOBE_LIFE_FIELD,
     "Seton Hall University": SportsballGeocodeTuple(
         city="South Orange",
@@ -17794,7 +17680,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="4320",
         country="USA",
     ),
-    "Bryce Jordan Center - University Park, Pennsylvania - United States": BRYCE_JORDAN_CENTER,
     "Agganis Arena - Boston, Massachusetts - United States": AGGANIS_ARENA,
     "Cajundome - Lafayette, Louisiana - United States": CAJUNDOME,
     "Ryan Center - Kingston, Rhode Island - United States": RYAN_CENTER,
@@ -17817,7 +17702,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="Dominican Republic",
     ),
-    "State Farm Center - Champaign, Illinois - United States": STATE_FARM_CENTER,
     "Lubumbashi, Democratic Republic of the Congo": SportsballGeocodeTuple(
         city="Lubumbashi",
         state="",
@@ -17921,7 +17805,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Tokyo Dome": TOKYO_DOME,
     "Ford Center - Evansville, Indiana - United States": FORD_CENTER,
     "University of Utah": SportsballGeocodeTuple(
         city="Salt Lake City",
@@ -17967,7 +17850,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Chaifetz Arena - St. Louis, Missouri - United States": CHAIFETZ_ARENA,
     "Magness Arena - Denver, Colorado - United States": MAGNESS_ARENA,
-    "American Bank Center - Corpus Christi, Texas - United States": AMERICAN_BANK_CENTER,
     "University of Wyoming": SportsballGeocodeTuple(
         city="Laramie",
         state="WY",
