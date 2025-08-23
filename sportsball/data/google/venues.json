@@ -6759,6 +6759,106 @@
             "housenumber": "600",
             "country": "USA",
             "type": "venue"
+        },
+        "68e8d3d1-58cb-44b4-8e9b-a1df83f15d9c": {
+            "city": "Natchitoches",
+            "state": "LA",
+            "postal": "71457",
+            "lat": 31.747222,
+            "lng": -93.096111,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "d0152592-1503-4435-aa79-edf9523cb71d": {
+            "city": "Washington",
+            "state": "DC",
+            "postal": "",
+            "lat": 38.9264,
+            "lng": -77.0221,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "189493da-5fd3-43fe-b987-2255a081ce30": {
+            "city": "Indian Wells",
+            "state": "CA",
+            "postal": "",
+            "lat": 33.718611,
+            "lng": -116.308333,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "cedc803d-cd9b-45a5-94c5-d52cb954f04c": {
+            "city": "Monroe",
+            "state": "LA",
+            "postal": "",
+            "lat": 32.531,
+            "lng": -92.069,
+            "housenumber": "4319",
+            "country": "USA",
+            "type": "venue"
+        },
+        "11d891fc-7429-4ade-af4e-856db4bac850": {
+            "city": "Annapolis",
+            "state": "MD",
+            "postal": "21402",
+            "lat": 38.984491,
+            "lng": -76.487782,
+            "housenumber": "461",
+            "country": "USA",
+            "type": "venue"
+        },
+        "48d40ff3-17a4-467b-8c96-06393c47d17f": {
+            "city": "Al Rayyan",
+            "state": "",
+            "postal": "",
+            "lat": 25.3108,
+            "lng": 51.4244,
+            "housenumber": "",
+            "country": "Qatar",
+            "type": "venue"
+        },
+        "cef5746a-e7de-4cf4-b751-9581a8472366": {
+            "city": "Chapel Hill",
+            "state": "NC",
+            "postal": "",
+            "lat": 35.899722,
+            "lng": -79.043889,
+            "housenumber": "300",
+            "country": "USA",
+            "type": "venue"
+        },
+        "b4a849a5-8cf9-48a8-b4d4-c703f0f22091": {
+            "city": "New York",
+            "state": "NY",
+            "postal": "",
+            "lat": 40.750556,
+            "lng": -73.993611,
+            "housenumber": "4",
+            "country": "USA",
+            "type": "venue"
+        },
+        "de52e5ee-c2ed-4e38-ba95-2c1414c4b08d": {
+            "city": "Greensboro",
+            "state": "NC",
+            "postal": "",
+            "lat": 36.059722,
+            "lng": -79.825556,
+            "housenumber": "1921",
+            "country": "USA",
+            "type": "venue"
+        },
+        "8f52a5f6-ed43-4b37-b229-c539ee5dcfdf": {
+            "city": "Rochester",
+            "state": "MI",
+            "postal": "",
+            "lat": 42.673972,
+            "lng": -83.213158,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -7221,6 +7321,7 @@
         "Bell MTS Place": "3aa1793e-2a53-41a9-95a1-99286c7c78e6",
         "Canada Life Centre, Winnipeg, MB, Canada": "3aa1793e-2a53-41a9-95a1-99286c7c78e6",
         "Canada Life Centre": "3aa1793e-2a53-41a9-95a1-99286c7c78e6",
+        "Canada Life Centre - Winnipeg - MB": "3aa1793e-2a53-41a9-95a1-99286c7c78e6",
         "Milwaukee County Stadium": "c636a85a-7c90-46df-acfa-ad198ae6d87e",
         "Milwaukee County Stadium - Milwaukee, WI - United States": "c636a85a-7c90-46df-acfa-ad198ae6d87e",
         "Loyola Marymount University": "e4c26c90-59b6-48d8-8202-9c13c224347f",
@@ -7300,6 +7401,7 @@
         "Marvel Stadium, Melbourne, Australia": "e784a830-640a-4586-8a1e-27bb6e5a45b9",
         "Marvel Stadium, Melbourne, Austrália": "e784a830-640a-4586-8a1e-27bb6e5a45b9",
         "Marvel Stadium, Melbourne": "e784a830-640a-4586-8a1e-27bb6e5a45b9",
+        "Marvel Stadium - 3008": "e784a830-640a-4586-8a1e-27bb6e5a45b9",
         "Texas Christian University": "e0e87d47-3dbc-4bb9-be1f-d6d3f543e2d5",
         "TCU College": "e0e87d47-3dbc-4bb9-be1f-d6d3f543e2d5",
         "TCU": "e0e87d47-3dbc-4bb9-be1f-d6d3f543e2d5",
@@ -7532,6 +7634,7 @@
         "Brigham Field at Huskie Stadium": "7ecc3ad3-9bd3-4e8a-894e-ef78e9fb51d3",
         "FirstBank Stadium - Nashville - TN - 37212": "a1260870-0ea1-483f-9068-bdee0dfac89e",
         "City Ground, Nottingham, England": "bd225fc9-93ac-47de-b758-8337f9a580de",
+        "The City Ground - Nottingham": "bd225fc9-93ac-47de-b758-8337f9a580de",
         "Johnny \"Red\" Floyd Stadium - Murfreesboro - TN - 37130": "6658753e-b447-477e-8838-c23b816096b1",
         "Johnny Red\"\" Floyd Stadium\"\"": "6658753e-b447-477e-8838-c23b816096b1",
         "Vihti, Finland": "380ddedf-6517-44b7-9c55-d8d420ff73cd",
@@ -8084,6 +8187,26 @@
         "Nationwide Arena, Columbus, Ohio": "04fcfcfe-148d-44d0-babe-a7da5e7896a3",
         "Nationwide Arena, Columbus, OH, USA": "04fcfcfe-148d-44d0-babe-a7da5e7896a3",
         "Nationwide Arena": "04fcfcfe-148d-44d0-babe-a7da5e7896a3",
-        "Charles E. Smith Center, Washington, District of Columbia": "687e6d16-6f92-4580-a5c4-de9558f1fdc7"
+        "Charles E. Smith Center, Washington, District of Columbia": "687e6d16-6f92-4580-a5c4-de9558f1fdc7",
+        "Turpin Stadium - Natchitoches - LA - 71457": "68e8d3d1-58cb-44b4-8e9b-a1df83f15d9c",
+        "Burr Gymnasium, Washington, District of Columbia": "d0152592-1503-4435-aa79-edf9523cb71d",
+        "Indian Wells, USA": "189493da-5fd3-43fe-b987-2255a081ce30",
+        "Fant-Ewing Coliseum, Monroe, Louisiana": "cedc803d-cd9b-45a5-94c5-d52cb954f04c",
+        "Alumni Hall, Annapolis, Maryland": "11d891fc-7429-4ade-af4e-856db4bac850",
+        "Education City Stadium - Doha": "48d40ff3-17a4-467b-8c96-06393c47d17f",
+        "Dean Smith Center, Chapel Hill, North Carolina": "cef5746a-e7de-4cf4-b751-9581a8472366",
+        "Dean Smith Center - Chapel Hill, North Carolina, USA - United States": "cef5746a-e7de-4cf4-b751-9581a8472366",
+        "Madison Square Garden - New York - NY": "b4a849a5-8cf9-48a8-b4d4-c703f0f22091",
+        "Madison Square Garden (IV), New York, New York": "b4a849a5-8cf9-48a8-b4d4-c703f0f22091",
+        "Madison Square Garden - New York City, New York - United States": "b4a849a5-8cf9-48a8-b4d4-c703f0f22091",
+        "Madison Square Garden, New York, NY, USA": "b4a849a5-8cf9-48a8-b4d4-c703f0f22091",
+        "Madison Square Garden (III), New York, New York": "b4a849a5-8cf9-48a8-b4d4-c703f0f22091",
+        "Madison Square Garden, New York, NY": "b4a849a5-8cf9-48a8-b4d4-c703f0f22091",
+        "Madison Square Garden (IV)": "b4a849a5-8cf9-48a8-b4d4-c703f0f22091",
+        "Greensboro Coliseum, Greensboro, North Carolina": "de52e5ee-c2ed-4e38-ba95-2c1414c4b08d",
+        "Greensboro Coliseum": "de52e5ee-c2ed-4e38-ba95-2c1414c4b08d",
+        "Greensboro Coliseum Complex - Greensboro, North Carolina - United States": "de52e5ee-c2ed-4e38-ba95-2c1414c4b08d",
+        "Athletics Center O'rena, Rochester, Michigan": "8f52a5f6-ed43-4b37-b229-c539ee5dcfdf",
+        "Athletics Center O''rena, Rochester, Michigan": "8f52a5f6-ed43-4b37-b229-c539ee5dcfdf"
     }
 }

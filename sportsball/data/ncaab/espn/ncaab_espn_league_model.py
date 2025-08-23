@@ -8,7 +8,7 @@ from ...espn.espn_league_model import ESPNLeagueModel
 from ...league import League
 from ...nba.position import Position
 
-_SEASON_URL = "http://sports.core.api.espn.com/v2/sports/basketball/leagues/mens-college-basketball?lang=en&region=us"
+_SEASON_URL = "http://sports.core.api.espn.com/v2/sports/basketball/leagues/mens-college-basketball/seasons?lang=en&region=us"
 
 
 class NCAABESPNLeagueModel(ESPNLeagueModel):

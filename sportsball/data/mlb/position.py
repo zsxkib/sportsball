@@ -12,3 +12,4 @@ class Position(StrEnum):
     CATCHER = "C"
     SHORTSTOP = "SS"
     DESIGNATED_HITTER = "DH"
+    FIRST_BASEMAN = "1B"

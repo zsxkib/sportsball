@@ -22,15 +22,6 @@ SportsballGeocodeTuple = namedtuple(
     "SportsballGeocodeTuple",
     ["city", "state", "postal", "lat", "lng", "housenumber", "country"],
 )
-MADISON_SQUARE_GARDEN = SportsballGeocodeTuple(
-    city="New York",
-    state="NY",
-    postal="",
-    lat=40.750556,
-    lng=-73.993611,
-    housenumber="4",
-    country="USA",
-)
 THE_FORUM = SportsballGeocodeTuple(
     city="Inglewood",
     state="CA",
@@ -254,15 +245,6 @@ MCDOUGALD_MCLENON_ARENA = SportsballGeocodeTuple(
     lat=35.975884,
     lng=-78.897745,
     housenumber="1801",
-    country="USA",
-)
-ATHELTICS_CENTER_ORENA = SportsballGeocodeTuple(
-    city="Rochester",
-    state="MI",
-    postal="",
-    lat=42.673972,
-    lng=-83.213158,
-    housenumber="",
     country="USA",
 )
 NUTTER_CENTER = SportsballGeocodeTuple(
@@ -2236,15 +2218,6 @@ MID_SOUTH_COLISEUM = SportsballGeocodeTuple(
     housenumber="996",
     country="USA",
 )
-DEAN_SMITH_CENTER = SportsballGeocodeTuple(
-    city="Chapel Hill",
-    state="NC",
-    postal="",
-    lat=35.899722,
-    lng=-79.043889,
-    housenumber="300",
-    country="USA",
-)
 CHARLESTON_CIVIC_CENTER = SportsballGeocodeTuple(
     city="Charleston",
     state="WV",
@@ -2252,15 +2225,6 @@ CHARLESTON_CIVIC_CENTER = SportsballGeocodeTuple(
     lat=38.35519,
     lng=-81.64152,
     housenumber="200",
-    country="USA",
-)
-GREENSBORO_COLISEUM = SportsballGeocodeTuple(
-    city="Greensboro",
-    state="NC",
-    postal="",
-    lat=36.059722,
-    lng=-79.825556,
-    housenumber="1921",
     country="USA",
 )
 SELLAND_ARENA = SportsballGeocodeTuple(
@@ -3092,36 +3056,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Burr Gymnasium, Washington, District of Columbia": SportsballGeocodeTuple(
-        city="Washington",
-        state="DC",
-        postal="",
-        lat=38.9264,
-        lng=-77.0221,
-        housenumber="",
-        country="USA",
-    ),
-    "Fant-Ewing Coliseum, Monroe, Louisiana": SportsballGeocodeTuple(
-        city="Monroe",
-        state="LA",
-        postal="",
-        lat=32.531,
-        lng=-92.069,
-        housenumber="4319",
-        country="USA",
-    ),
-    "Alumni Hall, Annapolis, Maryland": SportsballGeocodeTuple(
-        city="Annapolis",
-        state="MD",
-        postal="21402",
-        lat=38.984491,
-        lng=-76.487782,
-        housenumber="461",
-        country="USA",
-    ),
-    "Dean Smith Center, Chapel Hill, North Carolina": DEAN_SMITH_CENTER,
-    "Greensboro Coliseum, Greensboro, North Carolina": GREENSBORO_COLISEUM,
-    "Athletics Center O'rena, Rochester, Michigan": ATHELTICS_CENTER_ORENA,
     "Yuengling Center, Tampa, Florida": YUENGLING_CENTER,
     "Reilly Center, St. Bonaventure, New York": SportsballGeocodeTuple(
         city="St. Bonaventure",
@@ -3251,7 +3185,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1025",
         country="USA",
     ),
-    "Madison Square Garden (IV), New York, New York": MADISON_SQUARE_GARDEN,
     "Stuart Siegel Center, Richmond, Virginia": STUART_SIEGEL_CENTER,
     "Curb Event Center, Nashville, Tennessee": SportsballGeocodeTuple(
         city="Nashville",
@@ -4825,7 +4758,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "The Forum": THE_FORUM,
-    "Madison Square Garden - New York City, New York - United States": MADISON_SQUARE_GARDEN,
     "Chicago Stadium": SportsballGeocodeTuple(
         city="Chicago",
         state="IL",
@@ -5224,7 +5156,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "McDougald-McLendon Arena, Durham, North Carolina": MCDOUGALD_MCLENON_ARENA,
-    "Athletics Center O''rena, Rochester, Michigan": ATHELTICS_CENTER_ORENA,
     "Nutter Center, Dayton, Ohio": NUTTER_CENTER,
     "Addition Financial Arena, Orlando, Florida": ADDITION_FINANCIAL_ARENA,
     "Colonial Life Arena, Columbia, South Carolina": COLONIAL_LIFE_ARENA,
@@ -5677,7 +5608,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     "United Center, Chicago, IL, USA": UNITED_CENTER,
     "FedExForum, Memphis, TN, USA": FEDEX_FORUM,
     "Target Center, Minneapolis, MN, USA": TARGET_CENTER,
-    "Madison Square Garden, New York, NY, USA": MADISON_SQUARE_GARDEN,
     "Golden 1 Center, Sacramento, CA, USA": GOLDEN_1_CENTER,
     "Intuit Dome, Inglewood, CA, USA": INTUIT_DOME,
     "Moda Center, Portland, OR, USA": MODA_CENTER,
@@ -8074,7 +8004,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Boston Garden, Boston, Massachusetts": BOSTON_GARDENS,
-    "Madison Square Garden (III), New York, New York": MADISON_SQUARE_GARDEN,
     "West Point, New York": SportsballGeocodeTuple(
         city="West Point",
         state="NY",
@@ -10186,7 +10115,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Madison Square Garden, New York, NY": MADISON_SQUARE_GARDEN,
     "Hoffman Estates, Illinois": SportsballGeocodeTuple(
         city="Hoffman Estates",
         state="IL",
@@ -13356,9 +13284,7 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Mid-South Coliseum": MID_SOUTH_COLISEUM,
-    "Dean Smith Center - Chapel Hill, North Carolina, USA - United States": DEAN_SMITH_CENTER,
     "Charleston Civic Center": CHARLESTON_CIVIC_CENTER,
-    "Greensboro Coliseum": GREENSBORO_COLISEUM,
     "Montreal Forum": SportsballGeocodeTuple(
         city="Montreal",
         state="QC",
@@ -18344,7 +18270,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Madison Square Garden (IV)": MADISON_SQUARE_GARDEN,
     "Olympic Stadium Zawiya - Zawiya - Libya": SportsballGeocodeTuple(
         city="Zawiya",
         state="",
@@ -18646,7 +18571,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Greensboro Coliseum Complex - Greensboro, North Carolina - United States": GREENSBORO_COLISEUM,
     "Faurot Field": SportsballGeocodeTuple(
         city="Columbia",
         state="MO",
