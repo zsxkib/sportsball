@@ -7799,6 +7799,106 @@
             "housenumber": "1400",
             "country": "USA",
             "type": "venue"
+        },
+        "bde46d7f-7bc8-423d-b29f-763d2a326798": {
+            "city": "Itta Bena",
+            "state": "MS",
+            "postal": "",
+            "lat": 33.51406,
+            "lng": -90.189362,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "9968f402-bf91-432a-b6e0-1e738a2b5ab1": {
+            "city": "Baltimore",
+            "state": "MD",
+            "postal": "",
+            "lat": 39.3425,
+            "lng": -76.585,
+            "housenumber": "1700",
+            "country": "USA",
+            "type": "venue"
+        },
+        "2a329ecf-5ef9-4151-bf7c-74526f8f2355": {
+            "city": "Durham",
+            "state": "NC",
+            "postal": "27707",
+            "lat": 35.975884,
+            "lng": -78.897745,
+            "housenumber": "1801",
+            "country": "USA",
+            "type": "venue"
+        },
+        "cab652ad-9035-4b39-a8cc-dbd9d6a9c49e": {
+            "city": "Spokane",
+            "state": "WA",
+            "postal": "",
+            "lat": 47.665,
+            "lng": -117.399,
+            "housenumber": "801",
+            "country": "USA",
+            "type": "venue"
+        },
+        "c602289c-4fc7-4fe7-8723-bc0f9cce6f2b": {
+            "city": "South Bend",
+            "state": "IN",
+            "postal": "46556",
+            "lat": 41.698443,
+            "lng": -86.231292,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "c4d01fa9-181e-4764-bd89-cc06138d2208": {
+            "city": "Springfield",
+            "state": "MO",
+            "postal": "65897",
+            "lat": 37.197778,
+            "lng": -93.279722,
+            "housenumber": "1015",
+            "country": "USA",
+            "type": "venue"
+        },
+        "f36a5bab-5141-4e80-a6a8-fcd128283f82": {
+            "city": "Orangeburg",
+            "state": "SC",
+            "postal": "29117",
+            "lat": 33.500979,
+            "lng": -80.846522,
+            "housenumber": "300",
+            "country": "USA",
+            "type": "venue"
+        },
+        "2912ac17-507c-4da1-a696-bf7e5bd00995": {
+            "city": "Berlin",
+            "state": "",
+            "postal": "",
+            "lat": 52.514722,
+            "lng": 13.239444,
+            "housenumber": "",
+            "country": "Germany",
+            "type": "venue"
+        },
+        "36433729-bec3-400f-ae5c-52a9e87b8221": {
+            "city": "Newark",
+            "state": "NJ",
+            "postal": "",
+            "lat": 40.733611,
+            "lng": -74.171111,
+            "housenumber": "25",
+            "country": "USA",
+            "type": "venue"
+        },
+        "3614ff6d-80e9-41b2-bb67-d407c39e7867": {
+            "city": "Nacogdoches",
+            "state": "TX",
+            "postal": "75964",
+            "lat": 31.622222,
+            "lng": -94.640833,
+            "housenumber": "700",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -8005,6 +8105,7 @@
         "Caesars Superdome, New Orleans, LA, USA": "b96a1332-d63b-45e0-9e1d-9f574adf386a",
         "New Orleans Arena, New Orleans, Louisiana": "b96a1332-d63b-45e0-9e1d-9f574adf386a",
         "Goodison Park, Liverpool, England": "eb777022-f027-41b7-9b78-27153091ff3d",
+        "Goodison Park - Liverpool": "eb777022-f027-41b7-9b78-27153091ff3d",
         "Neo Química Arena": "23e7778f-d138-48c8-8401-5d2f275354c9",
         "Neo Química Arena - São Paulo, Brazil - Brazil": "23e7778f-d138-48c8-8401-5d2f275354c9",
         "Western Carolina University": "f50cbb08-adcb-489b-9fcd-adde32f17ee8",
@@ -8400,6 +8501,7 @@
         "Ninja Stadium, Bellerive, Australia": "dad0b6d0-43c9-411a-81b1-abc07001f0af",
         "Ninja Stadium": "dad0b6d0-43c9-411a-81b1-abc07001f0af",
         "Ninja Stadium, Hobart": "dad0b6d0-43c9-411a-81b1-abc07001f0af",
+        "Blundstone Arena - 7018": "dad0b6d0-43c9-411a-81b1-abc07001f0af",
         "Virginia Union University": "7d1bc40c-a179-4489-9399-0837bcb1b680",
         "Cazaly's Stadium - Australia": "780b48b0-6a27-4b4d-925e-54839861d9fb",
         "Cazaly’s Stadium": "780b48b0-6a27-4b4d-925e-54839861d9fb",
@@ -9335,6 +9437,7 @@
         "Little Caesars Arena, Detroit, MI, USA": "c3cd5d55-d185-40d2-8257-d66224f0f7c7",
         "Little Caesars Arena - Detroit, Michigan - United States": "c3cd5d55-d185-40d2-8257-d66224f0f7c7",
         "Little Caesars Arena": "c3cd5d55-d185-40d2-8257-d66224f0f7c7",
+        "Little Caesars Arena - Detroit - MI": "c3cd5d55-d185-40d2-8257-d66224f0f7c7",
         "Xfinity Center, College Park, Maryland": "56d82a5f-fc9a-491d-99c2-b3b33144b058",
         "Comcast Center, College Park, Maryland": "56d82a5f-fc9a-491d-99c2-b3b33144b058",
         "Jersey Mike's Arena, New Brunswick, New Jersey": "4699946d-0005-434f-8ae4-192b732d4edc",
@@ -9365,6 +9468,24 @@
         "Climate Pledge Arena, Seattle, WA, USA": "4fa113b3-12b2-4b0c-978b-932dbf9f285c",
         "Climate Pledge Arena": "4fa113b3-12b2-4b0c-978b-932dbf9f285c",
         "KeyArena - Seattle, Washington - United States": "4fa113b3-12b2-4b0c-978b-932dbf9f285c",
-        "Lee E. Williams Athletics and Assembly Center, Jackson, Mississippi": "3457b34a-99da-46fb-b808-855bf73c8515"
+        "Lee E. Williams Athletics and Assembly Center, Jackson, Mississippi": "3457b34a-99da-46fb-b808-855bf73c8515",
+        "Harrison HPER Complex, Itta Bena, Mississippi": "bde46d7f-7bc8-423d-b29f-763d2a326798",
+        "Hill Field House, Baltimore, Maryland": "9968f402-bf91-432a-b6e0-1e738a2b5ab1",
+        "Talmadge L. Hill Field House, Baltimore, Maryland": "9968f402-bf91-432a-b6e0-1e738a2b5ab1",
+        "McLendon-McDougald Gym, Durham, North Carolina": "2a329ecf-5ef9-4151-bf7c-74526f8f2355",
+        "McDougald-McLendon Arena, Durham, North Carolina": "2a329ecf-5ef9-4151-bf7c-74526f8f2355",
+        "McCarthey Athletic Center, Spokane, Washington": "cab652ad-9035-4b39-a8cc-dbd9d6a9c49e",
+        "McCarthey Athletic Center - Spokane - WA": "cab652ad-9035-4b39-a8cc-dbd9d6a9c49e",
+        "Purcell Pavilion at the Joyce Center, South Bend, Indiana": "c602289c-4fc7-4fe7-8723-bc0f9cce6f2b",
+        "Robert W. Plaster Stadium - Springfield - MO - 65897": "c4d01fa9-181e-4764-bd89-cc06138d2208",
+        "SHM Memorial Center, Orangeburg, South Carolina": "f36a5bab-5141-4e80-a6a8-fcd128283f82",
+        "Olympic Stadium Berlin - Berlin": "2912ac17-507c-4da1-a696-bf7e5bd00995",
+        "Olympiastadion Berlin - Charlottenburg-Wilmersdorf - Germany": "2912ac17-507c-4da1-a696-bf7e5bd00995",
+        "Prudential Center, Newark, New Jersey": "36433729-bec3-400f-ae5c-52a9e87b8221",
+        "Prudential Center - Newark, New Jersey, USA - United States": "36433729-bec3-400f-ae5c-52a9e87b8221",
+        "Prudential Center, Newark, NJ, USA": "36433729-bec3-400f-ae5c-52a9e87b8221",
+        "Prudential Center": "36433729-bec3-400f-ae5c-52a9e87b8221",
+        "Prudential Center - Newark - NJ - 07199": "36433729-bec3-400f-ae5c-52a9e87b8221",
+        "William Johnson Coliseum, Nacogdoches, Texas": "3614ff6d-80e9-41b2-bb67-d407c39e7867"
     }
 }

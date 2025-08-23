@@ -16,3 +16,4 @@ class Position(StrEnum):
     CENTRE_FIELDER = "CF"
     THIRD_BASEMAN = "3B"
     PINCH_RUNNER = "PR"
+    PITCHER = "P"

@@ -81,17 +81,18 @@ def _create_espn_team(
         team_response.raise_for_status()
         team_dict = team_response.json()
 
-    odds_key = competitor["homeAway"] + "TeamOdds"
     odds: list[OddsModel] = []
     if odds_dict:
-        odds = [  # pyright: ignore
-            create_espn_odds_model(
-                x[odds_key],
-                create_espn_bookie_model(x["provider"]),
-            )
-            for x in odds_dict["items"]
-            if odds_key in x and MONEYLINE_KEY in x[odds_key]
-        ]
+        if "homeAway" in competitor:
+            odds_key = competitor["homeAway"] + "TeamOdds"
+            odds = [  # pyright: ignore
+                create_espn_odds_model(
+                    x[odds_key],
+                    create_espn_bookie_model(x["provider"]),
+                )
+                for x in odds_dict["items"]
+                if odds_key in x and MONEYLINE_KEY in x[odds_key]
+            ]
 
     roster_dict = {}
     if "roster" in competitor:

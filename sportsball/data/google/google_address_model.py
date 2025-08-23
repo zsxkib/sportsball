@@ -211,15 +211,6 @@ SAVAGE_ARENA = SportsballGeocodeTuple(
     housenumber="2025",
     country="USA",
 )
-MCDOUGALD_MCLENON_ARENA = SportsballGeocodeTuple(
-    city="Durham",
-    state="NC",
-    postal="27707",
-    lat=35.975884,
-    lng=-78.897745,
-    housenumber="1801",
-    country="USA",
-)
 COLONIAL_LIFE_ARENA = SportsballGeocodeTuple(
     city="Columbia",
     state="SC",
@@ -1912,15 +1903,6 @@ FREEDOM_HALL = SportsballGeocodeTuple(
     housenumber="937",
     country="USA",
 )
-PRUDENTIAL_CENTER = SportsballGeocodeTuple(
-    city="Newark",
-    state="NJ",
-    postal="",
-    lat=40.733611,
-    lng=-74.171111,
-    housenumber="25",
-    country="USA",
-)
 ROBERTS_STADIUM = SportsballGeocodeTuple(
     city="Evansville",
     state="IN",
@@ -2732,52 +2714,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Harrison HPER Complex, Itta Bena, Mississippi": SportsballGeocodeTuple(
-        city="Itta Bena",
-        state="MS",
-        postal="",
-        lat=33.51406,
-        lng=-90.189362,
-        housenumber="",
-        country="USA",
-    ),
-    "Hill Field House, Baltimore, Maryland": SportsballGeocodeTuple(
-        city="Baltimore",
-        state="MD",
-        postal="",
-        lat=39.3425,
-        lng=-76.585,
-        housenumber="1700",
-        country="USA",
-    ),
-    "McLendon-McDougald Gym, Durham, North Carolina": MCDOUGALD_MCLENON_ARENA,
-    "Purcell Pavilion at the Joyce Center, South Bend, Indiana": SportsballGeocodeTuple(
-        city="South Bend",
-        state="IN",
-        postal="46556",
-        lat=41.698443,
-        lng=-86.231292,
-        housenumber="",
-        country="USA",
-    ),
-    "SHM Memorial Center, Orangeburg, South Carolina": SportsballGeocodeTuple(
-        city="Orangeburg",
-        state="SC",
-        postal="29117",
-        lat=33.500979,
-        lng=-80.846522,
-        housenumber="300",
-        country="USA",
-    ),
-    "William Johnson Coliseum, Nacogdoches, Texas": SportsballGeocodeTuple(
-        city="Nacogdoches",
-        state="TX",
-        postal="75964",
-        lat=31.622222,
-        lng=-94.640833,
-        housenumber="700",
-        country="USA",
-    ),
     "UTRGV Fieldhouse, Edinburg, Texas": UTRGV_FIELDHOUSE,
     "Frank and Lucille Sharp Gymnasium, Houston, Texas": SportsballGeocodeTuple(
         city="Houston",
@@ -2933,15 +2869,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lat=33.9428,
         lng=-83.378,
         housenumber="100",
-        country="USA",
-    ),
-    "McCarthey Athletic Center, Spokane, Washington": SportsballGeocodeTuple(
-        city="Spokane",
-        state="WA",
-        postal="",
-        lat=47.665,
-        lng=-117.399,
-        housenumber="801",
         country="USA",
     ),
     "FedExForum, Memphis, Tennessee": FEDEX_FORUM,
@@ -3543,7 +3470,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Thomas M. Ryan Center, Kingston, Rhode Island": RYAN_CENTER,
-    "Prudential Center, Newark, New Jersey": PRUDENTIAL_CENTER,
     "Ford Center, Evansville, Indiana": FORD_CENTER,
     "Super Pit, Denton, Texas": SportsballGeocodeTuple(
         city="Denton",
@@ -4463,16 +4389,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="87",
         country="USA",
     ),
-    "Talmadge L. Hill Field House, Baltimore, Maryland": SportsballGeocodeTuple(
-        city="Baltimore",
-        state="MD",
-        postal="",
-        lat=39.3425,
-        lng=-76.585,
-        housenumber="1700",
-        country="USA",
-    ),
-    "McDougald-McLendon Arena, Durham, North Carolina": MCDOUGALD_MCLENON_ARENA,
     "Addition Financial Arena, Orlando, Florida": ADDITION_FINANCIAL_ARENA,
     "Colonial Life Arena, Columbia, South Carolina": COLONIAL_LIFE_ARENA,
     "Denton, Texas": SportsballGeocodeTuple(
@@ -10811,15 +10727,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Olympic Stadium Berlin - Berlin": SportsballGeocodeTuple(
-        city="Berlin",
-        state="",
-        postal="",
-        lat=52.514722,
-        lng=13.239444,
-        housenumber="",
-        country="Germany",
-    ),
     "Kahuku, HI, USA": SportsballGeocodeTuple(
         city="Kahuku",
         state="HI",
@@ -12458,7 +12365,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Freedom Hall - Louisville, Kentucky - United States": FREEDOM_HALL,
     "Finneran Pavilion - Villanova, Pennsylvania - United States": FINNERAN_PAVILION,
-    "Prudential Center - Newark, New Jersey, USA - United States": PRUDENTIAL_CENTER,
     "Roberts Stadium": ROBERTS_STADIUM,
     "Sports Arena": ARCO_ARENA,
     "Veterans Memorial Auditorium": SportsballGeocodeTuple(
@@ -13567,7 +13473,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Newark, New Jersey, United States": NEWARK,
-    "Prudential Center, Newark, NJ, USA": PRUDENTIAL_CENTER,
     "Tyler, TX, USA": SportsballGeocodeTuple(
         city="Tyler",
         state="TX",
@@ -16983,7 +16888,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Prudential Center": PRUDENTIAL_CENTER,
     "Truist Park": TRUIST_PARK,
     "Riga, Latvia": SportsballGeocodeTuple(
         city="Riga",
@@ -17931,15 +17835,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lng=-73.6125,
         housenumber="",
         country="USA",
-    ),
-    "Olympiastadion Berlin - Charlottenburg-Wilmersdorf - Germany": SportsballGeocodeTuple(
-        city="Berlin",
-        state="",
-        postal="",
-        lat=52.514722,
-        lng=13.239444,
-        housenumber="",
-        country="Germany",
     ),
     "North Vancouver, British Columbia, Canada": SportsballGeocodeTuple(
         city="North Vancouver",
