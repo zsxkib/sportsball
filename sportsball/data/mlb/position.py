@@ -13,3 +13,4 @@ class Position(StrEnum):
     SHORTSTOP = "SS"
     DESIGNATED_HITTER = "DH"
     FIRST_BASEMAN = "1B"
+    CENTRE_FIELDER = "CF"

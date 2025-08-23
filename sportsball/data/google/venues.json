@@ -7009,6 +7009,126 @@
             "housenumber": "2195",
             "country": "USA",
             "type": "venue"
+        },
+        "6a4749f2-7fb0-46b4-bd26-b5039ec5ea64": {
+            "city": "Los Cabos",
+            "state": "Baja California Sur",
+            "postal": "",
+            "lat": 23.25,
+            "lng": -109.75,
+            "housenumber": "",
+            "country": "Mexico",
+            "type": "city"
+        },
+        "a810c870-44ba-4c1f-abda-505aec3f8293": {
+            "city": "Fort Worth",
+            "state": "TX",
+            "postal": "76109",
+            "lat": 32.708774,
+            "lng": -97.36673,
+            "housenumber": "2900",
+            "country": "USA",
+            "type": "venue"
+        },
+        "1a578c0c-82fb-4fc0-9442-046c160c200b": {
+            "city": "San Marcos",
+            "state": "TX",
+            "postal": "78666",
+            "lat": 29.888611,
+            "lng": -97.932778,
+            "housenumber": "601",
+            "country": "USA",
+            "type": "venue"
+        },
+        "0320879a-60be-489e-aa68-de3145a26891": {
+            "city": "Doha",
+            "state": "",
+            "postal": "",
+            "lat": 25.29,
+            "lng": 51.565,
+            "housenumber": "",
+            "country": "Qatar",
+            "type": "venue"
+        },
+        "9319157c-7aa8-4a5a-8a6c-03a2997a05bc": {
+            "city": "Boulder",
+            "state": "CO",
+            "postal": "",
+            "lat": 40.0047,
+            "lng": -105.2606,
+            "housenumber": "950",
+            "country": "USA",
+            "type": "venue"
+        },
+        "25ccf4b9-6be7-439b-83bf-ea6b9ea7fe91": {
+            "city": "Indianapolis",
+            "state": "IN",
+            "postal": "",
+            "lat": 39.763889,
+            "lng": -86.155556,
+            "housenumber": "125",
+            "country": "USA",
+            "type": "venue"
+        },
+        "8542a2aa-4741-4b70-85a5-826dd6cdb3a3": {
+            "city": "Denver",
+            "state": "CO",
+            "postal": "",
+            "lat": 39.682106,
+            "lng": -104.961592,
+            "housenumber": "2240",
+            "country": "USA",
+            "type": "venue"
+        },
+        "f4a1c757-6eb9-4780-928f-7766ad9bfb93": {
+            "city": "Kennesaw",
+            "state": "GA",
+            "postal": "",
+            "lat": 34.038,
+            "lng": -84.583,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "eb454db0-56ca-45ef-85d3-ab67f4beeffd": {
+            "city": "Tallahassee",
+            "state": "FL",
+            "postal": "32301-1619",
+            "lat": 30.437842,
+            "lng": -84.28669,
+            "housenumber": "505",
+            "country": "USA",
+            "type": "venue"
+        },
+        "a9db2673-1afb-4e23-9239-9d1caf1a7ed4": {
+            "city": "Ottawa",
+            "state": "ON",
+            "postal": "",
+            "lat": 45.296944,
+            "lng": -75.927222,
+            "housenumber": "",
+            "country": "Canada",
+            "type": "venue"
+        },
+        "0e2c1ae2-6db6-42ed-991f-554128ee2d28": {
+            "city": "Charlottesville",
+            "state": "VA",
+            "postal": "22903",
+            "lat": 38.046,
+            "lng": -78.5068,
+            "housenumber": "295",
+            "country": "USA",
+            "type": "venue"
+        },
+        "2609c84a-7142-47c3-a052-d9ae9071469e": {
+            "city": "Norman",
+            "state": "OK",
+            "postal": "73072",
+            "lat": 35.1875,
+            "lng": -97.444444,
+            "housenumber": "2900",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -7527,6 +7647,7 @@
         "The Gabba, Brisbane, Australia": "a1cc4a97-31f7-4386-a20c-098c844f48e8",
         "The Gabba, Brisbane, Austrália": "a1cc4a97-31f7-4386-a20c-098c844f48e8",
         "Gabba, Brisbane": "a1cc4a97-31f7-4386-a20c-098c844f48e8",
+        "Gabba - 4105": "a1cc4a97-31f7-4386-a20c-098c844f48e8",
         "East Carolina University": "7ce4c13a-9dcb-4f65-aaaf-a760de064597",
         "East Carolina College": "7ce4c13a-9dcb-4f65-aaaf-a760de064597",
         "Independence Stadium - 71109": "9efe4d0f-51fb-4b7b-bb18-239abbadcd95",
@@ -8268,6 +8389,7 @@
         "Hilton Coliseum - Ames, Iowa - United States": "cc534e03-12df-4956-aa6f-1738b4ddc798",
         "Meade Stadium - Kingston - RI - 02881": "fd886afc-48b0-4cbb-acca-47f628f18c29",
         "Thompson-Boling Arena, Knoxville, Tennessee": "f707fef1-c470-4e6b-a425-d12e099b63b5",
+        "Food City Center - Knoxville - TN - 37996": "f707fef1-c470-4e6b-a425-d12e099b63b5",
         "Bastad": "b7ab95be-592a-4949-8232-7ee86d2783da",
         "Hofheinz Pavilion, Houston, Texas": "1105097e-a845-45a5-8a6a-dbcf850b2940",
         "Fertitta Center, Houston, Texas": "1105097e-a845-45a5-8a6a-dbcf850b2940",
@@ -8366,6 +8488,7 @@
         "PER": "5b2c966e-062c-4725-bf31-c97c342181ce",
         "Reilly Center, St. Bonaventure, New York": "7ae62946-69c1-4dbc-8cea-eb37118d0518",
         "Amex Stadium, Brighton, England": "73757514-5dfe-421a-a616-fa315bb8a9d9",
+        "American Express Stadium - Falmer": "73757514-5dfe-421a-a616-fa315bb8a9d9",
         "Devlin Fieldhouse, New Orleans, Louisiana": "3528b84a-d0ae-4875-8f79-85b1632d61cf",
         "Wankhede Stadium - Mumbai, Maharashtra - India": "594e5def-2c9e-4eec-9ab8-7fbbc07e3d1d",
         "Cassell Coliseum, Blacksburg, Virginia": "d5a71672-cdc0-4070-8b16-2c65a1b99ddf",
@@ -8386,6 +8509,31 @@
         "Coleman Coliseum - Tuscaloosa - AL - 35401": "bc83e266-fc8b-4a06-b5e3-7a068fb71c5d",
         "O'Brien Field - Charleston - IL - 61920": "4303217e-f7bb-4169-b126-7f941c83b821",
         "UIC Pavilion, Chicago, Illinois": "b6be9877-ac10-432f-8cc0-bd862b96eafa",
-        "Mitchell Center, Mobile, Alabama": "c848a705-6f24-4123-984f-22f31b591568"
+        "Mitchell Center, Mobile, Alabama": "c848a705-6f24-4123-984f-22f31b591568",
+        "Los Cabos": "6a4749f2-7fb0-46b4-bd26-b5039ec5ea64",
+        "Ed & Rae Schollmaier Arena, Fort Worth, Texas": "a810c870-44ba-4c1f-abda-505aec3f8293",
+        "Daniel-Meyer Coliseum, Fort Worth, Texas": "a810c870-44ba-4c1f-abda-505aec3f8293",
+        "Strahan Coliseum, San Marcos, Texas": "1a578c0c-82fb-4fc0-9442-046c160c200b",
+        "Stadium 974 - Doha": "0320879a-60be-489e-aa68-de3145a26891",
+        "Coors Events/Conference Center, Boulder, Colorado": "9319157c-7aa8-4a5a-8a6c-03a2997a05bc",
+        "Coors Events Center, Boulder, Colorado": "9319157c-7aa8-4a5a-8a6c-03a2997a05bc",
+        "Gainbridge Fieldhouse - Indianapolis - IN": "25ccf4b9-6be7-439b-83bf-ea6b9ea7fe91",
+        "Gainbridge Fieldhouse, Indianapolis, Indiana": "25ccf4b9-6be7-439b-83bf-ea6b9ea7fe91",
+        "Gainbridge Fieldhouse - Indianapolis, Indiana - United States": "25ccf4b9-6be7-439b-83bf-ea6b9ea7fe91",
+        "Bankers Life Fieldhouse, Indianapolis, Indiana": "25ccf4b9-6be7-439b-83bf-ea6b9ea7fe91",
+        "Gainbridge Fieldhouse, Indianapolis, IN, USA": "25ccf4b9-6be7-439b-83bf-ea6b9ea7fe91",
+        "Conseco Fieldhouse, Indianapolis, Indiana": "25ccf4b9-6be7-439b-83bf-ea6b9ea7fe91",
+        "Hamilton Gymnasium, Denver, Colorado": "8542a2aa-4741-4b70-85a5-826dd6cdb3a3",
+        "Kennesaw State": "f4a1c757-6eb9-4780-928f-7766ad9bfb93",
+        "Donald L. Tucker Center, Tallahassee, Florida": "eb454db0-56ca-45ef-85d3-ab67f4beeffd",
+        "Tallahassee-Leon County Civic Center, Tallahassee, Florida": "eb454db0-56ca-45ef-85d3-ab67f4beeffd",
+        "Canadian Tire Centre - Ottawa - ON": "a9db2673-1afb-4e23-9239-9d1caf1a7ed4",
+        "Canadian Tire Centre, Ottawa, ON, Canada": "a9db2673-1afb-4e23-9239-9d1caf1a7ed4",
+        "Canadian Tire Centre": "a9db2673-1afb-4e23-9239-9d1caf1a7ed4",
+        "John Paul Jones Arena, Charlottesville, Virginia": "0e2c1ae2-6db6-42ed-991f-554128ee2d28",
+        "John Paul Jones Arena - Charlottesville, Virginia - United States": "0e2c1ae2-6db6-42ed-991f-554128ee2d28",
+        "Lloyd Noble Center, Norman, Oklahoma": "2609c84a-7142-47c3-a052-d9ae9071469e",
+        "LLoyd Noble Center, Norman, Oklahoma": "2609c84a-7142-47c3-a052-d9ae9071469e",
+        "Lloyd Noble Center - Norman, Oklahoma, USA - United States": "2609c84a-7142-47c3-a052-d9ae9071469e"
     }
 }
