@@ -23,6 +23,7 @@ class Position(StrEnum):
     RIGHT_FORWARD = "RF"
     ATTACKING_MIDFIELDER_RIGHT = "AM-R"
     SUBSTITUTE = "SUB"
+    CENTRE_MIDFIELDER_RIGHT = "CM-R"
 
 
 _POSITIONS = {str(x): x for x in Position}

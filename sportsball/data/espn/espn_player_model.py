@@ -677,9 +677,11 @@ def _create_espn_player_model(
         athlete_response.raise_for_status()
         athelete_url = athlete_response.url
         athlete_dict = athlete_response.json()
-    position_response = session.get(player["position"]["$ref"])
-    position_response.raise_for_status()
-    position_dict = position_response.json()
+    position_dict = {}
+    if "position" in player:
+        position_response = session.get(player["position"]["$ref"])
+        position_response.raise_for_status()
+        position_dict = position_response.json()
     college_dict = {}
     if "college" in athlete_dict:
         college_url = athlete_dict["college"]["$ref"]

@@ -6589,6 +6589,46 @@
             "housenumber": "",
             "country": "USA",
             "type": "venue"
+        },
+        "0bf232e7-ed15-4829-bcac-d964edca6d58": {
+            "city": "Lexington",
+            "state": "VA",
+            "postal": "24450",
+            "lat": 37.788333,
+            "lng": -79.436389,
+            "housenumber": "401",
+            "country": "USA",
+            "type": "venue"
+        },
+        "388906d8-9d4f-488b-9671-eacf1c15562e": {
+            "city": "",
+            "state": "MO",
+            "postal": "",
+            "lat": 38.0,
+            "lng": -92.0,
+            "housenumber": "",
+            "country": "USA",
+            "type": "state"
+        },
+        "8c9ff24c-d75b-43e2-a453-58671dd0ec00": {
+            "city": "Winston-Salem",
+            "state": "NC",
+            "postal": "27105",
+            "lat": 36.127866,
+            "lng": -80.257628,
+            "housenumber": "2825",
+            "country": "USA",
+            "type": "venue"
+        },
+        "84142709-f094-47ed-9dda-3e1fc853585c": {
+            "city": "Saint Paul",
+            "state": "MN",
+            "postal": "",
+            "lat": 44.944722,
+            "lng": -93.101111,
+            "housenumber": "199",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -7114,6 +7154,7 @@
         "People First Stadium": "361298bc-6000-4b40-a8eb-579139c277a5",
         "People First Stadium, Gold Coast, Australia": "361298bc-6000-4b40-a8eb-579139c277a5",
         "People First Stadium, Gold Coast": "361298bc-6000-4b40-a8eb-579139c277a5",
+        "People First Stadium - 4211": "361298bc-6000-4b40-a8eb-579139c277a5",
         "W.A.C.A. - Australia": "247ad0b9-7487-4673-98a1-ee971baca960",
         "Edgewood Tahoe Resort": "53536783-b4ad-428d-9c63-b0fccbaa9ea2",
         "Memorial Stadium (Lincoln) - Terre Haute, Indiana, USA - United States": "79d23320-5c00-4578-92a9-ee21a4f42e65",
@@ -7886,6 +7927,11 @@
         "Brighton Homes Arena": "3652210a-9e53-46b8-bd5a-59367edc3a79",
         "Kimmel Arena, Asheville, North Carolina": "0f5408a2-d6b6-4b83-8a44-4bffe47c820d",
         "SWE": "c8bcc673-c065-4066-b582-d76e46dc6f87",
-        "Memorial Gymnasium, Nashville, Tennessee": "6d33550a-6dac-4f41-8590-352a1ce54224"
+        "Memorial Gymnasium, Nashville, Tennessee": "6d33550a-6dac-4f41-8590-352a1ce54224",
+        "Cameron Hall, Lexington, Virginia": "0bf232e7-ed15-4829-bcac-d964edca6d58",
+        "Missouri": "388906d8-9d4f-488b-9671-eacf1c15562e",
+        "Lawrence Joel Coliseum, Winston-Salem, North Carolina": "8c9ff24c-d75b-43e2-a453-58671dd0ec00",
+        "Xcel Energy Center - Saint Paul - MN": "84142709-f094-47ed-9dda-3e1fc853585c",
+        "Xcel Energy Center": "84142709-f094-47ed-9dda-3e1fc853585c"
     }
 }
