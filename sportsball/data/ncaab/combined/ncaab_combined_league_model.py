@@ -740,8 +740,13 @@ NCAAB_TEAM_IDENTITY_MAP: dict[str, str] = {
     "Wagner Seahawks Men's": WAGNER_SEAHAWKS,
     # SportsDB
     "138501": FLORIDA_GATORS,
+    "138705": HOUSTON_COUGARS,
 }
-NCAAB_VENUE_IDENTITY_MAP: dict[str, str] = {}
+ALAMODOME = "19330"
+NCAAB_VENUE_IDENTITY_MAP: dict[str, str] = {
+    # SportsDB
+    "19330": ALAMODOME,
+}
 NCAAB_PLAYER_IDENTITY_MAP: dict[str, str] = {}
 
 

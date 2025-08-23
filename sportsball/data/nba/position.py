@@ -12,6 +12,7 @@ class Position(StrEnum):
     SMALL_FORWARD = "SF"
     CENTRE = "C"
     POINT_GUARD = "PG"
+    GUARD = "G"
 
 
 _POSITIONS = {str(x): x for x in Position}

@@ -6439,6 +6439,156 @@
             "housenumber": "",
             "country": "USA",
             "type": "venue"
+        },
+        "8b4c98d6-5d18-4d27-bc31-b12c47850245": {
+            "city": "Chennai",
+            "state": "",
+            "postal": "",
+            "lat": 13.062778,
+            "lng": 80.279444,
+            "housenumber": "",
+            "country": "India",
+            "type": "venue"
+        },
+        "7c6405d4-3566-4c2c-ab86-2c62b57535c8": {
+            "city": "Radford",
+            "state": "VA",
+            "postal": "24141",
+            "lat": 37.1386,
+            "lng": -80.541769,
+            "housenumber": "101",
+            "country": "USA",
+            "type": "venue"
+        },
+        "49ae0c11-e09d-41da-8575-73a57569f691": {
+            "city": "Mandurah",
+            "state": "WA",
+            "postal": "",
+            "lat": -32.532778,
+            "lng": 115.740833,
+            "housenumber": "",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "8949203e-1378-4691-ad1c-9ad056d0e78a": {
+            "city": "Des Moines",
+            "state": "IA",
+            "postal": "50311",
+            "lat": 41.604444,
+            "lng": -93.651944,
+            "housenumber": "2601",
+            "country": "USA",
+            "type": "venue"
+        },
+        "2c61ee94-38dc-4519-bfb9-34d29d0eec51": {
+            "city": "Dallas",
+            "state": "TX",
+            "postal": "",
+            "lat": 32.779167,
+            "lng": -96.808889,
+            "housenumber": "",
+            "country": "USA",
+            "type": "city"
+        },
+        "e97c0aa1-a534-40bd-a4fd-07deac77f608": {
+            "city": "Chicago",
+            "state": "IL",
+            "postal": "60626",
+            "lat": 42.000556,
+            "lng": -87.658889,
+            "housenumber": "6525",
+            "country": "USA",
+            "type": "venue"
+        },
+        "cb87f5b4-bbda-4e84-8e69-4c4deb5b64d0": {
+            "city": "Doha",
+            "state": "",
+            "postal": "",
+            "lat": 25.235278,
+            "lng": 51.532182,
+            "housenumber": "",
+            "country": "Qatar",
+            "type": "venue"
+        },
+        "5aef83cc-3d3c-4c91-9277-d93c2e126a00": {
+            "city": "Springfield",
+            "state": "MO",
+            "postal": "65897",
+            "lat": 37.2021052,
+            "lng": -93.2855636,
+            "housenumber": "685",
+            "country": "USA",
+            "type": "venue"
+        },
+        "5abc40fa-7910-41b3-996d-f380daa3cda5": {
+            "city": "Bradenton",
+            "state": "FL",
+            "postal": "34205",
+            "lat": 27.485833,
+            "lng": -82.570278,
+            "housenumber": "1611",
+            "country": "USA",
+            "type": "venue"
+        },
+        "61c2415b-359a-4722-9b33-94ac85b088ce": {
+            "city": "Boston",
+            "state": "MA",
+            "postal": "",
+            "lat": 42.353932,
+            "lng": -71.120355,
+            "housenumber": "285",
+            "country": "USA",
+            "type": "venue"
+        },
+        "afc664f4-49fc-433c-b6f3-764024ed4f11": {
+            "city": "Murray",
+            "state": "KY",
+            "postal": "42071",
+            "lat": 36.6213,
+            "lng": -88.3177,
+            "housenumber": "1401",
+            "country": "USA",
+            "type": "venue"
+        },
+        "3652210a-9e53-46b8-bd5a-59367edc3a79": {
+            "city": "Springfield",
+            "state": "QLD",
+            "postal": "",
+            "lat": -27.672139,
+            "lng": 152.90425,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "0f5408a2-d6b6-4b83-8a44-4bffe47c820d": {
+            "city": "Asheville",
+            "state": "NC",
+            "postal": "28804",
+            "lat": 35.6181,
+            "lng": -82.5689,
+            "housenumber": "227",
+            "country": "USA",
+            "type": "venue"
+        },
+        "c8bcc673-c065-4066-b582-d76e46dc6f87": {
+            "city": "",
+            "state": "",
+            "postal": "",
+            "lat": 63.0,
+            "lng": 16.0,
+            "housenumber": "",
+            "country": "Sweden",
+            "type": "venue"
+        },
+        "6d33550a-6dac-4f41-8590-352a1ce54224": {
+            "city": "Nashville",
+            "state": "TN",
+            "postal": "37235",
+            "lat": 36.144611,
+            "lng": -86.80742,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -7717,6 +7867,25 @@
         "John Glaser Arena, Philadelphia, Pennsylvania": "44d0b911-e8ff-4a63-81b3-c694c894537d",
         "Tom Gola Arena, Philadelphia, Pennsylvania": "44d0b911-e8ff-4a63-81b3-c694c894537d",
         "CACTI Park of the Palm Beaches - Palm Beach - Florida - 33407": "8a99bebc-31ba-4672-9862-04784266eb98",
-        "University Center, Hammond, Louisiana": "aac4fc47-7353-4395-b56c-5f8bb9eb1c6b"
+        "University Center, Hammond, Louisiana": "aac4fc47-7353-4395-b56c-5f8bb9eb1c6b",
+        "M. A. Chidambaram Stadium - Chennai, India - India": "8b4c98d6-5d18-4d27-bc31-b12c47850245",
+        "Donald N. Dedmon Center, Radford, Virginia": "7c6405d4-3566-4c2c-ab86-2c62b57535c8",
+        "David Grays Arena": "49ae0c11-e09d-41da-8575-73a57569f691",
+        "Knapp Center, Des Moines, Iowa": "8949203e-1378-4691-ad1c-9ad056d0e78a",
+        "Dallas, USA": "2c61ee94-38dc-4519-bfb9-34d29d0eec51",
+        "Dallas, Texas": "2c61ee94-38dc-4519-bfb9-34d29d0eec51",
+        "Dallas, Texas, United States": "2c61ee94-38dc-4519-bfb9-34d29d0eec51",
+        "Joseph J. Gentile Center, Chicago, Illinois": "e97c0aa1-a534-40bd-a4fd-07deac77f608",
+        "Joseph J. Gentile Arena, Chicago, Illinois": "e97c0aa1-a534-40bd-a4fd-07deac77f608",
+        "Al Thumama Stadium - Ar-Rayyan": "cb87f5b4-bbda-4e84-8e69-4c4deb5b64d0",
+        "JQH Arena, Springfield, Missouri": "5aef83cc-3d3c-4c91-9277-d93c2e126a00",
+        "Great Southern Bank Arena, Springfield, Missouri": "5aef83cc-3d3c-4c91-9277-d93c2e126a00",
+        "LECOM Park - Bradenton - Florida - 34282": "5abc40fa-7910-41b3-996d-f380daa3cda5",
+        "Case Gym, Boston, Massachusetts": "61c2415b-359a-4722-9b33-94ac85b088ce",
+        "Roy Stewart Stadium - Murray - KY - 42071": "afc664f4-49fc-433c-b6f3-764024ed4f11",
+        "Brighton Homes Arena": "3652210a-9e53-46b8-bd5a-59367edc3a79",
+        "Kimmel Arena, Asheville, North Carolina": "0f5408a2-d6b6-4b83-8a44-4bffe47c820d",
+        "SWE": "c8bcc673-c065-4066-b582-d76e46dc6f87",
+        "Memorial Gymnasium, Nashville, Tennessee": "6d33550a-6dac-4f41-8590-352a1ce54224"
     }
 }

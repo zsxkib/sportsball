@@ -9,3 +9,5 @@ class Position(StrEnum):
     DEFENSEMAN = "D"
     CENTRE = "C"
     GOALTENDER = "G"
+    LEFT_WING = "LW"
+    RIGHT_WING = "RW"

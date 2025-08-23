@@ -8,3 +8,4 @@ class Position(StrEnum):
 
     LEFT_FIELD = "LF"
     RIGHT_FIELD = "RF"
+    SECOND_BASEMAN = "2B"

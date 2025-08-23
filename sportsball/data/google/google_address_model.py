@@ -247,15 +247,6 @@ ROSE_HILL_GYM = SportsballGeocodeTuple(
     housenumber="",
     country="USA",
 )
-JOSEPH_J_GENTILES_CENTER = SportsballGeocodeTuple(
-    city="Chicago",
-    state="IL",
-    postal="60626",
-    lat=42.000556,
-    lng=-87.658889,
-    housenumber="6525",
-    country="USA",
-)
 SAVAGE_ARENA = SportsballGeocodeTuple(
     city="Toledo",
     state="OH",
@@ -335,15 +326,6 @@ F_G_CLARK_ACTIVITY_CENTER = SportsballGeocodeTuple(
     lat=30.521667,
     lng=-91.185556,
     housenumber="",
-    country="USA",
-)
-GREAT_SOUTHERN_BANK_ARENA = SportsballGeocodeTuple(
-    city="Springfield",
-    state="MO",
-    postal="65897",
-    lat=37.2021052,
-    lng=-93.2855636,
-    housenumber="685",
     country="USA",
 )
 MCCANN_ARENA = SportsballGeocodeTuple(
@@ -1612,15 +1594,6 @@ PENSACOLA = SportsballGeocodeTuple(
     postal="",
     lat=30.421308,
     lng=-87.216914,
-    housenumber="",
-    country="USA",
-)
-DALLAS = SportsballGeocodeTuple(
-    city="Dallas",
-    state="TX",
-    postal="",
-    lat=32.779167,
-    lng=-96.808889,
     housenumber="",
     country="USA",
 )
@@ -3146,44 +3119,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Donald N. Dedmon Center, Radford, Virginia": SportsballGeocodeTuple(
-        city="Radford",
-        state="VA",
-        postal="24141",
-        lat=37.1386,
-        lng=-80.541769,
-        housenumber="101",
-        country="USA",
-    ),
-    "Knapp Center, Des Moines, Iowa": SportsballGeocodeTuple(
-        city="Des Moines",
-        state="IA",
-        postal="50311",
-        lat=41.604444,
-        lng=-93.651944,
-        housenumber="2601",
-        country="USA",
-    ),
-    "Joseph J. Gentile Center, Chicago, Illinois": JOSEPH_J_GENTILES_CENTER,
-    "JQH Arena, Springfield, Missouri": GREAT_SOUTHERN_BANK_ARENA,
-    "Case Gym, Boston, Massachusetts": SportsballGeocodeTuple(
-        city="Boston",
-        state="MA",
-        postal="",
-        lat=42.353932,
-        lng=-71.120355,
-        housenumber="285",
-        country="USA",
-    ),
-    "Kimmel Arena, Asheville, North Carolina": SportsballGeocodeTuple(
-        city="Asheville",
-        state="NC",
-        postal="28804",
-        lat=35.6181,
-        lng=-82.5689,
-        housenumber="227",
-        country="USA",
-    ),
     "Memorial Gymnasium, Nashville, Tennessee": SportsballGeocodeTuple(
         city="Nashville",
         state="TN",
@@ -5255,7 +5190,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Dallas, Texas": DALLAS,
     "Charlotte, North Carolina": CHARLOTTE,
     "Salt Lake City, Utah": SALT_LAKE_CITY,
     "Ferrell Center, Waco, Texas": SportsballGeocodeTuple(
@@ -5360,7 +5294,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1201",
         country="USA",
     ),
-    "Joseph J. Gentile Arena, Chicago, Illinois": JOSEPH_J_GENTILES_CENTER,
     "Dunn-Oliver Acadome, Montgomery, Alabama": DUNN_OLIVER_ACADOME,
     "Oklahoma City, Oklahoma": SportsballGeocodeTuple(
         city="Oklahoma City",
@@ -5449,7 +5382,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Fredrick C. Hobdy Assembly Center, Grambling, Louisiana": FREDRICK_C_HOBDY_ASSEMBLY_CENTER,
-    "Great Southern Bank Arena, Springfield, Missouri": GREAT_SOUTHERN_BANK_ARENA,
     "Banterra Center, Carbondale, Illinois": SportsballGeocodeTuple(
         city="Carbondale",
         state="IL",
@@ -10910,7 +10842,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Dallas, Texas, United States": DALLAS,
     "Belgrade, Serbia": SportsballGeocodeTuple(
         city="Belgrade",
         state="",

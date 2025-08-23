@@ -29,7 +29,9 @@ def _venue_models(
             venue_identity = venue_identity_map.get(game_model_venue.identifier)
             if venue_identity is None:
                 logging.warning(
-                    "Failed to find %s venue identifier.", game_model_venue.identifier
+                    "Failed to find %s venue identifier (%s).",
+                    game_model_venue.identifier,
+                    game_model_venue.name,
                 )
             else:
                 full_venue_identity = venue_identity
