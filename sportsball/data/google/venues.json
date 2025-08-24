@@ -8359,6 +8359,66 @@
             "housenumber": "100",
             "country": "USA",
             "type": "venue"
+        },
+        "7b06ee27-dcca-483b-ad70-442d0ea69108": {
+            "city": "Lathlain",
+            "state": "WA",
+            "postal": "",
+            "lat": -31.9725,
+            "lng": 115.9075,
+            "housenumber": "",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "021fc966-7fa3-4148-b1e8-27f926aee210": {
+            "city": "Toronto",
+            "state": "ON",
+            "postal": "",
+            "lat": 43.65,
+            "lng": -79.38,
+            "housenumber": "",
+            "country": "Canada",
+            "type": "venue"
+        },
+        "826392f0-7a55-4b24-a725-879182d99017": {
+            "city": "Volgograd",
+            "state": "",
+            "postal": "",
+            "lat": 48.734444,
+            "lng": 44.548611,
+            "housenumber": "76",
+            "country": "Russia",
+            "type": "venue"
+        },
+        "35154d14-d957-4e39-bcab-c3578a0884fa": {
+            "city": "Cedar Falls",
+            "state": "IO",
+            "postal": "50614",
+            "lat": 42.5156,
+            "lng": -92.4673,
+            "housenumber": "2401",
+            "country": "USA",
+            "type": "venue"
+        },
+        "28679de3-70c4-4da9-a4d6-b86e1381fd13": {
+            "city": "Sarasota",
+            "state": "FL",
+            "postal": "34237",
+            "lat": 27.347778,
+            "lng": -82.517222,
+            "housenumber": "2700",
+            "country": "USA",
+            "type": "venue"
+        },
+        "712fa430-ad57-431e-abd5-44fe54250c2b": {
+            "city": "Thousand Palms",
+            "state": "CA",
+            "postal": "",
+            "lat": 33.779167,
+            "lng": -116.338889,
+            "housenumber": "75702",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -8706,6 +8766,7 @@
         "American Family Field, Milwaukee, WI, USA": "a2e9a49f-cbc1-451f-94f9-56bb224ed222",
         "Arden St - Australia": "74032078-1b05-45cb-9d36-8e30e04488e0",
         "Vitality Stadium, Bournemouth, England": "d7467392-c862-4fad-804a-8c6df019768e",
+        "Vitality Stadium - Bournemouth": "d7467392-c862-4fad-804a-8c6df019768e",
         "Oakland Coliseum - Oakland - CA - 94621": "8d552ac4-4929-4c60-b346-ff752aca9cd4",
         "Oakland Coliseum": "8d552ac4-4929-4c60-b346-ff752aca9cd4",
         "Blinn College": "c9f1c69e-b394-4e4a-9126-63956eb4c62b",
@@ -9383,6 +9444,7 @@
         "Honda Center, Anaheim, California": "a75443bd-80b7-45e1-b3c5-419bca5e1707",
         "Honda Center, Anaheim, CA, USA": "a75443bd-80b7-45e1-b3c5-419bca5e1707",
         "Honda Center": "a75443bd-80b7-45e1-b3c5-419bca5e1707",
+        "Honda Center - Anaheim - CA - 92899": "a75443bd-80b7-45e1-b3c5-419bca5e1707",
         "Floyd Casey Stadium - Waco - TX - 76798": "0edeccbf-fa0d-48be-892d-624f395af58e",
         "Floyd Casey Stadium": "0edeccbf-fa0d-48be-892d-624f395af58e",
         "ESP": "9db48e0c-538f-4eb5-85a0-cae7567463cf",
@@ -10033,6 +10095,7 @@
         "Colonial Life Arena - Columbia, South Carolina - United States": "796349d2-45c8-4988-90f9-d43cf886715b",
         "United Supermarkets Arena, Lubbock, Texas": "e98cab7f-24ee-444b-8a38-a13b65b685c2",
         "United Spirit Arena, Lubbock, Texas": "e98cab7f-24ee-444b-8a38-a13b65b685c2",
+        "United Supermarkets Arena - Lubbock - TX": "e98cab7f-24ee-444b-8a38-a13b65b685c2",
         "Quinnipiac": "a457787a-1f19-4490-9602-2ea2b7a3fd5c",
         "Reed Arena, College Station, Texas": "bca4e947-f792-4843-9233-72a3410e6e41",
         "Reed Arena - College Station, Texas, USA - United States": "bca4e947-f792-4843-9233-72a3410e6e41",
@@ -10042,6 +10105,14 @@
         "Bud Walton Arena, Fayetteville, Arkansas": "07a2a43d-4c86-40a0-81d7-efd2ccb9f9d8",
         "Kessler Stadium - West Long Branch - NJ - 07764": "9cd91820-5a9a-4c61-89af-7869ec7657de",
         "Fifth Third Arena, Cincinnati, Ohio": "d3a19e8d-83c4-49a6-9386-aaf3c0a1bee4",
-        "Stegeman Coliseum, Athens, Georgia": "71d27cef-4948-415c-9dec-00ff6dc12a9f"
+        "Stegeman Coliseum, Athens, Georgia": "71d27cef-4948-415c-9dec-00ff6dc12a9f",
+        "Mineral Resources Park": "7b06ee27-dcca-483b-ad70-442d0ea69108",
+        "Toronto, Canada": "021fc966-7fa3-4148-b1e8-27f926aee210",
+        "Toronto, Ontario, Canada": "021fc966-7fa3-4148-b1e8-27f926aee210",
+        "Volgograd Arena - Volgograd": "826392f0-7a55-4b24-a725-879182d99017",
+        "UNI-Dome - Cedar Falls - IA - 50614": "35154d14-d957-4e39-bcab-c3578a0884fa",
+        "Ed Smith Stadium - Sarasota - Florida - 34278": "28679de3-70c4-4da9-a4d6-b86e1381fd13",
+        "Acrisure Arena, Thousand Palms, California": "712fa430-ad57-431e-abd5-44fe54250c2b",
+        "Acrisure Arena - Palm Springs - CA": "712fa430-ad57-431e-abd5-44fe54250c2b"
     }
 }

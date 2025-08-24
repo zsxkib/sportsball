@@ -2561,15 +2561,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Stegeman Coliseum, Athens, Georgia": SportsballGeocodeTuple(
-        city="Athens",
-        state="GA",
-        postal="30605",
-        lat=33.9428,
-        lng=-83.378,
-        housenumber="100",
-        country="USA",
-    ),
     "FedExForum, Memphis, Tennessee": FEDEX_FORUM,
     "The Pavilion at Ole Miss, Oxford, Mississippi": OLE_MISS,
     "Dee Glen Smith Spectrum, Logan, Utah": SMITH_SPECTRUM,
@@ -8657,15 +8648,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="3201",
         country="USA",
     ),
-    "Acrisure Arena, Thousand Palms, California": SportsballGeocodeTuple(
-        city="Thousand Palms",
-        state="CA",
-        postal="",
-        lat=33.779167,
-        lng=-116.338889,
-        housenumber="75702",
-        country="USA",
-    ),
     "Bossier City, Louisiana": SportsballGeocodeTuple(
         city="Bossier City",
         state="LA",
@@ -9692,15 +9674,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         lng=-74.78,
         housenumber="",
         country="USA",
-    ),
-    "Toronto, Ontario, Canada": SportsballGeocodeTuple(
-        city="Toronto",
-        state="ON",
-        postal="",
-        lat=43.65,
-        lng=-79.38,
-        housenumber="",
-        country="Canada",
     ),
     "Salt Lake City, Utah, United States": SALT_LAKE_CITY,
     "Jasper, Florida, United States": SportsballGeocodeTuple(
