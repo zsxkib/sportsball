@@ -202,15 +202,6 @@ SAVAGE_ARENA = SportsballGeocodeTuple(
     housenumber="2025",
     country="USA",
 )
-COLONIAL_LIFE_ARENA = SportsballGeocodeTuple(
-    city="Columbia",
-    state="SC",
-    postal="",
-    lat=33.995,
-    lng=-81.037222,
-    housenumber="801",
-    country="USA",
-)
 CHASE_ATHLETIC_CENTER = SportsballGeocodeTuple(
     city="Cleveland",
     state="OH",
@@ -389,15 +380,6 @@ STATE_FARM_FIELDHOUSE = SportsballGeocodeTuple(
     lat=28.337083,
     lng=-81.556,
     housenumber="",
-    country="USA",
-)
-MOODY_CENTER = SportsballGeocodeTuple(
-    city="Austin",
-    state="TX",
-    postal="",
-    lat=30.280972,
-    lng=-97.730472,
-    housenumber="2001",
     country="USA",
 )
 GSU_CONVOCATION_CENTER = SportsballGeocodeTuple(
@@ -992,15 +974,6 @@ AL_LAWSON_CENTER = SportsballGeocodeTuple(
     lat=30.424318,
     lng=-84.290473,
     housenumber="1800",
-    country="USA",
-)
-UNITED_SUPERMARKETS_ARENA = SportsballGeocodeTuple(
-    city="Lubbock",
-    state="TX",
-    postal="79409",
-    lat=33.581261,
-    lng=-101.886636,
-    housenumber="1701",
     country="USA",
 )
 BEASLEY_COLISEUM = SportsballGeocodeTuple(
@@ -2506,15 +2479,6 @@ BENDER_ARENA = SportsballGeocodeTuple(
     housenumber="4400",
     country="USA",
 )
-REED_ARENA = SportsballGeocodeTuple(
-    city="College Station",
-    state="TX",
-    postal="77843",
-    lat=30.60578,
-    lng=-96.34619,
-    housenumber="730",
-    country="USA",
-)
 INDIANA_FARMERS_COLISEUM = SportsballGeocodeTuple(
     city="Indianapolis",
     state="IN",
@@ -2597,46 +2561,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Jack Stephens Center, Little Rock, Arkansas": SportsballGeocodeTuple(
-        city="Little Rock",
-        state="AR",
-        postal="72204",
-        lat=34.727778,
-        lng=-92.339722,
-        housenumber="2801",
-        country="USA",
-    ),
-    "Moody Center, Austin, Texas": MOODY_CENTER,
-    "The Colonial Life Arena, Columbia, South Carolina": COLONIAL_LIFE_ARENA,
-    "United Supermarkets Arena, Lubbock, Texas": UNITED_SUPERMARKETS_ARENA,
-    "Reed Arena, College Station, Texas": REED_ARENA,
-    "Humphrey Coliseum, Starkville, Mississippi": SportsballGeocodeTuple(
-        city="Starkville",
-        state="MS",
-        postal="39762",
-        lat=33.461667,
-        lng=-88.794444,
-        housenumber="55",
-        country="USA",
-    ),
-    "Bud Walton Arena, Fayetteville, Arkansas": SportsballGeocodeTuple(
-        city="Fayetteville",
-        state="AR",
-        postal="72701-5570",
-        lat=36.061518,
-        lng=-94.178188,
-        housenumber="1270",
-        country="USA",
-    ),
-    "Fifth Third Arena, Cincinnati, Ohio": SportsballGeocodeTuple(
-        city="Cincinnati",
-        state="OH",
-        postal="45221",
-        lat=39.131101,
-        lng=-84.514207,
-        housenumber="2700",
-        country="USA",
-    ),
     "Stegeman Coliseum, Athens, Georgia": SportsballGeocodeTuple(
         city="Athens",
         state="GA",
@@ -3822,15 +3746,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="4220",
         country="USA",
     ),
-    "Lahaina Civic Center, Lahaina, Hawaii": SportsballGeocodeTuple(
-        city="Lahaina",
-        state="HI",
-        postal="",
-        lat=20.904995,
-        lng=-156.683852,
-        housenumber="1840",
-        country="USA",
-    ),
     "San Jose Civic Auditorium": SAN_JOSE_CIVIC_AUDITORIUM,
     "Suncoast Credit Union Arena, Fort Myers, Florida": SportsballGeocodeTuple(
         city="Fort Myers",
@@ -4144,7 +4059,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Addition Financial Arena, Orlando, Florida": ADDITION_FINANCIAL_ARENA,
-    "Colonial Life Arena, Columbia, South Carolina": COLONIAL_LIFE_ARENA,
     "Denton, Texas": SportsballGeocodeTuple(
         city="Denton",
         state="TX",
@@ -4597,7 +4511,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="1123",
         country="USA",
     ),
-    "Moody Center, Austin, TX, USA": MOODY_CENTER,
     "Robert F. Kennedy Memorial Stadium, Washington, DC, USA": SportsballGeocodeTuple(
         city="Washington",
         state="DC",
@@ -8342,7 +8255,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="Mexico",
     ),
     "Atlantis Resort Arena, Nassau": IMPERIAL_ARENA,
-    "United Spirit Arena, Lubbock, Texas": UNITED_SUPERMARKETS_ARENA,
     "Aventura Spa Palace Resort, Riviera Maya": SportsballGeocodeTuple(
         city="Playa del Carmen",
         state="QR",
@@ -8982,7 +8894,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="2700",
         country="USA",
     ),
-    "Colonial Center, Columbia, South Carolina": COLONIAL_LIFE_ARENA,
     "F. Mitchell Johnson Center, Charleston, South Carolina": SportsballGeocodeTuple(
         city="Charleston",
         state="SC",
@@ -17398,7 +17309,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "Colonial Life Arena - Columbia, South Carolina - United States": COLONIAL_LIFE_ARENA,
     "Mercer University": SportsballGeocodeTuple(
         city="Macon",
         state="GA",
@@ -17619,7 +17529,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "FLA Live Arena": FLA_LIVE_ARENA,
     "Minute Maid Park": DAIKIN_PARK,
-    "Moody Center - Austin, Texas - United States": MOODY_CENTER,
     "Liberty University": SportsballGeocodeTuple(
         city="Lynchburg",
         state="VA",
@@ -17658,7 +17567,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="Sweden",
     ),
     "Bender Arena - Washington, D.C. - United States": BENDER_ARENA,
-    "Reed Arena - College Station, Texas, USA - United States": REED_ARENA,
     "Hulman Center - Terre Haute, Indiana - United States": HULMAN_CENTER,
     "University of Wisconsin-Green Bay": SportsballGeocodeTuple(
         city="Green Bay",
