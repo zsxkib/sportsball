@@ -229,15 +229,6 @@ MURPHY_ATHELTIC_CENTER = SportsballGeocodeTuple(
     housenumber="2650",
     country="USA",
 )
-MCCANN_ARENA = SportsballGeocodeTuple(
-    city="Poughkeepsie",
-    state="NY",
-    postal="",
-    lat=41.718431,
-    lng=-73.934,
-    housenumber="",
-    country="USA",
-)
 ROSS_E_TEMPLETON_CENTER = SportsballGeocodeTuple(
     city="Clinton",
     state="SC",
@@ -280,15 +271,6 @@ FARRIS_CENTER = SportsballGeocodeTuple(
     postal="",
     lat=35.081667,
     lng=-92.459444,
-    housenumber="",
-    country="USA",
-)
-BOGOTA_SAVINGS_BANK_CENTER = SportsballGeocodeTuple(
-    city="Teaneck",
-    state="NJ",
-    postal="07601",
-    lat=40.8967,
-    lng=-74.0324,
     housenumber="",
     country="USA",
 )
@@ -2615,53 +2597,6 @@ BAXTER_ARENA = SportsballGeocodeTuple(
     country="USA",
 )
 _CACHED_GEOCODES: dict[str, Any] = {
-    "Bogota Savings Bank Center, Teaneck, New Jersey": BOGOTA_SAVINGS_BANK_CENTER,
-    "Emil and Patricia Jones Convocation Center, Chicago, Illinois": SportsballGeocodeTuple(
-        city="Chicago",
-        state="IL",
-        postal="60628",
-        lat=41.7165,
-        lng=-87.6084,
-        housenumber="9501",
-        country="USA",
-    ),
-    "McCann Recreation Center, Poughkeepsie, New York": MCCANN_ARENA,
-    "Knott Arena, Emmitsburg, Maryland": SportsballGeocodeTuple(
-        city="Emmitsburg",
-        state="MD",
-        postal="21727",
-        lat=39.679492,
-        lng=-77.346435,
-        housenumber="16300",
-        country="USA",
-    ),
-    "Gallagher Center, Niagara University, New York": SportsballGeocodeTuple(
-        city="Niagara University",
-        state="NY",
-        postal="14109",
-        lat=43.137035,
-        lng=-79.038026,
-        housenumber="2009",
-        country="USA",
-    ),
-    "UPMC Events Center, Moon, Pennsylvania": SportsballGeocodeTuple(
-        city="Moon",
-        state="PA",
-        postal="",
-        lat=40.520212,
-        lng=-80.21476,
-        housenumber="",
-        country="USA",
-    ),
-    "Ramsey Center, Cullowhee, North Carolina": SportsballGeocodeTuple(
-        city="Cullowhee",
-        state="NC",
-        postal="28723",
-        lat=35.3037,
-        lng=-83.1823,
-        housenumber="92",
-        country="USA",
-    ),
     "Jack Stephens Center, Little Rock, Arkansas": SportsballGeocodeTuple(
         city="Little Rock",
         state="AR",
@@ -4251,7 +4186,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         housenumber="",
         country="USA",
     ),
-    "McCann Arena, Poughkeepsie, New York": MCCANN_ARENA,
     "CU Events Center, Boulder, Colorado": SportsballGeocodeTuple(
         city="Boulder",
         state="CO",
@@ -4406,7 +4340,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         country="USA",
     ),
     "Wellness and Events Center, Newark, New Jersey": WELLNESS_AND_EVENTS_CENTER,
-    "Rothman Center, Teaneck, New Jersey": BOGOTA_SAVINGS_BANK_CENTER,
     "Easton, Massachusetts": SportsballGeocodeTuple(
         city="Easton",
         state="MA",
@@ -7866,15 +7799,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
     ),
     "Retriever Activities Center, Baltimore, Maryland": RETRIEVER_ACTIVITIES_CENTER,
     "Memorial Coliseum, Portland, Oregon": MEMORIAL_COLISEUM,
-    "Charles L. Sewall Center, Coraopolis, Pennsylvania": SportsballGeocodeTuple(
-        city="Coraopolis",
-        state="PA",
-        postal="",
-        lat=40.520212,
-        lng=-80.21476,
-        housenumber="",
-        country="USA",
-    ),
     "The Pavilion, Villanova, Pennsylvania": FINNERAN_PAVILION,
     "Benjamin Johnson Arena, Spartanburg, South Carolina": SportsballGeocodeTuple(
         city="Spartanburg",
@@ -12301,15 +12225,6 @@ _CACHED_GEOCODES: dict[str, Any] = {
         postal="",
         lat=41.661667,
         lng=-91.536389,
-        housenumber="",
-        country="USA",
-    ),
-    "UConn College": SportsballGeocodeTuple(
-        city="Storrs",
-        state="CT",
-        postal="",
-        lat=41.807222,
-        lng=-72.2525,
         housenumber="",
         country="USA",
     ),

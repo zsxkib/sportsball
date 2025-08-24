@@ -8119,6 +8119,116 @@
             "housenumber": "1615",
             "country": "USA",
             "type": "venue"
+        },
+        "9df52ad8-9342-4226-9778-2577c048d7fd": {
+            "city": "Adelaide",
+            "state": "SA",
+            "postal": "",
+            "lat": -34.937222,
+            "lng": 138.568333,
+            "housenumber": "",
+            "country": "Australia",
+            "type": "venue"
+        },
+        "a0c27802-3d45-4450-9eac-d840d5827447": {
+            "city": "Teaneck",
+            "state": "NJ",
+            "postal": "07601",
+            "lat": 40.8967,
+            "lng": -74.0324,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "ca9a810c-867e-4ec7-beb0-390236fa39c8": {
+            "city": "",
+            "state": "",
+            "postal": "",
+            "lat": -10.0,
+            "lng": -52.0,
+            "housenumber": "",
+            "country": "Brazil",
+            "type": "country"
+        },
+        "dd6e4a24-5827-4665-a8af-ff9f4d301d23": {
+            "city": "Chicago",
+            "state": "IL",
+            "postal": "60628",
+            "lat": 41.7165,
+            "lng": -87.6084,
+            "housenumber": "9501",
+            "country": "USA",
+            "type": "venue"
+        },
+        "50b37ce7-60cc-426c-8315-ca11fe3db339": {
+            "city": "Poughkeepsie",
+            "state": "NY",
+            "postal": "",
+            "lat": 41.718431,
+            "lng": -73.934,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "8e9f4a60-2c2d-44b8-848b-8afbb00c9f1d": {
+            "city": "Mesa",
+            "state": "AZ",
+            "postal": "",
+            "lat": 33.4313,
+            "lng": -111.8816,
+            "housenumber": "2330",
+            "country": "USA",
+            "type": "venue"
+        },
+        "c6939104-08d8-47f9-b967-87e7744de629": {
+            "city": "Emmitsburg",
+            "state": "MD",
+            "postal": "21727",
+            "lat": 39.679492,
+            "lng": -77.346435,
+            "housenumber": "16300",
+            "country": "USA",
+            "type": "venue"
+        },
+        "fe1f19dd-eb12-4b84-970d-87820cec60ce": {
+            "city": "Storrs",
+            "state": "CT",
+            "postal": "",
+            "lat": 41.807222,
+            "lng": -72.2525,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "5f20156d-5dee-4d6f-ab7b-756848c5aed5": {
+            "city": "Niagara University",
+            "state": "NY",
+            "postal": "14109",
+            "lat": 43.137035,
+            "lng": -79.038026,
+            "housenumber": "2009",
+            "country": "USA",
+            "type": "venue"
+        },
+        "e983a434-87a5-4a63-9d9f-02d6629188b8": {
+            "city": "Moon",
+            "state": "PA",
+            "postal": "",
+            "lat": 40.520212,
+            "lng": -80.21476,
+            "housenumber": "",
+            "country": "USA",
+            "type": "venue"
+        },
+        "7e038869-2137-47e1-9404-a38ce5cb1524": {
+            "city": "Cullowhee",
+            "state": "NC",
+            "postal": "28723",
+            "lat": 35.3037,
+            "lng": -83.1823,
+            "housenumber": "92",
+            "country": "USA",
+            "type": "venue"
         }
     },
     "searches": {
@@ -8194,6 +8304,7 @@
         "Riverfront Coliseum, Cincinnati, Ohio": "d6652130-78e1-4e66-96d7-c67cff3b8f57",
         "Paycor Stadium, Cincinnati, OH, USA": "d6652130-78e1-4e66-96d7-c67cff3b8f57",
         "Emirates Stadium, London, England": "73955208-3bf4-4cb2-910a-4b378bb32e5f",
+        "Emirates Stadium - London": "73955208-3bf4-4cb2-910a-4b378bb32e5f",
         "SoFi Stadium": "6e6ff45a-cf0a-4a15-a042-f3832491acd4",
         "SoFi Stadium - Inglewood - CA - 90301": "6e6ff45a-cf0a-4a15-a042-f3832491acd4",
         "SoFi Stadium - Inglewood, CA - United States": "6e6ff45a-cf0a-4a15-a042-f3832491acd4",
@@ -9009,6 +9120,7 @@
         "Pratt & Whitney Stadium - East Hartford - CT - 06118": "732ef25f-a35d-40aa-b914-e5e94d9cbb5d",
         "Chapman Stadium - Tulsa - OK - 74104": "e7d57e08-5609-4091-b666-1c3856d57a3e",
         "Donald W. Reynolds Center, Tulsa, Oklahoma": "e7d57e08-5609-4091-b666-1c3856d57a3e",
+        "Skelly Field at H. A. Chapman Stadium": "e7d57e08-5609-4091-b666-1c3856d57a3e",
         "Sahlen Field": "e1d8e3e3-8ec8-44c8-acc2-eb13ce8d7457",
         "Kidd Brewer Stadium - Boone - NC - 28607": "1e2ecdc9-4785-4bd6-9729-7d3a0128879b",
         "London Stadium, London, England": "71ea177e-9ede-43d0-b967-463ac315e7de",
@@ -9119,6 +9231,7 @@
         "San Jose Arena, San Jose, California": "e18d34a1-472b-4dcf-aab4-7e67457d7d86",
         "SAP Center, San Jose, CA, USA": "e18d34a1-472b-4dcf-aab4-7e67457d7d86",
         "SAP Center at San Jose": "e18d34a1-472b-4dcf-aab4-7e67457d7d86",
+        "SAP Center at San Jose - San Jose - CA - 95196": "e18d34a1-472b-4dcf-aab4-7e67457d7d86",
         "Sam Boyd Stadium - Las Vegas - NV - 89122": "a57dd4aa-8c93-486d-b824-18a782cb83f6",
         "Sam Boyd Stadium": "a57dd4aa-8c93-486d-b824-18a782cb83f6",
         "Arthur Ashe Stadium, New York, NY, USA": "3d5506d1-33e3-459b-8ec6-2230ffb17887",
@@ -9183,6 +9296,7 @@
         "The Spectrum, Philadelphia, Pennsylvania": "632c915d-1f70-446a-a97e-ac5cd539a4bc",
         "Wells Fargo Center": "632c915d-1f70-446a-a97e-ac5cd539a4bc",
         "Wells Fargo Center - Philadelphia - PA - 19255": "632c915d-1f70-446a-a97e-ac5cd539a4bc",
+        "Wells Fargo Center - Philadelphia - PA": "632c915d-1f70-446a-a97e-ac5cd539a4bc",
         "Omsk, Russia": "b7be80ce-0f3c-4a6f-8d52-7aae1bdf2009",
         "UW-Milwaukee Panther Arena, Milwaukee, Wisconsin": "57b80240-7828-4e60-a0c9-f8176bfc1f7b",
         "Milwaukee Arena": "57b80240-7828-4e60-a0c9-f8176bfc1f7b",
@@ -9739,6 +9853,7 @@
         "Bryce Jordan Center - University Park, Pennsylvania - United States": "08dd469e-ed95-4fb2-b1d1-1c9ee35a0f53",
         "Alberton Oval": "11019cec-c086-40ab-9bbc-6a141ae4db70",
         "Mackey Arena, West Lafayette, Indiana": "9cac843a-760b-4055-9c9c-6bab374eb032",
+        "Mackey Arena - West Lafayette - IN": "9cac843a-760b-4055-9c9c-6bab374eb032",
         "Crisler Arena, Ann Arbor, Michigan": "c60c9d7e-686e-4428-9e8c-9914209a6029",
         "Crisler Center, Ann Arbor, Michigan": "c60c9d7e-686e-4428-9e8c-9914209a6029",
         "Paycom Center, Oklahoma City, Oklahoma": "4564d26b-7d6a-43a0-95d0-37e0ab5fabae",
@@ -9756,6 +9871,21 @@
         "UBS Arena, Elmont, NY, USA": "bd2159da-cd03-4b84-8c4b-f86cb7c3dd64",
         "UBS Arena": "bd2159da-cd03-4b84-8c4b-f86cb7c3dd64",
         "UBS Arena - Elmont - NY - 11003": "bd2159da-cd03-4b84-8c4b-f86cb7c3dd64",
-        "Detrick Gymnasium, New Britain, Connecticut": "65cb5d9e-84c0-400f-aaf7-54ccdeeca129"
+        "Detrick Gymnasium, New Britain, Connecticut": "65cb5d9e-84c0-400f-aaf7-54ccdeeca129",
+        "Richmond Oval": "9df52ad8-9342-4226-9778-2577c048d7fd",
+        "Bogota Savings Bank Center, Teaneck, New Jersey": "a0c27802-3d45-4450-9eac-d840d5827447",
+        "Rothman Center, Teaneck, New Jersey": "a0c27802-3d45-4450-9eac-d840d5827447",
+        "BRA": "ca9a810c-867e-4ec7-beb0-390236fa39c8",
+        "Emil and Patricia Jones Convocation Center, Chicago, Illinois": "dd6e4a24-5827-4665-a8af-ff9f4d301d23",
+        "McCann Recreation Center, Poughkeepsie, New York": "50b37ce7-60cc-426c-8315-ca11fe3db339",
+        "McCann Arena, Poughkeepsie, New York": "50b37ce7-60cc-426c-8315-ca11fe3db339",
+        "Sloan Park - Mesa - Arizona - 85201": "8e9f4a60-2c2d-44b8-848b-8afbb00c9f1d",
+        "Knott Arena, Emmitsburg, Maryland": "c6939104-08d8-47f9-b967-87e7744de629",
+        "UConn": "fe1f19dd-eb12-4b84-970d-87820cec60ce",
+        "UConn College": "fe1f19dd-eb12-4b84-970d-87820cec60ce",
+        "Gallagher Center, Niagara University, New York": "5f20156d-5dee-4d6f-ab7b-756848c5aed5",
+        "UPMC Events Center, Moon, Pennsylvania": "e983a434-87a5-4a63-9d9f-02d6629188b8",
+        "Charles L. Sewall Center, Coraopolis, Pennsylvania": "e983a434-87a5-4a63-9d9f-02d6629188b8",
+        "Ramsey Center, Cullowhee, North Carolina": "7e038869-2137-47e1-9404-a38ce5cb1524"
     }
 }
